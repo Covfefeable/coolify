@@ -92,10 +92,10 @@ class DeploymentFailed extends CustomEmailNotification
         if ($this->blockedTitle !== null) {
             $mail->subject('Coolify: '.$this->blockedTitle.' ('.$this->application_name.').');
         } elseif ($pull_request_id === 0) {
-            $mail->subject('Coolify: Deployment failed of '.$this->application_name.'.');
+            $mail->subject(__('Coolify: Deployment failed of :name.', ['name' => $this->application_name]));
         } else {
             $fqdn = $this->preview->fqdn;
-            $mail->subject('Coolify: Deployment failed of pull request #'.$this->preview->pull_request_id.' of '.$this->application_name.'.');
+            $mail->subject(__('Coolify: Deployment failed of pull request #:id of :name.', ['id' => $this->preview->pull_request_id, 'name' => $this->application_name]));
         }
         $mail->view('emails.application-deployment-failed', [
             'commit' => $this->deploymentCommitDetailsForMail($notifiable),

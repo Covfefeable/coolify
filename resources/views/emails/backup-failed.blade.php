@@ -1,7 +1,7 @@
 <x-emails.layout>
-Database backup for {{ $name }} @if($database_name)(db:{{ $database_name }})@endif with frequency of {{ $frequency }} was FAILED.
+{{ __('Database backup for :name with frequency of :frequency was FAILED.', ['name' => $database_name ? $name.' (db:'.$database_name.')' : $name, 'frequency' => $frequency]) }}
 
-### Reason
+### {{ __('Reason') }}
 
 {{ $output }}
 

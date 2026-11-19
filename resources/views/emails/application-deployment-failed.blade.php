@@ -2,14 +2,14 @@
 @if (! empty($blocked))
 {{ $blocked }}.
 
-The image scan blocked the deployment of {{ $name }}. See the Vulnerabilities page of the application for the results.
+{{ __('The image scan blocked the deployment of :name. See the Vulnerabilities page of the application for the results.', ['name' => $name]) }}
 @elseif ($pull_request_id === 0)
-Failed to deploy a new version of {{ $name }} at [{{ $fqdn }}]({{ $fqdn }}) .
+{{ __('Failed to deploy a new version of :name at', ['name' => $name]) }} [{{ $fqdn }}]({{ $fqdn }}) .
 @else
-Failed to deploy a pull request #{{ $pull_request_id }} of {{ $name }} at
+{{ __('Failed to deploy a pull request #:id of :name at', ['id' => $pull_request_id, 'name' => $name]) }}
 [{{ $fqdn }}]({{ $fqdn }}).
 @endif
 
 <x-emails.deployment-commit :commit="$commit ?? null" />
-[View Deployment Logs]({{ $deployment_url }})
+[{{ __('View Deployment Logs') }}]({{ $deployment_url }})
 </x-emails.layout>

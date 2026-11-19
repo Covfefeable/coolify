@@ -9,3 +9,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Common forms, actions, and accessibility labels across the dashboard, resources, servers, integrations, and settings support Simplified Chinese
 - Operation notifications, service backup schedules, and deployment destination resource lists support Simplified Chinese
 - Environment variable management, terminal controls, and common form validation messages support Simplified Chinese
+- Account, deployment, backup, and server alert emails include Simplified Chinese translations

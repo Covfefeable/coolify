@@ -73,6 +73,23 @@ it('defaults the commit details setting to off', function () {
     expect($this->team->emailNotificationSettings->fresh()->deployment_commit_details_email_notifications)->toBeFalse();
 });
 
+it('renders Simplified Chinese deployment and account emails with their links', function () {
+    app()->setLocale('zh-cn');
+    enableCommitDetails($this->team);
+    $deployment = createDeploymentRow($this->application);
+
+    $mail = (new DeploymentSuccess($this->application, $deployment->deployment_uuid, null, $deployment))->toMail($this->team);
+
+    expect($mail->subject)->toContain('的新版本已部署')
+        ->and((string) $mail->render())->toContain('查看部署日志', 'https://shop.example.com', '提交说明');
+
+    $reset = view('emails.reset-password', ['url' => 'https://example.test/reset', 'count' => 30])->render();
+    $invitation = view('emails.invitation-link', ['team' => 'Example Team', 'invitation_link' => 'https://example.test/invite'])->render();
+
+    expect($reset)->toContain('https://example.test/reset', '30 分钟后失效')
+        ->and($invitation)->toContain('https://example.test/invite', 'Example Team', '点击接受邀请');
+});
+
 it('includes commit details in deployment emails when enabled', function (string $notificationClass) {
     enableCommitDetails($this->team);
     $deployment = createDeploymentRow($this->application);

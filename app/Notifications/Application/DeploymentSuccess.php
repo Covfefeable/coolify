@@ -63,10 +63,10 @@ class DeploymentSuccess extends CustomEmailNotification
         $pull_request_id = data_get($this->preview, 'pull_request_id', 0);
         $fqdn = $this->fqdn;
         if ($pull_request_id === 0) {
-            $mail->subject("Coolify: New version is deployed of {$this->application_name}");
+            $mail->subject(__('Coolify: New version is deployed of :name', ['name' => $this->application_name]));
         } else {
             $fqdn = $this->preview->fqdn;
-            $mail->subject("Coolify: Pull request #{$pull_request_id} of {$this->application_name} deployed successfully");
+            $mail->subject(__('Coolify: Pull request #:id of :name deployed successfully', ['id' => $pull_request_id, 'name' => $this->application_name]));
         }
         $mail->view('emails.application-deployment-success', [
             'commit' => $this->deploymentCommitDetailsForMail($notifiable),
