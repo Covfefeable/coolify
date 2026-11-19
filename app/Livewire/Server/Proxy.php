@@ -173,7 +173,7 @@ class Proxy extends Component
             $this->authorize('update', $this->server);
             $this->validate();
             $this->saveSettings();
-            $this->dispatch('success', 'Settings saved.');
+            $this->dispatch('success', __('Settings saved.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }

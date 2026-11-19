@@ -269,7 +269,7 @@ class Advanced extends Component
                 $this->resetDefaultLabels();
             }
 
-            $this->dispatch('success', 'Settings saved.');
+            $this->dispatch('success', __('Settings saved.'));
             $this->dispatch('configurationChanged');
         } catch (\Throwable $e) {
             return handleError($e, $this);
@@ -299,7 +299,7 @@ class Advanced extends Component
                 return;
             }
             $this->syncData(true);
-            $this->dispatch('success', 'Settings saved.');
+            $this->dispatch('success', __('Settings saved.'));
             $this->dispatch('configurationChanged');
         } catch (\Throwable $e) {
             return handleError($e, $this);

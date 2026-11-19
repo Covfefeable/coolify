@@ -486,7 +486,7 @@ class Change extends Component
             $this->authorize('delete', $this->github_app);
 
             if ($this->github_app->applications->isNotEmpty()) {
-                $this->dispatch('error', 'This source is being used by an application. Please delete all applications first.');
+                $this->dispatch('error', __('This source is being used by an application. Please delete all applications first.'));
 
                 return;
             }

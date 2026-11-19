@@ -91,7 +91,7 @@ class Index extends Component
                 $this->authorize('manageBackups', $this->selectedDatabaseBackup->database);
                 if (! str($this->selectedDatabaseBackup->database->status)->startsWith('running')) {
                     $this->selectedDatabaseBackup = null;
-                    $this->dispatch('error', 'The database must be running to start a backup.');
+                    $this->dispatch('error', __('The database must be running to start a backup.'));
 
                     return;
                 }

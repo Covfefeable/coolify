@@ -265,7 +265,7 @@ class FileBrowser extends Component
             $this->editorOpen = false;
             $this->editorContent = '';
             $this->loadEntries();
-            $this->dispatch('success', 'Saved.');
+            $this->dispatch('success', __('Saved.'));
         } catch (\Throwable $e) {
             handleError($e, $this);
         }

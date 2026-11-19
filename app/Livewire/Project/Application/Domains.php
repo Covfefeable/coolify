@@ -1058,7 +1058,7 @@ class Domains extends Component
             $this->refreshDomains();
             $addedUrls = array_values(array_unique(array_merge($newUrls, $pairedUrls)));
             if ($this->configureDnsAfterDomainAdd($addedUrls)) {
-                $this->dispatch('success', 'Domain added.');
+                $this->dispatch('success', __('Domain added.'));
 
                 return;
             }
@@ -1337,7 +1337,7 @@ class Domains extends Component
             $this->authorize('update', $this->application);
 
             if ($this->labelsAreWritable) {
-                $this->dispatch('error', 'Domains cannot be edited while container labels are writable.');
+                $this->dispatch('error', __('Domains cannot be edited while container labels are writable.'));
 
                 return;
             }
@@ -1394,7 +1394,7 @@ class Domains extends Component
             $this->editingIndex = null;
             $this->pendingAction = null;
             $this->forceSaveDomains = false;
-            $this->dispatch('success', 'Domain added.');
+            $this->dispatch('success', __('Domain added.'));
             $this->refreshDomains();
             $this->checkUrlsDns($newUrls, $serviceName);
         } catch (\Throwable $e) {
@@ -1470,7 +1470,7 @@ class Domains extends Component
             $this->authorize('update', $this->application);
 
             if ($this->labelsAreWritable) {
-                $this->dispatch('error', 'Domains cannot be edited while container labels are writable.');
+                $this->dispatch('error', __('Domains cannot be edited while container labels are writable.'));
 
                 return;
             }
@@ -1591,7 +1591,7 @@ class Domains extends Component
             $this->forceUseUnknownPort = false;
             $this->cancelEdit();
             $this->dispatch('edit-domain-saved');
-            $this->dispatch('success', 'Domain updated.');
+            $this->dispatch('success', __('Domain updated.'));
             $this->refreshDomains();
             $urlsToCheck = $this->configureDnsAfterDomainEdit($urlsToCheck, $previousDnsHostnames);
             if ($urlsToCheck !== []) {
@@ -1608,7 +1608,7 @@ class Domains extends Component
             $this->authorize('update', $this->application);
 
             if ($this->labelsAreWritable) {
-                $this->dispatch('error', 'Domains cannot be edited while container labels are writable.');
+                $this->dispatch('error', __('Domains cannot be edited while container labels are writable.'));
 
                 return;
             }
@@ -1631,7 +1631,7 @@ class Domains extends Component
                 $this->cancelEdit();
             }
 
-            $this->dispatch('success', 'Domain removed.');
+            $this->dispatch('success', __('Domain removed.'));
             $this->refreshDomains();
             $this->pruneDomainDnsStatusesToCurrentDomains();
         } catch (\Throwable $e) {
@@ -1672,7 +1672,7 @@ class Domains extends Component
             $this->authorize('update', $this->application);
 
             if ($this->labelsAreWritable) {
-                $this->dispatch('error', 'Domains cannot be edited while container labels are writable.');
+                $this->dispatch('error', __('Domains cannot be edited while container labels are writable.'));
 
                 return;
             }
@@ -1703,7 +1703,7 @@ class Domains extends Component
                 $pairedUrls = $this->syncRedirectDomainPairs($serviceName);
                 $this->resetAddDomainForm();
                 $this->dispatch('close-modal');
-                $this->dispatch('success', 'Domain generated.');
+                $this->dispatch('success', __('Domain generated.'));
                 $this->refreshDomains();
                 $this->checkUrlsDns(array_values(array_unique(array_merge([$domain], $pairedUrls))), $serviceName);
 
@@ -1719,7 +1719,7 @@ class Domains extends Component
             $pairedUrls = $this->syncRedirectDomainPairs(null);
             $this->resetAddDomainForm();
             $this->dispatch('close-modal');
-            $this->dispatch('success', 'Domain generated.');
+            $this->dispatch('success', __('Domain generated.'));
             $this->refreshDomains();
             $this->checkUrlsDns(array_values(array_unique(array_merge([$fqdn], $pairedUrls))));
         } catch (\Throwable $e) {
@@ -1767,7 +1767,7 @@ class Domains extends Component
             $this->pendingRedirectService = null;
             $this->forceSaveDomains = false;
             $this->resetDefaultLabels();
-            $this->dispatch('success', 'Redirect updated.');
+            $this->dispatch('success', __('Redirect updated.'));
             $this->refreshDomains();
             $this->queueUrlsDns($addedDomains);
             $this->pruneDomainDnsStatusesToCurrentDomains();

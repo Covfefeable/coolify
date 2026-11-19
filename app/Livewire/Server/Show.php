@@ -453,7 +453,7 @@ class Show extends Component
             Server::throttleValidation($this->server->team_id, $this->server->ip);
             ['uptime' => $uptime, 'error' => $error] = $this->server->validateConnection();
             if ($uptime) {
-                $this->dispatch('success', 'Server is reachable.');
+                $this->dispatch('success', __('Server is reachable.'));
                 $this->server->settings->is_reachable = $this->isReachable = true;
                 $this->server->settings->is_usable = $this->isUsable = true;
                 $this->server->settings->save();
@@ -479,7 +479,7 @@ class Show extends Component
             $this->authorize('manageSentinel', $this->server);
             $customImage = isDev() ? $this->sentinelCustomDockerImage : null;
             $this->server->restartSentinel($customImage);
-            $this->dispatch('info', 'Restarting Sentinel.');
+            $this->dispatch('info', __('Restarting Sentinel.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }
@@ -638,7 +638,7 @@ class Show extends Component
             if ($this->hetznerServerStatus === 'off' && $this->server->settings->is_reachable) {
                 ['uptime' => $uptime, 'error' => $error] = $this->server->validateConnection();
                 if ($uptime) {
-                    $this->dispatch('success', 'Server is reachable.');
+                    $this->dispatch('success', __('Server is reachable.'));
                     $this->server->settings->is_reachable = $this->isReachable = true;
                     $this->server->settings->is_usable = $this->isUsable = true;
                     $this->server->settings->save();
@@ -1047,7 +1047,7 @@ class Show extends Component
 
             $token = $this->availableHetznerTokens->firstWhere('id', $this->selectedHetznerTokenId);
             if (! $token) {
-                $this->dispatch('error', 'Invalid token selected.');
+                $this->dispatch('error', __('Invalid token selected.'));
 
                 return;
             }
@@ -1178,7 +1178,7 @@ class Show extends Component
 
             $token = $this->availableDigitalOceanTokens->firstWhere('id', $this->selectedDigitalOceanTokenId);
             if (! $token) {
-                $this->dispatch('error', 'Invalid token selected.');
+                $this->dispatch('error', __('Invalid token selected.'));
 
                 return;
             }
@@ -1311,7 +1311,7 @@ class Show extends Component
             $token = $this->availableHostingerTokens->firstWhere('id', $this->selectedHostingerTokenId);
 
             if (! $token) {
-                $this->dispatch('error', 'Invalid token selected.');
+                $this->dispatch('error', __('Invalid token selected.'));
 
                 return null;
             }
@@ -1445,7 +1445,7 @@ class Show extends Component
 
             $token = $this->availableVultrTokens->firstWhere('id', $this->selectedVultrTokenId);
             if (! $token) {
-                $this->dispatch('error', 'Invalid token selected.');
+                $this->dispatch('error', __('Invalid token selected.'));
 
                 return;
             }

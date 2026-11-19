@@ -400,7 +400,7 @@ class ImportForm extends Component
             }
 
             if (! $this->server) {
-                $this->dispatch('error', 'Server not found. Please refresh the page.');
+                $this->dispatch('error', __('Server not found. Please refresh the page.'));
 
                 return;
             }
@@ -499,7 +499,7 @@ class ImportForm extends Component
         }
 
         if (! $this->server) {
-            $this->dispatch('error', 'Server not found. Please refresh the page.');
+            $this->dispatch('error', __('Server not found. Please refresh the page.'));
 
             return true;
         }
@@ -662,7 +662,7 @@ class ImportForm extends Component
         }
 
         if (! $this->server) {
-            $this->dispatch('error', 'Server not found. Please refresh the page.');
+            $this->dispatch('error', __('Server not found. Please refresh the page.'));
 
             return true;
         }

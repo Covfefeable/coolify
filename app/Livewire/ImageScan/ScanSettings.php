@@ -113,7 +113,7 @@ class ScanSettings extends Component
         $application->settings->is_image_scan_enabled = $this->appScanEnabled === '1';
         $application->settings->save();
         $this->audit($application, 'is_image_scan_enabled');
-        $this->dispatch('success', 'Saved.');
+        $this->dispatch('success', __('Saved.'));
     }
 
     public function updatedBuildsByTeam(): void
@@ -126,7 +126,7 @@ class ScanSettings extends Component
         $application->settings->image_builds_by_team = self::optionToBool($this->buildsByTeam);
         $application->settings->save();
         $this->audit($application, 'image_builds_by_team');
-        $this->dispatch('success', 'Saved.');
+        $this->dispatch('success', __('Saved.'));
     }
 
     public function updatedScanNewServers(): void
@@ -139,7 +139,7 @@ class ScanSettings extends Component
         $team->scan_images_on_new_servers = $this->scanNewServers === '1';
         $team->save();
         $this->audit($team, 'scan_images_on_new_servers');
-        $this->dispatch('success', 'Saved.');
+        $this->dispatch('success', __('Saved.'));
     }
 
     /**
@@ -203,7 +203,7 @@ class ScanSettings extends Component
             $this->refreshStatuses($scope);
         }
         $this->audit($scope, $column);
-        $this->dispatch('success', 'Saved.');
+        $this->dispatch('success', __('Saved.'));
     }
 
     /**

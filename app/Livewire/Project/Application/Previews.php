@@ -65,7 +65,7 @@ class Previews extends Component
         $this->application->settings->is_pr_deployments_public_enabled = $this->isPrDeploymentsPublicEnabled;
         $this->saveApplicationSettingsWithAudit($this->application);
 
-        $this->dispatch('success', 'Settings saved.');
+        $this->dispatch('success', __('Settings saved.'));
         $this->dispatch('configurationChanged');
     }
 
@@ -236,12 +236,12 @@ class Previews extends Component
                 docker_registry_image_tag: $this->application->build_pack === 'dockerimage' ? $found?->docker_registry_image_tag : null,
             );
             if ($result['status'] === 'queue_full') {
-                $this->dispatch('error', 'Deployment queue full', $result['message']);
+                $this->dispatch('error', __('Deployment queue full'), $result['message']);
 
                 return;
             }
             if ($result['status'] === 'skipped') {
-                $this->dispatch('success', 'Deployment skipped', $result['message']);
+                $this->dispatch('success', __('Deployment skipped'), $result['message']);
 
                 return;
             }

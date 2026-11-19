@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-dashboard.navbar section="destination" :parameters="['destination_uuid' => $destination->uuid]"
-        :title="$destination->name" subtitle="Applications, databases, and services on this network"
+        :title="$destination->name" subtitle="{{ __('Applications, databases, and services on this network') }}"
         :mobileTitleOnly="true" />
 
     <section class="application-settings-workspace mt-4 w-full max-w-none lg:mt-0">
@@ -14,10 +14,10 @@
             <div class="min-w-0">
                 <div x-data="{ search: '' }" class="application-settings-form">
                     <x-application.settings-section title="{{ __('Resources') }}"
-                        description="Applications, databases, and services connected to this Docker network." flush>
+                        description="{{ __('Applications, databases, and services connected to this Docker network.') }}" flush>
                         @if (count($resources) === 0)
-                            <x-empty title="No resources use this destination"
-                                description="Resources will appear here after they are deployed to this network."
+                            <x-empty title="{{ __('No resources use this destination') }}"
+                                description="{{ __('Resources will appear here after they are deployed to this network.') }}"
                                 icon-name="destinations" size="sm" />
                         @else
                             <div class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">

@@ -88,7 +88,7 @@ class Heading extends Component
 
             $loaded = $this->application->loadComposeFile();
             if (is_null(data_get($loaded, 'parsedServices'))) {
-                $this->dispatch('error', 'Failed to parse your docker-compose file. Please check the syntax and try again.');
+                $this->dispatch('error', __('Failed to parse your docker-compose file. Please check the syntax and try again.'));
 
                 return;
             }
@@ -123,7 +123,7 @@ class Heading extends Component
         if ($this->application->destination->server->isFunctional()) {
             GetContainersStatus::dispatch($this->application->destination->server);
         } else {
-            $this->dispatch('error', 'Server is not functional.');
+            $this->dispatch('error', __('Server is not functional.'));
         }
     }
 
@@ -220,17 +220,17 @@ class Heading extends Component
                 return;
             }
             if ($this->application->destination->server->isSwarm() && str($this->application->docker_registry_image_name)->isEmpty()) {
-                $this->dispatch('error', 'Failed to deploy.', 'To deploy to a Swarm cluster you must set a Docker image name first.');
+                $this->dispatch('error', __('Failed to deploy.'), 'To deploy to a Swarm cluster you must set a Docker image name first.');
 
                 return;
             }
             if (data_get($this->application, 'settings.is_build_server_enabled') && str($this->application->docker_registry_image_name)->isEmpty()) {
-                $this->dispatch('error', 'Failed to deploy.', 'To use a build server, you must first set a Docker image.<br>More information here: <a target="_blank" class="underline" href="https://coolify.io/docs/knowledge-base/server/build-server">documentation</a>');
+                $this->dispatch('error', __('Failed to deploy.'), 'To use a build server, you must first set a Docker image.<br>More information here: <a target="_blank" class="underline" href="https://coolify.io/docs/knowledge-base/server/build-server">documentation</a>');
 
                 return;
             }
             if ($this->application->additional_servers->count() > 0 && str($this->application->docker_registry_image_name)->isEmpty()) {
-                $this->dispatch('error', 'Failed to deploy.', 'Before deploying to multiple servers, you must first set a Docker image in the General tab.<br>More information here: <a target="_blank" class="underline" href="https://coolify.io/docs/knowledge-base/server/multiple-servers">documentation</a>');
+                $this->dispatch('error', __('Failed to deploy.'), 'Before deploying to multiple servers, you must first set a Docker image in the General tab.<br>More information here: <a target="_blank" class="underline" href="https://coolify.io/docs/knowledge-base/server/multiple-servers">documentation</a>');
 
                 return;
             }
@@ -241,12 +241,12 @@ class Heading extends Component
                 force_rebuild: $force_rebuild,
             );
             if ($result['status'] === 'queue_full') {
-                $this->dispatch('error', 'Deployment queue full', $result['message']);
+                $this->dispatch('error', __('Deployment queue full'), $result['message']);
 
                 return;
             }
             if ($result['status'] === 'skipped') {
-                $this->dispatch('error', 'Deployment skipped', $result['message']);
+                $this->dispatch('error', __('Deployment skipped'), $result['message']);
 
                 return;
             }
@@ -303,12 +303,12 @@ class Heading extends Component
                 restart_only: true,
             );
             if ($result['status'] === 'queue_full') {
-                $this->dispatch('error', 'Deployment queue full', $result['message']);
+                $this->dispatch('error', __('Deployment queue full'), $result['message']);
 
                 return;
             }
             if ($result['status'] === 'skipped') {
-                $this->dispatch('success', 'Deployment skipped', $result['message']);
+                $this->dispatch('success', __('Deployment skipped'), $result['message']);
 
                 return;
             }

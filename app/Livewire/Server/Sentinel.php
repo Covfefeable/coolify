@@ -130,7 +130,7 @@ class Sentinel extends Component
             $customImage = isDev() ? $this->sentinelCustomDockerImage : null;
             $this->server->restartSentinel($customImage);
             auditLog('ui.server.sentinel.restarted', $this->auditContext());
-            $this->dispatch('info', 'Restarting Sentinel.');
+            $this->dispatch('info', __('Restarting Sentinel.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }
@@ -196,7 +196,7 @@ class Sentinel extends Component
             ]));
             // Saving the setting restarts Sentinel (ServerSetting::booted()).
             $this->setSentinelRestarting();
-            $this->dispatch('info', 'Restarting Sentinel.');
+            $this->dispatch('info', __('Restarting Sentinel.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }

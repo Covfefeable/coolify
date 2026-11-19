@@ -322,7 +322,7 @@ class Index extends Component
                 'team_id' => currentTeam()->id,
             ]);
         } catch (ValidationException) {
-            return $this->dispatch('error', 'You have reached the server limit for your subscription.');
+            return $this->dispatch('error', __('You have reached the server limit for your subscription.'));
         }
         $this->createdServer->settings->is_cloudflare_tunnel = $this->isCloudflareTunnel;
         $this->createdServer->settings->save();

@@ -82,7 +82,7 @@ class Show extends Component
             $this->authorize('update', $this->server);
 
             if (! in_array($type, ['ed25519', 'rsa'], true)) {
-                $this->dispatch('error', 'Invalid private key type.');
+                $this->dispatch('error', __('Invalid private key type.'));
 
                 return;
             }
@@ -97,7 +97,7 @@ class Show extends Component
 
             $this->loadPrivateKeys();
             $this->dispatch('copyPublicKeyToClipboard', publicKey: $privateKey->public_key);
-            $this->dispatch('success', 'Private key created successfully.');
+            $this->dispatch('success', __('Private key created successfully.'));
         } catch (\Throwable $e) {
             handleError($e, $this);
         }
@@ -110,7 +110,7 @@ class Show extends Component
             Server::throttleValidation($this->server->team_id, $this->server->ip);
             ['uptime' => $uptime, 'error' => $error] = $this->server->validateConnection();
             if ($uptime) {
-                $this->dispatch('success', 'Server is reachable.');
+                $this->dispatch('success', __('Server is reachable.'));
                 $this->dispatch('refreshServerShow');
             } else {
                 $this->dispatch('error', $this->unreachableMessage($error));

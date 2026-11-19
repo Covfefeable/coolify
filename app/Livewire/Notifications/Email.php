@@ -423,7 +423,7 @@ class Email extends Component
             $this->fillSmtpServerSettings();
 
             $this->saveEmailSettings();
-            $this->dispatch('success', 'SMTP settings updated.');
+            $this->dispatch('success', __('SMTP settings updated.'));
         } catch (\Throwable $e) {
             $this->smtpEnabled = false;
 
@@ -448,7 +448,7 @@ class Email extends Component
             $this->settings->resend_from_name = $this->resendFromName;
 
             $this->saveEmailSettings();
-            $this->dispatch('success', 'Resend settings updated.');
+            $this->dispatch('success', __('Resend settings updated.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }

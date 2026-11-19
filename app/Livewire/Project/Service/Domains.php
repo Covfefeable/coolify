@@ -865,7 +865,7 @@ class Domains extends Component
             $this->forceSaveDomains = false;
             $this->forceRemovePort = false;
             if ($this->notifyRedirectUpdate) {
-                $this->dispatch('success', 'Redirect updated.');
+                $this->dispatch('success', __('Redirect updated.'));
             }
             $this->dispatch('configurationChanged');
             $this->pruneDomainDnsStatusesToCurrentDomains();
@@ -1120,7 +1120,7 @@ class Domains extends Component
             $this->refreshDomains();
             $addedUrls = array_values(array_unique(array_merge($newUrls, $pairedUrls)));
             if ($this->configureDnsAfterDomainAdd($addedUrls)) {
-                $this->dispatch('success', 'Domain added.');
+                $this->dispatch('success', __('Domain added.'));
 
                 return;
             }
@@ -1365,7 +1365,7 @@ class Domains extends Component
             $this->forceSaveDomains = false;
             $this->forceRemovePort = false;
             $this->pendingAction = null;
-            $this->dispatch('success', 'Domain updated.');
+            $this->dispatch('success', __('Domain updated.'));
             $this->refreshDomains();
             $urlsToCheck = $this->configureDnsAfterDomainEdit($urlsToCheck, $previousDnsHostnames);
             if ($urlsToCheck !== []) {
@@ -1403,7 +1403,7 @@ class Domains extends Component
 
             $this->forceSaveDomains = false;
             $this->forceRemovePort = false;
-            $this->dispatch('success', 'Domain removed.');
+            $this->dispatch('success', __('Domain removed.'));
             $this->pruneDomainDnsStatusesToCurrentDomains();
             $this->refreshDomains();
         } catch (\Throwable $e) {
@@ -1503,7 +1503,7 @@ class Domains extends Component
             $this->pendingAction = null;
             $this->forceSaveDomains = false;
             $this->forceRemovePort = false;
-            $this->dispatch('success', 'Domain added.');
+            $this->dispatch('success', __('Domain added.'));
             $this->refreshDomains();
             $this->checkUrlsDns($newUrls, (int) $app->id);
         } catch (\Throwable $e) {

@@ -343,7 +343,7 @@ class Change extends Component
             $this->authorize('delete', $this->gitea_app);
 
             if ($this->gitea_app->applications->isNotEmpty()) {
-                $this->dispatch('error', 'This source is being used by an application. Please delete all applications first.');
+                $this->dispatch('error', __('This source is being used by an application. Please delete all applications first.'));
 
                 return;
             }

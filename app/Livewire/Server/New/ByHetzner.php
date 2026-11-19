@@ -701,7 +701,7 @@ class ByHetzner extends Component
             $this->authorize('create', Server::class);
 
             if (Team::serverLimitReached()) {
-                return $this->dispatch('error', 'You have reached the server limit for your subscription.');
+                return $this->dispatch('error', __('You have reached the server limit for your subscription.'));
             }
 
             // Save cloud-init script if requested
@@ -782,7 +782,7 @@ class ByHetzner extends Component
             }
             $this->deleteUntrackedHetznerServer($hetznerService ?? null, $hetznerServer['id'] ?? null);
 
-            return $this->dispatch('error', 'You have reached the server limit for your subscription.');
+            return $this->dispatch('error', __('You have reached the server limit for your subscription.'));
         } catch (\Throwable $e) {
             if (! isset($server)) {
                 $this->deleteUntrackedHetznerServer($hetznerService ?? null, $hetznerServer['id'] ?? null);

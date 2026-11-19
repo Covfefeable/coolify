@@ -433,7 +433,7 @@ class ByVultr extends Component
             $this->authorize('create', Server::class);
 
             if (Team::serverLimitReached()) {
-                return $this->dispatch('error', 'You have reached the server limit for your subscription.');
+                return $this->dispatch('error', __('You have reached the server limit for your subscription.'));
             }
 
             if ($this->save_cloud_init_script && ! empty($this->cloud_init_script) && ! empty($this->cloud_init_script_name)) {

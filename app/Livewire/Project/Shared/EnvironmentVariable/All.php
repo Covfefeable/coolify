@@ -1131,7 +1131,7 @@ class All extends Component
 
         // Only show success message if changes were actually made and no errors occurred
         if ($changesMade && ! $errorOccurred) {
-            $this->dispatch('success', 'Environment variables updated.');
+            $this->dispatch('success', __('Environment variables updated.'));
         }
     }
 

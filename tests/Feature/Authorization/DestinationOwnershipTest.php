@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Destination\Resources;
 use App\Livewire\Destination\Show;
 use App\Models\InstanceSettings;
 use App\Models\Server;
@@ -49,6 +50,16 @@ test('team member can view their own destination', function () {
 
     Livewire::test(Show::class, ['destination_uuid' => $this->destination->uuid])
         ->assertSet('name', $this->destination->name);
+});
+
+test('the destination resource list renders its empty state in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+    $this->actingAs($this->userA);
+    session(['currentTeam' => $this->teamA]);
+
+    Livewire::test(Resources::class, ['destination_uuid' => $this->destination->uuid])
+        ->assertSee($this->destination->name)
+        ->assertSee('没有资源使用此部署目标');
 });
 
 test('cross-team user cannot view destination', function () {

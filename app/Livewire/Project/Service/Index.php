@@ -362,13 +362,13 @@ class Index extends Component
         try {
             if ($this->isPublic) {
                 if (! $this->publicPort) {
-                    $this->dispatch('error', 'Public port is required.');
+                    $this->dispatch('error', __('Public port is required.'));
                     $this->isPublic = false;
 
                     return;
                 }
                 if (! str($this->serviceDatabase->status)->startsWith('running')) {
-                    $this->dispatch('error', 'Database must be started to be publicly accessible.');
+                    $this->dispatch('error', __('Database must be started to be publicly accessible.'));
                     $this->isPublic = false;
 
                     return;
@@ -376,12 +376,12 @@ class Index extends Component
                 $this->persistPublicAccess();
                 StartDatabaseProxy::run($this->serviceDatabase);
                 $this->db_url_public = $this->serviceDatabase->getServiceDatabaseUrl();
-                $this->dispatch('success', 'Database is now publicly accessible.');
+                $this->dispatch('success', __('Database is now publicly accessible.'));
             } else {
                 $this->persistPublicAccess();
                 StopDatabaseProxy::run($this->serviceDatabase);
                 $this->db_url_public = null;
-                $this->dispatch('success', 'Database is no longer publicly accessible.');
+                $this->dispatch('success', __('Database is no longer publicly accessible.'));
             }
         } catch (\Throwable $e) {
             $this->isPublic = ! $this->isPublic;
@@ -518,7 +518,7 @@ class Index extends Component
             $changedFields = auditChangedFields($this->serviceApplication);
             $this->serviceApplication->save();
             $this->auditServiceSubResourceUpdate($this->serviceApplication, $changedFields);
-            $this->dispatch('success', 'Settings saved.');
+            $this->dispatch('success', __('Settings saved.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }
@@ -697,7 +697,7 @@ class Index extends Component
             if (str($this->serviceApplication->fqdn)->contains(',')) {
                 $this->dispatch('warning', 'Some services do not support multiple domains, which can lead to problems and is NOT RECOMMENDED.<br><br>Only use multiple domains if you know what you are doing.');
             } else {
-                ! $warning && $this->dispatch('success', 'Service saved.');
+                ! $warning && $this->dispatch('success', __('Service saved.'));
             }
             $this->dispatch('generateDockerCompose');
         } catch (\Throwable $e) {

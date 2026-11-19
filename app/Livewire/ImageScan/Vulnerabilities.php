@@ -222,7 +222,7 @@ class Vulnerabilities extends Component
 
         $policy = ImageScanPolicyResolver::for($resource);
         if ($policy->scanServer instanceof Server && $policy->scanServer->isTransferredAway()) {
-            $this->dispatch('error', 'Another Coolify instance manages this server now.');
+            $this->dispatch('error', __('Another Coolify instance manages this server now.'));
 
             return;
         }
@@ -277,7 +277,7 @@ class Vulnerabilities extends Component
         $this->authorize('update', $resource);
         abort_unless($resource instanceof Application && $resource->build_pack === 'dockercompose', 404);
         if ($resource->destination?->server?->isTransferredAway()) {
-            $this->dispatch('error', 'Another Coolify instance manages this server now.');
+            $this->dispatch('error', __('Another Coolify instance manages this server now.'));
 
             return;
         }
@@ -443,7 +443,7 @@ class Vulnerabilities extends Component
             return true;
         }
         if ($server->isTransferredAway()) {
-            $this->dispatch('error', 'Another Coolify instance manages this server now.');
+            $this->dispatch('error', __('Another Coolify instance manages this server now.'));
 
             return true;
         }

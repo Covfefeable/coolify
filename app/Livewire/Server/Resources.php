@@ -88,7 +88,7 @@ class Resources extends Component
         try {
             $this->authorize('update', $this->server);
             if (! ValidationPatterns::isValidContainerName($id)) {
-                $this->dispatch('error', 'Invalid container identifier.');
+                $this->dispatch('error', __('Invalid container identifier.'));
 
                 return;
             }
@@ -105,7 +105,7 @@ class Resources extends Component
         try {
             $this->authorize('update', $this->server);
             if (! ValidationPatterns::isValidContainerName($id)) {
-                $this->dispatch('error', 'Invalid container identifier.');
+                $this->dispatch('error', __('Invalid container identifier.'));
 
                 return;
             }
@@ -122,7 +122,7 @@ class Resources extends Component
         try {
             $this->authorize('update', $this->server);
             if (! ValidationPatterns::isValidContainerName($id)) {
-                $this->dispatch('error', 'Invalid container identifier.');
+                $this->dispatch('error', __('Invalid container identifier.'));
 
                 return;
             }

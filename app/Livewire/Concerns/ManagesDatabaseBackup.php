@@ -43,7 +43,7 @@ trait ManagesDatabaseBackup
 
         $database = $backup->database->refresh();
         if ($database->id !== 0 && ! str($database->status)->startsWith('running')) {
-            $this->dispatch('error', 'The database must be running to start a backup.');
+            $this->dispatch('error', __('The database must be running to start a backup.'));
 
             return null;
         }

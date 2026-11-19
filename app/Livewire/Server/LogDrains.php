@@ -307,7 +307,7 @@ class LogDrains extends Component
         try {
             $this->authorize('update', $this->server);
             $this->syncData(true);
-            $this->dispatch('success', 'Settings saved.');
+            $this->dispatch('success', __('Settings saved.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }

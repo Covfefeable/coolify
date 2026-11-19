@@ -42,7 +42,7 @@ class Rollback extends Component
             $this->validate();
             $this->application->settings->docker_images_to_keep = $this->dockerImagesToKeep;
             $this->saveApplicationSettingsWithAudit($this->application);
-            $this->dispatch('success', 'Settings saved.');
+            $this->dispatch('success', __('Settings saved.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }
@@ -70,7 +70,7 @@ class Rollback extends Component
         );
 
         if ($result['status'] === 'queue_full') {
-            $this->dispatch('error', 'Deployment queue full', $result['message']);
+            $this->dispatch('error', __('Deployment queue full'), $result['message']);
 
             return;
         }

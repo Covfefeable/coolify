@@ -220,7 +220,7 @@ class SettingsEmail extends Component
             if ($this->smtpEnabled) {
                 $this->smtpEnabled = false;
                 $this->syncData(true);
-                $this->dispatch('success', 'SMTP settings updated.');
+                $this->dispatch('success', __('SMTP settings updated.'));
             } else {
                 $this->validateSmtpSettings();
                 $this->smtpEnabled = true;
@@ -242,7 +242,7 @@ class SettingsEmail extends Component
             if ($this->resendEnabled) {
                 $this->resendEnabled = false;
                 $this->syncData(true);
-                $this->dispatch('success', 'Resend settings updated.');
+                $this->dispatch('success', __('Resend settings updated.'));
             } else {
                 $this->validateResendSettings();
                 $this->resendEnabled = true;
@@ -270,7 +270,7 @@ class SettingsEmail extends Component
 
             $this->saveEmailSettings();
 
-            $this->dispatch('success', 'SMTP settings updated.');
+            $this->dispatch('success', __('SMTP settings updated.'));
         } catch (\Throwable $e) {
             $this->smtpEnabled = false;
 
@@ -295,7 +295,7 @@ class SettingsEmail extends Component
 
             $this->saveEmailSettings();
 
-            $this->dispatch('success', 'Resend settings updated.');
+            $this->dispatch('success', __('Resend settings updated.'));
         } catch (\Throwable $e) {
             $this->resendEnabled = false;
 

@@ -108,7 +108,7 @@ class ByIp extends Component
             $this->authorize('create', PrivateKey::class);
 
             if (! in_array($type, ['ed25519', 'rsa'], true)) {
-                $this->dispatch('error', 'Invalid private key type.');
+                $this->dispatch('error', __('Invalid private key type.'));
 
                 return;
             }
@@ -122,7 +122,7 @@ class ByIp extends Component
             ]);
 
             $this->handlePrivateKeyCreated($privateKey->id);
-            $this->dispatch('success', 'Private key created successfully.');
+            $this->dispatch('success', __('Private key created successfully.'));
         } catch (\Throwable $e) {
             handleError($e, $this);
         }
@@ -137,7 +137,7 @@ class ByIp extends Component
 
     public function instantSave()
     {
-        // $this->dispatch('success', 'Application settings updated!');
+        // $this->dispatch('success', __('Application settings updated!'));
     }
 
     public function submit()
@@ -154,7 +154,7 @@ class ByIp extends Component
                 return $this->dispatch('error', 'You must select a private key');
             }
             if (Team::serverLimitReached()) {
-                return $this->dispatch('error', 'You have reached the server limit for your subscription.');
+                return $this->dispatch('error', __('You have reached the server limit for your subscription.'));
             }
             $payload = [
                 'name' => $this->name,

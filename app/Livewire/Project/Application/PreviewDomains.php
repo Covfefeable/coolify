@@ -158,7 +158,7 @@ class PreviewDomains extends Component
             $this->preview->generate_preview_fqdn(generateWithoutApplicationDomain: true);
         }
         $this->refreshDomains();
-        $this->dispatch('success', 'Domain generated.');
+        $this->dispatch('success', __('Domain generated.'));
     }
 
     public function startEdit(int $index): void
@@ -218,7 +218,7 @@ class PreviewDomains extends Component
         $this->dispatch('close-preview-domain-edit', previewId: $this->preview->id);
 
         if (! $dnsRelevantChange) {
-            $this->dispatch('success', 'Domain updated.');
+            $this->dispatch('success', __('Domain updated.'));
 
             return;
         }
@@ -315,7 +315,7 @@ class PreviewDomains extends Component
         if (! $this->persistDomains()) {
             return;
         }
-        $this->dispatch('success', 'Domain removed.');
+        $this->dispatch('success', __('Domain removed.'));
     }
 
     public function removeDomainByKey(string $domainKey): void

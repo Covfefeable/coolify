@@ -215,13 +215,13 @@ class General extends Component
             $this->authorize('update', $this->database);
 
             if ($this->isPublic && ! $this->publicPort) {
-                $this->dispatch('error', 'Public port is required.');
+                $this->dispatch('error', __('Public port is required.'));
                 $this->isPublic = false;
 
                 return;
             }
             if ($this->isPublic && ! str($this->database->status)->startsWith('running')) {
-                $this->dispatch('error', 'Database must be started to be publicly accessible.');
+                $this->dispatch('error', __('Database must be started to be publicly accessible.'));
                 $this->isPublic = false;
 
                 return;
@@ -229,10 +229,10 @@ class General extends Component
             $this->syncData(true);
             if ($this->isPublic) {
                 StartDatabaseProxy::run($this->database);
-                $this->dispatch('success', 'Database is now publicly accessible.');
+                $this->dispatch('success', __('Database is now publicly accessible.'));
             } else {
                 StopDatabaseProxy::run($this->database);
-                $this->dispatch('success', 'Database is no longer publicly accessible.');
+                $this->dispatch('success', __('Database is no longer publicly accessible.'));
             }
             $this->dispatch('databaseUpdated');
         } catch (\Throwable $e) {

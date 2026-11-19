@@ -155,7 +155,7 @@ class Destination extends Component
         try {
             $this->authorize('deploy', $this->resource);
             if ($this->resource->additional_servers->count() > 0 && str($this->resource->docker_registry_image_name)->isEmpty()) {
-                $this->dispatch('error', 'Failed to deploy.', 'Before deploying to multiple servers, you must first set a Docker image in the General tab.<br>More information here: <a target="_blank" class="underline" href="https://coolify.io/docs/knowledge-base/server/multiple-servers">documentation</a>');
+                $this->dispatch('error', __('Failed to deploy.'), 'Before deploying to multiple servers, you must first set a Docker image in the General tab.<br>More information here: <a target="_blank" class="underline" href="https://coolify.io/docs/knowledge-base/server/multiple-servers">documentation</a>');
 
                 return;
             }
@@ -177,12 +177,12 @@ class Destination extends Component
                 no_questions_asked: true,
             );
             if ($result['status'] === 'queue_full') {
-                $this->dispatch('error', 'Deployment queue full', $result['message']);
+                $this->dispatch('error', __('Deployment queue full'), $result['message']);
 
                 return;
             }
             if ($result['status'] === 'skipped') {
-                $this->dispatch('success', 'Deployment skipped', $result['message']);
+                $this->dispatch('success', __('Deployment skipped'), $result['message']);
 
                 return;
             }
