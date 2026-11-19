@@ -38,7 +38,7 @@
             @endif
             @if ($composeInfo)
                 <span class="table-badge shrink-0"
-                    title="Used by Compose services: {{ implode(', ', $composeInfo['services']) }}">{{ __('Used by Compose') }}</span>
+                    title="{{ __('Used by Compose services: :name', ['name' => implode(', ', $composeInfo['services'])]) }}">{{ __('Used by Compose') }}</span>
             @endif
         </div>
         @if (! $isSharedVariable)
@@ -90,7 +90,7 @@
         <div class="flex items-center justify-end gap-0.5 justify-self-end">
             @if ($this->connectLink)
                 <a href="{{ $this->connectLink }}" class="icon-button shrink-0"
-                    title="Connect {{ $key }} to resources" aria-label="Connect {{ $key }} to resources">
+                    title="{{ __('Connect :name to resources', ['name' => $key]) }}" aria-label="{{ __('Connect :name to resources', ['name' => $key]) }}">
                     <x-reicon name="link" class="size-3.5" />
                 </a>
             @endif

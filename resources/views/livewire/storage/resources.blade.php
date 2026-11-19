@@ -97,7 +97,7 @@
                                 @endif
                             </div>
                             <div class="flex items-center">
-                                <x-status-badge :status="$backup->enabled ? 'Enabled' : 'Disabled'"
+                                <x-status-badge :status="$backup->enabled ? __('Enabled') : __('Disabled')"
                                     :type="$backup->enabled ? 'success' : 'warning'" />
                             </div>
                             <div class="flex items-end gap-2">
@@ -146,7 +146,7 @@
                         </div>
                         <div class="text-neutral-500 dark:text-fg-dim">{{ $backup->frequency }}</div>
                         <div class="flex items-center">
-                            <x-status-badge :status="$backup->enabled ? 'Enabled' : 'Disabled'"
+                            <x-status-badge :status="$backup->enabled ? __('Enabled') : __('Disabled')"
                                 :type="$backup->enabled ? 'success' : 'warning'" />
                         </div>
                         <div class="flex items-end gap-2">

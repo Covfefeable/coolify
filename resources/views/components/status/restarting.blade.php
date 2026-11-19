@@ -17,6 +17,7 @@
         $healthStatus = null;
     }
 
+    $displayStatus = __($displayStatus);
     $badgeStatus = $healthStatus ? "{$displayStatus} ({$healthStatus})" : $displayStatus;
 @endphp
 @if ($lastDeploymentLink)

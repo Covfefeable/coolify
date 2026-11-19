@@ -160,7 +160,7 @@
 
                 @if ($truncated)
                     <div class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
-                        <x-callout type="info" title="Too many results">{{ __('Only part of the results is shown, with the problems that attackers are using first.') }}</x-callout>
+                        <x-callout type="info" title="{{ __('Too many results') }}">{{ __('Only part of the results is shown, with the problems that attackers are using first.') }}</x-callout>
                     </div>
                 @endif
 

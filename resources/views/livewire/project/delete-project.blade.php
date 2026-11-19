@@ -1,4 +1,4 @@
-<x-modal-confirmation title="Confirm Project Deletion?" buttonTitle="{{ __('Delete Project') }}" isErrorButton submitAction="delete"
+<x-modal-confirmation title="{{ __('Confirm Project Deletion?') }}" buttonTitle="{{ __('Delete Project') }}" isErrorButton submitAction="delete"
     :actions="[
         'This will delete the selected project',
         'All Environments inside the project will be deleted as well.',

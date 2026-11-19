@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-dashboard.navbar section="subscription" title="{{ __('Subscription') }}"
-        subtitle="Plan and billing for Coolify Cloud" />
+        subtitle="{{ __('Plan and billing for Coolify Cloud') }}" />
 
     <livewire:subscription.actions />
 </div>

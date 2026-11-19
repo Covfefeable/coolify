@@ -30,7 +30,7 @@
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.listbox canGate="update" :canResource="$server" id="isLogDrainNewRelicEnabled" label="{{ __('Status') }}"
                                 onChange="instantSave" :options="[
-                                    ['value' => false, 'label' => 'Disabled'],
+                                    ['value' => false, 'label' => __('Disabled')],
                                     ['value' => true, 'label' => __('Enabled')],
                                 ]"
                                 :disabled="$isLogDrainAxiomEnabled || $isLogDrainCustomEnabled || $isLogDrainCloudwatchEnabled || !auth()->user()->can('update', $server)" />
@@ -49,7 +49,7 @@
                         <div class="mb-4 max-w-sm">
                             <x-forms.listbox canGate="update" :canResource="$server" id="isLogDrainAxiomEnabled" label="{{ __('Status') }}"
                                 onChange="instantSave" :options="[
-                                    ['value' => false, 'label' => 'Disabled'],
+                                    ['value' => false, 'label' => __('Disabled')],
                                     ['value' => true, 'label' => __('Enabled')],
                                 ]"
                                 :disabled="$isLogDrainNewRelicEnabled || $isLogDrainCustomEnabled || $isLogDrainCloudwatchEnabled || !auth()->user()->can('update', $server)" />
@@ -73,7 +73,7 @@
                         <div class="mb-4 max-w-sm">
                             <x-forms.listbox canGate="update" :canResource="$server" id="isLogDrainCloudwatchEnabled" label="{{ __('Status') }}"
                                 onChange="instantSave" :options="[
-                                    ['value' => false, 'label' => 'Disabled'],
+                                    ['value' => false, 'label' => __('Disabled')],
                                     ['value' => true, 'label' => __('Enabled')],
                                 ]"
                                 :disabled="$isLogDrainNewRelicEnabled || $isLogDrainAxiomEnabled || $isLogDrainCustomEnabled || !auth()->user()->can('update', $server)" />
@@ -96,7 +96,7 @@
                         <div class="mb-4 max-w-sm">
                             <x-forms.listbox canGate="update" :canResource="$server" id="isLogDrainCustomEnabled" label="{{ __('Status') }}"
                                 onChange="instantSave" :options="[
-                                    ['value' => false, 'label' => 'Disabled'],
+                                    ['value' => false, 'label' => __('Disabled')],
                                     ['value' => true, 'label' => __('Enabled')],
                                 ]"
                                 :disabled="$isLogDrainNewRelicEnabled || $isLogDrainAxiomEnabled || $isLogDrainCloudwatchEnabled || !auth()->user()->can('update', $server)" />

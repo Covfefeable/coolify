@@ -157,7 +157,7 @@ $appListboxOptions = array_merge(
                             {!! $approxBadge('Summed across servers or services; visitors seen on more than one may be double-counted.') !!}
                         @endif
                     </span>
-                    <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg" title="{{ number_format($overview['uniqueVisitors'] ?? 0) }} unique visitors">{{ compactNumber($overview['uniqueVisitors'] ?? 0) }}</span>
+                    <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg" title="{{ __(':count unique visitors', ['count' => number_format($overview['uniqueVisitors'] ?? 0)]) }}">{{ compactNumber($overview['uniqueVisitors'] ?? 0) }}</span>
                     <div class="mt-auto pt-3">
                         @include('livewire.traffic._sparkline', [
                             'id' => $chartId.'-spark-visitors',

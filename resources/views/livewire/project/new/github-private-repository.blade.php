@@ -4,10 +4,10 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>GitHub App</h2>
-                    <p>Connect a GitHub App before selecting a private repository.</p>
+                    <p>{{ __('Connect a GitHub App before selecting a private repository.') }}</p>
                 </div>
             </div>
-            <x-empty title="No GitHub Apps"
+            <x-empty title="{{ __('No GitHub Apps') }}"
                 description="{{ __('Create an app to grant Coolify access to selected repositories.') }}"
                 icon-name="sources">
                 <x-slot:contents>
@@ -22,7 +22,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Choose GitHub App') }}</h2>
-                    <p>Select the installation that can access the repository you want to deploy.</p>
+                    <p>{{ __('Select the installation that can access the repository you want to deploy.') }}</p>
                 </div>
                 <x-modal-input buttonTitle="+ Add GitHub App" title="{{ __('New GitHub App') }}" closeOutside="false">
                     <livewire:source.github.create />
@@ -57,7 +57,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Choose repository') }}</h2>
-                    <p>Search repositories available through {{ $github_app->name }}.</p>
+                    <p>{{ __('Search repositories available through :name.', ['name' => $github_app->name]) }}</p>
                 </div>
                 <div class="flex items-center gap-2">
                     <x-forms.button wire:click.prevent="loadRepositories({{ $github_app->id }})">
@@ -88,7 +88,7 @@
                     </div>
                 @else
                     <x-empty size="sm" title="{{ __('No repositories available') }}"
-                        description="Review this GitHub App installation and grant access to a repository." />
+                        description="{{ __('Review this GitHub App installation and grant access to a repository.') }}" />
                 @endif
             </div>
         </section>

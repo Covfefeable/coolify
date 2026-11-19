@@ -230,7 +230,7 @@
 
         <div class="flex flex-col gap-6">
             <x-application.settings-section id="primary-server-section" title="{{ __('Primary server') }}"
-                helper="The server and network used by this resource.">
+                helper="{{ __('The server and network used by this resource.') }}">
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div class="flex min-w-0 items-center gap-3">
                         <div

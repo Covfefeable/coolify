@@ -92,7 +92,7 @@
 
                     @if ($tokens->isEmpty())
                         <div class="p-4">
-                            <x-empty title="{{ __('No API tokens') }}" description="Create a token when an external client needs access."
+                            <x-empty title="{{ __('No API tokens') }}" description="{{ __('Create a token when an external client needs access.') }}"
                                 icon-name="keys" size="sm" />
                         </div>
                     @else

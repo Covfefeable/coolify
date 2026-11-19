@@ -1,10 +1,10 @@
-@props(['label', 'storageKey'])
+@props(['searchPlaceholder', 'storageKey'])
 
 <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
     <div class="relative w-full sm:max-w-sm">
         <x-reicon name="search"
             class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-        <input x-model.debounce.150ms="search" type="search" placeholder="{{ __('Search '.strtolower($label)) }}"
+        <input x-model.debounce.150ms="search" type="search" placeholder="{{ __($searchPlaceholder) }}"
             class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
         <button x-cloak x-show="search" @click="search = ''" type="button"
             class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"

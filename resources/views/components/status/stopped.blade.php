@@ -1,5 +1,5 @@
 @props([
-    'status' => 'Stopped',
+    'status' => __('Stopped'),
     'noLoading' => false,
 ])
-<x-status-badge status="Stopped" type="neutral" />
+<x-status-badge status="{{ __('Stopped') }}" type="neutral" />

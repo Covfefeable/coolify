@@ -14,7 +14,7 @@
                 <x-empty title="{{ __('No projects') }}" description="{{ __('Projects that you can read show here. Create a project to add project-wide variables.') }}"
                     icon-name="projects" />
             @else
-                <x-shared-variables.view-controls label="projects" storage-key="shared-variables-projects-view" />
+                <x-shared-variables.view-controls search-placeholder="Search projects" storage-key="shared-variables-projects-view" />
 
                 <div x-cloak x-show="viewMode === 'grid'" class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
                     @foreach ($projects as $project)

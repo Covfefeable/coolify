@@ -5,13 +5,13 @@
     'tokens',
 ])
 
-<x-application.settings-section title="{{ $providerLabel }} account"
+<x-application.settings-section title="{{ __(':name account', ['name' => $providerLabel]) }}"
     description="{{ __('Choose the cloud credential Coolify should use for this server.') }}" flush>
     @if ($tokens->isEmpty())
-        <x-empty title="No {{ $providerLabel }} tokens"
+        <x-empty title="{{ __('No :name tokens', ['name' => $providerLabel]) }}"
             description="{{ __('Add an API token to continue provisioning.') }}" icon-name="keys" size="sm">
             <x-slot:actions>
-                <x-modal-input title="Add {{ $providerLabel }} Token">
+                <x-modal-input title="{{ __('Add :name token', ['name' => $providerLabel]) }}">
                     <x-slot:content>
                         <button type="button"
                             class="button button-highlighted">

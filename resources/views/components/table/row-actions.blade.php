@@ -3,7 +3,7 @@
      the danger slot: they show in red, below a divider. A click on any item
      closes the menu, also when the item opens a modal. --}}
 @props([
-    'label' => 'Actions',
+    'label' => __('Actions'),
 ])
 
 <x-table.dropdown panel-class="w-44!" role="menu">

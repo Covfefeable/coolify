@@ -12,7 +12,7 @@
                             {{ wireNavigate() }}
                             class="flex size-7 shrink-0 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
                             title="{{ __('Environment settings') }}"
-                            aria-label="Open settings for {{ $environment->name }}">
+                            aria-label="{{ __('Open settings for :name', ['name' => $environment->name]) }}"">
                             <x-reicon name="settings" class="size-4" />
                         </a>
                     @endcan
@@ -34,7 +34,7 @@
                     {{ wireNavigate() }}
                     class="button whitespace-nowrap"
                     title="{{ __('Shared variables for this environment') }}"
-                    aria-label="Shared variables for {{ $environment->name }}">
+                    aria-label="{{ __('Shared variables for :name', ['name' => $environment->name]) }}"">
                     <x-reicon name="variables" class="size-3.5" />
                     Shared variables
                 </a>

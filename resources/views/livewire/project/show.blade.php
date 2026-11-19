@@ -12,7 +12,7 @@
                             {{ wireNavigate() }}
                             class="flex size-7 shrink-0 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
                             title="{{ __('Project settings') }}"
-                            aria-label="Open settings for {{ $project->name }}">
+                            aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}"">
                             <x-reicon name="settings" class="size-4" />
                         </a>
                     @endcan
@@ -42,8 +42,8 @@
         </header>
 
         @if ($project->environments->isEmpty())
-            <x-empty title="No environments yet"
-                description="Add an environment to start organizing this project's resources."
+            <x-empty title="{{ __('No environments yet') }}"
+                description="{{ __('Add an environment to start organizing this project\'s resources.') }}"
                 icon-name="layers" />
         @else
             <div class="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -126,14 +126,14 @@
                                     <a x-show="environment.addResourceHref" :href="environment.addResourceHref"
                                         {{ wireNavigate() }}
                                         class="flex size-7.5 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                        title="{{ __('Add resource') }}" :aria-label="`Add resource to ${environment.name}`">
+                                        title="{{ __('Add resource') }}" :aria-label="@js(__('Add resource to :name')).replace(':name', () => environment.name)">
                                         <x-reicon name="plus" class="size-3" />
                                     </a>
                                     <a x-show="environment.settingsHref" :href="environment.settingsHref"
                                         {{ wireNavigate() }}
                                         class="flex size-7.5 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
                                         title="{{ __('Environment settings') }}"
-                                        :aria-label="`Open settings for ${environment.name}`">
+                                        :aria-label="@js(__('Open settings for :name')).replace(':name', () => environment.name)">
                                         <x-reicon name="settings" class="size-3" />
                                     </a>
                                 </div>
@@ -182,13 +182,13 @@
                             <a x-show="environment.addResourceHref" :href="environment.addResourceHref"
                                 {{ wireNavigate() }}
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                title="{{ __('Add resource') }}" :aria-label="`Add resource to ${environment.name}`">
+                                title="{{ __('Add resource') }}" :aria-label="@js(__('Add resource to :name')).replace(':name', () => environment.name)">
                                 <x-reicon name="plus" class="size-3.5" />
                             </a>
                             <a x-show="environment.settingsHref" :href="environment.settingsHref" {{ wireNavigate() }}
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
                                 title="{{ __('Environment settings') }}"
-                                :aria-label="`Open settings for ${environment.name}`">
+                                :aria-label="@js(__('Open settings for :name')).replace(':name', () => environment.name)">
                                 <x-reicon name="settings" class="size-3.5" />
                             </a>
                         </div>
@@ -202,7 +202,7 @@
             <div x-show="filteredEnvironments.length === 0"
                 class="flex min-h-52 flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 text-center dark:border-white/[0.08] dark:bg-white/[0.05]">
                 <x-reicon name="search" class="mb-3 size-6 text-neutral-300 dark:text-fg-faint" />
-                <p class="text-[13px] font-medium">No matching environments</p>
+                <p class="text-[13px] font-medium">{{ __('No matching environments') }}</p>
                 <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">
                     {{ __('Try a different search.') }}
                 </p>

@@ -171,7 +171,6 @@
                         ['label' => 'Settings', 'icon' => 'settings', 'visible' => $teamWide && isInstanceAdmin(), 'children' => [
                             ['label' => 'General', 'icon' => 'settings', 'href' => route('settings.index'), 'active' => request()->is('settings')],
                             ['label' => 'Advanced', 'icon' => 'grid', 'href' => route('settings.advanced'), 'active' => request()->is('settings/advanced')],
-                            ['label' => 'Updates', 'icon' => 'refresh3', 'href' => route('settings.updates'), 'active' => request()->is('settings/updates')],
                             ['label' => 'Image Scanning', 'icon' => 'shield-alert', 'href' => route('settings.image-scanning'), 'active' => request()->is('settings/image-scanning')],
                             ['label' => 'Authentication', 'icon' => 'keys', 'href' => route('settings.oauth'), 'active' => request()->is('settings/oauth*'), 'sectionStart' => true],
                             ['label' => 'Email', 'icon' => 'mail', 'href' => route('settings.email'), 'active' => request()->is('settings/email')],
@@ -281,7 +280,7 @@
                         {{-- On a resource page the main menu opens the deepest resource menu again. --}}
                         <li class="mb-1">
                             <button type="button" @click="navLevel = {{ array_key_last($navContext) }}; navSwap = 'forward'"
-                                title="Back to the {{ $navContextName }} menu" aria-label="Back to the {{ $navContextName }} menu"
+                                title="{{ __('Back to the :name menu', ['name' => $navContextName]) }}" aria-label="{{ __('Back to the :name menu', ['name' => $navContextName]) }}"
                                 class="menu-item menu-back bg-transparent! hover:bg-neutral-100! dark:hover:bg-white/[0.06]!" :class="collapsed && 'lg:justify-center lg:px-0'">
                                 <span class="flex-1 truncate pl-6 text-center font-medium text-black dark:text-fg"
                                     :class="collapsed && 'lg:hidden'">{{ $navContextName }}</span>

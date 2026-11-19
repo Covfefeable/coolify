@@ -30,13 +30,13 @@
 
     <x-dashboard.navbar section="storage" :parameters="$storageRouteParameters"
         :title="$storage->name"
-        :subtitle="filled($storage->description) ? $storage->description : 'S3-compatible backup destination'"
+        :subtitle="filled($storage->description) ? $storage->description : __('S3-compatible backup destination')"
         :mobileTitleOnly="true" />
 
     @if ($showSettingsSidebar)
         <section class="application-settings-workspace mt-4 w-full max-w-none lg:mt-0">
             <div class="grid min-w-0 gap-8 xl:grid-cols-[210px_minmax(0,1fr)] xl:gap-8">
-                <x-main-nav-menu back-label="{{ __('Storage') }}" back-title="Back to Integrations" :name="$storage->name"
+                <x-main-nav-menu back-label="{{ __('Storage') }}" back-title="{{ __('Back to Integrations') }}" :name="$storage->name"
                     data-settings-search-items="{{ json_encode(settingsSearchItems(['S3 storage' => $settingsMenuItems], $storageRouteParameters)) }}">
                     <nav aria-label="{{ __('S3 storage settings') }}"
                         class="grid grid-cols-1 gap-0.5">

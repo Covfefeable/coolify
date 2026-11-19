@@ -182,7 +182,7 @@
                                 </div>
                                 <x-forms.textarea canGate="update" :canResource="$server" useMonacoEditor
                                     monacoEditorLanguage="yaml"
-                                    label="Configuration file · {{ $this->configurationFilePath }}"
+                                    label="{{ __('Configuration file') }} · {{ $this->configurationFilePath }}"
                                     name="proxySettings" id="proxySettings" rows="30" />
                             </div>
                         @endif
@@ -208,9 +208,9 @@
                 @can('update', $server)
                     <div class="grid gap-3 lg:grid-cols-3">
                         @foreach ([
-                            ['value' => 'NONE', 'title' => 'Custom', 'description' => 'Manage the proxy outside Coolify.'],
+                            ['value' => 'NONE', 'title' => __('Custom'), 'description' => __('Manage the proxy outside Coolify.')],
                             ['value' => 'TRAEFIK', 'title' => 'Traefik', 'description' => __('Use the default Coolify proxy.')],
-                            ['value' => 'CADDY', 'title' => 'Caddy', 'description' => 'Use the Coolify Caddy integration.'],
+                            ['value' => 'CADDY', 'title' => 'Caddy', 'description' => __('Use the Coolify Caddy integration.')],
                         ] as $proxyOption)
                             <button type="button" wire:click="selectProxy('{{ $proxyOption['value'] }}')"
                                 class="rounded-lg p-4 text-left ring-1 ring-neutral-200 transition-colors hover:bg-neutral-50 dark:ring-white/[0.08] dark:hover:bg-white/[0.04]">
@@ -236,9 +236,9 @@
             @can('update', $server)
                 <div class="grid gap-3 lg:grid-cols-3">
                     @foreach ([
-                        ['value' => 'NONE', 'title' => 'Custom', 'description' => 'Manage the proxy outside Coolify.'],
+                        ['value' => 'NONE', 'title' => __('Custom'), 'description' => __('Manage the proxy outside Coolify.')],
                         ['value' => 'TRAEFIK', 'title' => 'Traefik', 'description' => __('Use the default Coolify proxy.')],
-                        ['value' => 'CADDY', 'title' => 'Caddy', 'description' => 'Use the Coolify Caddy integration.'],
+                        ['value' => 'CADDY', 'title' => 'Caddy', 'description' => __('Use the Coolify Caddy integration.')],
                     ] as $proxyOption)
                         <button type="button" wire:click="selectProxy('{{ $proxyOption['value'] }}')"
                             class="rounded-lg p-4 text-left ring-1 ring-neutral-200 transition-colors hover:bg-neutral-50 dark:ring-white/[0.08] dark:hover:bg-white/[0.04]">

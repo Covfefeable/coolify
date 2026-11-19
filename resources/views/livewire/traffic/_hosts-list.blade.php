@@ -22,7 +22,7 @@
             @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => __('Host'), 'text' => true, 'class' => 'min-w-0 flex-1'])
             <span class="hidden w-16 shrink-0 sm:inline" aria-hidden="true"></span>
             @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => __('Requests'), 'class' => 'w-16 shrink-0'])
-            @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
+            @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => __('Total response data sent')])
         </div>
         <div class="flex flex-col">
             @foreach ($hosts as $row)

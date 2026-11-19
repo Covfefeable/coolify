@@ -70,7 +70,7 @@
                     @endif
                     <x-image-scan.security-dot :status="$menuItem['security'] ?? null" />
                     @if ($menuItem['hasWarning'] ?? false)
-                        <span class="ml-auto size-2 shrink-0 rounded-full bg-error" title="Required environment variables missing"></span>
+                        <span class="ml-auto size-2 shrink-0 rounded-full bg-error" title="{{ __('Required environment variables missing') }}"></span>
                     @endif
                 </a>
                 @if ($menuItem['active'] && $menuItem['route'] === 'project.service.storages' && $storageSections->isNotEmpty())

@@ -4,7 +4,7 @@
     </x-slot>
 
     <x-dashboard.navbar section="subscription" title="{{ __('Subscription') }}"
-        subtitle="Choose a plan for Coolify Cloud" />
+        subtitle="{{ __('Choose a plan for Coolify Cloud') }}" />
 
     @if (auth()->user()->isAdminFromSession())
         @if ($loading)

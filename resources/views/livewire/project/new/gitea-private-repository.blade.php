@@ -3,12 +3,12 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Gitea / Forgejo App</h2>
-                    <p>Connect a Gitea / Forgejo App before selecting a private repository.</p>
+                    <h2>{{ __('Gitea / Forgejo App') }}</h2>
+                    <p>{{ __('Connect a Gitea / Forgejo App before selecting a private repository.') }}</p>
                 </div>
             </div>
             <div class="application-settings-section-body">
-                <x-empty title="No Gitea / Forgejo Apps"
+                <x-empty title="{{ __('No Gitea / Forgejo Apps') }}"
                     description="{{ __('Create an app to grant Coolify access to selected repositories.') }}"
                     icon-name="sources">
                     <x-slot:contents>
@@ -24,7 +24,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Choose Gitea / Forgejo App') }}</h2>
-                    <p>Select the Gitea / Forgejo App that can access the repository you want to deploy.</p>
+                    <p>{{ __('Select the Gitea / Forgejo App that can access the repository you want to deploy.') }}</p>
                 </div>
                 <x-modal-input buttonTitle="+ Add Gitea / Forgejo App" title="{{ __('New Gitea / Forgejo App') }}" closeOutside="false">
                     <livewire:source.gitea.create />
@@ -59,7 +59,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Choose repository') }}</h2>
-                    <p>Search repositories available through the selected Gitea / Forgejo App.</p>
+                    <p>{{ __('Search repositories available through the selected Gitea / Forgejo App.') }}</p>
                 </div>
                 @if ($gitea_app_id)
                     <x-forms.button wire:click.prevent="loadRepositories({{ $gitea_app_id }})">
@@ -85,7 +85,7 @@
                     </div>
                 @else
                     <x-empty size="sm" title="{{ __('No repositories available') }}"
-                        description="Review this Gitea / Forgejo App configuration and grant access to a repository." />
+                        description="{{ __('Review this Gitea / Forgejo App configuration and grant access to a repository.') }}" />
                 @endif
             </div>
         </section>

@@ -290,7 +290,7 @@
                 description="{{ __('Use this webhook to deploy every resource with this tag.') }}">
                 <x-slot:actions>
                     {{-- Two ways to connect: a list in a modal, or the canvas (wide screens only). --}}
-                    <x-modal-input title="{{ __('Connect to resources') }}" subtitle="Add this tag to resources, or remove it."
+                    <x-modal-input title="{{ __('Connect to resources') }}" subtitle="{{ __('Add this tag to resources, or remove it.') }}"
                         wireOpen="connectResourcesOpen" :wireIgnore="false" :contentClicks="false">
                         <x-slot:content>
                             <button type="button" class="button whitespace-nowrap" wire:click="openConnectResources">

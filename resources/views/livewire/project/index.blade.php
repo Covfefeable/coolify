@@ -24,7 +24,7 @@
 
         @if ($projects->isEmpty())
             <x-empty title="{{ __('No projects yet') }}"
-                description="Create a project to organize your environments and resources."
+                description="{{ __('Create a project to organize your environments and resources.') }}"
                 icon-name="projects">
                 <x-slot:contents>
                     <a class="text-[12px] font-medium text-coollabs hover:underline dark:text-brand-light"
@@ -122,12 +122,12 @@
                                     <a x-show="project.addResourceHref" :href="project.addResourceHref"
                                         {{ wireNavigate() }}
                                         class="card-icon-button flex size-7.5 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black"
-                                        title="{{ __('Add resource') }}" :aria-label="`Add resource to ${project.name}`">
+                                        title="{{ __('Add resource') }}" :aria-label="@js(__('Add resource to :name')).replace(':name', () => project.name)">
                                         <x-reicon name="plus" class="size-3" />
                                     </a>
                                     <a x-show="project.settingsHref" :href="project.settingsHref" {{ wireNavigate() }}
                                         class="card-icon-button flex size-7.5 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black"
-                                        title="{{ __('Project settings') }}" :aria-label="`Open settings for ${project.name}`">
+                                        title="{{ __('Project settings') }}" :aria-label="@js(__('Open settings for :name')).replace(':name', () => project.name)">
                                         <x-reicon name="settings" class="size-3" />
                                     </a>
                                 </div>
@@ -189,12 +189,12 @@
                         <div class="flex items-center justify-end gap-0.5">
                             <a x-show="project.addResourceHref" :href="project.addResourceHref" {{ wireNavigate() }}
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                title="{{ __('Add resource') }}" :aria-label="`Add resource to ${project.name}`">
+                                title="{{ __('Add resource') }}" :aria-label="@js(__('Add resource to :name')).replace(':name', () => project.name)">
                                 <x-reicon name="plus" class="size-3.5" />
                             </a>
                             <a x-show="project.settingsHref" :href="project.settingsHref" {{ wireNavigate() }}
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                title="{{ __('Project settings') }}" :aria-label="`Open settings for ${project.name}`">
+                                title="{{ __('Project settings') }}" :aria-label="@js(__('Open settings for :name')).replace(':name', () => project.name)">
                                 <x-reicon name="settings" class="size-3.5" />
                             </a>
                         </div>
@@ -208,7 +208,7 @@
             <div x-show="filteredProjects.length === 0"
                 class="flex min-h-52 flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 text-center dark:border-white/[0.08] dark:bg-white/[0.05]">
                 <x-reicon name="search" class="mb-3 size-6 text-neutral-300 dark:text-fg-faint" />
-                <p class="text-[13px] font-medium">No matching projects</p>
+                <p class="text-[13px] font-medium">{{ __('No matching projects') }}</p>
                 <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">
                     {{ __('Try a different search.') }}
                 </p>

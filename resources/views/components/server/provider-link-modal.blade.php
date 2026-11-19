@@ -83,7 +83,7 @@
                             @endif
                         </p>
                     </div>
-                    <x-status-badge label="Match found" type="success" />
+                    <x-status-badge label="{{ __('Match found') }}" type="success" />
                 </div>
                 <button type="button"
                     class="button mt-3 button-highlighted"

@@ -228,8 +228,7 @@
                         @if (!$serverReachable)
                             <div class="mt-6 p-4 border border-error rounded-lg text-gray-800 dark:text-gray-200">
                                 <h2 class="text-lg font-bold mb-2">{{ __('Server is not reachable') }}</h2>
-                                <p class="mb-4">Please check the connection details below and correct them if they are
-                                    incorrect.</p>
+                                <p class="mb-4">{{ __('Please check the connection details below and correct them if they are incorrect.') }}</p>
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                     <x-forms.input placeholder="{{ __('Default is 22') }}" label="{{ __('Port') }}" id="remoteServerPort"
@@ -238,7 +237,7 @@
                                         <x-forms.input placeholder="{{ __('Default is root') }}" label="{{ __('User') }}" id="remoteServerUser"
                                             wire:model="remoteServerUser" :value="$remoteServerUser" />
                                         <p class="text-xs mt-1">
-                                            Non-root user is experimental:
+                                            {{ __('Non-root user is experimental:') }}
                                             <a class="font-bold underline" target="_blank"
                                                 href="https://coolify.io/docs/knowledge-base/server/non-root-user">docs</a>
                                         </p>
@@ -251,8 +250,7 @@
                                         <li>The correct public key is in your <code
                                                 class="bg-red-200 dark:bg-red-900 px-1 rounded-sm">~/.ssh/authorized_keys</code>
                                             file for the specified user</li>
-                                        <li>Or skip the boarding process and manually add a new private key to Coolify and
-                                            the server</li>
+                                        <li>{{ __('Or skip the boarding process and manually add a new private key to Coolify and the server') }}</li>
                                     </ul>
                                 </div>
 
@@ -347,18 +345,16 @@
                     </x-slot:actions>
                     <x-slot:explanation>
                         <p>
-                            <x-highlighted text="SSH Key Authentication:" /> Uses public-key cryptography for secure,
-                            password-less server access.
+                            <x-highlighted text="{{ __('SSH Key Authentication:') }}" /> {{ __('Uses public-key cryptography for secure, password-less server access.') }}
                         </p>
                         <p>
-                            <x-highlighted text="Public Key Deployment:" /> Add the public key to your server's
+                            <x-highlighted text="{{ __('Public Key Deployment:') }}" /> Add the public key to your server's
                             <code
                                 class="text-xs bg-coolgray-300 dark:bg-coolgray-400 px-1 py-0.5 rounded">~/.ssh/authorized_keys</code>
                             file.
                         </p>
                         <p>
-                            <x-highlighted text="Key Generation:" /> Coolify generates ED25519 keys by default for optimal
-                            security and performance.
+                            <x-highlighted text="{{ __('Key Generation:') }}" /> {{ __('Coolify generates ED25519 keys by default for optimal security and performance.') }}
                         </p>
                     </x-slot:explanation>
                 </x-boarding-step>
@@ -407,17 +403,16 @@
                     </x-slot:actions>
                     <x-slot:explanation>
                         <p>
-                            <x-highlighted text="Key Storage:" /> {{ __('Private keys are encrypted at rest in Coolify\'s database.') }}
+                            <x-highlighted text="{{ __('Key Storage:') }}" /> {{ __('Private keys are encrypted at rest in Coolify\'s database.') }}
                         </p>
                         <p>
-                            <x-highlighted text="Public Key Distribution:" /> Deploy the public key to
+                            <x-highlighted text="{{ __('Public Key Distribution:') }}" /> Deploy the public key to
                             <code
                                 class="text-xs bg-coolgray-300 dark:bg-coolgray-400 px-1 py-0.5 rounded">~/.ssh/authorized_keys</code>
                             on your target server for the specified user.
                         </p>
                         <p>
-                            <x-highlighted text="Key Format:" /> Supports ED25519, ECDSA, and RSA (2048 bits or more) key types in OpenSSH
-                            format.
+                            <x-highlighted text="{{ __('Key Format:') }}" /> {{ __('Supports ED25519, ECDSA, and RSA (2048 bits or more) key types in OpenSSH format.') }}
                         </p>
                     </x-slot:explanation>
                 </x-boarding-step>
@@ -588,13 +583,13 @@
                         <div class="border-b border-neutral-200 px-4 py-2.5 dark:border-white/[0.08]">
                             <p
                                 class="text-[10px] font-semibold uppercase tracking-[0.08em] text-neutral-400 dark:text-fg-faint">
-                                What's configured
+                                {{ __('What\'s configured') }}
                             </p>
                         </div>
                         <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
-                            <x-checkpoint-item status="success" title="Server: {{ $createdServer->name }}"
+                            <x-checkpoint-item status="success" title="{{ __('Server:') }} {{ $createdServer->name }}"
                                 :description="$createdServer->ip" />
-                            <x-checkpoint-item status="success" title="Project: {{ $createdProject->name }}"
+                            <x-checkpoint-item status="success" title="{{ __('Project:') }} {{ $createdProject->name }}"
                                 description="{{ __('Production environment ready') }}" />
                             <x-checkpoint-item status="success" title="Docker Engine"
                                 description="{{ __('Installed and running') }}" />

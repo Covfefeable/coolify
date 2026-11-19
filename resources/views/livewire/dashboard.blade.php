@@ -111,8 +111,8 @@
                         <article wire:key="dashboard-star-{{ $starred['star_id'] }}" data-star-id="{{ $starred['star_id'] }}"
                             class="group relative flex min-h-16 min-w-0 select-none items-center gap-3 rounded-xl [-webkit-touch-callout:none] border border-neutral-200 bg-white p-3 shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]">
                             <a href="{{ $starred['href'] }}" {{ wireNavigate() }} class="absolute inset-0 rounded-xl"
-                                aria-label="Open {{ $starred['name'] }}"></a>
-                            <button type="button" title="{{ __('Drag to change the order') }}" aria-label="Move {{ $starred['name'] }}"
+                                aria-label="{{ __('Open :name', ['name' => $starred['name']]) }}"></a>
+                            <button type="button" title="{{ __('Drag to change the order') }}" aria-label="{{ __('Move :name', ['name' => $starred['name']]) }}"
                                 x-on:pointerdown.prevent="start($event)"
                                 class="relative z-10 -mx-1.5 flex h-8 w-5 shrink-0 cursor-grab touch-none items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black active:cursor-grabbing dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">
                                 <x-reicon name="grip-vertical" class="size-4" />
@@ -134,7 +134,7 @@
                                 </p>
                             </div>
                             <button type="button" wire:click="unstar({{ $starred['star_id'] }})"
-                                title="{{ __('Remove from the dashboard') }}" aria-label="Unstar {{ $starred['name'] }}"
+                                title="{{ __('Remove from the dashboard') }}" aria-label="{{ __('Unstar :name', ['name' => $starred['name']]) }}"
                                 class="relative z-10 flex size-6.5 shrink-0 items-center justify-center rounded-md text-warning transition-colors hover:bg-neutral-100 dark:hover:bg-white/[0.06]">
                                 <x-reicon name="star-filled" class="size-4" />
                             </button>
@@ -203,7 +203,7 @@
                             class="group relative flex min-h-28 min-w-0 flex-col rounded-xl border border-neutral-200 bg-white p-3 shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]">
                             <a href="{{ $project->navigateTo() }}" {{ wireNavigate() }}
                                 class="absolute inset-0 rounded-xl"
-                                aria-label="Open {{ $project->name }}"></a>
+                                aria-label="{{ __('Open :name', ['name' => $project->name]) }}"></a>
 
                             <div class="flex min-w-0 items-start gap-3">
                                 <div
@@ -248,7 +248,7 @@
                                                 {{ wireNavigate() }}
                                                 class="{{ $iconButton }}"
                                                 title="{{ __('Add resource') }}"
-                                                aria-label="Add resource to {{ $project->name }}">
+                                                aria-label="{{ __('Add resource to :name', ['name' => $project->name]) }}"">
                                                 <x-reicon name="plus" class="size-3" />
                                             </a>
                                         @endcan
@@ -258,7 +258,7 @@
                                             {{ wireNavigate() }}
                                             class="{{ $iconButton }}"
                                             title="{{ __('Project settings') }}"
-                                            aria-label="Open settings for {{ $project->name }}">
+                                            aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}"">
                                             <x-reicon name="settings" class="size-3" />
                                         </a>
                                     @endcan
@@ -288,7 +288,7 @@
                         <div wire:key="dashboard-project-row-{{ $project->uuid }}"
                             class="relative grid grid-cols-[minmax(0,1fr)_7rem_4.5rem] gap-4 @2xl:min-w-[560px] @2xl:grid-cols-[minmax(0,1.2fr)_7rem_minmax(0,1.5fr)_4.5rem] {{ $tableRow }}">
                             <a href="{{ $project->navigateTo() }}" {{ wireNavigate() }}
-                                class="absolute inset-0" aria-label="Open {{ $project->name }}"></a>
+                                class="absolute inset-0" aria-label="{{ __('Open :name', ['name' => $project->name]) }}"></a>
                             <div class="flex min-w-0 items-center gap-3">
                                 <div
                                     class="resource-glyph flex size-8 shrink-0 items-center justify-center rounded-lg border border-neutral-200 bg-neutral-50 text-neutral-500">
@@ -326,7 +326,7 @@
                                             'environment_uuid' => $firstEnvironment->uuid,
                                         ]) }}"
                                             {{ wireNavigate() }} class="{{ $iconButton }}" title="{{ __('Add resource') }}"
-                                            aria-label="Add resource to {{ $project->name }}">
+                                            aria-label="{{ __('Add resource to :name', ['name' => $project->name]) }}"">
                                             <x-reicon name="plus" class="size-3" />
                                         </a>
                                     @endcan
@@ -334,7 +334,7 @@
                                 @can('update', $project)
                                     <a href="{{ route('project.edit', ['project_uuid' => $project->uuid]) }}"
                                         {{ wireNavigate() }} class="{{ $iconButton }}" title="{{ __('Project settings') }}"
-                                        aria-label="Open settings for {{ $project->name }}">
+                                        aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}"">
                                         <x-reicon name="settings" class="size-3" />
                                     </a>
                                 @endcan
@@ -409,7 +409,7 @@
                         @endphp
 
                         <a href="{{ route('server.show', ['server_uuid' => $server->uuid]) }}"
-                            {{ wireNavigate() }} aria-label="Open {{ $server->name }}"
+                            {{ wireNavigate() }} aria-label="{{ __('Open :name', ['name' => $server->name]) }}"
                             class="group relative flex min-h-28 min-w-0 flex-col rounded-xl border border-neutral-200 bg-white p-3 shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]">
                             @if ($server->isMetricsEnabled())
                                 <livewire:dashboard.server-metrics-chart :server="$server"
@@ -434,7 +434,7 @@
                                 </div>
                                 @if ($serverStatusType !== 'success')
                                     <span data-tooltip="{{ $serverStatus }}"
-                                        aria-label="Server status: {{ $serverStatus }}"
+                                        aria-label="{{ __('Server status: :name', ['name' => __($serverStatus)]) }}"
                                         @class([
                                             'flex size-6 shrink-0 items-center justify-center rounded-md',
                                             'text-orange-500 dark:text-warning' => $serverStatusType === 'warning',

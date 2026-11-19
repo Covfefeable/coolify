@@ -71,11 +71,11 @@
                 current-route="project.application.backup.index" />
 
             <div class="application-settings-form flex min-w-0 flex-col gap-6">
-            <x-application.settings-section title="Storage backups"
+            <x-application.settings-section title="{{ __('Storage backups') }}"
                 helper="Schedule backups for persistent volumes and directory mounts attached to this application.">
                 @can('update', $application)
                     <x-slot:actions>
-                        <x-modal-input title="New scheduled backup" :wireIgnore="false">
+                        <x-modal-input title="{{ __('New scheduled backup') }}" :wireIgnore="false">
                             <x-slot:content>
                                 <button type="button"
                                     class="button button-highlighted">
@@ -221,7 +221,7 @@
                     </div>
                 @else
                     <x-empty size="sm" title="{{ __('No scheduled backups') }}"
-                        description="Add a persistent volume or directory backup schedule to protect application data."
+                        description="{{ __('Add a persistent volume or directory backup schedule to protect application data.') }}"
                         icon-name="storages" />
                 @endif
             </x-application.settings-section>

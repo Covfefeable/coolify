@@ -3,7 +3,7 @@
         {{ $project->name }} > Canvas | Coolify
     </x-slot>
     <div data-environment-canvas data-endpoint="/projects/{{ $project->uuid }}/canvas"
-        data-empty="No resources in this project yet"
+        data-empty="{{ __('No resources in this project yet') }}"
         data-view-only="Only team admins can move cards and edit links."
         data-team="{{ $project->team_id }}" data-user="{{ auth()->id() }}"
         class="relative h-full" wire:ignore>
@@ -17,7 +17,7 @@
             @can('update', $project)
                 <a href="{{ route('project.edit', ['project_uuid' => $project->uuid]) }}" {{ wireNavigate() }}
                     class="button whitespace-nowrap" title="{{ __('Project settings') }}"
-                    aria-label="Open settings for {{ $project->name }}">
+                    aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}"">
                     <x-reicon name="settings" class="size-3.5" />
                     Settings
                 </a>

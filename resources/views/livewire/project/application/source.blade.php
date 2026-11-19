@@ -152,7 +152,7 @@
                         canGate="update" :canResource="$application" />
                     <x-forms.input id="gitHttpsPassword" type="password" label="{{ __('Password or token') }}"
                         autocomplete="new-password"
-                        placeholder="{{ $hasGitHttpsPassword ? 'Saved. Enter a new value to replace it.' : '' }}"
+                        placeholder="{{ $hasGitHttpsPassword ? __('Saved. Enter a new value to replace it.') : '' }}"
                         canGate="update" :canResource="$application" />
                 </div>
             </x-application.settings-section>

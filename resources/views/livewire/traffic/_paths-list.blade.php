@@ -28,11 +28,11 @@
             @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => __('Path'), 'text' => true, 'class' => 'min-w-0 flex-1'])
             <span class="hidden w-16 shrink-0 sm:inline" aria-hidden="true"></span>
             @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => __('Requests'), 'class' => 'w-16 shrink-0'])
-            @include('livewire.traffic._sort-header', ['column' => 's4xx', 'label' => '4xx', 'class' => 'hidden w-12 shrink-0 sm:inline-flex', 'title' => 'HTTP 4xx client-error responses'])
-            @include('livewire.traffic._sort-header', ['column' => 's5xx', 'label' => '5xx', 'class' => 'w-12 shrink-0', 'title' => 'HTTP 5xx server-error responses'])
-            @include('livewire.traffic._sort-header', ['column' => 'errorRate', 'label' => __('Error %'), 'class' => 'hidden w-14 shrink-0 lg:inline-flex', 'title' => 'Percentage of requests with a 4xx or 5xx response'])
-            @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
-            @include('livewire.traffic._sort-header', ['column' => 'p95', 'label' => 'p95', 'class' => 'hidden w-16 shrink-0 md:inline-flex', 'title' => '95% of requests completed within this response time'])
+            @include('livewire.traffic._sort-header', ['column' => 's4xx', 'label' => '4xx', 'class' => 'hidden w-12 shrink-0 sm:inline-flex', 'title' => __('HTTP 4xx client-error responses')])
+            @include('livewire.traffic._sort-header', ['column' => 's5xx', 'label' => '5xx', 'class' => 'w-12 shrink-0', 'title' => __('HTTP 5xx server-error responses')])
+            @include('livewire.traffic._sort-header', ['column' => 'errorRate', 'label' => __('Error %'), 'class' => 'hidden w-14 shrink-0 lg:inline-flex', 'title' => __('Percentage of requests with a 4xx or 5xx response')])
+            @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => __('Total response data sent')])
+            @include('livewire.traffic._sort-header', ['column' => 'p95', 'label' => 'p95', 'class' => 'hidden w-16 shrink-0 md:inline-flex', 'title' => __('95% of requests completed within this response time')])
         </div>
         <div class="flex flex-col">
             @foreach ($paths as $path)

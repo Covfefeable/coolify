@@ -101,8 +101,8 @@
     </x-application.settings-section>
 
     @if ($threaded)
-        <x-application.settings-section title="Forum topics"
-            description="Optional. Route enabled events to a Telegram forum topic using its message thread ID. Leave blank to post in the main chat.">
+        <x-application.settings-section title="{{ __('Forum topics') }}"
+            description="{{ __('Optional. Route enabled events to a Telegram forum topic using its message thread ID. Leave blank to post in the main chat.') }}">
             @if ($enabledThreadEvents === [])
                 <p class="text-[13px] leading-relaxed text-neutral-500 dark:text-fg-dim">
                     Enable one or more events above to assign forum topic IDs.

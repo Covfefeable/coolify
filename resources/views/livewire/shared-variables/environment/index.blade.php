@@ -13,7 +13,7 @@
             @if ($projects->isEmpty())
                 <x-empty title="{{ __('No environments') }}" description="{{ __('Environments that you can read show here. Create an environment to add environment-wide variables.') }}" icon-name="layers" />
             @else
-                <x-shared-variables.view-controls label="environments" storage-key="shared-variables-environments-view" />
+                <x-shared-variables.view-controls search-placeholder="Search environments" storage-key="shared-variables-environments-view" />
 
                 <div x-cloak x-show="viewMode === 'grid'" class="flex flex-col gap-6">
                     @foreach ($projects as $project)

@@ -317,7 +317,7 @@
                         <div class="flex flex-wrap items-center gap-2">
                             <div x-show="serviceTemplatesLastUpdated"
                                 class="text-[11px] text-neutral-500 dark:text-fg-faint">
-                                Updated <span x-text="serviceTemplatesLastUpdated"></span>
+                                {{ __('Updated') }} <span x-text="serviceTemplatesLastUpdated"></span>
                             </div>
                         </div>
                     </div>
@@ -348,7 +348,7 @@
                                             <h3 class="truncate text-[13px] font-semibold text-black dark:text-fg"
                                                 x-text="service.name"></h3>
                                             <p class="mt-0.5 truncate text-[11px] text-neutral-500 dark:text-fg-faint">
-                                                <span x-show="service.templateLastUpdated">Updated </span>
+                                                <span x-show="service.templateLastUpdated">{{ __('Updated') }} </span>
                                                 <span x-text="service.templateLastUpdated || 'Template ready'"></span>
                                             </p>
                                         </div>

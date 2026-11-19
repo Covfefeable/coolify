@@ -94,7 +94,7 @@
                         <div class="mb-2 text-sm font-medium leading-4">Avatar</div>
                         <div class="flex items-center gap-4">
                             <div class="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-neutral-200 text-2xl font-semibold text-neutral-700 dark:bg-white/[0.1] dark:text-fg">
-                                <img x-cloak x-show="preview" :src="preview" alt="Profile picture preview"
+                                <img x-cloak x-show="preview" :src="preview" alt="{{ __('Profile picture preview') }}"
                                     class="h-full w-full object-cover">
                                 @if (auth()->user()->avatar_path)
                                     <img src="{{ profile_avatar_url(auth()->user()) }}"

@@ -1,6 +1,6 @@
 @props([
     'type' => 'warning',
-    'title' => 'Warning',
+    'title' => __('Warning'),
     'class' => '',
     'dismissible' => false,
     'onDismiss' => null,

@@ -84,7 +84,7 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
                                 {!! $approxBadge('Summed across services; visitors of more than one service may be double-counted.') !!}
                             @endif
                         </span>
-                        <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg" title="{{ number_format($overview['uniqueVisitors'] ?? 0) }} unique visitors">{{ compactNumber($overview['uniqueVisitors'] ?? 0) }}</span>
+                        <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg" title="{{ __(':count unique visitors', ['count' => number_format($overview['uniqueVisitors'] ?? 0)]) }}">{{ compactNumber($overview['uniqueVisitors'] ?? 0) }}</span>
                         <div class="mt-auto pt-3">
                             @include('livewire.traffic._sparkline', [
                                 'id' => $chartId.'-spark-visitors',

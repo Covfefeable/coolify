@@ -432,7 +432,7 @@
                         x-init="$watch('modalOpen', value => { if (value) setTimeout(() => $refs.searchInput.focus(), 100) })"
                         class="command-palette-input" autocomplete="off" spellcheck="false" />
                     <div x-show="pageItems.length > 0" x-cloak class="command-palette-scope" role="group"
-                        aria-label="{{ __('Search scope') }}" title="Press Tab to switch between global search and this page">
+                        aria-label="{{ __('Search scope') }}" title="{{ __('Press Tab to switch between global search and this page') }}">
                         <button type="button" @click="setScope('global')" :aria-pressed="scope === 'global'"
                             class="command-palette-scope-option">{{ __('Global') }}</button>
                         <button type="button" @click="setScope('page')" :aria-pressed="scope === 'page'"

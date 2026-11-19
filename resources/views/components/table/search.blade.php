@@ -1,5 +1,5 @@
 @props([
-    'placeholder' => 'Search',
+    'placeholder' => __('Search'),
     'loadingTarget' => null,
     'disabled' => false,
     'clearAction' => null,

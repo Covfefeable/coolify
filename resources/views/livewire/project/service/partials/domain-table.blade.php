@@ -73,7 +73,7 @@
                         @if ($isSuggested)
                             <span
                                 class="min-w-0 text-[13px] text-black sm:truncate dark:text-white"
-                                title="{{ $row['url'] }} (not configured yet)">
+                                title="{{ $row['url'] }} {{ __('(not configured yet)') }}">
                                 {{ $row['url'] }}
                             </span>
                         @else
@@ -125,7 +125,7 @@
                 <div class="service-domain-detail"
                     title="{{ ($row['has_port_override'] ?? false) ? 'Custom internal port for this domain' : 'Inherited from the Coolify service port' }}">
                     <span class="service-domain-detail-label">{{ __('Internal port') }}</span>
-                    <span @if (filled($row['internal_port'] ?? null)) aria-label="Internal port {{ $row['internal_port'] }}" @endif>{{ $row['internal_port'] ?? '—' }}</span>
+                    <span @if (filled($row['internal_port'] ?? null)) aria-label="{{ __('Internal port :port', ['port' => $row['internal_port']]) }}" @endif>{{ $row['internal_port'] ?? '—' }}</span>
                 </div>
                 <div class="service-domain-detail">
                     <span class="service-domain-detail-label">{{ __('Search indexing') }}</span>

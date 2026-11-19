@@ -61,7 +61,7 @@
 
             @if ($truncated)
                 <div class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
-                    <x-callout type="info" title="Too many packages">{{ __('Only the first 10,000 are shown.') }}</x-callout>
+                    <x-callout type="info" title="{{ __('Too many packages') }}">{{ __('Only the first 10,000 are shown.') }}</x-callout>
                 </div>
             @endif
 

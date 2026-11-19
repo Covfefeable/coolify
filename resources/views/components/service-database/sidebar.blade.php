@@ -3,7 +3,7 @@
     'serviceDatabase',
 ])
 
-<x-main-nav-menu :depth="1" back-label="{{ __('Service') }}" back-title="Back to the service menu"
+<x-main-nav-menu :depth="1" back-label="{{ __('Service') }}" back-title="{{ __('Back to the service menu') }}"
     :name="$serviceDatabase->human_name ?: $serviceDatabase->name">
     <nav aria-label="{{ __('Compose resource settings') }}"
         class="grid grid-cols-1 gap-0.5">

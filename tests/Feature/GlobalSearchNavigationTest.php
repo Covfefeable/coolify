@@ -41,18 +41,17 @@ function adminOnlyNavigationLinks(): array
     ];
 }
 
-it('lists every instance settings page for the root team', function () {
+it('lists instance settings and hides the update shortcut for the root team', function () {
     $links = globalSearchNavigationLinks(Team::factory()->create(['id' => 0]));
 
     expect($links)->toContain(
         route('settings.index'),
         route('settings.advanced'),
-        route('settings.updates'),
         route('settings.backup'),
         route('settings.email'),
         route('settings.oauth'),
         route('settings.image-scanning'),
-    );
+    )->not->toContain(route('settings.updates'));
 });
 
 it('does not list instance settings pages for other teams', function () {

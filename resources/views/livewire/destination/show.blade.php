@@ -32,10 +32,10 @@
                                     Permanently delete <strong class="font-semibold">{{ $destination->name }}</strong>
                                     from Coolify. The Docker network is also removed from the server.
                                 </p>
-                                <p>Delete or move every attached resource before deleting this destination.</p>
+                                <p>{{ __('Delete or move every attached resource before deleting this destination.') }}</p>
                                 <x-slot:action>
                                     @if ($network !== 'coolify')
-                                        <x-modal-confirmation title="Confirm Destination Deletion?"
+                                        <x-modal-confirmation title="{{ __('Confirm Destination Deletion?') }}"
                                             buttonTitle="{{ __('Delete destination') }}" isErrorButton submitAction="delete"
                                             :actions="['This permanently deletes the destination and its Docker network.']"
                                             confirmationText="{{ $destination->name }}"
@@ -44,7 +44,7 @@
                                             step2ButtonText="{{ __('Permanently Delete') }}" canGate="delete"
                                             :canResource="$destination" />
                                     @else
-                                        <x-forms.button isError disabled tooltip="The default Coolify destination cannot be deleted.">
+                                        <x-forms.button isError disabled tooltip="{{ __('The default Coolify destination cannot be deleted.') }}">
                                             {{ __('Delete destination') }}
                                         </x-forms.button>
                                     @endif
@@ -68,7 +68,7 @@
 
                         <div class="grid gap-4 lg:grid-cols-2">
                             <x-forms.input canGate="update" :canResource="$destination" id="name" label="{{ __('Name') }}" />
-                            <x-forms.input id="serverIp" label="Server IP" readonly />
+                            <x-forms.input id="serverIp" label="{{ __('Server IP') }}" readonly />
                             @if ($destination->getMorphClass() === 'App\Models\StandaloneDocker')
                                 <div class="lg:col-span-2">
                                     <x-forms.input id="network" label="{{ __('Docker network') }}" readonly />

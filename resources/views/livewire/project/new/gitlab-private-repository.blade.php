@@ -3,12 +3,12 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>GitLab App</h2>
-                    <p>Connect a GitLab App before selecting a private repository.</p>
+                    <h2>{{ __('GitLab App') }}</h2>
+                    <p>{{ __('Connect a GitLab App before selecting a private repository.') }}</p>
                 </div>
             </div>
             <div class="application-settings-section-body">
-                <x-empty title="No GitLab Apps"
+                <x-empty title="{{ __('No GitLab Apps') }}"
                     description="{{ __('Create an app to grant Coolify access to selected repositories.') }}"
                     icon-name="sources">
                     <x-slot:contents>
@@ -24,7 +24,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Choose GitLab App') }}</h2>
-                    <p>Select the installation that can access the repository you want to deploy.</p>
+                    <p>{{ __('Select the installation that can access the repository you want to deploy.') }}</p>
                 </div>
                 <x-modal-input buttonTitle="+ Add GitLab App" title="{{ __('New GitLab App') }}" closeOutside="false">
                     <livewire:source.gitlab.create />
@@ -59,7 +59,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Choose repository') }}</h2>
-                    <p>Search repositories available through the selected GitLab App.</p>
+                    <p>{{ __('Search repositories available through the selected GitLab App.') }}</p>
                 </div>
                 @if ($gitlab_app_id)
                     <x-forms.button wire:click.prevent="loadRepositories({{ $gitlab_app_id }})">
@@ -85,7 +85,7 @@
                     </div>
                 @else
                     <x-empty size="sm" title="{{ __('No repositories available') }}"
-                        description="Review this GitLab App configuration and grant access to a repository." />
+                        description="{{ __('Review this GitLab App configuration and grant access to a repository.') }}" />
                 @endif
             </div>
         </section>

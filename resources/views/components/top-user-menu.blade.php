@@ -27,7 +27,7 @@
 }" @avatar-updated.window="avatarUrl = $event.detail.url" @keydown.escape.window="closePanel()" @resize.window="open && fitPanel()"
     @click.outside="closePanel()">
     <button type="button" x-ref="userMenuButton" @click="open ? closePanel() : openPanel()"
-        title="{{ $userName }}" aria-label="Account menu for {{ $userName }}"
+        title="{{ $userName }}" aria-label="{{ __('Account menu for :name', ['name' => $userName]) }}"
         @if ($sidebar) :class="collapsed ? 'w-8 px-0' : 'w-full'" @endif
         @class([
             'button rounded-lg px-2 normal-case',

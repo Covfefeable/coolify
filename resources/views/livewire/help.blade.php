@@ -7,8 +7,7 @@
         </div>
         <div class="min-w-0">
             <p class="font-medium text-black dark:text-fg">{{ __('Tell us what you need') }}</p>
-            <p class="mt-0.5 text-xs leading-5">Share a problem, question, or idea. Include enough context for us to
-                understand what happened.</p>
+            <p class="mt-0.5 text-xs leading-5">{{ __('Share a problem, question, or idea. Include enough context for us to understand what happened.') }}</p>
         </div>
     </div>
 

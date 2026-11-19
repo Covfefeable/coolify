@@ -182,7 +182,7 @@
                             </template>
                             <div x-show="filteredTargetGroups.length === 0"
                                 class="px-3 py-8 text-center text-[13px] text-neutral-500 dark:text-fg-dim">
-                                No matching targets
+                                {{ __('No matching targets') }}
                             </div>
                         </div>
                     @endif
@@ -266,7 +266,7 @@
                                 </template>
                                 <div x-show="filteredTargetGroups.length === 0"
                                     class="px-2 py-5 text-center text-[11px] text-white/35">
-                                    No matching targets
+                                    {{ __('No matching targets') }}
                                 </div>
                             </div>
                         </div>
@@ -308,7 +308,7 @@
                             <div class="border-b border-white/[0.08] p-2">
                                 <div class="px-1 pb-2">
                                     <div class="text-sm font-semibold text-white/80">{{ __('Start a terminal session') }}</div>
-                                    <div class="mt-0.5 text-[11px] text-white/45">Choose a server or container</div>
+                                    <div class="mt-0.5 text-[11px] text-white/45">{{ __('Choose a server or container') }}</div>
                                 </div>
                                 <div class="relative">
                                     <x-reicon name="search"
@@ -340,7 +340,7 @@
                                 </template>
                                 <div x-show="filteredTargetGroups.length === 0"
                                     class="px-2 py-5 text-center text-[11px] text-white/35">
-                                    No matching targets
+                                    {{ __('No matching targets') }}
                                 </div>
                             </div>
                         </div>

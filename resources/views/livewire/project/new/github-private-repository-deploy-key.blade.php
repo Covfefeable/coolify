@@ -4,7 +4,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Private repository') }}</h2>
-                    <p>Choose the SSH key Coolify will use to clone this repository.</p>
+                    <p>{{ __('Choose the SSH key Coolify will use to clone this repository.') }}</p>
                 </div>
             </div>
             <div class="application-settings-section-body p-0!">
@@ -27,7 +27,7 @@
                     </button>
                 @empty
                     <x-empty title="{{ __('No private keys') }}"
-                        description="Create an SSH key before connecting a private repository."
+                        description="{{ __('Create an SSH key before connecting a private repository.') }}"
                         icon-name="keys">
                         <x-slot:contents>
                             <a class="button" href="{{ route('security.private-key.index') }}" {{ wireNavigate() }}>
@@ -46,7 +46,7 @@
                 <div class="application-settings-section-header">
                     <div>
                         <h2>{{ __('Repository configuration') }}</h2>
-                        <p>Enter the repository location and choose how Coolify should build it.</p>
+                        <p>{{ __('Enter the repository location and choose how Coolify should build it.') }}</p>
                     </div>
                     <x-forms.button type="submit" isHighlighted>{{ __('Continue') }}</x-forms.button>
                 </div>

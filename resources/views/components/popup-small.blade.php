@@ -1,6 +1,6 @@
 @props([
-    'title' => 'Default title',
-    'description' => 'Default description',
+    'title' => __('Default title'),
+    'description' => __('Default description'),
     'compactAfter' => null,
     'compactStorageKey' => null,
     'compactStoragePrefix' => null,

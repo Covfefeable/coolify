@@ -1,7 +1,7 @@
 <form class="application-settings-form flex w-full flex-col gap-4" wire:submit="submit">
     @if ($targets->isEmpty())
-        <x-empty size="sm" title="No backup targets"
-            description="Add a persistent volume or directory mount before configuring a backup."
+        <x-empty size="sm" title="{{ __('No backup targets') }}"
+            description="{{ __('Add a persistent volume or directory mount before configuring a backup.') }}"
             icon-name="storages" />
     @else
         <div class="grid gap-4 sm:grid-cols-2">

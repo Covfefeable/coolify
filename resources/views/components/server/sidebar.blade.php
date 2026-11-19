@@ -288,7 +288,7 @@
         scheduleSentinelExpiry($event.detail.expiresInMilliseconds);
     ">
 @endif
-    <nav aria-label="Server configuration sections"
+    <nav aria-label="{{ __('Server configuration sections') }}"
         class="grid grid-cols-1 gap-0.5">
         @foreach ($groupedServerMenuItems as $groupLabel => $groupItems)
             @unless ($loop->first)

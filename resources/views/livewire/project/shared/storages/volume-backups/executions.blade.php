@@ -106,7 +106,7 @@
                                     :type="$execution->local_storage_deleted ? 'neutral' : 'success'" />
                                 @foreach ($s3Replicas as $replica)
                                     <x-status-badge wire:key="volume-backup-replica-{{ $replica->id }}"
-                                        :label="$replica->s3?->name ?? 'Removed S3 storage'"
+                                        :label="$replica->s3?->name ?? __('Removed S3 storage')"
                                         :status="$replica->s3_storage_deleted
                                             ? 'deleted'
                                             : match ($replica->s3_uploaded) {

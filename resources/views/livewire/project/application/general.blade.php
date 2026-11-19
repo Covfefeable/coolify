@@ -134,7 +134,7 @@
                             <h3 class="mb-3 text-sm font-semibold text-black dark:text-fg">{{ __('Password hashing') }}</h3>
                             <div class="grid w-full gap-4 {{ $usesArgon2id ? 'sm:grid-cols-3' : 'sm:grid-cols-2' }}">
                                 <x-forms.listbox id="httpBasicAuthHashAlgorithm" label="{{ __('Algorithm') }}" onChange="instantSave"
-                                    helper="Algorithm that hashes the password for the proxy labels.<br><br>Traefik supports only bcrypt. Argon2id needs the Caddy proxy, version 2.11 or newer. With Argon2id, labels generated for Traefik use bcrypt."
+                                    helper="{{ __('Select the password hashing algorithm used by the proxy. Traefik supports only bcrypt. Argon2id requires Caddy 2.11 or newer. Traefik labels still use bcrypt when Argon2id is selected.') }}"
                                     :options="[
                                         ['value' => HttpBasicAuthHashAlgorithm::BCRYPT->value, 'label' => 'bcrypt', 'description' => 'Works with every proxy'],
                                         ['value' => HttpBasicAuthHashAlgorithm::ARGON2ID->value, 'label' => 'Argon2id', 'disabled' => ! $supportsArgon2id, 'description' => match (true) {
@@ -227,11 +227,11 @@
                                         <div class="grid gap-4 lg:grid-cols-2">
                                             <x-forms.input x-bind:disabled="shouldDisable()"
                                                 placeholder="docker compose build" id="dockerComposeCustomBuildCommand"
-                                                helper="The compose file path (<span class='dark:text-brand-light'>-f</span> flag) and environment variables (<span class='dark:text-brand-light'>--env-file</span> flag) are automatically injected based on your Base Directory and Docker Compose Location settings. You can override by providing your own <span class='dark:text-brand-light'>-f</span> or <span class='dark:text-brand-light'>--env-file</span> flags.<br><br>If you use this, you need to specify paths relatively and should use the same compose file in the custom command, otherwise the automatically configured labels / etc won't work.<br><br>Example usage: <span class='dark:text-brand-light'>docker compose build</span>"
+                                                helper="{{ __('The Compose file and environment file are selected from the base directory and Compose file settings. Use -f or --env-file to override them. Use relative paths and the same Compose file so automatically generated labels still work.') }}<br><br>{{ __('Example') }}: <code>docker compose build</code>"
                                                 label="{{ __('Custom build command') }}" />
                                             <x-forms.input x-bind:disabled="shouldDisable()"
                                                 placeholder="docker compose up -d" id="dockerComposeCustomStartCommand"
-                                                helper="The compose file path (<span class='dark:text-brand-light'>-f</span> flag) and environment variables (<span class='dark:text-brand-light'>--env-file</span> flag) are automatically injected based on your Base Directory and Docker Compose Location settings. You can override by providing your own <span class='dark:text-brand-light'>-f</span> or <span class='dark:text-brand-light'>--env-file</span> flags.<br><br>If you use this, you need to specify paths relatively and should use the same compose file in the custom command, otherwise the automatically configured labels / etc won't work.<br><br>Example usage: <span class='dark:text-brand-light'>docker compose up -d</span>"
+                                                helper="{{ __('The Compose file and environment file are selected from the base directory and Compose file settings. Use -f or --env-file to override them. Use relative paths and the same Compose file so automatically generated labels still work.') }}<br><br>{{ __('Example') }}: <code>docker compose up -d</code>"
                                                 label="{{ __('Custom start command') }}" />
                                         </div>
                                         @if ($this->dockerComposeCustomBuildCommand)
@@ -381,7 +381,7 @@
                     @endcan
                     <div class="w-full sm:w-96">
                         <x-forms.checkbox label="{{ __('Escape special characters in labels?') }}"
-                            helper="By default, $ (and other chars) is escaped. So if you write $ in the labels, it will be saved as $$.<br><br>If you want to use env variables inside the labels, turn this off."
+                            helper="{{ __('Special characters are escaped by default. For example, $ becomes $$. Disable escaping to use environment variables in labels.') }}"
                             id="isContainerLabelEscapeEnabled" instantSave
                             x-bind:disabled="!canUpdate"></x-forms.checkbox>
                         {{-- <x-forms.checkbox label="Readonly labels"
@@ -429,17 +429,17 @@
                                 <x-forms.input id="dockerRegistryImageName" required label="{{ __('Image') }}"
                                     placeholder="ghcr.io/your-org/your-app" x-bind:disabled="!canUpdate" />
                                 <x-forms.input id="dockerRegistryImageTag"
-                                    helper="If set, it will tag the built image with this tag too. <br><br>Example: If you set it to 'latest', it will push the image with the commit sha tag + with the latest tag."
+                                    helper="{{ __('Adds a tag to the built image in addition to the commit SHA tag. For example, latest adds a latest tag.') }}"
                                     placeholder="latest" label="{{ __('Tag') }}"
                                     x-bind:disabled="!canUpdate" />
                             @else
                                 <x-forms.input id="dockerRegistryImageName"
-                                    helper="Empty means it won't push the image to a docker registry. Pre-tag the image with your registry url if you want to push it to a private registry (default: Dockerhub). <br><br>Example: ghcr.io/myimage"
+                                    helper="{{ __('Leave empty to skip pushing the image. To push to a private registry, include its host in the image name, for example ghcr.io/myimage.') }}"
                                     placeholder="ghcr.io/your-org/your-app"
                                     label="{{ __('Image') }}" x-bind:disabled="!canUpdate" />
                                 <x-forms.input id="dockerRegistryImageTag"
                                     placeholder="latest"
-                                    helper="If set, it will tag the built image with this tag too. <br><br>Example: If you set it to 'latest', it will push the image with the commit sha tag + with the latest tag."
+                                    helper="{{ __('Adds a tag to the built image in addition to the commit SHA tag. For example, latest adds a latest tag.') }}"
                                     label="{{ __('Tag') }}" x-bind:disabled="!canUpdate" />
                             @endif
                         @endif
@@ -498,11 +498,7 @@
                             <div>
                                 <span class="font-semibold"> {{ __('PORT environment variable detected') }}
                                     ({{ $this->detectedPortInfo['port'] }})</span>
-                                <p class="mt-1">Your Ports Exposes field is empty. Consider setting it to
-                                    <strong>{{ $this->detectedPortInfo['port'] }}</strong> to ensure the proxy routes
-                                    traffic
-                                    correctly.
-                                </p>
+                                <p class="mt-1">{{ __('No exposed port is configured. Set the exposed port to :port so the proxy can route traffic.', ['port' => $this->detectedPortInfo['port']]) }}</p>
                             </div>
                         </div>
                     @elseif (!$this->detectedPortInfo['matches'])
@@ -515,11 +511,7 @@
                             </svg>
                             <div>
                                 <span class="font-semibold">{{ __('PORT mismatch detected') }}</span>
-                                <p class="mt-1">Your PORT environment variable is set to
-                                    <strong>{{ $this->detectedPortInfo['port'] }}</strong>, but it's not in your Ports
-                                    Exposes
-                                    configuration. Ensure they match for proper proxy routing.
-                                </p>
+                                <p class="mt-1">{{ __('The PORT environment variable is set to :port, which is missing from the exposed ports. Make sure they match.', ['port' => $this->detectedPortInfo['port']]) }}</p>
                             </div>
                         </div>
                     @else
@@ -532,9 +524,7 @@
                             </svg>
                             <div>
                                 <span class="font-semibold">{{ __('PORT environment variable configured') }}</span>
-                                <p class="mt-1">Your PORT environment variable
-                                    ({{ $this->detectedPortInfo['port'] }}) matches
-                                    your Ports Exposes configuration.</p>
+                                <p class="mt-1">{{ __('The PORT environment variable (:port) matches the exposed ports.', ['port' => $this->detectedPortInfo['port']]) }}</p>
                             </div>
                         </div>
                     @endif
@@ -591,7 +581,7 @@
 
                 <x-application.settings-section id="container-section" title="{{ __('Container') }}" helper="Options and labels applied to the container when it starts.">
                     <x-forms.input
-                        helper="You can add custom docker run options that will be used when your container is started.<br>Note: Not all options are supported, as they could mess up Coolify's automation and could cause bad experience for users.<br><br>Check the <a class='underline dark:text-white' href='https://coolify.io/docs/knowledge-base/docker/custom-commands'>docs.</a>"
+                        helper="{{ __('Additional docker run options for container startup. Some flags can interfere with Coolify automation and are unsupported.') }}"
                         placeholder="--cap-add SYS_ADMIN --device=/dev/fuse --security-opt apparmor:unconfined --ulimit nofile=1024:1024 --tmpfs /run:rw,noexec,nosuid,size=65536k --hostname=myapp"
                         id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" x-bind:disabled="!canUpdate" />
                 <x-application.settings-subsection id="container-labels-section" title="{{ __('Labels') }}">
@@ -605,7 +595,7 @@
                             ]" x-bind:disabled="!canUpdate" />
                         <x-forms.listbox id="isContainerLabelEscapeEnabled" label="Special characters"
                             onChange="instantSave"
-                            helper="By default, $ (and other special characters) are escaped: writing $ saves it as $$.<br><br>Keep them unescaped if you want to use environment variables inside the labels."
+                            helper="{{ __('Special characters are escaped by default. For example, $ becomes $$. Leave them unescaped to use environment variables in labels.') }}"
                             :options="[
                                 ['value' => true, 'label' => 'Escape special characters ($ becomes $$)'],
                                 ['value' => false, 'label' => 'Keep unescaped (allow env variables)'],

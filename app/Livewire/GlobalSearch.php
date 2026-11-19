@@ -938,13 +938,6 @@ class GlobalSearch extends Component
                     'search_text' => 'settings advanced registration api access allowed ips mcp server dns validation custom dns domain connect confirmation telemetry sponsorship cdn',
                 ],
                 [
-                    'name' => 'Update Settings',
-                    'type' => 'navigation',
-                    'description' => 'Configure Coolify auto updates',
-                    'link' => route('settings.updates'),
-                    'search_text' => 'settings updates auto update upgrade version frequency',
-                ],
-                [
                     'name' => 'Image Scanning Settings',
                     'type' => 'navigation',
                     'description' => 'Allow image scanning, the vulnerability database, and default scan rules',

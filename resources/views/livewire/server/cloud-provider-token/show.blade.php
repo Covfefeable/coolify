@@ -22,7 +22,7 @@
                                 Validate token
                             </x-forms.button>
                             @can('create', App\Models\CloudProviderToken::class)
-                                <x-modal-input buttonTitle="{{ __('+ Add') }}" title="Add {{ $providerName }} Token">
+                                <x-modal-input buttonTitle="{{ __('+ Add') }}" title="{{ __('Add :name token', ['name' => $providerName]) }}">
                                     <livewire:security.cloud-provider-token-form :modal_mode="true"
                                         :provider="$provider" />
                                 </x-modal-input>
@@ -58,8 +58,8 @@
                             @endif
                         </div>
                     @empty
-                        <x-empty size="sm" title="No {{ $providerName }} tokens"
-                            description="Add a token to manage this server through {{ $providerName }}."
+                        <x-empty size="sm" title="{{ __('No :name tokens', ['name' => $providerName]) }}"
+                            description="{{ __('Add a token to manage this server through :name.', ['name' => $providerName]) }}"
                             icon-name="keys" />
                     @endforelse
                 </x-application.settings-section>

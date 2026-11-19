@@ -13,7 +13,7 @@
 <section class="w-full max-w-none">
     <header class="settings-mobile-header xl:hidden">
         <h1 class="settings-mobile-title">{{ __('Notifications') }}</h1>
-        <p class="settings-mobile-description">Configure how your team receives deployment and system alerts.</p>
+        <p class="settings-mobile-description">{{ __('Configure how your team receives deployment and system alerts.') }}</p>
     </header>
     {{-- Feeds the page search with the Notifications pages. --}}
     <div hidden data-settings-search-items="{{ json_encode(settingsSearchItems(['Notifications' => $notificationMenuItems], [])) }}"></div>
