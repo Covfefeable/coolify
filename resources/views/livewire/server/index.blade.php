@@ -1,16 +1,16 @@
 <div class="application-settings-form w-full">
     <x-slot:title>
-        Servers | Coolify
+        {{ __('Servers') }} | Coolify
     </x-slot>
 
     <div class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">Servers</h1>
+        <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Servers') }}</h1>
         <div class="flex flex-wrap items-center gap-2">
             @can('createAnyResource')
                 <a href="{{ route('server.create') }}" {{ wireNavigate() }}
                     class="button w-fit shrink-0 whitespace-nowrap button-highlighted">
                     <x-reicon name="plus" class="size-3.5" />
-                    New server
+                    {{ __('New server') }}
                 </a>
             @endcan
         </div>
@@ -191,12 +191,12 @@
                     'grid min-w-[480px] grid-cols-[minmax(0,1fr)_9.5rem] border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 md:min-w-[560px] md:grid-cols-[minmax(0,1fr)_6rem_9.5rem] dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint',
                     'lg:min-w-[760px] lg:grid-cols-[minmax(0,1fr)_6rem_12rem_9.5rem]' => $showPatches,
                 ])>
-                    <div>Server</div>
-                    <div class="hidden md:block">Resources</div>
+                    <div>{{ __('Server') }}</div>
+                    <div class="hidden md:block">{{ __('Resources') }}</div>
                     @if ($showPatches)
                         <div class="hidden lg:block">Patches</div>
                     @endif
-                    <div>Status</div>
+                    <div>{{ __('Status') }}</div>
                 </div>
                 <template x-for="server in filteredServers" :key="server.uuid">
                     <a :href="server.href" {{ wireNavigate() }}
@@ -259,7 +259,7 @@
                 class="flex min-h-52 flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 text-center dark:border-white/[0.08] dark:bg-white/[0.05]">
                 <x-reicon name="search" class="mb-3 size-6 text-neutral-300 dark:text-fg-faint" />
                 <p class="text-[13px] font-medium">No matching servers</p>
-                <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">Try a different search.</p>
+                <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">{{ __('Try a different search.') }}</p>
             </div>
         @endif
 

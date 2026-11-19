@@ -97,7 +97,7 @@
                         </p>
                     </div>
                     <div>
-                        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">Enabled</p>
+                        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Enabled') }}</p>
                         <p class="mt-1 text-xl font-semibold tabular-nums text-neutral-950 dark:text-fg">
                             {{ $backups->where('enabled', true)->count() }}
                         </p>
@@ -163,10 +163,10 @@
                             <x-table.sort-header label="Target" asc="target_asc" desc="target_desc" />
                             <x-table.sort-header label="Type" asc="type_asc" desc="type_desc" />
                             <x-table.sort-header label="Schedule" asc="schedule_asc" desc="schedule_desc" />
-                            <x-table.sort-header label="Status" asc="status_asc" desc="status_desc" />
+                            <x-table.sort-header label="{{ __('Status') }}" asc="status_asc" desc="status_desc" />
                             <x-table.sort-header label="S3" asc="s3_asc" desc="s3_desc" />
                             <x-table.sort-header label="Last run" asc="lastrun_asc" desc="lastrun_desc" first="desc" />
-                            <x-table.sort-header label="Executions" asc="executions_asc" desc="executions_desc" first="desc"
+                            <x-table.sort-header label="{{ __('Executions') }}" asc="executions_asc" desc="executions_desc" first="desc"
                                 class="justify-self-end" />
                         </div>
 

@@ -6,7 +6,7 @@
         <section class="application-settings-section overflow-hidden">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Executions</h2>
+                    <h2>{{ __('Executions') }}</h2>
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
                     <x-forms.button wire:click="cleanupFailed">Clean failed backups</x-forms.button>
@@ -37,13 +37,13 @@
                     <div class="data-table deployment-table-scroll backup-executions-table-scroll">
                         <div
                             class="data-table-header backup-executions-table-grid h-auto rounded-none px-4 py-2.5 text-[11px]">
-                            <span>Status</span>
-                            <span>Database</span>
+                            <span>{{ __('Status') }}</span>
+                            <span>{{ __('Database') }}</span>
                             <span>Archive</span>
                             <span>Time</span>
                             <span>Size</span>
                             <span>Availability</span>
-                            <span class="text-right">Actions</span>
+                            <span class="text-right">{{ __('Actions') }}</span>
                         </div>
                         @php
                             $server = $this->server();

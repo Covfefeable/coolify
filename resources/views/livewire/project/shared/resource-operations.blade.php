@@ -160,7 +160,7 @@
             </x-callout>
 
             <div class="mt-4 grid gap-4 md:grid-cols-2">
-                <x-forms.listbox id="clone-resource-server" label="Server" :wire="false"
+                <x-forms.listbox id="clone-resource-server" label="{{ __('Server') }}" :wire="false"
                     x-model="selectedCloneServer" x-effect="options = cloneServerOptions"
                     placeholder="Choose a server…" />
 
@@ -170,11 +170,11 @@
                     placeholder="Choose a destination…"
                     emptyText="No network destinations are available on this server." />
 
-                <x-forms.listbox id="clone-resource-project" label="Project" :wire="false"
+                <x-forms.listbox id="clone-resource-project" label="{{ __('Project') }}" :wire="false"
                     x-model="selectedCloneProject" x-effect="options = cloneProjectOptions"
                     placeholder="Choose a project…" />
 
-                <x-forms.listbox id="clone-resource-environment" label="Environment" :wire="false"
+                <x-forms.listbox id="clone-resource-environment" label="{{ __('Environment') }}" :wire="false"
                     x-model="selectedCloneEnvironment" x-effect="options = cloneEnvironmentOptions"
                     x-bind:disabled="!selectedCloneProject || availableCloneEnvironments.length === 0"
                     placeholder="Choose an environment…" />
@@ -273,11 +273,11 @@
             helper="Transfer this resource to another project environment without changing the running deployment.">
             @if ($projects->count() > 0)
                 <div class="grid gap-4 md:grid-cols-2">
-                    <x-forms.listbox id="move-resource-project" label="Project" :wire="false"
+                    <x-forms.listbox id="move-resource-project" label="{{ __('Project') }}" :wire="false"
                         x-model="selectedMoveProject" x-effect="options = moveProjectOptions"
                         placeholder="Choose a project…" />
 
-                    <x-forms.listbox id="move-resource-environment" label="Environment"
+                    <x-forms.listbox id="move-resource-environment" label="{{ __('Environment') }}"
                         helper="The current environment is excluded." :wire="false"
                         x-model="selectedMoveEnvironment" x-effect="options = moveEnvironmentOptions"
                         x-bind:disabled="!selectedMoveProject || availableEnvironments.length === 0"

@@ -57,14 +57,14 @@
                 </x-slot:content>
                 <form wire:submit="addDomain" class="application-settings-form flex flex-col gap-4">
                     @if ($isCompose && count($composeServices) > 0)
-                        <x-forms.listbox id="newDomainService" label="Service" required
+                        <x-forms.listbox id="newDomainService" label="{{ __('Service') }}" required
                             :options="collect($composeServices)->map(fn ($service) => ['value' => $service, 'label' => $service])->all()" />
                     @endif
                     <x-forms.domain-input id="newDomainParts" />
 
                     <div class="flex flex-wrap items-center justify-between gap-2 pt-2">
                         <x-forms.button type="button" wire:click="generateDomain">Generate domain</x-forms.button>
-                        <x-forms.button type="submit" isHighlighted>Save</x-forms.button>
+                        <x-forms.button type="submit" isHighlighted>{{ __('Save') }}</x-forms.button>
                     </div>
                 </form>
             </x-modal-input>
@@ -85,7 +85,7 @@
                 <span>Internal port</span>
                 <span>Search indexing</span>
                 <span>DNS status</span>
-                <span class="text-right">Actions</span>
+                <span class="text-right">{{ __('Actions') }}</span>
             </div>
             @foreach (collect($domainRows)->groupBy(fn ($row) => $row['service'] ?? '', preserveKeys: true) as $serviceName => $rows)
                 @if ($isCompose)
@@ -199,7 +199,7 @@
                                                 :confirmWithPassword="false" :confirmWithText="false"
                                                 step2ButtonText="Remove domain">
                                                 <x-slot:trigger>
-                                                    <x-table.row-action>Delete</x-table.row-action>
+                                                    <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                                 </x-slot:trigger>
                                             </x-modal-confirmation>
                                         </x-slot:danger>
@@ -223,7 +223,7 @@
                 <div x-show="editOpen" x-trap.inert.noscroll="editOpen"
                     data-preview-domain-dialog class="application-settings-form application-settings-section relative w-full max-w-3xl">
                     <header>
-                        <h3>Domain settings</h3>
+                        <h3>{{ __('Domain settings') }}</h3>
                         <button type="button" @click="closeEditDomain()" class="icon-button" aria-label="Close">
                             <x-reicon name="x" class="size-4" />
                         </button>
@@ -232,7 +232,7 @@
                         <form x-ref="editForm" wire:submit="updateDomain" class="flex flex-col gap-4">
                             <div x-show="editingServiceLabel" x-cloak>
                                 <div class="mb-1.5 flex h-4 items-center">
-                                    <label class="mb-0! leading-4">Service</label>
+                                    <label class="mb-0! leading-4">{{ __('Service') }}</label>
                                 </div>
                                 <input type="text" class="input" readonly x-bind:value="editingServiceLabel" />
                             </div>
@@ -253,7 +253,7 @@
                             </div>
                             <div class="flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/10">
                                 <x-forms.button type="button" wire:click="regenerateEditingDomain">Regenerate hostname</x-forms.button>
-                                <x-forms.button type="submit" isHighlighted>Save</x-forms.button>
+                                <x-forms.button type="submit" isHighlighted>{{ __('Save') }}</x-forms.button>
                             </div>
                         </form>
                     </div>
@@ -274,7 +274,7 @@
                         class="application-settings-form application-settings-section relative w-full lg:min-w-[36rem] lg:max-w-2xl"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                         <header>
-                            <h3>Use a different port?</h3>
+                            <h3>{{ __('Use a different port?') }}</h3>
                             <button type="button"
                                 @click="modalOpen = false; $wire.call('cancelUseUnknownPort')"
                                 class="icon-button" aria-label="Close">

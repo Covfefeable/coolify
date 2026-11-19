@@ -1,11 +1,11 @@
 <div class="application-settings-form w-full">
     <x-slot:title>
-        Projects | Coolify
+        {{ __('Projects') }} | Coolify
     </x-slot>
 
     <div x-data="projectsIndex()" class="w-full">
         <header class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h1 class="min-w-0 truncate text-[24px]! leading-7! font-semibold! tracking-tight!">Projects</h1>
+            <h1 class="min-w-0 truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Projects') }}</h1>
             @can('createAnyResource')
                 <div class="w-fit shrink-0">
                     <x-modal-input title="New Project">
@@ -13,7 +13,7 @@
                             <button type="button"
                                 class="button button-highlighted">
                                 <x-reicon name="plus" class="size-3.5" />
-                                New project
+                                {{ __('New project') }}
                             </button>
                         </x-slot:content>
                         <livewire:project.add-empty />
@@ -29,7 +29,7 @@
                 <x-slot:contents>
                     <a class="text-[12px] font-medium text-coollabs hover:underline dark:text-brand-light"
                         href="{{ route('onboarding') }}" {{ wireNavigate() }}>
-                        Open onboarding
+                        {{ __('Open onboarding') }}
                     </a>
                 </x-slot:contents>
             </x-empty>
@@ -59,7 +59,7 @@
                                             stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                     </svg>
-                                    Sort
+                                    {{ __('Sort') }}
                                 </button>
                             </x-slot:trigger>
                                 <template x-for="option in sortOptions" :key="option.value">
@@ -144,12 +144,12 @@
                 class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]">
                 <div
                     class="projects-table-grid border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                    <x-table.sort-header label="Project" asc="name-asc" desc="name-desc" then="page = 1" />
-                    <x-table.sort-header label="Contents" asc="resources-asc" desc="resources-desc" first="desc" then="page = 1" />
+                    <x-table.sort-header label="{{ __('Project') }}" asc="name-asc" desc="name-desc" then="page = 1" />
+                    <x-table.sort-header label="{{ __('Contents') }}" asc="resources-asc" desc="resources-desc" first="desc" then="page = 1" />
                     <x-table.sort-header label="Created" asc="created-asc" desc="created-desc" first="desc" then="page = 1" />
-                    <x-table.sort-header label="Description" asc="description-asc" desc="description-desc" then="page = 1"
+                    <x-table.sort-header label="{{ __('Description') }}" asc="description-asc" desc="description-desc" then="page = 1"
                         class="project-description" />
-                    <span class="text-right">Actions</span>
+                    <span class="text-right">{{ __('Actions') }}</span>
                 </div>
 
                 <template x-for="project in paginatedProjects" :key="project.uuid">
@@ -210,7 +210,7 @@
                 <x-reicon name="search" class="mb-3 size-6 text-neutral-300 dark:text-fg-faint" />
                 <p class="text-[13px] font-medium">No matching projects</p>
                 <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">
-                    Try a different search.
+                    {{ __('Try a different search.') }}
                 </p>
             </div>
         @endif

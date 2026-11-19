@@ -134,7 +134,7 @@
                     New
                     <x-reicon name="chevron-down" class="size-3.5" />
                 </x-forms.button>
-                <x-forms.button type="button" disabled>Refresh</x-forms.button>
+                <x-forms.button type="button" disabled>{{ __('Refresh') }}</x-forms.button>
             @endif
         </x-slot:actions>
 
@@ -211,13 +211,13 @@
                     <div class="data-table w-full">
                         <div class="data-table-header file-table-grid">
                             <span></span>
-                            <span>Name</span>
+                            <span>{{ __('Name') }}</span>
                             <span>Perms</span>
                             <span>Owner</span>
                             <span>Group</span>
                             <span class="text-right">Size</span>
                             <span>Modified</span>
-                            <span class="text-right">Actions</span>
+                            <span class="text-right">{{ __('Actions') }}</span>
                         </div>
                         @foreach ($entries as $entry)
                             <div wire:key="entry-{{ $entry['name'] }}" class="data-table-row file-table-grid">
@@ -303,7 +303,7 @@
                                         <x-slot:danger>
                                             <x-modal-input title="Delete this item?">
                                                 <x-slot:content>
-                                                    <x-table.row-action>Delete</x-table.row-action>
+                                                    <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                                 </x-slot:content>
                                                 <div class="flex flex-col gap-4">
                                                     <p class="text-sm text-coollabs-subtle">
@@ -313,7 +313,7 @@
                                                     </p>
                                                     <div class="flex justify-end">
                                                         <x-forms.button isError type="button" canGate="canAccessTerminal" :canResource="$resource"
-                                                            x-on:click="run(isDir ? 'Deleting folder...' : 'Deleting file...', () => $wire.deleteEntry(name)); $dispatch('close-modal')">Delete</x-forms.button>
+                                                            x-on:click="run(isDir ? 'Deleting folder...' : 'Deleting file...', () => $wire.deleteEntry(name)); $dispatch('close-modal')">{{ __('Delete') }}</x-forms.button>
                                                     </div>
                                                 </div>
                                             </x-modal-input>
@@ -405,7 +405,7 @@
                     </div>
                     <div class="flex justify-end gap-2">
                         <x-forms.button type="button" wire:click="closeEditor"
-                            @click="$dispatch('close-modal')">Cancel</x-forms.button>
+                            @click="$dispatch('close-modal')">{{ __('Cancel') }}</x-forms.button>
                         <x-forms.button type="submit" isHighlighted
                             @click="$dispatch('close-modal')">Save changes</x-forms.button>
                     </div>

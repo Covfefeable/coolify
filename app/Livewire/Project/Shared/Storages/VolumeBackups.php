@@ -182,7 +182,7 @@ class VolumeBackups extends Component
         $this->authorize('update', $this->resource);
 
         if (! $this->saveToS3 && $this->selectedS3StorageIds()->isEmpty()) {
-            $this->dispatch('error', 'Select a usable S3 storage before enabling S3 backups.');
+            $this->dispatch('error', __('Select a usable S3 storage before enabling S3 backups.'));
 
             return;
         }
@@ -351,7 +351,7 @@ class VolumeBackups extends Component
 
         $execution = $this->backup?->executions()->whereKey($executionId)->first();
         if (! $execution) {
-            $this->dispatch('error', 'Backup execution not found.');
+            $this->dispatch('error', __('Backup execution not found.'));
 
             return;
         }
@@ -377,7 +377,7 @@ class VolumeBackups extends Component
 
         $execution = $this->backup?->executions()->whereKey($executionId)->first();
         if (! $execution) {
-            $this->dispatch('error', 'Backup execution not found.');
+            $this->dispatch('error', __('Backup execution not found.'));
 
             return false;
         }
@@ -404,7 +404,7 @@ class VolumeBackups extends Component
 
             $execution->delete();
             $this->delete_backup_s3 = false;
-            $this->dispatch('success', 'Backup deleted.');
+            $this->dispatch('success', __('Backup deleted.'));
 
             return true;
         } catch (Throwable $exception) {

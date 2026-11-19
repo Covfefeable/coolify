@@ -255,7 +255,7 @@ class Advanced extends Component
             $this->saveAvatarStorageSetting();
             $this->saveFileDownloadStorageSetting();
             $this->saveAndAudit();
-            $this->dispatch('success', 'Settings updated!');
+            $this->dispatch('success', __('Settings updated!'));
         } catch (\Exception $e) {
             return handleError($e, $this);
         }

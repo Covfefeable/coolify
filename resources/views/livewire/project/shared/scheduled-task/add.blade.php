@@ -1,6 +1,6 @@
 <form class="flex w-full flex-col gap-4" wire:submit="submit">
     <div class="grid gap-4 sm:grid-cols-2">
-        <x-forms.input placeholder="Database cleanup" id="name" label="Name" />
+        <x-forms.input placeholder="Database cleanup" id="name" label="{{ __('Name') }}" />
         <x-forms.input placeholder="0 0 * * * or daily"
             helper="Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression. Runs in the server timezone ({{ $serverTimezone }}). Change it in the server settings."
             id="frequency" label="Schedule" />
@@ -14,20 +14,20 @@
         <x-forms.input type="number" placeholder="300" id="timeout"
             helper="Maximum execution time from 60 to 36,000 seconds." label="Timeout (seconds)" />
         @if ($type === 'application' && $containerNames->count() > 1)
-            <x-forms.listbox id="container" label="Container"
+            <x-forms.listbox id="container" label="{{ __('Container') }}"
                 :options="$containerNames->map(fn ($containerName) => [
                     'value' => $containerName,
                     'label' => $containerName,
                 ])->values()->all()" />
         @elseif ($type === 'service')
-            <x-forms.listbox id="container" label="Container"
+            <x-forms.listbox id="container" label="{{ __('Container') }}"
                 :options="$containerNames->map(fn ($containerName) => [
                     'value' => $containerName,
                     'label' => $containerName,
                 ])->values()->all()" />
         @else
             <x-forms.input placeholder="php" id="container"
-                helper="Leave empty when the resource only has one container." label="Container" />
+                helper="Leave empty when the resource only has one container." label="{{ __('Container') }}" />
         @endif
     </div>
 

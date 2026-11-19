@@ -40,9 +40,9 @@
             <div
                 class="grid min-w-[760px] grid-cols-[minmax(0,1fr)_9rem_minmax(0,1fr)_4.5rem] border-b border-neutral-200 px-4 py-2 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:text-fg-faint">
                 <div>Registry</div>
-                <div>Status</div>
+                <div>{{ __('Status') }}</div>
                 <div>Used by</div>
-                <div class="text-right">Actions</div>
+                <div class="text-right">{{ __('Actions') }}</div>
             </div>
             @foreach ($visibleRows as $row)
                 @php
@@ -91,7 +91,7 @@
                                     <x-modal-input title="Edit login for {{ $row['registry'] }}"
                                         subtitle="Runs docker login on {{ $server->name }} again. The new values replace the old login.">
                                         <x-slot:content>
-                                            <x-table.row-action>Edit</x-table.row-action>
+                                            <x-table.row-action>{{ __('Edit') }}</x-table.row-action>
                                         </x-slot:content>
                                         <livewire:server.docker-registries.login :server="$server" :editRegistry="$row['registry']"
                                             :currentUsername="$row['username']"
@@ -105,7 +105,7 @@
                                                 'Deployments that need this registry fail until you log in again.',
                                             ]" :confirmWithText="false" :confirmWithPassword="false">
                                             <x-slot:trigger>
-                                                <x-table.row-action>Delete</x-table.row-action>
+                                                <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                             </x-slot:trigger>
                                         </x-modal-confirmation>
                                     </x-slot:danger>

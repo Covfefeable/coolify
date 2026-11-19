@@ -1,7 +1,7 @@
 <div>
     <form wire:submit="login" class="flex flex-col gap-3">
         @if ($server === null)
-            <x-forms.listbox id="selectedServers" label="Servers" required multiple searchable portal
+            <x-forms.listbox id="selectedServers" label="{{ __('Servers') }}" required multiple searchable portal
                 :placeholder="$serverOptions->isEmpty() ? 'No reachable server to log in to' : 'Select servers'"
                 searchPlaceholder="Search servers…" :disabled="$serverOptions->isEmpty()"
                 :options="$serverOptions->map(fn ($option) => ['value' => $option->uuid, 'label' => $option->name])->values()->all()" />

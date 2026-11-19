@@ -291,12 +291,12 @@ class Index extends Component
             $this->authorize('update', $this->serviceDatabase);
             if (! $this->serviceDatabase->service->destination->server->isLogDrainEnabled()) {
                 $this->isLogDrainEnabled = false;
-                $this->dispatch('error', 'Log drain is not enabled on the server. Please enable it first.');
+                $this->dispatch('error', __('Log drain is not enabled on the server. Please enable it first.'));
 
                 return;
             }
             $this->submitDatabase();
-            $this->dispatch('success', 'You need to restart the service for the changes to take effect.');
+            $this->dispatch('success', __('You need to restart the service for the changes to take effect.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }
@@ -530,7 +530,7 @@ class Index extends Component
             $this->authorize('update', $this->serviceApplication);
             if (! $this->serviceApplication->service->destination->server->isLogDrainEnabled()) {
                 $this->isLogDrainEnabled = false;
-                $this->dispatch('error', 'Log drain is not enabled on the server. Please enable it first.');
+                $this->dispatch('error', __('Log drain is not enabled on the server. Please enable it first.'));
 
                 return;
             }
@@ -539,7 +539,7 @@ class Index extends Component
             $changedFields = auditChangedFields($this->serviceApplication);
             $this->serviceApplication->save();
             $this->auditServiceSubResourceUpdate($this->serviceApplication, $changedFields);
-            $this->dispatch('success', 'You need to restart the service for the changes to take effect.');
+            $this->dispatch('success', __('You need to restart the service for the changes to take effect.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }

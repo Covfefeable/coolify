@@ -1,6 +1,6 @@
 <div class="application-settings-form w-full">
     <x-slot:title>
-        Dashboard | Coolify
+        {{ __('Dashboard') }} | Coolify
     </x-slot>
 
     @if (session('error'))
@@ -28,7 +28,7 @@
                             <span class="min-w-0">Team <span class="font-semibold">{{ $invitation->team->name }}</span>
                                 invited you as {{ ucfirst($invitation->role) }}.</span>
                             <a href="{{ route('team.invitation.show', $invitation->uuid) }}" class="button shrink-0">
-                                Review invitation
+                                {{ __('Review invitation') }}
                             </a>
                         </div>
                     </x-callout>
@@ -57,7 +57,7 @@
                 <x-callout type="danger" dismissible :title="\App\Livewire\Dashboard::securityCalloutTitle($securityCount)"
                     on-dismiss="dismiss()">
                     <a href="{{ route('vulnerabilities', ['statuses' => ['update_now']]) }}" {{ wireNavigate() }}
-                        class="font-medium underline-offset-2 hover:underline">Review</a>
+                        class="font-medium underline-offset-2 hover:underline">{{ __('Review') }}</a>
                 </x-callout>
             @endif
         </div>
@@ -112,7 +112,7 @@
                             class="group relative flex min-h-16 min-w-0 select-none items-center gap-3 rounded-xl [-webkit-touch-callout:none] border border-neutral-200 bg-white p-3 shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]">
                             <a href="{{ $starred['href'] }}" {{ wireNavigate() }} class="absolute inset-0 rounded-xl"
                                 aria-label="Open {{ $starred['name'] }}"></a>
-                            <button type="button" title="Drag to change the order" aria-label="Move {{ $starred['name'] }}"
+                            <button type="button" title="{{ __('Drag to change the order') }}" aria-label="Move {{ $starred['name'] }}"
                                 x-on:pointerdown.prevent="start($event)"
                                 class="relative z-10 -mx-1.5 flex h-8 w-5 shrink-0 cursor-grab touch-none items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black active:cursor-grabbing dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">
                                 <x-reicon name="grip-vertical" class="size-4" />
@@ -134,7 +134,7 @@
                                 </p>
                             </div>
                             <button type="button" wire:click="unstar({{ $starred['star_id'] }})"
-                                title="Remove from the dashboard" aria-label="Unstar {{ $starred['name'] }}"
+                                title="{{ __('Remove from the dashboard') }}" aria-label="Unstar {{ $starred['name'] }}"
                                 class="relative z-10 flex size-6.5 shrink-0 items-center justify-center rounded-md text-warning transition-colors hover:bg-neutral-100 dark:hover:bg-white/[0.06]">
                                 <x-reicon name="star-filled" class="size-4" />
                             </button>
@@ -163,15 +163,15 @@
                 $wire.saveListView('dashboard_projects', mode);
             }
         }">
-            <x-section-heading title="Projects"
+            <x-section-heading title="{{ __('Projects') }}"
                 :href="$projects->count() > $dashboardItemLimit ? route('project.index') : null">
                 {{-- Projects has no sidebar entry, so the dashboard is where new projects start. --}}
                 @can('createAnyResource')
                     <x-slot:titleAction>
-                        <x-modal-input title="New Project">
+                        <x-modal-input title="{{ __('New Project') }}">
                             <x-slot:content>
-                                <button type="button" class="{{ $titleIconButton }}" title="New project"
-                                    aria-label="New project">
+                                <button type="button" class="{{ $titleIconButton }}" title="{{ __('New project') }}"
+                                    aria-label="{{ __('New project') }}">
                                     <x-reicon name="plus" class="size-3" />
                                 </button>
                             </x-slot:content>
@@ -271,15 +271,15 @@
                 <div x-show="viewMode === 'table'" class="{{ $tableShell }} transition-opacity" wire:loading.class="opacity-50 pointer-events-none"
                     wire:target="setProjectSort">
                     <div class="grid grid-cols-[minmax(0,1fr)_7rem_4.5rem] gap-4 @2xl:min-w-[560px] @2xl:grid-cols-[minmax(0,1.2fr)_7rem_minmax(0,1.5fr)_4.5rem] {{ $tableHead }}">
-                        <x-table.sort-header label="Project" asc="name-asc" desc="name-desc"
+                        <x-table.sort-header label="{{ __('Project') }}" asc="name-asc" desc="name-desc"
                             action="setProjectSort" :current="$projectSort" />
-                        <x-table.sort-header label="Contents" asc="resources-asc" desc="resources-desc" first="desc"
+                        <x-table.sort-header label="{{ __('Contents') }}" asc="resources-asc" desc="resources-desc" first="desc"
                             action="setProjectSort" :current="$projectSort" title="Sort by resource count" />
                         <div class="hidden @2xl:block">
-                            <x-table.sort-header label="Description" asc="description-asc" desc="description-desc"
+                            <x-table.sort-header label="{{ __('Description') }}" asc="description-asc" desc="description-desc"
                                 action="setProjectSort" :current="$projectSort" />
                         </div>
-                        <span class="text-right">Actions</span>
+                        <span class="text-right">{{ __('Actions') }}</span>
                     </div>
                     @foreach ($dashboardProjects as $project)
                         @php
@@ -305,12 +305,12 @@
                             </div>
                             <div class="relative z-10 flex w-fit items-center gap-3 font-medium text-neutral-600 dark:text-fg-dim">
                                 <span class="inline-flex items-center gap-1" data-tooltip="Environments"
-                                    aria-label="Environments">
+                                    aria-label="{{ __('Environments') }}">
                                     <x-reicon name="layers" class="size-3.5 text-neutral-400 dark:text-fg-faint" />
                                     {{ $project->environments->count() }}
                                 </span>
                                 <span class="inline-flex items-center gap-1" data-tooltip="Resources"
-                                    aria-label="Resources">
+                                    aria-label="{{ __('Resources') }}">
                                     <x-reicon name="grid" class="size-3.5 text-neutral-400 dark:text-fg-faint" />
                                     {{ $projectResourceCounts[$project->id] }}
                                 </span>
@@ -353,12 +353,12 @@
                 $wire.saveListView('dashboard_servers', mode);
             }
         }">
-            <x-section-heading title="Servers"
+            <x-section-heading title="{{ __('Servers') }}"
                 :href="$servers->count() > $dashboardItemLimit ? route('server.index') : null">
                 @can('createAnyResource')
                     <x-slot:titleAction>
                         <a href="{{ route('server.create') }}" {{ wireNavigate() }} class="{{ $titleIconButton }}"
-                            title="New server" aria-label="New server">
+                            title="{{ __('New server') }}" aria-label="{{ __('New server') }}">
                             <x-reicon name="plus" class="size-3" />
                         </a>
                     </x-slot:titleAction>
@@ -380,7 +380,7 @@
                                 <a href="{{ route('security.private-key.index') }}" {{ wireNavigate() }}
                                     class="button button-highlighted">
                                     <x-reicon name="plus" class="size-3.5" />
-                                    Add private key
+                                    {{ __('Add private key') }}
                                 </a>
                             </x-slot:contents>
                         @endcan
@@ -394,7 +394,7 @@
                                 <a href="{{ route('server.create') }}" {{ wireNavigate() }}
                                     class="button button-highlighted">
                                     <x-reicon name="plus" class="size-3.5" />
-                                    New server
+                                    {{ __('New server') }}
                                 </a>
                             </x-slot:contents>
                         @endcan
@@ -457,16 +457,16 @@
                 <div x-show="viewMode === 'table'" class="{{ $tableShell }} transition-opacity" wire:loading.class="opacity-50 pointer-events-none"
                     wire:target="setServerSort">
                     <div class="grid {{ $serverTableColumns }} gap-4 @2xl:min-w-[480px] {{ $tableHead }}">
-                        <x-table.sort-header label="Server" asc="name-asc" desc="name-desc"
+                        <x-table.sort-header label="{{ __('Server') }}" asc="name-asc" desc="name-desc"
                             action="setServerSort" :current="$serverSort" />
                         <div class="hidden @2xl:block">
-                            <x-table.sort-header label="Description" asc="description-asc" desc="description-desc"
+                            <x-table.sort-header label="{{ __('Description') }}" asc="description-asc" desc="description-desc"
                                 action="setServerSort" :current="$serverSort" />
                         </div>
                         @if ($showServerUsage)
-                            <div class="hidden @xl:block">Usage</div>
+                            <div class="hidden @xl:block">{{ __('Usage') }}</div>
                         @endif
-                        <x-table.sort-header label="Status" asc="status-asc" desc="status-desc"
+                        <x-table.sort-header label="{{ __('Status') }}" asc="status-asc" desc="status-desc"
                             action="setServerSort" :current="$serverSort" />
                     </div>
                     @foreach ($dashboardServers as $server)

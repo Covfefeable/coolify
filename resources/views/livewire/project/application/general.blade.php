@@ -20,8 +20,8 @@
                 </x-slot:actions>
             @endif
             <div class="grid gap-4">
-                <x-forms.input x-bind:disabled="shouldDisable()" id="name" label="Name" required />
-                <x-forms.input x-bind:disabled="shouldDisable()" id="description" label="Description" />
+                <x-forms.input x-bind:disabled="shouldDisable()" id="name" label="{{ __('Name') }}" required />
+                <x-forms.input x-bind:disabled="shouldDisable()" id="description" label="{{ __('Description') }}" />
             </div>
 
             </x-application.settings-section>
@@ -30,7 +30,7 @@
             <section id="public-access-section" @class([
                 'border-b border-neutral-200 pb-5 dark:border-white/[0.07]' => $buildPack !== 'dockercompose',
             ])>
-            <h3 class="mb-3 text-sm font-semibold text-black dark:text-fg">Public access</h3>
+            <h3 class="mb-3 text-sm font-semibold text-black dark:text-fg">{{ __('Public access') }}</h3>
             @php
                 $domainCount = 0;
                 $primaryDomain = null;
@@ -131,7 +131,7 @@
                             $usesArgon2id = $httpBasicAuthHashAlgorithm === HttpBasicAuthHashAlgorithm::ARGON2ID->value;
                         @endphp
                         <div class="mt-5 border-t border-neutral-200 pt-5 dark:border-white/[0.07]">
-                            <h3 class="mb-3 text-sm font-semibold text-black dark:text-fg">Password hashing</h3>
+                            <h3 class="mb-3 text-sm font-semibold text-black dark:text-fg">{{ __('Password hashing') }}</h3>
                             <div class="grid w-full gap-4 {{ $usesArgon2id ? 'sm:grid-cols-3' : 'sm:grid-cols-2' }}">
                                 <x-forms.listbox id="httpBasicAuthHashAlgorithm" label="Algorithm" onChange="instantSave"
                                     helper="Algorithm that hashes the password for the proxy labels.<br><br>Traefik supports only bcrypt. Argon2id needs the Caddy proxy, version 2.11 or newer. With Argon2id, labels generated for Traefik use bcrypt."
@@ -408,13 +408,13 @@
                     <div class="grid gap-4 lg:grid-cols-2">
                         @if ($application->build_pack === 'dockerimage')
                             @if ($application->destination->server->isSwarm())
-                                <x-forms.input required id="dockerRegistryImageName" label="Image" placeholder="nginx"
+                                <x-forms.input required id="dockerRegistryImageName" label="{{ __('Image') }}" placeholder="nginx"
                                     x-bind:disabled="!canUpdate" />
                                 <x-forms.input id="dockerRegistryImageTag" label="Tag" placeholder="alpine"
                                     helper="Enter a tag (e.g., 'latest', 'v1.2.3') or SHA256 hash (e.g., 'sha256-59e02939b1bf39f16c93138a28727aec520bb916da021180ae502c61626b3cf0')"
                                     x-bind:disabled="!canUpdate" />
                             @else
-                                <x-forms.input id="dockerRegistryImageName" label="Image" placeholder="nginx"
+                                <x-forms.input id="dockerRegistryImageName" label="{{ __('Image') }}" placeholder="nginx"
                                     x-bind:disabled="!canUpdate" />
                                 <x-forms.input id="dockerRegistryImageTag" label="Tag" placeholder="alpine"
                                     helper="Enter a tag (e.g., 'latest', 'v1.2.3') or SHA256 hash (e.g., 'sha256-59e02939b1bf39f16c93138a28727aec520bb916da021180ae502c61626b3cf0')"
@@ -426,7 +426,7 @@
                                     $application->additional_servers->count() > 0 ||
                                     $application->settings->is_build_server_enabled ||
                                     ! $application->destination->server->canBuildApplications())
-                                <x-forms.input id="dockerRegistryImageName" required label="Image"
+                                <x-forms.input id="dockerRegistryImageName" required label="{{ __('Image') }}"
                                     placeholder="ghcr.io/your-org/your-app" x-bind:disabled="!canUpdate" />
                                 <x-forms.input id="dockerRegistryImageTag"
                                     helper="If set, it will tag the built image with this tag too. <br><br>Example: If you set it to 'latest', it will push the image with the commit sha tag + with the latest tag."
@@ -479,7 +479,7 @@
                         'environment_uuid' => $application->environment->uuid,
                         'application_uuid' => $application->uuid,
                     ]);
-                    $portsExposesDomainHint = "You can also set a different internal port for each domain on the <a class='underline dark:text-white' href='{$applicationDomainsUrl}'>Domains</a> page.";
+                    $portsExposesDomainHint = "You can also set a different internal port for each domain on the <a class='underline dark:text-white' href='{$applicationDomainsUrl}'>{{ __('Domains') }}</a> page.";
                 @endphp
                 <x-modal-input title="Networking" class="hidden" :wireIgnore="false"
                     wireOpen="networkingModalOpen" subtitle="Ports the container exposes, host port mappings and internal network aliases."
@@ -568,7 +568,7 @@
                     @endif
                     <p class="mt-1.5 text-xs text-neutral-500 dark:text-fg-dim">
                         You can also set an internal port per domain on
-                        <a class="underline dark:text-white" href="{{ $applicationDomainsUrl }}" {{ wireNavigate() }}>Domains</a>.
+                        <a class="underline dark:text-white" href="{{ $applicationDomainsUrl }}" {{ wireNavigate() }}>{{ __('Domains') }}</a>.
                     </p>
                     </div>
                     @if (!$application->destination->server->isSwarm())
@@ -583,8 +583,8 @@
                     @endif
                 </div>
                 <div class="mt-5 flex justify-end gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.07]">
-                    <x-forms.button type="button" @click="modalOpen = false">Close</x-forms.button>
-                    <x-forms.button type="submit" isHighlighted canGate="update" :canResource="$application">Save</x-forms.button>
+                    <x-forms.button type="button" @click="modalOpen = false">{{ __('Close') }}</x-forms.button>
+                    <x-forms.button type="submit" isHighlighted canGate="update" :canResource="$application">{{ __('Save') }}</x-forms.button>
                 </div>
                 </form>
                 </x-modal-input>

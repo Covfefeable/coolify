@@ -148,7 +148,7 @@
                         @endif
                         @if ($this->serviceFilterOptions !== [])
                             <div class="my-1 border-t border-neutral-200 dark:border-white/10"></div>
-                            <div class="px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-neutral-400 dark:text-fg-faint">Services</div>
+                            <div class="px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-neutral-400 dark:text-fg-faint">{{ __('Services') }}</div>
                             @foreach ($this->serviceFilterOptions as $serviceName)
                                 <button type="button" class="listbox-option" wire:click="toggleServiceFilter(@js($serviceName))">
                                     <span class="truncate">{{ $serviceName }}</span>
@@ -225,7 +225,7 @@
                                 wire:loading.class="pointer-events-none opacity-40 blur-[2px]"
                                 wire:target="toggleVariableFilter,toggleServiceFilter,clearFilters,setEnvironmentFilter,setTableSort,setEnvironmentVariablePage,previousEnvironmentVariablePage,nextEnvironmentVariablePage">
                             <div class="data-table-header env-table-grid {{ $showEnvironmentType ? '' : 'env-table-grid-no-type' }}">
-                            <x-table.sort-header label="Name" asc="name_asc" desc="name_desc"
+                            <x-table.sort-header label="{{ __('Name') }}" asc="name_asc" desc="name_desc"
                                 action="setTableSort" :current="$tableSort" />
                             <span class="text-center">Managed</span>
                             @if ($showEnvironmentType)
@@ -235,7 +235,7 @@
                             <span class="text-center">Multiline</span>
                             <span class="text-center">Buildtime</span>
                             <span class="text-center">Runtime</span>
-                            <span class="text-right">Actions</span>
+                            <span class="text-right">{{ __('Actions') }}</span>
                         </div>
                             @php $renderedScope = null; @endphp
                             @foreach ($this->environmentVariablePageRows as $row)

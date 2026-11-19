@@ -1,7 +1,7 @@
 <form class="space-y-4" wire:submit="submit">
     <div class="grid gap-4 md:grid-cols-2">
-        <x-forms.input placeholder="Your project name" id="name" label="Name" required />
-        <x-forms.input placeholder="A short project description" id="description" label="Description" />
+        <x-forms.input placeholder="Your project name" id="name" label="{{ __('Name') }}" required />
+        <x-forms.input placeholder="A short project description" id="description" label="{{ __('Description') }}" />
     </div>
 
     <p

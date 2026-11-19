@@ -111,7 +111,7 @@
                 <form wire:submit="submit" class="flex w-full flex-col gap-4"
                     x-data="{ isMultiline: $wire.entangle('is_multiline') }">
                     <div class="grid items-end gap-4 sm:grid-cols-2">
-                        <x-forms.input id="key" label="Name" :required="$is_redis_credential"
+                        <x-forms.input id="key" label="{{ __('Name') }}" :required="$is_redis_credential"
                             :disabled="!$canEditValue || $is_redis_credential || $composeInfo !== null" />
                         <x-forms.input id="comment" label="Comment" placeholder="Optional note"
                             helper="Add a note to document what this environment variable is used for." maxlength="256"

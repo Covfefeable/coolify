@@ -23,7 +23,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Choose Gitea / Forgejo App</h2>
+                    <h2>{{ __('Choose Gitea / Forgejo App') }}</h2>
                     <p>Select the Gitea / Forgejo App that can access the repository you want to deploy.</p>
                 </div>
                 <x-modal-input buttonTitle="+ Add Gitea / Forgejo App" title="New Gitea / Forgejo App" closeOutside="false">
@@ -58,7 +58,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Choose repository</h2>
+                    <h2>{{ __('Choose repository') }}</h2>
                     <p>Search repositories available through the selected Gitea / Forgejo App.</p>
                 </div>
                 @if ($gitea_app_id)
@@ -95,10 +95,10 @@
                 <section class="application-settings-section">
                     <div class="application-settings-section-header">
                         <div>
-                            <h2>Build configuration</h2>
+                            <h2>{{ __('Build configuration') }}</h2>
                             <p>Choose the branch and build strategy for this application.</p>
                         </div>
-                        <x-forms.button type="submit" isHighlighted>Continue</x-forms.button>
+                        <x-forms.button type="submit" isHighlighted>{{ __('Continue') }}</x-forms.button>
                     </div>
                     <div class="application-settings-section-body space-y-5">
                         <div class="grid gap-4 sm:grid-cols-2">

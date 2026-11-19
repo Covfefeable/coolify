@@ -29,9 +29,9 @@
                         <x-helper helper="Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews." />
                     </div>
                 @endif
-                <span class="volumes-col-backup text-center">Backup</span>
+                <span class="volumes-col-backup text-center">{{ __('Backup') }}</span>
                 @if ($showActionsColumn)
-                    <span class="volumes-col-actions text-right">Actions</span>
+                    <span class="volumes-col-actions text-right">{{ __('Actions') }}</span>
                 @endif
             </div>
 
@@ -100,7 +100,7 @@
                             @endif
 
                             <div class="volumes-col-backup flex items-center justify-center gap-1.5">
-                                <span class="volumes-mobile-label volumes-field-label">Backup</span>
+                                <span class="volumes-mobile-label volumes-field-label">{{ __('Backup') }}</span>
                                 @if ($hasEnabledBackup)
                                     @if ($backupUrl)
                                         <a href="{{ $backupUrl }}" @class([
@@ -149,7 +149,7 @@
                                             @if ($canUpdate)
                                                 <x-modal-input title="Configure Volume Backup" :wireIgnore="false">
                                                     <x-slot:content>
-                                                        <x-table.row-action>Backup</x-table.row-action>
+                                                        <x-table.row-action>{{ __('Backup') }}</x-table.row-action>
                                                     </x-slot:content>
                                                     @if ($resource instanceof \App\Models\Application)
                                                         <livewire:project.application.backup.create :application="$resource"
@@ -203,7 +203,7 @@
                                                             confirmationLabel="Please confirm by entering the Storage Name below"
                                                             shortConfirmationLabel="Storage Name">
                                                             <x-slot:trigger>
-                                                                <x-table.row-action>Delete</x-table.row-action>
+                                                                <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                                             </x-slot:trigger>
                                                         </x-modal-confirmation>
                                                     @endif
@@ -265,7 +265,7 @@
                             @endif
 
                             <div class="volumes-col-backup flex items-center justify-center gap-1.5">
-                                <span class="volumes-mobile-label volumes-field-label">Backup</span>
+                                <span class="volumes-mobile-label volumes-field-label">{{ __('Backup') }}</span>
                                 @if ($hasEnabledBackup)
                                     @if ($backupUrl)
                                         <a href="{{ $backupUrl }}" @class([
@@ -308,7 +308,7 @@
                                             @if ($showBackupAction && ! $form['isShared'])
                                                 <x-modal-input title="Configure Volume Backup" :wireIgnore="false">
                                                     <x-slot:content>
-                                                        <x-table.row-action>Backup</x-table.row-action>
+                                                        <x-table.row-action>{{ __('Backup') }}</x-table.row-action>
                                                     </x-slot:content>
                                                     @if ($resource instanceof \App\Models\Application)
                                                         <livewire:project.application.backup.create :application="$resource"
@@ -323,7 +323,7 @@
                                             @elseif (method_exists($resource, 'isBackupSolutionAvailable') && $resource->isBackupSolutionAvailable())
                                                 <x-modal-input title="New Scheduled Backup" :wireIgnore="false">
                                                     <x-slot:content>
-                                                        <x-table.row-action>Backup</x-table.row-action>
+                                                        <x-table.row-action>{{ __('Backup') }}</x-table.row-action>
                                                     </x-slot:content>
                                                     <livewire:project.database.create-scheduled-backup :database="$resource"
                                                         wire:key="configure-database-backup-{{ $id }}" />
@@ -340,7 +340,7 @@
                                                     confirmationLabel="Please confirm the execution of the actions by entering the Storage Name below"
                                                     shortConfirmationLabel="Storage Name">
                                                     <x-slot:trigger>
-                                                        <x-table.row-action>Delete</x-table.row-action>
+                                                        <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                                     </x-slot:trigger>
                                                 </x-modal-confirmation>
                                             </x-slot:danger>

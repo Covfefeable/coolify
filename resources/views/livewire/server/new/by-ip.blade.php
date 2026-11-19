@@ -72,8 +72,8 @@
                 </div>
 
                 <div class="grid gap-4 border-t border-neutral-200 pt-4 lg:grid-cols-2 dark:border-white/[0.08]">
-                    <x-forms.input id="name" label="Name" required />
-                    <x-forms.input id="description" label="Description" />
+                    <x-forms.input id="name" label="{{ __('Name') }}" required />
+                    <x-forms.input id="description" label="{{ __('Description') }}" />
                 </div>
 
                 <x-forms.collapsible class="mt-5 border-t border-neutral-200 pt-4 dark:border-white/[0.08]"

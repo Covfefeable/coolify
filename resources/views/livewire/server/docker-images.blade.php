@@ -62,7 +62,7 @@
                                 action="setSort" :current="$sort" />
                             <x-table.sort-header label="Used by" asc="used_asc" desc="used_desc" action="setSort"
                                 :current="$sort" />
-                            <span class="text-right">Actions</span>
+                            <span class="text-right">{{ __('Actions') }}</span>
                         </div>
                         @foreach ($visibleImages as $image)
                             <div wire:key="image-{{ $image['reference'] }}"

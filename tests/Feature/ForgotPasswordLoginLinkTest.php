@@ -18,6 +18,21 @@ function ensureLoginUserExists(): void
     }
 }
 
+test('login renders the configured interface language', function (string $locale, string $login, string $forgotPassword) {
+    app()->setLocale($locale);
+    InstanceSettings::query()->forceCreate(['id' => 0]);
+    ensureLoginUserExists();
+
+    $this->get('/login')
+        ->assertSuccessful()
+        ->assertSee('lang="'.$locale.'"', false)
+        ->assertSeeText($login)
+        ->assertSeeText($forgotPassword);
+})->with([
+    'Simplified Chinese' => ['zh-cn', '登录', '忘记密码？'],
+    'English' => ['en', 'Login', 'Forgot password?'],
+]);
+
 test('login shows active forgot password link when transactional email is enabled', function () {
     InstanceSettings::query()->forceCreate([
         'id' => 0,

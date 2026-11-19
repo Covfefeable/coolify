@@ -15,7 +15,7 @@
                 <x-callout type="danger" title="The SSH host key of this server changed" class="mb-4">
                     The server sent a host key that does not match the key that Coolify trusts. Check it on the
                     <a href="{{ route('server.security', ['server_uuid' => $server->uuid]).'#server-host-key-section' }}" {{ wireNavigate() }}
-                        class="underline">Security</a> page.
+                        class="underline">{{ __('Security') }}</a> page.
                 </x-callout>
             @endif
             @if ($server->isLocalhost())
@@ -224,10 +224,10 @@
                         @include('livewire.server.partials.force-disabled-callout')
 
                         <div class="grid gap-4 sm:grid-cols-2">
-                            <x-forms.input canGate="update" :canResource="$server" id="name" label="Name"
+                            <x-forms.input canGate="update" :canResource="$server" id="name" label="{{ __('Name') }}"
                                 required :disabled="$isValidating" />
                             <x-forms.input canGate="update" :canResource="$server" id="description"
-                                label="Description" :disabled="$isValidating" />
+                                label="{{ __('Description') }}" :disabled="$isValidating" />
                         </div>
 
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">

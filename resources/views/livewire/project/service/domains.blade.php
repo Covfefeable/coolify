@@ -238,7 +238,7 @@
                         class="application-settings-form application-settings-section relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden lg:w-auto lg:min-w-2xl lg:max-w-4xl"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                         <header class="flex-nowrap!">
-                            <h3 class="min-w-0 flex-1 truncate">Domain settings</h3>
+                            <h3 class="min-w-0 flex-1 truncate">{{ __('Domain settings') }}</h3>
                             <button type="button" @click="closeEditDomain()" class="icon-button shrink-0"
                                 aria-label="Close">
                                 <x-reicon name="x" class="size-4" />
@@ -299,7 +299,7 @@
                                     <div class="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/10">
                                         <x-forms.button type="button" wire:click="regenerateEditingDomain">Regenerate hostname</x-forms.button>
                                         @unless ($editDomainDnsFailed)
-                                            <x-forms.button type="button" wire:click="updateDomain" isHighlighted>Save</x-forms.button>
+                                            <x-forms.button type="button" wire:click="updateDomain" isHighlighted>{{ __('Save') }}</x-forms.button>
                                         @endunless
                                     </div>
                             @endcan
@@ -326,7 +326,7 @@
                         class="application-settings-form application-settings-section relative w-full lg:min-w-[36rem] lg:max-w-2xl"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                         <header>
-                            <h3>Use a different port?</h3>
+                            <h3>{{ __('Use a different port?') }}</h3>
                             <button type="button"
                                 @click="modalOpen = false; $wire.call('cancelRemovePort')"
                                 class="icon-button" aria-label="Close">

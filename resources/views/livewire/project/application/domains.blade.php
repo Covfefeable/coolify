@@ -107,7 +107,7 @@
                                 </x-slot:content>
                                 <form wire:submit="addDomain" class="application-settings-form flex flex-col gap-4">
                                     @if ($isCompose && count($composeServices) > 0)
-                                        <x-forms.listbox canGate="update" :canResource="$application" label="Service" id="newDomainService" required
+                                        <x-forms.listbox canGate="update" :canResource="$application" label="{{ __('Service') }}" id="newDomainService" required
                                             :options="collect($composeServices)->map(fn ($serviceName) => [
                                                 'value' => $serviceName,
                                                 'label' => $serviceName,
@@ -160,7 +160,7 @@
                 <span>Internal port</span>
                 <span>Search indexing</span>
                 <span>DNS status</span>
-                <span class="text-right">Actions</span>
+                <span class="text-right">{{ __('Actions') }}</span>
             </div>
         @endif
         @if ($isCompose && count($composeServices) === 0 && ! $hasRows)
@@ -301,7 +301,7 @@
                         class="application-settings-form application-settings-section relative flex max-h-[calc(100dvh-2rem)] w-full flex-col overflow-hidden lg:w-auto lg:min-w-2xl lg:max-w-4xl"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                         <header class="flex-nowrap!">
-                            <h3 class="min-w-0 flex-1 truncate">Domain settings</h3>
+                            <h3 class="min-w-0 flex-1 truncate">{{ __('Domain settings') }}</h3>
                             <button type="button" @click="closeEditDomain()"
                                 class="icon-button shrink-0" aria-label="Close">
                                 <x-reicon name="x" class="size-4" />
@@ -313,7 +313,7 @@
                                     class="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain pb-4">
                                 <div x-show="editingServiceLabel" x-cloak class="w-full">
                                     <div class="mb-1.5 flex h-4 w-full items-center gap-1.5">
-                                        <label class="mb-0! flex items-center gap-1 text-sm font-medium leading-4">Service</label>
+                                        <label class="mb-0! flex items-center gap-1 text-sm font-medium leading-4">{{ __('Service') }}</label>
                                     </div>
                                     <input type="text" class="input" readonly x-bind:value="editingServiceLabel" />
                                 </div>
@@ -397,7 +397,7 @@
                         class="application-settings-form application-settings-section relative w-full lg:min-w-[36rem] lg:max-w-2xl"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                         <header>
-                            <h3>Use a different port?</h3>
+                            <h3>{{ __('Use a different port?') }}</h3>
                             <button type="button"
                                 @click="modalOpen = false; $wire.call('cancelUseUnknownPort')"
                                 class="icon-button" aria-label="Close">

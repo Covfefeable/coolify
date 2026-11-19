@@ -21,7 +21,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Choose GitHub App</h2>
+                    <h2>{{ __('Choose GitHub App') }}</h2>
                     <p>Select the installation that can access the repository you want to deploy.</p>
                 </div>
                 <x-modal-input buttonTitle="+ Add GitHub App" title="New GitHub App" closeOutside="false">
@@ -56,7 +56,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Choose repository</h2>
+                    <h2>{{ __('Choose repository') }}</h2>
                     <p>Search repositories available through {{ $github_app->name }}.</p>
                 </div>
                 <div class="flex items-center gap-2">
@@ -98,10 +98,10 @@
                 <section class="application-settings-section">
                     <div class="application-settings-section-header">
                         <div>
-                            <h2>Build configuration</h2>
+                            <h2>{{ __('Build configuration') }}</h2>
                             <p>Choose the branch and build strategy for this application.</p>
                         </div>
-                        <x-forms.button type="submit" wire:target="submit" isHighlighted>Continue</x-forms.button>
+                        <x-forms.button type="submit" wire:target="submit" isHighlighted>{{ __('Continue') }}</x-forms.button>
                     </div>
                     <div class="application-settings-section-body space-y-5">
                         @include('livewire.project.new.partials.smart-scan-summary')

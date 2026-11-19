@@ -96,7 +96,7 @@
                 class="menu-item menu-search justify-between !rounded-lg !bg-neutral-100 dark:!bg-white/[0.04] hover:!bg-neutral-200 dark:hover:!bg-white/[0.07] !text-fg-faint">
                 <span class="flex items-center gap-2.5 min-w-0">
                     <x-reicon name="search" class="menu-item-icon" />
-                    <span class="menu-item-label truncate" :class="collapsed && 'lg:hidden'">Search</span>
+                    <span class="menu-item-label truncate" :class="collapsed && 'lg:hidden'">{{ __('Search') }}</span>
                 </span>
                 <kbd class="px-1.5 py-0.5 text-[11px] font-medium text-fg-faint bg-neutral-200 dark:bg-white/[0.06] rounded-lg border border-transparent dark:border-white/5"
                     :class="collapsed && 'lg:hidden'" x-text="modKeyLabel + 'K'"></kbd>
@@ -217,7 +217,7 @@
                                     <x-reicon name="chevron-down" class="size-3 rotate-90 text-coollabs dark:text-fg-dim" />
                                 </span>
                                 <span class="flex-1 truncate pr-6 text-center font-medium text-black dark:text-fg"
-                                    :class="collapsed && 'lg:hidden'">{{ $navMenu['label'] }}</span>
+                                    :class="collapsed && 'lg:hidden'">{{ __($navMenu['label']) }}</span>
                             </button>
                         </li>
                         <li @if ($desktop) id="main-nav-context-{{ $depth }}" @else data-mobile-nav-context="{{ $depth }}" @endif
@@ -243,7 +243,7 @@
                                     <x-reicon name="chevron-down" class="size-3 rotate-90 text-coollabs dark:text-fg-dim" />
                                 </span>
                                 <span class="flex-1 truncate pr-6 text-center font-medium text-black dark:text-fg"
-                                    :class="collapsed && 'lg:hidden'">{{ $submenuItem['label'] }}</span>
+                                    :class="collapsed && 'lg:hidden'">{{ __($submenuItem['label']) }}</span>
                             </button>
                         </li>
                         @foreach ($submenuItem['children'] as $child)
@@ -251,7 +251,7 @@
                                 <li class="my-2 border-t border-neutral-200 dark:border-white/[0.06]" aria-hidden="true"></li>
                             @endif
                             <li>
-                                <a title="{{ $child['label'] }}" href="{{ $child['href'] }}" {{ wireNavigate() }}
+                                <a title="{{ __($child['label']) }}" href="{{ $child['href'] }}" {{ wireNavigate() }}
                                     @if ($child['active']) aria-current="page" @endif
                                     @class(['menu-item', 'menu-item-active' => $child['active']])
                                     :class="collapsed && 'lg:justify-center lg:px-0'">
@@ -264,7 +264,7 @@
                                     @else
                                         <x-reicon :name="$child['icon']" class="menu-item-icon" />
                                     @endisset
-                                    <span class="menu-item-label" :class="collapsed && 'lg:hidden'">{{ $child['label'] }}</span>
+                                    <span class="menu-item-label" :class="collapsed && 'lg:hidden'">{{ __($child['label']) }}</span>
                                 </a>
                             </li>
                             @if ($child['active'] && $desktop)
@@ -302,20 +302,20 @@
                     <li>
                         {{-- A parent entry is a button, not a link: wire:navigate would start a page load on mouse down. --}}
                         @isset($item['children'])
-                            <button type="button" title="{{ $item['label'] }}" @click="submenu = @js($item['label']); navSwap = 'forward'"
+                            <button type="button" title="{{ __($item['label']) }}" @click="submenu = @js($item['label']); navSwap = 'forward'"
                                 @class(['menu-item w-full', 'menu-item-active' => $item['active']])
                                 :class="collapsed && 'lg:justify-center lg:px-0'">
                                 <x-reicon :name="$item['icon']" class="menu-item-icon" />
-                                <span class="menu-item-label flex-1 text-left" :class="collapsed && 'lg:hidden'">{{ $item['label'] }}</span>
+                                <span class="menu-item-label flex-1 text-left" :class="collapsed && 'lg:hidden'">{{ __($item['label']) }}</span>
                                 <x-reicon name="chevron-down" class="nav-chevron size-3 -rotate-90 text-coollabs dark:text-fg-faint" ::class="collapsed && 'lg:hidden'" />
                             </button>
                         @else
-                            <a title="{{ $item['label'] }}" href="{{ $item['href'] }}"
+                            <a title="{{ __($item['label']) }}" href="{{ $item['href'] }}"
                                 @if ($item['navigate'] ?? true) {{ wireNavigate() }} @endif
                                 @class(['menu-item', 'menu-item-active' => $item['active']])
                                 :class="collapsed && 'lg:justify-center lg:px-0'">
                                 <x-reicon :name="$item['icon']" class="menu-item-icon" />
-                                <span class="menu-item-label flex-1" :class="collapsed && 'lg:hidden'">{{ $item['label'] }}</span>
+                                <span class="menu-item-label flex-1" :class="collapsed && 'lg:hidden'">{{ __($item['label']) }}</span>
                             </a>
                         @endisset
                     </li>
@@ -342,12 +342,12 @@
                 :class="collapsed && 'lg:mx-2.5 lg:my-2 lg:h-0 lg:overflow-hidden lg:border-t lg:border-neutral-200 lg:p-0 lg:text-transparent dark:lg:border-white/10'">
                 Account</li>
             <li>
-                <a title="Subscription" {{ wireNavigate() }}
+                <a title="{{ __('Subscription') }}" {{ wireNavigate() }}
                     class="{{ request()->is('subscription*') ? 'menu-item-active menu-item' : 'menu-item' }}"
                     :class="collapsed && 'lg:justify-center lg:px-0'"
                     href="{{ isSubscriptionOnGracePeriod() ? route('subscription.show') : route('subscription.index') }}">
                     <x-reicon name="subscription" class="menu-item-icon" />
-                    <span class="menu-item-label" :class="collapsed && 'lg:hidden'">Subscription</span>
+                    <span class="menu-item-label" :class="collapsed && 'lg:hidden'">{{ __('Subscription') }}</span>
                 </a>
             </li>
             @if (auth()->user()->teams()->get()->count() > 1)

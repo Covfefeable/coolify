@@ -11,10 +11,10 @@
                 </x-modal-input>
             </x-slot:actions>
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input label="Name" id="name" canGate="update" :canResource="$database" />
-                <x-forms.input label="Description" id="description" canGate="update" :canResource="$database" />
+                <x-forms.input label="{{ __('Name') }}" id="name" canGate="update" :canResource="$database" />
+                <x-forms.input label="{{ __('Description') }}" id="description" canGate="update" :canResource="$database" />
                 <div class="lg:col-span-2">
-                    <x-forms.input label="Image" id="image" required canGate="update" :canResource="$database"
+                    <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database"
                         helper="Use a published peakimages/sqlite image from Docker Hub." />
                 </div>
             </div>

@@ -47,7 +47,7 @@
         <div class="grid gap-4 lg:grid-cols-2">
             <x-forms.input canGate="update" :canResource="$service" id="name" required label="Service name"
                 placeholder="My WordPress site" />
-            <x-forms.input canGate="update" :canResource="$service" id="description" label="Description" />
+            <x-forms.input canGate="update" :canResource="$service" id="description" label="{{ __('Description') }}" />
         </div>
         <x-application.settings-subsection id="service-network-section" title="Network" helper="Control whether this Compose stack joins Coolify's predefined network.">
             <x-forms.listbox canGate="update" :canResource="$service" id="connectToDockerNetwork" label="Network attachment" live onChange="instantSave"

@@ -326,7 +326,7 @@ class SettingsOauth extends Component
             $this->updateOauthSettings($this->selectedProvider);
 
             if ($this->selectedProvider === null) {
-                $this->dispatch('success', 'Instance settings updated successfully!');
+                $this->dispatch('success', __('Instance settings updated successfully!'));
             }
         } catch (ValidationException $e) {
             throw $e;

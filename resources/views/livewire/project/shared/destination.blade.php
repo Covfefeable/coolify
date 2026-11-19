@@ -26,7 +26,7 @@
                                 <x-status-summary :status="$resource->status" />
                             </div>
                             <p class="mt-1 flex flex-wrap items-center gap-1.5 text-[13px] text-neutral-500 dark:text-fg-dim">
-                                <span>Network</span>
+                                <span>{{ __('Network') }}</span>
                                 <code
                                     class="rounded bg-neutral-100 px-1.5 py-0.5 font-mono text-xs text-neutral-700 dark:bg-white/[0.05] dark:text-fg-dim">{{ data_get($resource, 'destination.network') }}</code>
                             </p>
@@ -95,7 +95,7 @@
                                         </div>
                                         <p
                                             class="mt-1 flex flex-wrap items-center gap-1.5 text-[13px] text-neutral-500 dark:text-fg-dim">
-                                            <span>Network</span>
+                                            <span>{{ __('Network') }}</span>
                                             <code
                                                 class="rounded bg-neutral-100 px-1.5 py-0.5 font-mono text-xs text-neutral-700 dark:bg-white/[0.05] dark:text-fg-dim">{{ data_get($destination, 'network') }}</code>
                                         </p>
@@ -248,7 +248,7 @@
                                 </span>
                             </div>
                             <p class="mt-1 flex flex-wrap items-center gap-1.5 text-[13px] text-neutral-500 dark:text-fg-dim">
-                                <span>Network</span>
+                                <span>{{ __('Network') }}</span>
                                 <code
                                     class="rounded bg-neutral-100 px-1.5 py-0.5 font-mono text-xs text-neutral-700 dark:bg-white/[0.05] dark:text-fg-dim">{{ data_get($resource, 'destination.network') }}</code>
                             </p>

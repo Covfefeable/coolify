@@ -169,12 +169,12 @@
                 class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]">
                 <div
                     class="environment-resource-grid border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                    <x-table.sort-header label="Resource" asc="name-asc" desc="name-desc" then="page = 1" />
+                    <x-table.sort-header label="{{ __('Resource') }}" asc="name-asc" desc="name-desc" then="page = 1" />
                     <x-table.sort-header label="Type" asc="type-asc" desc="type-desc" then="page = 1" class="resource-type" />
-                    <x-table.sort-header label="Status" asc="status-asc" desc="status-desc" then="page = 1" />
+                    <x-table.sort-header label="{{ __('Status') }}" asc="status-asc" desc="status-desc" then="page = 1" />
                     <x-table.sort-header label="Domain" asc="domain-asc" desc="domain-desc" then="page = 1" class="resource-domain" />
-                    <x-table.sort-header label="Server" asc="server-asc" desc="server-desc" then="page = 1" class="resource-server" />
-                    <div class="resource-tags">Tags</div>
+                    <x-table.sort-header label="{{ __('Server') }}" asc="server-asc" desc="server-desc" then="page = 1" class="resource-server" />
+                    <div class="resource-tags">{{ __('Tags') }}</div>
                 </div>
 
                 <template x-for="item in paginatedResources" :key="item.uuid">

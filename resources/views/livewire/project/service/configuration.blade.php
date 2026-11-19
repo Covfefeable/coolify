@@ -48,10 +48,10 @@
                                 @if ($applications->isNotEmpty() || $databases->isNotEmpty())
                                     <div x-cloak x-show="viewMode === 'table'"
                                         class="grid min-w-[48rem] grid-cols-[minmax(14rem,1fr)_minmax(12rem,1fr)_12rem_5rem] gap-3 border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                                        <div>Resource</div>
+                                        <div>{{ __('Resource') }}</div>
                                         <div>Image</div>
-                                        <div class="justify-self-start">Status</div>
-                                        <span class="text-right">Actions</span>
+                                        <div class="justify-self-start">{{ __('Status') }}</div>
+                                        <span class="text-right">{{ __('Actions') }}</span>
                                     </div>
                                 @endif
 

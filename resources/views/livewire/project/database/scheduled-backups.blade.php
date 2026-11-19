@@ -62,7 +62,7 @@
                     <span>Latest run</span>
                     <span>S3 storage</span>
                     <span>Executions</span>
-                    <span class="text-right">Actions</span>
+                    <span class="text-right">{{ __('Actions') }}</span>
                 </div>
                 @foreach ($database->scheduledBackups as $backup)
                     @php

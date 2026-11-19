@@ -91,7 +91,7 @@
                             <x-forms.listbox id="selected_server_type" label="Server type" required live
                                 :disabled="!$selected_location" placeholder="Select a server type"
                                 :options="$serverTypeOptions" />
-                            <x-forms.listbox id="selected_image" label="Image" required
+                            <x-forms.listbox id="selected_image" label="{{ __('Image') }}" required
                                 :disabled="!$selected_server_type" placeholder="Select an image"
                                 :options="$imageOptions" />
                             @if ($private_keys->isEmpty())

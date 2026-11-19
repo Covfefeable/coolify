@@ -75,7 +75,7 @@ class Advanced extends Component
         try {
             $this->authorize('update', $this->server);
             $this->syncData(true);
-            $this->dispatch('success', 'Server updated.');
+            $this->dispatch('success', __('Server updated.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }
@@ -90,7 +90,7 @@ class Advanced extends Component
             }
             $this->authorize('update', $this->server);
             $this->syncData(true);
-            $this->dispatch('success', 'Server updated.');
+            $this->dispatch('success', __('Server updated.'));
         } catch (\Throwable $e) {
             return handleError($e, $this);
         }

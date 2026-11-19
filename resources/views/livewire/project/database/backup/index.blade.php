@@ -30,7 +30,7 @@
                         </p>
                     </div>
                     <div>
-                        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">Enabled</p>
+                        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Enabled') }}</p>
                         <p class="mt-1 text-xl font-semibold tabular-nums text-neutral-950 dark:text-fg">
                             {{ $database->scheduledBackups->where('enabled', true)->count() }}
                         </p>

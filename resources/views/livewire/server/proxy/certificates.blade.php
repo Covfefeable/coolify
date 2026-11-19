@@ -53,7 +53,7 @@
                                         <th>Resolver</th>
                                         <th>Alternative names</th>
                                         <th>Expires</th>
-                                        <th class="text-right">Actions</th>
+                                        <th class="text-right">{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -143,10 +143,10 @@
                                     <table class="w-full min-w-2xl">
                                         <thead>
                                             <tr>
-                                                <th>Backup</th>
+                                                <th>{{ __('Backup') }}</th>
                                                 <th>Created</th>
                                                 <th>Size</th>
-                                                <th class="text-right">Actions</th>
+                                                <th class="text-right">{{ __('Actions') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -187,7 +187,7 @@
                                                                         :confirmWithPassword="false"
                                                                         :confirmWithText="false">
                                                                         <x-slot:trigger>
-                                                                            <x-table.row-action>Delete</x-table.row-action>
+                                                                            <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                                                         </x-slot:trigger>
                                                                     </x-modal-confirmation>
                                                                 </x-slot:danger>

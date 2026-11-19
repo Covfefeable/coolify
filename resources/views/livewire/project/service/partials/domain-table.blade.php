@@ -9,14 +9,14 @@
         <div class="data-table-header {{ $gridClass }}">
             <span>Domain</span>
             @if ($showServiceColumn)
-                <span>Service</span>
+                <span>{{ __('Service') }}</span>
             @endif
             <span>Protocol redirect</span>
                 <span>Domain redirect</span>
                 <span>Internal port</span>
                 <span>Search indexing</span>
                 <span>DNS status</span>
-            <span class="text-right">Actions</span>
+            <span class="text-right">{{ __('Actions') }}</span>
         </div>
     @endif
     @foreach ($rows as $row)
@@ -207,7 +207,7 @@
                                         :confirmWithPassword="false" :confirmWithText="false"
                                         step2ButtonText="Remove domain">
                                         <x-slot:trigger>
-                                            <x-table.row-action>Delete</x-table.row-action>
+                                            <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                         </x-slot:trigger>
                                     </x-modal-confirmation>
                                 </x-slot:danger>

@@ -23,7 +23,7 @@
                 <a @class(['menu-item', 'menu-item-active' => request()->routeIs('project.service.index')])
                     {{ wireNavigate() }} href="{{ route('project.service.index', $parameters) }}">
                     <x-reicon name="settings" class="menu-item-icon" />
-                    <span class="menu-item-label">General</span>
+                    <span class="menu-item-label">{{ __('General') }}</span>
                 </a>
                 </nav>
             </x-main-nav-menu>
@@ -39,9 +39,9 @@
                     <form wire:submit="submitApplication" class="space-y-6">
                         <div class="space-y-4">
                             <div class="grid gap-4 sm:grid-cols-2">
-                                <x-forms.input canGate="update" :canResource="$serviceApplication" label="Name" id="humanName"
+                                <x-forms.input canGate="update" :canResource="$serviceApplication" label="{{ __('Name') }}" id="humanName"
                                     placeholder="Human readable name"></x-forms.input>
-                                <x-forms.input canGate="update" :canResource="$serviceApplication" label="Description"
+                                <x-forms.input canGate="update" :canResource="$serviceApplication" label="{{ __('Description') }}"
                                     id="description"></x-forms.input>
                             </div>
                             <div class="grid gap-4 sm:grid-cols-2">
@@ -132,7 +132,7 @@
                                         class="application-settings-form application-settings-section relative w-full lg:min-w-[36rem] lg:max-w-2xl"
                                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                                         <header>
-                                            <h3>Use a different port?</h3>
+                                            <h3>{{ __('Use a different port?') }}</h3>
                                             <button @click="modalOpen = false; $wire.call('cancelRemovePort')"
                                                 class="flex size-7 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">
                                                 <x-reicon name="x" class="size-4" />
@@ -179,9 +179,9 @@
                 <form wire:submit="submitDatabase" class="space-y-6">
                     <div class="space-y-5">
                         <div class="grid gap-4 sm:grid-cols-2">
-                            <x-forms.input canGate="update" :canResource="$serviceDatabase" label="Name" id="humanName"
+                            <x-forms.input canGate="update" :canResource="$serviceDatabase" label="{{ __('Name') }}" id="humanName"
                                 placeholder="Name"></x-forms.input>
-                            <x-forms.input canGate="update" :canResource="$serviceDatabase" label="Description"
+                            <x-forms.input canGate="update" :canResource="$serviceDatabase" label="{{ __('Description') }}"
                                 id="description"></x-forms.input>
                             <x-forms.input class="sm:col-span-2" canGate="update" :canResource="$serviceDatabase" required
                                 helper="You can change the image you would like to deploy.<br><br><span class='dark:text-warning'>WARNING. You could corrupt your data. Only do it if you know what you are doing.</span>"
@@ -189,7 +189,7 @@
                         </div>
                         <div class="border-t border-neutral-200 pt-5 dark:border-white/[0.06]">
                             <div class="mb-4 flex items-center justify-between gap-2">
-                                <h3 class="text-sm font-semibold text-black dark:text-fg">Public access</h3>
+                                <h3 class="text-sm font-semibold text-black dark:text-fg">{{ __('Public access') }}</h3>
                                 <div class="flex items-center gap-2">
                                     <x-loading wire:loading wire:target="instantSave" />
                                     @if ($serviceDatabase->is_public)
@@ -199,7 +199,7 @@
                                                 <livewire:project.shared.get-logs :server="$server" :resource="$service"
                                                     :servicesubtype="$serviceDatabase" container="{{ $serviceDatabase->uuid }}-proxy" :collapsible="false" lazy />
                                             </x-slot:content>
-                                            <x-forms.button @click="processDialogOpen = true">Logs</x-forms.button>
+                                            <x-forms.button @click="processDialogOpen = true">{{ __('Logs') }}</x-forms.button>
                                         </x-process-dialog>
                                     @endif
                                 </div>

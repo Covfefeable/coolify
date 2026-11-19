@@ -80,7 +80,7 @@
                             </p>
 
                             <div>
-                                <p class="mb-1.5 text-sm font-medium text-black dark:text-white">Domains</p>
+                                <p class="mb-1.5 text-sm font-medium text-black dark:text-white">{{ __('Domains') }}</p>
                                 <ul
                                     class="max-h-40 space-y-1 overflow-y-auto rounded-md border border-neutral-200 bg-neutral-50 px-3 py-2 font-mono text-[13px] text-black dark:border-coolgray-300 dark:bg-coolgray-100 dark:text-fg">
                                     @foreach ($cloudflareHosts as $host)
@@ -190,7 +190,7 @@
                                         class="bg-neutral-50 text-[12px] uppercase tracking-wide text-neutral-500 dark:bg-coolgray-100 dark:text-fg-dim">
                                         <tr>
                                             <th class="px-3 py-2 font-medium">Type</th>
-                                            <th class="px-3 py-2 font-medium">Name</th>
+                                            <th class="px-3 py-2 font-medium">{{ __('Name') }}</th>
                                             <th class="px-3 py-2 font-medium">Value</th>
                                             <th class="px-3 py-2 font-medium"><span class="sr-only">Action</span></th>
                                         </tr>

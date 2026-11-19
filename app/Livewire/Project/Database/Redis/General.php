@@ -118,7 +118,7 @@ class General extends Component
             $this->syncData();
             $this->server = data_get($this->database, 'destination.server');
             if (! $this->server) {
-                $this->dispatch('error', 'Database destination server is not configured.');
+                $this->dispatch('error', __('Database destination server is not configured.'));
 
                 return;
             }
@@ -171,13 +171,13 @@ class General extends Component
 
             if (! $this->server->isLogDrainEnabled()) {
                 $this->isLogDrainEnabled = false;
-                $this->dispatch('error', 'Log drain is not enabled on the server. Please enable it first.');
+                $this->dispatch('error', __('Log drain is not enabled on the server. Please enable it first.'));
 
                 return;
             }
             $this->syncData(true);
-            $this->dispatch('success', 'Database updated.');
-            $this->dispatch('success', 'You need to restart the service for the changes to take effect.');
+            $this->dispatch('success', __('Database updated.'));
+            $this->dispatch('success', __('You need to restart the service for the changes to take effect.'));
         } catch (Exception $e) {
             return handleError($e, $this);
         }
@@ -207,7 +207,7 @@ class General extends Component
                 );
             }
 
-            $this->dispatch('success', 'Database updated.');
+            $this->dispatch('success', __('Database updated.'));
             $this->dispatch('databaseUpdated');
         } catch (Exception $e) {
             return handleError($e, $this);

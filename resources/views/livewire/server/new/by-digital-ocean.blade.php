@@ -90,7 +90,7 @@
                             <x-forms.listbox id="selected_size" label="Size" required live
                                 :disabled="!$selected_region" placeholder="Select a size"
                                 :options="$sizeOptions" />
-                            <x-forms.listbox id="selected_image" label="Image" required
+                            <x-forms.listbox id="selected_image" label="{{ __('Image') }}" required
                                 :disabled="!$selected_size" placeholder="Select an image"
                                 :options="$imageOptions" />
                             @if ($private_keys->isEmpty())

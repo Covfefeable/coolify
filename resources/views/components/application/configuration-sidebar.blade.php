@@ -272,7 +272,7 @@
                                     href="{{ route($menuItem['route'], $applicationRouteParameters) }}"
                                     >
                                     <x-reicon :name="$menuIcons[$menuItem['label']] ?? 'settings'" class="menu-item-icon" />
-                                    <span class="menu-item-label">{{ $menuItem['label'] }}</span>
+                                    <span class="menu-item-label">{{ __($menuItem['label']) }}</span>
                                     @if ($menuItem['label'] === 'Files')
                                         <x-beta-badge class="ml-auto shrink-0" />
                                     @endif
@@ -293,7 +293,7 @@
                                             <button type="button" class="menu-subitem"
                                                 :class="activeSection === '{{ $section['id'] }}' && 'menu-subitem-active'"
                                                 x-on:click="activeSection = '{{ $section['id'] }}'; history.replaceState(null, '', '#{{ $section['id'] }}'); window.scrollToSettingsSection?.('{{ $section['id'] }}')">
-                                                <span class="menu-item-label text-left">{{ $section['label'] }}</span>
+                                                <span class="menu-item-label text-left">{{ __($section['label']) }}</span>
                                             </button>
                                         @endforeach
                                     </div>

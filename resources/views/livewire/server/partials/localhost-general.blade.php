@@ -60,10 +60,10 @@
                     <x-application.settings-section id="server-connection-section" title="Connection"
                         helper="Configure how Coolify identifies and connects to this server.">
                         <div class="grid gap-4 sm:grid-cols-2">
-                            <x-forms.input canGate="update" :canResource="$server" id="name" label="Name"
+                            <x-forms.input canGate="update" :canResource="$server" id="name" label="{{ __('Name') }}"
                                 required :disabled="$isValidating" />
                             <x-forms.input canGate="update" :canResource="$server" id="description"
-                                label="Description" :disabled="$isValidating" />
+                                label="{{ __('Description') }}" :disabled="$isValidating" />
                         </div>
 
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">

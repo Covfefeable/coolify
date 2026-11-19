@@ -4,7 +4,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Docker image</h2>
+                    <h2>{{ __('Docker image') }}</h2>
                     <p>Deploy an existing image from Docker Hub or another OCI registry.</p>
                 </div>
                 <x-forms.button type="submit" isHighlighted>Create application</x-forms.button>

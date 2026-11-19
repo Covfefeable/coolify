@@ -92,7 +92,7 @@ class Updates extends Component
                     'changed_fields' => $changedFields,
                 ]);
             }
-            $this->dispatch('success', 'Settings updated!');
+            $this->dispatch('success', __('Settings updated!'));
         } catch (ValidationException $e) {
             throw $e;
         } catch (\Exception $e) {
@@ -180,14 +180,14 @@ class Updates extends Component
         $checked = (new CheckForUpdatesJob(cdnTries: 1))->handle();
         $this->dispatch('updateAvailable');
         if (! $checked) {
-            $this->dispatch('error', 'Could not check for updates. Try again later.');
+            $this->dispatch('error', __('Could not check for updates. Try again later.'));
 
             return;
         }
         if (instanceSettings()->new_version_available) {
-            $this->dispatch('success', 'New version available!');
+            $this->dispatch('success', __('New version available!'));
         } else {
-            $this->dispatch('success', 'No new version available.');
+            $this->dispatch('success', __('No new version available.'));
         }
     }
 

@@ -31,7 +31,7 @@
                             <button type="button"
                                 class="button button-highlighted">
                                 <x-reicon name="plus" class="size-3.5" />
-                                New environment
+                                {{ __('New environment') }}
                             </button>
                         </x-slot:content>
 
@@ -71,7 +71,7 @@
                                         stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                Sort
+                                {{ __('Sort') }}
                                 </button>
                             </x-slot:trigger>
                                 <template x-for="option in sortOptions" :key="option.value">
@@ -150,12 +150,12 @@
                 class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]">
                 <div
                     class="environments-table-grid border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                    <x-table.sort-header label="Environment" asc="name-asc" desc="name-desc" then="page = 1" />
-                    <x-table.sort-header label="Resources" asc="resources-asc" desc="resources-desc" first="desc" then="page = 1"
+                    <x-table.sort-header label="{{ __('Environment') }}" asc="name-asc" desc="name-desc" then="page = 1" />
+                    <x-table.sort-header label="{{ __('Resources') }}" asc="resources-asc" desc="resources-desc" first="desc" then="page = 1"
                         class="environment-resource-count" />
-                    <x-table.sort-header label="Description" asc="description-asc" desc="description-desc" then="page = 1"
+                    <x-table.sort-header label="{{ __('Description') }}" asc="description-asc" desc="description-desc" then="page = 1"
                         class="environment-description" />
-                    <span class="text-right">Actions</span>
+                    <span class="text-right">{{ __('Actions') }}</span>
                 </div>
 
                 <template x-for="environment in paginatedEnvironments" :key="environment.uuid">
@@ -204,7 +204,7 @@
                 <x-reicon name="search" class="mb-3 size-6 text-neutral-300 dark:text-fg-faint" />
                 <p class="text-[13px] font-medium">No matching environments</p>
                 <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">
-                    Try a different search.
+                    {{ __('Try a different search.') }}
                 </p>
             </div>
         @endif

@@ -56,11 +56,11 @@
                 @if ($resources->total() > 0)
                     <div class="data-table transition-opacity" wire:loading.class="opacity-50 pointer-events-none" wire:target="setSort">
                         <div class="data-table-header server-resources-managed-table-grid">
-                            <x-table.sort-header label="Name" asc="name_asc" desc="name_desc" action="setSort" :current="$sort" />
-                            <x-table.sort-header label="Project" asc="project_asc" desc="project_desc" action="setSort" :current="$sort" />
-                            <x-table.sort-header label="Environment" asc="environment_asc" desc="environment_desc" action="setSort" :current="$sort" />
+                            <x-table.sort-header label="{{ __('Name') }}" asc="name_asc" desc="name_desc" action="setSort" :current="$sort" />
+                            <x-table.sort-header label="{{ __('Project') }}" asc="project_asc" desc="project_desc" action="setSort" :current="$sort" />
+                            <x-table.sort-header label="{{ __('Environment') }}" asc="environment_asc" desc="environment_desc" action="setSort" :current="$sort" />
                             <x-table.sort-header label="Type" asc="type_asc" desc="type_desc" action="setSort" :current="$sort" />
-                            <x-table.sort-header label="Status" asc="status_asc" desc="status_desc" action="setSort" :current="$sort" />
+                            <x-table.sort-header label="{{ __('Status') }}" asc="status_asc" desc="status_desc" action="setSort" :current="$sort" />
                         </div>
                         @foreach ($resources as $resource)
                             @php($resourceStatus = (string) data_get($resource, 'status', 'unknown'))
@@ -113,10 +113,10 @@
                 @if ($resources->total() > 0)
                     <div class="data-table transition-opacity" wire:loading.class="opacity-50 pointer-events-none" wire:target="setSort">
                         <div class="data-table-header server-resources-unmanaged-table-grid">
-                            <x-table.sort-header label="Name" asc="name_asc" desc="name_desc" action="setSort" :current="$sort" />
-                            <x-table.sort-header label="Image" asc="image_asc" desc="image_desc" action="setSort" :current="$sort" />
-                            <x-table.sort-header label="Status" asc="status_asc" desc="status_desc" action="setSort" :current="$sort" />
-                            <span class="text-right">Actions</span>
+                            <x-table.sort-header label="{{ __('Name') }}" asc="name_asc" desc="name_desc" action="setSort" :current="$sort" />
+                            <x-table.sort-header label="{{ __('Image') }}" asc="image_asc" desc="image_desc" action="setSort" :current="$sort" />
+                            <x-table.sort-header label="{{ __('Status') }}" asc="status_asc" desc="status_desc" action="setSort" :current="$sort" />
+                            <span class="text-right">{{ __('Actions') }}</span>
                         </div>
                         @foreach ($resources as $resource)
                             @php($containerState = (string) data_get($resource, 'State', 'unknown'))

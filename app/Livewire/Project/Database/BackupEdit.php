@@ -313,7 +313,7 @@ class BackupEdit extends Component
             $this->authorize('manageBackups', $this->backup->database);
 
             $this->auditBackupScheduleUpdated($this->syncData(true));
-            $this->dispatch('success', 'Backup updated successfully.');
+            $this->dispatch('success', __('Backup updated successfully.'));
         } catch (\Throwable $e) {
             $this->dispatch('error', $e->getMessage());
         }
@@ -342,7 +342,7 @@ class BackupEdit extends Component
     public function toggleS3(): void
     {
         if (! $this->saveS3 && $this->selectedAvailableS3StorageIds()->isEmpty()) {
-            $this->dispatch('error', 'Select a usable S3 storage before enabling S3 backups.');
+            $this->dispatch('error', __('Select a usable S3 storage before enabling S3 backups.'));
 
             return;
         }
@@ -441,7 +441,7 @@ class BackupEdit extends Component
             $this->authorize('manageBackups', $this->backup->database);
 
             $this->auditBackupScheduleUpdated($this->syncData(true));
-            $this->dispatch('success', 'Backup updated successfully.');
+            $this->dispatch('success', __('Backup updated successfully.'));
         } catch (\Throwable $e) {
             $this->dispatch('error', $e->getMessage());
         }

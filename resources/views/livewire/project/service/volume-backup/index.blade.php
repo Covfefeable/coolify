@@ -171,7 +171,7 @@
                     </p>
                 </div>
                 <div>
-                    <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">Enabled</p>
+                    <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Enabled') }}</p>
                     <p class="mt-1 text-xl font-semibold tabular-nums text-neutral-950 dark:text-fg">
                         {{ $backups->where('enabled', true)->count() + $databaseBackups->where('enabled', true)->count() }}
                     </p>
@@ -240,10 +240,10 @@
                         <x-table.sort-header label="Target" asc="target_asc" desc="target_desc" />
                         <x-table.sort-header label="Type" asc="type_asc" desc="type_desc" />
                         <x-table.sort-header label="Schedule" asc="schedule_asc" desc="schedule_desc" />
-                        <x-table.sort-header label="Status" asc="status_asc" desc="status_desc" />
+                        <x-table.sort-header label="{{ __('Status') }}" asc="status_asc" desc="status_desc" />
                         <x-table.sort-header label="S3" asc="s3_asc" desc="s3_desc" />
                         <x-table.sort-header label="Last run" asc="lastrun_asc" desc="lastrun_desc" first="desc" />
-                        <span class="text-right">Actions</span>
+                        <span class="text-right">{{ __('Actions') }}</span>
                     </div>
 
                     @foreach ($databaseBackups as $databaseBackup)
@@ -279,7 +279,7 @@
                                 <button type="button" class="table-filter-value"
                                     title="Filter by Database"
                                     x-on:click.stop="typeFilter = typeFilter === 'database' ? 'all' : 'database'"
-                                    x-on:keydown.enter.stop>Database</button>
+                                    x-on:keydown.enter.stop>{{ __('Database') }}</button>
                             </span>
                             <span>{{ $databaseBackup->frequency }}</span>
                             <span><x-status-badge :status="$statusLabel" :type="$statusType" /></span>
@@ -295,7 +295,7 @@
                                             :title="! str($databaseBackup->database->status)->startsWith('running') ? 'The database must be running to start a backup.' : null"
                                             wire:click="backupNow('database', '{{ $databaseBackup->uuid }}')">Back up now</x-table.row-action>
                                         <x-table.row-action
-                                            wire:click="openSchedule('{{ $databaseBackup->uuid }}')">Edit</x-table.row-action>
+                                            wire:click="openSchedule('{{ $databaseBackup->uuid }}')">{{ __('Edit') }}</x-table.row-action>
                                     </x-table.row-actions>
                                 @endcan
                             </span>
@@ -351,7 +351,7 @@
                                         <x-table.row-action
                                             wire:click="backupNow('storage', '{{ $backup->uuid }}')">Back up now</x-table.row-action>
                                         <x-table.row-action
-                                            wire:click="openSchedule('{{ $backup->uuid }}')">Edit</x-table.row-action>
+                                            wire:click="openSchedule('{{ $backup->uuid }}')">{{ __('Edit') }}</x-table.row-action>
                                     </x-table.row-actions>
                                 @endcan
                             </span>

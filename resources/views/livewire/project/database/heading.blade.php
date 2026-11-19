@@ -90,7 +90,7 @@
                                     @click="document.getElementById('database-restart-trigger')?.click()">
                                     <x-loading-on-button x-show="busy" x-cloak />
                                     <x-reicon name="restart" class="size-3.5" x-show="!busy" />
-                                    <span x-text="busy ? 'Restarting…' : 'Restart'">Restart</span>
+                                    <span x-text="busy ? 'Restarting…' : 'Restart'">{{ __('Restart') }}</span>
                                 </x-slot:main>
                                 <button type="button" class="listbox-option justify-start! gap-2.5!"
                                     @click="open = false; document.getElementById('database-stop-trigger')?.click()" role="menuitem">
@@ -101,7 +101,7 @@
                                 <x-slot:main x-bind:disabled="busy" @click="busy = true; $wire.dispatch('startEvent')">
                                     <x-loading-on-button x-show="busy" x-cloak />
                                     <x-reicon name="play-circle" class="size-3.5" x-show="!busy" />
-                                    <span x-text="busy ? 'Starting…' : 'Start'">Start</span>
+                                    <span x-text="busy ? 'Starting…' : 'Start'">{{ __('Start') }}</span>
                                 </x-slot:main>
                             @endif
                         </x-split-action>
@@ -127,7 +127,7 @@
                                         @click="document.getElementById('database-restart-trigger')?.click()">
                                         <x-loading-on-button x-show="busy" x-cloak />
                                         <x-reicon name="restart" class="size-3.5" x-show="!busy" />
-                                        <span x-text="busy ? 'Restarting…' : 'Restart'">Restart</span>
+                                        <span x-text="busy ? 'Restarting…' : 'Restart'">{{ __('Restart') }}</span>
                                     </x-slot:main>
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
                                         @click="open = false; document.getElementById('database-stop-trigger')?.click()" role="menuitem">
@@ -138,7 +138,7 @@
                                     <x-slot:main x-bind:disabled="busy" @click="busy = true; $wire.dispatch('startEvent')">
                                         <x-loading-on-button x-show="busy" x-cloak />
                                         <x-reicon name="play-circle" class="size-3.5" x-show="!busy" />
-                                        <span x-text="busy ? 'Starting…' : 'Start'">Start</span>
+                                        <span x-text="busy ? 'Starting…' : 'Start'">{{ __('Start') }}</span>
                                     </x-slot:main>
                                 @endif
                             </x-split-action>
@@ -162,7 +162,7 @@
                 ]" :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Restart Database"
                 :dispatchAction="true">
                 <x-slot:trigger>
-                    <button id="database-restart-trigger" type="button">Restart</button>
+                    <button id="database-restart-trigger" type="button">{{ __('Restart') }}</button>
                 </x-slot:trigger>
             </x-modal-confirmation>
             <x-modal-confirmation title="Confirm Database Stopping?" buttonTitle="Stop" submitAction="stop"
@@ -173,7 +173,7 @@
                 ]" :confirmWithText="false" :confirmWithPassword="false"
                 step1ButtonText="Continue" step2ButtonText="Confirm">
                 <x-slot:trigger>
-                    <button id="database-stop-trigger" type="button">Stop</button>
+                    <button id="database-stop-trigger" type="button">{{ __('Stop') }}</button>
                 </x-slot:trigger>
             </x-modal-confirmation>
         </div>

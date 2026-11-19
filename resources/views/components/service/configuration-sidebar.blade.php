@@ -64,7 +64,7 @@
                     @if ($menuItem['navigate'] ?? true) {{ wireNavigate() }} @endif
                     href="{{ route($menuItem['route'], $serviceRouteParameters) }}">
                     <x-reicon :name="$menuItem['icon']" class="menu-item-icon" />
-                    <span class="menu-item-label">{{ $menuItem['label'] }}</span>
+                    <span class="menu-item-label">{{ __($menuItem['label']) }}</span>
                     @if ($menuItem['label'] === 'Files')
                         <x-beta-badge class="ml-auto shrink-0" />
                     @endif
@@ -81,7 +81,7 @@
                                 :class="activeSection === '{{ $section['id'] }}' && 'menu-subitem-active'"
                                 @click="activeSection = '{{ $section['id'] }}'; window.scrollToSettingsSection?.('{{ $section['id'] }}')">
                                 <span class="menu-item-label truncate text-left"
-                                    title="{{ $section['label'] }}">{{ $section['label'] }}</span>
+                                    title="{{ __($section['label']) }}">{{ __($section['label']) }}</span>
                             </button>
                         @endforeach
                     </div>

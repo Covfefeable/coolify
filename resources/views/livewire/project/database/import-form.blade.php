@@ -71,7 +71,7 @@
             </x-callout>
 
             <section>
-                <h3 class="text-sm font-semibold text-black dark:text-fg">Restore configuration</h3>
+                <h3 class="text-sm font-semibold text-black dark:text-fg">{{ __('Restore configuration') }}</h3>
                 <p class="mt-0.5 text-xs text-neutral-500 dark:text-fg-dim">Configure how the selected backup is applied to this database.</p>
                 <div class="mt-4 space-y-4">
             @if ($resourceDbType === 'standalone-postgresql' && $dumpAll)
@@ -146,7 +146,7 @@
             </section>
 
             <section class="border-t border-neutral-200 pt-6 dark:border-white/[0.06]">
-                <h3 class="text-sm font-semibold text-black dark:text-fg">Backup source</h3>
+                <h3 class="text-sm font-semibold text-black dark:text-fg">{{ __('Backup source') }}</h3>
                 <p class="mt-0.5 text-xs text-neutral-500 dark:text-fg-dim">Choose a local file or a file in a backup storage.</p>
                 <div class="mt-4 grid gap-3 sm:grid-cols-2">
                     <button type="button" @click="restoreType = 'file'"
@@ -176,7 +176,7 @@
                                 <x-reicon name="storages" class="size-4" />
                             </span>
                             <span>
-                                <span class="block text-[13px] font-semibold">Storage</span>
+                                <span class="block text-[13px] font-semibold">{{ __('Storage') }}</span>
                                 <span class="mt-0.5 block text-[11px] text-neutral-500 dark:text-fg-faint">Download
                                     a backup from a backup storage.</span>
                             </span>
@@ -256,7 +256,7 @@
                     <div x-cloak x-show="restoreType === 's3'"
                         class="mt-4">
                         <div class="grid gap-4 sm:grid-cols-2">
-                            <x-forms.listbox id="s3StorageId" label="Storage" :options="$s3StorageOptions"
+                            <x-forms.listbox id="s3StorageId" label="{{ __('Storage') }}" :options="$s3StorageOptions"
                                 placeholder="Select storage" live />
 
                             <x-forms.input label="File path"

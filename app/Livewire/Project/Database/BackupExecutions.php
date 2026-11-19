@@ -54,7 +54,7 @@ class BackupExecutions extends Component
             if ($this->backup) {
                 $this->backup->executions()->where('status', 'failed')->delete();
                 $this->refreshBackupExecutions();
-                $this->dispatch('success', 'Failed backups cleaned up.');
+                $this->dispatch('success', __('Failed backups cleaned up.'));
             }
         } catch (\Throwable $e) {
             return handleError($e, $this);
@@ -94,7 +94,7 @@ class BackupExecutions extends Component
 
         $execution = $this->backup->executions()->where('id', $executionId)->first();
         if (is_null($execution)) {
-            $this->dispatch('error', 'Backup execution not found.');
+            $this->dispatch('error', __('Backup execution not found.'));
 
             return;
         }
@@ -117,7 +117,7 @@ class BackupExecutions extends Component
 
             $execution->delete();
             $this->delete_backup_s3 = false;
-            $this->dispatch('success', 'Backup deleted.');
+            $this->dispatch('success', __('Backup deleted.'));
             $this->refreshBackupExecutions();
         } catch (\Exception $e) {
             $this->dispatch('error', 'Failed to delete backup: '.$e->getMessage());
@@ -134,7 +134,7 @@ class BackupExecutions extends Component
             $this->authorize('manageBackups', $this->database);
             $execution = $this->backup->executions()->whereKey($executionId)->first();
             if (! $execution) {
-                $this->dispatch('error', 'Backup execution not found.');
+                $this->dispatch('error', __('Backup execution not found.'));
 
                 return;
             }

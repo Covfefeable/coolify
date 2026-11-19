@@ -141,7 +141,7 @@
                     <div class="application-settings-section-header">
                         <div class="flex items-center gap-2">
                             <x-reicon name="globe" class="size-4 text-neutral-400 dark:text-fg-faint" />
-                            <h2>Applications</h2>
+                            <h2>{{ __('Applications') }}</h2>
                         </div>
                     </div>
                     <div class="application-settings-section-body" :class="viewMode === 'list' && 'is-flush'">
@@ -241,7 +241,7 @@
                     <div class="application-settings-section-header">
                         <div class="flex items-center gap-2">
                             <x-reicon name="database" class="size-4 text-neutral-400 dark:text-fg-faint" />
-                            <h2>Databases</h2>
+                            <h2>{{ __('Databases') }}</h2>
                         </div>
                     </div>
                     <div class="application-settings-section-body" :class="viewMode === 'list' && 'is-flush'">
@@ -312,7 +312,7 @@
                     <div class="application-settings-section-header" x-init="loadResources">
                         <div class="flex items-center gap-2">
                             <x-reicon name="layers" class="size-4 text-neutral-400 dark:text-fg-faint" />
-                            <h2>Services</h2>
+                            <h2>{{ __('Services') }}</h2>
                         </div>
                         <div class="flex flex-wrap items-center gap-2">
                             <div x-show="serviceTemplatesLastUpdated"
@@ -746,7 +746,7 @@
                         </span>
                         <x-status-badge status="Build only" />
                         <a href="{{ route('server.show', ['server_uuid' => $buildServer->uuid]) }}"
-                            {{ wireNavigate() }} class="button">Settings</a>
+                            {{ wireNavigate() }} class="button">{{ __('Settings') }}</a>
                     </div>
                 @endforeach
             </div>

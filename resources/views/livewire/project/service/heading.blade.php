@@ -66,7 +66,7 @@
                                     @click="document.getElementById('service-restart-trigger')?.click()">
                                     <x-loading-on-button x-show="deploying" x-cloak />
                                     <x-reicon name="restart" class="size-3.5" x-show="!deploying" />
-                                    <span x-text="deploying ? 'Restarting…' : 'Restart'">Restart</span>
+                                    <span x-text="deploying ? 'Restarting…' : 'Restart'">{{ __('Restart') }}</span>
                                 </x-slot:main>
                                 @if ($serviceStatus->contains('running'))
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
@@ -92,7 +92,7 @@
                                 <x-slot:main x-bind:disabled="deploying" @click="deploying = true; $wire.dispatch('startEvent')">
                                     <x-loading-on-button x-show="deploying" x-cloak />
                                     <x-reicon name="play-circle" class="size-3.5" x-show="!deploying" />
-                                    <span x-text="deploying ? 'Deploying…' : 'Deploy'">Deploy</span>
+                                    <span x-text="deploying ? 'Deploying…' : 'Deploy'">{{ __('Deploy') }}</span>
                                 </x-slot:main>
                                 <button type="button" class="listbox-option justify-start! gap-2.5!"
                                     @click="$wire.dispatch('forceDeployEvent'); open = false" role="menuitem">
@@ -115,7 +115,7 @@
                             @keydown.escape.window="open = false">
                             <button type="button" class="button gap-1.5" @click="open = !open"
                                 :aria-expanded="open" aria-haspopup="menu">
-                                <span>Actions</span>
+                                <span>{{ __('Actions') }}</span>
                                 <span class="inline-flex transition-transform" :class="open && 'rotate-180'">
                                     <x-reicon name="chevron-down" class="size-3 opacity-55" />
                                 </span>
@@ -187,7 +187,7 @@
                                     <x-slot:main x-bind:disabled="deploying" @click="deploying = true; $wire.dispatch('startEvent')">
                                         <x-loading-on-button x-show="deploying" x-cloak />
                                         <x-reicon name="play-circle" class="size-3.5" x-show="!deploying" />
-                                        <span x-text="deploying ? 'Deploying…' : 'Deploy'">Deploy</span>
+                                        <span x-text="deploying ? 'Deploying…' : 'Deploy'">{{ __('Deploy') }}</span>
                                     </x-slot:main>
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
                                         @click="$wire.dispatch('forceDeployEvent'); open = false" role="menuitem">
@@ -238,7 +238,7 @@
                 submitAction="restartEvent" :dispatchAction="true" :actions="['This service will be restarted.']"
                 :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Confirm">
                 <x-slot:trigger>
-                    <button id="service-restart-trigger" type="button">Restart</button>
+                    <button id="service-restart-trigger" type="button">{{ __('Restart') }}</button>
                 </x-slot:trigger>
             </x-modal-confirmation>
             <x-modal-confirmation title="Confirm Service Stopping?" buttonTitle="Stop"
@@ -246,7 +246,7 @@
                 :confirmWithText="false" :confirmWithPassword="false" step1ButtonText="Continue"
                 step2ButtonText="Confirm">
                 <x-slot:trigger>
-                    <button id="service-stop-trigger" type="button">Stop</button>
+                    <button id="service-stop-trigger" type="button">{{ __('Stop') }}</button>
                 </x-slot:trigger>
             </x-modal-confirmation>
             @if ($selectedResource)

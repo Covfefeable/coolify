@@ -12,7 +12,7 @@
             <section class="application-settings-section">
                 <div class="application-settings-section-header">
                     <div>
-                        <h2>Project details</h2>
+                        <h2>{{ __('Project details') }}</h2>
                         <p>Icon, name, and description shown across the dashboard.</p>
                     </div>
                 </div>
@@ -97,8 +97,8 @@
                             </div>
                         </div>
                     </div>
-                    <x-forms.input label="Name" id="name" />
-                    <x-forms.input label="Description" id="description" />
+                    <x-forms.input label="{{ __('Name') }}" id="name" />
+                    <x-forms.input label="{{ __('Description') }}" id="description" />
                 </div>
             </section>
         </form>
@@ -107,7 +107,7 @@
             class="overflow-hidden rounded-[10px] border border-red-300 bg-red-50/80 dark:border-red-500/25 dark:bg-red-500/[0.06]">
             <div class="flex items-start justify-between gap-4 px-5 py-4">
                 <div>
-                    <h2 class="text-sm font-semibold text-red-800 dark:text-red-300">Delete project</h2>
+                    <h2 class="text-sm font-semibold text-red-800 dark:text-red-300">{{ __('Delete project') }}</h2>
                     <p class="mt-1 max-w-2xl text-sm text-red-700/80 dark:text-red-200/70">
                         Empty the project before permanently deleting it.
                     </p>

@@ -10,10 +10,10 @@
                 </x-modal-input>
             </x-slot:actions>
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input label="Name" id="name" canGate="update" :canResource="$database" />
-                <x-forms.input label="Description" id="description" canGate="update" :canResource="$database" />
+                <x-forms.input label="{{ __('Name') }}" id="name" canGate="update" :canResource="$database" />
+                <x-forms.input label="{{ __('Description') }}" id="description" canGate="update" :canResource="$database" />
                 <div class="lg:col-span-2">
-                    <x-forms.input label="Image" id="image" required canGate="update" :canResource="$database"
+                    <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database"
                         helper="Use a published MongoDB image from Docker Hub." />
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <x-table.loading target="instantSave" text="Updating public access..." />
                 <div class="grid gap-4 lg:grid-cols-2">
                     <div wire:key="public-access-{{ $publicPort ?: 'unset' }}">
-                        <x-forms.listbox id="isPublic" label="Access" live onChange="instantSave"
+                        <x-forms.listbox id="isPublic" label="{{ __('Access') }}" live onChange="instantSave"
                             :disabled="! auth()->user()->can('update', $database)" canGate="update" :canResource="$database" :options="[
                                 ['value' => false, 'label' => 'Private'],
                                 ['value' => true, 'label' => blank($publicPort) ? 'Public through TCP proxy (set public port first)' : 'Public through TCP proxy', 'disabled' => blank($publicPort)],

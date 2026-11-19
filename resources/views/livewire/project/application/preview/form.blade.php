@@ -10,7 +10,7 @@
             @endcan
         </x-slot:actions>
 
-        <x-forms.input id="previewUrlTemplate" label="URL template"
+        <x-forms.input id="previewUrlTemplate" label="{{ __('URL template') }}"
             helper="Use @@{{ random }} for a random subdomain, @@{{ pr_id }} for the pull request number, or @@{{ domain }} for the application domain."
             canGate="update" :canResource="$application" />
 

@@ -105,7 +105,7 @@ class Index extends Component
         $this->settings->dev_helper_version = $this->dev_helper_version;
         if ($isSave) {
             $this->saveAndAudit();
-            $this->dispatch('success', 'Settings updated!');
+            $this->dispatch('success', __('Settings updated!'));
         }
     }
 
@@ -194,7 +194,7 @@ class Index extends Component
                 $this->server->setupDynamicProxyConfiguration();
             }
             if (! $error_show) {
-                $this->dispatch('success', 'Instance settings updated successfully!');
+                $this->dispatch('success', __('Instance settings updated successfully!'));
             }
         } catch (\Exception $e) {
             return handleError($e, $this);
@@ -211,7 +211,7 @@ class Index extends Component
 
             $detected = detect_public_ips();
             if ($detected === []) {
-                $this->dispatch('error', 'Could not detect a public IP address.');
+                $this->dispatch('error', __('Could not detect a public IP address.'));
 
                 return;
             }

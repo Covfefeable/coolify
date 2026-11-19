@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="mb-5 flex min-h-9 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">New server</h1>
+        <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('New server') }}</h1>
         <div class="flex flex-wrap items-center gap-2">
             @if ($selectedType)
                 <a href="{{ route('server.create') }}" class="button" {{ wireNavigate() }}>

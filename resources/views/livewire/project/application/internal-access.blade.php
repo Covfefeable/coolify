@@ -12,7 +12,7 @@
 @endphp
 
 <section id="internal-access-section" class="pt-5" wire:init="loadCurrentInternalHostname">
-    <h3 class="mb-4 text-sm font-semibold text-black dark:text-fg">Internal access</h3>
+    <h3 class="mb-4 text-sm font-semibold text-black dark:text-fg">{{ __('Internal access') }}</h3>
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         @if ($currentInternalHostname)
             <x-forms.copy-input label="Internal hostname" :text="$currentInternalHostname" />

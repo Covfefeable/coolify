@@ -135,12 +135,12 @@
             @if ($hasBackupsAction || $hasDomainsAction)
                 <x-table.row-actions label="Resource actions">
                     @if ($hasBackupsAction)
-                        <x-table.row-action :href="route('project.service.volume-backups.index', $parameters)">Backups</x-table.row-action>
+                        <x-table.row-action :href="route('project.service.volume-backups.index', $parameters)">{{ __('Backups') }}</x-table.row-action>
                     @endif
                     @if ($hasDomainsAction)
-                        <x-table.row-action :href="route('project.service.domains', $parameters)">Domains</x-table.row-action>
+                        <x-table.row-action :href="route('project.service.domains', $parameters)">{{ __('Domains') }}</x-table.row-action>
                     @endif
-                    <x-table.row-action @click="modalOpen = true">Settings</x-table.row-action>
+                    <x-table.row-action @click="modalOpen = true">{{ __('Settings') }}</x-table.row-action>
                 </x-table.row-actions>
             @else
                 <button type="button" class="icon-button" title="Resource settings" aria-label="Resource settings"

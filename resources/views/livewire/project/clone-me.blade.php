@@ -12,7 +12,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Clone environment</h2>
+                    <h2>{{ __('Clone environment') }}</h2>
                     <p>Copy every resource from {{ $environment->name }} to a new project or environment.</p>
                 </div>
             </div>
@@ -30,7 +30,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Destination</h2>
+                    <h2>{{ __('Destination') }}</h2>
                     <p>Choose the server and Docker network that will receive the cloned resources.</p>
                 </div>
             </div>
@@ -43,8 +43,8 @@
                 <div class="data-table">
                     <div class="data-table-header clone-destinations-table-grid">
                         <span><span class="sr-only">Selected</span></span>
-                        <span>Server</span>
-                        <span>Network</span>
+                        <span>{{ __('Server') }}</span>
+                        <span>{{ __('Network') }}</span>
                     </div>
                     @foreach ($servers->sortBy('id') as $server)
                         @foreach ($server->destinations() as $destination)
@@ -88,16 +88,16 @@
             @endphp
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Resources</h2>
+                    <h2>{{ __('Resources') }}</h2>
                     <p>{{ $resourceCount }} {{ Str::plural('resource', $resourceCount) }} will be cloned.</p>
                 </div>
             </div>
             <div class="application-settings-section-body p-0!">
                 <div class="data-table">
                     <div class="data-table-header clone-resources-table-grid">
-                        <span>Name</span>
+                        <span>{{ __('Name') }}</span>
                         <span>Type</span>
-                        <span>Description</span>
+                        <span>{{ __('Description') }}</span>
                     </div>
                     @foreach ($environment->applications->sortBy('name') as $application)
                         <div

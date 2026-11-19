@@ -41,7 +41,7 @@
                     </button>
                 </x-slot:content>
                 <div class="flex w-full flex-col gap-4">
-                    <x-forms.input label="Name" :value="$key" readonly />
+                    <x-forms.input label="{{ __('Name') }}" :value="$key" readonly />
                     @if ($isValueHidden)
                         <div class="w-full">
                             <label class="mb-1 flex items-center gap-1 text-sm font-medium">Value</label>

@@ -58,7 +58,7 @@
                     reset-action="clearFilter">
                             @if (count($statusFilterOptions) > 0)
                                 <span
-                                    class="px-2 pb-1 pt-2 text-[10px] font-medium uppercase tracking-wider text-neutral-400 dark:text-fg-faint">Status</span>
+                                    class="px-2 pb-1 pt-2 text-[10px] font-medium uppercase tracking-wider text-neutral-400 dark:text-fg-faint">{{ __('Status') }}</span>
                                 @foreach ($statusFilterOptions as $option)
                                     <button type="button" class="listbox-option" role="option"
                                         aria-selected="{{ in_array($option['value'], $deploymentFilters, true) ? 'true' : 'false' }}"
@@ -112,7 +112,7 @@
 
                             @if (count($serverFilterOptions) > 0)
                                 <span
-                                    class="px-2 pb-1 pt-2 text-[10px] font-medium uppercase tracking-wider text-neutral-400 dark:text-fg-faint">Server</span>
+                                    class="px-2 pb-1 pt-2 text-[10px] font-medium uppercase tracking-wider text-neutral-400 dark:text-fg-faint">{{ __('Server') }}</span>
                                 @foreach ($serverFilterOptions as $option)
                                     <button type="button" class="listbox-option" role="option"
                                         aria-selected="{{ in_array($option['value'], $deploymentFilters, true) ? 'true' : 'false' }}"
@@ -200,7 +200,7 @@
                         @endif>
                         <div class="data-table-header deployment-table-grid rounded-none!">
                             @unless ($embedded)
-                                <span>Status</span>
+                                <span>{{ __('Status') }}</span>
                             @endunless
                             <span>Source</span>
                             <span>Commit</span>
@@ -209,9 +209,9 @@
                                     action="setDeploymentSort" :current="$deploymentSort" />
                             @endunless
                             <span>Duration</span>
-                            <span>Server</span>
+                            <span>{{ __('Server') }}</span>
                             @if ($embedded)
-                                <span class="text-right">Status</span>
+                                <span class="text-right">{{ __('Status') }}</span>
                             @endif
                         </div>
 

@@ -126,7 +126,7 @@
                                                 </p>
                                                 <div class="flex flex-col gap-4">
                                                     <x-forms.input canGate="update" :canResource="$resource" placeholder="pv-name"
-                                                        id="name" label="Name" required helper="Volume name." />
+                                                        id="name" label="{{ __('Name') }}" required helper="Volume name." />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/tmp/root" id="mount_path" label="Destination Path"
                                                         required helper="Directory inside the container." />
@@ -501,7 +501,7 @@
                         <span>Volume</span>
                         <span>Docker volume</span>
                         <span>Mount path</span>
-                        <span>Service</span>
+                        <span>{{ __('Service') }}</span>
                     </div>
                     @foreach ($externalVolumes as $externalVolume)
                         <div class="env-table-item"
@@ -527,7 +527,7 @@
                                     @endforeach
                                 </div>
                                 <div class="min-w-0">
-                                    <span class="volumes-mobile-label volumes-field-label">Service</span>
+                                    <span class="volumes-mobile-label volumes-field-label">{{ __('Service') }}</span>
                                     <span class="block min-w-0 truncate"
                                         title="{{ $externalVolume['service'] }}">{{ $externalVolume['service'] }}</span>
                                 </div>

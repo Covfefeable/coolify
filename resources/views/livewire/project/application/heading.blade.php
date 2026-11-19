@@ -131,7 +131,7 @@
                         ]" :confirmWithText="false" :confirmWithPassword="false"
                         step1ButtonText="Continue" step2ButtonText="Confirm">
                         <x-slot:trigger>
-                            <button id="application-mobile-stop-trigger" type="button">Stop</button>
+                            <button id="application-mobile-stop-trigger" type="button">{{ __('Stop') }}</button>
                         </x-slot:trigger>
                     </x-modal-confirmation>
                     <x-modal-confirmation title="Confirm Application Restart?" buttonTitle="Restart"
@@ -140,7 +140,7 @@
                         ]" :confirmWithText="false" :confirmWithPassword="false"
                         step2ButtonText="Confirm">
                         <x-slot:trigger>
-                            <button id="application-mobile-restart-trigger" type="button">Restart</button>
+                            <button id="application-mobile-restart-trigger" type="button">{{ __('Restart') }}</button>
                         </x-slot:trigger>
                     </x-modal-confirmation>
                 </div>

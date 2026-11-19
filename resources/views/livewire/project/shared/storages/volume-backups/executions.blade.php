@@ -27,12 +27,12 @@
                 <div class="data-table w-full overflow-x-auto">
                     <div
                         class="data-table-header volume-backup-executions-grid border-b border-neutral-200 bg-neutral-50 dark:border-white/[0.08] dark:bg-white/[0.05]">
-                        <span>Status</span>
+                        <span>{{ __('Status') }}</span>
                         <span>Archive</span>
                         <span>Time</span>
                         <span>Size</span>
                         <span>Availability</span>
-                        <span class="text-right">Actions</span>
+                        <span class="text-right">{{ __('Actions') }}</span>
                     </div>
 
                     @foreach ($executions as $execution)
@@ -159,7 +159,7 @@
                                                 confirmationLabel="Please confirm the execution of the actions by entering the Backup Filename below"
                                                 shortConfirmationLabel="Backup Filename">
                                                 <x-slot:trigger>
-                                                    <x-table.row-action>Delete</x-table.row-action>
+                                                    <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                                 </x-slot:trigger>
                                             </x-modal-confirmation>
                                         </x-slot:danger>

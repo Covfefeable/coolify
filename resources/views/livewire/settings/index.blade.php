@@ -32,7 +32,7 @@
                         </div>
                     @endif
 
-                    <x-forms.input canGate="update" :canResource="$settings" id="instance_name" label="Name"
+                    <x-forms.input canGate="update" :canResource="$settings" id="instance_name" label="{{ __('Name') }}"
                         placeholder="Coolify" helper="Custom name for this Coolify instance." />
 
                     {{-- Use a searchable listbox so the label row (h-4) and control height match

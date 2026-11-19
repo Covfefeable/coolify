@@ -3,7 +3,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Private repository</h2>
+                    <h2>{{ __('Private repository') }}</h2>
                     <p>Choose the SSH key Coolify will use to clone this repository.</p>
                 </div>
             </div>
@@ -45,13 +45,13 @@
             <section class="application-settings-section">
                 <div class="application-settings-section-header">
                     <div>
-                        <h2>Repository configuration</h2>
+                        <h2>{{ __('Repository configuration') }}</h2>
                         <p>Enter the repository location and choose how Coolify should build it.</p>
                     </div>
-                    <x-forms.button type="submit" isHighlighted>Continue</x-forms.button>
+                    <x-forms.button type="submit" isHighlighted>{{ __('Continue') }}</x-forms.button>
                 </div>
                 <div class="application-settings-section-body space-y-5">
-                    <x-forms.input id="repository_url" required label="Repository URL"
+                    <x-forms.input id="repository_url" required label="{{ __('Repository URL') }}"
                         placeholder="git@github.com:owner/repository.git" />
                     <div class="grid gap-4 sm:grid-cols-2">
                         <x-forms.input id="branch" required label="Branch" />

@@ -170,7 +170,7 @@
                                 ]" :checkboxes="[['id' => 'deleteManagedDns', 'label' => 'Also delete the DNS record created by Coolify, if present.']]"
                                 :confirmWithPassword="false" :confirmWithText="false" step2ButtonText="Remove domain">
                                 <x-slot:trigger>
-                                    <x-table.row-action>Delete</x-table.row-action>
+                                    <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                 </x-slot:trigger>
                             </x-modal-confirmation>
                         </x-slot:danger>

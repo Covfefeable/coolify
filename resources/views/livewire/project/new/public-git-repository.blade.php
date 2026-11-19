@@ -4,14 +4,14 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Public Git repository</h2>
+                    <h2>{{ __('Public Git repository') }}</h2>
                     <p>Connect a public repository over HTTPS and inspect its default branch.</p>
                 </div>
             </div>
             <div class="application-settings-section-body">
                 <div class="flex flex-col gap-2 sm:flex-row sm:items-end">
                     <div class="min-w-0 flex-1">
-                        <x-forms.input required id="repository_url" label="Repository URL"
+                        <x-forms.input required id="repository_url" label="{{ __('Repository URL') }}"
                             helper="{!! __('repository.url') !!}" placeholder="https://github.com/owner/repository"
                             autofocus />
                     </div>
@@ -43,10 +43,10 @@
             <section class="application-settings-section">
                 <div class="application-settings-section-header">
                     <div>
-                        <h2>Build configuration</h2>
+                        <h2>{{ __('Build configuration') }}</h2>
                         <p>Choose how Coolify builds and runs this repository.</p>
                     </div>
-                    <x-forms.button type="submit" isHighlighted>Continue</x-forms.button>
+                    <x-forms.button type="submit" isHighlighted>{{ __('Continue') }}</x-forms.button>
                 </div>
                 <div class="application-settings-section-body space-y-5">
                     @if ($rate_limit_remaining && $rate_limit_reset)

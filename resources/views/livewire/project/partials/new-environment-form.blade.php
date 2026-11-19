@@ -1,5 +1,5 @@
 <form class="space-y-4" wire:submit="submit">
-    <x-forms.input placeholder="staging" id="name" label="Name" required />
+    <x-forms.input placeholder="staging" id="name" label="{{ __('Name') }}" required />
 
     <footer
         class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
