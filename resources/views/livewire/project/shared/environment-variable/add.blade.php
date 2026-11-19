@@ -47,7 +47,7 @@
                 ['value' => false, 'label' => 'Not available during build'],
             ]"
                 helper="Make this variable available during the Docker build process. Useful for build secrets and dependencies." />
-            <x-forms.listbox id="is_runtime" label="Runtime" :options="[
+            <x-forms.listbox id="is_runtime" label="{{ __('Runtime') }}" :options="[
                 ['value' => true, 'label' => 'Available in the container'],
                 ['value' => false, 'label' => 'Not available in the container'],
             ]" helper="Make this variable available in the running container at runtime." />

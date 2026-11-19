@@ -172,7 +172,7 @@ class All extends Component
                 return;
             }
 
-            $this->dispatch('success', 'Log redaction setting updated.');
+            $this->dispatch('success', __('Log redaction setting updated.'));
         } catch (\Throwable $e) {
             if ($this->hasLogRedactionSetting()) {
                 $this->resource->refresh();
@@ -200,7 +200,7 @@ class All extends Component
             if ($this->readyToLoad && $this->view === 'dev') {
                 $this->getDevView();
             }
-            $this->dispatch('success', 'Environment variable settings updated.');
+            $this->dispatch('success', __('Environment variable settings updated.'));
             $this->dispatch('configurationChanged');
         } catch (\Throwable $e) {
             return handleError($e, $this);
@@ -219,7 +219,7 @@ class All extends Component
                 $this->resource->include_coolify_default_variables = $this->include_coolify_default_variables;
                 $this->resource->save();
             }
-            $this->dispatch('success', 'Environment variable settings updated.');
+            $this->dispatch('success', __('Environment variable settings updated.'));
             $this->dispatch('configurationChanged');
         } catch (\Throwable $e) {
             return handleError($e, $this);
@@ -1142,7 +1142,7 @@ class All extends Component
             ->forResourceKey($this->resource->getMorphClass(), $this->resource->id, (bool) ($data['is_preview'] ?? false), $data['key'])
             ->exists();
         if ($found) {
-            $this->dispatch('error', 'Environment variable already exists.');
+            $this->dispatch('error', __('Environment variable already exists.'));
 
             return;
         }
@@ -1154,7 +1154,7 @@ class All extends Component
 
         $this->clearEnvironmentVariableCaches();
 
-        $this->dispatch('success', 'Environment variable added.');
+        $this->dispatch('success', __('Environment variable added.'));
     }
 
     private function createEnvironmentVariable($data)
@@ -1198,7 +1198,7 @@ class All extends Component
                 [$isUsed, $reason] = $this->isEnvironmentVariableUsedInDockerCompose($envVar->key, $this->resource->docker_compose);
 
                 if ($isUsed) {
-                    $this->dispatch('error', "Cannot delete environment variable '{$envVar->key}' <br><br>Please remove it from the Docker Compose file first.");
+                    $this->dispatch('error', __("Cannot delete environment variable ':key' <br><br>Please remove it from the Docker Compose file first.", ['key' => $envVar->key]));
 
                     return -1;
                 }

@@ -58,7 +58,7 @@
                 helper="If you cannot connect, confirm the server is reachable and that the terminal port is open on the firewall.<br><br><a class='underline' href='https://coolify.io/docs/knowledge-base/server/firewall/#terminal' target='_blank' rel='noopener noreferrer'>{{ __('Documentation') }}</a>" />
         </div>
         <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-            Run commands on reachable servers and containers from the browser.
+            {{ __('Run commands on reachable servers and containers from the browser.') }}
         </p>
     </header>
 
@@ -129,18 +129,18 @@
             <div wire:key="terminal-target-canvas" data-terminal-target-canvas
                 class="application-settings-workspace flex w-full min-w-0 flex-col">
                 <x-application.settings-section class="terminal-target-card" data-terminal-target-picker="page"
-                    title="Start a terminal session" flush>
+                    title="{{ __('Start a terminal session') }}" flush>
                     @if (! $isLoadingContainers && $servers->isNotEmpty())
                         <x-slot:actions>
                             <div class="relative w-full sm:w-64">
                                 <x-reicon name="search"
                                     class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                                <input x-model.debounce.100ms="targetSearch" type="search" placeholder="Filter targets"
-                                    aria-label="Filter terminal targets"
+                                <input x-model.debounce.100ms="targetSearch" type="search" placeholder="{{ __('Filter targets') }}"
+                                    aria-label="{{ __('Filter terminal targets') }}"
                                     class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                                 <button x-cloak x-show="targetSearch" x-on:click="targetSearch = ''" type="button"
                                     class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                                    aria-label="Clear target filter">
+                                    aria-label="{{ __('Clear target filter') }}">
                                     <span class="text-sm leading-none">×</span>
                                 </button>
                             </div>
@@ -150,10 +150,10 @@
                     @if ($isLoadingContainers)
                         <div class="flex min-h-40 items-center justify-center gap-2 text-[13px] text-neutral-500 dark:text-fg-dim">
                             <x-loading class="size-4" />
-                            <span>Finding available servers and containers…</span>
+                            <span>{{ __('Finding available servers and containers…') }}</span>
                         </div>
                     @elseif ($servers->isEmpty())
-                        <x-empty title="No terminal targets available"
+                        <x-empty title="{{ __('No terminal targets available') }}"
                             description="Connect a reachable server and enable terminal access to start a session."
                             icon-name="browser-terminal" />
                     @else
@@ -218,7 +218,7 @@
                             x-cloak x-show="targetChosen"
                             class="terminal-session-target-trigger flex h-8 min-w-0 max-w-sm cursor-pointer items-center gap-2 rounded-md px-2.5 text-left text-xs font-medium text-white/70 transition-colors hover:bg-white/[0.08] hover:text-white"
                             x-on:click="targetOpen = !targetOpen" :aria-expanded="targetOpen"
-                            aria-label="Choose terminal target">
+                            aria-label="{{ __('Choose terminal target') }}">
                             <span class="min-w-0 truncate text-[11px] font-semibold text-white/80"
                                 x-text="currentTargetLabel"></span>
                             <svg class="size-2.5 shrink-0 text-white/35" viewBox="0 0 12 12" fill="none"
@@ -235,7 +235,7 @@
                                     <x-reicon name="search"
                                         class="pointer-events-none absolute top-1/2 left-2 size-3 -translate-y-1/2 text-white/35" />
                                     <input x-model.debounce.100ms="targetSearch" type="search"
-                                        placeholder="Filter targets…"
+                                        placeholder="{{ __('Filter targets…') }}"
                                         class="h-7! w-full rounded-md! border-white/[0.08]! bg-white/[0.05]! py-0! pr-2! pl-7! text-[11px]! text-white! shadow-none! placeholder:text-white/30 focus:border-accent! focus:ring-0!">
                                 </div>
                             </div>
@@ -292,12 +292,12 @@
                                 <path class="opacity-75" d="M21 12a9 9 0 0 0-9-9" stroke="currentColor"
                                     stroke-width="3" stroke-linecap="round" />
                             </svg>
-                            <span>Loading servers and containers…</span>
+                            <span>{{ __('Loading servers and containers…') }}</span>
                         </div>
                     </div>
                 @elseif ($servers->isEmpty())
                     <div class="flex h-full min-h-0 items-center justify-center bg-[#141414] px-4">
-                        <x-empty size="lg" title="No terminal targets available"
+                        <x-empty size="lg" title="{{ __('No terminal targets available') }}"
                             description="Connect a reachable server and enable terminal access to start a session."
                             icon-name="browser-terminal" />
                     </div>
@@ -307,14 +307,14 @@
                         <div class="terminal-target-picker w-full max-w-md overflow-hidden rounded-lg border shadow-[var(--shadow-dropdown)]">
                             <div class="border-b border-white/[0.08] p-2">
                                 <div class="px-1 pb-2">
-                                    <div class="text-sm font-semibold text-white/80">Start a terminal session</div>
+                                    <div class="text-sm font-semibold text-white/80">{{ __('Start a terminal session') }}</div>
                                     <div class="mt-0.5 text-[11px] text-white/45">Choose a server or container</div>
                                 </div>
                                 <div class="relative">
                                     <x-reicon name="search"
                                         class="pointer-events-none absolute top-1/2 left-2 size-3 -translate-y-1/2 text-white/35" />
                                     <input x-model.debounce.100ms="targetSearch" type="search"
-                                        placeholder="Filter targets…"
+                                        placeholder="{{ __('Filter targets…') }}"
                                         class="h-8! w-full rounded-md! border-white/[0.08]! bg-white/[0.05]! py-0! pr-2! pl-7! text-[11px]! text-white! shadow-none! placeholder:text-white/30 focus:border-accent! focus:ring-0!">
                                 </div>
                             </div>

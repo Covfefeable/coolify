@@ -387,7 +387,7 @@ class Show extends Component
 
             if ($this->keyBelongsToAnotherVariable()) {
                 $this->key = $this->env->key;
-                $this->dispatch('error', 'Environment variable already exists.');
+                $this->dispatch('error', __('Environment variable already exists.'));
 
                 return;
             }

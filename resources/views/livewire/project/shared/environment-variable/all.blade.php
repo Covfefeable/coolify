@@ -17,7 +17,7 @@
 @endphp
 <div class="flex flex-col gap-4" wire:init="loadEnvironmentVariables"
     x-on:focus-compose-environment-variable.window="const key = $event.detail.key; const focus = () => { const row = document.querySelector(`[data-env-key='${CSS.escape(key)}']`); if (!row) return false; row.scrollIntoView({ behavior: 'smooth', block: 'center' }); row.querySelector('[data-env-settings-trigger]')?.click(); return true; }; if (!focus()) { $wire.focusComposeEnvironmentVariable(key).then(() => requestAnimationFrame(focus)); }">
-    <x-application.settings-section id="environment-variables-section" title="Environment variables"
+    <x-application.settings-section id="environment-variables-section" title="{{ __('Environment variables') }}"
         helper="Environment variables (secrets) for this resource.">
         @can('manageEnvironment', $resource)
             <x-slot:actions>
@@ -32,7 +32,7 @@
                 @if ($resourceClass === 'App\Models\Application')
                     <div class="grid w-full items-end gap-4 sm:grid-cols-2">
                         @if (data_get($resource, 'build_pack') !== 'dockercompose')
-                            <x-forms.listbox id="is_env_sorting_enabled" label="Environment variable order"
+                            <x-forms.listbox id="is_env_sorting_enabled" label="{{ __('Environment variable order') }}"
                                 onChange="instantSave"
                                 helper="Controls how environment variables are ordered in the list and written to the generated .env file on deploy."
                                 :options="[
@@ -40,7 +40,7 @@
                                     ['value' => true, 'label' => 'Alphabetical'],
                                 ]" :disabled="! auth()->user()->can('manageEnvironment', $resource)" />
                         @endif
-                        <x-forms.listbox id="use_build_secrets" label="Build secrets" onChange="instantSave"
+                        <x-forms.listbox id="use_build_secrets" label="{{ __('Build secrets') }}" onChange="instantSave"
                             helper="Docker BuildKit secrets keep values out of the final image for enhanced security during builds. Requires Docker 18.09+ with BuildKit support."
                             :options="[
                                 ['value' => false, 'label' => 'Standard build arguments'],
@@ -49,12 +49,12 @@
                     </div>
                 @endif
                 <x-forms.checkbox instantSave="saveCoolifyDefaultVariables" id="include_coolify_default_variables"
-                    label="Include Coolify default variables"
+                    label="{{ __('Include Coolify default variables') }}"
                     helper="Adds COOLIFY_APP_NAME, COOLIFY_PROJECT_NAME, COOLIFY_ENVIRONMENT_NAME and COOLIFY_SERVER_IP to the container at runtime. A variable that you define with the same name wins. Takes effect after the next deploy or restart."
                     :disabled="! auth()->user()->can('manageEnvironment', $resource)" />
                 @if ($this->hasLogRedactionSetting())
                     <div class="grid w-full items-end gap-4 sm:grid-cols-2">
-                        <x-forms.listbox id="redact_all_env_values_in_logs" label="Environment values in logs"
+                        <x-forms.listbox id="redact_all_env_values_in_logs" label="{{ __('Environment values in logs') }}"
                             onChange="saveLogRedactionSetting"
                             helper="Hide every environment variable value in deployment logs, scheduled task output, copied or downloaded logs, and logs from the API and MCP. Live log streaming is not changed. Locked variables and known secret formats are always hidden."
                             :options="[
@@ -67,23 +67,23 @@
         @else
             <form wire:submit.prevent='submit' class="flex w-full flex-col gap-4">
                 @can('manageEnvironment', $resource)
-                    <x-callout type="info" title="Note">
+                    <x-callout type="info" title="{{ __('Note') }}">
                         Inline comments with space before # (e.g., <code class="font-mono">KEY=value #comment</code>) are stripped.
                         To set flags, put <code class="font-mono"># coolify: literal buildtime=false runtime=false</code>
                         directly above a variable line. Without this line, the flags of a variable do not change.
                     </x-callout>
                     <x-forms.textarea rows="10" class="whitespace-pre-wrap font-sans" id="variables"
-                        wire:model="variables" label="Production"></x-forms.textarea>
+                        wire:model="variables" label="{{ __('Production') }}"></x-forms.textarea>
                     @if ($showPreview)
-                        <x-forms.textarea rows="10" class="whitespace-pre-wrap font-sans" label="Preview deployments"
+                        <x-forms.textarea rows="10" class="whitespace-pre-wrap font-sans" label="{{ __('Preview deployments') }}"
                             id="variablesPreview" wire:model="variablesPreview"></x-forms.textarea>
                     @endif
                     <x-unsaved-bar action="submit" />
                 @else
                     <x-forms.textarea rows="10" class="whitespace-pre-wrap font-sans" id="variables"
-                        wire:model="variables" label="Production" disabled></x-forms.textarea>
+                        wire:model="variables" label="{{ __('Production') }}" disabled></x-forms.textarea>
                     @if ($showPreview)
-                        <x-forms.textarea rows="10" class="whitespace-pre-wrap font-sans" label="Preview deployments"
+                        <x-forms.textarea rows="10" class="whitespace-pre-wrap font-sans" label="{{ __('Preview deployments') }}"
                             id="variablesPreview" wire:model="variablesPreview" disabled></x-forms.textarea>
                     @endif
                 @endcan
@@ -95,7 +95,7 @@
     @if ($view === 'normal')
         <x-table.toolbar class="mt-2" aria-busy="{{ ! $readyToLoad ? 'true' : 'false' }}">
             <x-slot:search>
-                <x-table.search placeholder="Search environment variables"
+                <x-table.search placeholder="{{ __('Search environment variables') }}"
                     loading-target="search,loadEnvironmentVariables" wire:model.live.debounce.300ms="search"
                     :disabled="! $readyToLoad" />
             </x-slot:search>
@@ -184,7 +184,7 @@
                 @can('manageEnvironment', $resource)
                     {{-- Do not disable Add based on readyToLoad: modal-input uses wire:ignore, so a
                          disabled attribute painted on first load would never re-enable. --}}
-                    <x-modal-input title="New Environment Variable" :closeOutside="false">
+                    <x-modal-input title="{{ __('New Environment Variable') }}" :closeOutside="false">
                         <x-slot:content>
                             <button type="button"
                                 class="button button-highlighted">
@@ -202,7 +202,7 @@
         @if (! $readyToLoad)
             <div id="environment-table-section"
                 class="application-settings-section-body is-flush mt-1 w-full scroll-mt-28" role="status">
-                <span class="sr-only">Loading environment variables</span>
+                <span class="sr-only">{{ __('Loading environment variables') }}</span>
                 <x-skeleton.table flush :rows="6" />
             </div>
         @else
@@ -216,8 +216,8 @@
             <div id="environment-table-section"
                 class="application-settings-section-body relative mt-1 scroll-mt-28 {{ $totalRows > 0 ? 'is-flush' : '' }} w-full">
                 @if ($this->isSearchActive && $totalRows === 0)
-                    <x-empty size="sm" title="No environment variables found"
-                        description="No variables match your search." />
+                    <x-empty size="sm" title="{{ __('No environment variables found') }}"
+                        description="{{ __('No variables match your search.') }}" />
                 @elseif ($totalRows > 0)
                     <div class="data-table w-full">
                         <div class="environment-table-scroll relative">
@@ -227,14 +227,14 @@
                             <div class="data-table-header env-table-grid {{ $showEnvironmentType ? '' : 'env-table-grid-no-type' }}">
                             <x-table.sort-header label="{{ __('Name') }}" asc="name_asc" desc="name_desc"
                                 action="setTableSort" :current="$tableSort" />
-                            <span class="text-center">Managed</span>
+                            <span class="text-center">{{ __('Managed') }}</span>
                             @if ($showEnvironmentType)
                                 <span>{{ __('Type') }}</span>
                             @endif
-                            <span class="text-center">Literal</span>
-                            <span class="text-center">Multiline</span>
-                            <span class="text-center">Buildtime</span>
-                            <span class="text-center">Runtime</span>
+                            <span class="text-center">{{ __('Literal') }}</span>
+                            <span class="text-center">{{ __('Multiline') }}</span>
+                            <span class="text-center">{{ __('Buildtime') }}</span>
+                            <span class="text-center">{{ __('Runtime') }}</span>
                             <span class="text-right">{{ __('Actions') }}</span>
                         </div>
                             @php $renderedScope = null; @endphp
@@ -276,8 +276,8 @@
                 @else
                     <div class="relative min-h-40">
                         <div wire:loading.class="pointer-events-none opacity-40 blur-[2px]" wire:target="clearFilters">
-                            <x-empty size="sm" title="No environment variables"
-                                description="Add your first variable with the + Add button above."
+                            <x-empty size="sm" title="{{ __('No environment variables') }}"
+                                description="{{ __('Add your first variable with the + Add button above.') }}"
                                 icon-name="variables" />
                         </div>
                         <x-table.loading target="clearFilters" text="Loading environment variables..." />

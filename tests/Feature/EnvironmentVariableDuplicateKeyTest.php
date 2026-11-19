@@ -80,14 +80,28 @@ test('renaming a variable to a key that the resource already has is refused', fu
     expect($renamed->fresh()->key)->toBe('JOB_BACKOFF_DELAY');
 });
 
-test('adding a preview variable whose key already exists for previews is refused', function () {
+test('adding a preview variable whose key already exists for previews is refused', function (string $locale, string $message) {
+    app()->setLocale($locale);
+
     duplicateKeyTestVariable($this->application, 'JOB_ATTEMPTS', isPreview: true);
 
     Livewire::test(All::class, ['resource' => $this->application])
         ->call('submit', ['key' => 'JOB_ATTEMPTS', 'value' => '3', 'is_preview' => true])
-        ->assertDispatched('error', 'Environment variable already exists.');
+        ->assertDispatched('error', $message);
 
     expect($this->application->environment_variables_preview()->where('key', 'JOB_ATTEMPTS')->count())->toBe(1);
+})->with([
+    'English' => ['en', 'Environment variable already exists.'],
+    'Simplified Chinese' => ['zh-cn', '该环境变量已存在。'],
+]);
+
+test('common form validation messages use Simplified Chinese field names', function () {
+    app()->setLocale('zh-cn');
+
+    $validator = validator(['email' => 'invalid'], ['email' => 'email', 'name' => 'required']);
+
+    expect($validator->errors()->first('email'))->toBe('「电子邮箱」必须是有效的电子邮箱地址。')
+        ->and($validator->errors()->first('name'))->toBe('请填写「名称」。');
 });
 
 test('saving the developer view again does not add rows', function () {

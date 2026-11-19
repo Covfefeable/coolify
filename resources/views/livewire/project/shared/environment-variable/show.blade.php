@@ -245,7 +245,7 @@
                                     :disabled="! $canUpdate" />
                             @endif
                             @if ($showRuntime)
-                                <x-forms.listbox id="is_runtime" label="Runtime" :options="[
+                                <x-forms.listbox id="is_runtime" label="{{ __('Runtime') }}" :options="[
                                     ['value' => true, 'label' => 'Available in the container'],
                                     ['value' => false, 'label' => 'Not available in the container'],
                                 ]" helper="Make this variable available in the running container at runtime."
