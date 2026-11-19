@@ -50,7 +50,7 @@
                     <p class="px-2.5 pb-2 text-[11px] text-neutral-500 dark:text-fg-dim">
                         Manage Cloudflare DNS records.
                     </p>
-                    <x-forms.checkbox id="tunnel-capability" label="Cloudflare Tunnel" domValue="tunnel" fullWidth
+                    <x-forms.checkbox id="tunnel-capability" label="{{ __('Cloudflare Tunnel') }}" domValue="tunnel" fullWidth
                         wire:model.live="capabilities" />
                     <p class="px-2.5 pb-2 text-[11px] text-neutral-500 dark:text-fg-dim">
                         Create and manage tunnels for server SSH. Needs DNS.
@@ -134,7 +134,7 @@
 
         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
             <x-forms.button type="submit" wire:target="addToken" isHighlighted>
-                Validate and add
+                {{ __('Validate and add') }}
             </x-forms.button>
         </div>
     </form>

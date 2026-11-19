@@ -13,7 +13,7 @@
                 <div class="mt-3">
                     <x-forms.button type="button" wire:click="installSysbox"
                         wire:loading.attr="disabled" wire:target="installSysbox">
-                        Install Sysbox
+                        {{ __('Install Sysbox') }}
                     </x-forms.button>
                 </div>
             @endcan

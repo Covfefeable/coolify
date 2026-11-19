@@ -13,7 +13,7 @@
                             <x-slot:content>
                                 <button type="button" class="button button-highlighted">
                                     <x-reicon name="plus" class="size-3.5" />
-                                    New token
+                                    {{ __('New token') }}
                                 </button>
                             </x-slot:content>
                             <livewire:security.integration-token-form :modal_mode="true"

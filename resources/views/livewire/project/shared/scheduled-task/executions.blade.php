@@ -65,15 +65,15 @@
                         <div class="mt-3 flex flex-wrap gap-2">
                             @if ($this->hasMoreLogs())
                                 <x-forms.button wire:click.prevent="loadMoreLogs">
-                                    Load more
+                                    {{ __('Load more') }}
                                 </x-forms.button>
                                 <x-forms.button wire:click.prevent="loadAllLogs">
-                                    Load all
+                                    {{ __('Load all') }}
                                 </x-forms.button>
                             @endif
                             @if (strlen($execution->message) > 0 && $this->canReadOutput())
                                 <x-forms.button wire:click.prevent="downloadLogs({{ data_get($execution, 'id') }})">
-                                    Download logs
+                                    {{ __('Download logs') }}
                                 </x-forms.button>
                             @endif
                         </div>

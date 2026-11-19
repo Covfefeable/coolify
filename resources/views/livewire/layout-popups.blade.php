@@ -189,7 +189,7 @@
                             <button x-show="!reminders.sponsorship.compact" x-transition.opacity type="button"
                                 class="h-9 cursor-pointer px-2 text-[12px] font-medium text-neutral-500 transition-colors hover:text-black sm:shrink-0 dark:text-fg-dim dark:hover:text-fg"
                                 @click="bannerVisible=false;disableSponsorship()">
-                                Maybe next time
+                                {{ __('Maybe next time') }}
                             </button>
                         </div>
                     </div>
@@ -280,7 +280,7 @@
                             <button x-show="!reminders.notification.compact" x-transition.opacity type="button"
                                 class="button h-9 justify-center sm:min-w-32"
                                 @click="bannerVisible=false;disableNotification()">
-                                Accept and close
+                                {{ __('Accept and close') }}
                             </button>
                         </div>
                     </div>

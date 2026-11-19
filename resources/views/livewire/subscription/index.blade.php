@@ -19,8 +19,7 @@
                         Update the payment method or settle the outstanding invoice in the billing portal.
                     </x-callout>
                     <div class="mt-4">
-                        <x-forms.button wire:click="stripeCustomerPortal" isHighlighted>Open billing
-                            portal</x-forms.button>
+                        <x-forms.button wire:click="stripeCustomerPortal" isHighlighted>{{ __('Open billing portal') }}</x-forms.button>
                     </div>
                 </x-application.settings-section>
             @else

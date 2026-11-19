@@ -193,7 +193,7 @@
                     </p>
                     <x-modal-confirmation title="Clone this resource with its volume data?" submitAction="clone-resource-confirmed"
                         dispatchAction :confirmWithText="false" :confirmWithPassword="false"
-                        step2ButtonText="Clone resource"
+                        step2ButtonText="{{ __('Clone resource') }}"
                         warningMessage="A running resource is unavailable while its volume data is copied."
                         :actions="[
                             'If the resource is running, it is stopped while its volume data is copied.',
@@ -256,13 +256,13 @@
                     </p>
                     <x-modal-confirmation title="Migrate this resource?" submitAction="migrate-resource-confirmed"
                         dispatchAction :confirmWithText="false" :confirmWithPassword="false"
-                        step2ButtonText="Migrate resource"
+                        step2ButtonText="{{ __('Migrate resource') }}"
                         :actions="[
                             'The resource will be stopped on the source server.',
                             'Redeploy the resource after the migration completes.',
                         ]">
                         <x-slot:trigger>
-                            <x-forms.button>Migrate resource</x-forms.button>
+                            <x-forms.button>{{ __('Migrate resource') }}</x-forms.button>
                         </x-slot:trigger>
                     </x-modal-confirmation>
                 </div>

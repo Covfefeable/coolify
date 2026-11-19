@@ -87,7 +87,7 @@
                                                 <x-forms.button type="button"
                                                     wire:click="generateSecret('{{ $provider['key'] }}')"
                                                     aria-label="Generate {{ $provider['name'] }} webhook secret">
-                                                    Generate
+                                                    {{ __('Generate') }}
                                                 </x-forms.button>
                                             </div>
                                         @else

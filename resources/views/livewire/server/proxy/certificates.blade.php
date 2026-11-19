@@ -22,7 +22,7 @@
                                 'Delete '.$unusedCertificates->count().' certificates that no route and no resource on this server uses: '.$unusedCertificates->pluck('main_domain')->implode(', ').'.',
                             ]"
                             warningMessage="The proxy keeps using the certificates until you restart it. If a route still uses a domain, Traefik requests a new certificate after the restart. You can restore the backup below to undo this."
-                            step2ButtonText="Delete Certificates"
+                            step2ButtonText="{{ __('Delete Certificates') }}"
                             :confirmWithPassword="false"
                             :confirmWithText="false" />
                     @endcan
@@ -63,7 +63,7 @@
                                                 <div class="flex flex-col items-start gap-1">
                                                     {{ $certificate['main_domain'] }}
                                                     @if (($certificate['in_use'] ?? null) === false)
-                                                        <x-status-badge label="Not used" type="warning" size="sm"
+                                                        <x-status-badge label="{{ __('Not used') }}" type="warning" size="sm"
                                                             title="No route and no resource on this server uses this domain. Traefik renews the certificate until you delete it." />
                                                     @endif
                                                 </div>
@@ -106,7 +106,7 @@
                                                             confirmationText="{{ $certificate['main_domain'] }}"
                                                             confirmationLabel="Confirm by entering the domain"
                                                             shortConfirmationLabel="Domain"
-                                                            step2ButtonText="Delete Certificate"
+                                                            step2ButtonText="{{ __('Delete Certificate') }}"
                                                             :confirmWithPassword="false"
                                                             :confirmWithText="true">
                                                             <x-slot:trigger>
@@ -171,11 +171,11 @@
                                                                         'Replace acme.json with the backup from '.$backup['created_at'].'.',
                                                                     ]"
                                                                     warningMessage="Until the proxy restarts, it keeps its loaded certificates and can write them back to acme.json. Certificates issued after this backup are removed from acme.json."
-                                                                    step2ButtonText="Restore Backup"
+                                                                    step2ButtonText="{{ __('Restore Backup') }}"
                                                                     :confirmWithPassword="false"
                                                                     :confirmWithText="false">
                                                                     <x-slot:trigger>
-                                                                        <x-table.row-action>Restore</x-table.row-action>
+                                                                        <x-table.row-action>{{ __('Restore') }}</x-table.row-action>
                                                                     </x-slot:trigger>
                                                                 </x-modal-confirmation>
                                                                 <x-slot:danger>
@@ -183,7 +183,7 @@
                                                                         buttonFullWidth
                                                                         submitAction="deleteTraefikAcmeBackup('{{ $backup['name'] }}')"
                                                                         :actions="['Delete the backup '.$backup['name'].'.']"
-                                                                        step2ButtonText="Delete Backup"
+                                                                        step2ButtonText="{{ __('Delete Backup') }}"
                                                                         :confirmWithPassword="false"
                                                                         :confirmWithText="false">
                                                                         <x-slot:trigger>

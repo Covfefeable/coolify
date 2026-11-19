@@ -6,6 +6,6 @@
         <x-error-page
             code="429"
             title="Woah, slow down there!"
-            description="You're making too many requests. Please wait a few seconds before trying again." />
+            description="{{ __('You\'re making too many requests. Please wait a few seconds before trying again.') }}" />
     </body>
 @endsection

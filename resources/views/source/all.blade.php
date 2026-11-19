@@ -18,7 +18,7 @@
                         class="button button-highlighted"
                         aria-haspopup="menu" :aria-expanded="dropdownOpen">
                         <x-reicon name="plus" class="size-3.5" />
-                        New source
+                        {{ __('New source') }}
                         <x-reicon name="chevron-down" class="size-3 opacity-55" />
                     </button>
 
@@ -61,7 +61,7 @@
 
         @if ($sources->isEmpty())
             <x-empty title="{{ __('No sources yet') }}"
-                description="Connect a Git provider to deploy applications directly from your repositories."
+                description="{{ __('Connect a Git provider to deploy applications directly from your repositories.') }}"
                 icon-name="sources" />
         @else
             @php

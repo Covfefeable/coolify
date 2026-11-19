@@ -12,7 +12,7 @@
                 :list-url="route('project.resource.index', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid])"
                 :canvas-url="route('project.environment.canvas', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid])" />
             <a href="{{ route('shared-variables.environment.show', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid]) }}"
-                {{ wireNavigate() }} class="button whitespace-nowrap" title="Shared variables for this environment"
+                {{ wireNavigate() }} class="button whitespace-nowrap" title="{{ __('Shared variables for this environment') }}"
                 aria-label="Shared variables for {{ $environment->name }}">
                 <x-reicon name="variables" class="size-3.5" />
                 Shared variables

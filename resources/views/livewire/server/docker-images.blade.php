@@ -22,7 +22,7 @@
                 <x-slot:actions>
                     <x-forms.button wire:click="load">
                         <x-reicon name="refresh" class="size-3.5" />
-                        Refresh
+                        {{ __('Refresh') }}
                     </x-forms.button>
                 </x-slot:actions>
 
@@ -104,7 +104,7 @@
                                                 ]"
                                                 confirmationText="{{ $image['reference'] }}"
                                                 confirmationLabel="Confirm by entering the image reference"
-                                                shortConfirmationLabel="Image" step2ButtonText="Delete Image"
+                                                shortConfirmationLabel="Image" step2ButtonText="{{ __('Delete Image') }}"
                                                 isErrorButton :confirmWithPassword="false">
                                                 <x-slot:trigger>
                                                     <button type="button"

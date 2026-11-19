@@ -42,11 +42,11 @@
                                 'The finding counts again for the status, alerts, and Block deploys.',
                             ]"
                             :confirmWithText="false" :confirmWithPassword="false"
-                            temporaryDisableTwoStepConfirmation step2ButtonText="Remove">
+                            temporaryDisableTwoStepConfirmation step2ButtonText="{{ __('Remove') }}">
                             <x-slot:trigger>
                                 <button type="button"
                                     class="inline-flex h-7 items-center rounded-md px-2 text-[11px] font-medium text-error transition-colors hover:bg-error/10">
-                                    Remove
+                                    {{ __('Remove') }}
                                 </button>
                             </x-slot:trigger>
                         </x-modal-confirmation>

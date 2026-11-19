@@ -5,7 +5,7 @@
         <x-toast />
         <x-error-page
             code="402"
-            title="Payment required"
+            title="{{ __('Payment required') }}"
             description="A valid subscription or payment is required to continue." />
     </body>
 @endsection

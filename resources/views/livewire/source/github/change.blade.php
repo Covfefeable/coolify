@@ -116,7 +116,7 @@
                                         @if ($isConnected)
                                             <x-forms.button type="button" canGate="update" :canResource="$github_app"
                                                 wire:click.prevent="testConnection">
-                                                Test connection
+                                                {{ __('Test connection') }}
                                             </x-forms.button>
                                         @endif
                                         <x-forms.button type="button" canGate="update" :canResource="$github_app"
@@ -201,13 +201,13 @@
                                                 </ul>
                                             <x-slot:action>
                                                 @can('delete', $github_app)
-                                                    <x-modal-confirmation title="Confirm GitHub App Deletion?" isErrorButton
+                                                    <x-modal-confirmation title="{{ __('Confirm GitHub App Deletion?') }}" isErrorButton
                                                         buttonTitle="{{ __('Delete') }}" submitAction="delete"
                                                         :actions="['The selected GitHub App will be permanently deleted.']"
                                                         confirmationText="{{ data_get($github_app, 'name') }}"
                                                         confirmationLabel="Please confirm the execution of the actions by entering the GitHub App Name below"
                                                         shortConfirmationLabel="GitHub App Name" :confirmWithPassword="false"
-                                                        step2ButtonText="Permanently Delete" />
+                                                        step2ButtonText="{{ __('Permanently Delete') }}" />
                                                 @else
                                                     <x-forms.button isError disabled canGate="delete" :canResource="$github_app"
                                                         tooltip="You do not have permission to delete this GitHub App.">
@@ -247,13 +247,13 @@
             </div>
             @can('delete', $github_app)
                 <div class="shrink-0">
-                    <x-modal-confirmation title="Confirm GitHub App Deletion?" isErrorButton
+                    <x-modal-confirmation title="{{ __('Confirm GitHub App Deletion?') }}" isErrorButton
                         buttonTitle="{{ __('Delete') }}" submitAction="delete"
                         :actions="['The selected GitHub App will be permanently deleted.']"
                         confirmationText="{{ data_get($github_app, 'name') }}"
                         confirmationLabel="Please confirm the execution of the actions by entering the GitHub App Name below"
                         shortConfirmationLabel="GitHub App Name" :confirmWithPassword="false"
-                        step2ButtonText="Permanently Delete" />
+                        step2ButtonText="{{ __('Permanently Delete') }}" />
                 </div>
             @endcan
         </header>
@@ -341,7 +341,7 @@
                             <button type="button"
                                 class="button mt-auto w-full justify-center button-highlighted"
                                 x-on:click.prevent="createGithubApp(webhookEndpoint, useCustomWebhookEndpoint, customWebhookEndpoint, $wire.preview_deployment_permissions, $wire.deployment_status_permissions, {{ Illuminate\Support\Js::from($administration) }}, $wire.github_runners)">
-                                Register with GitHub
+                                {{ __('Register with GitHub') }}
                             </button>
                         </div>
                     </x-application.settings-section>

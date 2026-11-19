@@ -205,7 +205,7 @@
                                     @click="open = false; document.getElementById('server-mobile-stop-proxy-trigger')?.click()"
                                     role="menuitem">
                                     <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                    Stop Proxy
+                                    {{ __('Stop Proxy') }}
                                 </button>
                             @else
                                 <x-slot:main wire:loading.attr="disabled" wire:target="checkProxy,startProxy" @click="$wire.dispatch('checkProxyEvent')">
@@ -216,7 +216,7 @@
                             <button type="button" class="listbox-option justify-start! gap-2.5!" wire:click="checkProxyStatus"
                                 wire:loading.attr="disabled" @click="open = false" role="menuitem">
                                 <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                                Refresh Proxy Status
+                                {{ __('Refresh Proxy Status') }}
                             </button>
                         </x-split-action>
                         @endif
@@ -224,27 +224,27 @@
                         {{-- Programmatic open only (proxy actions menu and the pending-changes warning).
                              Keep fully display:none so the modal shells never reserve a layout row. --}}
                         <div class="hidden" aria-hidden="true">
-                            <x-modal-confirmation title="Confirm Proxy Restart?" buttonTitle="Restart Proxy"
+                            <x-modal-confirmation title="Confirm Proxy Restart?" buttonTitle="{{ __('Restart Proxy') }}"
                                 submitAction="restart" :actions="[
                                     'This proxy will be stopped and started again.',
                                     'All resources hosted on Coolify will be unavailable during the restart.',
-                                ]" :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Restart Proxy"
+                                ]" :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Restart Proxy') }}"
                                 :dispatchEvent="true" dispatchEventType="restartEvent">
                                 <x-slot:trigger>
                                     <button id="server-mobile-restart-proxy-trigger" type="button">
-                                        Restart Proxy
+                                        {{ __('Restart Proxy') }}
                                     </button>
                                 </x-slot:trigger>
                             </x-modal-confirmation>
-                            <x-modal-confirmation title="Confirm Proxy Stopping?" buttonTitle="Stop Proxy"
+                            <x-modal-confirmation title="Confirm Proxy Stopping?" buttonTitle="{{ __('Stop Proxy') }}"
                                 submitAction="stop(true)" :actions="[
                                     'The Coolify proxy will be stopped.',
                                     'All resources hosted on Coolify will be unavailable.',
-                                ]" :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Stop Proxy"
+                                ]" :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Stop Proxy') }}"
                                 :dispatchEvent="true" dispatchEventType="stopEvent">
                                 <x-slot:trigger>
                                     <button id="server-mobile-stop-proxy-trigger" type="button">
-                                        Stop Proxy
+                                        {{ __('Stop Proxy') }}
                                     </button>
                                 </x-slot:trigger>
                             </x-modal-confirmation>
@@ -300,7 +300,7 @@
                                 @click="open = false; document.getElementById('server-mobile-stop-proxy-trigger')?.click()"
                                 role="menuitem">
                                 <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                Stop Proxy
+                                {{ __('Stop Proxy') }}
                             </button>
                         @else
                             <x-slot:main wire:loading.attr="disabled" wire:target="checkProxy,startProxy" @click="$wire.dispatch('checkProxyEvent')">
@@ -311,7 +311,7 @@
                         <button type="button" class="listbox-option justify-start! gap-2.5!" wire:click="checkProxyStatus"
                             wire:loading.attr="disabled" @click="open = false" role="menuitem">
                             <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                            Refresh Proxy Status
+                            {{ __('Refresh Proxy Status') }}
                         </button>
                     </x-split-action>
                 @endif

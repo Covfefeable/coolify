@@ -46,7 +46,7 @@
                         icon-name="database" size="sm">
                         <x-slot:actions>
                             <x-forms.button wire:click="addCoolifyDatabase" isHighlighted>
-                                Configure backup
+                                {{ __('Configure backup') }}
                             </x-forms.button>
                         </x-slot:actions>
                     </x-empty>

@@ -125,7 +125,7 @@
             </div>
             <x-forms.button canGate="update" :canResource="$server" wire:click="retry">
                 <x-reicon name="refresh" class="size-3.5" />
-                Retry validation
+                {{ __('Retry validation') }}
             </x-forms.button>
         @endisset
     @endif

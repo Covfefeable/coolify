@@ -114,7 +114,7 @@
                         <x-forms.input id="key" label="{{ __('Name') }}" :required="$is_redis_credential"
                             :disabled="!$canEditValue || $is_redis_credential || $composeInfo !== null" />
                         <x-forms.input id="comment" label="{{ __('Comment') }}" placeholder="Optional note"
-                            helper="Add a note to document what this environment variable is used for." maxlength="256"
+                            helper="{{ __('Add a note to document what this environment variable is used for.') }}" maxlength="256"
                             :disabled="!$canUpdate" />
                     </div>
 
@@ -209,7 +209,7 @@
                             @endif
                             @if ($composeInfo['default'] !== null && !$composeInfo['required'] && $canEditValue && !$isLocked)
                                 <x-forms.button type="button" wire:click="useComposeDefault">
-                                    Use Compose default
+                                    {{ __('Use Compose default') }}
                                 </x-forms.button>
                             @endif
                             @if ($composeInfo['required'])
@@ -241,14 +241,14 @@
                                     ['value' => true, 'label' => 'Available during build'],
                                     ['value' => false, 'label' => 'Not available during build'],
                                 ]"
-                                    helper="Make this variable available during the Docker build process. Useful for build secrets and dependencies."
+                                    helper="{{ __('Make this variable available during the Docker build process. Useful for build secrets and dependencies.') }}"
                                     :disabled="! $canUpdate" />
                             @endif
                             @if ($showRuntime)
                                 <x-forms.listbox id="is_runtime" label="{{ __('Runtime') }}" :options="[
                                     ['value' => true, 'label' => 'Available in the container'],
                                     ['value' => false, 'label' => 'Not available in the container'],
-                                ]" helper="Make this variable available in the running container at runtime."
+                                ]" helper="{{ __('Make this variable available in the running container at runtime.') }}"
                                     :disabled="! $canUpdate" />
                             @endif
                         </div>
@@ -270,7 +270,7 @@
                                             confirmationText="{{ $key }}"
                                             confirmationLabel="Please confirm the execution of the actions by entering the Environment Variable Name below"
                                             shortConfirmationLabel="Environment Variable Name" :confirmWithPassword="false"
-                                            step2ButtonText="Permanently Delete" />
+                                            step2ButtonText="{{ __('Permanently Delete') }}" />
                                     @endif
                                 @endcan
                             </div>
@@ -283,16 +283,16 @@
                                 @endif
                                 @if ($canUpdate && !$isLocked && !$isMagicVariable)
                                     <div wire:key="env-lock-action-{{ $env->id }}">
-                                        <x-modal-confirmation title="Lock Environment Variable?" buttonTitle="Lock"
+                                        <x-modal-confirmation title="Lock Environment Variable?" buttonTitle="{{ __('Lock') }}"
                                             submitAction="lock"
                                             :actions="['The value will be hidden. You cannot see or copy it again.', 'You can still replace the value with a new one, but you cannot unlock the variable.']"
-                                            :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Lock" />
+                                            :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Lock') }}" />
                                     </div>
                                 @endif
                                 @if ($canUpdate && !$isDisabled)
                                     <fieldset disabled wire:dirty.attr.remove="disabled">
                                         <x-forms.button type="submit" isHighlighted wire:target="submit">
-                                            Update variable
+                                            {{ __('Update variable') }}
                                         </x-forms.button>
                                     </fieldset>
                                 @endif

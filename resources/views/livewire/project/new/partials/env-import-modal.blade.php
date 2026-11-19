@@ -22,7 +22,7 @@
 
     <x-slot:footer>
         @if ($envImported)
-            <x-forms.button type="button" wire:click="clearEnvVars" @click="modalOpen = false">Remove import</x-forms.button>
+            <x-forms.button type="button" wire:click="clearEnvVars" @click="modalOpen = false">{{ __('Remove import') }}</x-forms.button>
         @endif
         <x-forms.button type="button" isHighlighted wire:click="confirmEnvImport" @click="modalOpen = false">
             {{ $envImported ? 'Update' : 'Import' }} {{ count($envExampleVars) }} {{ Str::plural('variable', count($envExampleVars)) }}

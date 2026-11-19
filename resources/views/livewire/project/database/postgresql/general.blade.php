@@ -127,7 +127,7 @@
                         <x-forms.textarea rows="16" placeholder="CREATE DATABASE test;" id="new_content"
                             label="{{ __('Content') }}" required />
                         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
-                            <x-forms.button type="submit">Add script</x-forms.button>
+                            <x-forms.button type="submit">{{ __('Add script') }}</x-forms.button>
                         </div>
                     </form>
                 </x-modal-input>

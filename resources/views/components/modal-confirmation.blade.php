@@ -360,7 +360,7 @@
                     <!-- Step 3: Password confirmation -->
                     @if (!$skipPasswordConfirmation)
                         <div x-show="step === 3 && confirmWithPassword">
-                            <x-callout type="danger" title="Final Confirmation" class="mb-4">
+                            <x-callout type="danger" title="{{ __('Final Confirmation') }}" class="mb-4">
                                 Please enter your password to confirm this destructive action.
                             </x-callout>
                             <div class="flex flex-col gap-2 mb-4">

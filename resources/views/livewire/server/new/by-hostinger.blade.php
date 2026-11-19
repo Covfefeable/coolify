@@ -99,7 +99,7 @@
                                         <span class="text-[11px] text-neutral-600 dark:text-fg-dim">A private key is required.</span>
                                         <x-modal-input title="{{ __('New Private Key') }}">
                                             <x-slot:content>
-                                                <button type="button" class="button">Create key</button>
+                                                <button type="button" class="button">{{ __('Create key') }}</button>
                                             </x-slot:content>
                                             <livewire:security.private-key.create :modal_mode="true" from="server" />
                                         </x-modal-input>

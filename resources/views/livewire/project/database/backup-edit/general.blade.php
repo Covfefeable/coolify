@@ -9,12 +9,12 @@
                 @if (! $backupEnabled)
                     <x-forms.button type="button" wire:click="toggleEnabled" wire:loading.attr="disabled"
                         wire:target="toggleEnabled" isHighlighted>
-                        Enable backup
+                        {{ __('Enable backup') }}
                     </x-forms.button>
                 @else
                     <x-forms.button type="button" wire:click="toggleEnabled" wire:loading.attr="disabled"
                         wire:target="toggleEnabled">
-                        Disable backup
+                        {{ __('Disable backup') }}
                     </x-forms.button>
                 @endif
                 <x-forms.button type="button" wire:click="backupNow"
@@ -104,7 +104,7 @@
                     helper="Maximum runtime in seconds of the complete backup run: the dumps and S3 uploads of all databases." required />
                 <x-forms.input label="Missing backup alert after" id="missingBackupNotificationDays" type="number"
                     min="0" max="365" suffix="days" canGate="manageBackups" :canResource="$backup->database"
-                    helper="Notify through backup failure channels after this many days without an execution. Use 0 to disable." required />
+                    helper="{{ __('Notify through backup failure channels after this many days without an execution. Use 0 to disable.') }}" required />
             </div>
         </div>
     </x-application.settings-section>

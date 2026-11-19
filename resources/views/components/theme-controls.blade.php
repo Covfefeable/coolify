@@ -410,7 +410,7 @@
                                             :aria-invalid="shareCodeInvalid"
                                             class="input min-w-0 flex-1 font-mono text-sm"
                                             :class="shareCodeInvalid && 'border-error! ring-error!'" />
-                                        <button type="button" @click="copyShareCode()" aria-label="Copy share code"
+                                        <button type="button" @click="copyShareCode()" aria-label="{{ __('Copy share code') }}"
                                             class="button shrink-0 px-2.5">
                                             <x-reicon name="copy" x-show="!shareCodeCopied" class="size-4" />
                                             <x-reicon name="check" x-show="shareCodeCopied" x-cloak class="size-4 text-success" />
@@ -428,7 +428,7 @@
                     <footer
                         class="flex shrink-0 flex-wrap items-center justify-end gap-2 border-t border-neutral-200 px-4 py-3 dark:border-white/[0.08]">
                         <x-forms.button @click="dialogOpen = false">{{ __('Cancel') }}</x-forms.button>
-                        <x-forms.button isHighlighted @click="saveCustomTheme()">Save theme</x-forms.button>
+                        <x-forms.button isHighlighted @click="saveCustomTheme()">{{ __('Save theme') }}</x-forms.button>
                     </footer>
                 </div>
             </div>

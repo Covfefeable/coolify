@@ -39,10 +39,10 @@
     },
 }">
     <x-forms.input label="{{ __('Base directory') }}" placeholder="/"
-        helper="Repository directory used as the build root. Useful for monorepos." x-model="base"
+        helper="{{ __('Repository directory used as the build root. Useful for monorepos.') }}" x-model="base"
         x-bind:disabled="{{ $disabled }}" @blur="base = directory || '/'" />
     @if ($file)
-        <x-forms.input :label="$fileLabel" :placeholder="$defaultFile" helper="Path relative to the base directory."
+        <x-forms.input :label="$fileLabel" :placeholder="$defaultFile" helper="{{ __('Path relative to the base directory.') }}"
             x-model="file" x-bind:disabled="{{ $disabled }}" @blur="file = location" />
         <p class="col-span-full text-xs text-neutral-500 dark:text-fg-dim">
             Resolved file:

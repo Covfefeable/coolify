@@ -48,7 +48,7 @@
                     @if ($usesGitSsh || filled($application->git_ssh_known_hosts))
                         <x-forms.button type="button" wire:click="fetchHostKeys" wire:loading.attr="disabled"
                             wire:target="fetchHostKeys">
-                            Fetch current host key
+                            {{ __('Fetch current host key') }}
                         </x-forms.button>
                     @endif
                 </x-slot:actions>
@@ -64,8 +64,8 @@
                         @endforeach
                     </ul>
                     <div class="flex flex-wrap gap-2">
-                        <x-forms.button type="button" wire:click="acceptFetchedHostKeys">Accept</x-forms.button>
-                        <x-forms.button type="button" wire:click="declineFetchedHostKeys">Decline</x-forms.button>
+                        <x-forms.button type="button" wire:click="acceptFetchedHostKeys">{{ __('Accept') }}</x-forms.button>
+                        <x-forms.button type="button" wire:click="declineFetchedHostKeys">{{ __('Decline') }}</x-forms.button>
                     </div>
                 </x-callout>
             @endif
@@ -105,11 +105,11 @@
                                 submitAction="removeHostKey('{{ $fingerprint['id'] }}')" :actions="[
                                     'The host key ' . $fingerprint['fingerprint'] . ' of ' . $fingerprint['host'] . ' will be removed.',
                                     'The next deployment saves the key that the Git host sends then, without a check.',
-                                ]" :confirmWithPassword="false" :confirmWithText="false" step2ButtonText="Remove host key">
+                                ]" :confirmWithPassword="false" :confirmWithText="false" step2ButtonText="{{ __('Remove host key') }}">
                                 <x-slot:trigger>
                                     <button type="button"
                                         class="icon-button shrink-0 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
-                                        title="Remove host key" aria-label="Remove host key of {{ $fingerprint['host'] }}">
+                                        title="{{ __('Remove host key') }}" aria-label="Remove host key of {{ $fingerprint['host'] }}">
                                         <x-reicon name="trash" class="size-3.5" />
                                     </button>
                                 </x-slot:trigger>
@@ -141,7 +141,7 @@
                     @can('update', $application)
                         <x-slot:actions>
                             <x-forms.button type="button" isError wire:click="removeGitHttpsCredential">
-                                Remove credentials
+                                {{ __('Remove credentials') }}
                             </x-forms.button>
                         </x-slot:actions>
                     @endcan

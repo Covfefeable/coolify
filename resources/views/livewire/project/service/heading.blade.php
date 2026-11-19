@@ -86,7 +86,7 @@
                                     @disabled(!auth()->user()->can('stop', $service))
                                     @click="open = false; document.getElementById('service-stop-trigger')?.click()" role="menuitem">
                                     <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                    Stop
+                                    {{ __('Stop') }}
                                 </button>
                             @else
                                 <x-slot:main x-bind:disabled="deploying" @click="deploying = true; $wire.dispatch('startEvent')">
@@ -181,7 +181,7 @@
                                         @disabled(!auth()->user()->can('stop', $service))
                                         @click="open = false; document.getElementById('service-stop-trigger')?.click()" role="menuitem">
                                         <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                        Stop
+                                        {{ __('Stop') }}
                                     </button>
                                 @else
                                     <x-slot:main x-bind:disabled="deploying" @click="deploying = true; $wire.dispatch('startEvent')">
@@ -210,7 +210,7 @@
                                 @click.outside="open = false" @keydown.escape.window="open = false">
                                 <button type="button" class="button button-highlighted" @click="open = !open"
                                     :aria-expanded="open" aria-haspopup="menu">
-                                    Actions
+                                    {{ __('Actions') }}
                                     <x-reicon name="chevron-down" class="size-3 opacity-55" />
                                 </button>
                                 <div x-cloak x-show="open" x-transition.origin.top.right
@@ -236,7 +236,7 @@
         <div class="hidden" aria-hidden="true">
             <x-modal-confirmation title="Confirm Service Restart?" buttonTitle="{{ __('Restart') }}"
                 submitAction="restartEvent" :dispatchAction="true" :actions="['This service will be restarted.']"
-                :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Confirm">
+                :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Confirm') }}">
                 <x-slot:trigger>
                     <button id="service-restart-trigger" type="button">{{ __('Restart') }}</button>
                 </x-slot:trigger>
@@ -244,19 +244,19 @@
             <x-modal-confirmation title="Confirm Service Stopping?" buttonTitle="{{ __('Stop') }}"
                 submitAction="stop" :checkboxes="$checkboxes" :actions="[__('service.stop'), __('resource.non_persistent')]"
                 :confirmWithText="false" :confirmWithPassword="false" step1ButtonText="Continue"
-                step2ButtonText="Confirm">
+                step2ButtonText="{{ __('Confirm') }}">
                 <x-slot:trigger>
                     <button id="service-stop-trigger" type="button">{{ __('Stop') }}</button>
                 </x-slot:trigger>
             </x-modal-confirmation>
             @if ($selectedResource)
-                <x-modal-confirmation title="{{ __('Confirm Container Removal?') }}" buttonTitle="Remove container"
+                <x-modal-confirmation title="{{ __('Confirm Container Removal?') }}" buttonTitle="{{ __('Remove container') }}"
                     canGate="deploy" :canResource="$service" submitAction="removeSelectedResourceContainer"
                     :actions="['The exited service resource container will be removed.', __('resource.non_persistent')]"
                     :confirmWithText="false" :confirmWithPassword="false" step1ButtonText="Continue"
-                    step2ButtonText="Confirm">
+                    step2ButtonText="{{ __('Confirm') }}">
                     <x-slot:trigger>
-                        <button id="selected-resource-remove-trigger" type="button">Remove container</button>
+                        <button id="selected-resource-remove-trigger" type="button">{{ __('Remove container') }}</button>
                     </x-slot:trigger>
                 </x-modal-confirmation>
             @endif

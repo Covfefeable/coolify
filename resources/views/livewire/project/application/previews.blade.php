@@ -13,7 +13,7 @@
                             :wireIgnore="false" :isLarge="true">
                             <x-slot:content>
                                 <x-forms.button wire:click="load_prs">
-                                    Load pull requests
+                                    {{ __('Load pull requests') }}
                                 </x-forms.button>
                             </x-slot:content>
                             <x-slot:headerActions>
@@ -53,12 +53,12 @@
                                         <div class="flex shrink-0 items-center gap-2">
                                             <x-forms.button
                                                 wire:click="add('{{ data_get($pull_request, 'number') }}', '{{ data_get($pull_request, 'html_url') }}')">
-                                                Configure
+                                                {{ __('Configure') }}
                                             </x-forms.button>
                                             @can('deploy', $application)
                                                 <x-forms.button
                                                     wire:click="add_and_deploy('{{ data_get($pull_request, 'number') }}', '{{ data_get($pull_request, 'html_url') }}')">
-                                                    Deploy preview
+                                                    {{ __('Deploy preview') }}
                                                 </x-forms.button>
                                             @endcan
                                         </div>
@@ -73,12 +73,12 @@
                     @endif
                     @if ($isPreviewDeploymentsEnabled)
                         <x-forms.button wire:click="togglePreviewDeployments" wire:target="togglePreviewDeployments">
-                            Disable preview deployments
+                            {{ __('Disable preview deployments') }}
                         </x-forms.button>
                     @else
                         <x-forms.button wire:click="togglePreviewDeployments" wire:target="togglePreviewDeployments"
                             isHighlighted>
-                            Enable preview deployments
+                            {{ __('Enable preview deployments') }}
                         </x-forms.button>
                     @endif
                 @endcan
@@ -113,13 +113,13 @@
                 <x-forms.input id="manualDockerTag" label="Docker tag"
                     helper="For example, pr_1234." />
                 @can('deploy', $application)
-                    <x-forms.button type="submit">Deploy preview</x-forms.button>
+                    <x-forms.button type="submit">{{ __('Deploy preview') }}</x-forms.button>
                 @endcan
             </form>
         </x-application.settings-section>
     @endif
 
-    <x-application.settings-section id="preview-deployments-section" title="Preview deployments"
+    <x-application.settings-section id="preview-deployments-section" title="{{ __('Preview deployments') }}"
         helper="Manage domains, deployments, logs, and lifecycle actions for configured previews." flush>
         @forelse (data_get($application, 'previews') as $preview)
             @php
@@ -184,7 +184,7 @@
                                 <button type="button" class="button gap-1.5" title="Preview logs" @click="open = !open"
                                     :aria-expanded="open" aria-haspopup="menu">
                                     <x-reicon name="browser-terminal" class="size-3.5 opacity-70" />
-                                    Logs
+                                    {{ __('Logs') }}
                                     <x-reicon name="chevron-down" class="size-3 opacity-55" />
                                 </button>
                                 <div x-cloak x-show="open" x-transition.origin.top.right
@@ -210,7 +210,7 @@
                         @keydown.escape.window="open = false">
                         <button type="button" class="button gap-1.5" title="Preview actions" @click="open = !open"
                             :aria-expanded="open" aria-haspopup="menu">
-                            Actions
+                            {{ __('Actions') }}
                             <span class="inline-flex transition-transform" :class="open && 'rotate-180'">
                                 <x-reicon name="chevron-down" class="size-3 opacity-55" />
                             </span>
@@ -240,7 +240,7 @@
                                         @click="open = false; document.getElementById('preview-stop-trigger-{{ data_get($preview, 'pull_request_id') }}')?.click()"
                                         role="menuitem">
                                         <x-reicon name="stop" class="size-3.5" />
-                                        Stop
+                                        {{ __('Stop') }}
                                     </button>
                                 @endif
                             @endcan
@@ -250,7 +250,7 @@
                                     @click="open = false; document.getElementById('preview-delete-trigger-{{ data_get($preview, 'pull_request_id') }}')?.click()"
                                     role="menuitem">
                                     <x-reicon name="trash" class="size-3.5" />
-                                    Delete
+                                    {{ __('Delete') }}
                                 </button>
                             @endcan
                         </div>
@@ -267,7 +267,7 @@
                                         'All non-persistent preview data will be removed.',
                                     ]"
                                     :confirmWithText="false" :confirmWithPassword="false"
-                                    step2ButtonText="Stop preview deployment">
+                                    step2ButtonText="{{ __('Stop preview deployment') }}">
                                     <x-slot:trigger>
                                         <button id="preview-stop-trigger-{{ data_get($preview, 'pull_request_id') }}"
                                             type="button"></button>

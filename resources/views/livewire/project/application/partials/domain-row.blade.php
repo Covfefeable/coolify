@@ -78,8 +78,8 @@
             <span class="service-domain-detail-label">{{ __('Protocol redirect') }}</span>
             <span>{{ str_starts_with($row['url'], 'https://') && $isForceHttpsEnabled ? 'HTTP → HTTPS' : 'Disabled' }}</span>
         </div>
-        <div class="service-domain-detail" title="Domain redirect">
-            <span class="service-domain-detail-label">Domain redirect</span>
+        <div class="service-domain-detail" title="{{ __('Domain redirect') }}">
+            <span class="service-domain-detail-label">{{ __('Domain redirect') }}</span>
             <span>{{ match ($rowDirection) { 'www' => 'non-www → www', 'non-www' => 'www → non-www', default => 'Disabled' } }}</span>
         </div>
         <div class="service-domain-detail"
@@ -88,7 +88,7 @@
             @if (filled($row['internal_port'] ?? null))
                 <span aria-label="Internal port {{ $row['internal_port'] }}">{{ $row['internal_port'] }}</span>
             @else
-                <span role="img" aria-label="No internal port" title="No internal port. Set Ports Exposes or a per-domain internal port so the proxy can route this domain." class="text-red-500 dark:text-red-400">
+                <span role="img" aria-label="{{ __('No internal port') }}" title="{{ __('No internal port. Set Ports Exposes or a per-domain internal port so the proxy can route this domain.') }}" class="text-red-500 dark:text-red-400">
                     <x-reicon name="alert-triangle" class="size-4" />
                 </span>
             @endif
@@ -117,7 +117,7 @@
         <div class="service-domain-dns flex min-w-0 items-center">
             @if ($row['dns_status'] === 'failed')
                 <x-status-badge as="button" @click="$dispatch('open-dns-records-modal')" :status="$dnsLabel" :type="$dnsType"
-                    title="View DNS records to fix" class="cursor-pointer hover:bg-neutral-200 dark:hover:bg-white/[0.1]" />
+                    title="{{ __('View DNS records to fix') }}" class="cursor-pointer hover:bg-neutral-200 dark:hover:bg-white/[0.1]" />
             @elseif ($row['dns_status'] === 'checking')
                 <x-status-badge dynamic :title="$row['dns_message']">
                     <x-loading compact aria-label="{{ __('Checking DNS') }}" />
@@ -154,12 +154,12 @@
                         <x-table.row-action wire:click="checkDomainDns({{ $index }})"
                             wire:loading.attr="disabled"
                             wire:target="checkDomainDns({{ $index }}),checkAllDns">
-                            Check DNS
+                            {{ __('Check DNS') }}
                         </x-table.row-action>
                         <x-table.row-action
                             x-on:click="openEditDomain({{ \Illuminate\Support\Js::from($index) }}, {{ \Illuminate\Support\Js::from($row['url']) }}, {{ \Illuminate\Support\Js::from($editingParts) }}, {{ \Illuminate\Support\Js::from($row['service']) }}, {{ \Illuminate\Support\Js::from($isNoindexed ? 'noindex' : 'index') }}, {{ \Illuminate\Support\Js::from($rowDirection) }}, {{ \Illuminate\Support\Js::from($row['inherited_port'] ?? null) }})"
                             aria-label="Edit {{ $publicUrl }}">
-                            Edit
+                            {{ __('Edit') }}
                         </x-table.row-action>
                         <x-slot:danger>
                             <x-modal-confirmation buttonFullWidth title="{{ __('Remove domain?') }}" buttonTitle="{{ __('Remove') }}"
@@ -168,7 +168,7 @@
                                     'This domain will be removed from the application.',
                                     'Redeploy or restart may be required for proxy changes.',
                                 ]" :checkboxes="[['id' => 'deleteManagedDns', 'label' => 'Also delete the DNS record created by Coolify, if present.']]"
-                                :confirmWithPassword="false" :confirmWithText="false" step2ButtonText="Remove domain">
+                                :confirmWithPassword="false" :confirmWithText="false" step2ButtonText="{{ __('Remove domain') }}">
                                 <x-slot:trigger>
                                     <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                 </x-slot:trigger>

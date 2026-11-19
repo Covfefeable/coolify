@@ -6,7 +6,7 @@
         @endphp
 
         <div class="flex flex-col gap-6">
-            <x-application.settings-section id="primary-server-section" title="Primary server"
+            <x-application.settings-section id="primary-server-section" title="{{ __('Primary server') }}"
                 helper="The default server and network used for this application's deployments.">
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div class="flex min-w-0 items-center gap-3">
@@ -41,9 +41,9 @@
                             @can('deploy', $resource)
                                 <div class="relative" x-data="{ open: false }" @click.outside="open = false"
                                     @keydown.escape.window="open = false">
-                                    <button type="button" class="button gap-1.5" title="Server actions" @click="open = !open"
+                                    <button type="button" class="button gap-1.5" title="{{ __('Server actions') }}" @click="open = !open"
                                         :aria-expanded="open" aria-haspopup="menu">
-                                        Actions
+                                        {{ __('Actions') }}
                                         <span class="inline-flex transition-transform" :class="open && 'rotate-180'">
                                             <x-reicon name="chevron-down" class="size-3 opacity-55" />
                                         </span>
@@ -53,14 +53,14 @@
                                         <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
                                             wire:click="redeploy('{{ data_get($resource, 'destination.id') }}','{{ data_get($resource, 'destination.server.id') }}')" @click="open = false">
                                             <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                                            Deploy
+                                            {{ __('Deploy') }}
                                         </button>
                                     @if (str($resource->status)->startsWith('running'))
                                         <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
                                             wire:click="stop('{{ data_get($resource, 'destination.server.id') }}')"
                                             @click="open = false">
                                             <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                            Stop
+                                            {{ __('Stop') }}
                                         </button>
                                     @endif
                                     </div>
@@ -108,9 +108,9 @@
                                     @can('deploy', $resource)
                                         <div class="relative" x-data="{ open: false }" @click.outside="open = false"
                                             @keydown.escape.window="open = false">
-                                            <button type="button" class="button gap-1.5" title="Server actions" @click="open = !open"
+                                            <button type="button" class="button gap-1.5" title="{{ __('Server actions') }}" @click="open = !open"
                                                 :aria-expanded="open" aria-haspopup="menu">
-                                                Actions
+                                                {{ __('Actions') }}
                                                 <span class="inline-flex transition-transform" :class="open && 'rotate-180'">
                                                     <x-reicon name="chevron-down" class="size-3 opacity-55" />
                                                 </span>
@@ -120,7 +120,7 @@
                                                 <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
                                                     wire:click="redeploy('{{ data_get($destination, 'id') }}','{{ data_get($destination, 'server.id') }}')" @click="open = false">
                                                     <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                                                    Deploy
+                                                    {{ __('Deploy') }}
                                                 </button>
                                             @can('update', $resource)
                                                 <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
@@ -135,14 +135,14 @@
                                                     wire:click="stop('{{ data_get($destination, 'server.id') }}')"
                                                     @click="open = false">
                                                     <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                                    Stop
+                                                    {{ __('Stop') }}
                                                 </button>
                                             @endif
                                             @can('update', $resource)
                                                 <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
                                                     @click="open = false; document.getElementById('destination-remove-trigger-{{ $destination->id }}')?.click()">
                                                     <x-reicon name="trash" class="size-3.5 text-error" />
-                                                    Remove
+                                                    {{ __('Remove') }}
                                                 </button>
                                             @endcan
                                             </div>
@@ -229,7 +229,7 @@
         @endphp
 
         <div class="flex flex-col gap-6">
-            <x-application.settings-section id="primary-server-section" title="Primary server"
+            <x-application.settings-section id="primary-server-section" title="{{ __('Primary server') }}"
                 helper="The server and network used by this resource.">
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div class="flex min-w-0 items-center gap-3">

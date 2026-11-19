@@ -97,7 +97,7 @@
                                 <div x-data="{ open: false }" class="relative" @click.outside="open = false">
                                     <button type="button" class="button" @click="open = !open">
                                         <x-reicon name="plus" class="size-3.5" />
-                                        Link provider
+                                        {{ __('Link provider') }}
                                     </button>
                                     <div x-cloak x-show="open" x-transition.origin.top.right
                                         class="absolute top-9 right-0 z-50 w-56 rounded-lg border border-neutral-200 bg-white p-1 shadow-dropdown dark:border-white/[0.1] dark:bg-raised">
@@ -174,7 +174,7 @@
                                 <x-modal-confirmation title="Take back a transferred server?"
                                     submitAction="enableManagement" :confirmWithPassword="false"
                                     temporaryDisableTwoStepConfirmation
-                                    step2ButtonText="I understand, enable management"
+                                    step2ButtonText="{{ __('I understand, enable management') }}"
                                     :confirmationText="$server->name"
                                     confirmationLabel="Enter the server name to take the server back."
                                     shortConfirmationLabel="Server name"
@@ -188,7 +188,7 @@
                                     <x-slot:trigger>
                                         <x-forms.button type="button" isError canGate="update" :canResource="$server">
                                             <x-reicon name="alert-triangle" class="size-3.5" />
-                                            Enable management
+                                            {{ __('Enable management') }}
                                         </x-forms.button>
                                     </x-slot:trigger>
                                 </x-modal-confirmation>
@@ -201,7 +201,7 @@
                                 <strong>{{ data_get($server->server_metadata, 'transfer.target_instance_url') ?: 'another Coolify instance' }}</strong>,
                                 which manages it now. Use that instance. To undo the transfer, use
                                 <a href="{{ route('server.transfer', ['server_uuid' => $server->uuid]) }}" {{ wireNavigate() }}
-                                    class="underline">Transfer back</a>. Keep this archive until you are sure: it is the copy
+                                    class="underline">{{ __('Transfer back') }}</a>. Keep this archive until you are sure: it is the copy
                                 that an undo uses.
                             </x-callout>
                         @endif
@@ -289,17 +289,17 @@
                                     @if ($provider === 'Hetzner' && !$server->isFunctional() && $hetznerServerStatus === 'off')
                                         <x-forms.button type="button" wire:click.prevent="startHetznerServer" isHighlighted
                                             canGate="update" :canResource="$server">
-                                            Power On
+                                            {{ __('Power On') }}
                                         </x-forms.button>
                                     @elseif ($provider === 'DigitalOcean' && $digitalOceanDropletStatus === 'off')
                                         <x-forms.button type="button" wire:click.prevent="startDigitalOceanDroplet"
                                             isHighlighted canGate="update" :canResource="$server">
-                                            Power On
+                                            {{ __('Power On') }}
                                         </x-forms.button>
                                     @elseif ($provider === 'Vultr' && $vultrInstanceStatus === 'stopped')
                                         <x-forms.button type="button" wire:click.prevent="startVultrInstance" isHighlighted
                                             canGate="update" :canResource="$server">
-                                            Power On
+                                            {{ __('Power On') }}
                                         </x-forms.button>
                                     @endif
                                 @endif
@@ -354,7 +354,7 @@
 
     <x-modal-confirmation title="Use this server for deployments and builds?"
         submitAction="confirmServerRoleChange" :confirmWithText="false" :confirmWithPassword="false"
-        step2ButtonText="Enable deployments and builds"
+        step2ButtonText="{{ __('Enable deployments and builds') }}"
         warningMessage="Builds can use a large amount of CPU and memory. During a build, deployed resources on this server can become slow or unreachable."
         :actions="['Enable builds on this deployment server.']">
         <x-slot:trigger>

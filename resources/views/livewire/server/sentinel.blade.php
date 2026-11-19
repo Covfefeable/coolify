@@ -88,7 +88,7 @@
                     <div class="flex items-center gap-2">
                         @can('manageSentinel', $server)
                             <x-modal-confirmation title="Restore default Sentinel configuration?"
-                                buttonTitle="Restore defaults" submitAction="restoreDefaultConfiguration"
+                                buttonTitle="{{ __('Restore defaults') }}" submitAction="restoreDefaultConfiguration"
                                 :actions="[
                                     'Restore the generated Coolify URL and default collection settings.',
                                     'Clear debug logging and the development image override.',
@@ -96,11 +96,11 @@
                                     'Restart Sentinel to apply the restored configuration.',
                                 ]" warningMessage="Your custom Sentinel configuration will be replaced with Coolify defaults."
                                 :confirmWithText="false" :confirmWithPassword="false"
-                                step2ButtonText="Restore defaults" />
+                                step2ButtonText="{{ __('Restore defaults') }}" />
                         @endcan
                         <x-forms.button canGate="update" :canResource="$server"
                             wire:click="regenerateSentinelToken">
-                            Regenerate token
+                            {{ __('Regenerate token') }}
                         </x-forms.button>
                     </div>
                 </x-slot:actions>
@@ -153,7 +153,7 @@
                                 </div>
                                 <x-forms.button canGate="update" :canResource="$server"
                                     x-on:click="applyCustomImage()">
-                                    Apply and restart
+                                    {{ __('Apply and restart') }}
                                 </x-forms.button>
                             </div>
                         </div>

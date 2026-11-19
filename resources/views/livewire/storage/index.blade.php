@@ -17,7 +17,7 @@
                         <button type="button"
                             class="button button-highlighted">
                             <x-reicon name="plus" class="size-3.5" />
-                            New storage
+                            {{ __('New storage') }}
                         </button>
                     </x-slot:content>
                     <livewire:storage.create />

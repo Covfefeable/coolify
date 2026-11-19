@@ -42,7 +42,7 @@
                     <p class="px-2.5 pb-2 text-[11px] text-neutral-500 dark:text-fg-dim">
                         Manage Cloudflare DNS records.
                     </p>
-                    <x-forms.checkbox id="edit-tunnel-capability" label="Cloudflare Tunnel" domValue="tunnel" fullWidth
+                    <x-forms.checkbox id="edit-tunnel-capability" label="{{ __('Cloudflare Tunnel') }}" domValue="tunnel" fullWidth
                         wire:model.live="capabilities" />
                     <p class="px-2.5 pb-2 text-[11px] text-neutral-500 dark:text-fg-dim">
                         Create and manage tunnels for server SSH. Needs DNS.
@@ -100,7 +100,7 @@
                     @endif
                     </div>
                     <x-forms.button type="button" wire:click="refreshZones" wire:target="refreshZones"
-                        canGate="update" :canResource="$integrationToken">Refresh zones</x-forms.button>
+                        canGate="update" :canResource="$integrationToken">{{ __('Refresh zones') }}</x-forms.button>
                 </div>
                 @if ($zones !== [])
                     <div class="max-h-48 overflow-y-auto border-t border-neutral-200 dark:border-white/[0.08]">
@@ -129,9 +129,9 @@
             <x-modal-confirmation title="Delete integration token?" isErrorButton buttonTitle="{{ __('Delete') }}"
                 submitAction="delete" :actions="['This integration token will be permanently deleted.']"
                 confirmationText="{{ $integrationToken->name }}" :confirmWithPassword="false"
-                step2ButtonText="Delete token" />
+                step2ButtonText="{{ __('Delete token') }}" />
             <x-forms.button type="submit" wire:target="save" isHighlighted>
-                Validate and save
+                {{ __('Validate and save') }}
             </x-forms.button>
         </div>
     </form>

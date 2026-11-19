@@ -33,7 +33,7 @@
                     <x-slot:content>
                         <button type="button" class="listbox-option w-full" @click="open = false">
                             <x-reicon name="plus" class="size-3.5 shrink-0" />
-                            <span class="min-w-0 flex-1 text-left">New team</span>
+                            <span class="min-w-0 flex-1 text-left">{{ __('New team') }}</span>
                         </button>
                     </x-slot:content>
                     <livewire:team.create :key="'team-switcher-create-expanded'" />
@@ -78,7 +78,7 @@
                     <x-slot:content>
                         <button type="button" class="listbox-option w-full" @click="teamOpen = false">
                             <x-reicon name="plus" class="size-3.5 shrink-0" />
-                            <span class="min-w-0 flex-1 text-left">New team</span>
+                            <span class="min-w-0 flex-1 text-left">{{ __('New team') }}</span>
                         </button>
                     </x-slot:content>
                     <livewire:team.create :key="'team-switcher-create-collapsed'" />

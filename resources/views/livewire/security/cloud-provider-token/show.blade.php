@@ -10,10 +10,10 @@
             <div class="flex items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                 <div class="flex items-center gap-2">
                     @can('delete', $cloudProviderToken)
-                        <x-modal-confirmation title="Confirm Token Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
+                        <x-modal-confirmation title="{{ __('Confirm Token Deletion?') }}" isErrorButton buttonTitle="{{ __('Delete') }}"
                             submitAction="delete" :actions="['This cloud provider token will be permanently deleted.']"
                             confirmationText="{{ $cloudProviderToken->name }}" :confirmWithPassword="false"
-                            step2ButtonText="Delete token" />
+                            step2ButtonText="{{ __('Delete token') }}" />
                     @endcan
                     <x-forms.button type="button" wire:click="validateToken">{{ __('Validate') }}</x-forms.button>
                 </div>
@@ -29,17 +29,17 @@
         <x-slot:actions>
             <x-forms.button type="button" wire:click="validateToken">
                 <x-reicon name="check-circle" class="size-3.5" />
-                Validate
+                {{ __('Validate') }}
             </x-forms.button>
             @can('delete', $cloudProviderToken)
-                <x-modal-confirmation title="Confirm Token Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
+                <x-modal-confirmation title="{{ __('Confirm Token Deletion?') }}" isErrorButton buttonTitle="{{ __('Delete') }}"
                     submitAction="delete" :actions="[
                         'This cloud provider token will be permanently deleted.',
                         'Servers using this token will need to be reconfigured.',
                     ]" confirmationText="{{ $cloudProviderToken->name }}"
                     confirmationLabel="Enter the token name to confirm deletion"
                     shortConfirmationLabel="Token name" :confirmWithPassword="false"
-                    step2ButtonText="Delete token" />
+                    step2ButtonText="{{ __('Delete token') }}" />
             @endcan
         </x-slot:actions>
 

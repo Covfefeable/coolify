@@ -49,7 +49,7 @@
 
                 <div class="flex justify-end">
                     <x-forms.button type="button" wire:click="connect" canGate="update" :canResource="$database">
-                        Mount volume
+                        {{ __('Mount volume') }}
                     </x-forms.button>
                 </div>
 

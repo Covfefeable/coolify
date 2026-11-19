@@ -73,7 +73,7 @@
     <div data-sth-shell style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;position:relative">
         <button type="button" data-sth-toggle aria-expanded="false" aria-controls="server-timing-hud-panel"
             style="border:1px solid var(--sth-border);background:var(--sth-background);color:var(--sth-strong);border-radius:999px;padding:5px 9px;cursor:pointer;box-shadow:var(--sth-shadow);backdrop-filter:blur(8px);user-select:none;white-space:nowrap;line-height:1.2"
-            title="Show/hide Server-Timing history">
+            title="{{ __('Show/hide Server-Timing history') }}">
             <span data-sth-summary>ST …</span>
         </button>
         <div id="server-timing-hud-panel" data-sth-panel hidden
@@ -84,7 +84,7 @@
                     <span data-sth-count style="font-size:10px;color:var(--sth-muted)"></span>
                     <button type="button" data-sth-clear
                         style="border:0;background:transparent;color:var(--sth-secondary);cursor:pointer;font:inherit;font-size:10px;padding:0;text-decoration:underline"
-                        title="Clear request log">Clear</button>
+                        title="{{ __('Clear request log') }}">{{ __('Clear') }}</button>
                 </div>
             </div>
             <div data-sth-log

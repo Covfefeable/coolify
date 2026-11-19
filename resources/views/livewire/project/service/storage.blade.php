@@ -129,10 +129,10 @@
                                                         id="name" label="{{ __('Name') }}" required helper="Volume name." />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/tmp/root" id="mount_path" label="{{ __('Destination Path') }}"
-                                                        required helper="Directory inside the container." />
+                                                        required helper="{{ __('Directory inside the container.') }}" />
                                                     <div class="flex justify-end pt-2">
                                                         <x-forms.button canGate="update" :canResource="$resource" type="submit">
-                                                            Add volume
+                                                            {{ __('Add volume') }}
                                                         </x-forms.button>
                                                     </div>
                                                 </div>
@@ -218,7 +218,7 @@
                                                         id="file_storage_content"></x-forms.textarea>
                                                     <div class="flex justify-end pt-2">
                                                         <x-forms.button canGate="update" :canResource="$resource" type="submit">
-                                                            Add file
+                                                            {{ __('Add file') }}
                                                         </x-forms.button>
                                                     </div>
                                                 </div>
@@ -282,7 +282,7 @@
                                                         required helper="File location inside the container." />
                                                     <div class="flex justify-end pt-2">
                                                         <x-forms.button canGate="update" :canResource="$resource" type="submit">
-                                                            Add host file
+                                                            {{ __('Add host file') }}
                                                         </x-forms.button>
                                                     </div>
                                                 </div>
@@ -342,10 +342,10 @@
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/etc/nginx" id="file_storage_directory_destination"
                                                         label="Destination Directory" required
-                                                        helper="Directory inside the container." />
+                                                        helper="{{ __('Directory inside the container.') }}" />
                                                     <div class="flex justify-end pt-2">
                                                         <x-forms.button canGate="update" :canResource="$resource" type="submit">
-                                                            Add directory
+                                                            {{ __('Add directory') }}
                                                         </x-forms.button>
                                                     </div>
                                                 </div>
@@ -388,7 +388,7 @@
                 <livewire:project.shared.storages.all wire:key="volumes-{{ $resource->id }}"
                     :resource="$resource" />
             @else
-                <x-empty size="sm" title="No volumes configured"
+                <x-empty size="sm" title="{{ __('No volumes configured') }}"
                     description="Switch tabs or add a volume mount." icon-name="storages" />
             @endif
         @elseif ($activeTab === 'files')
@@ -399,7 +399,7 @@
                             wire:key="file-{{ $fs->id }}" />
                     @endforeach
                 @else
-                    <x-empty size="sm" title="No file mounts configured"
+                    <x-empty size="sm" title="{{ __('No file mounts configured') }}"
                         description="Switch tabs or add a file mount." icon-name="file" />
                 @endif
             </div>
@@ -411,7 +411,7 @@
                             wire:key="directory-{{ $fs->id }}" />
                     @endforeach
                 @else
-                    <x-empty size="sm" title="No directory mounts configured"
+                    <x-empty size="sm" title="{{ __('No directory mounts configured') }}"
                         description="Switch tabs or add a directory mount." icon-name="folder" />
                 @endif
             </div>
@@ -455,7 +455,7 @@
                         wire:key="svc-volumes-{{ $resource->id }}"
                         :resource="$resource" />
                 @else
-                    <x-empty size="sm" title="No volumes configured"
+                    <x-empty size="sm" title="{{ __('No volumes configured') }}"
                         description="This service has no volume mounts." icon-name="storages" />
                 @endif
             @elseif ($activeTab === 'files')
@@ -466,7 +466,7 @@
                                 wire:key="file-{{ $fs->id }}" />
                         @endforeach
                     @else
-                        <x-empty size="sm" title="No file mounts configured"
+                        <x-empty size="sm" title="{{ __('No file mounts configured') }}"
                             description="This service has no file mounts." icon-name="file" />
                     @endif
                 </div>
@@ -478,7 +478,7 @@
                                 wire:key="directory-{{ $fs->id }}" />
                         @endforeach
                     @else
-                        <x-empty size="sm" title="No directory mounts configured"
+                        <x-empty size="sm" title="{{ __('No directory mounts configured') }}"
                             description="This service has no directory mounts." icon-name="folder" />
                     @endif
                 </div>

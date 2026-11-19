@@ -65,7 +65,7 @@
                     x-on:keydown.enter.prevent="reveal()" placeholder="{{ __('Enter your password') }}">
             </div>
             <x-forms.button type="button" x-on:click="reveal()" x-bind:disabled="!password || revealing">
-                Reveal
+                {{ __('Reveal') }}
             </x-forms.button>
         </div>
         <div x-cloak x-show="revealed">

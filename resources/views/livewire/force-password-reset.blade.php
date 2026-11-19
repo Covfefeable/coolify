@@ -1,5 +1,5 @@
 <x-auth.shell title="Set a new password"
-    description="Your password must be updated before you can continue to the dashboard.">
+    description="{{ __('Your password must be updated before you can continue to the dashboard.') }}">
     <form class="flex flex-col gap-4" wire:submit="submit">
         <x-forms.input id="email" type="email" readonly label="{{ __('Email') }}" />
         <x-forms.input id="password" type="password" :copyable="false" autocomplete="new-password" autofocus label="{{ __('New password') }}"
@@ -13,7 +13,7 @@
         </div>
 
         <x-forms.button class="w-full justify-center" type="submit" isHighlighted>
-            Reset password
+            {{ __('Reset password') }}
         </x-forms.button>
     </form>
 </x-auth.shell>

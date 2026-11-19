@@ -23,7 +23,7 @@
                         <x-forms.input label="{{ __('Password') }}" disabled value="Hidden (only admins can view)" />
                     @else
                         <x-forms.input label="{{ __('Password') }}" id="keydbPassword" type="password" required readonly
-                            helper="You can only change this in the database." canGate="update" :canResource="$database" />
+                            helper="{{ __('You can only change this in the database.') }}" canGate="update" :canResource="$database" />
                     @endif
                 @else
                     <x-callout type="warning" title="{{ __('Verify the initial credentials') }}">

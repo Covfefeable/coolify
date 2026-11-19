@@ -49,7 +49,7 @@
                     class="input scrollbar" placeholder="Why this does not affect the app"></textarea>
             </div>
             <div class="grid gap-4 sm:grid-cols-2">
-                <x-forms.listbox id="image-scan-ignore-scope" label="Scope" :wire="false" x-model="scope" value="resource"
+                <x-forms.listbox id="image-scan-ignore-scope" label="{{ __('Scope') }}" :wire="false" x-model="scope" value="resource"
                     :options="array_values(array_filter([
                         ['value' => 'resource', 'label' => 'This resource'],
                         $canIgnoreForTeam ? ['value' => 'team', 'label' => 'All team resources'] : null,
@@ -76,7 +76,7 @@
         <x-slot:footer>
             <x-forms.button class="normal-case!" type="button" x-on:click="$dispatch('close-modal')">{{ __('Cancel') }}</x-forms.button>
             <x-forms.button class="normal-case!" type="button" isHighlighted x-on:click="submit()"
-                x-bind:disabled="saving || reason.trim() === ''">Ignore</x-forms.button>
+                x-bind:disabled="saving || reason.trim() === ''">{{ __('Ignore') }}</x-forms.button>
         </x-slot:footer>
     </x-modal-input>
 </div>

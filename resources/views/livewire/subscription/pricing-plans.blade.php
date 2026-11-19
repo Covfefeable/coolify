@@ -9,14 +9,14 @@
                     :class="selected === 'monthly'
                         ? 'bg-coollabs/10 text-coollabs ring-1 ring-coollabs/25 dark:bg-brand/15 dark:text-brand-light dark:ring-brand-light/25'
                         : ''">
-                    Monthly
+                    {{ __('Monthly') }}
                 </button>
                 <button type="button" x-on:click="selected = 'yearly'"
                     class="app-tab h-6! px-2.5!"
                     :class="selected === 'yearly'
                         ? 'bg-coollabs/10 text-coollabs ring-1 ring-coollabs/25 dark:bg-brand/15 dark:text-brand-light dark:ring-brand-light/25'
                         : ''">
-                    Yearly
+                    {{ __('Yearly') }}
                 </button>
             </div>
         </x-slot:actions>
@@ -40,11 +40,11 @@
                 <div class="mt-4">
                     <x-forms.button x-show="selected === 'monthly'" x-cloak class="w-full justify-center"
                         wire:click="subscribeStripe('dynamic-monthly')" isHighlighted>
-                        Subscribe monthly
+                        {{ __('Subscribe monthly') }}
                     </x-forms.button>
                     <x-forms.button x-show="selected === 'yearly'" x-cloak class="w-full justify-center"
                         wire:click="subscribeStripe('dynamic-yearly')" isHighlighted>
-                        Subscribe yearly
+                        {{ __('Subscribe yearly') }}
                     </x-forms.button>
                 </div>
             </div>

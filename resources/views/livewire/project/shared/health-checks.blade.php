@@ -11,15 +11,15 @@
             @if (!$healthCheckEnabled)
                 <x-modal-confirmation :disabled="!auth()->user()->can('update', $resource)"
                     :authDisabled="!auth()->user()->can('update', $resource)"
-                    title="Enable healthcheck?" buttonTitle="{{ __('Enable') }}"
+                    title="{{ __('Enable healthcheck?') }}" buttonTitle="{{ __('Enable') }}"
                     submitAction="toggleHealthcheck" :actions="['Enable healthcheck for this resource.']"
                     warningMessage="If the healthcheck fails, your application will become inaccessible. Review the <a href='https://coolify.io/docs/knowledge-base/health-checks' target='_blank' class='underline text-white'>Healthchecks guide</a> before continuing."
-                    step2ButtonText="Enable healthcheck" :confirmWithText="false"
+                    step2ButtonText="{{ __('Enable healthcheck') }}" :confirmWithText="false"
                     :confirmWithPassword="false" isHighlightedButton />
             @else
                 <x-forms.button canGate="update" :canResource="$resource" type="button"
                     wire:click="toggleHealthcheck">
-                    Disable
+                    {{ __('Disable') }}
                 </x-forms.button>
             @endif
         </x-slot:actions>

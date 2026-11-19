@@ -47,13 +47,13 @@
                         @endif
                         {{-- Disabling forgets the cached state, but the files stay on the server. --}}
                         @if (! $enabled || $hasScannerData)
-                            <x-modal-confirmation title="Delete scanner data?" buttonTitle="Delete scanner data"
+                            <x-modal-confirmation title="Delete scanner data?" buttonTitle="{{ __('Delete scanner data') }}"
                                 isErrorButton submitAction="deleteScannerData" temporaryDisableTwoStepConfirmation
                                 :confirmWithText="false" :confirmWithPassword="false" :actions="[
                                     'Coolify removes the stored SBOMs, the vulnerability database, and the scanner images from this server.',
                                     'Scan results in Coolify stay. The next scan gets the scanner again.',
                                 ]"
-                                step2ButtonText="Delete scanner data" />
+                                step2ButtonText="{{ __('Delete scanner data') }}" />
                         @endif
                         <div wire:key="image-scanning-change-{{ $enabled ? 'on' : 'off' }}">
                             <x-modal-confirmation

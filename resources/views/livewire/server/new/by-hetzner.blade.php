@@ -104,7 +104,7 @@
                                         <span class="text-[11px] text-neutral-600 dark:text-fg-dim">A private key is required.</span>
                                         <x-modal-input title="{{ __('New Private Key') }}">
                                             <x-slot:content>
-                                                <button type="button" class="button">Create key</button>
+                                                <button type="button" class="button">{{ __('Create key') }}</button>
                                             </x-slot:content>
                                             <livewire:security.private-key.create :modal_mode="true" from="server" />
                                         </x-modal-input>
@@ -174,7 +174,7 @@
                                             <x-forms.listbox id="selected_cloud_init_script_id"
                                                 label="{{ __('Saved cloud-init script') }}" live :options="$scriptOptions" />
                                             <button type="button" class="button"
-                                                wire:click="clearCloudInitScript">Clear</button>
+                                                wire:click="clearCloudInitScript">{{ __('Clear') }}</button>
                                         </div>
                                         <x-forms.textarea id="cloud_init_script" label="{{ __('Cloud-init script') }}"
                                             rows="8" monospace />

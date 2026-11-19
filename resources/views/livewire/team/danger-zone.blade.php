@@ -15,7 +15,7 @@
         <div class="application-settings-form">
             <x-application.settings-section id="team-danger-zone" title="{{ __('Danger zone') }}"
                 helper="Destructive actions for this team cannot be undone.">
-                <x-danger-zone title="Delete team">
+                <x-danger-zone title="{{ __('Delete team') }}">
                             @if (auth()->user()->roleInTeam(currentTeam()->id) !== 'owner')
                                 <p>
                                     Only team owners can delete this team.
@@ -69,17 +69,17 @@
                                     !auth()->user()->currentTeam()->personal_team &&
                                     !currentTeam()->subscription &&
                                     $deletionBlockers === [])
-                                <x-modal-confirmation title="{{ __('Confirm Team Deletion?') }}" buttonTitle="Delete team"
+                                <x-modal-confirmation title="{{ __('Confirm Team Deletion?') }}" buttonTitle="{{ __('Delete team') }}"
                                     isErrorButton submitAction="delete"
                                     :actions="['The current team will be permanently deleted from Coolify and the database.']"
                                     confirmationText="{{ currentTeam()->name }}"
                                     confirmationLabel="Enter the team name to confirm permanent deletion"
                                     shortConfirmationLabel="Team name" :confirmWithPassword="false"
-                                    step2ButtonText="Permanently Delete" canGate="delete"
+                                    step2ButtonText="{{ __('Permanently Delete') }}" canGate="delete"
                                     :canResource="$team" />
                             @else
                                 <x-forms.button isError disabled tooltip="Resolve the requirements shown before deleting this team.">
-                                    Delete team
+                                    {{ __('Delete team') }}
                                 </x-forms.button>
                             @endif
                         </x-slot:action>
@@ -91,7 +91,7 @@
                             <h5 class="text-sm font-medium text-black dark:text-fg">{{ __('Resources') }}</h5>
                             <x-forms.button type="button" wire:click="refreshResources">
                                 <x-reicon name="refresh" class="size-3.5" />
-                                Refresh
+                                {{ __('Refresh') }}
                             </x-forms.button>
                         </div>
                         <table class="w-full text-left text-sm">

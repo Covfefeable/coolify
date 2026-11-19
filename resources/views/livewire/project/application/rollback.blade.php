@@ -4,7 +4,7 @@
         <x-slot:actions>
             @can('view', $application)
                 <x-forms.button wire:click="loadImages(true)">
-                    Reload images
+                    {{ __('Reload images') }}
                 </x-forms.button>
             @endcan
         </x-slot:actions>
@@ -77,7 +77,7 @@
                             </x-forms.button>
                         @else
                             <x-forms.button wire:click="rollbackImage('{{ $tag }}')">
-                                Roll back to this image
+                                {{ __('Roll back to this image') }}
                             </x-forms.button>
                         @endif
                     @endcan

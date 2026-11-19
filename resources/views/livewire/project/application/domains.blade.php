@@ -102,7 +102,7 @@
                                     <button type="button"
                                         class="button button-highlighted">
                                         <x-reicon name="plus" class="size-3.5" />
-                                        Add domain
+                                        {{ __('Add domain') }}
                                     </button>
                                 </x-slot:content>
                                 <form wire:submit="addDomain" class="application-settings-form flex flex-col gap-4">
@@ -130,7 +130,7 @@
 
                                     <div class="flex flex-wrap items-center justify-between gap-2 pt-2">
                                         <x-forms.button type="button" wire:click="generateDomain">
-                                            Generate domain
+                                            {{ __('Generate domain') }}
                                         </x-forms.button>
                                         <div class="flex flex-wrap gap-2">
                                             @if ($addDomainDnsFailed)
@@ -156,7 +156,7 @@
             <div class="data-table-header service-domains-overview-grid">
                 <span>Domain</span>
                 <span>{{ __('Protocol redirect') }}</span>
-                <span>Domain redirect</span>
+                <span>{{ __('Domain redirect') }}</span>
                 <span>Internal port</span>
                 <span>Search indexing</span>
                 <span>DNS status</span>
@@ -261,7 +261,7 @@
             <div class="grid gap-4 lg:grid-cols-2">
                 @if ($hasHttpsDomains)
                     <x-forms.listbox canGate="update" :canResource="$application" id="isForceHttpsEnabled"
-                        label="Redirect HTTP to HTTPS" onChange="updateForceHttps"
+                        label="{{ __('Redirect HTTP to HTTPS') }}" onChange="updateForceHttps"
                         helper="{{ __('Disable only when Cloudflare Tunnel or another proxy connects to Coolify over HTTP. Keep enabled when Cloudflare uses Full or Full (Strict) SSL.') }}"
                         :options="[
                             ['value' => true, 'label' => 'Enabled'],
@@ -361,7 +361,7 @@
                                     <div class="flex flex-wrap items-center justify-between gap-2">
                                     <x-forms.button type="button" wire:click="regenerateEditingDomain"
                                         wire:target="regenerateEditingDomain">
-                                        Regenerate hostname
+                                        {{ __('Regenerate hostname') }}
                                     </x-forms.button>
                                     @if ($editDomainDnsFailed)
                                         <x-forms.button type="button" isError wire:click="confirmUpdateDomainDespiteDns">
@@ -405,7 +405,7 @@
                             </button>
                         </header>
                         <div class="application-settings-section-body">
-                            <x-callout type="warning" title="Unrecognized internal port" class="mb-4">
+                            <x-callout type="warning" title="{{ __('Unrecognized internal port') }}" class="mb-4">
                                 Port <strong>{{ $unrecognizedPort }}</strong> is not listed in Ports Exposes
                                 and is not used by any application domain. The proxy will still route to it,
                                 but the container may not be listening there.
@@ -419,7 +419,7 @@
                                 <x-forms.button type="button" wire:click="confirmUseUnknownPort" canGate="update"
                                     :canResource="$application"
                                     @click="modalOpen = false" isError>
-                                    Use this port anyway
+                                    {{ __('Use this port anyway') }}
                                 </x-forms.button>
                             </div>
                         </div>

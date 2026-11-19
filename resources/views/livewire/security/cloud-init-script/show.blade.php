@@ -7,10 +7,10 @@
                 helper="{{ __('Cloud-config YAML or another script accepted by your provider.') }}" required />
             <div class="flex items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                 @can('delete', $cloudInitScript)
-                    <x-modal-confirmation title="Confirm Script Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
+                    <x-modal-confirmation title="{{ __('Confirm Script Deletion?') }}" isErrorButton buttonTitle="{{ __('Delete') }}"
                         submitAction="delete" :actions="['This cloud-init script will be permanently deleted.']"
                         confirmationText="{{ $cloudInitScript->name }}" :confirmWithPassword="false"
-                        step2ButtonText="Delete script" />
+                        step2ButtonText="{{ __('Delete script') }}" />
                 @endcan
                 <x-forms.button type="submit" isHighlighted>{{ __('Save changes') }}</x-forms.button>
             </div>
@@ -23,14 +23,14 @@
     <x-security.settings-layout>
         <x-slot:actions>
             @can('delete', $cloudInitScript)
-                <x-modal-confirmation title="Confirm Script Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
+                <x-modal-confirmation title="{{ __('Confirm Script Deletion?') }}" isErrorButton buttonTitle="{{ __('Delete') }}"
                     submitAction="delete" :actions="[
                         'This cloud-init script will be permanently deleted.',
                         'This action cannot be undone.',
                     ]" confirmationText="{{ $cloudInitScript->name }}"
                     confirmationLabel="Enter the script name to confirm deletion"
                     shortConfirmationLabel="Script name" :confirmWithPassword="false"
-                    step2ButtonText="Delete script" />
+                    step2ButtonText="{{ __('Delete script') }}" />
             @endcan
         </x-slot:actions>
 

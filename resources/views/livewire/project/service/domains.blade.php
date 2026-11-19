@@ -89,7 +89,7 @@
                             <button type="button"
                                 class="button button-highlighted">
                                 <x-reicon name="plus" class="size-3.5" />
-                                Add domain
+                                {{ __('Add domain') }}
                             </button>
                         </x-slot:content>
                         <form wire:submit="addDomain" class="application-settings-form flex flex-col gap-4">
@@ -118,7 +118,7 @@
                             <div class="flex flex-wrap items-center justify-between gap-2 pt-2">
                                 <x-forms.button canGate="update" :canResource="$service" type="button"
                                     wire:click="generateDomain">
-                                    Generate domain
+                                    {{ __('Generate domain') }}
                                 </x-forms.button>
                                 <div class="flex flex-wrap gap-2">
                                     @if ($addDomainDnsFailed)
@@ -297,7 +297,7 @@
                                             ]" />
                                     </div>
                                     <div class="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/10">
-                                        <x-forms.button type="button" wire:click="regenerateEditingDomain">Regenerate hostname</x-forms.button>
+                                        <x-forms.button type="button" wire:click="regenerateEditingDomain">{{ __('Regenerate hostname') }}</x-forms.button>
                                         @unless ($editDomainDnsFailed)
                                             <x-forms.button type="button" wire:click="updateDomain" isHighlighted>{{ __('Save') }}</x-forms.button>
                                         @endunless
@@ -334,7 +334,7 @@
                             </button>
                         </header>
                         <div class="application-settings-section-body">
-                            <x-callout type="warning" title="Port requirement" class="mb-4">
+                            <x-callout type="warning" title="{{ __('Port requirement') }}" class="mb-4">
                                 This service requires port <strong>{{ $requiredPort }}</strong> to function correctly.
                                 One or more of your domains use port <strong>{{ $requestedPort }}</strong>.
                             </x-callout>

@@ -13,13 +13,13 @@
                     mount was added.</p>
                 @can('update', $database)
                     <div class="mt-3">
-                        <x-modal-confirmation title="Keep current data?" buttonTitle="Keep current data"
+                        <x-modal-confirmation title="Keep current data?" buttonTitle="{{ __('Keep current data') }}"
                             submitAction="keepCurrentDataVolume" :actions="[
                                 'Use the unnamed volume ' . $anonymousDataVolume . ' as the data volume of this database.',
                                 'Starts and restarts are allowed again and keep the current data.',
                                 'The previous data volume stays on the server and is not used anymore.',
                             ]" :confirmWithText="false" :confirmWithPassword="false"
-                            step2ButtonText="Keep current data" />
+                            step2ButtonText="{{ __('Keep current data') }}" />
                     </div>
                 @endcan
             </x-callout>

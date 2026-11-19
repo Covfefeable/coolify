@@ -44,14 +44,14 @@
                             <button type="button" wire:click="skipBoarding"
                                 class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">
                                 <x-reicon name="arrow-right" class="size-3.5 shrink-0" />
-                                Skip setup
+                                {{ __('Skip setup') }}
                             </button>
                             <x-modal-input title="{{ __('Need Help?') }}">
                                 <x-slot:content>
                                     <button type="button"
                                         class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">
                                         <x-reicon name="feedback" class="size-3.5 shrink-0" />
-                                        Contact support
+                                        {{ __('Contact support') }}
                                     </button>
                                 </x-slot:content>
                                 <livewire:help />
@@ -104,7 +104,7 @@
                                 class="group relative cursor-pointer min-h-36 rounded-[10px] border border-neutral-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]"
                                 wire:target="setServerType('localhost')" wire:click="setServerType('localhost')">
                                 <span role="button" tabindex="0" aria-label="About this machine"
-                                    data-tooltip="The machine running Coolify. Not recommended for production workloads due to resource contention."
+                                    data-tooltip="{{ __('The machine running Coolify. Not recommended for production workloads due to resource contention.') }}"
                                     @click.stop @keydown.enter.stop @keydown.space.prevent.stop
                                     class="absolute top-3 right-3 flex size-6 items-center justify-center rounded-full border border-neutral-200 text-[11px] font-semibold text-neutral-500 hover:border-coollabs/35 hover:text-coollabs dark:border-white/[0.1] dark:text-fg-dim dark:hover:border-brand-light/30 dark:hover:text-brand-light">i</span>
                                 <div class="flex flex-col gap-4 text-left">
@@ -114,9 +114,9 @@
                                             d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
                                     </svg>
                                     <div>
-                                        <h3 class="mb-1 text-[14px] font-semibold">This machine</h3>
+                                        <h3 class="mb-1 text-[14px] font-semibold">{{ __('This machine') }}</h3>
                                         <p class="text-sm dark:text-neutral-400">
-                                            Deploy on the server running Coolify. Best for testing and single-server setups.
+                                            {{ __('Deploy on the server running Coolify. Best for testing and single-server setups.') }}
                                         </p>
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                 class="group relative cursor-pointer min-h-36 rounded-[10px] border border-neutral-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]"
                                 wire:target="setServerType('remote')" wire:click="setServerType('remote')">
                                 <span role="button" tabindex="0" aria-label="About remote servers"
-                                    data-tooltip="Any SSH-accessible server, including cloud VPS, bare metal, and self-hosted infrastructure."
+                                    data-tooltip="{{ __('Any SSH-accessible server, including cloud VPS, bare metal, and self-hosted infrastructure.') }}"
                                     @click.stop @keydown.enter.stop @keydown.space.prevent.stop
                                     class="absolute top-3 right-3 flex size-6 items-center justify-center rounded-full border border-neutral-200 text-[11px] font-semibold text-neutral-500 hover:border-coollabs/35 hover:text-coollabs dark:border-white/[0.1] dark:text-fg-dim dark:hover:border-brand-light/30 dark:hover:text-brand-light">i</span>
                                 <div class="flex flex-col gap-4 text-left">
@@ -140,7 +140,7 @@
                                     <div>
                                         <h3 class="mb-1 text-[14px] font-semibold">{{ __('IP address or domain') }}</h3>
                                         <p class="text-sm dark:text-neutral-400">
-                                            Connect via SSH using a server IP address or domain.
+                                            {{ __('Connect via SSH using a server IP address or domain.') }}
                                         </p>
                                     </div>
                                 </div>
@@ -271,7 +271,7 @@
 
                                 <x-forms.button class="w-full justify-center" wire:click="saveAndValidateServer"
                                     isHighlighted>
-                                    Check again
+                                    {{ __('Check again') }}
                                 </x-forms.button>
                             </div>
                         @endif
@@ -303,7 +303,7 @@
                                             <x-forms.listbox id="selectedExistingPrivateKey"
                                                 label="Existing SSH key" :options="$privateKeyOptions" :tooltip="false" />
                                         </div>
-                                        <x-forms.button type="submit">Use selected key</x-forms.button>
+                                        <x-forms.button type="submit">{{ __('Use selected key') }}</x-forms.button>
                                     </form>
                                 </div>
                                 <div class="relative py-1">
@@ -328,9 +328,9 @@
                                     <x-reicon name="keys" class="size-4" />
                                 </span>
                                 <span class="min-w-0">
-                                    <span class="block text-[13px] font-semibold">Use existing key</span>
+                                    <span class="block text-[13px] font-semibold">{{ __('Use existing key') }}</span>
                                     <span class="mt-0.5 block text-[12px] leading-5 text-neutral-500 dark:text-fg-dim">
-                                        Paste a private key you already manage.
+                                        {{ __('Paste a private key you already manage.') }}
                                     </span>
                                 </span>
                             </button>
@@ -342,9 +342,9 @@
                                     <x-reicon name="plus" class="size-4" />
                                 </span>
                                 <span class="min-w-0">
-                                    <span class="block text-[13px] font-semibold">Generate new key</span>
+                                    <span class="block text-[13px] font-semibold">{{ __('Generate new key') }}</span>
                                     <span class="mt-0.5 block text-[12px] leading-5 text-neutral-500 dark:text-fg-dim">
-                                        Create an ED25519 key pair in Coolify.
+                                        {{ __('Create an ED25519 key pair in Coolify.') }}
                                     </span>
                                 </span>
                             </button>
@@ -380,10 +380,10 @@
                             <x-forms.input placeholder="Optional: Note what this key is used for" label="{{ __('Description') }}"
                                 id="privateKeyDescription" />
                             @if ($privateKeyType === 'create')
-                                <x-forms.textarea required readonly label="Private Key" id="privateKey" rows="8" />
+                                <x-forms.textarea required readonly label="{{ __('Private Key') }}" id="privateKey" rows="8" />
                                 <x-forms.textarea rows="7" readonly label="Public Key" id="publicKey" />
                             @else
-                                <x-forms.textarea required placeholder="-----BEGIN OPENSSH PRIVATE KEY-----" label="Private Key"
+                                <x-forms.textarea required placeholder="-----BEGIN OPENSSH PRIVATE KEY-----" label="{{ __('Private Key') }}"
                                     id="privateKey" rows="8" />
                             @endif
                             @if ($privateKeyType === 'create')
@@ -407,7 +407,7 @@
                                     </div>
                                 </div>
                             @endif
-                            <x-forms.button type="submit" class="w-full lg:w-auto">Save SSH Key</x-forms.button>
+                            <x-forms.button type="submit" class="w-full lg:w-auto">{{ __('Save SSH Key') }}</x-forms.button>
                         </form>
                     </x-slot:actions>
                     <x-slot:explanation>
@@ -452,7 +452,7 @@
                                         wire:model="remoteServerUser" />
                                 </div>
                             </x-forms.collapsible>
-                            <x-forms.button type="submit" class="w-full lg:w-auto">Validate Connection</x-forms.button>
+                            <x-forms.button type="submit" class="w-full lg:w-auto">{{ __('Validate Connection') }}</x-forms.button>
                         </form>
                     </x-slot:actions>
                 </x-boarding-step>
@@ -508,7 +508,7 @@
                                 </x-slot:content>
                                 <x-forms.button @click="processDialogOpen = true" class="w-full justify-center"
                                     wire:click.prevent="installServer" isHighlighted>
-                                    Start validation
+                                    {{ __('Start validation') }}
                                 </x-forms.button>
                             </x-process-dialog>
                         </div>
@@ -571,7 +571,7 @@
                                         <x-forms.listbox id="selectedProject" label="Existing project"
                                             :options="$projectOptions" />
                                     </div>
-                                    <x-forms.button type="submit">Use selected project</x-forms.button>
+                                    <x-forms.button type="submit">{{ __('Use selected project') }}</x-forms.button>
                                 </form>
                             @endif
                         </div>
@@ -603,29 +603,29 @@
                             <x-checkpoint-item status="success" title="Server: {{ $createdServer->name }}"
                                 :description="$createdServer->ip" />
                             <x-checkpoint-item status="success" title="Project: {{ $createdProject->name }}"
-                                description="Production environment ready" />
+                                description="{{ __('Production environment ready') }}" />
                             <x-checkpoint-item status="success" title="Docker Engine"
-                                description="Installed and running" />
+                                description="{{ __('Installed and running') }}" />
                         </div>
                     </div>
 
                     <div class="mt-5 flex flex-col items-center gap-4">
                         <x-forms.button class="justify-center px-6" wire:click="showNewResource" isHighlighted>
-                            Deploy your first resource
+                            {{ __('Deploy your first resource') }}
                         </x-forms.button>
                         <div
                             class="inline-flex flex-wrap items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-neutral-50 p-0.5 dark:border-white/[0.08] dark:bg-white/[0.05]">
                             <button type="button" wire:click="skipBoarding"
                                 class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">
                                 <x-reicon name="arrow-right" class="size-3.5 shrink-0" />
-                                Go to dashboard
+                                {{ __('Go to dashboard') }}
                             </button>
                             <x-modal-input title="{{ __('Need Help?') }}">
                                 <x-slot:content>
                                     <button type="button"
                                         class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">
                                         <x-reicon name="feedback" class="size-3.5 shrink-0" />
-                                        Contact support
+                                        {{ __('Contact support') }}
                                     </button>
                                 </x-slot:content>
                                 <livewire:help />
@@ -643,19 +643,19 @@
                     <button type="button" wire:click="skipBoarding"
                         class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">
                         <x-reicon name="arrow-right" class="size-3.5 shrink-0" />
-                        Skip setup
+                        {{ __('Skip setup') }}
                     </button>
                     <button type="button" wire:click="restartBoarding"
                         class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">
                         <x-reicon name="restart" class="size-3.5 shrink-0" />
-                        Restart
+                        {{ __('Restart') }}
                     </button>
                     <x-modal-input title="{{ __('Need Help?') }}">
                         <x-slot:content>
                             <button type="button"
                                 class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">
                                 <x-reicon name="feedback" class="size-3.5 shrink-0" />
-                                Contact support
+                                {{ __('Contact support') }}
                             </button>
                         </x-slot:content>
                         <livewire:help />

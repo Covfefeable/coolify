@@ -47,9 +47,9 @@
                         @endcan
                         @can('deploy', $application)
                             <x-forms.button id="application-mobile-actions" disabled default-class="split-action-main rounded-md!"
-                                tooltip="Load the Compose file before you deploy.">
+                                tooltip="{{ __('Load the Compose file before you deploy.') }}">
                                 <x-reicon name="play-circle" class="size-3.5" />
-                                Deploy
+                                {{ __('Deploy') }}
                             </x-forms.button>
                         @endcan
                     </div>
@@ -72,7 +72,7 @@
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
                                         @click="open = false; document.getElementById('application-mobile-stop-trigger')?.click()" role="menuitem">
                                         <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                        Remove container
+                                        {{ __('Remove container') }}
                                     </button>
                                 @endif
                             @else
@@ -104,7 +104,7 @@
                                             @click="open = false; document.getElementById('application-mobile-restart-trigger')?.click()"
                                             role="menuitem">
                                             <x-reicon name="restart" class="size-3.5 opacity-70" />
-                                            Restart
+                                            {{ __('Restart') }}
                                         </button>
                                     @endif
                                 @endif
@@ -113,7 +113,7 @@
                                         @click="open = false; document.getElementById('application-mobile-stop-trigger')?.click()"
                                         role="menuitem">
                                         <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                        Stop
+                                        {{ __('Stop') }}
                                     </button>
                                 @endunless
                             @endif
@@ -129,7 +129,7 @@
                             str($application->status)->startsWith('exited') ? 'The exited application container will be removed.' : 'This application will be stopped.',
                             str($application->status)->startsWith('exited') ? 'Anonymous volumes may become eligible for Docker cleanup.' : 'All non-persistent data of this application will be deleted.',
                         ]" :confirmWithText="false" :confirmWithPassword="false"
-                        step1ButtonText="Continue" step2ButtonText="Confirm">
+                        step1ButtonText="Continue" step2ButtonText="{{ __('Confirm') }}">
                         <x-slot:trigger>
                             <button id="application-mobile-stop-trigger" type="button">{{ __('Stop') }}</button>
                         </x-slot:trigger>
@@ -138,7 +138,7 @@
                         submitAction="restart" :actions="[
                             'This application will be restarted without rebuilding.',
                         ]" :confirmWithText="false" :confirmWithPassword="false"
-                        step2ButtonText="Confirm">
+                        step2ButtonText="{{ __('Confirm') }}">
                         <x-slot:trigger>
                             <button id="application-mobile-restart-trigger" type="button">{{ __('Restart') }}</button>
                         </x-slot:trigger>
@@ -173,9 +173,9 @@
                         @endcan
                         @can('deploy', $application)
                             <x-forms.button id="application-desktop-actions" disabled default-class="split-action-main rounded-md!"
-                                tooltip="Load the Compose file before you deploy.">
+                                tooltip="{{ __('Load the Compose file before you deploy.') }}">
                                 <x-reicon name="play-circle" class="size-3.5" />
-                                Deploy
+                                {{ __('Deploy') }}
                             </x-forms.button>
                         @endcan
                     @else
@@ -200,7 +200,7 @@
                                         <button type="button" class="listbox-option justify-start! gap-2.5!"
                                             @click="open = false; document.getElementById('application-mobile-stop-trigger')?.click()" role="menuitem">
                                             <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                            Remove container
+                                            {{ __('Remove container') }}
                                         </button>
                                     @endif
                                 @else
@@ -232,7 +232,7 @@
                                                 @click="open = false; document.getElementById('application-mobile-restart-trigger')?.click()"
                                                 role="menuitem">
                                                 <x-reicon name="restart" class="size-3.5 opacity-70" />
-                                                Restart
+                                                {{ __('Restart') }}
                                             </button>
                                         @endif
                                     @endif
@@ -241,7 +241,7 @@
                                             @click="open = false; document.getElementById('application-mobile-stop-trigger')?.click()"
                                             role="menuitem">
                                             <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                            Stop
+                                            {{ __('Stop') }}
                                         </button>
                                     @endunless
                                 @endif

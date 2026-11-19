@@ -65,7 +65,7 @@
                     icon-name="file-content" />
             @else
                 <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
-                    description="No containers are running, so there are no runtime logs to show."
+                    description="{{ __('No containers are running, so there are no runtime logs to show.') }}"
                     icon-name="file-content" />
             @endif
         @else
@@ -110,7 +110,7 @@
                         :fill="true" />
                 @else
                     <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
-                        description="No containers are running, so there are no runtime logs to show."
+                        description="{{ __('No containers are running, so there are no runtime logs to show.') }}"
                         icon-name="file-content" />
                 @endif
             </div>

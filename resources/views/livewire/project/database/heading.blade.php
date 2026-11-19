@@ -69,7 +69,7 @@
                         {{ $database->name }}
                     </h1>
                     <div class="relative flex w-full min-w-0 items-center gap-2">
-                        <x-status-summary :status="$database->status" title="Database status"
+                        <x-status-summary :status="$database->status" title="{{ __('Database status') }}"
                             :healthcheck-url="route('project.database.healthcheck', $parameters)" />
                         @if ($isDeploymentProgress)
                             <x-deploying-indicator label="Working" />
@@ -95,7 +95,7 @@
                                 <button type="button" class="listbox-option justify-start! gap-2.5!"
                                     @click="open = false; document.getElementById('database-stop-trigger')?.click()" role="menuitem">
                                     <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                    Stop
+                                    {{ __('Stop') }}
                                 </button>
                             @else
                                 <x-slot:main x-bind:disabled="busy" @click="busy = true; $wire.dispatch('startEvent')">
@@ -132,7 +132,7 @@
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
                                         @click="open = false; document.getElementById('database-stop-trigger')?.click()" role="menuitem">
                                         <x-reicon name="stop-circle" class="size-3.5 text-error" />
-                                        Stop
+                                        {{ __('Stop') }}
                                     </button>
                                 @else
                                     <x-slot:main x-bind:disabled="busy" @click="busy = true; $wire.dispatch('startEvent')">
@@ -159,7 +159,7 @@
                 submitAction="restartEvent" :actions="[
                     'This database will be unavailable during the restart.',
                     'If the database is currently in use, data could be lost.',
-                ]" :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Restart Database"
+                ]" :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Restart Database') }}"
                 :dispatchAction="true">
                 <x-slot:trigger>
                     <button id="database-restart-trigger" type="button">{{ __('Restart') }}</button>
@@ -171,7 +171,7 @@
                     'If the database is currently in use, data could be lost.',
                     'Non-persistent containers, networks, and unused images will be removed.',
                 ]" :confirmWithText="false" :confirmWithPassword="false"
-                step1ButtonText="Continue" step2ButtonText="Confirm">
+                step1ButtonText="Continue" step2ButtonText="{{ __('Confirm') }}">
                 <x-slot:trigger>
                     <button id="database-stop-trigger" type="button">{{ __('Stop') }}</button>
                 </x-slot:trigger>

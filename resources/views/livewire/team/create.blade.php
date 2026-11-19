@@ -4,7 +4,7 @@
     <div class="flex justify-end">
         <x-forms.button type="submit"
             defaultClass="button button-highlighted">
-            Create team
+            {{ __('Create team') }}
         </x-forms.button>
     </div>
 </form>

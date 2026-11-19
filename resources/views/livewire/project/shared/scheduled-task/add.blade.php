@@ -12,7 +12,7 @@
 
     <div class="grid gap-4 sm:grid-cols-2">
         <x-forms.input type="number" placeholder="300" id="timeout"
-            helper="Maximum execution time from 60 to 36,000 seconds." label="{{ __('Timeout (seconds)') }}" />
+            helper="{{ __('Maximum execution time from 60 to 36,000 seconds.') }}" label="{{ __('Timeout (seconds)') }}" />
         @if ($type === 'application' && $containerNames->count() > 1)
             <x-forms.listbox id="container" label="{{ __('Container') }}"
                 :options="$containerNames->map(fn ($containerName) => [
@@ -27,13 +27,13 @@
                 ])->values()->all()" />
         @else
             <x-forms.input placeholder="php" id="container"
-                helper="Leave empty when the resource only has one container." label="{{ __('Container') }}" />
+                helper="{{ __('Leave empty when the resource only has one container.') }}" label="{{ __('Container') }}" />
         @endif
     </div>
 
     <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.07]">
         <x-forms.button @click="modalOpen=false" type="submit">
-            Add task
+            {{ __('Add task') }}
         </x-forms.button>
     </div>
 </form>

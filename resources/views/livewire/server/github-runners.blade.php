@@ -43,17 +43,17 @@
                             @if ($server->isBuildServer())
                                 <x-forms.button canGate="update" :canResource="$server" isHighlighted
                                     wire:click="toggleEnabled" wire:loading.attr="disabled" wire:target="toggleEnabled">
-                                    Enable runners
+                                    {{ __('Enable runners') }}
                                 </x-forms.button>
                             @else
                                 <x-modal-confirmation title="Enable runners on this server?"
                                     submitAction="toggleEnabled" :confirmWithText="false"
-                                    :confirmWithPassword="false" step2ButtonText="Enable runners"
+                                    :confirmWithPassword="false" step2ButtonText="{{ __('Enable runners') }}"
                                     warningMessage="This server also runs your resources. We do not recommend GitHub Actions runners here: workflow jobs use the same CPU, memory, and disk, and a heavy job can slow down or stop your resources. Use a server with the Builds only role for runners when you can."
                                     :actions="['Workflow jobs of the GitHub organization will run on this server next to your resources.']">
                                     <x-slot:trigger>
                                         <x-forms.button type="button" canGate="update" :canResource="$server" isHighlighted>
-                                            Enable runners
+                                            {{ __('Enable runners') }}
                                         </x-forms.button>
                                     </x-slot:trigger>
                                 </x-modal-confirmation>
@@ -72,7 +72,7 @@
                             @can('update', $server)
                                 <x-forms.button wire:click="toggleEnabled" wire:loading.attr="disabled"
                                     wire:target="toggleEnabled">
-                                    Disable runners
+                                    {{ __('Disable runners') }}
                                 </x-forms.button>
                             @endcan
                         </x-slot:actions>

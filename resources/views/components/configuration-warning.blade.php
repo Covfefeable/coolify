@@ -1,11 +1,11 @@
 @props(['diff' => []])
 
 <div class="relative" x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false">
-    <button type="button" aria-label="Configuration changes not applied" aria-haspopup="dialog"
+    <button type="button" aria-label="{{ __('Configuration changes not applied') }}" aria-haspopup="dialog"
         :aria-expanded="open" @click="open = !open"
         class="flex h-8 items-center justify-center gap-1.5 rounded-lg px-2 text-amber-700 transition-colors hover:bg-amber-100 dark:text-warning dark:hover:bg-warning/10">
         <x-reicon name="alert-triangle" class="size-4" />
-        <span class="hidden text-xs font-medium lg:inline">Changes pending</span>
+        <span class="hidden text-xs font-medium lg:inline">{{ __('Changes pending') }}</span>
     </button>
 
     <div x-show="open" x-cloak x-transition.opacity role="dialog"
@@ -27,7 +27,7 @@
                         <button type="button"
                             class="ml-0.5 inline-flex items-center gap-0.5 font-semibold text-coollabs transition-colors hover:text-coollabs-100 dark:text-brand-light dark:hover:text-brand-light/80"
                             @click="open = false; $dispatch('open-configuration-diff')">
-                            View changes
+                            {{ __('View changes') }}
                             <x-reicon name="arrow-right" class="size-2.5" />
                         </button>
                     @else

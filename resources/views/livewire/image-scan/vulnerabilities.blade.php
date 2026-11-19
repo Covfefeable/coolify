@@ -14,7 +14,7 @@
             :description="$serverUrl === null ? 'Ask a team admin to turn it on.' : null" icon-name="shield-alert">
             @if ($serverUrl !== null)
                 <x-slot:actions>
-                    <a class="button normal-case!" href="{{ $serverUrl }}" {{ wireNavigate() }}>Turn on</a>
+                    <a class="button normal-case!" href="{{ $serverUrl }}" {{ wireNavigate() }}>{{ __('Turn on') }}</a>
                 </x-slot:actions>
             @endif
         </x-empty>
@@ -45,7 +45,7 @@
                 @if ($canUpdate)
                     <x-forms.button :isHighlighted="$checkNeeded || ($card === null && ! $isApplication)" class="normal-case!" wire:click="scanNow" :disabled="$isScanning">
                         <x-reicon name="refresh" class="size-3.5" />
-                        Scan now
+                        {{ __('Scan now') }}
                     </x-forms.button>
                 @endif
             </x-slot:actions>
@@ -221,7 +221,7 @@
                     <div class="flex items-center justify-between gap-2 border-b border-neutral-200 px-4 py-2 dark:border-white/[0.08]">
                         <span class="text-[12px] font-medium text-neutral-700 dark:text-fg">Ignored</span>
                         <button type="button" class="text-[12px] font-medium text-coollabs hover:underline dark:text-brand-light"
-                            wire:click="$set('showIgnored', false)">Back to the results</button>
+                            wire:click="$set('showIgnored', false)">{{ __('Back to the results') }}</button>
                     </div>
                 @endif
 
@@ -281,7 +281,7 @@
                                         <span class="image-scan-severity-cell flex min-w-0 flex-wrap items-center gap-1">
                                             <x-image-scan.severity-badge :severity="$group['severity']" />
                                             @if ($group['kev'])
-                                                <span data-tooltip="Attackers are using this, according to CISA.">
+                                                <span data-tooltip="{{ __('Attackers are using this, according to CISA.') }}">
                                                     <x-status-badge type="error" label="{{ __('Known exploited') }}" />
                                                 </span>
                                             @endif
@@ -289,7 +289,7 @@
                                         <span class="image-scan-secondary text-[12px] tabular-nums text-neutral-600 dark:text-fg-dim">{{ number_format($group['count']) }}</span>
                                         <span class="flex justify-end">
                                             @if ($canUpdate)
-                                                <button type="button" class="icon-button" data-tooltip="Ignore package"
+                                                <button type="button" class="icon-button" data-tooltip="{{ __('Ignore package') }}"
                                                     aria-label="Ignore {{ $group['package'] }}"
                                                     x-on:click="$dispatch('open-ignore-modal', {
                                                         target: {{ \Illuminate\Support\Js::from($group['package']) }},

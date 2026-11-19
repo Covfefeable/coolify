@@ -12,7 +12,7 @@
                 <span>{{ __('Service') }}</span>
             @endif
             <span>{{ __('Protocol redirect') }}</span>
-                <span>Domain redirect</span>
+                <span>{{ __('Domain redirect') }}</span>
                 <span>Internal port</span>
                 <span>Search indexing</span>
                 <span>DNS status</span>
@@ -119,7 +119,7 @@
                     <span>{{ str_starts_with($row['url'], 'https://') && ($forceHttpsRedirects[$row['service_application_id']] ?? true) ? 'HTTP → HTTPS' : 'Disabled' }}</span>
                 </div>
                 <div class="service-domain-detail" title="{{ $directionLabel }}">
-                    <span class="service-domain-detail-label">Domain redirect</span>
+                    <span class="service-domain-detail-label">{{ __('Domain redirect') }}</span>
                     <span>{{ match ($rowDirection) { 'www' => 'non-www → www', 'non-www' => 'www → non-www', default => 'Disabled' } }}</span>
                 </div>
                 <div class="service-domain-detail"
@@ -151,7 +151,7 @@
                 <div class="service-domain-dns flex min-w-0 items-center">
                     @if ($row['dns_status'] === 'failed')
                         <x-status-badge as="button" @click="$dispatch('open-dns-records-modal')" :status="$dnsLabel" :type="$dnsType"
-                            title="View DNS records to fix" class="cursor-pointer hover:bg-neutral-200 dark:hover:bg-white/[0.1]" />
+                            title="{{ __('View DNS records to fix') }}" class="cursor-pointer hover:bg-neutral-200 dark:hover:bg-white/[0.1]" />
                     @elseif ($row['dns_status'] === 'checking')
                         <x-status-badge dynamic :title="$row['dns_message']">
                             <x-loading compact aria-label="{{ __('Checking DNS') }}" />
@@ -190,11 +190,11 @@
                                 <x-table.row-action wire:click="checkDomainDns({{ $index }})"
                                     wire:loading.attr="disabled"
                                     wire:target="checkDomainDns({{ $index }}),checkAllDns">
-                                    Check DNS
+                                    {{ __('Check DNS') }}
                                 </x-table.row-action>
                                 <x-table.row-action aria-label="Edit {{ $publicUrl }}"
                                     x-on:click="openEditDomain({{ \Illuminate\Support\Js::from($index) }}, {{ \Illuminate\Support\Js::from($row['url']) }}, {{ \Illuminate\Support\Js::from($editingParts) }}, {{ \Illuminate\Support\Js::from((int) $row['service_application_id']) }}, {{ \Illuminate\Support\Js::from($serviceLabel) }}, {{ \Illuminate\Support\Js::from($isNoindexed ? 'noindex' : 'index') }}, {{ \Illuminate\Support\Js::from($rowDirection) }})">
-                                    Edit
+                                    {{ __('Edit') }}
                                 </x-table.row-action>
                                 <x-slot:danger>
                                     <x-modal-confirmation buttonFullWidth title="{{ __('Remove domain?') }}"
@@ -205,7 +205,7 @@
                                             'Redeploy or restart may be required for proxy changes.',
                                         ]" :checkboxes="[['id' => 'deleteManagedDns', 'label' => 'Also delete the DNS record created by Coolify, if present.']]"
                                         :confirmWithPassword="false" :confirmWithText="false"
-                                        step2ButtonText="Remove domain">
+                                        step2ButtonText="{{ __('Remove domain') }}">
                                         <x-slot:trigger>
                                             <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                         </x-slot:trigger>

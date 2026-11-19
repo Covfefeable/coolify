@@ -56,7 +56,7 @@
                         </p>
                         @if (strlen(data_get($execution, 'message', '')) > 0)
                             <x-forms.button wire:click.prevent="downloadLogs({{ data_get($execution, 'id') }})">
-                                Download logs
+                                {{ __('Download logs') }}
                             </x-forms.button>
                         @endif
                     </div>
@@ -67,7 +67,7 @@
 @endforeach</pre>
                         @if ($this->hasMoreLogs())
                             <div class="mt-3">
-                                <x-forms.button wire:click.prevent="loadMoreLogs">Load more</x-forms.button>
+                                <x-forms.button wire:click.prevent="loadMoreLogs">{{ __('Load more') }}</x-forms.button>
                             </div>
                         @endif
                     @else

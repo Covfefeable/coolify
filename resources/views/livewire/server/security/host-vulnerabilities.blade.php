@@ -141,7 +141,7 @@
                             </button>
                             @if ($hasOldKernels)
                                 @can('update', $server)
-                                    <x-server.remove-unused-packages-button :packageManager="data_get($result, 'package_manager')" buttonTitle="Remove old kernels" />
+                                    <x-server.remove-unused-packages-button :packageManager="data_get($result, 'package_manager')" buttonTitle="{{ __('Remove old kernels') }}" />
                                 @endcan
                             @endif
                         </div>
@@ -255,14 +255,14 @@
                                         @if ($fixingUpdates !== [])
                                             @can('update', $server)
                                                 @if ($updateRiskLabels !== [])
-                                                    <x-modal-confirmation title="Update {{ $isOwnUpdate ? $finding->package : 'the kernel' }}?" buttonTitle="Update"
+                                                    <x-modal-confirmation title="Update {{ $isOwnUpdate ? $finding->package : 'the kernel' }}?" buttonTitle="{{ __('Update') }}"
                                                         submitAction="updateVulnerablePackage({{ Js::from($finding->package) }})" :actions="[
                                                             'Coolify updates ' . collect($fixingUpdates)->pluck('package')->implode(', ') . '.',
                                                             ...$updateRiskLabels,
                                                         ]"
                                                         warningMessage="Coolify cannot roll back a package update. Check the update logs when it is done."
                                                         :confirmWithText="false" :confirmWithPassword="false"
-                                                        step2ButtonText="Update" />
+                                                        step2ButtonText="{{ __('Update') }}" />
                                                 @else
                                                     <x-forms.button type="button"
                                                         wire:click="updateVulnerablePackage({{ Js::from($finding->package) }})">
@@ -285,7 +285,7 @@
                                     <dt class="text-neutral-500 dark:text-fg-faint">Fixed in</dt>
                                     <dd class="min-w-0 break-all font-mono">{{ $finding->fixedIn ?? 'No fix yet' }}</dd>
                                     @if ($fixingUpdates !== [])
-                                        <dt class="text-neutral-500 dark:text-fg-faint">Update</dt>
+                                        <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Update') }}</dt>
                                         <dd class="min-w-0 break-words">
                                             @foreach ($fixingUpdates as $fixingUpdate)
                                                 <span class="block break-all font-mono">{{ data_get($fixingUpdate, 'package') }} {{ data_get($fixingUpdate, 'new_version') }}</span>
@@ -313,7 +313,7 @@
                                     @endif
                                     @if ($finding->kev)
                                         <dt class="text-neutral-500 dark:text-fg-faint">Exploited</dt>
-                                        <dd>Attackers are using this, according to CISA.</dd>
+                                        <dd>{{ __('Attackers are using this, according to CISA.') }}</dd>
                                     @elseif ($likelihood !== null)
                                         <dt class="text-neutral-500 dark:text-fg-faint">Exploit likelihood</dt>
                                         <dd>{{ $likelihood }}</dd>

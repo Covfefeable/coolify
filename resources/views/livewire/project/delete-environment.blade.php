@@ -2,4 +2,4 @@
     submitAction="delete" :actions="['This will delete the selected environment.']"
     confirmationLabel="Please confirm the execution of the actions by entering the Environment Name below"
     shortConfirmationLabel="Environment Name" confirmationText="{{ $environmentName }}" :confirmWithPassword="false"
-    step2ButtonText="Permanently Delete" />
+    step2ButtonText="{{ __('Permanently Delete') }}" />

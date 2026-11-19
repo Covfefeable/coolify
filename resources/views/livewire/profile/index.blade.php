@@ -131,7 +131,7 @@
                         <x-forms.input id="email" label="{{ __('Email') }}" readonly />
                         <x-forms.button @click="openEmailModal()" type="button"
                             :disabled="$uses_sso" x-bind:disabled="emailModalOpen || {{ $uses_sso ? 'true' : 'false' }}">
-                            Change
+                            {{ __('Change') }}
                         </x-forms.button>
                     </div>
                 </div>
@@ -179,8 +179,8 @@
                                 {{ config('constants.email_change.verification_code_expiry_minutes', 10) }} minutes.
                             </p>
                             <div class="flex justify-end gap-2">
-                                <x-forms.button wire:click="resendVerificationCode" type="button">Resend code</x-forms.button>
-                                <x-forms.button type="submit" isHighlighted>Verify email</x-forms.button>
+                                <x-forms.button wire:click="resendVerificationCode" type="button">{{ __('Resend code') }}</x-forms.button>
+                                <x-forms.button type="submit" isHighlighted>{{ __('Verify email') }}</x-forms.button>
                             </div>
                         </form>
                     @else
@@ -188,7 +188,7 @@
                             <x-forms.input id="new_email" label="New email address" required type="email"
                                 x-ref="newEmailInput" />
                             <div class="flex justify-end">
-                                <x-forms.button type="submit" isHighlighted>Send code</x-forms.button>
+                                <x-forms.button type="submit" isHighlighted>{{ __('Send code') }}</x-forms.button>
                             </div>
                         </form>
                     @endif
@@ -204,7 +204,7 @@
                         <h2>{{ __('Password') }}</h2>
                         <p>Changing your password signs out every active session.</p>
                     </div>
-                    <x-forms.button type="submit">Change password</x-forms.button>
+                    <x-forms.button type="submit">{{ __('Change password') }}</x-forms.button>
                 </div>
                 <div class="application-settings-section-body grid gap-4 sm:grid-cols-2">
                     <x-forms.input class="sm:col-span-2" id="current_password" label="Current password"
@@ -227,7 +227,7 @@
                 @elseif (session('status') !== 'two-factor-authentication-enabled')
                     <form action="/user/two-factor-authentication" method="POST">
                         @csrf
-                        <x-forms.button type="submit">Configure 2FA</x-forms.button>
+                        <x-forms.button type="submit">{{ __('Configure 2FA') }}</x-forms.button>
                     </form>
                 @endif
             </div>
@@ -251,7 +251,7 @@
                                 @csrf
                                 <x-forms.input name="code" type="text" inputmode="numeric" pattern="[0-9]*" id="code"
                                     label="{{ __('One-time code') }}" required />
-                                <x-forms.button type="submit">Validate 2FA</x-forms.button>
+                                <x-forms.button type="submit">{{ __('Validate 2FA') }}</x-forms.button>
                             </form>
                             <div x-data="{ showCode: false }">
                                 <div x-cloak x-show="showCode" class="space-y-2 pb-3">
@@ -270,12 +270,12 @@
                         <div class="flex flex-wrap items-center justify-end gap-2">
                             <form action="/user/two-factor-recovery-codes" method="POST">
                                 @csrf
-                                <x-forms.button type="submit">Regenerate recovery codes</x-forms.button>
+                                <x-forms.button type="submit">{{ __('Regenerate recovery codes') }}</x-forms.button>
                             </form>
                             <form action="/user/two-factor-authentication" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <x-forms.button type="submit" isError>Disable 2FA</x-forms.button>
+                                <x-forms.button type="submit" isError>{{ __('Disable 2FA') }}</x-forms.button>
                             </form>
                         </div>
                         @if (session('status') === 'two-factor-authentication-confirmed'
@@ -306,7 +306,7 @@
                 </div>
             </div>
             <div class="application-settings-section-body">
-                <x-danger-zone title="Delete account">
+                <x-danger-zone title="{{ __('Delete account') }}">
                     @if ($accountDeletionBlockers === [])
                         <p>
                             Permanently delete your account from Coolify. This action cannot be undone.
@@ -326,7 +326,7 @@
                     @endif
                     <x-slot:action>
                         @if ($accountDeletionBlockers === [])
-                            <x-modal-confirmation title="Confirm Account Deletion?" buttonTitle="Delete account"
+                            <x-modal-confirmation title="Confirm Account Deletion?" buttonTitle="{{ __('Delete account') }}"
                                 isErrorButton submitAction="deleteAccount"
                                 :actions="$accountDeletionActions"
                                 confirmationText="{{ $email }}"
@@ -335,7 +335,7 @@
                         @else
                             <x-forms.button isError disabled
                                 tooltip="Resolve the requirements shown before deleting your account.">
-                                Delete account
+                                {{ __('Delete account') }}
                             </x-forms.button>
                         @endif
                     </x-slot:action>

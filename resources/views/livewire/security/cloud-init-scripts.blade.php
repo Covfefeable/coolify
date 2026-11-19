@@ -13,7 +13,7 @@
                         <button type="button"
                             class="button button-highlighted">
                             <x-reicon name="plus" class="size-3.5" />
-                            New script
+                            {{ __('New script') }}
                         </button>
                     </x-slot:content>
                     <livewire:security.cloud-init-script-form />

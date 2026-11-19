@@ -281,6 +281,8 @@ test('adding a volume switches to the volumes tab immediately', function () {
 });
 
 test('deleting a file mount refreshes the configuration warning', function () {
+    app()->setLocale('zh-cn');
+
     $file = LocalFileVolume::create([
         'fs_path' => '/etc/nginx/nginx.conf',
         'mount_path' => '/etc/nginx/nginx.conf',
@@ -292,6 +294,9 @@ test('deleting a file mount refreshes the configuration warning', function () {
     ]);
 
     Livewire::test(FileStorage::class, ['fileStorage' => $file])
+        ->assertSee('宿主机管理的文件')
+        ->assertSee('确认移除宿主机文件挂载？')
+        ->assertSee('/etc/nginx/nginx.conf')
         ->call('delete', 'password')
         ->assertDispatched('configurationChanged')
         ->assertDispatched('storageCountsChanged')

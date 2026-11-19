@@ -23,7 +23,7 @@
                         <div class="flex items-center gap-2">
                             <x-forms.button canGate="update" :canResource="$server" wire:click="scan">
                                 <x-reicon name="refresh" class="size-3.5" />
-                                Scan networks
+                                {{ __('Scan networks') }}
                             </x-forms.button>
                             @can('update', $server)
                                 <x-modal-input buttonTitle="{{ __('+ Add') }}" title="{{ __('New Destination') }}">
@@ -72,7 +72,7 @@
                                 </div>
                                 <x-forms.button canGate="update" :canResource="$server"
                                     wire:click="add('{{ data_get($network, 'Name') }}')">
-                                    Add destination
+                                    {{ __('Add destination') }}
                                 </x-forms.button>
                             </div>
                         @endforeach

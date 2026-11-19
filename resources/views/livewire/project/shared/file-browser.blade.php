@@ -98,7 +98,7 @@
                                     <x-forms.input id="newFileName" label="File name" x-model="name"
                                         placeholder="config.yml" required />
                                     <div class="flex justify-end">
-                                        <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">Create file</x-forms.button>
+                                        <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">{{ __('Create file') }}</x-forms.button>
                                     </div>
                                 </form>
                             </x-modal-input>
@@ -116,7 +116,7 @@
                                     <x-forms.input id="newFolderName" label="Folder name" x-model="name"
                                         placeholder="plugins" required />
                                     <div class="flex justify-end">
-                                        <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">Create folder</x-forms.button>
+                                        <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">{{ __('Create folder') }}</x-forms.button>
                                     </div>
                                 </form>
                             </x-modal-input>
@@ -141,7 +141,7 @@
         @if ($loadFailed)
             <x-empty title="Could not load files" description="Check the server connection and try again." />
             <div class="flex justify-center pb-4">
-                <x-forms.button wire:click="loadFiles">Retry</x-forms.button>
+                <x-forms.button wire:click="loadFiles">{{ __('Retry') }}</x-forms.button>
             </div>
         @elseif (! $filesLoaded)
             <div class="flex justify-center py-12">
@@ -252,7 +252,7 @@
                                             <x-forms.input id="chmodMode-{{ $loop->index }}" label="Octal mode"
                                                 x-model="mode" placeholder="644" required />
                                             <div class="flex justify-end">
-                                                <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">Apply</x-forms.button>
+                                                <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">{{ __('Apply') }}</x-forms.button>
                                             </div>
                                         </form>
                                     </x-modal-input>
@@ -286,9 +286,9 @@
                                             x-on:click="run(isDir ? 'Preparing folder download...' : 'Preparing file download...', () => $wire.download(name))">
                                             Download
                                         </x-table.row-action>
-                                        <x-modal-input title="Rename">
+                                        <x-modal-input title="{{ __('Rename') }}">
                                             <x-slot:content>
-                                                <x-table.row-action>Rename</x-table.row-action>
+                                                <x-table.row-action>{{ __('Rename') }}</x-table.row-action>
                                             </x-slot:content>
                                             <form x-data="{ newName: @js($entry['name']) }"
                                                 @submit.prevent="run('Renaming...', () => $wire.renameEntry(name, newName)); $dispatch('close-modal')"
@@ -296,7 +296,7 @@
                                                 <x-forms.input id="renameName-{{ $loop->index }}"
                                                     label="New name" x-model="newName" required />
                                                 <div class="flex justify-end">
-                                                    <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">Rename</x-forms.button>
+                                                    <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">{{ __('Rename') }}</x-forms.button>
                                                 </div>
                                             </form>
                                         </x-modal-input>

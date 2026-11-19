@@ -16,17 +16,17 @@
                     <button type="button" wire:click="loadManagedContainers" wire:loading.attr="disabled" wire:target="loadManagedContainers,loadUnmanagedContainers"
                         class="inline-flex items-center gap-1.5 rounded-md px-3 py-1 text-xs font-medium transition-colors disabled:cursor-wait {{ $activeTab === 'managed' ? 'bg-white text-neutral-950 shadow-sm dark:bg-brand/15 dark:text-brand-light' : 'text-neutral-500 hover:text-neutral-900 dark:text-fg-dim dark:hover:text-fg' }}">
                         <x-loading-on-button wire:loading wire:target="loadManagedContainers" />
-                        Managed
+                        {{ __('Managed') }}
                     </button>
                     <button type="button" wire:click="loadUnmanagedContainers" wire:loading.attr="disabled" wire:target="loadManagedContainers,loadUnmanagedContainers"
                         class="inline-flex items-center gap-1.5 rounded-md px-3 py-1 text-xs font-medium transition-colors disabled:cursor-wait {{ $activeTab === 'unmanaged' ? 'bg-white text-neutral-950 shadow-sm dark:bg-brand/15 dark:text-brand-light' : 'text-neutral-500 hover:text-neutral-900 dark:text-fg-dim dark:hover:text-fg' }}">
                         <x-loading-on-button wire:loading wire:target="loadUnmanagedContainers" />
-                        Unmanaged
+                        {{ __('Unmanaged') }}
                     </button>
                 </div>
                 <x-forms.button wire:click="refreshStatus">
                     <x-reicon name="refresh" class="size-3.5" />
-                    Refresh
+                    {{ __('Refresh') }}
                 </x-forms.button>
                 <x-canvas-view-toggle :views="['list' => ['List view', 'unordered-list']]"
                     :list-url="route('server.resources', ['server_uuid' => $server->uuid])"
@@ -142,19 +142,19 @@
                                                     <x-table.row-action
                                                         wire:click="restartUnmanaged('{{ data_get($resource, 'ID') }}')"
                                                         wire:key="restart-{{ data_get($resource, 'ID') }}">
-                                                        Restart
+                                                        {{ __('Restart') }}
                                                     </x-table.row-action>
                                                     <x-table.row-action
                                                         wire:click="stopUnmanaged('{{ data_get($resource, 'ID') }}')"
                                                         wire:key="stop-{{ data_get($resource, 'ID') }}">
-                                                        Stop
+                                                        {{ __('Stop') }}
                                                     </x-table.row-action>
                                                 </x-table.row-actions>
                                             @elseif ($containerState === 'exited')
                                                 <button type="button" class="icon-button shrink-0"
                                                     wire:click="startUnmanaged('{{ data_get($resource, 'ID') }}')"
                                                     wire:key="start-{{ data_get($resource, 'ID') }}"
-                                                    title="Start container" aria-label="Start container">
+                                                    title="{{ __('Start container') }}" aria-label="{{ __('Start container') }}">
                                                     <x-reicon name="play-circle" class="size-3.5" />
                                                 </button>
                                             @else
@@ -162,7 +162,7 @@
                                                     class="icon-button shrink-0 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
                                                     wire:click="stopUnmanaged('{{ data_get($resource, 'ID') }}')"
                                                     wire:key="stop-restarting-{{ data_get($resource, 'ID') }}"
-                                                    title="Stop container" aria-label="Stop container">
+                                                    title="{{ __('Stop container') }}" aria-label="{{ __('Stop container') }}">
                                                     <x-reicon name="stop-circle" class="size-3.5" />
                                                 </button>
                                             @endif

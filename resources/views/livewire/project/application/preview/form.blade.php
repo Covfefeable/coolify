@@ -5,7 +5,7 @@
         <x-slot:actions>
             @can('update', $application)
                 <x-forms.button type="button" wire:click="resetToDefault">
-                    Reset template
+                    {{ __('Reset template') }}
                 </x-forms.button>
             @endcan
         </x-slot:actions>

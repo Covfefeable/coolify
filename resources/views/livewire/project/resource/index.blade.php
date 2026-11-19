@@ -33,7 +33,7 @@
                 <a href="{{ route('shared-variables.environment.show', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid]) }}"
                     {{ wireNavigate() }}
                     class="button whitespace-nowrap"
-                    title="Shared variables for this environment"
+                    title="{{ __('Shared variables for this environment') }}"
                     aria-label="Shared variables for {{ $environment->name }}">
                     <x-reicon name="variables" class="size-3.5" />
                     Shared variables
@@ -52,7 +52,7 @@
         @if ($environment->isEmpty())
             @can('createAnyResource', [$environment])
                 <x-empty title="{{ __('No resources yet') }}"
-                    description="Add an application, database, or service to this environment."
+                    description="{{ __('Add an application, database, or service to this environment.') }}"
                     icon-name="layers">
                     <x-slot:contents>
                         <a href="{{ route('project.resource.create', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid]) }}"
@@ -64,7 +64,7 @@
                 </x-empty>
             @else
                 <x-empty title="{{ __('No resources yet') }}"
-                    description="Add an application, database, or service to this environment."
+                    description="{{ __('Add an application, database, or service to this environment.') }}"
                     icon-name="layers" />
             @endcan
         @else
@@ -127,7 +127,7 @@
                             <div class="border-t border-neutral-200 bg-white p-1 dark:border-white/10 dark:bg-raised">
                                 <button type="button" class="listbox-option justify-center! text-center!"
                                     x-on:click="clearFilters()">
-                                    Clear filters
+                                    {{ __('Clear filters') }}
                                 </button>
                             </div>
                     </x-table.dropdown>
@@ -141,7 +141,7 @@
                                         stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                Sort
+                                {{ __('Sort') }}
                                 </button>
                             </x-slot:trigger>
                                 <template x-for="option in sortOptions" :key="option.value">

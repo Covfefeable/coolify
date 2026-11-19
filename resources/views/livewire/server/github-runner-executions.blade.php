@@ -46,7 +46,7 @@
                                 'A running workflow job fails.',
                             ]"
                             :confirmWithText="false" :confirmWithPassword="false"
-                            step2ButtonText="Cancel Runner" isErrorButton />
+                            step2ButtonText="{{ __('Cancel Runner') }}" isErrorButton />
                     @endcan
                 @endif
             </div>

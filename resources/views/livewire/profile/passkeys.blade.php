@@ -49,7 +49,7 @@
                         }" x-on:submit.prevent="register()">
                         <div class="flex items-end gap-2">
                             <x-forms.input x-model="name" label="Passkey name" required maxlength="255" />
-                            <x-forms.button type="submit" isHighlighted x-bind:disabled="loading">Create passkey</x-forms.button>
+                            <x-forms.button type="submit" isHighlighted x-bind:disabled="loading">{{ __('Create passkey') }}</x-forms.button>
                             <x-forms.button type="button" wire:click="$set('show_form', false)">{{ __('Cancel') }}</x-forms.button>
                         </div>
                         <p x-cloak x-show="error" x-text="error" class="text-sm text-error"></p>

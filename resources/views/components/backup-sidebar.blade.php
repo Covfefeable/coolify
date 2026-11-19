@@ -53,7 +53,7 @@
 
 <x-main-nav-menu :depth="1" :back-label="$parentMenu" :back-title="'Back to the '.strtolower($parentMenu).' menu'" name="Backup"
     data-settings-search-items="{{ json_encode(settingsSearchItems(['Backup' => collect($items)->map(fn (array $item): array => [...$item, 'route' => $routes[$item['key']]])], $parameters)) }}">
-    <nav aria-label="Backup settings"
+    <nav aria-label="{{ __('Backup settings') }}"
         class="grid grid-cols-1 gap-0.5">
         <a class="menu-item" data-page-only {{ wireNavigate() }} href="{{ route($routes['back'], $backParameters) }}">
             <x-reicon name="logout" class="menu-item-icon rotate-180" />

@@ -9,7 +9,7 @@
             ]" confirmationText="{{ $filename }}"
             confirmationLabel="Enter the initialization script name to confirm."
             shortConfirmationLabel="Script name" :confirmWithPassword="false"
-            step2ButtonText="Permanently delete" />
+            step2ButtonText="{{ __('Permanently delete') }}" />
     </div>
     <x-forms.textarea id="content" label="{{ __('Content') }}" rows="12" />
 </form>

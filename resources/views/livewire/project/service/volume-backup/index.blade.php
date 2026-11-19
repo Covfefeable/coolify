@@ -205,7 +205,7 @@
                             <path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="1.7"
                                 stroke-linecap="round" />
                         </svg>
-                        Filter
+                        {{ __('Filter') }}
                     </button></x-slot:trigger>
                         <template x-for="option in filterOptions" :key="option.value">
                             <button type="button"

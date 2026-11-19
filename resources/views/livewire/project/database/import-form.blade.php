@@ -223,7 +223,7 @@
                                 x-show="filesize" x-text="filesize"></p>
                         </div>
                         <div class="shrink-0">
-                            <x-modal-confirmation title="Restore Database from File?" buttonTitle="Restore from File"
+                            <x-modal-confirmation title="Restore Database from File?" buttonTitle="{{ __('Restore from File') }}"
                                 submitAction="runImport" isErrorButton>
                                 <x-slot:button-title>
                                     Restore from file
@@ -282,7 +282,7 @@
                                         {{ formatBytes($s3FileSize ?? 0) }}</p>
                                 </div>
                                 <div class="shrink-0">
-                                        <x-modal-confirmation title="Restore Database from Storage?" buttonTitle="Restore from storage"
+                                        <x-modal-confirmation title="Restore Database from Storage?" buttonTitle="{{ __('Restore from storage') }}"
                                             submitAction="restoreFromS3" isErrorButton>
                                             <x-slot:button-title>
                                             Restore from storage

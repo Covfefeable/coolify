@@ -26,7 +26,7 @@
                 @if (request()->routeIs('destination.danger'))
                     <div class="application-settings-form">
                         <x-application.settings-section id="destination-danger-section" title="{{ __('Danger zone') }}"
-                            helper="Destructive actions for this destination cannot be undone.">
+                            helper="{{ __('Destructive actions for this destination cannot be undone.') }}">
                             <x-danger-zone title="{{ __('Delete destination') }}">
                                 <p>
                                     Permanently delete <strong class="font-semibold">{{ $destination->name }}</strong>
@@ -41,11 +41,11 @@
                                             confirmationText="{{ $destination->name }}"
                                             confirmationLabel="Please confirm by entering the Destination Name below"
                                             shortConfirmationLabel="Destination Name" :confirmWithPassword="false"
-                                            step2ButtonText="Permanently Delete" canGate="delete"
+                                            step2ButtonText="{{ __('Permanently Delete') }}" canGate="delete"
                                             :canResource="$destination" />
                                     @else
                                         <x-forms.button isError disabled tooltip="The default Coolify destination cannot be deleted.">
-                                            Delete destination
+                                            {{ __('Delete destination') }}
                                         </x-forms.button>
                                     @endif
                                 </x-slot:action>

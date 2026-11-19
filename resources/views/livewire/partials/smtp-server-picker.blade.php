@@ -29,10 +29,10 @@
                     </x-slot:content>
                     <form wire:submit.prevent="renameSmtpServer" class="application-settings-form flex flex-col gap-4">
                         <x-forms.input id="renamedSmtpServerName" label="{{ __('Name') }}" required
-                            helper="Name to find this server in the SMTP server list." />
+                            helper="{{ __('Name to find this server in the SMTP server list.') }}" />
                         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                             <button type="submit" class="button button-highlighted" @click="modalOpen=false">
-                                Save
+                                {{ __('Save') }}
                             </button>
                         </div>
                     </form>
@@ -43,7 +43,7 @@
                         title="Delete SMTP server?" submitAction="deleteSmtpServer"
                         :actions="['The SMTP server ' . $settings->smtpServerName() . ' is deleted. Coolify then uses the next server in the list.']"
                         :confirmWithText="false" :confirmWithPassword="false"
-                        step2ButtonText="Delete server">
+                        step2ButtonText="{{ __('Delete server') }}">
                         <x-slot:trigger>
                             <button type="button"
                                 class="icon-button mb-0.5 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
@@ -57,18 +57,18 @@
                     <x-slot:content>
                         <button type="button" class="button ml-2">
                             <x-reicon name="plus" class="size-3.5" />
-                            Add server
+                            {{ __('Add server') }}
                         </button>
                     </x-slot:content>
                     <form wire:submit.prevent="addSmtpServer" class="application-settings-form flex flex-col gap-4">
                         <x-forms.input id="newSmtpServerName" label="{{ __('Name') }}" placeholder="PostShiba production"
-                            helper="Name to find this server in the SMTP server list." required />
+                            helper="{{ __('Name to find this server in the SMTP server list.') }}" required />
                         <x-forms.listbox id="newSmtpServerTemplate" label="Template" placeholder="None (enter the settings yourself)"
                             helper="Fills in the host, port, and encryption of the provider. You then enter the username and password from the provider."
                             :options="\App\Support\SmtpPresets::options()" />
                         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                             <button type="submit" class="button button-highlighted" @click="modalOpen=false">
-                                Add server
+                                {{ __('Add server') }}
                             </button>
                         </div>
                     </form>

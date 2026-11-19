@@ -18,16 +18,16 @@
                             @if ($server->proxy->status === 'exited' || $server->proxy->status === 'removing')
                                 @can('update', $server)
                                     <x-modal-confirmation title="Confirm Proxy Switching?"
-                                        buttonTitle="Switch proxy" submitAction="changeProxy"
+                                        buttonTitle="{{ __('Switch proxy') }}" submitAction="changeProxy"
                                         :actions="['Custom proxy configurations may be reset to their default settings.']"
                                         warningMessage="Review the proxy switching guide before continuing."
-                                        step2ButtonText="Switch Proxy" :confirmWithText="false"
+                                        step2ButtonText="{{ __('Switch Proxy') }}" :confirmWithText="false"
                                         :confirmWithPassword="false" />
                                 @endcan
                             @else
                                 <x-forms.button canGate="update" :canResource="$server"
                                     wire:click="$dispatch('error', 'The running proxy must be stopped before switching.')">
-                                    Switch proxy
+                                    {{ __('Switch proxy') }}
                                 </x-forms.button>
                             @endif
                         </div>
@@ -94,8 +94,7 @@
                                 helper="One self-contained HTML file (max {{ \App\Models\Server::PROXY_ERROR_PAGE_MAX_BYTES / 1024 }} KB) with inline CSS and images. Visitors see it with a 503 status for unknown domains and for stopped, deploying or unhealthy resources. A Redirect URL takes priority over this page." />
                             @can('update', $server)
                                 <div class="flex gap-2">
-                                    <x-forms.button type="button" wire:click="resetCustomErrorPage">Reset to
-                                        default</x-forms.button>
+                                    <x-forms.button type="button" wire:click="resetCustomErrorPage">{{ __('Reset to default') }}</x-forms.button>
                                 </div>
                             @endcan
                         </div>
@@ -117,14 +116,14 @@
                             @can('update', $server)
                                 @if ($proxySettings)
                                     <x-modal-confirmation title="Reset Proxy Configuration?"
-                                        buttonTitle="Reset configuration"
+                                        buttonTitle="{{ __('Reset configuration') }}"
                                         submitAction="resetProxyConfiguration" :actions="[
                                             'Reset the proxy configuration to Coolify defaults.',
                                             'Remove custom ports, entrypoints, and other manual changes.',
                                         ]" confirmationText="{{ $server->name }}"
                                         confirmationLabel="Confirm by entering the server name"
                                         shortConfirmationLabel="Server Name"
-                                        step2ButtonText="Reset Configuration"
+                                        step2ButtonText="{{ __('Reset Configuration') }}"
                                         :confirmWithPassword="false" :confirmWithText="true" />
                                 @endif
                             @endcan
@@ -196,7 +195,7 @@
                 helper="Coolify will not manage a reverse proxy for this server.">
                 <x-slot:actions>
                     @can('update', $server)
-                        <x-forms.button wire:click.prevent="changeProxy">Switch proxy</x-forms.button>
+                        <x-forms.button wire:click.prevent="changeProxy">{{ __('Switch proxy') }}</x-forms.button>
                     @endcan
                 </x-slot:actions>
                 <x-callout type="info" title="Custom proxy selected">

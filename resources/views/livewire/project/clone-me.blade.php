@@ -164,11 +164,11 @@
                     @else
                         <x-forms.button isHighlighted wire:click="clone('environment')"
                             :disabled="! filled($selectedDestination)">
-                            Clone to environment
+                            {{ __('Clone to environment') }}
                         </x-forms.button>
                         <x-forms.button isHighlighted wire:click="clone('project')"
                             :disabled="! filled($selectedDestination)">
-                            Clone to project
+                            {{ __('Clone to project') }}
                         </x-forms.button>
                     @endif
                 </div>

@@ -56,7 +56,7 @@
             @endif
 
             <x-forms.button class="mt-4" type="submit" wire:target="submit">
-                Validate Connection & Continue
+                {{ __('Validate Connection & Continue') }}
             </x-forms.button>
         </form>
     </div>

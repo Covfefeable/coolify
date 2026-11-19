@@ -26,7 +26,7 @@
                 @if ($resource->isRunning())
                     @can('update', $resource)
                         <x-forms.button type="button" wire:click="executeNow">
-                            Execute now
+                            {{ __('Execute now') }}
                         </x-forms.button>
                     @endcan
                 @endif
@@ -45,10 +45,10 @@
                     helper="Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression. Runs in the server timezone ({{ $serverTimezone }}). Change it in the server settings."
                     required />
                 <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)" type="number"
-                    placeholder="300" id="timeout" helper="Maximum execution time from 60 to 36,000 seconds."
+                    placeholder="300" id="timeout" helper="{{ __('Maximum execution time from 60 to 36,000 seconds.') }}"
                     label="{{ __('Timeout (seconds)') }}" required />
                 <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)" placeholder="php"
-                    helper="Leave empty when the resource only has one container." id="container"
+                    helper="{{ __('Leave empty when the resource only has one container.') }}" id="container"
                     label="{{ $type === 'service' ? 'Service' : 'Container' }}" />
             </div>
             <div class="mt-4">
@@ -75,13 +75,13 @@
                 <x-danger-zone title="{{ __('This action cannot be undone.') }}">
                     <p>The task stops running and cannot be restored.</p>
                     <x-slot:action>
-                        <x-modal-confirmation title="Delete scheduled task?" isErrorButton buttonTitle="Delete task"
+                        <x-modal-confirmation title="Delete scheduled task?" isErrorButton buttonTitle="{{ __('Delete task') }}"
                             submitAction="delete({{ $task->id }})"
                             :actions="['The selected scheduled task will be permanently deleted.']"
                             confirmationText="{{ $task->name }}"
                             confirmationLabel="Enter the scheduled task name to confirm deletion"
                             shortConfirmationLabel="Task name" :confirmWithPassword="false"
-                            step2ButtonText="Permanently delete" />
+                            step2ButtonText="{{ __('Permanently delete') }}" />
                     </x-slot:action>
                 </x-danger-zone>
             </x-application.settings-section>

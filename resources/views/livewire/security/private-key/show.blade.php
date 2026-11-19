@@ -53,7 +53,7 @@
                     @confirm-old-key-deletion.window="if ($event.detail.id === {{ $private_key->id }}) modalOpen = true"
                     submitAction="delete" :disabled="$isInUse" :disabledTooltip="$deleteDisabledReason"
                     :actions="['This private key will be permanently deleted.', 'Coolify does not remove its public key from servers. To remove it, rotate the key before you delete it.']" confirmationText="{{ $private_key->name }}"
-                    :confirmWithPassword="false" step2ButtonText="Delete private key" />
+                    :confirmWithPassword="false" step2ButtonText="{{ __('Delete private key') }}" />
             @endcan
             <div class="flex items-center gap-2">
                 @can('update', $private_key)

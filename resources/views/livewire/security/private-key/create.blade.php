@@ -15,7 +15,7 @@
         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
             <button type="submit"
                 class="button button-highlighted">
-                Continue
+                {{ __('Continue') }}
             </button>
         </div>
     </form>

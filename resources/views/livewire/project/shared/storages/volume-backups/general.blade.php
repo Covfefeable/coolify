@@ -8,12 +8,12 @@
             <div @class(['flex items-center gap-2', 'xl:hidden' => $actionsInHeader && $backup])>
                 @if (!$enabled)
                     <x-forms.button type="button" wire:click="toggleEnabled" wire:loading.attr="disabled"
-                        wire:target="toggleEnabled" isHighlighted>Enable backup</x-forms.button>
+                        wire:target="toggleEnabled" isHighlighted>{{ __('Enable backup') }}</x-forms.button>
                 @else
                     <x-forms.button type="button" wire:click="toggleEnabled" wire:loading.attr="disabled"
-                        wire:target="toggleEnabled">Disable backup</x-forms.button>
+                        wire:target="toggleEnabled">{{ __('Disable backup') }}</x-forms.button>
                 @endif
-                <x-forms.button type="button" wire:click="backupNow">Back up now</x-forms.button>
+                <x-forms.button type="button" wire:click="backupNow">{{ __('Back up now') }}</x-forms.button>
             </div>
         </x-slot:actions>
 
@@ -47,7 +47,7 @@
                 helper="Maximum backup runtime in seconds." required />
             <x-forms.input label="Missing backup alert after" id="missingBackupNotificationDays" type="number"
                 min="0" max="365" suffix="days"
-                helper="Notify through backup failure channels after this many days without an execution. Use 0 to disable." required />
+                helper="{{ __('Notify through backup failure channels after this many days without an execution. Use 0 to disable.') }}" required />
         </div>
     </x-application.settings-section>
 

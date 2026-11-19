@@ -320,7 +320,7 @@
                             <div class="logs-viewer-primary">
                                 <div class="logs-viewer-actions">
                                 @if ($isKeepAliveOn)
-                                <button title="Follow Logs" :class="alwaysScroll ? 'logs-viewer-btn-active' : ''"
+                                <button title="{{ __('Follow Logs') }}" :class="alwaysScroll ? 'logs-viewer-btn-active' : ''"
                                     x-on:click="toggleScroll"
                                     class="logs-viewer-btn">
                                     <svg class="size-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -329,7 +329,7 @@
                                     </svg>
                                 </button>
                                 @endif
-                                <button title="Fullscreen" x-show="!fullscreen" x-on:click="makeFullscreen"
+                                <button title="{{ __('Fullscreen') }}" x-show="!fullscreen" x-on:click="makeFullscreen"
                                     class="logs-viewer-btn">
                                     <svg class="size-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <g fill="none">
@@ -340,7 +340,7 @@
                                         </g>
                                     </svg>
                                 </button>
-                                <button title="Minimize" x-show="fullscreen" x-on:click="makeFullscreen"
+                                <button title="{{ __('Minimize') }}" x-show="fullscreen" x-on:click="makeFullscreen"
                                     class="logs-viewer-btn">
                                     <svg class="size-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path fill="none" stroke="currentColor" stroke-linecap="round"
@@ -395,7 +395,7 @@
                             </div>
                             <div class="runtime-log-menus">
                             <x-table.dropdown panel-class="runtime-log-menu min-w-48! max-h-none!" role="menu">
-                                <x-slot:trigger><button type="button" title="View Options"
+                                <x-slot:trigger><button type="button" title="{{ __('View Options') }}"
                                     class="button" aria-haspopup="menu" :aria-expanded="open">
                                     <svg class="size-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor">
@@ -425,7 +425,7 @@
                                 </div>
                             </x-table.dropdown>
                             <x-table.dropdown panel-class="runtime-log-menu min-w-52!" role="menu">
-                                <x-slot:trigger><button type="button" title="Copy or Download Logs"
+                                <x-slot:trigger><button type="button" title="{{ __('Copy or Download Logs') }}"
                                     class="button" aria-haspopup="menu" :aria-expanded="open">
                                     <svg class="size-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor">

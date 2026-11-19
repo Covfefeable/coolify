@@ -184,7 +184,7 @@
                                                             confirmationLabel="Please confirm by entering the Storage Name below"
                                                             shortConfirmationLabel="Storage Name">
                                                             <x-slot:trigger>
-                                                                <x-table.row-action>Delete stale entry</x-table.row-action>
+                                                                <x-table.row-action>{{ __('Delete stale entry') }}</x-table.row-action>
                                                             </x-slot:trigger>
                                                         </x-modal-confirmation>
                                                     @endif
@@ -290,7 +290,7 @@
 
                             <div
                                 class="volumes-col-actions volumes-cell-actions flex flex-nowrap items-center justify-end gap-1.5">
-                                <button type="submit" class="sr-only" tabindex="-1" aria-hidden="true">Update</button>
+                                <button type="submit" class="sr-only" tabindex="-1" aria-hidden="true">{{ __('Update') }}</button>
                                 @php
                                     $hasBackupAction = auth()->user()?->can('update', $resource)
                                         && (($showBackupAction && ! $form['isShared'])
@@ -303,7 +303,7 @@
                                     </button>
                                 @else
                                     <x-table.row-actions label="Storage actions">
-                                        <x-table.row-action wire:click="submit({{ $id }})">Update</x-table.row-action>
+                                        <x-table.row-action wire:click="submit({{ $id }})">{{ __('Update') }}</x-table.row-action>
                                         @can('update', $resource)
                                             @if ($showBackupAction && ! $form['isShared'])
                                                 <x-modal-input title="{{ __('Configure Volume Backup') }}" :wireIgnore="false">
@@ -394,7 +394,7 @@
                                 </x-forms.button>
                                 <x-forms.button wire:click="submit({{ $pendingRename['storageId'] }}, true)"
                                     @click="modalOpen = false" isError>
-                                    Change Volume Name
+                                    {{ __('Change Volume Name') }}
                                 </x-forms.button>
                             </div>
                         </div>

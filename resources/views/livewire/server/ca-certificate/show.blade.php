@@ -50,7 +50,7 @@
                         @endcan
                         @can('update', $server)
                             <x-modal-confirmation title="Confirm changing of CA Certificate?"
-                                buttonTitle="Save certificate" submitAction="saveCaCertificate" :actions="[
+                                buttonTitle="{{ __('Save certificate') }}" submitAction="saveCaCertificate" :actions="[
                                     'This overwrites /data/coolify/ssl/coolify-ca.crt with your custom certificate.',
                                     'Database certificates on this server will be regenerated and signed with the custom CA.',
                                     'You must redeploy affected databases and resources.',
@@ -58,7 +58,7 @@
                                 shortConfirmationLabel="CA Certificate Path"
                                 step3ButtonText="Save Certificate" />
                             <x-modal-confirmation title="Confirm Regenerate Certificate?"
-                                buttonTitle="Regenerate" submitAction="regenerateCaCertificate" :actions="[
+                                buttonTitle="{{ __('Regenerate') }}" submitAction="regenerateCaCertificate" :actions="[
                                     'This replaces the current CA certificate with a newly generated certificate.',
                                     'Database certificates on this server will be regenerated and signed with the new CA.',
                                     'You must redeploy affected databases and resources.',

@@ -5,14 +5,14 @@
         description="Define how Docker checks this database and reports its health.">
         <x-slot:actions>
             @if (!$healthCheckEnabled)
-                <x-modal-confirmation title="Enable healthcheck?" buttonTitle="Enable healthcheck"
+                <x-modal-confirmation title="{{ __('Enable healthcheck?') }}" buttonTitle="{{ __('Enable healthcheck') }}"
                     submitAction="toggleHealthcheck" :actions="['Enable healthcheck for this database.']"
                     warningMessage="A failing probe marks the database unhealthy. Review the healthcheck guide before enabling it."
-                    step2ButtonText="Enable healthcheck" :confirmWithText="false" :confirmWithPassword="false"
+                    step2ButtonText="{{ __('Enable healthcheck') }}" :confirmWithText="false" :confirmWithPassword="false"
                     isHighlightedButton />
             @else
                 <x-forms.button canGate="update" :canResource="$database"
-                    wire:click="toggleHealthcheck" type="button">Disable healthcheck</x-forms.button>
+                    wire:click="toggleHealthcheck" type="button">{{ __('Disable healthcheck') }}</x-forms.button>
             @endif
         </x-slot:actions>
 

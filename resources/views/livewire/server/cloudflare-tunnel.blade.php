@@ -10,11 +10,11 @@
         <x-server.sidebar :server="$server" activeMenu="cloudflare-tunnel" />
 
         <div class="application-settings-form flex w-full flex-col gap-6">
-            <x-application.settings-section id="server-cloudflare-overview-section" title="Cloudflare Tunnel"
+            <x-application.settings-section id="server-cloudflare-overview-section" title="{{ __('Cloudflare Tunnel') }}"
                 helper="Proxy SSH traffic through Cloudflare so the server SSH port can remain closed.">
                 <x-slot:actions>
                     @if ($isCloudflareTunnelsEnabled && auth()->user()->can('update', $server))
-                        <x-forms.button wire:click="updateCloudflareTunnel">Update Cloudflare Tunnel</x-forms.button>
+                        <x-forms.button wire:click="updateCloudflareTunnel">{{ __('Update Cloudflare Tunnel') }}</x-forms.button>
                         <x-process-dialog @cloudflare-tunnel-update-started.window="processDialogOpen = true"
                             closeWithX size="xl">
                             <x-slot:title>Cloudflare Tunnel Update Logs</x-slot:title>
@@ -32,7 +32,7 @@
                     @endif
                     @if (!$isCloudflareTunnelsEnabled && $server->isFunctional() && auth()->user()->can('update', $server))
                         <x-modal-confirmation title="Confirm manual Cloudflare Tunnel configuration"
-                            buttonTitle="I configured the tunnel manually"
+                            buttonTitle="{{ __('I configured the tunnel manually') }}"
                             submitAction="manualCloudflareConfig" :actions="[
                                 'Cloudflare and cloudflared have already been configured.',
                                 'An incomplete setup can make the server unreachable.',
@@ -58,7 +58,7 @@
                     @can('update', $server)
                         <div class="mt-4">
                             <x-modal-confirmation title="Disable Cloudflare Tunnel?"
-                                buttonTitle="Disable Cloudflare Tunnel" isErrorButton
+                                buttonTitle="{{ __('Disable Cloudflare Tunnel') }}" isErrorButton
                                 submitAction="toggleCloudflareTunnels" :actions="array_merge(
                                     ['Cloudflare Tunnel will be disabled for this server.'],
                                     filled($server->settings->cloudflare_tunnel_id)
@@ -81,7 +81,7 @@
                         Automated configuration requires a validated server, a Cloudflare token, and an SSH domain.
                         You can also
                         <button type="button" wire:click="manualCloudflareConfig" class="font-medium underline">
-                            mark a manual configuration as complete
+                            {{ __('mark a manual configuration as complete') }}
                         </button>.
                     </x-callout>
                 @else
@@ -115,7 +115,7 @@
                                         <x-slot:content>
                                             <button type="button" class="button button-highlighted">
                                                 <x-reicon name="plus" class="size-3.5" />
-                                                Add Cloudflare token
+                                                {{ __('Add Cloudflare token') }}
                                             </button>
                                         </x-slot:content>
                                         <livewire:security.integration-token-form :modal_mode="true"
@@ -134,7 +134,7 @@
                                         helper="A hostname in a zone of the selected token. Cloudflare routes it to SSH port {{ $server->port }} of this server." />
                                 </div>
                                 <div class="mt-4 flex justify-end">
-                                    <x-forms.button type="submit" isHighlighted>Set up tunnel</x-forms.button>
+                                    <x-forms.button type="submit" isHighlighted>{{ __('Set up tunnel') }}</x-forms.button>
                                 </div>
                             </form>
                             @if ($dnsConflict)
@@ -144,7 +144,7 @@
                                         Replace it with the tunnel record to continue.
                                     </x-callout>
                                     <div class="mt-4">
-                                        <x-modal-confirmation title="Replace DNS record?" buttonTitle="Replace DNS record"
+                                        <x-modal-confirmation title="Replace DNS record?" buttonTitle="{{ __('Replace DNS record') }}"
                                             submitAction="replaceDnsAndConfigure" :actions="[
                                                 'The DNS record of '.$dnsConflict['hostname'].' will point to the Cloudflare tunnel.',
                                                 'Traffic that uses the current record value will stop.',
@@ -168,7 +168,7 @@
                                             helper="The public hostname of the tunnel that routes to SSH on this server, without a protocol." />
                                     </div>
                                     <div class="mt-4 flex justify-end">
-                                        <x-forms.button type="submit">Configure tunnel</x-forms.button>
+                                        <x-forms.button type="submit">{{ __('Configure tunnel') }}</x-forms.button>
                                     </div>
                                 </form>
                             </x-forms.collapsible>

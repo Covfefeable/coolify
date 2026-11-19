@@ -7,7 +7,7 @@
             @can('validateConnection', $storage)
                 <x-forms.button type="button" wire:click="testConnection">
                     <x-reicon name="check-circle" class="size-3.5" />
-                    Validate connection
+                    {{ __('Validate connection') }}
                 </x-forms.button>
             @endcan
         </x-slot:actions>
@@ -91,7 +91,7 @@
                             helper="Coolify saves the host key of the server when you validate the connection, and refuses the server when the key changes. Backups do not save a new key. Reset it only when you know why the key changed." />
                         @can('update', $storage)
                             @if ($storage->sftp_host_key)
-                                <x-forms.button type="button" wire:click="resetHostKey">Reset host key</x-forms.button>
+                                <x-forms.button type="button" wire:click="resetHostKey">{{ __('Reset host key') }}</x-forms.button>
                             @endif
                         @endcan
                     </div>

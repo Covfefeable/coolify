@@ -41,7 +41,7 @@
 
             @if ($showGoBack)
                 <a href="{{ url()->previous() }}">
-                    <x-forms.button type="button">Go back</x-forms.button>
+                    <x-forms.button type="button">{{ __('Go back') }}</x-forms.button>
                 </a>
             @endif
 
@@ -57,7 +57,7 @@
                     rel="noopener noreferrer"
                     href="{{ config('constants.urls.contact') }}">
                     <x-forms.button type="button">
-                        Contact support
+                        {{ __('Contact support') }}
                         <x-external-link class="inline-flex size-3 text-current" />
                     </x-forms.button>
                 </a>

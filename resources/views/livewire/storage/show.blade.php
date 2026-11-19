@@ -94,7 +94,7 @@
                                                     confirmationText="{{ $storage->name }}"
                                                     confirmationLabel="Please confirm the execution of the actions by entering the Storage Name below"
                                                     shortConfirmationLabel="Storage Name" :confirmWithPassword="false"
-                                                    step2ButtonText="Permanently Delete" />
+                                                    step2ButtonText="{{ __('Permanently Delete') }}" />
                                             @else
                                                 <x-forms.button isError disabled tooltip="You do not have permission to delete this storage.">
                                                     {{ __('Delete') }}

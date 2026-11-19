@@ -49,7 +49,7 @@
                 <x-table.loading target="previousPage,nextPage,setPage,perPage,sortExecutions" text="Loading executions..." />
                 <div class="flex min-w-[64rem] flex-col">
                 <div class="data-table-header service-backup-table-grid">
-                    <x-table.sort-header label="Target" asc="target_asc" desc="target_desc" action="sortExecutions" :current="$sortBy" />
+                    <x-table.sort-header label="{{ __('Target') }}" asc="target_asc" desc="target_desc" action="sortExecutions" :current="$sortBy" />
                     <x-table.sort-header label="{{ __('Type') }}" asc="type_asc" desc="type_desc" action="sortExecutions" :current="$sortBy" />
                     <x-table.sort-header label="{{ __('Schedule') }}" asc="schedule_asc" desc="schedule_desc" action="sortExecutions" :current="$sortBy" />
                     <x-table.sort-header label="{{ __('Status') }}" asc="status_asc" desc="status_desc" action="sortExecutions" :current="$sortBy" />

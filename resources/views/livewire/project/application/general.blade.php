@@ -15,7 +15,7 @@
                 <x-slot:actions>
                     <x-forms.button canGate="update" :canResource="$application" wire:target='initLoadingCompose'
                         x-on:click="$wire.dispatch('loadCompose', false)">
-                        Reload compose
+                        {{ __('Reload compose') }}
                     </x-forms.button>
                 </x-slot:actions>
             @endif
@@ -107,7 +107,7 @@
                         <x-slot:contents>
                             <button type="button" class="button"
                                 @click="window.scrollToSettingsSection?.('container-labels-section')">
-                                Go to Container labels
+                                {{ __('Go to Container labels') }}
                             </button>
                         </x-slot:contents>
                     </x-empty>
@@ -238,14 +238,14 @@
                                             <div wire:key="docker-compose-build-preview">
                                                 <x-forms.input readonly value="{{ $this->dockerComposeBuildCommandPreview }}"
                                                     label="Final build command (preview)"
-                                                    helper="This shows the actual command that will be executed with auto-injected flags." />
+                                                    helper="{{ __('This shows the actual command that will be executed with auto-injected flags.') }}" />
                                             </div>
                                         @endif
                                         @if ($this->dockerComposeCustomStartCommand)
                                             <div wire:key="docker-compose-start-preview">
                                                 <x-forms.input readonly value="{{ $this->dockerComposeStartCommandPreview }}"
                                                     label="Final start command (preview)"
-                                                    helper="This shows the actual command that will be executed with auto-injected flags." />
+                                                    helper="{{ __('This shows the actual command that will be executed with auto-injected flags.') }}" />
                                             </div>
                                         @endif
                                 </div>
@@ -328,7 +328,7 @@
                         </label>
                         @can('update', $application)
                             <x-modal-confirmation title="{{ __('Confirm Nginx Configuration Generation?') }}"
-                                buttonTitle="Generate default"
+                                buttonTitle="{{ __('Generate default') }}"
                                 submitAction="generateNginxConfiguration('{{ $application->settings->is_spa ? 'spa' : 'static' }}')"
                                 :actions="[
                                     'This will overwrite your current custom Nginx configuration.',
@@ -455,7 +455,7 @@
                     @if ($buildPack === 'dockercompose')
                         <x-forms.input x-bind:disabled="shouldDisable()" id="preDeploymentCommandContainer"
                             label="{{ __('Container name') }}"
-                            helper="The name of the container to execute within. You can leave it blank if your application only has one container." />
+                            helper="{{ __('The name of the container to execute within. You can leave it blank if your application only has one container.') }}" />
                     @endif
                 </div>
                 <div class="flex flex-col gap-4">
@@ -465,7 +465,7 @@
                     @if ($buildPack === 'dockercompose')
                         <x-forms.input x-bind:disabled="shouldDisable()" id="postDeploymentCommandContainer"
                             label="{{ __('Container name') }}"
-                            helper="The name of the container to execute within. You can leave it blank if your application only has one container." />
+                            helper="{{ __('The name of the container to execute within. You can leave it blank if your application only has one container.') }}" />
                     @endif
                 </div>
             </div>
@@ -616,14 +616,14 @@
                             <label class="flex w-fit items-center gap-1.5" style="margin-bottom: 0">Active labels</label>
                             @can('update', $application)
                                 <x-modal-confirmation title="Confirm Labels Reset to Coolify Defaults?"
-                                    buttonTitle="Reset to defaults" submitAction="resetDefaultLabels(true)"
+                                    buttonTitle="{{ __('Reset to defaults') }}" submitAction="resetDefaultLabels(true)"
                                     :actions="[
                                         'All your custom proxy labels will be lost.',
                                         'Proxy labels (traefik, caddy, etc) will be reset to the coolify defaults.',
                                     ]" confirmationText="{{ $application->fqdn . '/' }}"
                                     confirmationLabel="Please confirm the execution of the actions by entering the Application URL below"
                                     shortConfirmationLabel="Application URL" :confirmWithPassword="false"
-                                    step2ButtonText="Permanently Reset Labels" />
+                                    step2ButtonText="{{ __('Permanently Reset Labels') }}" />
                             @endcan
                         </div>
                         @if ($application->settings->is_container_label_readonly_enabled)

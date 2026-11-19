@@ -218,12 +218,12 @@
         {{-- Project switcher --}}
         <div class="relative min-w-0 shrink" x-data="{ open: false }" @keydown.escape.window="open = false">
             <div class="flex h-8 min-w-0 items-center rounded-md opacity-70 transition-opacity hover:opacity-100">
-                <a href="{{ route($projectDestinationRoute, ['project_uuid' => $currentProject->uuid]) }}" {{ wireNavigate() }} title="Go to project"
+                <a href="{{ route($projectDestinationRoute, ['project_uuid' => $currentProject->uuid]) }}" {{ wireNavigate() }} title="{{ __('Go to project') }}"
                     class="flex h-8 min-w-0 items-center rounded-l-md pr-1 pl-2 transition-colors hover:bg-neutral-100 dark:hover:bg-white/[0.05]">
                     <span class="min-w-0 truncate font-semibold text-black dark:text-fg"
                         x-text="nameOf(@js($currentProject->uuid), @js($currentProject->name))">{{ $currentProject->name }}</span>
                 </a>
-                <button type="button" @click="open = !open" @click.outside="open = false" title="Switch project"
+                <button type="button" @click="open = !open" @click.outside="open = false" title="{{ __('Switch project') }}"
                     class="flex h-8 shrink-0 items-center rounded-r-md px-0.5 transition-colors hover:bg-neutral-100 dark:hover:bg-white/[0.05]">
                     <svg class="size-4 shrink-0 text-neutral-400 dark:text-fg-faint" viewBox="0 0 24 24" fill="none">
                         <path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
@@ -250,11 +250,11 @@
         {{-- Environment switcher --}}
         <div class="relative min-w-0 shrink" x-data="{ open: false }" @keydown.escape.window="open = false">
             <div class="flex h-8 min-w-0 items-center rounded-md opacity-70 transition-opacity hover:opacity-100">
-                <a href="{{ route('project.resource.index', ['project_uuid' => $currentProject->uuid, 'environment_uuid' => $currentEnvironment->uuid]) }}" {{ wireNavigate() }} title="Go to environment"
+                <a href="{{ route('project.resource.index', ['project_uuid' => $currentProject->uuid, 'environment_uuid' => $currentEnvironment->uuid]) }}" {{ wireNavigate() }} title="{{ __('Go to environment') }}"
                     class="flex h-8 min-w-0 items-center rounded-l-md pr-1 pl-2 transition-colors hover:bg-neutral-100 dark:hover:bg-white/[0.05]">
                     <span class="min-w-0 truncate font-semibold text-black dark:text-fg">{{ $currentEnvironment->name }}</span>
                 </a>
-                <button type="button" @click="open = !open" @click.outside="open = false" title="Switch environment"
+                <button type="button" @click="open = !open" @click.outside="open = false" title="{{ __('Switch environment') }}"
                     class="flex h-8 shrink-0 items-center rounded-r-md px-0.5 transition-colors hover:bg-neutral-100 dark:hover:bg-white/[0.05]">
                     <svg class="size-4 shrink-0 text-neutral-400 dark:text-fg-faint" viewBox="0 0 24 24" fill="none">
                         <path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />

@@ -12,7 +12,7 @@
             'The running kernel and the newest kernel stay installed.',
         ]"
         warningMessage="Coolify cannot restore removed packages. Check the logs when it is done."
-        :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Remove">
+        :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Remove') }}">
         @if ($triggerId)
             <x-slot:trigger>
                 <button id="{{ $triggerId }}" type="button">{{ $buttonTitle }}</button>

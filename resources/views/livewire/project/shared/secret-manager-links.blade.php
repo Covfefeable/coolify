@@ -17,7 +17,7 @@
                     </x-slot:actions>
                 </x-empty>
             @else
-                <x-empty title="No secret manager source" description="This resource does not use a secret manager."
+                <x-empty title="{{ __('No secret manager source') }}" description="{{ __('This resource does not use a secret manager.') }}"
                     icon-name="keys" size="sm" />
             @endcan
         @else
@@ -79,7 +79,7 @@
                                 </x-forms.button>
                                 @if ($keysLoaded)
                                     <x-forms.button wire:click="importAll" wire:target="importAll" isHighlighted>
-                                        Import all keys
+                                        {{ __('Import all keys') }}
                                     </x-forms.button>
                                 @endif
                             </div>
@@ -107,7 +107,7 @@
                                                 @else
                                                     <x-forms.button wire:click="addReference({{ \Illuminate\Support\Js::from($key) }})"
                                                         wire:target="addReference({{ \Illuminate\Support\Js::from($key) }})">
-                                                        Add as variable
+                                                        {{ __('Add as variable') }}
                                                     </x-forms.button>
                                                 @endif
                                             </div>
@@ -136,7 +136,7 @@
                         </span>
                     </div>
                 @else
-                    <x-empty title="No secret manager source" description="This resource does not use a secret manager."
+                    <x-empty title="{{ __('No secret manager source') }}" description="{{ __('This resource does not use a secret manager.') }}"
                         icon-name="keys" size="sm" />
                 @endif
             @endcan

@@ -27,7 +27,7 @@
         <form wire:submit="submit" class="application-settings-form flex w-full min-w-0 flex-col gap-6">
             <x-unsaved-bar action="submit" />
 
-            <x-application.settings-section title="Registration"
+            <x-application.settings-section title="{{ __('Registration') }}"
                 description="Control password registration when an OAuth provider is available.">
                 <x-forms.checkbox canGate="update" :canResource="$settings"
                     id="disable_registration_when_oauth_enabled"
@@ -70,7 +70,7 @@
                                 id="oauth_settings_map.{{ $provider }}.client_secret" type="password"
                                 label="{{ __('Client secret') }}" autocomplete="new-password" required />
                             <x-forms.input canGate="update" :canResource="$settings"
-                                id="oauth_settings_map.{{ $provider }}.scopes" label="Scopes"
+                                id="oauth_settings_map.{{ $provider }}.scopes" label="{{ __('Scopes') }}"
                                 helper="Must include openid. Common scopes are openid email profile groups." />
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.clock_skew_seconds" type="number"

@@ -19,16 +19,16 @@
             <div class="flex shrink-0 flex-wrap items-center gap-2 sm:ml-auto">
                 @can('view', $gitea_app)
                     <x-forms.button type="button" wire:click.prevent="testConnection">
-                        Test connection
+                        {{ __('Test connection') }}
                     </x-forms.button>
                 @endcan
                 @can('delete', $gitea_app)
-                    <x-modal-confirmation title="Confirm Gitea / Forgejo App Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
+                    <x-modal-confirmation title="{{ __('Confirm Gitea / Forgejo App Deletion?') }}" isErrorButton buttonTitle="{{ __('Delete') }}"
                         submitAction="delete" :actions="['The selected Gitea / Forgejo App will be permanently deleted.']"
                         confirmationText="{{ data_get($gitea_app, 'name') }}"
                         confirmationLabel="Please confirm by entering the Gitea / Forgejo App Name below"
                         shortConfirmationLabel="Gitea / Forgejo App Name" :confirmWithPassword="false"
-                        step2ButtonText="Permanently Delete" />
+                        step2ButtonText="{{ __('Permanently Delete') }}" />
                 @endcan
             </div>
         </header>
@@ -37,7 +37,7 @@
             <x-unsaved-bar action="submit" />
 
             <x-application.settings-section title="{{ __('General') }}"
-                description="Name, visibility, and webhook of this source.">
+                description="{{ __('Name, visibility, and webhook of this source.') }}">
                 <div class="grid gap-4 lg:grid-cols-2">
                     <x-forms.input canGate="update" :canResource="$gitea_app" id="name" label="{{ __('Name') }}" />
 
@@ -71,20 +71,20 @@
             </x-application.settings-section>
 
             <x-application.settings-section id="connection-section" title="{{ __('Connection') }}"
-                helper="OAuth credentials and the endpoints Coolify uses to reach this source.">
-                <x-application.settings-subsection first title="OAuth credentials"
+                helper="{{ __('OAuth credentials and the endpoints Coolify uses to reach this source.') }}">
+                <x-application.settings-subsection first title="{{ __('OAuth credentials') }}"
                     helper="Client credentials from your Gitea or Forgejo OAuth2 application.">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="clientId"
                             label="{{ __('Client ID') }}" />
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="clientSecretInput"
                             label="{{ __('Client secret') }}" type="password"
-                            helper="Stored encrypted. Leave empty to keep the existing secret." />
+                            helper="{{ __('Stored encrypted. Leave empty to keep the existing secret.') }}" />
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="organization" label="{{ __('Organization') }}"
                             helper="Comma-separated organization or user names to filter visible repositories." />
                     </div>
                 </x-application.settings-subsection>
-                <x-application.settings-subsection title="Self-hosted / advanced"
+                <x-application.settings-subsection title="{{ __('Self-hosted / advanced') }}"
                     helper="Override endpoints and SSH settings for self-hosted Gitea or Forgejo.">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="htmlUrl"
@@ -172,12 +172,12 @@
             </div>
             @can('delete', $gitea_app)
                 <div class="shrink-0 sm:ml-auto">
-                    <x-modal-confirmation title="Confirm Gitea / Forgejo App Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
+                    <x-modal-confirmation title="{{ __('Confirm Gitea / Forgejo App Deletion?') }}" isErrorButton buttonTitle="{{ __('Delete') }}"
                         submitAction="delete" :actions="['The selected Gitea / Forgejo App will be permanently deleted.']"
                         confirmationText="{{ data_get($gitea_app, 'name') }}"
                         confirmationLabel="Please confirm by entering the Gitea / Forgejo App Name below"
                         shortConfirmationLabel="Gitea / Forgejo App Name" :confirmWithPassword="false"
-                        step2ButtonText="Permanently Delete" />
+                        step2ButtonText="{{ __('Permanently Delete') }}" />
                 </div>
             @endcan
         </header>
@@ -279,7 +279,7 @@
                             <x-forms.input id="htmlUrl" label="{{ __('Instance URL') }}"
                                 helper="Only change this for self-hosted Gitea or Forgejo (e.g. https://git.example.com)." />
                             <x-forms.input id="apiUrl" label="API URL"
-                                helper="Usually your instance URL with /api/v1 appended." />
+                                helper="{{ __('Usually your instance URL with /api/v1 appended.') }}" />
                             <x-forms.input id="customUser" label="{{ __('SSH user') }}" />
                             <x-forms.input type="number" id="customPort" label="{{ __('SSH port') }}" />
                             @if (! isCloud())

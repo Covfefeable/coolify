@@ -78,7 +78,7 @@
                                         <button type="button" @click="expanded = ! expanded"
                                             class="mt-1 text-[11px] font-medium text-accent hover:underline"
                                             :aria-expanded="expanded">
-                                            <span x-text="expanded ? 'Hide changes' : 'View changes'">View changes</span>
+                                            <span x-text="expanded ? 'Hide changes' : 'View changes'">{{ __('View changes') }}</span>
                                         </button>
                                     @endif
                                 </div>

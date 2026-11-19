@@ -17,7 +17,7 @@
                         <div class="application-settings-section-body flex flex-col gap-3">
                             <p class="text-sm text-neutral-600 dark:text-fg-dim">Coolify matched each hostname to a zone available through your connected DNS credentials.</p>
                             @if (collect($dnsProviderProposals)->contains(fn (array $proposal): bool => blank($proposal['target'])))
-                                <x-callout type="warning" title="No public IP">{{ \App\Support\DnsRecordHints::NO_PUBLIC_ADDRESS_MESSAGE }}</x-callout>
+                                <x-callout type="warning" title="{{ __('No public IP') }}">{{ \App\Support\DnsRecordHints::NO_PUBLIC_ADDRESS_MESSAGE }}</x-callout>
                             @endif
                             @foreach ($dnsProviderProposals as $proposal)
                                 @php($key = $proposal['hostname'].'|'.$proposal['zone_id'])
@@ -28,10 +28,10 @@
                                     @if (isset($dnsProviderConflicts[$key]))
                                         @php($conflict = $dnsProviderConflicts[$key])
                                         <div class="flex flex-col items-end gap-2 text-xs"><span class="text-red-600 dark:text-red-400">Currently {{ $conflict['current'] }}</span>
-                                            <x-modal-confirmation title="Replace conflicting DNS record?" isErrorButton buttonTitle="Replace record"
+                                            <x-modal-confirmation title="Replace conflicting DNS record?" isErrorButton buttonTitle="{{ __('Replace record') }}"
                                                 submitAction="replaceManagedDnsRecord({{ $proposal['hostname'] }}, {{ $proposal['zone_id'] }})"
                                                 :actions="['Replace '.$proposal['hostname'].' value '.$conflict['current'].' with '.$conflict['proposed'], 'Coolify will manage the replaced record.']"
-                                                :confirmWithPassword="false" :confirmWithText="false" step2ButtonText="Replace record"
+                                                :confirmWithPassword="false" :confirmWithText="false" step2ButtonText="{{ __('Replace record') }}"
                                                 canGate="update" :canResource="$dnsAuthResource" />
                                         </div>
                                     @elseif ($proposal['managed'])
@@ -42,7 +42,7 @@
                                         <x-forms.button type="button"
                                             wire:click="createManagedDnsRecord({{ \Illuminate\Support\Js::from($proposal['hostname']) }}, {{ $proposal['zone_id'] }})"
                                             wire:target="createManagedDnsRecord" isHighlighted
-                                            canGate="update" :canResource="$dnsAuthResource">Create DNS record</x-forms.button>
+                                            canGate="update" :canResource="$dnsAuthResource">{{ __('Create DNS record') }}</x-forms.button>
                                     @endif
                                 </div>
                             @endforeach

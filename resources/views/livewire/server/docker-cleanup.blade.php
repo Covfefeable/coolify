@@ -27,7 +27,7 @@
                                     'Removes old Coolify helper images.',
                                     'May delete unused volumes or networks when those options are enabled.',
                                 ]" :confirmWithText="false" :confirmWithPassword="false"
-                                step2ButtonText="Run Docker Cleanup" />
+                                step2ButtonText="{{ __('Run Docker Cleanup') }}" />
                         @endcan
                     </x-slot:actions>
 

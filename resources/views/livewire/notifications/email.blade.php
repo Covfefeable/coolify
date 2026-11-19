@@ -22,7 +22,7 @@
                             <x-slot:content>
                                 <button type="button" class="button">
                                     <x-reicon name="notifications" class="size-3.5" />
-                                    Send test
+                                    {{ __('Send test') }}
                                 </button>
                             </x-slot:content>
                             <form wire:submit.prevent="sendTestEmail" class="flex w-full flex-col gap-4">
@@ -31,7 +31,7 @@
                                 <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                                     <button type="submit" @click="modalOpen=false"
                                         class="button button-highlighted">
-                                        Send email
+                                        {{ __('Send email') }}
                                     </button>
                                 </div>
                             </form>
@@ -39,7 +39,7 @@
                     @else
                         <button type="button" class="button" disabled title="{{ $sendTestReason }}">
                             <x-reicon name="notifications" class="size-3.5" />
-                            Send test
+                            {{ __('Send test') }}
                         </button>
                     @endif
                 </x-slot:actions>

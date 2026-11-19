@@ -154,7 +154,7 @@
                         </div>
                     @elseif ($servers->isEmpty())
                         <x-empty title="{{ __('No terminal targets available') }}"
-                            description="Connect a reachable server and enable terminal access to start a session."
+                            description="{{ __('Connect a reachable server and enable terminal access to start a session.') }}"
                             icon-name="browser-terminal" />
                     @else
                         <div class="terminal-target-card-list">
@@ -298,7 +298,7 @@
                 @elseif ($servers->isEmpty())
                     <div class="flex h-full min-h-0 items-center justify-center bg-[#141414] px-4">
                         <x-empty size="lg" title="{{ __('No terminal targets available') }}"
-                            description="Connect a reachable server and enable terminal access to start a session."
+                            description="{{ __('Connect a reachable server and enable terminal access to start a session.') }}"
                             icon-name="browser-terminal" />
                     </div>
                 @else

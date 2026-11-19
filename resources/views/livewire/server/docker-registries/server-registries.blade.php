@@ -13,10 +13,10 @@
         <div class="ml-auto flex shrink-0 items-center gap-2">
             <button type="button" wire:click="loadRegistries" wire:loading.attr="disabled" class="button w-fit">
                 <x-reicon name="refresh" class="size-3.5" />
-                Refresh
+                {{ __('Refresh') }}
             </button>
             @if ($server->isFunctional())
-                <x-modal-input buttonTitle="New" title="Log in to a registry"
+                <x-modal-input buttonTitle="{{ __('New') }}" title="Log in to a registry"
                     subtitle="Runs docker login on {{ $server->name }}.">
                     <livewire:server.docker-registries.login :server="$server"
                         :key="'registry-login-'.$server->uuid" />
@@ -87,7 +87,7 @@
                             @if ($row['logged_in'] && $row['source'] === 'auths')
                                 <x-table.row-actions label="Registry actions">
                                     <x-table.row-action wire:click="testLogin({{ \Illuminate\Support\Js::from($row['registry']) }})" wire:loading.attr="disabled"
-                                        wire:target="testLogin" title="{{ __('Run docker login with the saved credentials') }}">Test</x-table.row-action>
+                                        wire:target="testLogin" title="{{ __('Run docker login with the saved credentials') }}">{{ __('Test') }}</x-table.row-action>
                                     <x-modal-input title="Edit login for {{ $row['registry'] }}"
                                         subtitle="Runs docker login on {{ $server->name }} again. The new values replace the old login.">
                                         <x-slot:content>
@@ -113,7 +113,7 @@
                             @elseif ($row['logged_in'])
                                 <button type="button" wire:click="testLogin(@js($row['registry']))" wire:loading.attr="disabled"
                                     wire:target="testLogin" class="button w-fit"
-                                    title="{{ __('Run docker login with the saved credentials') }}">Test</button>
+                                    title="{{ __('Run docker login with the saved credentials') }}">{{ __('Test') }}</button>
                             @elseif (! $error && $server->isFunctional())
                                 <x-modal-input buttonTitle="{{ __('Log in') }}" title="Log in to {{ $row['registry'] }}"
                                     subtitle="Runs docker login on {{ $server->name }}.">

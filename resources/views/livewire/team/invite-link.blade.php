@@ -7,13 +7,13 @@
                     @if (is_transactional_emails_enabled())
                         <x-forms.button type="button" wire:click.prevent="viaEmail">
                             <x-reicon name="notifications" class="size-3.5" />
-                            Send email
+                            {{ __('Send email') }}
                         </x-forms.button>
                     @endif
                     <x-forms.button type="submit" wire:target="viaLink"
                         defaultClass="button button-highlighted">
                         <x-reicon name="plus" class="size-3.5" />
-                        Generate link
+                        {{ __('Generate link') }}
                     </x-forms.button>
                 </x-slot:actions>
 
@@ -39,7 +39,7 @@
                                 title="{{ \App\Livewire\Team\Member\Access::summary($grants) }}"
                                 wire:click="$dispatch('open-invitation-access', { access: {{ Js::from($grants) }} })">
                                 <x-reicon name="keys" class="size-3.5" />
-                                Scopes
+                                {{ __('Scopes') }}
                             </x-forms.button>
                         </div>
                     </div>

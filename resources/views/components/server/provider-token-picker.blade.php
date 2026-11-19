@@ -16,7 +16,7 @@
                         <button type="button"
                             class="button button-highlighted">
                             <x-reicon name="plus" class="size-3.5" />
-                            Add token
+                            {{ __('Add token') }}
                         </button>
                     </x-slot:content>
                     <livewire:security.cloud-provider-token-form :modal_mode="true" :provider="$provider"

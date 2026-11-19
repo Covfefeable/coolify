@@ -24,13 +24,13 @@
                 <button type="button" x-data x-on:click="$dispatch('open-new-environment')"
                     class="button button-highlighted whitespace-nowrap">
                     <x-reicon name="plus" class="size-3.5" />
-                    New environment
+                    {{ __('New environment') }}
                 </button>
             @endcan
         </div>
     </div>
     @can('update', $project)
-        <x-modal-input title="New Environment" x-on:open-new-environment.window="modalOpen = true">
+        <x-modal-input title="{{ __('New Environment') }}" x-on:open-new-environment.window="modalOpen = true">
             <x-slot:content></x-slot:content>
             @include('livewire.project.partials.new-environment-form')
         </x-modal-input>

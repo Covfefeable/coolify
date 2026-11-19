@@ -49,7 +49,7 @@
             <x-forms.button type="submit"
                 class="button-highlighted"
                 wire:target="addToken">
-                Validate and add
+                {{ __('Validate and add') }}
             </x-forms.button>
         </div>
     </form>

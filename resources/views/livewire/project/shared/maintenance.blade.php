@@ -36,8 +36,7 @@
                     helper="One self-contained HTML file (max {{ \App\Models\Server::PROXY_ERROR_PAGE_MAX_BYTES / 1024 }} KB) with inline CSS and images." />
                 @can('update', $resource)
                     <div class="flex gap-2">
-                        <x-forms.button type="button" wire:click="resetMaintenancePage">Reset to
-                            default</x-forms.button>
+                        <x-forms.button type="button" wire:click="resetMaintenancePage">{{ __('Reset to default') }}</x-forms.button>
                     </div>
                 @endcan
             </div>

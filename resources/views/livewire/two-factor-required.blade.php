@@ -29,7 +29,7 @@
                 @if ($codeError = session('errors')?->getBag('confirmTwoFactorAuthentication')->first('code'))
                     <x-auth.alert type="error">{{ $codeError }}</x-auth.alert>
                 @endif
-                <x-forms.button class="w-full justify-center" type="submit" isHighlighted>Validate 2FA</x-forms.button>
+                <x-forms.button class="w-full justify-center" type="submit" isHighlighted>{{ __('Validate 2FA') }}</x-forms.button>
             </form>
             <div x-data="{ showCode: false }">
                 <div x-cloak x-show="showCode" class="space-y-2 pb-3">
@@ -43,7 +43,7 @@
         @else
             <form action="/user/two-factor-authentication" method="POST">
                 @csrf
-                <x-forms.button class="w-full justify-center" type="submit" isHighlighted>Configure 2FA</x-forms.button>
+                <x-forms.button class="w-full justify-center" type="submit" isHighlighted>{{ __('Configure 2FA') }}</x-forms.button>
             </form>
         @endif
         @if (!request()->user()->two_factor_confirmed_at && $teamsWithoutTwoFactor->isNotEmpty())

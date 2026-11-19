@@ -21,14 +21,14 @@
                     class="application-settings-form application-settings-section relative w-full lg:min-w-[36rem] lg:max-w-2xl"
                     style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                     <header>
-                        <h3>Domain already in use</h3>
+                        <h3>{{ __('Domain already in use') }}</h3>
                         <button @click="modalOpen = false; $wire.set('showDomainConflictModal', false)"
                             class="flex size-7 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">
                             <x-reicon name="x" class="size-4" />
                         </button>
                     </header>
                     <div class="application-settings-section-body">
-                        <x-callout type="danger" title="Domain conflict detected" class="mb-4">
+                        <x-callout type="danger" title="{{ __('Domain conflict detected') }}" class="mb-4">
                             The following domain(s) are already in use by other resources. Using the same domain for
                             multiple resources can cause routing conflicts and unpredictable behavior.
                         </x-callout>
@@ -59,10 +59,10 @@
                                 {{ $consequences }}
                             @else
                                 <ul class="mt-2 ml-4 list-disc">
-                                    <li>Only one resource will be accessible at this domain</li>
-                                    <li>The routing behavior will be unpredictable</li>
-                                    <li>You may experience service disruptions</li>
-                                    <li>SSL certificates might not work correctly</li>
+                                    <li>{{ __('Only one resource will be accessible at this domain') }}</li>
+                                    <li>{{ __('The routing behavior will be unpredictable') }}</li>
+                                    <li>{{ __('You may experience service disruptions') }}</li>
+                                    <li>{{ __('SSL certificates might not work correctly') }}</li>
                                 </ul>
                             @endif
                         </x-callout>
@@ -72,7 +72,7 @@
                                 {{ __('Cancel') }}
                             </x-forms.button>
                             <x-forms.button wire:click="{{ $confirmAction }}" @click="modalOpen = false" isError>
-                                Proceed anyway
+                                {{ __('Proceed anyway') }}
                             </x-forms.button>
                         </div>
                     </div>

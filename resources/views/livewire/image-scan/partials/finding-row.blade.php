@@ -44,7 +44,7 @@
         <span class="image-scan-severity-cell flex min-w-0 flex-wrap items-center gap-1">
             <x-image-scan.severity-badge :severity="strtolower($finding->severity)" />
             @if ($finding->kev)
-                <span data-tooltip="Attackers are using this, according to CISA.">
+                <span data-tooltip="{{ __('Attackers are using this, according to CISA.') }}">
                     <x-status-badge type="error" label="{{ __('Known exploited') }}" />
                 </span>
             @endif
@@ -55,7 +55,7 @@
                     Ignored{{ $ignore->expires_at ? ' until '.$ignore->expires_at->toFormattedDateString() : '' }}
                 </span>
             @elseif ($canUpdate)
-                <button type="button" class="icon-button" data-tooltip="Ignore"
+                <button type="button" class="icon-button" data-tooltip="{{ __('Ignore') }}"
                     aria-label="Ignore {{ $finding->id }}"
                     x-on:click="$dispatch('open-ignore-modal', {
                         target: {{ \Illuminate\Support\Js::from($finding->id) }},

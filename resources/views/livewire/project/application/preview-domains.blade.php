@@ -52,7 +52,7 @@
                 <x-slot:content>
                     <button type="button" class="button button-highlighted">
                         <x-reicon name="plus" class="size-3.5" />
-                        Add domain
+                        {{ __('Add domain') }}
                     </button>
                 </x-slot:content>
                 <form wire:submit="addDomain" class="application-settings-form flex flex-col gap-4">
@@ -63,7 +63,7 @@
                     <x-forms.domain-input id="newDomainParts" />
 
                     <div class="flex flex-wrap items-center justify-between gap-2 pt-2">
-                        <x-forms.button type="button" wire:click="generateDomain">Generate domain</x-forms.button>
+                        <x-forms.button type="button" wire:click="generateDomain">{{ __('Generate domain') }}</x-forms.button>
                         <x-forms.button type="submit" isHighlighted>{{ __('Save') }}</x-forms.button>
                     </div>
                 </form>
@@ -81,7 +81,7 @@
             <div class="data-table-header service-domains-overview-grid">
                 <span>Domain</span>
                 <span>{{ __('Protocol redirect') }}</span>
-                <span>Domain redirect</span>
+                <span>{{ __('Domain redirect') }}</span>
                 <span>Internal port</span>
                 <span>Search indexing</span>
                 <span>DNS status</span>
@@ -129,8 +129,8 @@
                                 <span class="service-domain-detail-label">{{ __('Protocol redirect') }}</span>
                                 <span>{{ str_starts_with($row['url'], 'https://') && $preview->application->isForceHttpsEnabled() ? 'HTTP → HTTPS' : 'Disabled' }}</span>
                             </div>
-                            <div class="service-domain-detail" title="Domain redirect">
-                                <span class="service-domain-detail-label">Domain redirect</span>
+                            <div class="service-domain-detail" title="{{ __('Domain redirect') }}">
+                                <span class="service-domain-detail-label">{{ __('Domain redirect') }}</span>
                                 <span>{{ match (($row['redirect'] ?? 'both')) { 'www' => 'non-www → www', 'non-www' => 'www → non-www', default => 'Disabled' } }}</span>
                             </div>
                             <div class="service-domain-detail"
@@ -139,15 +139,15 @@
                                 @if (filled($row['internal_port'] ?? null))
                                     <span aria-label="Internal port {{ $row['internal_port'] }}">{{ $row['internal_port'] }}</span>
                                 @else
-                                    <span role="img" aria-label="No internal port" title="No internal port. Set Ports Exposes or a per-domain internal port so the proxy can route this domain." class="text-red-500 dark:text-red-400">
+                                    <span role="img" aria-label="{{ __('No internal port') }}" title="{{ __('No internal port. Set Ports Exposes or a per-domain internal port so the proxy can route this domain.') }}" class="text-red-500 dark:text-red-400">
                                         <x-reicon name="alert-triangle" class="size-4" />
                                     </span>
                                 @endif
                             </div>
                             <div class="service-domain-detail">
                                 <span class="service-domain-detail-label">Search indexing</span>
-                                <span role="img" aria-label="Search indexing blocked"
-                                    title="Search indexing blocked">
+                                <span role="img" aria-label="{{ __('Search indexing blocked') }}"
+                                    title="{{ __('Search indexing blocked') }}">
                                     <x-reicon name="x" class="size-4" />
                                 </span>
                             </div>
@@ -181,12 +181,12 @@
                                         <x-table.row-action wire:click="checkDomainDns({{ $index }})"
                                             wire:loading.attr="disabled"
                                             wire:target="checkDomainDns({{ $index }}),checkAllDns">
-                                            Check DNS
+                                            {{ __('Check DNS') }}
                                         </x-table.row-action>
                                         <x-table.row-action
                                             x-on:click="openEditDomain({{ \Illuminate\Support\Js::from($index) }}, {{ \Illuminate\Support\Js::from($row['url']) }}, {{ \Illuminate\Support\Js::from($editingParts) }}, {{ \Illuminate\Support\Js::from($row['service']) }})"
                                             aria-label="Edit {{ getFqdnWithoutPort($row['url']) }}">
-                                            Edit
+                                            {{ __('Edit') }}
                                         </x-table.row-action>
                                         <x-slot:danger>
                                             <x-modal-confirmation buttonFullWidth title="{{ __('Remove domain?') }}"
@@ -197,7 +197,7 @@
                                                     'Redeploy the preview to apply proxy changes.',
                                                 ]"
                                                 :confirmWithPassword="false" :confirmWithText="false"
-                                                step2ButtonText="Remove domain">
+                                                step2ButtonText="{{ __('Remove domain') }}">
                                                 <x-slot:trigger>
                                                     <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                                 </x-slot:trigger>
@@ -252,7 +252,7 @@
                                     ]" />
                             </div>
                             <div class="flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/10">
-                                <x-forms.button type="button" wire:click="regenerateEditingDomain">Regenerate hostname</x-forms.button>
+                                <x-forms.button type="button" wire:click="regenerateEditingDomain">{{ __('Regenerate hostname') }}</x-forms.button>
                                 <x-forms.button type="submit" isHighlighted>{{ __('Save') }}</x-forms.button>
                             </div>
                         </form>
@@ -282,7 +282,7 @@
                             </button>
                         </header>
                         <div class="application-settings-section-body">
-                            <x-callout type="warning" title="Unrecognized internal port" class="mb-4">
+                            <x-callout type="warning" title="{{ __('Unrecognized internal port') }}" class="mb-4">
                                 Port <strong>{{ $unrecognizedPort }}</strong> is not listed in Ports Exposes
                                 and is not used by any application domain. The proxy will still route to it,
                                 but the container may not be listening there.

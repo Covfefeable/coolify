@@ -64,7 +64,7 @@
                                 class="runtime-log-icon-button">
                                 <x-reicon name="refresh" class="size-3.5" />
                             </button>
-                            <button title="Follow Logs" :class="alwaysScroll ? 'runtime-log-icon-button-active' : ''"
+                            <button title="{{ __('Follow Logs') }}" :class="alwaysScroll ? 'runtime-log-icon-button-active' : ''"
                                 x-on:click="toggleScroll"
                                 class="runtime-log-icon-button">
                                 <svg class="size-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +72,7 @@
                                         stroke-width="2" d="M12 5v14m4-4l-4 4m-4-4l4 4" />
                                 </svg>
                             </button>
-                            <button title="Fullscreen" x-show="!fullscreen" x-on:click="makeFullscreen"
+                            <button title="{{ __('Fullscreen') }}" x-show="!fullscreen" x-on:click="makeFullscreen"
                                 class="runtime-log-icon-button">
                                 <svg class="size-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <g fill="none">
@@ -81,7 +81,7 @@
                                     </g>
                                 </svg>
                             </button>
-                            <button title="Minimize" x-show="fullscreen" x-on:click="makeFullscreen"
+                            <button title="{{ __('Minimize') }}" x-show="fullscreen" x-on:click="makeFullscreen"
                                 class="runtime-log-icon-button">
                                 <svg class="size-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -94,7 +94,7 @@
                                 <form x-on:submit.prevent="refreshLines()" class="logs-viewer-lines runtime-log-lines-group">
                                     <span class="logs-viewer-lines-label relative" :aria-busy="loadingLines">
                                         <span :class="loadingLines ? 'invisible' : ''">Lines</span>
-                                        <x-loading compact x-cloak x-show="loadingLines" aria-label="Loading logs"
+                                        <x-loading compact x-cloak x-show="loadingLines" aria-label="{{ __('Loading logs') }}"
                                             class="absolute inset-0 text-inherit!" />
                                     </span>
                                     <input type="number" wire:model="numberOfLines" x-on:input="allLines = Number($event.target.value) === -1" placeholder="100" min="-1" max="50000"
@@ -127,7 +127,7 @@
                             <div class="runtime-log-menus">
                             {{-- Display settings and level filters --}}
                             <x-table.dropdown panel-class="runtime-log-menu min-w-48! max-h-none!" role="menu">
-                                <x-slot:trigger><button type="button" title="View Options"
+                                <x-slot:trigger><button type="button" title="{{ __('View Options') }}"
                                     :class="Object.values(logFilters).some(v => !v) ? 'button-highlighted' : ''"
                                     class="button" aria-haspopup="menu" :aria-expanded="open">
                                     <svg class="size-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -184,7 +184,7 @@
                             </x-table.dropdown>
                             {{-- Copy and download --}}
                             <x-table.dropdown panel-class="runtime-log-menu min-w-52!" role="menu">
-                                <x-slot:trigger><button type="button" title="Copy or Download Logs"
+                                <x-slot:trigger><button type="button" title="{{ __('Copy or Download Logs') }}"
                                     class="button" aria-haspopup="menu" :aria-expanded="open">
                                     <svg class="size-3.5 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="1.5" stroke="currentColor">
@@ -214,7 +214,7 @@
                                     </button>
                                     <button type="button" role="menuitem" class="listbox-option"
                                         x-on:click="downloadLogs(); open = false">
-                                        <span class="flex-1 text-left">Download logs</span>
+                                        <span class="flex-1 text-left">{{ __('Download logs') }}</span>
                                     </button>
                                     <button type="button" role="menuitem" x-on:click="
                                         downloadingAllLogs = true;
@@ -257,8 +257,8 @@
                     class="runtime-log-viewport logs-viewer-viewport relative flex min-w-0 w-full flex-col overflow-x-hidden overflow-y-auto scrollbar"
                     :class="fullscreen ? 'flex-1' : '{{ $fill ? 'min-h-0 flex-1' : 'max-h-[min(40rem,70dvh)] sm:max-h-[40rem]' }}'">
                     <div class="runtime-log-loading" x-show="loading && lineCount === 0" x-cloak role="status">
-                        <x-loading compact aria-label="Loading logs" />
-                        <span>Loading logs</span>
+                        <x-loading compact aria-label="{{ __('Loading logs') }}" />
+                        <span>{{ __('Loading logs') }}</span>
                     </div>
                     <div class="runtime-log-empty" x-show="!loading && lineCount === 0" role="status">
                         <div>

@@ -8,21 +8,21 @@
         <div :class="{ 'z-40': modalOpen }" class="relative w-auto h-auto">
             @if ($fullButton)
                 <x-forms.button type="button" @click="modalOpen=true" x-show="!showProgress" x-cloak isHighlighted>
-                    Upgrade now
+                    {{ __('Upgrade now') }}
                 </x-forms.button>
                 <x-forms.button type="button" @click="modalOpen=true" x-show="showProgress" x-cloak isHighlighted>
-                    Updating…
+                    {{ __('Updating…') }}
                 </x-forms.button>
             @else
             <button type="button" title="{{ __('Upgrade in progress') }}" aria-label="{{ __('Upgrade in progress') }}"
                 @click="modalOpen=true" x-show="showProgress" x-cloak
                 class="inline-flex h-[18px] cursor-pointer items-center rounded-full bg-coollabs/10 px-1.5 text-[9.5px] font-semibold leading-none text-coollabs ring-1 ring-inset ring-coollabs/25 transition-colors hover:bg-coollabs/15 dark:bg-warning/15 dark:text-warning dark:ring-warning/25 dark:hover:bg-warning/20">
-                Updating
+                {{ __('Updating') }}
             </button>
             <button type="button" title="{{ __('Update available') }}" aria-label="{{ __('Update available') }}"
                 @click="modalOpen=true" x-show="!showProgress" x-cloak
                 class="inline-flex h-[18px] cursor-pointer items-center rounded-full bg-coollabs/10 px-1.5 text-[9.5px] font-semibold leading-none text-coollabs ring-1 ring-inset ring-coollabs/25 transition-colors hover:bg-coollabs/15 dark:bg-warning/15 dark:text-warning dark:ring-warning/25 dark:hover:bg-warning/20">
-                Update available
+                {{ __('Update available') }}
             </button>
             @endif
             <template x-teleport="body">
@@ -123,7 +123,7 @@
                                                 If the page does not reload automatically, reload it manually.
                                             </p>
                                             <x-forms.button @click="reloadNow()" type="button" isHighlighted>
-                                                Reload now
+                                                {{ __('Reload now') }}
                                             </x-forms.button>
                                         </div>
                                     </template>
@@ -165,11 +165,11 @@
                                         class="flex flex-wrap items-center justify-end gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                                         <template x-if="devMode">
                                             <x-forms.button @click="simulateUpgrade" type="button">
-                                                Simulate
+                                                {{ __('Simulate') }}
                                             </x-forms.button>
                                         </template>
                                         <x-forms.button @click="confirmed" isHighlighted type="button">
-                                            Upgrade now
+                                            {{ __('Upgrade now') }}
                                         </x-forms.button>
                                     </div>
                                 </div>

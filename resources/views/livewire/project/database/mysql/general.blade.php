@@ -80,7 +80,7 @@
                         label="{{ __('Proxy timeout') }}" helper="{{ __('Timeout in seconds. The default is 3600.') }}"
                         canGate="update" :canResource="$database" />
                     <x-forms.input placeholder="3000:3306" id="portsMappings" label="{{ __('Port mappings') }}"
-                        helper="Comma-separated host-to-container mappings, for example 3000:3306."
+                        helper="{{ __('Comma-separated host-to-container mappings, for example 3000:3306.') }}"
                         canGate="update" :canResource="$database" />
                 </div>
             </x-application.settings-subsection>

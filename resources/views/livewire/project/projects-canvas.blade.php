@@ -17,7 +17,7 @@
                 <button type="button" x-data x-on:click="$dispatch('open-new-project')"
                     class="button button-highlighted whitespace-nowrap">
                     <x-reicon name="plus" class="size-3.5" />
-                    New project
+                    {{ __('New project') }}
                 </button>
             @endcan
         </div>

@@ -43,11 +43,11 @@
                                         submitAction="deleteInvitation({{ $invite->id }})"
                                         :actions="['The invitation link for ' . $invite->email . ' stops working.']"
                                         :confirmWithText="false" :confirmWithPassword="false"
-                                        step2ButtonText="Revoke invitation">
+                                        step2ButtonText="{{ __('Revoke invitation') }}">
                                         <x-slot:trigger>
                                             <button type="button"
                                                 class="icon-button shrink-0 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
-                                                title="Revoke invitation" aria-label="Revoke invitation for {{ $invite->email }}">
+                                                title="{{ __('Revoke invitation') }}" aria-label="Revoke invitation for {{ $invite->email }}">
                                                 <x-reicon name="trash" class="size-3.5" />
                                             </button>
                                         </x-slot:trigger>

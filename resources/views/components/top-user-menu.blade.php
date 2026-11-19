@@ -91,7 +91,7 @@
                 Documentation
             </span>
         </a>
-        <x-modal-input title="How can we help?">
+        <x-modal-input title="{{ __('How can we help?') }}">
             <x-slot:content>
                 <div class="listbox-option cursor-pointer" @click="closePanel()">
                     <span class="flex items-center gap-2">
@@ -119,7 +119,7 @@
             <button type="submit" class="listbox-option w-full text-left text-error dark:text-error">
                 <span class="flex items-center gap-2">
                     <x-reicon name="logout" class="size-4 opacity-90" />
-                    Log out
+                    {{ __('Log out') }}
                 </span>
             </button>
         </form>

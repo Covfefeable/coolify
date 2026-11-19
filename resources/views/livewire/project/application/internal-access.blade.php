@@ -35,7 +35,7 @@
         </p>
         <button type="button" class="button shrink-0"
             @click="$dispatch('open-networking-modal')">
-            Edit networking
+            {{ __('Edit networking') }}
         </button>
     </div>
 </section>

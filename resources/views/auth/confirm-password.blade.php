@@ -31,7 +31,7 @@
 
             @if ($can_confirm_with_passkey)
                 <x-auth.passkey-verify options-route="passkey.confirm-options" submit-route="passkey.confirm"
-                    label="Confirm with a passkey" />
+                    label="{{ __('Confirm with a passkey') }}" />
             @endif
         </div>
     </x-auth.shell>

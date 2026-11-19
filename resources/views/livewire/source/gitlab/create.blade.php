@@ -41,7 +41,7 @@
                     <x-forms.input id="html_url" label="{{ __('GitLab URL') }}" required
                         helper="For self-hosted GitLab, enter your instance URL (e.g. https://gitlab.example.com)." />
                     <x-forms.input id="api_url" label="API URL" required
-                        helper="Usually your GitLab URL with /api/v4 appended." />
+                        helper="{{ __('Usually your GitLab URL with /api/v4 appended.') }}" />
                     <x-forms.input id="custom_user" label="{{ __('Custom Git user') }}" required />
                     <x-forms.input id="custom_port" type="number" label="{{ __('Custom Git port') }}" required />
                 </div>

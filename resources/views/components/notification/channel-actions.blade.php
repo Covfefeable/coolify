@@ -33,6 +33,6 @@
         :canResource="$canResource"
         x-on:click="if ($el.closest('form').reportValidity()) $wire.$call(testMethod)">
         <x-reicon name="notifications" class="size-3.5" />
-        Send test
+        {{ __('Send test') }}
     </x-forms.button>
 </div>

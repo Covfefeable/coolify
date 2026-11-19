@@ -89,8 +89,8 @@
                             </div>
                             <div class="ml-auto flex items-center gap-2">
                                 @can('update', $serviceApplication)
-                                    <x-modal-confirmation title="Convert to Database"
-                                        buttonTitle="Convert to Database" submitAction="convertToDatabase"
+                                    <x-modal-confirmation title="{{ __('Convert to Database') }}"
+                                        buttonTitle="{{ __('Convert to Database') }}" submitAction="convertToDatabase"
                                         :actions="['The selected resource will be converted to a service database.']"
                                         confirmationText="{{ Str::headline($serviceApplication->name) }}"
                                         confirmationLabel="Please confirm the execution of the actions by entering the Service Application Name below"
@@ -108,9 +108,9 @@
                         <x-slot:consequences>
                             <ul class="mt-2 ml-4 list-disc">
                                 <li>Only one service will be accessible at this domain</li>
-                                <li>The routing behavior will be unpredictable</li>
-                                <li>You may experience service disruptions</li>
-                                <li>SSL certificates might not work correctly</li>
+                                <li>{{ __('The routing behavior will be unpredictable') }}</li>
+                                <li>{{ __('You may experience service disruptions') }}</li>
+                                <li>{{ __('SSL certificates might not work correctly') }}</li>
                             </ul>
                         </x-slot:consequences>
                     </x-domain-conflict-modal>
@@ -139,7 +139,7 @@
                                             </button>
                                         </header>
                                         <div class="application-settings-section-body">
-                                            <x-callout type="warning" title="Port requirement" class="mb-4">
+                                            <x-callout type="warning" title="{{ __('Port requirement') }}" class="mb-4">
                                                 This service requires port <strong>{{ $requiredPort }}</strong> to function correctly.
                                                 One or more of your domains use port <strong>{{ $requestedPort }}</strong>.
                                             </x-callout>
@@ -218,7 +218,7 @@
                                             <x-status-badge status="Public" type="success" />
                                             <x-forms.button canGate="update" :canResource="$serviceDatabase"
                                                 wire:click="disablePublicAccess">
-                                                Make private
+                                                {{ __('Make private') }}
                                             </x-forms.button>
                                         @else
                                             {{-- Do not nest @if/@endif inside an <x-*> opening tag: Blade component
@@ -226,7 +226,7 @@
                                             <x-forms.button canGate="update" :canResource="$serviceDatabase"
                                                 wire:click="enablePublicAccess"
                                                 x-bind:disabled="!String(port ?? '').trim()">
-                                                Make publicly available
+                                                {{ __('Make publicly available') }}
                                             </x-forms.button>
                                         @endif
                                     </div>
@@ -257,8 +257,8 @@
                         </div>
                         <div class="ml-auto flex items-center gap-2">
                             @can('update', $serviceDatabase)
-                                <x-modal-confirmation title="Convert to Application"
-                                    buttonTitle="Convert to Application" submitAction="convertToApplication"
+                                <x-modal-confirmation title="{{ __('Convert to Application') }}"
+                                    buttonTitle="{{ __('Convert to Application') }}" submitAction="convertToApplication"
                                     :actions="['The selected resource will be converted to an application.']"
                                     confirmationText="{{ Str::headline($serviceDatabase->name) }}"
                                     confirmationLabel="Please confirm the execution of the actions by entering the Service Database Name below"

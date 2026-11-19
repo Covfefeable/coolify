@@ -29,7 +29,7 @@
             <x-callout type="warning" title="Impersonation is active">
                 <div class="flex flex-wrap items-center justify-between gap-3">
                     <span>You are viewing Coolify as {{ auth()->user()->name }}.</span>
-                    <x-forms.button wire:click="back">Return to root user</x-forms.button>
+                    <x-forms.button wire:click="back">{{ __('Return to root user') }}</x-forms.button>
                 </div>
             </x-callout>
         @endif
@@ -50,7 +50,7 @@
                     </div>
                     <x-forms.button type="submit">
                         <x-reicon name="search" class="size-4" />
-                        Search
+                        {{ __('Search') }}
                     </x-forms.button>
                 </form>
 
@@ -100,7 +100,7 @@
                     @endif
                 @else
                     <x-empty size="sm" title="{{ __('Search for an account') }}"
-                        description="Enter a name or email address to begin." icon-name="profile" />
+                        description="{{ __('Enter a name or email address to begin.') }}" icon-name="profile" />
                 @endif
             </div>
         </section>

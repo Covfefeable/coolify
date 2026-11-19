@@ -180,7 +180,7 @@
                             </x-callout>
                         @else
                             @if (collect($dnsProviderProposals)->isNotEmpty() && collect($dnsHints)->contains(fn (array $record): bool => ! \App\Support\DnsRecordHints::isPublicAddress($record['value'])))
-                                <x-callout type="warning" title="No public IP">
+                                <x-callout type="warning" title="{{ __('No public IP') }}">
                                     {{ \App\Support\DnsRecordHints::NO_PUBLIC_ADDRESS_MESSAGE }}
                                 </x-callout>
                             @endif
@@ -254,7 +254,7 @@
                                 Recheck
                             </x-forms.button>
                             <x-forms.button type="button" @click="closeDnsRecords()" isHighlighted>
-                                Done
+                                {{ __('Done') }}
                             </x-forms.button>
                         </div>
                     </div>

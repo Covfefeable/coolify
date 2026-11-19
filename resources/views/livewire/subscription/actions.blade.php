@@ -83,10 +83,10 @@
                 @endif
 
                 <div class="flex flex-wrap items-center gap-2">
-                    <x-forms.button isHighlighted @click="openAdjust()">Adjust server limit</x-forms.button>
+                    <x-forms.button isHighlighted @click="openAdjust()">{{ __('Adjust server limit') }}</x-forms.button>
                     <x-forms.button class="gap-2" wire:click="stripeCustomerPortal">
                         <x-reicon name="subscription" class="size-3.5" />
-                        Open billing portal
+                        {{ __('Open billing portal') }}
                     </x-forms.button>
                 </div>
 
@@ -106,7 +106,7 @@
                             x-transition:leave-end="opacity-0 -translate-y-2 sm:scale-95"
                             class="application-settings-section application-settings-form relative flex max-h-[calc(100vh-2rem)] w-full max-w-xl flex-col shadow-modal">
                             <div class="flex min-h-11 shrink-0 items-center justify-between px-4">
-                                <h3 class="text-[13px]! font-semibold!">Adjust server limit</h3>
+                                <h3 class="text-[13px]! font-semibold!">{{ __('Adjust server limit') }}</h3>
                                 <button type="button" @click="closeAdjust()"
                                     class="flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">
                                     <x-reicon name="x" class="size-3.5" />
@@ -126,7 +126,7 @@
                                             isHighlighted
                                             x-bind:disabled="!hasChanged || loading"
                                             @click="fetchPreview()">
-                                            Calculate Price
+                                            {{ __('Calculate Price') }}
                                         </x-forms.button>
                                     </div>
                                 </div>
@@ -172,7 +172,7 @@
                                     {{-- Update Button with Confirmation --}}
                                     <x-modal-confirmation
                                         title="Confirm Server Limit Update"
-                                        buttonTitle="Update Server Limit"
+                                        buttonTitle="{{ __('Update Server Limit') }}"
                                         submitAction="updateQuantity"
                                         :confirmWithText="false"
                                         :confirmWithPassword="false"
@@ -181,10 +181,10 @@
                                             'The prorated amount will be invoiced and charged now.',
                                         ]"
                                         warningMessage="This will update your subscription and charge the prorated amount to your payment method."
-                                        step2ButtonText="Confirm & Pay">
+                                        step2ButtonText="{{ __('Confirm & Pay') }}">
                                         <x-slot:content>
                                             <x-forms.button class="w-full" @click="$wire.set('quantity', qty)">
-                                                Update Server Limit
+                                                {{ __('Update Server Limit') }}
                                             </x-forms.button>
                                         </x-slot:content>
                                     </x-modal-confirmation>
@@ -212,17 +212,17 @@
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
                     @if (currentTeam()->subscription->stripe_cancel_at_period_end)
-                        <x-forms.button wire:click="resumeSubscription">Resume Subscription</x-forms.button>
+                        <x-forms.button wire:click="resumeSubscription">{{ __('Resume Subscription') }}</x-forms.button>
                     @else
                         <x-modal-confirmation title="Cancel at End of Billing Period?"
-                            buttonTitle="Cancel at Period End" submitAction="cancelAtPeriodEnd"
+                            buttonTitle="{{ __('Cancel at Period End') }}" submitAction="cancelAtPeriodEnd"
                             :actions="[
                                 'Your subscription will remain active until the end of the current billing period.',
                                 'No further charges will be made after the current period.',
                                 'You can resubscribe at any time.',
                             ]" confirmationText="{{ currentTeam()->name }}"
                             confirmationLabel="Enter your team name to confirm"
-                            shortConfirmationLabel="Team Name" step2ButtonText="Confirm Cancellation" />
+                            shortConfirmationLabel="Team Name" step2ButtonText="{{ __('Confirm Cancellation') }}" />
                         @php
                             $deleteAccountCheckbox = [
                                 'id' => 'deleteAccount',
@@ -231,7 +231,7 @@
                         @endphp
                         @if ($isRefundEligible)
                             <div wire:key="cancel-immediately-refundable">
-                                <x-modal-confirmation title="Cancel Immediately?" buttonTitle="Cancel Immediately"
+                                <x-modal-confirmation title="{{ __('Cancel Immediately?') }}" buttonTitle="{{ __('Cancel Immediately') }}"
                                     isErrorButton submitAction="cancelImmediately"
                                     :checkboxes="[
                                         [
@@ -246,11 +246,11 @@
                                         'All servers will be deactivated.',
                                     ]" confirmationText="{{ currentTeam()->name }}"
                                     confirmationLabel="Enter your team name to confirm"
-                                    shortConfirmationLabel="Team Name" step2ButtonText="Permanently Cancel" />
+                                    shortConfirmationLabel="Team Name" step2ButtonText="{{ __('Permanently Cancel') }}" />
                             </div>
                         @else
                             <div wire:key="cancel-immediately-standard">
-                                <x-modal-confirmation title="Cancel Immediately?" buttonTitle="Cancel Immediately"
+                                <x-modal-confirmation title="{{ __('Cancel Immediately?') }}" buttonTitle="{{ __('Cancel Immediately') }}"
                                     isErrorButton submitAction="cancelImmediately"
                                     :checkboxes="$canDeleteAccount ? [$deleteAccountCheckbox] : []"
                                     :actions="[
@@ -259,7 +259,7 @@
                                         'No refund will be issued for the remaining period.',
                                     ]" confirmationText="{{ currentTeam()->name }}"
                                     confirmationLabel="Enter your team name to confirm"
-                                    shortConfirmationLabel="Team Name" step2ButtonText="Permanently Cancel" />
+                                    shortConfirmationLabel="Team Name" step2ButtonText="{{ __('Permanently Cancel') }}" />
                             </div>
                         @endif
                     @endif
@@ -274,7 +274,7 @@
                 <h3 id="subscription-refund" class="text-sm! font-medium!">Refund</h3>
                 @if (! $refundCheckLoading && $isRefundEligible)
                     <div class="flex flex-wrap items-center gap-2">
-                        <x-modal-confirmation title="Request Full Refund?" buttonTitle="Request Full Refund"
+                        <x-modal-confirmation title="Request Full Refund?" buttonTitle="{{ __('Request Full Refund') }}"
                             isErrorButton submitAction="refundSubscription"
                             :actions="[
                                 'Your latest payment will be fully refunded.',
@@ -282,7 +282,7 @@
                                 'All servers will be deactivated.',
                             ]" confirmationText="{{ currentTeam()->name }}"
                             confirmationLabel="Enter your team name to confirm" shortConfirmationLabel="Team Name"
-                            step2ButtonText="Confirm Refund & Cancel" />
+                            step2ButtonText="{{ __('Confirm Refund & Cancel') }}" />
                     </div>
                 @endif
                 <div class="text-sm text-neutral-500">

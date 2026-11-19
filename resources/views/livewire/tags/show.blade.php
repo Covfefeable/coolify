@@ -22,11 +22,11 @@
         @unless (isset($tag))
             <div class="flex shrink-0 items-center gap-2">
                 @can('create', App\Models\Tag::class)
-                    <x-modal-input title="New tag">
+                    <x-modal-input title="{{ __('New tag') }}">
                         <x-slot:content>
                             <button type="button" class="button button-highlighted whitespace-nowrap">
                                 <x-reicon name="plus" class="size-3.5" />
-                                New tag
+                                {{ __('New tag') }}
                             </button>
                         </x-slot:content>
                         @include('livewire.tags.partials.new-tag-form')
@@ -67,7 +67,7 @@
                                         stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                Sort
+                                {{ __('Sort') }}
                                 </button>
                             </x-slot:trigger>
                                 <template x-for="option in sortOptions" :key="option.value">
@@ -290,12 +290,12 @@
                 description="Use this webhook to deploy every resource with this tag.">
                 <x-slot:actions>
                     {{-- Two ways to connect: a list in a modal, or the canvas (wide screens only). --}}
-                    <x-modal-input title="Connect to resources" subtitle="Add this tag to resources, or remove it."
+                    <x-modal-input title="{{ __('Connect to resources') }}" subtitle="Add this tag to resources, or remove it."
                         wireOpen="connectResourcesOpen" :wireIgnore="false" :contentClicks="false">
                         <x-slot:content>
                             <button type="button" class="button whitespace-nowrap" wire:click="openConnectResources">
                                 <x-reicon name="link" class="size-3.5" />
-                                Connect to resources
+                                {{ __('Connect to resources') }}
                             </button>
                         </x-slot:content>
                         @forelse ($connectableResources as $context => $resources)
@@ -337,17 +337,17 @@
                             confirmationText="{{ $tag->name }}"
                             confirmationLabel="Please confirm the execution of the actions by entering the Tag Name below"
                             shortConfirmationLabel="Tag Name" :confirmWithPassword="false"
-                            step2ButtonText="Delete tag" />
+                            step2ButtonText="{{ __('Delete tag') }}" />
                     @endcan
                     <x-modal-confirmation title="Redeploy all resources with this tag?"
-                        buttonTitle="Redeploy all" submitAction="redeployAll" :actions="[
+                        buttonTitle="{{ __('Redeploy all') }}" submitAction="redeployAll" :actions="[
                             'All resources with this tag will be redeployed.',
                             'During redeploy resources will be temporarily unavailable.',
                         ]"
                         confirmationText="{{ $tag->name }}"
                         confirmationLabel="Please confirm the execution of the actions by entering the Tag Name below"
                         shortConfirmationLabel="Tag Name" :confirmWithPassword="false"
-                        step2ButtonText="Redeploy All" />
+                        step2ButtonText="{{ __('Redeploy All') }}" />
                 </x-slot:actions>
 
                 <x-forms.input readonly label="{{ __('Deploy webhook URL') }}" id="webhook" />

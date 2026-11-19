@@ -188,7 +188,7 @@
 
             @if ($dashboardProjects->isEmpty())
                 <x-empty title="{{ __('No projects yet') }}"
-                    description="Create your first deployment workspace."
+                    description="{{ __('Create your first deployment workspace.') }}"
                     icon-name="projects" size="sm" />
             @else
                 <div x-cloak x-show="viewMode === 'grid'"
@@ -304,12 +304,12 @@
                                 </p>
                             </div>
                             <div class="relative z-10 flex w-fit items-center gap-3 font-medium text-neutral-600 dark:text-fg-dim">
-                                <span class="inline-flex items-center gap-1" data-tooltip="Environments"
+                                <span class="inline-flex items-center gap-1" data-tooltip="{{ __('Environments') }}"
                                     aria-label="{{ __('Environments') }}">
                                     <x-reicon name="layers" class="size-3.5 text-neutral-400 dark:text-fg-faint" />
                                     {{ $project->environments->count() }}
                                 </span>
-                                <span class="inline-flex items-center gap-1" data-tooltip="Resources"
+                                <span class="inline-flex items-center gap-1" data-tooltip="{{ __('Resources') }}"
                                     aria-label="{{ __('Resources') }}">
                                     <x-reicon name="grid" class="size-3.5 text-neutral-400 dark:text-fg-faint" />
                                     {{ $projectResourceCounts[$project->id] }}
@@ -373,7 +373,7 @@
             @if ($dashboardServers->isEmpty())
                 @if ($privateKeys->isEmpty())
                     <x-empty title="{{ __('A private key is required') }}"
-                        description="Add an SSH private key before connecting your first server."
+                        description="{{ __('Add an SSH private key before connecting your first server.') }}"
                         icon-name="keys" size="sm">
                         @can('create', App\Models\PrivateKey::class)
                             <x-slot:contents>
@@ -387,7 +387,7 @@
                     </x-empty>
                 @else
                     <x-empty title="{{ __('No servers yet') }}"
-                        description="Connect infrastructure for your deployments."
+                        description="{{ __('Connect infrastructure for your deployments.') }}"
                         icon-name="servers" size="sm">
                         @can('createAnyResource')
                             <x-slot:contents>

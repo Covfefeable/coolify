@@ -62,7 +62,7 @@
             @if ($canUpdate)
                 <button type="button" class="{{ $link }}"
                     wire:click="removeImageOverride({{ \Illuminate\Support\Js::from($row['override']['service']) }})"
-                    title="The next deploy uses the image of the compose file again.">Use the compose file</button>
+                    title="The next deploy uses the image of the compose file again.">{{ __('Use the compose file') }}</button>
             @endif
         </p>
     @endif

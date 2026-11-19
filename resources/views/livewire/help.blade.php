@@ -23,7 +23,7 @@
             class="flex flex-col-reverse items-stretch justify-between gap-3 border-t border-neutral-200 pt-4 sm:flex-row sm:items-center dark:border-white/[0.06]">
             <p class="text-xs text-neutral-500 dark:text-fg-faint">Replies are sent to your account email.</p>
             <x-forms.button class="justify-center sm:min-w-28" type="submit" isHighlighted>
-                Send feedback
+                {{ __('Send feedback') }}
             </x-forms.button>
         </div>
     </form>

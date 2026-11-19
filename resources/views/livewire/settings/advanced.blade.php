@@ -103,7 +103,7 @@
                                 <div class="flex flex-wrap items-center gap-2">
                                     <x-status-badge status="Key configured" type="success" />
                                     <x-forms.button type="button" wire:click="clearDomainConnectPrivateKey" isError>
-                                        Remove key
+                                        {{ __('Remove key') }}
                                     </x-forms.button>
                                 </div>
                             @elseif (filled(config('services.domain_connect.private_key')))
@@ -167,7 +167,7 @@
                             ]" />
                         @if (isDev())
                             <x-forms.button type="button" @click="$dispatch('show-sponsorship-reminder')">
-                                Show sponsorship reminder
+                                {{ __('Show sponsorship reminder') }}
                             </x-forms.button>
                         @endif
                     </div>

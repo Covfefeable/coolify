@@ -18,7 +18,7 @@
                             <button type="button"
                                 class="button button-highlighted">
                                 <x-reicon name="plus" class="size-3.5" />
-                                New destination
+                                {{ __('New destination') }}
                             </button>
                         </x-slot:content>
                         <livewire:destination.new.docker />
@@ -30,7 +30,7 @@
 
     @if ($destinations->isEmpty())
         <x-empty title="{{ __('No destinations yet') }}"
-            description="Add a Docker network endpoint to choose where your resources are deployed."
+            description="{{ __('Add a Docker network endpoint to choose where your resources are deployed.') }}"
             icon-name="destinations" />
     @else
         @php

@@ -53,11 +53,11 @@
     @if ($consoleUnavailable)
         <section class="mt-8 w-full max-w-none xl:mt-0">
             @if ($type === 'server')
-                <x-empty size="lg" title="Terminal unavailable"
+                <x-empty size="lg" title="{{ __('Terminal unavailable') }}"
                     description="This server is not functional or terminal access is disabled."
                     icon-name="browser-terminal" />
             @else
-                <x-empty size="lg" title="Terminal unavailable"
+                <x-empty size="lg" title="{{ __('Terminal unavailable') }}"
                     description="No containers are running, or terminal access is disabled on the destination server."
                     icon-name="browser-terminal" />
             @endif

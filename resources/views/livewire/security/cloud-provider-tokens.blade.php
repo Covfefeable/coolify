@@ -8,7 +8,7 @@
                         <button type="button"
                             class="button button-highlighted">
                             <x-reicon name="plus" class="size-3.5" />
-                            New token
+                            {{ __('New token') }}
                         </button>
                     </x-slot:content>
                     <livewire:security.cloud-provider-token-form :modal_mode="true" wire:key="new-cloud-provider-token" />

@@ -15,7 +15,7 @@
                 <x-slot:actions>
                     <button type="submit"
                         class="button button-highlighted">
-                        Continue
+                        {{ __('Continue') }}
                         <x-reicon name="arrow-right" class="size-3.5" />
                     </button>
                 </x-slot:actions>

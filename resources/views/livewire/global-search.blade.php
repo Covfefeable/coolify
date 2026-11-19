@@ -434,9 +434,9 @@
                     <div x-show="pageItems.length > 0" x-cloak class="command-palette-scope" role="group"
                         aria-label="Search scope" title="Press Tab to switch between global search and this page">
                         <button type="button" @click="setScope('global')" :aria-pressed="scope === 'global'"
-                            class="command-palette-scope-option">Global</button>
+                            class="command-palette-scope-option">{{ __('Global') }}</button>
                         <button type="button" @click="setScope('page')" :aria-pressed="scope === 'page'"
-                            class="command-palette-scope-option">This page</button>
+                            class="command-palette-scope-option">{{ __('This page') }}</button>
                     </div>
                 </div>
 
@@ -674,7 +674,7 @@
                     <div wire:ignore>
                         <template x-if="pageResults.length > 0 && !$wire.isSelectingResource">
                         <div class="command-palette-section">
-                            <div class="command-palette-group-label">This page</div>
+                            <div class="command-palette-group-label">{{ __('This page') }}</div>
                             <template x-for="item in pageResults" :key="item.href">
                                 <a :href="item.element ? (item.element.id ? '#' + item.element.id : '#') : item.href" @click.prevent="openPageItem(item)"
                                     class="search-result-item command-palette-item">
@@ -768,13 +768,13 @@
                                                     <template x-if="item.amd_only">
                                                         <span class="command-palette-arch-badge"
                                                             title="This service only supports AMD64/x86_64 architecture">
-                                                            AMD only
+                                                            {{ __('AMD only') }}
                                                         </span>
                                                     </template>
                                                     <template x-if="item.arm_only">
                                                         <span class="command-palette-arch-badge"
                                                             title="This service only supports ARM64/aarch64 architecture">
-                                                            ARM only
+                                                            {{ __('ARM only') }}
                                                         </span>
                                                     </template>
                                                     <span class="command-palette-quickcommand"
@@ -896,7 +896,7 @@
                         class="{{ $createModalShell }}"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-dropdown)">
                         <header class="flex-nowrap!">
-                            <h3 class="min-w-0 flex-1 truncate">New team</h3>
+                            <h3 class="min-w-0 flex-1 truncate">{{ __('New team') }}</h3>
                             <button type="button" @click="modalOpen=false" class="{{ $createModalClose }}">
                                 <x-reicon name="x" class="size-4" />
                             </button>

@@ -109,7 +109,7 @@
                 <div class="relative w-full sm:max-w-sm">
                     <x-reicon name="search"
                         class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                    <input x-model.debounce.150ms="search" type="search" placeholder="Search servers"
+                    <input x-model.debounce.150ms="search" type="search" placeholder="{{ __('Search servers') }}"
                         class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                     <button x-cloak x-show="search" x-on:click="search = ''" type="button"
                         class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
@@ -172,7 +172,7 @@
                         @endphp
                         @if ($cardPatchBadges !== [])
                             <div class="relative z-10 mt-auto flex cursor-pointer flex-wrap gap-1.5 pt-3"
-                                role="link" tabindex="0" aria-label="Open patches"
+                                role="link" tabindex="0" aria-label="{{ __('Open patches') }}"
                                 @click.prevent.stop="openPatches(@js($serverRow['patchesHref']))"
                                 @keydown.enter.prevent.stop="openPatches(@js($serverRow['patchesHref']))"
                                 data-tooltip="{{ $serverRow['patchCheckedAt'] }}">
@@ -230,7 +230,7 @@
                         </div>
                         @if ($showPatches)
                             <div class="hidden cursor-pointer flex-wrap gap-1 lg:flex" :data-tooltip="server.patchCheckedAt"
-                                role="link" tabindex="0" aria-label="Open patches"
+                                role="link" tabindex="0" aria-label="{{ __('Open patches') }}"
                                 @click.prevent.stop="openPatches(server.patchesHref)"
                                 @keydown.enter.prevent.stop="openPatches(server.patchesHref)">
                                 <template x-for="badge in server.patchBadges" :key="badge.label">

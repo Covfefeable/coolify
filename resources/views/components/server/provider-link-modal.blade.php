@@ -44,8 +44,8 @@
                 :placeholder="$manualPlaceholder" />
             <button type="button" class="button" wire:click="{{ $searchByIdMethod }}"
                 wire:loading.attr="disabled" wire:target="{{ $searchByIdMethod }}">
-                <span wire:loading.remove wire:target="{{ $searchByIdMethod }}">Search ID</span>
-                <span wire:loading wire:target="{{ $searchByIdMethod }}">Searching…</span>
+                <span wire:loading.remove wire:target="{{ $searchByIdMethod }}">{{ __('Search ID') }}</span>
+                <span wire:loading wire:target="{{ $searchByIdMethod }}">{{ __('Searching…') }}</span>
             </button>
         </div>
 
@@ -57,8 +57,8 @@
 
         <button type="button" class="button justify-center" wire:click="{{ $searchByIpMethod }}"
             wire:loading.attr="disabled" wire:target="{{ $searchByIpMethod }}">
-            <span wire:loading.remove wire:target="{{ $searchByIpMethod }}">Search by server IP</span>
-            <span wire:loading wire:target="{{ $searchByIpMethod }}">Searching…</span>
+            <span wire:loading.remove wire:target="{{ $searchByIpMethod }}">{{ __('Search by server IP') }}</span>
+            <span wire:loading wire:target="{{ $searchByIpMethod }}">{{ __('Searching…') }}</span>
         </button>
 
         @if ($searchError)
@@ -88,7 +88,7 @@
                 <button type="button"
                     class="button mt-3 button-highlighted"
                     wire:click="{{ $linkMethod }}">
-                    Link resource
+                    {{ __('Link resource') }}
                 </button>
             </div>
         @endif

@@ -110,7 +110,7 @@
 
             <section class="flex flex-col gap-2">
                 <div>
-                    <h4 class="text-[13px] font-medium text-neutral-800 dark:text-fg">Scopes</h4>
+                    <h4 class="text-[13px] font-medium text-neutral-800 dark:text-fg">{{ __('Scopes') }}</h4>
                     <p class="text-[12px] text-neutral-500 dark:text-fg-faint">Each scope gives levels on the whole
                         team, projects, environments, or resources. Scopes add up.</p>
                 </div>

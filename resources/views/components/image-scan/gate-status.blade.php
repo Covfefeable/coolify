@@ -75,7 +75,7 @@
                         @endif
                         @if ($isBlocked && $showDeployAnyway && $canDeployAnyway)
                             <x-forms.button class="normal-case!" wire:click="deployAnyway">
-                                Deploy anyway
+                                {{ __('Deploy anyway') }}
                             </x-forms.button>
                         @endif
                     </div>

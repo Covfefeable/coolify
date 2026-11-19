@@ -15,7 +15,7 @@
                     <div class="flex items-center gap-2">
                         <x-forms.button wire:click="loadDynamicConfigurations">
                             <x-reicon name="refresh" class="size-3.5" />
-                            Reload
+                            {{ __('Reload') }}
                         </x-forms.button>
                         @can('update', $server)
                             <x-modal-input buttonTitle="{{ __('+ Add') }}" title="New Dynamic Configuration">

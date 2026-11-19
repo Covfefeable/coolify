@@ -36,7 +36,7 @@
             <x-modal-input title="Environment variable details" :closeOutside="false">
                 <x-slot:content>
                     <button type="button" data-env-settings-trigger class="icon-button shrink-0"
-                        title="View environment variable" aria-label="View environment variable">
+                        title="{{ __('View environment variable') }}" aria-label="{{ __('View environment variable') }}">
                         <x-reicon name="settings" class="size-3.5" />
                     </button>
                 </x-slot:content>

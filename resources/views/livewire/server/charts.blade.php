@@ -25,7 +25,7 @@
                             <div class="flex items-center gap-2">
                                 <x-live-toggle :active="$live" storageKey="server-metrics-live" />
                                 <x-forms.button canGate="update" :canResource="$server" wire:click="toggleMetrics">
-                                    Disable metrics
+                                    {{ __('Disable metrics') }}
                                 </x-forms.button>
                             </div>
                         </x-slot:actions>
@@ -371,7 +371,7 @@
                         <x-slot:contents>
                             <x-forms.button canGate="update" :canResource="$server" isHighlighted
                                 wire:click="toggleMetrics">
-                                Enable metrics
+                                {{ __('Enable metrics') }}
                             </x-forms.button>
                         </x-slot:contents>
                     </x-empty>

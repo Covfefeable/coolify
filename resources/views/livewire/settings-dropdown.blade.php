@@ -90,7 +90,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                         d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.091-3.091L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.091-3.091L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.091 3.091L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.091 3.091ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.456-2.456L14.25 6l1.035-.259a3.375 3.375 0 0 0 2.456-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
                 </svg>
-                What's New
+                {{ __('What\'s New') }}
             </span>
             @if ($unreadCount > 0)
                 <span
@@ -143,12 +143,12 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                                         d="M20 11a8.1 8.1 0 0 0-15.5-2M4 4v5h5m-5 4a8.1 8.1 0 0 0 15.5 2m.5 5v-5h-5" />
                                 </svg>
-                                Fetch Latest
+                                {{ __('Fetch Latest') }}
                             </x-forms.button>
                         @endif
                         @if ($unreadCount > 0)
                             <x-forms.button @click="markAllEntriesAsRead">
-                                Mark all read
+                                {{ __('Mark all read') }}
                             </x-forms.button>
                         @endif
                         </div>
@@ -198,7 +198,7 @@
                                         <button x-show="!entry.is_read" @click="markEntryAsRead(entry.tag_name)"
                                             class="shrink-0 cursor-pointer rounded-md px-2 py-1 text-xs font-medium text-neutral-500 hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
                                             title="Mark as read">
-                                            Mark read
+                                            {{ __('Mark read') }}
                                         </button>
                                     </div>
                                     <div

@@ -33,7 +33,7 @@
                     <x-slot:actions>
                         <button type="button" class="button button-highlighted" @click="$dispatch('open-api-token-create')">
                             <x-reicon name="plus" class="size-3.5" />
-                            New token
+                            {{ __('New token') }}
                         </button>
                     </x-slot:actions>
                 @endcan
@@ -185,7 +185,7 @@
                                             <x-table.row-actions label="Token actions">
                                                 <x-table.row-action
                                                     x-on:click="editToken({{ \Illuminate\Support\Js::from(App\Livewire\Forms\ApiTokenForm::valuesOf($token)) }})">
-                                                    Edit
+                                                    {{ __('Edit') }}
                                                 </x-table.row-action>
                                                 <x-table.row-action
                                                     wire:click="setPaused({{ $token->id }}, {{ $token->isPaused() ? 'false' : 'true' }})">
@@ -199,9 +199,9 @@
                                                     confirmationText="{{ $token->name }}"
                                                     confirmationLabel="Enter the token description to confirm"
                                                     shortConfirmationLabel="Token description"
-                                                    :confirmWithPassword="false" step2ButtonText="Roll token">
+                                                    :confirmWithPassword="false" step2ButtonText="{{ __('Roll token') }}">
                                                     <x-slot:trigger>
-                                                        <x-table.row-action>Roll</x-table.row-action>
+                                                        <x-table.row-action>{{ __('Roll') }}</x-table.row-action>
                                                     </x-slot:trigger>
                                                 </x-modal-confirmation>
                                                 <x-slot:danger>
@@ -212,9 +212,9 @@
                                                     confirmationText="{{ $token->name }}"
                                                     confirmationLabel="Enter the token description to confirm"
                                                     shortConfirmationLabel="Token description"
-                                                    :confirmWithPassword="false" step2ButtonText="Revoke token">
+                                                    :confirmWithPassword="false" step2ButtonText="{{ __('Revoke token') }}">
                                                     <x-slot:trigger>
-                                                        <x-table.row-action>Revoke</x-table.row-action>
+                                                        <x-table.row-action>{{ __('Revoke') }}</x-table.row-action>
                                                     </x-slot:trigger>
                                                 </x-modal-confirmation>
                                                 </x-slot:danger>
@@ -255,7 +255,7 @@
 
                 <x-slot:footer>
                     <x-forms.button @click="modalOpen = false">{{ __('Cancel') }}</x-forms.button>
-                    <x-forms.button isHighlighted type="submit" form="api-token-create-form">Create token</x-forms.button>
+                    <x-forms.button isHighlighted type="submit" form="api-token-create-form">{{ __('Create token') }}</x-forms.button>
                 </x-slot:footer>
             </x-modal-input>
 
@@ -299,7 +299,7 @@
             </div>
 
             <x-slot:footer>
-                <x-forms.button isHighlighted @click="modalOpen = false">Done</x-forms.button>
+                <x-forms.button isHighlighted @click="modalOpen = false">{{ __('Done') }}</x-forms.button>
             </x-slot:footer>
         </x-modal-input>
     </x-security.settings-layout>

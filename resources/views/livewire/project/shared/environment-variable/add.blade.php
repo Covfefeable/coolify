@@ -3,7 +3,7 @@
     <div class="grid gap-4 sm:grid-cols-2">
         <x-forms.input placeholder="NODE_ENV" id="key" label="{{ __('Name') }}" required />
         <x-forms.input id="comment" label="{{ __('Comment') }}" placeholder="Optional note"
-            helper="Add a note to document what this environment variable is used for." maxlength="256" />
+            helper="{{ __('Add a note to document what this environment variable is used for.') }}" maxlength="256" />
     </div>
     <div>
         <template x-if="isMultiline">
@@ -46,11 +46,11 @@
                 ['value' => true, 'label' => 'Available during build'],
                 ['value' => false, 'label' => 'Not available during build'],
             ]"
-                helper="Make this variable available during the Docker build process. Useful for build secrets and dependencies." />
+                helper="{{ __('Make this variable available during the Docker build process. Useful for build secrets and dependencies.') }}" />
             <x-forms.listbox id="is_runtime" label="{{ __('Runtime') }}" :options="[
                 ['value' => true, 'label' => 'Available in the container'],
                 ['value' => false, 'label' => 'Not available in the container'],
-            ]" helper="Make this variable available in the running container at runtime." />
+            ]" helper="{{ __('Make this variable available in the running container at runtime.') }}" />
         @endif
     </div>
 

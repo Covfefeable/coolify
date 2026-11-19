@@ -10,7 +10,7 @@
         <x-application.settings-section title="{{ __('Executions') }}"
             description="Review generated archives, availability, and cleanup status." flush>
             <x-slot:actions>
-                <x-forms.button wire:click="cleanupFailed">Cleanup failed</x-forms.button>
+                <x-forms.button wire:click="cleanupFailed">{{ __('Cleanup failed') }}</x-forms.button>
                 <x-modal-confirmation title="{{ __('Cleanup Deleted Backup Entries?') }}" isErrorButton
                     submitAction="cleanupDeleted()"
                     :actions="['This permanently deletes backup execution entries whose local and S3 files have already been deleted.', 'This only removes database entries, not backup files.']"
@@ -18,7 +18,7 @@
                     confirmationLabel="Please confirm by typing 'cleanup deleted backups' below"
                     shortConfirmationLabel="Confirmation">
                     <x-slot:trigger>
-                        <x-forms.button isError>Cleanup deleted</x-forms.button>
+                        <x-forms.button isError>{{ __('Cleanup deleted') }}</x-forms.button>
                     </x-slot:trigger>
                 </x-modal-confirmation>
             </x-slot:actions>
@@ -150,7 +150,7 @@
                                     <x-table.row-actions label="Backup actions">
                                         <x-table.row-action wire:click="retryRecovery({{ $execution->id }})"
                                             wire:loading.attr="disabled"
-                                            wire:target="retryRecovery({{ $execution->id }})">Retry recovery</x-table.row-action>
+                                            wire:target="retryRecovery({{ $execution->id }})">{{ __('Retry recovery') }}</x-table.row-action>
                                         <x-slot:danger>
                                             <x-modal-confirmation title="{{ __('Confirm Backup Deletion?') }}" buttonFullWidth
                                                 submitAction="deleteBackup({{ $execution->id }})"
@@ -168,7 +168,7 @@
                                     <button type="button" class="icon-button shrink-0"
                                         wire:click="retryRecovery({{ $execution->id }})"
                                         wire:loading.attr="disabled" wire:target="retryRecovery({{ $execution->id }})"
-                                        title="Retry recovery" aria-label="Retry recovery">
+                                        title="{{ __('Retry recovery') }}" aria-label="{{ __('Retry recovery') }}">
                                         <x-reicon name="refresh" class="size-3.5" />
                                     </button>
                                 @elseif ($execution->status !== 'running')

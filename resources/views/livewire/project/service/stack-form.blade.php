@@ -9,7 +9,7 @@
                     <x-status-badge label="Parser {{ $service->compose_parsing_version }}" type="neutral" />
                 @endif
                 @can('update', $service)
-                    <x-modal-input buttonTitle="Edit Compose file" title="Docker Compose" :closeOutside="false"
+                    <x-modal-input buttonTitle="{{ __('Edit Compose file') }}" title="Docker Compose" :closeOutside="false"
                         :isLarge="true">
                         <x-slot:footer>
                             <div x-data="{ preview: false, validating: false, saving: false }"
@@ -25,13 +25,13 @@
                                     <x-forms.button @click="validating = true; $dispatch('compose-validate')"
                                         x-bind:disabled="validating">
                                         <x-loading-on-button x-show="validating" x-cloak />
-                                        Validate
+                                        {{ __('Validate') }}
                                     </x-forms.button>
                                 @endif
                                 <x-forms.button @click="saving = true; $dispatch('compose-save')"
                                     x-bind:disabled="saving" isHighlighted>
                                     <x-loading-on-button x-show="saving" x-cloak />
-                                    Save changes
+                                    {{ __('Save changes') }}
                                 </x-forms.button>
                             </div>
                         </x-slot:footer>

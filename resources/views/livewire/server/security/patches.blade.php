@@ -83,7 +83,7 @@
                                 <button type="button" class="listbox-option justify-start! gap-2.5! text-red-500!" role="menuitem"
                                     @click="open = false; document.getElementById('server-patching-reboot-trigger')?.click()">
                                     <x-reicon name="restart" class="size-3.5 opacity-70" />
-                                    Reboot server
+                                    {{ __('Reboot server') }}
                                 </button>
                             @endif
                             @if (isDev())
@@ -160,11 +160,11 @@
                                                     'Coolify removes its configuration from the server.',
                                                     'The server uses the default of the operating system again. Check it if you want no automatic updates at all.',
                                                 ]"
-                                                step2ButtonText="Turn off">
+                                                step2ButtonText="{{ __('Turn off') }}">
                                                 <x-slot:trigger>
                                                     <button type="button"
                                                         class="h-6 shrink-0 rounded-md border border-neutral-200 bg-white px-2 text-[12px] font-medium text-neutral-800 hover:bg-neutral-50 dark:border-white/[0.1] dark:bg-white/[0.06] dark:text-fg dark:hover:bg-white/[0.1]">
-                                                        Turn off
+                                                        {{ __('Turn off') }}
                                                     </button>
                                                 </x-slot:trigger>
                                             </x-modal-confirmation>
@@ -179,11 +179,11 @@
                                                     'Services that use an updated library (for example OpenSSL or glibc) can restart.',
                                                     'A new kernel is installed, but the server is not rebooted. Coolify then shows Reboot required.',
                                                 ]"
-                                                step2ButtonText="Turn on">
+                                                step2ButtonText="{{ __('Turn on') }}">
                                                 <x-slot:trigger>
                                                     <button type="button" isHighlighted
                                                         class="h-6 shrink-0 rounded-md border px-2 text-[12px] font-medium">
-                                                        Turn on
+                                                        {{ __('Turn on') }}
                                                     </button>
                                                 </x-slot:trigger>
                                             </x-modal-confirmation>
@@ -252,7 +252,7 @@
                             @php
                                 $selectedRisky = collect($updates)->whereIn('package', $selectedPackages)->filter(fn ($update) => filled(data_get($update, 'risk')))->count();
                             @endphp
-                            <x-forms.button type="button" wire:click="$set('selectedPackages', [])">Clear selection</x-forms.button>
+                            <x-forms.button type="button" wire:click="$set('selectedPackages', [])">{{ __('Clear selection') }}</x-forms.button>
                             {{-- The dialog has wire:ignore; a new key renders it again when the selection changes. --}}
                             <div wire:key="update-selected-{{ md5(implode(',', $selectedPackages)) }}">
                             <x-modal-confirmation title="Update selected packages?"
@@ -264,10 +264,10 @@
                                         : 'Some services on the server can restart.',
                                 ]"
                                 warningMessage="Coolify cannot roll back a package update. Check the update logs when it is done."
-                                :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Update" />
+                                :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Update') }}" />
                             </div>
                         @else
-                        <x-modal-confirmation title="Confirm package update?" buttonTitle="Update all packages"
+                        <x-modal-confirmation title="Confirm package update?" buttonTitle="{{ __('Update all packages') }}"
                             isHighlightedButton submitAction="updateAllPackages" :actions="[
                                 'All packages will be updated to their latest available versions.',
                                 $riskyUpdates > 0
@@ -277,7 +277,7 @@
                             confirmationText="Update All Packages"
                             confirmationLabel="Confirm by entering the text below"
                             shortConfirmationLabel="Confirmation" :confirmWithPassword="false"
-                            step2ButtonText="Update All Packages" />
+                            step2ButtonText="{{ __('Update All Packages') }}" />
                         @endif
                     @endcan
                 </x-slot:actions>

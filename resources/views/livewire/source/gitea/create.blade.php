@@ -49,7 +49,7 @@
                     <x-forms.input id="html_url" label="{{ __('Instance URL') }}" required
                         helper="For self-hosted Gitea or Forgejo, enter your instance URL (e.g. https://git.example.com)." />
                     <x-forms.input id="api_url" label="API URL" required
-                        helper="Usually your instance URL with /api/v1 appended." />
+                        helper="{{ __('Usually your instance URL with /api/v1 appended.') }}" />
                     <x-forms.input id="custom_user" label="{{ __('Custom Git user') }}" required />
                     <x-forms.input id="custom_port" type="number" label="{{ __('Custom Git port') }}" required />
                 </div>

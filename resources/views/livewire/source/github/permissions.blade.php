@@ -18,9 +18,9 @@
 
                     <div class="grid gap-4 lg:grid-cols-3">
                         <x-forms.input canGate="view" :canResource="$github_app" id="contents"
-                            helper="Read access is mandatory." label="{{ __('Contents') }}" readonly placeholder="{{ __('N/A') }}" />
+                            helper="{{ __('Read access is mandatory.') }}" label="{{ __('Contents') }}" readonly placeholder="{{ __('N/A') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app" id="metadata"
-                            helper="Read access is mandatory." label="Metadata" readonly placeholder="{{ __('N/A') }}" />
+                            helper="{{ __('Read access is mandatory.') }}" label="Metadata" readonly placeholder="{{ __('N/A') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app" id="pullRequests"
                             helper="Write access is needed for preview deployment status updates."
                             label="Pull requests" readonly placeholder="{{ __('N/A') }}" />

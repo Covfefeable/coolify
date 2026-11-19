@@ -44,7 +44,7 @@
                         @endif
                         @if ($server->isTransferredAway())
                             <div>
-                                <h3 class="text-sm font-semibold text-neutral-950 dark:text-fg">Transfer back</h3>
+                                <h3 class="text-sm font-semibold text-neutral-950 dark:text-fg">{{ __('Transfer back') }}</h3>
                                 <p class="mt-1 text-xs leading-5 text-neutral-500 dark:text-fg-dim">
                                     Undo the transfer. The instance that manages the server now transfers it back here,
                                     with all changes made there. This archive is replaced only when the import here
@@ -69,7 +69,7 @@
                                         .'Continue only if you trust that instance.';
                                 @endphp
                                 <x-modal-confirmation title="Transfer this server back?" submitAction="transferBack"
-                                    :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Transfer back"
+                                    :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Transfer back') }}"
                                     :warningMessage="$transferBackWarning"
                                     :actions="[
                                         'The other instance checks the server, this instance, and the tokens. If a check fails, nothing changes.',
@@ -79,8 +79,8 @@
                                     <x-slot:trigger>
                                         <x-forms.button canGate="update" :canResource="$server" wire:loading.attr="disabled"
                                             wire:target="transferBack">
-                                            <span wire:loading.remove wire:target="transferBack">Transfer back</span>
-                                            <span wire:loading wire:target="transferBack">Running checks…</span>
+                                            <span wire:loading.remove wire:target="transferBack">{{ __('Transfer back') }}</span>
+                                            <span wire:loading wire:target="transferBack">{{ __('Running checks…') }}</span>
                                         </x-forms.button>
                                     </x-slot:trigger>
                                 </x-modal-confirmation>
@@ -124,7 +124,7 @@
                                     <x-forms.button canGate="transfer" :canResource="$server" wire:loading.attr="disabled"
                                         wire:target="migrateServer">
                                         <span wire:loading.remove wire:target="migrateServer">{{ __('Transfer server') }}</span>
-                                        <span wire:loading wire:target="migrateServer">Running checks…</span>
+                                        <span wire:loading wire:target="migrateServer">{{ __('Running checks…') }}</span>
                                     </x-forms.button>
                                 </x-slot:trigger>
                             </x-modal-confirmation>
