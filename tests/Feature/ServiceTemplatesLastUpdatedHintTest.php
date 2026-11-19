@@ -9,6 +9,15 @@ beforeEach(function () {
     Cache::flush();
 });
 
+test('the resource picker translates the public repository label while retaining its resource id', function () {
+    app()->setLocale('zh-cn');
+
+    $publicRepository = collect((new Select)->loadServices()['gitBasedApplications'])->firstWhere('id', 'public');
+
+    expect($publicRepository['name'])->toBe('公开 Git 仓库')
+        ->and($publicRepository['description'])->toContain('Coolify 从源码构建');
+});
+
 it('returns the service templates bundle last updated timestamp', function () {
     $component = new Select;
     $templatePath = base_path('templates/'.config('constants.services.file_name'));

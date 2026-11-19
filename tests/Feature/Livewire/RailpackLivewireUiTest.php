@@ -32,6 +32,20 @@ beforeEach(function () {
 });
 
 describe('PublicGitRepository port handling for railpack', function () {
+    test('the public repository wizard renders Simplified Chinese build instructions', function () {
+        app()->setLocale('zh-cn');
+
+        $wizard = Livewire::test(PublicGitRepository::class, ['type' => 'public']);
+
+        $wizard->assertSee('仓库 URL')->assertSee('检查仓库');
+
+        $wizard->set('branchFound', true)
+            ->assertSee('构建配置')
+            ->assertSee('扫描仓库')
+            ->assertSee('Railpack')
+            ->assertSet('build_pack', 'railpack');
+    });
+
     test('switching to railpack resets port to 3000 when not static', function () {
         Livewire::test(PublicGitRepository::class, ['type' => 'public'])
             ->set('build_pack', 'dockerfile')

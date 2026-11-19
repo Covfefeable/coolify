@@ -5,7 +5,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Public Git repository') }}</h2>
-                    <p>Connect a public repository over HTTPS and inspect its default branch.</p>
+                    <p>{{ __('Connect a public repository over HTTPS and inspect its default branch.') }}</p>
                 </div>
             </div>
             <div class="application-settings-section-body">
@@ -24,14 +24,14 @@
                             <path class="opacity-75" d="M21 12a9 9 0 0 0-9-9" stroke="currentColor"
                                 stroke-width="3" stroke-linecap="round" />
                         </svg>
-                        Check repository
+                        {{ __('Check repository') }}
                     </x-forms.button>
                 </div>
                 <p class="mt-2 text-xs text-neutral-500 dark:text-fg-dim">
-                    Need a sample? Browse
+                    {{ __('Need a sample? Browse') }}
                     <a class="font-medium text-coollabs hover:underline dark:text-brand-light"
                         href="https://github.com/coollabsio/coolify-examples/" target="_blank">
-                        Coolify Examples
+                        {{ __('Coolify Examples') }}
                     </a>.
                 </p>
             </div>
@@ -44,15 +44,14 @@
                 <div class="application-settings-section-header">
                     <div>
                         <h2>{{ __('Build configuration') }}</h2>
-                        <p>Choose how Coolify builds and runs this repository.</p>
+                        <p>{{ __('Choose how Coolify builds and runs this repository.') }}</p>
                     </div>
                     <x-forms.button type="submit" isHighlighted>{{ __('Continue') }}</x-forms.button>
                 </div>
                 <div class="application-settings-section-body space-y-5">
                     @if ($rate_limit_remaining && $rate_limit_reset)
-                        <x-callout type="info" title="Git provider rate limit">
-                            {{ $rate_limit_remaining }} requests remain. The limit resets at
-                            {{ $rate_limit_reset }} UTC.
+                        <x-callout type="info" title="{{ __('Git provider rate limit') }}">
+                            {{ __(':count requests remain. The limit resets at :time UTC.', ['count' => $rate_limit_remaining, 'time' => $rate_limit_reset]) }}
                         </x-callout>
                     @endif
 
@@ -61,27 +60,27 @@
                     <div class="grid gap-4 sm:grid-cols-2">
                         <x-forms.input id="git_branch" label="Branch"
                             :disabled="$git_source !== 'other'"
-                            helper="You can choose another branch after the application is created." />
-                        <x-forms.listbox id="build_pack" label="Build pack" required live :options="[
+                            helper="{{ __('You can choose another branch after the application is created.') }}" />
+                        <x-forms.listbox id="build_pack" label="{{ __('Build pack') }}" required live :options="[
                             ['value' => 'railpack', 'label' => 'Railpack'],
-                            ['value' => 'nixpacks', 'label' => 'Nixpacks (deprecated)'],
-                            ['value' => 'static', 'label' => 'Static'],
+                            ['value' => 'nixpacks', 'label' => __('Nixpacks (deprecated)')],
+                            ['value' => 'static', 'label' => __('Static')],
                             ['value' => 'dockerfile', 'label' => 'Dockerfile'],
                             ['value' => 'dockercompose', 'label' => 'Docker Compose'],
                         ]" />
                         @if ($show_is_static)
-                            <x-forms.listbox id="isStatic" label="Output type" onChange="instantSave"
+                            <x-forms.listbox id="isStatic" label="{{ __('Output type') }}" onChange="instantSave"
                                 :options="[
-                                    ['value' => false, 'label' => 'Web application'],
-                                    ['value' => true, 'label' => 'Static site'],
+                                    ['value' => false, 'label' => __('Web application')],
+                                    ['value' => true, 'label' => __('Static site')],
                                 ]" />
                             <x-forms.input type="number" id="port" label="Port"
                                 :readonly="$isStatic || $build_pack === 'static'"
-                                helper="Port the application listens on." />
+                                helper="{{ __('Port the application listens on.') }}" />
                         @endif
                         @if ($isStatic)
-                            <x-forms.input id="publish_directory" label="Publish directory"
-                                helper="Directory containing the generated static assets." />
+                            <x-forms.input id="publish_directory" label="{{ __('Publish directory') }}"
+                                helper="{{ __('Directory containing the generated static assets.') }}" />
                         @endif
                     </div>
 
@@ -92,27 +91,27 @@
                     {{-- Dockerfile: pick a detected file or type a path --}}
                     @if ($build_pack === 'dockerfile')
                         <x-forms.listbox id="selectedDockerfile" label="Dockerfile" live searchable allowCustom placeholder="/Dockerfile"
-                            emptyText="No Dockerfiles detected. Type a path in the search field."
-                            searchPlaceholder="Search or type a path…"
-                            helper="Select a detected Dockerfile, or type a path relative to the base directory."
+                            emptyText="{{ __('No Dockerfiles detected. Type a path in the search field.') }}"
+                            searchPlaceholder="{{ __('Search or type a path…') }}"
+                            helper="{{ __('Select a detected Dockerfile, or type a path relative to the base directory.') }}"
                             :options="collect($detectedDockerfiles)->map(fn ($file) => ['value' => $file, 'label' => $file])->all()" />
                     @endif
 
                     {{-- Docker Compose file selector: pick a detected file or type a path --}}
                     @if ($build_pack === 'dockercompose' && count($detectedDockerComposeFiles) > 0)
-                        <x-forms.listbox id="selectedDockerComposeFile" label="Docker Compose File" live searchable allowCustom
-                            searchPlaceholder="Search or type a path…"
-                            helper="Select a detected Docker Compose file, or type a path relative to the base directory."
+                        <x-forms.listbox id="selectedDockerComposeFile" label="{{ __('Docker Compose File') }}" live searchable allowCustom
+                            searchPlaceholder="{{ __('Search or type a path…') }}"
+                            helper="{{ __('Select a detected Docker Compose file, or type a path relative to the base directory.') }}"
                             :options="collect($detectedDockerComposeFiles)->map(fn ($file) => ['value' => $file, 'label' => $file])->all()" />
                     @endif
 
                     @if ($build_pack === 'dockercompose')
                         <x-forms.repository-paths class="sm:grid-cols-2" base="base_directory"
-                            file="docker_compose_location" fileLabel="Compose file" compose
+                            file="docker_compose_location" fileLabel="{{ __('Compose file') }}" compose
                             defaultFile="/docker-compose.yaml" />
                     @else
-                        <x-forms.input id="base_directory" label="Base directory" placeholder="/"
-                            helper="Repository directory used as the build root." />
+                        <x-forms.input id="base_directory" label="{{ __('Base directory') }}" placeholder="/"
+                            helper="{{ __('Repository directory used as the build root.') }}" />
                     @endif
                 </div>
             </section>
