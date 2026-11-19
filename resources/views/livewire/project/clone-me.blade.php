@@ -1,10 +1,10 @@
 <div>
-    <x-slot:title>{{ data_get_str($project, 'name')->limit(10) }} > Clone | Coolify</x-slot>
+    <x-slot:title>{{ data_get_str($project, 'name')->limit(10) }} > {{ __('Clone') }} | Coolify</x-slot>
     <div class="w-full max-w-none">
         <header class="mb-5">
             <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ $environment->name }}</h1>
             <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                Clone this environment inside {{ $project->name }}
+                {{ __('Clone this environment inside :project', ['project' => $project->name]) }}
             </p>
         </header>
 
@@ -13,16 +13,16 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Clone environment') }}</h2>
-                    <p>Copy every resource from {{ $environment->name }} to a new project or environment.</p>
+                    <p>{{ __('Copy every resource from :environment to a new project or environment.', ['environment' => $environment->name]) }}</p>
                 </div>
             </div>
             <div class="application-settings-section-body">
                 <div class="max-w-md">
-                    <x-forms.input required id="newName" label="New name" />
+                    <x-forms.input required id="newName" label="{{ __('New name') }}" />
                 </div>
                 <div class="mt-4 max-w-md">
-                    <x-forms.checkbox id="cloneVolumeData" live label="Clone volume data"
-                        helper="Copies the data of the persistent volumes to the clones. Running source resources are stopped while the data is copied and started again afterwards." />
+                    <x-forms.checkbox id="cloneVolumeData" live label="{{ __('Clone volume data') }}"
+                        helper="{{ __('Copies the data of the persistent volumes to the clones. Running source resources are stopped while the data is copied and started again afterwards.') }}" />
                 </div>
             </div>
         </section>
@@ -31,7 +31,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Destination') }}</h2>
-                    <p>Choose the server and Docker network that will receive the cloned resources.</p>
+                    <p>{{ __('Choose the server and Docker network that will receive the cloned resources.') }}</p>
                 </div>
             </div>
             <div class="application-settings-section-body p-0!">
@@ -74,7 +74,7 @@
                     @endforeach
                     <div
                         class="flex min-h-11 items-center border-t border-neutral-200 px-4 text-[11px] text-neutral-500 dark:border-white/[0.08] dark:text-fg-faint">
-                        {{ $destinationCount }} {{ Str::plural('destination', $destinationCount) }}
+                        {{ trans_choice(':count destination|:count destinations', $destinationCount) }}
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Resources') }}</h2>
-                    <p>{{ $resourceCount }} {{ Str::plural('resource', $resourceCount) }} will be cloned.</p>
+                    <p>{{ trans_choice(':count resource will be cloned.|:count resources will be cloned.', $resourceCount) }}</p>
                 </div>
             </div>
             <div class="application-settings-section-body p-0!">
@@ -117,7 +117,7 @@
                             <div class="truncate text-[12px] font-semibold text-black dark:text-fg">
                                 {{ $database->name }}
                             </div>
-                            <div><x-status-badge status="Database" type="neutral" /></div>
+                            <div><x-status-badge status="{{ __('Database') }}" type="neutral" /></div>
                             <div class="truncate text-[11px] text-neutral-600 dark:text-fg-dim">
                                 {{ $database->description ?: '-' }}
                             </div>
@@ -129,7 +129,7 @@
                             <div class="truncate text-[12px] font-semibold text-black dark:text-fg">
                                 {{ $service->name }}
                             </div>
-                            <div><x-status-badge status="Service" type="neutral" /></div>
+                            <div><x-status-badge status="{{ __('Service') }}" type="neutral" /></div>
                             <div class="truncate text-[11px] text-neutral-600 dark:text-fg-dim">
                                 {{ $service->description ?: '-' }}
                             </div>
@@ -137,7 +137,7 @@
                     @endforeach
                     <div
                         class="flex min-h-11 items-center border-t border-neutral-200 px-4 text-[11px] text-neutral-500 dark:border-white/[0.08] dark:text-fg-faint">
-                        {{ $resourceCount }} {{ Str::plural('resource', $resourceCount) }}
+                        {{ trans_choice(':count resource|:count resources', $resourceCount) }}
                     </div>
                 </div>
                 <div
@@ -145,17 +145,17 @@
                     @if ($cloneVolumeData)
                         @foreach (['environment' => 'Clone to environment', 'project' => 'Clone to project'] as $cloneType => $cloneLabel)
                             <div wire:key="clone-with-volume-data-{{ $cloneType }}">
-                                <x-modal-confirmation title="Clone with volume data?" submitAction="clone('{{ $cloneType }}')"
+                                <x-modal-confirmation title="{{ __('Clone with volume data?') }}" submitAction="clone('{{ $cloneType }}')"
                                     :ignoreWire="false" :confirmWithText="false" :confirmWithPassword="false"
-                                    :step2ButtonText="$cloneLabel"
-                                    warningMessage="Running source resources are unavailable while their volume data is copied."
+                                    :step2ButtonText="__($cloneLabel)"
+                                    warningMessage="{{ __('Running source resources are unavailable while their volume data is copied.') }}"
                                     :actions="[
-                                        'Running source resources are stopped while their volume data is copied.',
-                                        'They are started again after the copy, also when the copy fails.',
+                                        __('Running source resources are stopped while their volume data is copied.'),
+                                        __('They are started again after the copy, also when the copy fails.'),
                                     ]">
                                     <x-slot:trigger>
                                         <x-forms.button isHighlighted :disabled="! filled($selectedDestination)">
-                                            {{ $cloneLabel }}
+                                            {{ __($cloneLabel) }}
                                         </x-forms.button>
                                     </x-slot:trigger>
                                 </x-modal-confirmation>

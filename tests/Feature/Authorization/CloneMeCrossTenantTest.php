@@ -61,12 +61,17 @@ function cloneMeAfterTeamSwitch(object $test): Testable
 }
 
 test('lists only servers of the project team', function () {
+    app()->setLocale('zh-cn');
     session(['currentTeam' => $this->teamA]);
 
     $component = Livewire::test(CloneMe::class, [
         'project_uuid' => $this->projectA->uuid,
         'environment_uuid' => $this->environmentA->uuid,
     ]);
+
+    $component->assertSee('克隆存储卷数据')
+        ->assertSee('选择用于接收克隆资源的服务器和 Docker 网络。')
+        ->assertSee('将克隆 1 个资源。');
 
     expect($component->get('servers')->pluck('id')->all())->toBe([$this->serverA->id]);
 });

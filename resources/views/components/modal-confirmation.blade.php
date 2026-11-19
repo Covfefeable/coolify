@@ -1,8 +1,8 @@
 @props([
-    'title' => 'Are you sure?',
+    'title' => __('Are you sure?'),
     'isErrorButton' => false,
     'isHighlightedButton' => false,
-    'buttonTitle' => 'Confirm Action',
+    'buttonTitle' => __('Confirm Action'),
     'buttonFullWidth' => false,
     'customButton' => null,
     'disabled' => false,
@@ -91,12 +91,12 @@
             $wire.$refresh();
         }
     },
-    step1ButtonText: @js($step1ButtonText),
-    step2ButtonText: @js($effectiveStep2ButtonText),
-    step3ButtonText: @js($step3ButtonText),
+    step1ButtonText: @js(__($step1ButtonText)),
+    step2ButtonText: @js(__($effectiveStep2ButtonText)),
+    step3ButtonText: @js(__($step3ButtonText)),
     validatePassword() {
         if (this.confirmWithPassword && !this.password) {
-            return 'Password is required.';
+            return @js(__('Password is required.'));
         }
         return '';
     },
@@ -266,7 +266,7 @@
                     <!-- Step 2: Confirm deletion -->
                     <div x-show="step === 2">
                         <x-callout type="danger" title="{{ __('Warning') }}" class="mb-4">
-                            {!! $warningMessage ?: 'This operation is permanent and cannot be undone. Please think again before proceeding!' !!}
+                            {!! $warningMessage ?: __('This operation is permanent and cannot be undone. Please think again before proceeding!') !!}
                         </x-callout>
                         <div class="mb-2 text-[12px] font-medium text-neutral-700 dark:text-fg-dim">{{ __('The following actions will be performed:') }}</div>
                         <ul class="mb-4 space-y-2">
@@ -297,7 +297,7 @@
                             @if ($confirmWithText)
                                 <div class="mb-4">
                                     <h4 class="mb-1 text-[12px] font-semibold">{{ __('Confirm actions') }}</h4>
-                                    <p class="mb-2 text-[12px] leading-5 text-neutral-500 dark:text-fg-dim">{{ $confirmationLabel }}</p>
+                                    <p class="mb-2 text-[12px] leading-5 text-neutral-500 dark:text-fg-dim">{{ __($confirmationLabel) }}</p>
                                     <div class="relative mb-2" x-data="{ decodedText: confirmationText }">
                                         <div class="relative">
                                             <input type="text" x-model="decodedText" readonly class="input">
@@ -308,7 +308,7 @@
 
                                     <label for="userConfirmationText"
                                         class="mt-4 mb-1.5 block text-[12px] font-medium text-neutral-700 dark:text-fg-dim">
-                                        {{ $shortConfirmationLabel }}
+                                        {{ __($shortConfirmationLabel) }}
                                     </label>
                                     <input type="text" x-model="userConfirmationText" class="input w-full">
                                 </div>
@@ -361,7 +361,7 @@
                     @if (!$skipPasswordConfirmation)
                         <div x-show="step === 3 && confirmWithPassword">
                             <x-callout type="danger" title="{{ __('Final Confirmation') }}" class="mb-4">
-                                Please enter your password to confirm this destructive action.
+                                {{ __('Please enter your password to confirm this destructive action.') }}
                             </x-callout>
                             <div class="flex flex-col gap-2 mb-4">
                                 @php
@@ -369,7 +369,7 @@
                                 @endphp
                                 <label for="password-confirm-{{ $passwordConfirm }}"
                                     class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                    Your Password
+                                    {{ __('Your Password') }}
                                 </label>
                                 {{-- Add the field when this step shows: password managers do not detect a hidden field that becomes visible. --}}
                                 <template x-if="step === 3">
