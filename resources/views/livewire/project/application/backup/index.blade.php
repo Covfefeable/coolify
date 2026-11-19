@@ -200,7 +200,7 @@
                                 </span>
                                 <span class="min-w-0">
                                     <span role="button" tabindex="0" class="table-filter-value"
-                                        title="Filter by {{ $backup->targetType() }}"
+                                        title="{{ __('Filter by :value', ['value' => $backup->targetType()]) }}"
                                         x-on:click.prevent.stop="typeFilter = typeFilter === @js(strtolower($backup->targetType())) ? 'all' : @js(strtolower($backup->targetType()))"
                                         x-on:keydown.enter.prevent.stop="$el.click()">{{ $backup->targetType() }}</span>
                                 </span>

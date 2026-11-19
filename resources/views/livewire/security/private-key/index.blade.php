@@ -104,7 +104,7 @@
                         </div>
                         <div class="flex justify-end">
                             <button type="button" class="icon-button" title="{{ __('Edit private key') }}"
-                                aria-label="Edit {{ $key->name }}"
+                                aria-label="{{ __('Edit :value', ['value' => $key->name]) }}"
                                 @click="$dispatch('open-private-key-editor', { name: @js($key->name), description: @js($key->description ?? '') })"
                                 wire:click="openEditor('{{ $key->uuid }}')">
                                 <x-reicon name="settings" class="size-3.5" />

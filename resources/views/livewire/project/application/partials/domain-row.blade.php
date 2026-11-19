@@ -110,7 +110,7 @@
             @elseif (! str_starts_with($row['url'], 'https://') || ! $isForceHttpsEnabled)
                 <span>{{ __('No redirects') }}</span>
             @endif
-            <span>Port {{ $row['internal_port'] ?? 'missing' }}</span>
+            <span>{{ __('Port :value', ['value' => $row['internal_port'] ?? 'missing']) }}</span>
             <span>{{ $isNoindexed ? 'Noindex' : 'Indexable' }}</span>
         </div>
 
@@ -158,7 +158,7 @@
                         </x-table.row-action>
                         <x-table.row-action
                             x-on:click="openEditDomain({{ \Illuminate\Support\Js::from($index) }}, {{ \Illuminate\Support\Js::from($row['url']) }}, {{ \Illuminate\Support\Js::from($editingParts) }}, {{ \Illuminate\Support\Js::from($row['service']) }}, {{ \Illuminate\Support\Js::from($isNoindexed ? 'noindex' : 'index') }}, {{ \Illuminate\Support\Js::from($rowDirection) }}, {{ \Illuminate\Support\Js::from($row['inherited_port'] ?? null) }})"
-                            aria-label="Edit {{ $publicUrl }}">
+                            aria-label="{{ __('Edit :value', ['value' => $publicUrl]) }}">
                             {{ __('Edit') }}
                         </x-table.row-action>
                         <x-slot:danger>

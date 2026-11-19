@@ -163,7 +163,7 @@
                                                 <span class="dark:text-white" x-text="fmt(preview?.recurring_tax)"></span>
                                             </div>
                                             <div class="flex justify-between gap-6 text-sm font-bold pt-1.5 border-t dark:border-coolgray-400 border-neutral-200">
-                                                <span class="dark:text-white">Total / <span x-text="preview?.billing_interval === 'year' ? 'year' : 'month'">month</span></span>
+                                                <span class="dark:text-white">{{ __('Total /') }} <span x-text="preview?.billing_interval === 'year' ? @js(__('year')) : @js(__('month'))">month</span></span>
                                                 <span class="dark:text-white" x-text="fmt(preview?.recurring_total)"></span>
                                             </div>
                                         </div>
@@ -289,9 +289,9 @@
                     @if ($refundCheckLoading)
                         <x-loading compact text="Checking refund eligibility..." />
                     @elseif ($isRefundEligible)
-                        Eligible for a full refund &mdash; <strong class="dark:text-warning">{{ $refundDaysRemaining }}</strong> days remaining.
+                        {{ __('Eligible for a full refund for :days more days.', ['days' => $refundDaysRemaining]) }}
                     @elseif ($refundAlreadyUsed)
-                        Refund already processed. Each team is eligible for one refund only.
+                        {{ __('Refund already processed. Each team is eligible for one refund only.') }}
                     @else
                         Not eligible for a refund.
                     @endif

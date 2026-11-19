@@ -406,9 +406,7 @@
                         </header>
                         <div class="application-settings-section-body">
                             <x-callout type="warning" title="{{ __('Unrecognized internal port') }}" class="mb-4">
-                                Port <strong>{{ $unrecognizedPort }}</strong> is not listed in Ports Exposes
-                                and is not used by any application domain. The proxy will still route to it,
-                                but the container may not be listening there.
+                                {{ __('Port :port is not listed in the exposed ports and is unused by any application domain. The proxy will still route to it, but the container may not be listening.', ['port' => $unrecognizedPort]) }}
                             </x-callout>
 
                             <div class="mt-4 flex flex-wrap justify-end gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">

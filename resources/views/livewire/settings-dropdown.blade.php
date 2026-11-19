@@ -76,7 +76,7 @@
             @if ($unreadCount > 0)
                 <span
                     class="absolute right-2 top-1/2 -translate-y-1/2 bg-error text-white text-[10px] rounded-full min-w-4 h-4 px-1 flex items-center justify-center"
-                    aria-label="{{ $unreadCount }} unread changelog {{ Str::plural('entry', $unreadCount) }}">
+                    aria-label="{{ __(':count unread changelog entries', ['count' => $unreadCount]) }}">
                     {{ $unreadCount > 9 ? '9+' : $unreadCount }}
                 </span>
             @endif
@@ -95,7 +95,7 @@
             @if ($unreadCount > 0)
                 <span
                     class="ml-auto flex h-4 min-w-4 items-center justify-center rounded-full bg-error px-1 text-[10px] text-white"
-                    aria-label="{{ $unreadCount }} unread changelog {{ Str::plural('entry', $unreadCount) }}">
+                    aria-label="{{ __(':count unread changelog entries', ['count' => $unreadCount]) }}">
                     {{ $unreadCount > 9 ? '9+' : $unreadCount }}
                 </span>
             @endif

@@ -147,7 +147,7 @@
                     <div class="application-settings-section-body" :class="viewMode === 'list' && 'is-flush'">
                         <div class="text-left" :class="viewClasses.container">
                             <template x-for="application in filteredGitBasedApplications" :key="application.id">
-                                <article role="button" tabindex="0" :aria-label="'Configure ' + application.name"
+                                <article role="button" tabindex="0" :aria-label="@js(__('Configure :name')).replace(':name', () => application.name)"
                                     @click="setType(application.id)" @keydown.enter.self.prevent="setType(application.id)"
                                     @keydown.space.self.prevent="setType(application.id)"
                                     class="group flex cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
@@ -195,7 +195,7 @@
                             </template>
 
                             <template x-for="application in filteredDockerBasedApplications" :key="application.id">
-                                <article role="button" tabindex="0" :aria-label="'Configure ' + application.name"
+                                <article role="button" tabindex="0" :aria-label="@js(__('Configure :name')).replace(':name', () => application.name)"
                                     @click="setType(application.id)" @keydown.enter.self.prevent="setType(application.id)"
                                     @keydown.space.self.prevent="setType(application.id)"
                                     class="group flex cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
@@ -247,7 +247,7 @@
                     <div class="application-settings-section-body" :class="viewMode === 'list' && 'is-flush'">
                         <div class="text-left" :class="viewClasses.container">
                             <template x-for="database in filteredDatabases" :key="database.id">
-                                <article role="button" tabindex="0" :aria-label="'Configure ' + database.name"
+                                <article role="button" tabindex="0" :aria-label="@js(__('Configure :name')).replace(':name', () => database.name)"
                                     @click="setType(database.id)" @keydown.enter.self.prevent="setType(database.id)"
                                     @keydown.space.self.prevent="setType(database.id)"
                                     class="group flex cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent"
@@ -331,7 +331,7 @@
 
                         <div class="text-left" :class="viewClasses.container">
                             <template x-for="service in filteredServices" :key="service.name">
-                                <article role="button" tabindex="0" :aria-label="'Configure ' + service.name"
+                                <article role="button" tabindex="0" :aria-label="@js(__('Configure :name')).replace(':name', () => service.name)"
                                     @click="setType('one-click-service-' + service.id)"
                                     @keydown.enter.self.prevent="setType('one-click-service-' + service.id)"
                                     @keydown.space.self.prevent="setType('one-click-service-' + service.id)"
@@ -692,13 +692,12 @@
         </div>
     @endif
     @if ($current_step === 'servers')
-        <x-application.settings-section title="Select a server"
+        <x-application.settings-section title="{{ __('Select a server') }}"
             description="{{ __('Choose the machine that will host this resource.') }}" flush>
             @if ($onlyBuildServerAvailable)
                 <x-callout type="warning" title="{{ __('No deployment server') }}" class="m-4">
                     Only build servers are available. Add or reconfigure a server before continuing.
-                    <a class="font-medium underline" href="{{ route('server.index') }}" {{ wireNavigate() }}>Open
-                        servers</a>
+                    <a class="font-medium underline" href="{{ route('server.index') }}" {{ wireNavigate() }}>{{ __('Open servers') }}</a>
                 </x-callout>
             @endif
             <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
@@ -725,8 +724,7 @@
                             description="{{ __('Validate a reachable server before creating this resource.') }}"
                             icon-name="servers" size="sm">
                             <x-slot:actions>
-                                <a class="button" href="{{ route('server.index') }}" {{ wireNavigate() }}>Open
-                                    servers</a>
+                                <a class="button" href="{{ route('server.index') }}" {{ wireNavigate() }}>{{ __('Open servers') }}</a>
                             </x-slot:actions>
                         </x-empty>
                     @endif
@@ -741,8 +739,7 @@
                         <span class="min-w-0 flex-1">
                             <span
                                 class="block truncate text-[13px] font-semibold text-black dark:text-fg">{{ $buildServer->name }}</span>
-                            <span class="block text-[11px] text-neutral-500 dark:text-fg-faint">Build-only servers
-                                cannot host resources.</span>
+                            <span class="block text-[11px] text-neutral-500 dark:text-fg-faint">{{ __('Build-only servers cannot host resources.') }}</span>
                         </span>
                         <x-status-badge status="Build only" />
                         <a href="{{ route('server.show', ['server_uuid' => $buildServer->uuid]) }}"
@@ -753,7 +750,7 @@
         </x-application.settings-section>
     @endif
     @if ($current_step === 'destinations')
-        <x-application.settings-section title="Select a destination"
+        <x-application.settings-section title="{{ __('Select a destination') }}"
             description="{{ __('Destinations separate resources by Docker network. Use the default destination when unsure.') }}"
             flush>
             <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
@@ -785,8 +782,7 @@
                             <span class="min-w-0 flex-1">
                                 <span
                                     class="block truncate text-[13px] font-semibold text-black dark:text-fg">{{ $standaloneDocker->name }}</span>
-                                <span class="block truncate text-[11px] text-neutral-500 dark:text-fg-faint">Network:
-                                    {{ $standaloneDocker->network }}</span>
+                                <span class="block truncate text-[11px] text-neutral-500 dark:text-fg-faint">{{ __('Network: :network', ['network' => $standaloneDocker->network]) }}</span>
                             </span>
                             <x-status-badge type="success" status="Standalone Docker" />
                         </button>
@@ -799,8 +795,7 @@
         <div x-data="{ selecting: false }">
             <div class="mb-4">
                 <h2 class="text-[15px]! font-semibold!">{{ __('Select a PostgreSQL image') }}</h2>
-                <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">Use PostgreSQL 18 unless the workload
-                    needs bundled extensions.</p>
+                <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">{{ __('Use PostgreSQL 18 unless the workload needs bundled extensions.') }}</p>
             </div>
             <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
                 <div class="group relative flex min-h-24 items-center gap-3 rounded-xl border border-neutral-200 bg-white p-4 transition-colors hover:border-neutral-300 dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]"
@@ -961,8 +956,7 @@
         <div x-data="{ selecting: false }">
             <div class="mb-4">
                 <h2 class="text-[15px]! font-semibold!">{{ __('Select a Redis or Valkey image') }}</h2>
-                <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">Both work with the same clients, commands,
-                    and configuration.</p>
+                <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">{{ __('Both work with the same clients, commands, and configuration.') }}</p>
             </div>
             <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
                 <div class="group relative flex min-h-24 items-center gap-3 rounded-xl border border-neutral-200 bg-white p-4 transition-colors hover:border-neutral-300 dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]"

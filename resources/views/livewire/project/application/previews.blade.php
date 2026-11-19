@@ -86,10 +86,10 @@
 
             <div class="w-full">
                 <x-forms.listbox id="isPrDeploymentsPublicEnabled" label="{{ __('PR deployment access') }}" onChange="savePreviewSettings"
-                    helper="When public, anyone can trigger PR deployments. Otherwise only PRs from branches in the same repository are deployed and fork PRs are blocked.<br><br><span class='font-bold'>{{ __('Secrets:') }}</span> the code of a fork PR can read all environment variables of its preview. When public, previews do not get preview variables that still have the production value, and shared variables are resolved only in preview variables, not in the compose file of the PR. This is not full isolation: the preview runs on the same server as production, and with the Docker Compose build pack Coolify deploys the compose file of the PR, which can, for example, mount host paths. Give previews their own values, and do not use production secrets in them."
+                    helper="{{ __('When public, anyone can trigger pull request deployments. Otherwise, only branches in the same repository can deploy.') }}<br><br>{{ __('Fork pull request code can read all environment variables in its preview. Public previews exclude variables that still have production values. Shared variables resolve only in preview variables. The preview shares the production server. With the Docker Compose build pack, Coolify deploys the pull request Compose file, which can mount host paths. Give previews separate values and keep production secrets out of them.') }}"
                     :options="[
-                        ['value' => false, 'label' => 'Repository members only'],
-                        ['value' => true, 'label' => 'Public (fork PRs allowed)'],
+                        ['value' => false, 'label' => __('Repository members only')],
+                        ['value' => true, 'label' => __('Public (fork PRs allowed)')],
                     ]" :disabled="! $canUpdate || ! $isPreviewDeploymentsEnabled" />
             </div>
         </x-application.settings-section>

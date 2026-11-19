@@ -144,7 +144,7 @@
                     @elseif (! str_starts_with($row['url'], 'https://') || ! ($forceHttpsRedirects[$row['service_application_id']] ?? true))
                         <span>{{ __('No redirects') }}</span>
                     @endif
-                    <span>Port {{ $row['internal_port'] ?? 'missing' }}</span>
+                    <span>{{ __('Port :value', ['value' => $row['internal_port'] ?? 'missing']) }}</span>
                     <span>{{ $isNoindexed ? 'Noindex' : 'Indexable' }}</span>
                 </div>
 
@@ -192,7 +192,7 @@
                                     wire:target="checkDomainDns({{ $index }}),checkAllDns">
                                     {{ __('Check DNS') }}
                                 </x-table.row-action>
-                                <x-table.row-action aria-label="Edit {{ $publicUrl }}"
+                                <x-table.row-action aria-label="{{ __('Edit :value', ['value' => $publicUrl]) }}"
                                     x-on:click="openEditDomain({{ \Illuminate\Support\Js::from($index) }}, {{ \Illuminate\Support\Js::from($row['url']) }}, {{ \Illuminate\Support\Js::from($editingParts) }}, {{ \Illuminate\Support\Js::from((int) $row['service_application_id']) }}, {{ \Illuminate\Support\Js::from($serviceLabel) }}, {{ \Illuminate\Support\Js::from($isNoindexed ? 'noindex' : 'index') }}, {{ \Illuminate\Support\Js::from($rowDirection) }})">
                                     {{ __('Edit') }}
                                 </x-table.row-action>

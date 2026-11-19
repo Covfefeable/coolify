@@ -48,7 +48,7 @@
                         <div class="application-settings-section-header">
                             <div>
                                 <h2>{{ __('Scheduled backups') }}</h2>
-                                <p>Automate backups for {{ $serviceDatabase->human_name ?: $serviceDatabase->name }}.</p>
+                                <p>{{ __('Automate backups for :value.', ['value' => $serviceDatabase->human_name ?: $serviceDatabase->name]) }}</p>
                             </div>
                             @can('update', $serviceDatabase)
                                 <div class="flex flex-wrap items-center gap-2">

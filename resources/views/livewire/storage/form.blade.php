@@ -2,7 +2,7 @@
     <x-unsaved-bar action="submit" />
 
     <x-application.settings-section title="{{ __('General') }}"
-        description="{{ $storage->isS3() ? 'S3-compatible destination' : $storage->type->label().' destination' }} used by database and volume backups.">
+        description="{{ $storage->isS3() ? 'S3-compatible destination' : $storage->type->label().' destination' }} {{ __('used by database and volume backups.') }}">
         <x-slot:actions>
             @can('validateConnection', $storage)
                 <x-forms.button type="button" wire:click="testConnection">

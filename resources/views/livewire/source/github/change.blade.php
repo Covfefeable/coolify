@@ -315,7 +315,7 @@
                             </div>
 
                             <x-forms.listbox id="preview_deployment_permissions"
-                                label="Preview deployment access" :options="[
+                                label="{{ __('Preview deployment access') }}" :options="[
                                     ['value' => false, 'label' => 'Do not update pull requests'],
                                     ['value' => true, 'label' => __('Read and update pull requests')],
                                 ]"

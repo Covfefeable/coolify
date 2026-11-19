@@ -55,8 +55,7 @@
             @endcan
             @if ($fetchedHostKeys !== [])
                 <x-callout type="warning" title="{{ __('Compare these fingerprints before you accept them') }}" class="mb-4">
-                    <p>These are the keys that the Git host sends now. Accept them only if the fingerprint is the same
-                        as the fingerprint from the administrator of the Git host.</p>
+                    <p>{{ __('These are the keys that the Git host sends now. Accept them only if the fingerprint is the same as the fingerprint from the administrator of the Git host.') }}</p>
                     <ul class="my-2 flex flex-col gap-1">
                         @foreach ($this->fetchedHostKeyFingerprints() as $fingerprint)
                             <li class="break-all"><span class="font-medium">{{ $fingerprint['host'] }}</span>
@@ -109,7 +108,7 @@
                                 <x-slot:trigger>
                                     <button type="button"
                                         class="icon-button shrink-0 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
-                                        title="{{ __('Remove host key') }}" aria-label="Remove host key of {{ $fingerprint['host'] }}">
+                                        title="{{ __('Remove host key') }}" aria-label="{{ __('Remove host key of :value', ['value' => $fingerprint['host']]) }}">
                                         <x-reicon name="trash" class="size-3.5" />
                                     </button>
                                 </x-slot:trigger>
@@ -188,10 +187,10 @@
                             <div class="flex justify-end">
                                 <button type="button" wire:click="setPrivateKey({{ $key->id }})"
                                     wire:loading.attr="disabled" wire:target="setPrivateKey"
-                                    title="Select {{ $key->name }}" aria-label="Select {{ $key->name }}"
+                                    title="{{ __('Select :value', ['value' => $key->name]) }}" aria-label="{{ __('Select :value', ['value' => $key->name]) }}"
                                     class="icon-button disabled:cursor-wait disabled:opacity-60">
                                     <span wire:loading.remove wire:target="setPrivateKey({{ $key->id }})"><x-reicon name="link" class="size-3.5" /></span>
-                                    <span wire:loading wire:target="setPrivateKey({{ $key->id }})"><x-loading compact /><span class="sr-only">Applying {{ $key->name }}</span></span>
+                                    <span wire:loading wire:target="setPrivateKey({{ $key->id }})"><x-loading compact /><span class="sr-only">{{ __('Applying :value', ['value' => $key->name]) }}</span></span>
                                 </button>
                             </div>
                         </div>
@@ -299,11 +298,10 @@
                 </div>
                 @if ($currentSource && $sources->isEmpty())
                     <p class="mt-3 text-[12px] leading-5 text-neutral-500 dark:text-fg-dim">
-                        No other sources available.
+                        {{ __('No other sources available.') }}
                         <a href="{{ route('source.all') }}" {{ wireNavigate() }}
-                            class="font-medium text-coollabs underline-offset-2 hover:underline dark:text-brand-light">Connect
-                            another source</a>
-                        to switch providers.
+                            class="font-medium text-coollabs underline-offset-2 hover:underline dark:text-brand-light">{{ __('Connect another source') }}</a>
+                        {{ __('to switch providers.') }}
                     </p>
                 @endif
             </x-application.settings-section>

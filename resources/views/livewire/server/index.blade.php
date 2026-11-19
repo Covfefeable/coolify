@@ -156,7 +156,7 @@
                             </div>
                             @if ($serverRow['statusType'] !== 'success')
                                 <span data-tooltip="{{ $serverRow['status'] }}"
-                                    aria-label="Server status: {{ $serverRow['status'] }}"
+                                    aria-label="{{ __('Server status: :value', ['value' => $serverRow['status']]) }}"
                                     @class([
                                         'ml-auto flex size-6 shrink-0 items-center justify-center rounded-md',
                                         'text-orange-500 dark:text-warning' => $serverRow['statusType'] === 'warning',

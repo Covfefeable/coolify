@@ -77,8 +77,7 @@
         @else
             <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-[11px] leading-5 text-neutral-600 dark:border-white/[0.08] dark:bg-white/[0.025] dark:text-fg-dim">
                 <div class="font-medium text-black dark:text-fg">Capability: Secrets (read-only)</div>
-                <p>Coolify reads secrets from this provider at deployment time and writes them into the generated
-                    <code>.env</code> file. Secret values are never stored in the Coolify database.</p>
+                <p>{{ __('Coolify fetches secrets at deployment time and writes them to the generated .env file. Secret values are never stored in the Coolify database.') }}</p>
             </div>
         @endif
 
@@ -86,10 +85,10 @@
             <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-[11px] leading-5 text-neutral-600 dark:border-white/[0.08] dark:bg-white/[0.025] dark:text-fg-dim">
                 <div class="font-medium text-black dark:text-fg">{{ __('Required Cloudflare permissions') }}</div>
                 <ul class="list-inside list-disc">
-                    <li>Zone - DNS - Edit</li>
-                    <li>Zone - Zone - Read</li>
+                    <li>{{ __('Zone - DNS - Edit') }}</li>
+                    <li>{{ __('Zone - Zone - Read') }}</li>
                     @if (in_array('tunnel', $capabilities, true))
-                        <li>Account - Cloudflare Tunnel - Edit</li>
+                        <li>{{ __('Account - Cloudflare Tunnel - Edit') }}</li>
                     @endif
                 </ul>
                 <p>{{ __('Limit zone resources to the zones Coolify should manage.') }}</p>
@@ -103,8 +102,7 @@
         @elseif ($provider === 'doppler')
             <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-[11px] leading-5 text-neutral-600 dark:border-white/[0.08] dark:bg-white/[0.025] dark:text-fg-dim">
                 <div class="font-medium text-black dark:text-fg">{{ __('Recommended Doppler token') }}</div>
-                <p>Use a read-only <span class="font-medium">Service Token</span> (dp.st.*). It is pinned to one
-                    project and config. Create it in Doppler under Project &gt; Config &gt; Access.</p>
+                <p>{{ __('Create a read-only Service Token (dp.st.*) in Doppler under Project → Config → Access. The token is scoped to one project and configuration.') }}</p>
                 <a href="https://dashboard.doppler.com?ref=coolify.io" target="_blank" rel="noopener noreferrer" class="button mt-2">
                     Open Doppler dashboard
                     <x-external-link />
@@ -113,8 +111,7 @@
         @elseif ($provider === 'infisical')
             <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-[11px] leading-5 text-neutral-600 dark:border-white/[0.08] dark:bg-white/[0.025] dark:text-fg-dim">
                 <div class="font-medium text-black dark:text-fg">{{ __('Infisical machine identity') }}</div>
-                <p>Create a machine identity with Universal Auth and read access to your project. Paste the client
-                    ID above and the client secret in the secret field.</p>
+                <p>{{ __('Create a machine identity with Universal Auth and read access to your project. Paste the client ID above and the client secret in the secret field.') }}</p>
                 <a href="https://app.infisical.com?ref=coolify.io" target="_blank" rel="noopener noreferrer" class="button mt-2">
                     Open Infisical Cloud
                     <x-external-link />
@@ -123,8 +120,7 @@
         @elseif ($provider === 'vault')
             <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-[11px] leading-5 text-neutral-600 dark:border-white/[0.08] dark:bg-white/[0.025] dark:text-fg-dim">
                 <div class="font-medium text-black dark:text-fg">{{ __('Vault token') }}</div>
-                <p>Use a token with read access to your KV v2 secrets. Prefer a periodic or long-lived token —
-                    deployments fail when the token expires.</p>
+                <p>{{ __('Use a token with read access to your KV v2 secrets. Prefer a periodic or long-lived token — deployments fail when the token expires.') }}</p>
                 <a href="https://portal.cloud.hashicorp.com?ref=coolify.io" target="_blank" rel="noopener noreferrer" class="button mt-2">
                     Open HCP Vault
                     <x-external-link />

@@ -10,8 +10,8 @@
 
 <div class="flex flex-col gap-6">
     @if ($offState === 'server')
-        <x-empty title="Image scanning is off for {{ $serverName }}."
-            :description="$serverUrl === null ? 'Ask a team admin to turn it on.' : null" icon-name="shield-alert">
+        <x-empty title="{{ __('Image scanning is off for :value.', ['value' => $serverName]) }}"
+            :description="$serverUrl === null ? __('Ask a team admin to turn it on.') : null" icon-name="shield-alert">
             @if ($serverUrl !== null)
                 <x-slot:actions>
                     <a class="button normal-case!" href="{{ $serverUrl }}" {{ wireNavigate() }}>{{ __('Turn on') }}</a>
@@ -114,7 +114,7 @@
                                             <span class="{{ $muted }}">{{ $row['status'] === 'ok' ? 'No action needed' : 'Not checked' }}</span>
                                         @endif
                                         @if ($row['mergedWith'] !== null)
-                                            <span class="{{ $muted }}">Updated with {{ $row['mergedWith'] }}</span>
+                                            <span class="{{ $muted }}">{{ __('Updated with :value', ['value' => $row['mergedWith']]) }}</span>
                                         @elseif ($row['primary'] !== null)
                                             @include('livewire.image-scan.partials.security-action', ['action' => $row['primary'], 'primary' => $loop->first, 'withSentence' => false, 'keyPrefix' => $row['key']])
                                         @endif
@@ -264,7 +264,7 @@
                                         <div class="flex min-w-0 items-center gap-1.5">
                                             <button type="button" class="icon-button" x-on:click="open = !open"
                                                 :aria-expanded="open ? 'true' : 'false'"
-                                                aria-label="Show the findings of {{ $group['package'] }}">
+                                                aria-label="{{ __('Show the findings of :value', ['value' => $group['package']]) }}">
                                                 <x-reicon name="chevron-down" class="size-3.5 transition-transform duration-150"
                                                     ::class="open ? 'rotate-0' : '-rotate-90'" />
                                             </button>
@@ -290,7 +290,7 @@
                                         <span class="flex justify-end">
                                             @if ($canUpdate)
                                                 <button type="button" class="icon-button" data-tooltip="{{ __('Ignore package') }}"
-                                                    aria-label="Ignore {{ $group['package'] }}"
+                                                    aria-label="{{ __('Ignore :value', ['value' => $group['package']]) }}"
                                                     x-on:click="$dispatch('open-ignore-modal', {
                                                         target: {{ \Illuminate\Support\Js::from($group['package']) }},
                                                         kind: 'package',

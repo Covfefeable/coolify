@@ -253,7 +253,7 @@
                                     :options="collect([$fqdn, $ipv4, $ipv6, config('app.url')])
                                         ->filter()->unique()->map(fn ($endpoint) => [
                                             'value' => $endpoint,
-                                            'label' => 'Use '.$endpoint,
+                                            'label' => __('Use :endpoint', ['endpoint' => $endpoint]),
                                         ])->values()->all()" />
                             </div>
                             <div class="lg:col-span-2" x-cloak x-show="useCustomWebhookEndpoint">

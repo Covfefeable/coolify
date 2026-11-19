@@ -34,7 +34,7 @@
                 </x-slot:action>
             </x-danger-zone>
         @endif
-        <x-danger-zone title="Delete {{ $resourceLabel }}">
+        <x-danger-zone title="{{ __('Delete :value', ['value' => $resourceLabel]) }}">
                     <p>
                         Permanently delete
                         <strong class="font-semibold text-black dark:text-fg">{{ $resourceName }}</strong>,
@@ -43,12 +43,12 @@
                     <ul class="space-y-1 text-xs">
                         <li>{{ __('• Active deployments will be stopped.') }}</li>
                         <li>{{ __('• Selected volumes and stored data may be permanently removed.') }}</li>
-                        <li>• This {{ $resourceLabel }} cannot be restored from Coolify after deletion.</li>
+                        <li>{{ __('• This :value cannot be restored from Coolify after deletion.', ['value' => $resourceLabel]) }}</li>
                     </ul>
                 <x-slot:action>
                     @if ($canDelete)
-                        <x-modal-confirmation title="Delete {{ $resourceLabel }}?"
-                            buttonTitle="Delete {{ $resourceLabel }}"
+                        <x-modal-confirmation title="{{ __('Delete :value?', ['value' => $resourceLabel]) }}"
+                            buttonTitle="{{ __('Delete :value', ['value' => $resourceLabel]) }}"
                             isErrorButton submitAction="delete" :checkboxes="$checkboxes"
                             :actions="['Permanently delete this resource and its selected Docker resources.']"
                             confirmationText="{{ $resourceName }}"

@@ -381,8 +381,8 @@
                             <x-callout type="warning" title="{{ __('The data does not move to the new volume') }}" class="mb-4">
                                 <ul class="mt-2 ml-4 list-disc">
                                     <li>{{ __('Changing the name does not rename or move the Docker volume.') }}</li>
-                                    <li>After the next restart or deployment, the resource uses the Docker volume <strong>{{ $pendingRename['to'] }}</strong>. If that volume does not exist, Docker creates it empty.</li>
-                                    <li>Your data stays in <strong>{{ $pendingRename['from'] }}</strong>. Coolify does not copy it, and does not delete it when you delete this resource.</li>
+                                    <li>{!! __('After the next restart or deployment, the resource uses the Docker volume :volume. If that volume does not exist, Docker creates it empty.', ['volume' => '<strong>'.e($pendingRename['to']).'</strong>']) !!}</li>
+                                    <li>{!! __('Your data stays in :volume. Coolify does not copy it, and does not delete it when you delete this resource.', ['volume' => '<strong>'.e($pendingRename['from']).'</strong>']) !!}</li>
                                     <li>{{ __('To keep your data, stop the resource and copy the data into the new volume before you start it again.') }}</li>
                                 </ul>
                             </x-callout>

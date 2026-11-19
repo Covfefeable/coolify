@@ -390,7 +390,8 @@ it('hides PR deployment suffix for databases', function () {
         ->assertDontSee('PR deployment suffix');
 });
 
-it('asks for confirmation before it changes the volume name', function () {
+it('asks for confirmation before it changes the volume name', function (string $locale, string $title, string $warning) {
+    app()->setLocale($locale);
     [$application, $volume] = createApplicationWithVolume();
     $oldName = $volume->name;
 
@@ -399,8 +400,8 @@ it('asks for confirmation before it changes the volume name', function () {
         ->call('submit', $volume->id)
         ->assertNotDispatched('success')
         ->assertSet('pendingRename', ['storageId' => $volume->id, 'from' => $oldName, 'to' => 'renamed-data'])
-        ->assertSee('Change the volume name?')
-        ->assertSee("Your data stays in <strong>{$oldName}</strong>", false);
+        ->assertSee($title)
+        ->assertSeeHtml("{$warning} <strong>{$oldName}</strong>");
 
     expect($volume->refresh()->name)->toBe($oldName);
 
@@ -409,7 +410,10 @@ it('asks for confirmation before it changes the volume name', function () {
         ->assertSet('pendingRename', null);
 
     expect($volume->refresh()->name)->toBe('renamed-data');
-});
+})->with([
+    'English' => ['en', 'Change the volume name?', 'Your data stays in'],
+    'Simplified Chinese' => ['zh-cn', '更改卷名称？', '现有数据仍保存在'],
+]);
 
 it('asks again when the volume name changes after the warning', function () {
     [$application, $volume] = createApplicationWithVolume();

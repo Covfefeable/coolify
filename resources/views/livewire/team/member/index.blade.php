@@ -106,7 +106,7 @@
                 <div
                     class="border-b border-neutral-200 px-4 py-2.5 text-[12px] dark:border-white/[0.08]">
                     @if ($membersWithoutTwoFactorCount > 0)
-                        <span class="text-warning-700 dark:text-warning">{{ $membersWithoutTwoFactorCount }} of {{ $members->count() }} {{ Str::plural('member', $members->count()) }} {{ $membersWithoutTwoFactorCount === 1 ? 'does' : 'do' }} not have two-factor authentication enabled.</span>
+                        <span class="text-warning-700 dark:text-warning">{{ __(':count of :total members have not enabled two-factor authentication.', ['count' => $membersWithoutTwoFactorCount, 'total' => $members->count()]) }}</span>
                     @else
                         <span class="text-neutral-500 dark:text-fg-dim">{{ __('All members have two-factor authentication enabled.') }}</span>
                     @endif

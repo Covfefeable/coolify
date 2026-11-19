@@ -32,7 +32,7 @@
 
     <div class="application-settings-form flex w-full min-w-0 flex-col gap-6">
         @if (! $server->isFunctional())
-            <x-empty size="sm" icon-name="shield-alert" title="Coolify cannot reach {{ $server->name }}."
+            <x-empty size="sm" icon-name="shield-alert" title="{{ __('Coolify cannot reach :value.', ['value' => $server->name]) }}"
                 description="{{ __('Patching runs commands on the server. Validate the server first.') }}" />
         @else
         <form wire:submit="submit">
@@ -318,7 +318,7 @@
                                 @if ($canSelect)
                                     <input type="checkbox" wire:model.live="selectedPackages" value="{{ data_get($update, 'package') }}"
                                         id="select-package-{{ data_get($update, 'package') }}"
-                                        aria-label="Select {{ data_get($update, 'package') }}"
+                                        aria-label="{{ __('Select :value', ['value' => data_get($update, 'package')]) }}"
                                         class="size-4 cursor-pointer rounded-sm border-neutral-300 text-accent focus:ring-accent dark:border-white/20 dark:bg-transparent" />
                                 @endif
                             </div>

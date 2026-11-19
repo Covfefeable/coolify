@@ -400,7 +400,7 @@
                 <x-application.settings-subsection id="container-image-section" :title="$application->build_pack === 'dockerimage' ? __('Image') : __('Image registry')">
                     @if ($application->destination->server->isSwarm())
                         @if ($application->build_pack !== 'dockerimage')
-                            <div>Docker Swarm requires the image to be available in a registry. More info <a
+                            <div>{{ __('Docker Swarm requires the image to be available in a registry. More info') }} <a
                                     class="underline" href="https://coolify.io/docs/knowledge-base/docker/registry"
                                     target="_blank">here</a>.</div>
                         @endif

@@ -99,7 +99,7 @@
                     @if ($application->destination->server->id === 0)
                         <a class="{{ $linkItemClasses }}" target="_blank"
                             href="http://localhost:{{ explode(':', $port)[0] }}">
-                            <span class="min-w-0 truncate">Port {{ $port }}</span>
+                            <span class="min-w-0 truncate">{{ __('Port :value', ['value' => $port]) }}</span>
                         </a>
                     @else
                         <a class="{{ $linkItemClasses }}" target="_blank"

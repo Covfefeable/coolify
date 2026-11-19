@@ -41,8 +41,7 @@
                 @endcan
             </div>
         @else
-            <p class="text-sm text-neutral-500 dark:text-neutral-400">Maintenance mode needs a Traefik or Caddy proxy on a
-                server that is not part of a Docker Swarm.</p>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">{{ __('Maintenance mode needs a Traefik or Caddy proxy on a server that is not part of a Docker Swarm.') }}</p>
         @endif
     </x-application.settings-section>
 </form>

@@ -214,7 +214,7 @@
                             <code class="rounded bg-neutral-100 px-1.5 py-0.5 text-[11px] dark:bg-white/[0.06]">read_user</code>,
                             <code class="rounded bg-neutral-100 px-1.5 py-0.5 text-[11px] dark:bg-white/[0.06]">read_repository</code>
                         </li>
-                        <li>Uncheck <strong class="text-black dark:text-fg">Confidential</strong> if you run into issues</li>
+                        <li>{{ __('Uncheck') }} <strong class="text-black dark:text-fg">Confidential</strong> {{ __('if you run into issues') }}</li>
                     </ul>
                 </div>
             </x-application.settings-section>
@@ -258,7 +258,7 @@
                                     :options="collect([$fqdn, $ipv4, $ipv6, config('app.url')])
                                         ->filter()->unique()->map(fn ($endpoint) => [
                                             'value' => $endpoint,
-                                            'label' => 'Use '.$endpoint,
+                                            'label' => __('Use :endpoint', ['endpoint' => $endpoint]),
                                         ])->values()->all()" />
                             </div>
                             <div class="lg:col-span-2" x-cloak x-show="useCustomWebhookEndpoint">

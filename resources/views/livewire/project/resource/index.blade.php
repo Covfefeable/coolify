@@ -21,7 +21,7 @@
                     <span x-text="`${resources.length} ${resources.length === 1 ? 'resource' : 'resources'}`"></span>
                     in <a href="{{ route('project.show', ['project_uuid' => $project->uuid]) }}" {{ wireNavigate() }}
                         class="font-medium text-neutral-700 underline-offset-2 hover:text-black hover:underline dark:text-fg dark:hover:text-white"
-                        title="Show all environments in {{ $project->name }}">{{ $project->name }}</a>
+                        title="{{ __('Show all environments in :value', ['value' => $project->name]) }}">{{ $project->name }}</a>
                 </p>
             </div>
             <div class="flex flex-wrap items-center gap-2 sm:shrink-0">

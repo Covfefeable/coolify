@@ -44,7 +44,7 @@
                     </a>
                 </x-slot:actions>
                 <x-api-disabled-callout class="mb-4"
-                    message="Enable API access before external services can call the deploy webhook." />
+                    message="{{ __('Enable API access before external services can call the deploy webhook.') }}" />
                 <x-forms.copy-input label="{{ __('Deploy webhook URL') }}" :text="$deploywebhook ?? ''" />
             </x-application.settings-section>
 
@@ -86,7 +86,7 @@
                                                     autocomplete="new-password" copyable />
                                                 <x-forms.button type="button"
                                                     wire:click="generateSecret('{{ $provider['key'] }}')"
-                                                    aria-label="Generate {{ $provider['name'] }} webhook secret">
+                                                    aria-label="{{ __('Generate :value webhook secret', ['value' => $provider['name']]) }}">
                                                     {{ __('Generate') }}
                                                 </x-forms.button>
                                             </div>
@@ -152,7 +152,7 @@
                     </a>
                 </x-slot:actions>
                 <x-api-disabled-callout class="mb-4"
-                    message="Enable API access before external services can call the deploy webhook." />
+                    message="{{ __('Enable API access before external services can call the deploy webhook.') }}" />
                 <x-forms.copy-input label="{{ __('Deploy webhook URL') }}" :text="$deploywebhook ?? ''" />
             </x-application.settings-section>
         </div>

@@ -71,12 +71,11 @@
                     </x-slot:actions>
                 @endcan
                 @if (! $enabled)
-                    <x-empty size="sm" icon-name="shield-alert" title="Image scanning is off for {{ $server->name }}."
+                    <x-empty size="sm" icon-name="shield-alert" title="{{ __('Image scanning is off for :value.', ['value' => $server->name]) }}"
                         description="{{ $costText }}">
                         @cannot('update', $server)
                             <x-slot:actions>
-                                <span class="text-[13px] text-neutral-500 dark:text-fg-faint">Ask a team admin to turn it
-                                    on.</span>
+                                <span class="text-[13px] text-neutral-500 dark:text-fg-faint">{{ __('Ask a team admin to turn it on.') }}</span>
                             </x-slot:actions>
                         @endcannot
                     </x-empty>

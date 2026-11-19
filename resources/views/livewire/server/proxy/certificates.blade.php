@@ -112,7 +112,7 @@
                                                             <x-slot:trigger>
                                                                 <button type="button"
                                                                     class="icon-button shrink-0 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
-                                                                    title="{{ __('Delete certificate') }}" aria-label="Delete certificate for {{ $certificate['main_domain'] }}">
+                                                                    title="{{ __('Delete certificate') }}" aria-label="{{ __('Delete certificate for :value', ['value' => $certificate['main_domain']]) }}">
                                                                     <x-reicon name="trash" class="size-3.5" />
                                                                 </button>
                                                             </x-slot:trigger>

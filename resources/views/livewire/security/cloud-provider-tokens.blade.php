@@ -54,7 +54,7 @@
                         <p class="hidden truncate text-[12px] text-neutral-500 sm:block dark:text-fg-dim">{{ $savedToken->description ?: '-' }}</p>
                         <div class="flex justify-end">
                             <button type="button" class="icon-button" title="{{ __('Edit cloud token') }}"
-                                aria-label="Edit {{ $savedToken->name }}" @click="modalOpen=true">
+                                aria-label="{{ __('Edit :value', ['value' => $savedToken->name]) }}" @click="modalOpen=true">
                                 <x-reicon name="settings" class="size-3.5" />
                             </button>
                         </div>

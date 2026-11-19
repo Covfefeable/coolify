@@ -189,8 +189,7 @@
                     </div>
                     <x-callout type="info" title="{{ __('Bucket auto-delete rule') }}" class="mt-4">
                         When you select an S3 storage, Coolify adds a lifecycle rule that deletes objects under
-                        <span class="font-mono">coolify-file-downloads/</span> after 1 day, as a safety net. The selected
-                        storage must be reachable from your servers, and the S3 provider must support lifecycle rules.
+                        <span class="font-mono">coolify-file-downloads/</span> {{ __('after 1 day, as a safety net. The selected storage must be reachable from your servers, and the S3 provider must support lifecycle rules.') }}
                     </x-callout>
                 </x-application.settings-subsection>
             </x-application.settings-section>

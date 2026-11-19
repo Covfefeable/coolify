@@ -18,6 +18,6 @@
     </div>
 
     <p class="text-xs text-neutral-500 dark:text-fg-faint">
-        This route is registered only when <code class="font-mono">APP_ENV</code> is local or testing.
+        This route is registered only when <code class="font-mono">APP_ENV</code> {{ __('is local or testing.') }}
     </p>
 </div>

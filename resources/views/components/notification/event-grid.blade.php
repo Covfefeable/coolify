@@ -127,13 +127,13 @@
                                                 {{ $event['label'] }}
                                             </div>
                                             <div class="text-[11px] text-neutral-500 dark:text-fg-dim">
-                                                Topic ID
+                                                {{ __('Topic ID') }}
                                             </div>
                                         </div>
                                         <x-forms.input wire:key="{{ $channel }}-thread-{{ $event['key'] }}"
                                             canGate="update" :canResource="$settings" type="password"
                                             :id="$event['threadModel']" :label="null"
-                                            :placeholder="'Optional'"
+                                            :placeholder="__('Optional')"
                                             :aria-label="$event['label'] . ' topic ID'" />
                                     </div>
                                 @endforeach

@@ -800,7 +800,7 @@
                             <div class="command-palette-empty">
                                 <p class="command-palette-empty-title">{{ __('No results found') }}</p>
                                 <p class="command-palette-empty-desc">
-                                    Try different keywords, or type <span class="font-medium">new</span> to create a resource.
+                                    {{ __('Try different keywords, or type') }} <span class="font-medium">new</span> {{ __('to create a resource.') }}
                                 </p>
                             </div>
                         </template>

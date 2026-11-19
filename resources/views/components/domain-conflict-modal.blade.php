@@ -38,7 +38,7 @@
                                 @foreach ($conflicts as $conflict)
                                     <li class="flex items-start text-[12px] leading-5 text-red-600 dark:text-red-400">
                                         <div>
-                                            <strong>{{ $conflict['domain'] }}</strong> is used by
+                                            <strong>{{ $conflict['domain'] }}</strong> {{ __('is used by') }}
                                             @if ($conflict['resource_type'] === 'instance' || blank($conflict['resource_link'] ?? null))
                                                 <strong>{{ $conflict['resource_name'] }}</strong>
                                             @else

@@ -274,7 +274,7 @@
 
             <template x-if="suggestions.length === 0 && currentScope && currentScope !== 'vault'">
                 <div class="px-2 py-2 text-sm text-neutral-500 dark:text-fg-dim">
-                    <div>No shared variables found in <span class="font-semibold" x-text="currentScope"></span> scope.</div>
+                    <div><span x-text="@js(__('No shared variables found in :scope.')).replace(':scope', () => currentScope)"></span></div>
                     <a :href="getScopeUrl(currentScope)"
                        class="mt-1 inline-block text-xs text-coollabs hover:underline dark:text-brand-light"
                        target="_blank">

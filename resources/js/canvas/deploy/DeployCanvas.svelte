@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import { translate } from '../../translate.js';
   import { ICONS, load, nodeById, PALETTE, save, STORE, withoutSecrets } from '../../deploy-canvas.js';
   import Dropdown from './Dropdown.svelte';
   import Edges from './Edges.svelte';
@@ -28,7 +29,7 @@
   const stop = e => e.stopPropagation();
   // A pill joined to the Deploy card: each address opens in a new tab.
   const resultNode = $derived(cv.result && nodeById(cv.result.after, cv.flow));
-  const foldTitle = $derived(folded ? 'Show the step names' : 'Collapse the steps');
+  const foldTitle = $derived(folded ? translate('Show the step names') : translate('Collapse the steps'));
 
   function toggleFolded() {
     save('collapsed', !load('collapsed', false));
@@ -81,11 +82,11 @@
   <div class="mr-auto flex min-w-0 items-center gap-2">
     {#if cv.target}
       <!-- Opened from an environment's New resource page: back to that environment. -->
-      <a class="cv-back button px-2!" href="/project/{cv.target.project}/environment/{cv.target.environment}" title="Back to the environment" aria-label="Back to the environment"><Icon name="back" cls="size-4" /></a>
+      <a class="cv-back button px-2!" href="/project/{cv.target.project}/environment/{cv.target.environment}" title={translate('Back to the environment')} aria-label={translate('Back to the environment')}><Icon name="back" cls="size-4" /></a>
     {/if}
     <BetaBadge />
   </div>
-  <button type="button" class="button shrink-0" title="Start again with an empty canvas" onclick={askReset}>Reset</button>
+  <button type="button" class="button shrink-0" title={translate('Start again with an empty canvas')} onclick={askReset}>{translate('Reset')}</button>
 {/snippet}
 
 <div class="cv-root" class:cv-dark={dark} class:cv-folded={folded} class:cv-docked={desktop}>
@@ -96,14 +97,14 @@
   {#if noticeOpen}
     <div class="cv-island cv-notice" role="note">
       <Icon name={ICONS.info} />
-      <p>The canvas is not optimized for mobile yet. It works best on a larger screen.{#if cv.target}{' On a phone, use the '}<a href="/project/{cv.target.project}/environment/{cv.target.environment}/new">New resource page</a>.{/if}</p>
-      <button type="button" class="cv-x" title="Close" aria-label="Close this notice" onclick={closeNotice}><Icon name={ICONS.x} /></button>
+      <p>{translate('The canvas is not optimized for mobile yet. It works best on a larger screen.')}{#if cv.target}{' ' + translate('On a phone, use the') + ' '}<a href="/project/{cv.target.project}/environment/{cv.target.environment}/new">{translate('New resource page')}</a>.{/if}</p>
+      <button type="button" class="cv-x" title={translate('Close')} aria-label={translate('Close this notice')} onclick={closeNotice}><Icon name={ICONS.x} /></button>
     </div>
   {/if}
 
   <aside class="cv-island cv-palette">
     <div class="cv-palette-head">
-      <div><b>Steps</b><span>Drag one onto the canvas</span></div>
+      <div><b>{translate('Steps')}</b><span>{translate('Drag one onto the canvas')}</span></div>
       <button type="button" class="cv-x cv-fold" title={foldTitle} aria-label={foldTitle} aria-expanded={!folded} onclick={toggleFolded}><Icon name={ICONS.fold} /></button>
     </div>
     {#each PALETTE as [group, types]}
@@ -133,12 +134,12 @@
             <i></i>
             {#if cv.result.urls.length}
               {#each cv.result.urls.slice(0, 3) as url}
-                <a href={url} target="_blank" rel="noopener noreferrer" title="Open {url}">{url.replace(/^https?:\/\//, '')}<Icon name={ICONS.out} /></a>
+                <a href={url} target="_blank" rel="noopener noreferrer" title={translate('Open :name').replace(':name', () => url)}>{url.replace(/^https?:\/\//, '')}<Icon name={ICONS.out} /></a>
               {/each}
             {:else}
-              <a href={cv.result.href} target="_blank">Open in Coolify</a>
+              <a href={cv.result.href} target="_blank">{translate('Open in Coolify')}</a>
             {/if}
-            <button class="cv-x" title="Hide" onclick={hideResult}><Icon name={ICONS.x} /></button>
+            <button class="cv-x" title={translate('Hide')} onclick={hideResult}><Icon name={ICONS.x} /></button>
           </div>
         {/if}
       </div>
@@ -146,7 +147,7 @@
     <RunPanel />
     {#if cv.menu}
       <div class="cv-menu" style:left="{cv.menu.left}px" style:top="{cv.menu.top}px">
-        <h5>Add the next step</h5>
+        <h5>{translate('Add the next step')}</h5>
         {#each cv.menu.valid as type}
           <PaletteItem {type} onpick={() => pickNext(type)} />
         {/each}

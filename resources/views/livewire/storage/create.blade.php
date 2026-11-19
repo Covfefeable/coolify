@@ -1,6 +1,6 @@
 @can('create', App\Models\S3Storage::class)
     <div class="w-full">
-        <div class="mb-4">For more details, please visit the <a class="underline dark:text-brand-light"
+        <div class="mb-4">{{ __('For more details, please visit the') }} <a class="underline dark:text-brand-light"
                 href="https://coolify.io/docs/knowledge-base/s3/introduction" target="_blank">{{ __('Coolify Docs') }}</a>.</div>
         <form class="flex flex-col gap-2" wire:submit='submit'>
             <div class="w-64">
@@ -49,9 +49,8 @@
                         <x-forms.input required type="password" label="{{ __('Password') }}" id="secret" />
                     </div>
                 @endif
-                <p class="text-xs text-neutral-500 dark:text-fg-dim">Backups keep their full path on the server
-                    (for example data/coolify/backups/...) below this directory. Coolify connects from its own
-                    container to check, restore, download, and delete backups, and from each server to upload them.
+                <p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('Backups keep their full path on the server') }}
+                    {{ __('(for example data/coolify/backups/...) below this directory. Coolify connects from its own container to check, restore, download, and delete backups, and from each server to upload them.') }}
                 </p>
             @endif
 

@@ -41,7 +41,7 @@
                                 <p>Removed only from this server (not deleted):</p>
                                 <ul class="list-disc pl-5">
                                     @foreach ($detachedApplications as $application)
-                                        <li>{{ $application->name }} will keep running on {{ data_get($application, 'destination.server.name') }}</li>
+                                        <li>{{ __(':application will keep running on :server.', ['application' => $application->name, 'server' => data_get($application, 'destination.server.name')]) }}</li>
                                     @endforeach
                                 </ul>
                             </div>

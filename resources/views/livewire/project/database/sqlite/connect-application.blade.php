@@ -24,9 +24,9 @@
                         <span class="min-w-0 truncate">
                             <a href="{{ $composeApplication->link() }}"
                                 class="font-medium underline-offset-2 hover:underline">{{ $composeApplication->name }}</a>
-                            <span class="text-neutral-500 dark:text-fg-dim">in its compose file</span>
+                            <span class="text-neutral-500 dark:text-fg-dim">{{ __('in its compose file') }}</span>
                         </span>
-                        <span class="shrink-0 text-xs text-neutral-500 dark:text-fg-dim">Remove it from the compose file to unlink</span>
+                        <span class="shrink-0 text-xs text-neutral-500 dark:text-fg-dim">{{ __('Remove it from the compose file to unlink') }}</span>
                     </div>
                 @endforeach
             </div>
@@ -55,8 +55,7 @@
 
                 @if ($composeSnippet)
                     <x-callout type="info" :title="'Add the volume to the compose file of '.$composeApplicationName">
-                        <p>Add these lines to the service that uses the database, then redeploy. Start this database
-                            first: Docker Compose does not create external volumes.</p>
+                        <p>{{ __('Add these lines to the service that uses the database, then redeploy. Start this database first: Docker Compose does not create external volumes.') }}</p>
                         <div class="relative mt-2">
                             <pre
                                 class="overflow-auto rounded-md bg-white p-3 pr-10 font-mono text-xs leading-5 text-neutral-700 ring-1 ring-neutral-200 dark:bg-black/20 dark:text-neutral-300 dark:ring-white/[0.08]">{{ $composeSnippet }}</pre>

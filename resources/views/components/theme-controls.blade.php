@@ -392,7 +392,7 @@
                                                 <input type="text" autocomplete="off" spellcheck="false" maxlength="7"
                                                     :value="draftColors.{{ $key }}"
                                                     @change="setDraftColor('{{ $key }}', $event.target.value); $event.target.value = draftColors.{{ $key }}"
-                                                    aria-label="{{ $label }} hex color"
+                                                    aria-label="{{ __(':value hex color', ['value' => $label]) }}"
                                                     class="input w-28! shrink-0 font-mono text-sm" />
                                             </div>
                                         @endforeach

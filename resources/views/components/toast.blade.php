@@ -141,7 +141,7 @@
                     </template>
 
                     <button type="button" x-show="toast.description && !toast.html"
-                        @click="copyToast(toast)" :title="toast.copied ? 'Copied' : 'Copy details'"
+                        @click="copyToast(toast)" :title="toast.copied ? @js(__('Copied')) : @js(__('Copy details'))"
                         class="absolute right-10 top-2.5 flex size-7 items-center justify-center rounded-md text-neutral-400 opacity-0 transition-colors hover:bg-black/5 hover:text-neutral-700 group-hover:opacity-100 dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
                         :class="{ 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400': toast.copied }">
                         <svg x-show="!toast.copied" class="size-3.5" xmlns="http://www.w3.org/2000/svg" fill="none"

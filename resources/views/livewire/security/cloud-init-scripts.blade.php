@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="flex justify-end">
                                     <button type="button" class="icon-button" title="{{ __('Edit cloud-init script') }}"
-                                        aria-label="Edit {{ $script->name }}" @click="modalOpen=true">
+                                        aria-label="{{ __('Edit :value', ['value' => $script->name]) }}" @click="modalOpen=true">
                                         <x-reicon name="settings" class="size-3.5" />
                                     </button>
                                 </div>

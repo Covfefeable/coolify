@@ -9,7 +9,7 @@
             @else
                 <x-reicon name="database" class="mb-4 size-8 text-neutral-400 dark:text-fg-faint" />
             @endif
-            <h2 class="empty-state-title">Creating {{ $pendingName }}</h2>
+            <h2 class="empty-state-title">{{ __('Creating :value', ['value' => $pendingName]) }}</h2>
             <p class="empty-state-description text-[13px]">{{ __('Setting up the resource. You will be redirected when it is ready.') }}</p>
             <x-loading text="Creating..." class="mt-4" />
         </div>

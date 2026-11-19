@@ -4,13 +4,8 @@
 
         @if ($anonymousDataVolume)
             <x-callout type="danger" title="{{ __('Current data is not in the data volume') }}">
-                <p>Because of a bug in older Coolify versions, a file mount removed the data volume. This database
-                    keeps its current data in the unnamed Docker volume <code>{{ $anonymousDataVolume }}</code>.
-                    Starting or restarting it is blocked, because it would use the data volume and the current data
-                    would seem lost.</p>
-                <p class="mt-2">An admin can click "Keep current data" to use this volume as the data volume. The previous data
-                    volume is not used anymore, but stays on the server. It can contain data from before the file
-                    mount was added.</p>
+                <p>{{ __('A file mount in an older Coolify version removed the data volume. Current data is in the unnamed volume :volume. Starting or restarting the database is blocked because it would use the previous data volume.', ['volume' => $anonymousDataVolume]) }}</p>
+                <p class="mt-2">{{ __('An administrator can select Keep current data to use this volume. The previous data volume remains on the server and may contain data from before the file mount was added.') }}</p>
                 @can('update', $database)
                     <div class="mt-3">
                         <x-modal-confirmation title="{{ __('Keep current data?') }}" buttonTitle="{{ __('Keep current data') }}"

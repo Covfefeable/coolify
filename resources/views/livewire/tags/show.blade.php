@@ -354,7 +354,7 @@
             </x-application.settings-section>
 
             <x-application.settings-section title="{{ __('Resources') }}"
-                description="{{ $resourceCount }} {{ Str::plural('resource', $resourceCount) }} use this tag.">
+                description="{{ __(':count resources use this tag.', ['count' => $resourceCount]) }}">
                 @if ($resourceCount === 0)
                     <x-empty title="{{ __('No resources use this tag') }}"
                         description="{{ __('Connect this tag to resources to see them here.') }}"

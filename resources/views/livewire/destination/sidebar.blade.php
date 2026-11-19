@@ -22,7 +22,7 @@
     ])->filter();
 @endphp
 
-<x-main-nav-menu back-label="Destinations" back-title="{{ __('Back to Integrations') }}" :name="$destination->name"
+<x-main-nav-menu back-label="{{ __('Destinations') }}" back-title="{{ __('Back to Integrations') }}" :name="$destination->name"
     data-settings-search-items="{{ json_encode(settingsSearchItems(['Destination' => $destinationMenuItems], $destinationRouteParameters)) }}">
     <nav aria-label="{{ __('Destination settings') }}"
         class="grid grid-cols-1 gap-0.5">

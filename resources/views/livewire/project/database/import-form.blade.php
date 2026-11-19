@@ -177,8 +177,7 @@
                             </span>
                             <span>
                                 <span class="block text-[13px] font-semibold">{{ __('Storage') }}</span>
-                                <span class="mt-0.5 block text-[11px] text-neutral-500 dark:text-fg-faint">Download
-                                    a backup from a backup storage.</span>
+                                <span class="mt-0.5 block text-[11px] text-neutral-500 dark:text-fg-faint">{{ __('Download a backup from a backup storage.') }}</span>
                             </span>
                         </button>
                 @endif

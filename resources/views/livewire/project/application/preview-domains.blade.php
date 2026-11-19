@@ -161,7 +161,7 @@
                                 @elseif (! str_starts_with($row['url'], 'https://') || ! $preview->application->isForceHttpsEnabled())
                                     <span>{{ __('No redirects') }}</span>
                                 @endif
-                                <span>Port {{ $row['internal_port'] ?? 'missing' }}</span>
+                                <span>{{ __('Port :value', ['value' => $row['internal_port'] ?? 'missing']) }}</span>
                                 <span>{{ __('Noindex') }}</span>
                             </div>
 
@@ -185,7 +185,7 @@
                                         </x-table.row-action>
                                         <x-table.row-action
                                             x-on:click="openEditDomain({{ \Illuminate\Support\Js::from($index) }}, {{ \Illuminate\Support\Js::from($row['url']) }}, {{ \Illuminate\Support\Js::from($editingParts) }}, {{ \Illuminate\Support\Js::from($row['service']) }})"
-                                            aria-label="Edit {{ getFqdnWithoutPort($row['url']) }}">
+                                            aria-label="{{ __('Edit :value', ['value' => getFqdnWithoutPort($row['url'])]) }}">
                                             {{ __('Edit') }}
                                         </x-table.row-action>
                                         <x-slot:danger>
@@ -283,9 +283,7 @@
                         </header>
                         <div class="application-settings-section-body">
                             <x-callout type="warning" title="{{ __('Unrecognized internal port') }}" class="mb-4">
-                                {{ __('Port') }} <strong>{{ $unrecognizedPort }}</strong> is not listed in Ports Exposes
-                                and is not used by any application domain. The proxy will still route to it,
-                                but the container may not be listening there.
+                                {{ __('Port :port is not listed in the exposed ports and is unused by any application domain. The proxy will still route to it, but the container may not be listening.', ['port' => $unrecognizedPort]) }}
                             </x-callout>
 
                             <div class="mt-4 flex flex-wrap justify-end gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">

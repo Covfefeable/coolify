@@ -17,5 +17,5 @@
     @else
         <span class="text-[12px]" aria-hidden="true">{{ __('Off') }}</span>
     @endif
-    <span class="sr-only">Two-factor authentication is {{ $enabled ? 'enabled' : 'disabled' }}</span>
+    <span class="sr-only">{{ $enabled ? __('Two-factor authentication is enabled') : __('Two-factor authentication is disabled') }}</span>
 </span>

@@ -101,7 +101,7 @@
 
     <div x-cloak x-show="viewMode === 'table'"
         x-on:click="openSettings($event)" x-on:keydown.enter="openSettings($event)"
-        role="link" tabindex="0" aria-label="Open {{ $resourceName }} settings"
+        role="link" tabindex="0" aria-label="{{ __('Open :value settings', ['value' => $resourceName]) }}"
         class="grid min-h-14 min-w-[48rem] cursor-pointer grid-cols-[minmax(14rem,1fr)_minmax(12rem,1fr)_12rem_5rem] items-center gap-3 border-b border-neutral-200 px-4 py-2.5 last:border-b-0 hover:bg-neutral-50 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary dark:border-white/[0.07] dark:hover:bg-white/[0.025]">
         <div class="flex min-w-0 items-center gap-3">
             <div

@@ -10,7 +10,7 @@
     @endif
 
     <x-application.settings-section id="server-host-key-section" title="{{ __('SSH host key') }}"
-        helper="Coolify trusts the first host key of the server. Later, a different key is reported (warn mode, the default) or refused (enforce mode). The setting below sets enforce mode for this server only.<br><br>An instance admin sets the mode for all servers with <code>SSH_HOST_KEY_CHECKING=enforce</code> (or <code>warn</code>, <code>off</code>) in <code>/data/coolify/source/.env</code>, then restarts Coolify.">
+        helper="Coolify trusts the first host key of the server. Later, a different key is reported (warn mode, the default) or refused (enforce mode). The setting below sets enforce mode for this server only.<br><br>{{ __('An instance admin sets the mode for all servers with') }} <code>SSH_HOST_KEY_CHECKING=enforce</code> (or <code>warn</code>, <code>off</code>) in <code>/data/coolify/source/.env</code>, then restarts Coolify.">
         <x-slot:badges>
             @if (count($pendingFingerprints) > 0)
                 <x-status-badge status="Key changed" type="error" />

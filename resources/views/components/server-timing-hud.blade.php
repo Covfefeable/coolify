@@ -79,7 +79,7 @@
         <div id="server-timing-hud-panel" data-sth-panel hidden
             style="width:min(420px,calc(100vw - 24px));border:1px solid var(--sth-border);background:var(--sth-background);color:var(--sth-text);border-radius:12px;padding:10px 12px;box-shadow:var(--sth-shadow);backdrop-filter:blur(10px);position:absolute;right:0;bottom:calc(100% + 6px);z-index:2147483001">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px">
-                <strong style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--sth-secondary)">Server Timing</strong>
+                <strong style="font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--sth-secondary)">{{ __('Server Timing') }}</strong>
                 <div style="display:flex;align-items:center;gap:8px">
                     <span data-sth-count style="font-size:10px;color:var(--sth-muted)"></span>
                     <button type="button" data-sth-clear
@@ -89,7 +89,7 @@
             </div>
             <div data-sth-log
                 style="max-height:min(50vh,420px);overflow:auto;display:flex;flex-direction:column;gap:6px;margin:0;padding:0"></div>
-            <p style="margin:8px 0 0;font-size:10px;color:var(--sth-muted)">Local only · click row to copy AI-ready dump · pill toggles</p>
+            <p style="margin:8px 0 0;font-size:10px;color:var(--sth-muted)">{{ __('Local only · click row to copy AI-ready dump · pill toggles') }}</p>
         </div>
     </div>
 </div>

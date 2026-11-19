@@ -137,8 +137,7 @@
                         d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
                         clip-rule="evenodd" />
                 </svg>
-                <span><span class="font-bold text-red-600 dark:text-red-500">{{ __('Subscription Error.') }}</span> Something went wrong. Please try
-                    again or <a class="underline font-medium text-black dark:text-white"
+                <span><span class="font-bold text-red-600 dark:text-red-500">{{ __('Subscription Error.') }}</span> {{ __('Try again or') }} <a class="underline font-medium text-black dark:text-white"
                         href="{{ config('constants.urls.contact') }}" target="_blank">{{ __('contact support') }}</a>.</span>
             </div>
         </x-banner>
@@ -152,23 +151,15 @@
     @endif
     @if (currentTeam()->subscriptionPastOverDue())
         <x-banner :closable=false>
-            <div><span class="font-bold text-red-600 dark:text-red-500">WARNING:</span> Your subscription is in over-due. If your
-                latest
-                payment is not paid within a week, all automations <span class="font-bold text-red-600 dark:text-red-500">will
-                    be deactivated</span>. Visit <a href="{{ route('subscription.show') }}" {{ wireNavigate() }}
-                    class="underline font-medium text-black dark:text-white">/subscription</a> to check your subscription status or pay
-                your
-                invoice (or check your email for the invoice).
+            <div><span class="font-bold text-red-600 dark:text-red-500">{{ __('Warning:') }}</span> {{ __('Your payment is overdue. If it is not paid within a week, all automations will be disabled. Open') }} <a href="{{ route('subscription.show') }}" {{ wireNavigate() }}
+                    class="underline font-medium text-black dark:text-white">/subscription</a> {{ __('to review the subscription or pay the invoice. The invoice is also available by email.') }}
             </div>
         </x-banner>
     @endif
     @if (currentTeam()->serverOverflow())
         <x-banner :closable=false>
-            <div><span class="font-bold text-red-600 dark:text-red-500">WARNING:</span> The number of active servers exceeds the limit
-                covered by your payment. If not resolved, some of your servers <span class="font-bold text-red-600 dark:text-red-500">will
-                    be deactivated</span>. Visit <a href="{{ route('subscription.show') }}" {{ wireNavigate() }}
-                    class="underline font-medium text-black dark:text-white">/subscription</a> to update your subscription or remove some
-                servers.
+            <div><span class="font-bold text-red-600 dark:text-red-500">{{ __('Warning:') }}</span> {{ __('The number of active servers exceeds your plan limit. Some servers may be deactivated. Open') }} <a href="{{ route('subscription.show') }}" {{ wireNavigate() }}
+                    class="underline font-medium text-black dark:text-white">/subscription</a> {{ __('to update the subscription or remove servers.') }}
             </div>
         </x-banner>
     @endif

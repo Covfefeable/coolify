@@ -6,7 +6,7 @@
         <x-slot:actions>
             <div class="flex items-center gap-2">
                 @if (isDev())
-                    <x-status-badge label="Parser {{ $service->compose_parsing_version }}" type="neutral" />
+                    <x-status-badge label="{{ __('Parser :value', ['value' => $service->compose_parsing_version]) }}" type="neutral" />
                 @endif
                 @can('update', $service)
                     <x-modal-input buttonTitle="{{ __('Edit Compose file') }}" title="Docker Compose" :closeOutside="false"

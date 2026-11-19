@@ -113,8 +113,8 @@ $serverListboxOptions = array_merge(
                             <div class="flex flex-wrap items-center gap-x-2 text-[10px] text-neutral-500 dark:text-fg-dim">
                                 <span>{{ $sHealthy }} healthy</span>
                                 @if ($sAttention > 0)<span class="text-orange-500 dark:text-warning">{{ $sAttention }} attention</span>@endif
-                                @if ($sNoMetrics > 0)<span title="{{ __('Coolify can reach these servers, but Sentinel did not return current metrics.') }}">{{ $sNoMetrics }} no metrics</span>@endif
-                                @if ($sOffline > 0)<span class="text-red-500 dark:text-red-400">{{ $sOffline }} offline</span>@endif
+                                @if ($sNoMetrics > 0)<span title="{{ __('Coolify can reach these servers, but Sentinel did not return current metrics.') }}">{{ __(':value no metrics', ['value' => $sNoMetrics]) }}</span>@endif
+                                @if ($sOffline > 0)<span class="text-red-500 dark:text-red-400">{{ __(':value offline', ['value' => $sOffline]) }}</span>@endif
                             </div>
                         </div>
                     </div>
@@ -335,7 +335,7 @@ $serverListboxOptions = array_merge(
                                     @endphp
                                     <div class="flex items-center justify-end gap-2.5 self-center">
                                         <div class="hidden h-1.5 w-10 shrink-0 overflow-hidden rounded-full bg-neutral-100 xl:block dark:bg-white/[0.06]"
-                                            title="{{ $pct }}% of the busiest">
+                                            title="{{ __(':value% of the busiest', ['value' => $pct]) }}">
                                             <div class="h-full rounded-full bg-[var(--chart-status-3xx)] transition-[width] duration-700 ease-out" style="width: {{ $pct }}%"></div>
                                         </div>
                                         <span class="whitespace-nowrap text-right text-[13px] tabular-nums text-black dark:text-fg">{{ $display }}</span>

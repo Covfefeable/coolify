@@ -26,7 +26,7 @@
                 <div class="application-settings-section-header">
                     <div>
                         <h2>{{ __('Environment details') }}</h2>
-                        <p>Name and describe this environment inside {{ $project->name }}.</p>
+                        <p>{{ __('Name and describe this environment inside :value.', ['value' => $project->name]) }}</p>
                     </div>
                 </div>
                 <div class="application-settings-section-body grid gap-4 sm:grid-cols-2">

@@ -111,8 +111,7 @@
             <section class="flex flex-col gap-2">
                 <div>
                     <h4 class="text-[13px] font-medium text-neutral-800 dark:text-fg">{{ __('Scopes') }}</h4>
-                    <p class="text-[12px] text-neutral-500 dark:text-fg-faint">Each scope gives levels on the whole
-                        team, projects, environments, or resources. Scopes add up.</p>
+                    <p class="text-[12px] text-neutral-500 dark:text-fg-faint">{{ __('Each scope gives levels on the whole team, projects, environments, or resources. Scopes add up.') }}</p>
                 </div>
 
                 <div x-show="rows.length === 0" x-cloak>
@@ -135,7 +134,7 @@
                 @if ($errors->any())
                     <x-callout type="danger" title="{{ __('Check the scopes') }}">
                         @foreach ($errors->getMessages() as $key => $messages)
-                            <p>Scope {{ ((int) explode('.', $key)[1]) + 1 }}: {{ $messages[0] }}</p>
+                            <p>{{ __('Scope :value:', ['value' => ((int) explode('.', $key)[1]) + 1]) }} {{ $messages[0] }}</p>
                         @endforeach
                     </x-callout>
                 @endif

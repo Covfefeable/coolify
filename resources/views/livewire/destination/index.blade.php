@@ -84,7 +84,7 @@
                         @if ($destination->getMorphClass() === 'App\Models\SwarmDocker')
                             <x-status-badge label="Docker Swarm" type="warning" />
                         @else
-                            <x-status-badge label="Standalone Docker" type="success" />
+                            <x-status-badge label="{{ __('Standalone Docker') }}" type="success" />
                         @endif
                     </div>
                 </a>

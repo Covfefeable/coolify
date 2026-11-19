@@ -63,7 +63,7 @@
                     helper="{{ __('Control generated labels and requests that do not match a running resource.') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.listbox id="generateExactLabels" label="{{ __('Generated labels') }}"
-                            helper="<ul class='list-disc space-y-1 pl-4'><li><span class='font-semibold'>{{ __('All supported proxies:') }}</span> {{ __('Traefik and Caddy labels are both generated, so switching the proxy keeps routing working.') }}</li><li><span class='font-semibold'>{{ __('Active proxy only:') }}</span> generates fewer labels, but all resources must be redeployed to become accessible again after each proxy switch.</li></ul>"
+                            helper="<ul class='list-disc space-y-1 pl-4'><li><span class='font-semibold'>{{ __('All supported proxies:') }}</span> {{ __('Traefik and Caddy labels are both generated, so switching the proxy keeps routing working.') }}</li><li><span class='font-semibold'>{{ __('Active proxy only:') }}</span> {{ __('generates fewer labels, but all resources must be redeployed to become accessible again after each proxy switch.') }}</li></ul>"
                             onChange="instantSave" :options="[
                                 ['value' => false, 'label' => 'Labels for all supported proxies'],
                                 ['value' => true, 'label' => __('Labels for the active proxy only')],

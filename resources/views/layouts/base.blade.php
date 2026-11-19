@@ -426,6 +426,22 @@
             'Value is not available.',
             'Zoom in',
             'Zoom out',
+            'Add the next step',
+            'Back to the environment',
+            'Close',
+            'Close this notice',
+            'Collapse the steps',
+            'Drag one onto the canvas',
+            'Hide',
+            'New resource page',
+            'On a phone, use the',
+            'Open :name',
+            'Open in Coolify',
+            'Reset',
+            'Show the step names',
+            'Start again with an empty canvas',
+            'Steps',
+            'The canvas is not optimized for mobile yet. It works best on a larger screen.',
         ])->mapWithKeys(fn (string $message) => [$message => __($message)])->all());
     </script>
     @vite(['resources/js/app.js', 'resources/css/app.css'])

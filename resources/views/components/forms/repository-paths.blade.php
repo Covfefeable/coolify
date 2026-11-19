@@ -52,7 +52,7 @@
             {{ $fileLabel }} is relative to the base directory, so it should not start with
             <code class="rounded bg-black/10 px-1 dark:bg-white/10" x-text="directory"></code> again.
             <button type="button" class="font-medium underline" x-show="!({{ $disabled }})"
-                @click="file = suggestion">Use <span x-text="suggestion"></span></button>
+                @click="file = suggestion">{{ __('Use') }} <span x-text="suggestion"></span></button>
         </x-callout>
         @if ($compose)
             <x-callout class="col-span-full" x-cloak x-show="composeInSubdirectory"
@@ -64,7 +64,7 @@
                 If these paths are relative to the Compose file, set the base directory to
                 <code class="rounded bg-black/10 px-1 dark:bg-white/10" x-text="directory + fileDirectory"></code>.
                 <button type="button" class="font-medium underline" x-show="!({{ $disabled }})"
-                    @click="useFileDirectoryAsBase()">Use <span x-text="directory + fileDirectory"></span> as base directory</button>
+                    @click="useFileDirectoryAsBase()">{{ __('Use') }} <span x-text="directory + fileDirectory"></span> {{ __('as base directory') }}</button>
             </x-callout>
         @endif
     @endif

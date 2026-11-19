@@ -69,8 +69,7 @@
         @else
             <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-[11px] leading-5 text-neutral-600 dark:border-white/[0.08] dark:bg-white/[0.025] dark:text-fg-dim">
                 <div class="font-medium text-black dark:text-fg">Capability: Secrets (read-only)</div>
-                <p>Coolify reads secrets from this provider at deployment time. Secret values are never stored in
-                    the Coolify database.</p>
+                <p>{{ __('Coolify reads secrets from this provider at deployment time. Secret values are never stored in the Coolify database.') }}</p>
             </div>
         @endif
 
@@ -78,10 +77,10 @@
             <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-[11px] leading-5 text-neutral-600 dark:border-white/[0.08] dark:bg-white/[0.025] dark:text-fg-dim">
                 <div class="font-medium text-black dark:text-fg">{{ __('Required Cloudflare permissions') }}</div>
                 <ul class="list-inside list-disc">
-                    <li>Zone - DNS - Edit</li>
-                    <li>Zone - Zone - Read</li>
+                    <li>{{ __('Zone - DNS - Edit') }}</li>
+                    <li>{{ __('Zone - Zone - Read') }}</li>
                     @if (in_array('tunnel', $capabilities, true))
-                        <li>Account - Cloudflare Tunnel - Edit</li>
+                        <li>{{ __('Account - Cloudflare Tunnel - Edit') }}</li>
                     @endif
                 </ul>
                 <a href="{{ \App\Models\IntegrationToken::cloudflareTokenTemplateUrl($capabilities) }}"
@@ -96,7 +95,7 @@
                         <div class="font-medium text-black dark:text-fg">{{ __('Domains this token can manage') }}</div>
                         <div>{{ $zoneCount }} accessible {{ Str::plural('zone', $zoneCount) }}</div>
                     @if (data_get($integrationToken->metadata, 'zones_synced_at'))
-                        <div>Last refreshed {{ \Carbon\Carbon::parse(data_get($integrationToken->metadata, 'zones_synced_at'))->diffForHumans() }}</div>
+                        <div>{{ __('Last refreshed :value', ['value' => \Carbon\Carbon::parse(data_get($integrationToken->metadata, 'zones_synced_at'))->diffForHumans()]) }}</div>
                     @endif
                     </div>
                     <x-forms.button type="button" wire:click="refreshZones" wire:target="refreshZones"

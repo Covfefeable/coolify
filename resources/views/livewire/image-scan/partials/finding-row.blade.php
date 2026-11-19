@@ -20,7 +20,7 @@
         <div class="flex min-w-0 items-center gap-1.5">
             @unless ($nested)
                 <button type="button" class="icon-button" x-on:click="open = !open" :aria-expanded="open ? 'true' : 'false'"
-                    aria-label="Show details of {{ $finding->id }}">
+                    aria-label="{{ __('Show details of :value', ['value' => $finding->id]) }}">
                     <x-reicon name="chevron-down" class="size-3.5 transition-transform duration-150"
                         ::class="open ? 'rotate-0' : '-rotate-90'" />
                 </button>
@@ -56,7 +56,7 @@
                 </span>
             @elseif ($canUpdate)
                 <button type="button" class="icon-button" data-tooltip="{{ __('Ignore') }}"
-                    aria-label="Ignore {{ $finding->id }}"
+                    aria-label="{{ __('Ignore :value', ['value' => $finding->id]) }}"
                     x-on:click="$dispatch('open-ignore-modal', {
                         target: {{ \Illuminate\Support\Js::from($finding->id) }},
                         kind: 'vulnerability',
@@ -75,10 +75,10 @@
             <p class="max-w-3xl">{{ $finding->summary }}</p>
         @endif
         @if ($likelihood !== null)
-            <p class="{{ $muted }}">Exploit likelihood: {{ $likelihood }}</p>
+            <p class="{{ $muted }}">{{ __('Exploit likelihood: :value', ['value' => $likelihood]) }}</p>
         @endif
         @if (filled($base))
-            <p class="{{ $muted }}">Comes from <span class="font-mono">{{ $base }}</span>.</p>
+            <p class="{{ $muted }}">{{ __('Comes from') }} <span class="font-mono">{{ $base }}</span>.</p>
         @endif
         @if ($aliases !== [])
             <p class="{{ $muted }}">
@@ -94,7 +94,7 @@
             </p>
         @endif
         @if ($ignore !== null)
-            <p class="{{ $muted }}">Reason: {{ $ignore->reason }}</p>
+            <p class="{{ $muted }}">{{ __('Reason: :value', ['value' => $ignore->reason]) }}</p>
         @endif
     </div>
     @endif

@@ -247,9 +247,7 @@
                                 <div class="mb-4">
                                     <p class="mb-2">{{ __('If the connection details are correct, please ensure:') }}</p>
                                     <ul class="list-disc list-inside">
-                                        <li>The correct public key is in your <code
-                                                class="bg-red-200 dark:bg-red-900 px-1 rounded-sm">~/.ssh/authorized_keys</code>
-                                            file for the specified user</li>
+                                        <li>{{ __('The specified user has the correct public key in ~/.ssh/authorized_keys.') }}</li>
                                         <li>{{ __('Or skip the boarding process and manually add a new private key to Coolify and the server') }}</li>
                                     </ul>
                                 </div>
@@ -348,10 +346,7 @@
                             <x-highlighted text="{{ __('SSH Key Authentication:') }}" /> {{ __('Uses public-key cryptography for secure, password-less server access.') }}
                         </p>
                         <p>
-                            <x-highlighted text="{{ __('Public Key Deployment:') }}" /> Add the public key to your server's
-                            <code
-                                class="text-xs bg-coolgray-300 dark:bg-coolgray-400 px-1 py-0.5 rounded">~/.ssh/authorized_keys</code>
-                            file.
+                            <x-highlighted text="{{ __('Public Key Deployment:') }}" /> {{ __('Add the public key to ~/.ssh/authorized_keys on the server.') }}
                         </p>
                         <p>
                             <x-highlighted text="{{ __('Key Generation:') }}" /> {{ __('Coolify generates ED25519 keys by default for optimal security and performance.') }}
@@ -406,10 +401,7 @@
                             <x-highlighted text="{{ __('Key Storage:') }}" /> {{ __('Private keys are encrypted at rest in Coolify\'s database.') }}
                         </p>
                         <p>
-                            <x-highlighted text="{{ __('Public Key Distribution:') }}" /> Deploy the public key to
-                            <code
-                                class="text-xs bg-coolgray-300 dark:bg-coolgray-400 px-1 py-0.5 rounded">~/.ssh/authorized_keys</code>
-                            on your target server for the specified user.
+                            <x-highlighted text="{{ __('Public Key Distribution:') }}" /> {{ __('Add the public key to the specified user’s ~/.ssh/authorized_keys on the target server.') }}
                         </p>
                         <p>
                             <x-highlighted text="{{ __('Key Format:') }}" /> {{ __('Supports ED25519, ECDSA, and RSA (2048 bits or more) key types in OpenSSH format.') }}

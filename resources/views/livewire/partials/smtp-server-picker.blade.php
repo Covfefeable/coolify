@@ -3,7 +3,7 @@
      notification pages (components with ManagesSmtpServers). Put it inside a grid with three columns. --}}
 <div class="flex flex-col gap-3 lg:col-span-3">
     @if ($isNewSmtpServer)
-        <x-callout type="info" title="New SMTP server: {{ $smtpServerName }}">
+        <x-callout type="info" title="{{ __('New SMTP server: :value', ['value' => $smtpServerName]) }}">
             Enter the settings, then save. The server
             {{ $settings->smtpServerName() }} stays in the server list.
             <div class="mt-2">
@@ -22,7 +22,7 @@
                     <x-slot:content>
                         {{-- Set the name in the browser: a request would redraw the input and take its focus. --}}
                         <button type="button" class="icon-button mb-0.5" title="{{ __('Rename server') }}"
-                            aria-label="Rename SMTP server {{ $settings->smtpServerName() }}"
+                            aria-label="{{ __('Rename SMTP server :value', ['value' => $settings->smtpServerName()]) }}"
                             x-on:click="$wire.renamedSmtpServerName = @js($settings->smtpServerName())">
                             <x-reicon name="edit" class="size-3.5" />
                         </button>
@@ -47,7 +47,7 @@
                         <x-slot:trigger>
                             <button type="button"
                                 class="icon-button mb-0.5 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
-                                title="{{ __('Delete server') }}" aria-label="Delete SMTP server {{ $settings->smtpServerName() }}">
+                                title="{{ __('Delete server') }}" aria-label="{{ __('Delete SMTP server :value', ['value' => $settings->smtpServerName()]) }}">
                                 <x-reicon name="trash" class="size-3.5" />
                             </button>
                         </x-slot:trigger>

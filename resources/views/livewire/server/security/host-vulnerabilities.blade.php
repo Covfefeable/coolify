@@ -64,7 +64,7 @@
 
             @if (! $hostScanAvailable && ! $hostScan)
                 <div class="p-4">
-                    <x-empty size="sm" icon-name="shield-alert" title="Image scanning is off for {{ $server->name }}."
+                    <x-empty size="sm" icon-name="shield-alert" title="{{ __('Image scanning is off for :value.', ['value' => $server->name]) }}"
                         description="{{ __('Enable image scanning below to also scan the operating system packages of this server.') }}">
                         <x-slot:actions>
                             <a class="text-[13px] font-medium underline" href="#server-image-scanning-section">{{ __('Image scanning settings') }}</a>
@@ -107,12 +107,9 @@
                             <div class="flex flex-wrap items-center justify-between gap-3">
                                 <span>
                                     @if (($kernelStatusCounts['fixed_after_reboot'] ?? 0) > 0)
-                                        The server runs kernel <span class="font-mono">{{ $runningKernel }}</span>, which has {{ $kernelStatusCounts['fixed_after_reboot'] }}
-                                        listed {{ Str::plural('vulnerability', $kernelStatusCounts['fixed_after_reboot']) }}. The fixed kernel
-                                        <span class="font-mono">{{ $bootKernel }}</span> is installed and is the boot kernel. Reboot the server to start it.
+                                        {{ __('The running kernel :running has :count listed vulnerabilities. The fixed kernel :boot is installed and will start after a reboot.', ['running' => $runningKernel, 'count' => $kernelStatusCounts['fixed_after_reboot'], 'boot' => $bootKernel]) }}
                                     @elseif ($runningKernel && $bootKernel && $bootKernel !== $runningKernel)
-                                        Kernel <span class="font-mono">{{ $bootKernel }}</span> is installed and starts after a reboot. The server now runs
-                                        <span class="font-mono">{{ $runningKernel }}</span>. No listed vulnerability needs this reboot.
+                                        {{ __('Kernel :boot is installed and will start after a reboot. The server currently runs :running. None of the listed vulnerabilities require a reboot.', ['boot' => $bootKernel, 'running' => $runningKernel]) }}
                                     @else
                                         Some installed updates apply only after a reboot.
                                     @endif
@@ -135,7 +132,7 @@
                     @endif
                     @if ($otherKernelCount > 0)
                         <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[12px] text-neutral-500 dark:text-fg-faint">
-                            <span>{{ $otherKernelCount }} {{ Str::plural('vulnerability', $otherKernelCount) }} in installed kernels that do not run {{ $showOtherKernels ? 'shown' : 'hidden' }}. No risk now.</span>
+                            <span>{{ __(':count vulnerabilities affect installed kernels that are not running. They pose no current risk.', ['count' => $otherKernelCount]) }}</span>
                             <button type="button" wire:click="$toggle('showOtherKernels')" class="cursor-pointer font-medium underline underline-offset-4">
                                 {{ $showOtherKernels ? 'Hide' : 'Show' }}
                             </button>
@@ -212,7 +209,7 @@
                                         <div class="min-w-0">
                                             <p class="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
                                                 <button type="button" x-on:click.stop="open = ! open" :aria-expanded="open ? 'true' : 'false'"
-                                                    aria-label="Show details of {{ $finding->displayId }}"
+                                                    aria-label="{{ __('Show details of :value', ['value' => $finding->displayId]) }}"
                                                     class="shrink-0 cursor-pointer font-mono text-[12px] text-neutral-950 dark:text-fg">{{ $finding->displayId }}</button>
                                                 @if ($signal === \App\Services\ImageScan\SecurityRules::EXPLOITED)
                                                     <x-status-badge status="Exploited" type="error" />
@@ -227,7 +224,7 @@
                                     </div>
                                     <div class="min-w-0">
                                         <p class="truncate font-mono text-[12px] text-neutral-700 dark:text-fg-dim">{{ $finding->package }}</p>
-                                        <p class="mt-0.5 truncate text-[10px] text-neutral-500 dark:text-fg-faint">Installed: {{ $finding->version }}</p>
+                                        <p class="mt-0.5 truncate text-[10px] text-neutral-500 dark:text-fg-faint">{{ __('Installed: :value', ['value' => $finding->version]) }}</p>
                                     </div>
                                     <div class="flex min-w-0 flex-col items-start gap-1">
                                         <span class="truncate font-mono text-[12px] text-neutral-700 dark:text-fg-dim">{{ $finding->fixedIn ?? 'No fix yet' }}</span>
@@ -255,7 +252,7 @@
                                         @if ($fixingUpdates !== [])
                                             @can('update', $server)
                                                 @if ($updateRiskLabels !== [])
-                                                    <x-modal-confirmation title="Update {{ $isOwnUpdate ? $finding->package : 'the kernel' }}?" buttonTitle="{{ __('Update') }}"
+                                                    <x-modal-confirmation title="{{ __('Update :value?', ['value' => $isOwnUpdate ? $finding->package : 'the kernel']) }}" buttonTitle="{{ __('Update') }}"
                                                         submitAction="updateVulnerablePackage({{ Js::from($finding->package) }})" :actions="[
                                                             'Coolify updates ' . collect($fixingUpdates)->pluck('package')->implode(', ') . '.',
                                                             ...$updateRiskLabels,
@@ -324,7 +321,7 @@
                                     @endif
                                     @if ($advisoryUrl !== null)
                                         <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Advisory') }}</dt>
-                                        <dd><a href="{{ $advisoryUrl }}" target="_blank" rel="noopener noreferrer" class="font-medium underline underline-offset-4">Open {{ $finding->displayId }}</a></dd>
+                                        <dd><a href="{{ $advisoryUrl }}" target="_blank" rel="noopener noreferrer" class="font-medium underline underline-offset-4">{{ __('Open :value', ['value' => $finding->displayId]) }}</a></dd>
                                     @endif
                                 </dl>
                             </div>

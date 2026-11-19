@@ -62,8 +62,8 @@
                                     @endif
                                     @if ($event->actor_token_name)
                                         <div class="truncate text-[11px] text-neutral-500 dark:text-fg-faint"
-                                            title="Token: {{ $event->actor_token_name }}">
-                                            Token: {{ $event->actor_token_name }}
+                                            title="{{ __('Token: :value', ['value' => $event->actor_token_name]) }}">
+                                            {{ __('Token: :value', ['value' => $event->actor_token_name]) }}
                                         </div>
                                     @endif
                                 </div>

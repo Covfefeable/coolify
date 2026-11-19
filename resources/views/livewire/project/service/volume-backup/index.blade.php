@@ -82,7 +82,7 @@
         <x-modal-input :title="__('Edit backup schedule')"
             :subtitle="($selectedDatabaseBackup
                 ? ($selectedDatabaseBackup->database->human_name ?: $selectedDatabaseBackup->database->name)
-                : $selectedVolumeBackup->targetName()).' · '.$selectedSchedule->frequency.' schedule'"
+                : $selectedVolumeBackup->targetName()).' · '.__('Schedule: :frequency', ['frequency' => __($selectedSchedule->frequency)])"
             wireOpen="scheduleModalOpen" :wireIgnore="false" isLarge fixedHeight
             canGate="update" :canResource="$service">
             <x-slot:content><span></span></x-slot:content>
@@ -333,7 +333,7 @@
                             </span>
                             <span class="min-w-0">
                                 <button type="button" class="table-filter-value"
-                                    title="Filter by {{ $backup->targetType() }}"
+                                    title="{{ __('Filter by :value', ['value' => $backup->targetType()]) }}"
                                     x-on:click.stop="typeFilter = typeFilter === @js(strtolower($backup->targetType())) ? 'all' : @js(strtolower($backup->targetType()))"
                                     x-on:keydown.enter.stop>{{ $backup->targetType() }}</button>
                             </span>

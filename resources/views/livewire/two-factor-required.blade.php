@@ -1,5 +1,5 @@
 <x-auth.shell title="{{ __('Two-factor authentication required') }}"
-    description="{{ $teamName ?? 'Your team' }} requires two-factor authentication. Configure it to continue.">
+    description="{{ __(':value requires two-factor authentication. Configure it to continue.', ['value' => $teamName ?? 'Your team']) }}">
     <div class="flex flex-col gap-4">
         @if (request()->user()->two_factor_confirmed_at)
             <p class="text-sm text-neutral-500 dark:text-fg-dim">
