@@ -164,6 +164,23 @@ it('does not load deployment payload columns for the history list on any Livewir
     ($this->assertNoPayloadQueries)();
 });
 
+it('shows Simplified Chinese deployment status and source without changing filter values', function () {
+    app()->setLocale('zh-cn');
+    ($this->createDeployment)('localized-deployment', '2026-10-05 10:00:00');
+
+    Livewire::test(Index::class, [
+        'project_uuid' => $this->project->uuid,
+        'environment_uuid' => $this->environment->uuid,
+        'application_uuid' => $this->application->uuid,
+        'embedded' => true,
+    ])
+        ->assertSee('部署历史')
+        ->assertSee('成功')
+        ->assertSee('手动')
+        ->call('toggleDeploymentFilter', 'status:finished')
+        ->assertSee('localized-deployment');
+});
+
 it('flips the deployment sort from the started column header', function () {
     foreach (range(1, 3) as $number) {
         ($this->createDeployment)("header-d{$number}", "2026-10-0{$number} 10:00:00");

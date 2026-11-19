@@ -61,6 +61,8 @@ uZx9iFkCELtxrh31QJ68AAAAEXNhaWxANzZmZjY2ZDJlMmRkAQIDBA==
 });
 
 test('switching from railpack to compose preserves the existing application domains', function () {
+    app()->setLocale('zh-cn');
+
     $application = Application::factory()->create([
         'environment_id' => $this->environment->id,
         'destination_id' => $this->destination->id,
@@ -75,6 +77,9 @@ test('switching from railpack to compose preserves the existing application doma
 
     Livewire::test(GeneralWithoutBuildpackSubmitSideEffects::class, ['application' => $application])
         ->assertSuccessful()
+        ->assertSee('应用详情')
+        ->assertSee('构建策略')
+        ->assertSet('buildPack', 'railpack')
         ->set('buildPack', 'dockercompose')
         ->assertSet('dockerComposeLocation', '/docker-compose.yaml');
 

@@ -5,7 +5,7 @@
     @endteleport
     <div>
         @if ($application->build_pack === 'nixpacks')
-            <x-callout type="warning" title="Nixpacks is deprecated" class="mb-4">
+            <x-callout type="warning" title="{{ __('Nixpacks is deprecated') }}" class="mb-4">
                 {{ config('deprecations.nixpacks') }}
                 <a class="underline" href="{{ route('project.application.configuration', $parameters) }}" {{ wireNavigate() }}>
                     Switch to Railpack in General settings.
@@ -43,7 +43,7 @@
                 @if ($this->needsComposeFile())
                     <div class="flex items-center gap-1">
                         @can('update', $application)
-                            <x-forms.button wire:click="loadComposeFile">Load compose</x-forms.button>
+                            <x-forms.button wire:click="loadComposeFile">{{ __('Load compose') }}</x-forms.button>
                         @endcan
                         @can('deploy', $application)
                             <x-forms.button id="application-mobile-actions" disabled default-class="split-action-main rounded-md!"
@@ -123,7 +123,7 @@
                 <div class="hidden" aria-hidden="true">
                     <x-modal-confirmation
                         canGate="deploy" :canResource="$application"
-                        title="{{ str($application->status)->startsWith('exited') ? 'Confirm Container Removal?' : 'Confirm Application Stopping?' }}"
+                        title="{{ str($application->status)->startsWith('exited') ? __('Confirm Container Removal?') : __('Confirm Application Stopping?') }}"
                         buttonTitle="{{ str($application->status)->startsWith('exited') ? 'Remove container' : 'Stop' }}"
                         submitAction="stop" :checkboxes="$checkboxes" :actions="[
                             str($application->status)->startsWith('exited') ? 'The exited application container will be removed.' : 'This application will be stopped.',
@@ -134,7 +134,7 @@
                             <button id="application-mobile-stop-trigger" type="button">{{ __('Stop') }}</button>
                         </x-slot:trigger>
                     </x-modal-confirmation>
-                    <x-modal-confirmation title="Confirm Application Restart?" buttonTitle="Restart"
+                    <x-modal-confirmation title="{{ __('Confirm Application Restart?') }}" buttonTitle="{{ __('Restart') }}"
                         submitAction="restart" :actions="[
                             'This application will be restarted without rebuilding.',
                         ]" :confirmWithText="false" :confirmWithPassword="false"
@@ -169,7 +169,7 @@
                     @endif
                     @if ($this->needsComposeFile())
                         @can('update', $application)
-                            <x-forms.button wire:click="loadComposeFile">Load compose</x-forms.button>
+                            <x-forms.button wire:click="loadComposeFile">{{ __('Load compose') }}</x-forms.button>
                         @endcan
                         @can('deploy', $application)
                             <x-forms.button id="application-desktop-actions" disabled default-class="split-action-main rounded-md!"
