@@ -69,7 +69,7 @@
                                 <div class="flex items-center gap-1.5">
                                     <x-reicon name="alert-triangle"
                                         class="size-3.5 text-amber-600 dark:text-warning" />
-                                    <h3>Configuration changes</h3>
+                                    <h3>{{ __('Configuration changes') }}</h3>
                                 </div>
                                 <button type="button" @click="configurationDiffModalOpen = false"
                                     class="flex size-6 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-black/5 hover:text-neutral-800 dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">

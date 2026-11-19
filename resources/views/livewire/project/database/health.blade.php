@@ -28,7 +28,7 @@
             <x-forms.input canGate="update" :canResource="$database" min="1" type="number"
                 id="healthCheckTimeout" placeholder="5" label="{{ __('Timeout (seconds)') }}" required />
             <x-forms.input canGate="update" :canResource="$database" min="1" type="number"
-                id="healthCheckRetries" placeholder="5" label="Retries" required />
+                id="healthCheckRetries" placeholder="5" label="{{ __('Retries') }}" required />
             <x-forms.input canGate="update" :canResource="$database" min="0" type="number"
                 id="healthCheckStartPeriod" placeholder="5" label="Start period (seconds)" required />
         </div>

@@ -132,7 +132,7 @@
         <div class="application-settings-form">
             <x-application.settings-section title="{{ __('Notification events') }}">
                 <div class="grid gap-4 lg:grid-cols-2">
-                    <x-notification.event-multiselect :settings="$settings" id="deployment-email-events" label="Deployments"
+                    <x-notification.event-multiselect :settings="$settings" id="deployment-email-events" label="{{ __('Deployments') }}"
                         :events="[
                             ['property' => 'deploymentSuccessEmailNotifications', 'label' => 'Deployment success', 'enabled' => $deploymentSuccessEmailNotifications],
                             ['property' => 'deploymentFailureEmailNotifications', 'label' => 'Deployment failure', 'enabled' => $deploymentFailureEmailNotifications],

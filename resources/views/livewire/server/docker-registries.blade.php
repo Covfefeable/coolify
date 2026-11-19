@@ -13,7 +13,7 @@
         </div>
         @if ($servers->isNotEmpty())
             <x-modal-input buttonTitle="{{ __('Multi-server login') }}" title="{{ __('Log in on multiple servers') }}" isHighlightedButton
-                subtitle="Runs docker login on each server that you choose.">
+                subtitle="{{ __('Runs docker login on each server that you choose.') }}">
                 <livewire:server.docker-registries.login key="registry-login-overview" />
             </x-modal-input>
         @endif

@@ -40,7 +40,7 @@
 
         @if (! empty($stack_applications) || ! empty($stack_databases))
             <div>
-                <h3>Stack Sub-Resources</h3>
+                <h3>{{ __('Stack Sub-Resources') }}</h3>
                 <div class="pt-2 grid grid-cols-1 gap-3 md:grid-cols-2">
                     @foreach ($stack_applications as $item)
                         <x-forms.copy-input :label="'Application: ' . $item['name']" :text="$item['uuid']" />

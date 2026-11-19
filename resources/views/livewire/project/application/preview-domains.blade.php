@@ -36,7 +36,7 @@
             {{ count($domainRows) }} domain{{ count($domainRows) === 1 ? '' : 's' }}
         </p>
         @if (count($domainRows) > 0)
-            <input type="search" x-model="domainSearch" aria-label="Search preview domains"
+            <input type="search" x-model="domainSearch" aria-label="{{ __('Search preview domains') }}"
                 class="input h-8! w-full sm:w-64!" placeholder="{{ __('Search services or domains') }}" />
         @endif
         @can('update', $preview->application)
@@ -74,7 +74,7 @@
     @if (count($domainRows) === 0)
         <div class="application-settings-section-body">
             <x-empty size="sm" title="{{ __('No domains configured') }}"
-                description="Add a domain or generate one with the server wildcard domain." icon-name="globe" />
+                description="{{ __('Add a domain or generate one with the server wildcard domain.') }}" icon-name="globe" />
         </div>
     @else
         <div class="application-settings-section-body is-flush overflow-visible">

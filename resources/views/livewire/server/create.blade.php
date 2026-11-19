@@ -35,7 +35,7 @@
                             <div class="mt-auto pt-5">
                                 <h3 class="text-[13px]! font-semibold! text-black dark:text-fg">{{ __('IP address or domain') }}</h3>
                                 <p class="mt-1 text-[11px] leading-4 text-neutral-500 dark:text-fg-faint">
-                                    Connect an existing server over SSH.
+                                    {{ __('Connect an existing server over SSH.') }}
                                 </p>
                             </div>
                         </a>
@@ -60,7 +60,7 @@
                                 <div class="mt-auto pt-5">
                                     <h3 class="text-[13px]! font-semibold! text-black dark:text-fg">Hetzner</h3>
                                     <p class="mt-1 text-[11px] leading-4 text-neutral-500 dark:text-fg-faint">
-                                        Provision from Hetzner Cloud.
+                                        {{ __('Provision from Hetzner Cloud.') }}
                                     </p>
                                 </div>
                             </a>
@@ -75,7 +75,7 @@
                                 <div class="mt-auto pt-5">
                                     <h3 class="text-[13px]! font-semibold! text-black dark:text-fg">Vultr</h3>
                                     <p class="mt-1 text-[11px] leading-4 text-neutral-500 dark:text-fg-faint">
-                                        Provision from Vultr Cloud.
+                                        {{ __('Provision from Vultr Cloud.') }}
                                     </p>
                                 </div>
                             </a>
@@ -89,7 +89,7 @@
                                 <div class="mt-auto pt-5">
                                     <h3 class="text-[13px]! font-semibold! text-black dark:text-fg">DigitalOcean</h3>
                                     <p class="mt-1 text-[11px] leading-4 text-neutral-500 dark:text-fg-faint">
-                                        Provision a new Droplet.
+                                        {{ __('Provision a new Droplet.') }}
                                     </p>
                                 </div>
                             </a>
@@ -103,7 +103,7 @@
                                 <div class="mt-auto pt-5">
                                     <h3 class="text-[13px]! font-semibold! text-black dark:text-fg">Hostinger</h3>
                                     <p class="mt-1 text-[11px] leading-4 text-neutral-500 dark:text-fg-faint">
-                                        Purchase and provision a new VPS.
+                                        {{ __('Purchase and provision a new VPS.') }}
                                     </p>
                                 </div>
                             </a>

@@ -72,7 +72,7 @@
             </x-application.settings-section>
 
             @if ($hasAdditionalDestinations && data_get($resource, 'build_pack') !== 'dockercompose')
-                <x-application.settings-section id="additional-servers-section" title="Additional servers"
+                <x-application.settings-section id="additional-servers-section" title="{{ __('Additional servers') }}"
                     helper="Deploy this application to more servers and choose which destination is primary." flush>
                     <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
                         @foreach ($additionalDestinations as $destination)
@@ -150,7 +150,7 @@
                                     @endcan
                                     @can('update', $resource)
                                         <div class="hidden" aria-hidden="true">
-                                            <x-modal-confirmation title="Remove server from application?" isErrorButton
+                                            <x-modal-confirmation title="{{ __('Remove server from application?') }}" isErrorButton
                                                 buttonTitle="{{ __('Remove') }}"
                                                 submitAction="removeServer({{ data_get($destination, 'id') }},{{ data_get($destination, 'server.id') }})"
                                                 :actions="[
@@ -172,10 +172,10 @@
             @endif
 
             @if (data_get($resource, 'build_pack') !== 'dockercompose')
-                <x-application.settings-section id="available-servers-section" title="Add another server"
+                <x-application.settings-section id="available-servers-section" title="{{ __('Add another server') }}"
                     helper="Attach another available server and network as a deployment destination." :flush="$resource->persistentStorages()->count() === 0">
                     @if ($resource->persistentStorages()->count() > 0)
-                        <x-callout type="warning" title="Additional servers are unavailable">
+                        <x-callout type="warning" title="{{ __('Additional servers are unavailable') }}">
                             This application has persistent storage volumes. Applications with persistent storage
                             cannot use multiple servers because those volumes are not shared between hosts.
                         </x-callout>
@@ -209,7 +209,7 @@
                         </div>
                     @else
                         <x-empty size="sm" title="{{ __('No servers available') }}"
-                            description="Every usable server is already attached, or no additional server networks are configured."
+                            description="{{ __('Every usable server is already attached, or no additional server networks are configured.') }}"
                             icon-name="servers" />
                     @endif
                 </x-application.settings-section>

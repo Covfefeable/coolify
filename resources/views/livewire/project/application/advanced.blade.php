@@ -79,7 +79,7 @@
                             helper="Allow Git LFS during the build process."
                             :options="[
                                 ['value' => true, 'label' => __('Enabled')],
-                                ['value' => false, 'label' => 'Disabled'],
+                                ['value' => false, 'label' => __('Disabled')],
                             ]" :disabled="! $canUpdate" />
                         <x-forms.listbox id="isGitShallowCloneEnabled" label="Clone depth" onChange="instantSave"
                             helper="Shallow cloning (--depth=1) speeds up deployments by only fetching the latest commit, useful for large repositories."
@@ -124,7 +124,7 @@
                     <form wire:submit="saveCustomName" class="w-full">
                         <x-unsaved-bar action="saveCustomName" targets="customInternalName" />
                         <x-forms.input
-                            helper="You can add a custom name for your container.<br><br>{{ __('The name is converted to slug format when saved.') }} <span class='font-bold dark:text-warning'>You will lose the rolling update feature!</span>"
+                            helper="You can add a custom name for your container.<br><br>{{ __('The name is converted to slug format when saved.') }} <span class='font-bold dark:text-warning'>{{ __('You will lose the rolling update feature!') }}</span>"
                             id="customInternalName" label="{{ __('Custom container name') }}" canGate="update"
                             :canResource="$application" />
                     </form>
@@ -165,7 +165,7 @@
                     <x-forms.listbox id="isLogDrainEnabled" label="{{ __('Log drain') }}" onChange="instantSave"
                         helper="Drain logs to the log drain endpoint configured in your Server settings."
                         :options="[
-                            ['value' => false, 'label' => 'Disabled'],
+                            ['value' => false, 'label' => __('Disabled')],
                             ['value' => true, 'label' => __('Send logs to the log drain endpoint')],
                         ]" :disabled="! $canUpdate" />
                 </div>
@@ -200,7 +200,7 @@
                     <div class="grid w-full gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="isGpuEnabled" label="GPU access" onChange="instantSave"
                             :options="[
-                                ['value' => false, 'label' => 'Disabled'],
+                                ['value' => false, 'label' => __('Disabled')],
                                 ['value' => true, 'label' => __('Enabled')],
                             ]" :disabled="! $canUpdate" />
                     </div>
@@ -235,7 +235,7 @@
                         helper="Some services compress data by default. In that case you do not need this."
                         :options="[
                             ['value' => true, 'label' => __('Enabled')],
-                            ['value' => false, 'label' => 'Disabled'],
+                            ['value' => false, 'label' => __('Disabled')],
                         ]" :disabled="! $canUpdate" />
                     <x-forms.listbox id="isStripprefixEnabled" label="Path prefixes" onChange="instantSave"
                         helper="Strip Prefix removes prefixes from paths, like /api/ to /."

@@ -39,7 +39,7 @@
                         <x-callout type="warning" title="{{ __('Your configuration changed, please restart the proxy.') }}" />
                     @elseif ($server->hasPendingProxyConfiguration())
                         <x-callout type="warning" title="{{ __('Restart required') }}">
-                            Restart the proxy to apply TLS certificate changes.
+                            {{ __('Restart the proxy to apply TLS certificate changes.') }}
                         </x-callout>
                     @else
                         <div class="flex items-start gap-3">
@@ -52,7 +52,7 @@
                                     {{ str($server->proxyType())->title() }}
                                 </p>
                                 <p class="mt-1 text-xs text-neutral-500 dark:text-fg-dim">
-                                    Saved and running configuration are synchronized.
+                                    {{ __('Saved and running configuration are synchronized.') }}
                                 </p>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                     helper="Control generated labels and requests that do not match a running resource.">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.listbox id="generateExactLabels" label="{{ __('Generated labels') }}"
-                            helper="<ul class='list-disc space-y-1 pl-4'><li><span class='font-semibold'>{{ __('All supported proxies:') }}</span> Traefik and Caddy labels are both generated, so switching the proxy keeps routing working.</li><li><span class='font-semibold'>Active proxy only:</span> generates fewer labels, but all resources must be redeployed to become accessible again after each proxy switch.</li></ul>"
+                            helper="<ul class='list-disc space-y-1 pl-4'><li><span class='font-semibold'>{{ __('All supported proxies:') }}</span> {{ __('Traefik and Caddy labels are both generated, so switching the proxy keeps routing working.') }}</li><li><span class='font-semibold'>Active proxy only:</span> generates fewer labels, but all resources must be redeployed to become accessible again after each proxy switch.</li></ul>"
                             onChange="instantSave" :options="[
                                 ['value' => false, 'label' => 'Labels for all supported proxies'],
                                 ['value' => true, 'label' => __('Labels for the active proxy only')],
@@ -199,7 +199,7 @@
                     @endcan
                 </x-slot:actions>
                 <x-callout type="info" title="{{ __('Custom proxy selected') }}">
-                    Configure and operate the proxy outside Coolify.
+                    {{ __('Configure and operate the proxy outside Coolify.') }}
                 </x-callout>
             </x-application.settings-section>
         @else
@@ -225,7 +225,7 @@
                     </div>
                 @else
                     <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
-                        You do not have permission to select a proxy for this server.
+                        {{ __('You do not have permission to select a proxy for this server.') }}
                     </x-callout>
                 @endcan
             </x-application.settings-section>

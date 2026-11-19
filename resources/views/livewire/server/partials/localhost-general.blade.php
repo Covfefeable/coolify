@@ -34,7 +34,7 @@
                                 <p class="text-sm font-medium text-neutral-950 dark:text-fg">{{ __('Localhost') }}</p>
                                 <p class="mt-1 text-xs leading-5 text-neutral-500 dark:text-fg-dim">
                                     @if ($server->isFunctional())
-                                        The server is reachable, validated, and ready to host resources.
+                                        {{ __('The server is reachable, validated, and ready to host resources.') }}
                                     @else
                                         Validate the local Docker connection before using this server.
                                     @endif

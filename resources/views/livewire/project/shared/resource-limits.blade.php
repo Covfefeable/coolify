@@ -19,7 +19,7 @@
                 label="CPU set" id="limitsCpuset" />
             <x-forms.input canGate="update" :canResource="$resource" placeholder="1024"
                 helper="Relative CPU scheduling weight. Docker uses 1024 by default."
-                label="CPU weight" id="limitsCpuShares" />
+                label="{{ __('CPU weight') }}" id="limitsCpuShares" />
         </div>
     </x-application.settings-section>
 
@@ -28,13 +28,13 @@
         <div class="grid gap-4 sm:grid-cols-2">
             <x-forms.input canGate="update" :canResource="$resource"
                 helper="Soft reservation used when the host is under memory pressure. Use values such as 256m or 1g."
-                label="Memory reservation" id="limitsMemoryReservation" />
+                label="{{ __('Memory reservation') }}" id="limitsMemoryReservation" />
             <x-forms.input canGate="update" :canResource="$resource"
                 helper="Maximum memory available to the container. Set to 0 for unlimited."
                 label="{{ __('Memory limit') }}" id="limitsMemory" />
             <x-forms.input canGate="update" :canResource="$resource"
                 helper="Combined memory and swap allowance. Use values such as 512m or 2g."
-                label="Memory and swap limit" id="limitsMemorySwap" />
+                label="{{ __('Memory and swap limit') }}" id="limitsMemorySwap" />
             <x-forms.input canGate="update" :canResource="$resource"
                 helper="Controls how aggressively anonymous memory is swapped. Enter a value from 0 to 100."
                 type="number" min="0" max="100" label="Swappiness" id="limitsMemorySwappiness" />

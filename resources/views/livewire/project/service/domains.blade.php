@@ -178,7 +178,7 @@
                                     :onChangeArgs="[(int) $appId]"
                                     :options="[
                                         ['value' => true, 'label' => __('Enabled')],
-                                        ['value' => false, 'label' => 'Disabled'],
+                                        ['value' => false, 'label' => __('Disabled')],
                                     ]" :disabled="! auth()->user()->can('update', $service)" />
                             </div>
                         @endif

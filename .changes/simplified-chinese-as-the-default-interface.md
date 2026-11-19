@@ -20,3 +20,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Appearance, server settings, and registration guidance include additional Simplified Chinese translations
 - Confirmation dialogs and environment cloning include Simplified Chinese instructions
 - File browsing, runtime logs, database restores, Git settings, and connection guides include additional Simplified Chinese translations
+- Server setup, Sentinel status, reverse proxy guidance, and application health checks include additional Simplified Chinese translations

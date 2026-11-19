@@ -265,7 +265,7 @@
                         helper="{{ __('Disable only when Cloudflare Tunnel or another proxy connects to Coolify over HTTP. Keep enabled when Cloudflare uses Full or Full (Strict) SSL.') }}"
                         :options="[
                             ['value' => true, 'label' => __('Enabled')],
-                            ['value' => false, 'label' => 'Disabled'],
+                            ['value' => false, 'label' => __('Disabled')],
                         ]" :disabled="! auth()->user()->can('update', $application)" />
                 @endif
                 <x-forms.listbox canGate="update" :canResource="$application" id="isPermanentRedirectEnabled"

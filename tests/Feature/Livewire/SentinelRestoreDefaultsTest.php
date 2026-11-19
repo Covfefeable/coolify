@@ -31,6 +31,16 @@ beforeEach(function () {
     ]);
 });
 
+it('renders the Sentinel sync controls and status in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+    $this->server->sentinelHeartbeat(isReset: true);
+
+    Livewire::test(Sentinel::class, ['server' => $this->server->fresh()])
+        ->assertSee('Sentinel 未同步')
+        ->assertSee('打开 Sentinel 日志')
+        ->assertSee('监控服务器和容器的健康状态，并收集历史指标。');
+});
+
 it('restores default Sentinel configuration without rotating credentials or disabling metrics', function () {
     $settings = $this->server->settings;
     $token = $settings->sentinel_token;

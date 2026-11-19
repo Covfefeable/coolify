@@ -1,6 +1,6 @@
 <form wire:submit="submit">
     <x-unsaved-bar action="submit" targets="maintenancePage" />
-    <x-application.settings-section id="maintenance-section" title="Maintenance mode"
+    <x-application.settings-section id="maintenance-section" title="{{ __('Maintenance mode') }}"
         helper="Show a maintenance page with a 503 status on all domains of this resource. The containers keep running, and the change applies without a redeploy.">
         @if ($this->isSupported)
             <x-slot:badges>

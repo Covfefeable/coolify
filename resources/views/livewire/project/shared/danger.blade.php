@@ -9,7 +9,7 @@
         };
     @endphp
     @if ($resource && !data_get($resource, 'destination.server')?->isFunctional())
-        <x-callout type="warning" title="Server is not reachable" class="mb-4">
+        <x-callout type="warning" title="{{ __('Server is not reachable') }}" class="mb-4">
             Coolify cannot stop or remove Docker resources on this server. Deleting removes this {{ $resourceLabel }}
             from Coolify only. Its containers, volumes, networks, and configuration files remain on the server and can
             start again when the server is back.
@@ -25,7 +25,7 @@
                     The database keeps running.
                 </p>
                 <x-slot:action>
-                    <x-modal-confirmation title="Flush all data?" buttonTitle="{{ __('Flush all data') }}" isErrorButton
+                    <x-modal-confirmation title="{{ __('Flush all data?') }}" buttonTitle="{{ __('Flush all data') }}" isErrorButton
                         submitAction="flush" :actions="['Permanently remove every key from every logical database.']"
                         confirmationText="{{ $resourceName }}"
                         confirmationLabel="Enter the database name to confirm flushing all data"
@@ -41,8 +41,8 @@
                         stop its containers, and remove the selected Docker resources and configuration.
                     </p>
                     <ul class="space-y-1 text-xs">
-                        <li>• Active deployments will be stopped.</li>
-                        <li>• Selected volumes and stored data may be permanently removed.</li>
+                        <li>{{ __('• Active deployments will be stopped.') }}</li>
+                        <li>{{ __('• Selected volumes and stored data may be permanently removed.') }}</li>
                         <li>• This {{ $resourceLabel }} cannot be restored from Coolify after deletion.</li>
                     </ul>
                 <x-slot:action>
@@ -55,7 +55,7 @@
                             confirmationLabel="Enter the resource name to confirm permanent deletion"
                             shortConfirmationLabel="Resource name" />
                     @else
-                        <x-forms.button isError disabled tooltip="You do not have permission to delete this resource.">
+                        <x-forms.button isError disabled tooltip="{{ __('You do not have permission to delete this resource.') }}">
                             {{ __('Delete') }} {{ $resourceLabel }}
                         </x-forms.button>
                     @endif

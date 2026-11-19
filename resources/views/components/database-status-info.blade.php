@@ -74,7 +74,7 @@
                     :disabled="! $isExited || ! auth()->user()?->can('update', $database)"
                     :options="[
                         ['value' => true, 'label' => __('Enabled')],
-                        ['value' => false, 'label' => 'Disabled'],
+                        ['value' => false, 'label' => __('Disabled')],
                     ]" />
                 @if ($sslModeOptions)
                     <x-forms.listbox canGate="update" :canResource="$database" id="sslMode" label="{{ __('SSL mode') }}" :helper="$sslModeHelper"

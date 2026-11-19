@@ -86,7 +86,7 @@
                         helper="Configure how Coolify identifies, reaches, and validates this server.">
                         <x-slot:badges>
                             @if ($server->isTransferredAway())
-                                <x-status-badge label="Transferred away" type="warning" />
+                                <x-status-badge label="{{ __('Transferred away') }}" type="warning" />
                             @else
                                 <x-status-badge :label="$server->isFunctional() ? 'Ready' : 'Validation required'"
                                     :type="$server->isFunctional() ? 'success' : 'warning'" />
@@ -153,7 +153,7 @@
                             @if ($server->canBeValidated())
                                 <x-process-dialog closeWithX mobileFullscreen size="xl" :open="$isValidating"
                                     x-on:background-validation-finished.window="processDialogOpen = false">
-                                    <x-slot:title>Validate and configure</x-slot:title>
+                                    <x-slot:title>{{ __('Validate and configure') }}</x-slot:title>
                                     <x-slot:content>
                                         <livewire:server.validate-and-install :server="$server"
                                             :ask="$server->isFunctional() && ! $isValidating" />
@@ -171,7 +171,7 @@
                                     $transferredAt = data_get($server->server_metadata, 'transfer.transferred_at');
                                     $transferredAt = $transferredAt ? \Illuminate\Support\Carbon::parse($transferredAt)->toDayDateTimeString().' UTC' : 'the transfer';
                                 @endphp
-                                <x-modal-confirmation title="Take back a transferred server?"
+                                <x-modal-confirmation title="{{ __('Take back a transferred server?') }}"
                                     submitAction="enableManagement" :confirmWithPassword="false"
                                     temporaryDisableTwoStepConfirmation
                                     step2ButtonText="{{ __('I understand, enable management') }}"
@@ -196,7 +196,7 @@
                         </x-slot:actions>
 
                         @if ($server->isTransferredAway())
-                            <x-callout type="danger" title="Transferred to another instance" class="mb-4">
+                            <x-callout type="danger" title="{{ __('Transferred to another instance') }}" class="mb-4">
                                 This server was transferred to
                                 <strong>{{ data_get($server->server_metadata, 'transfer.target_instance_url') ?: 'another Coolify instance' }}</strong>,
                                 which manages it now. Use that instance. To undo the transfer, use
@@ -264,7 +264,7 @@
                         @if (!$server->isLocalhost())
                             <div class="mt-4 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                                 <x-forms.listbox canGate="update" :canResource="$server" id="serverRole"
-                                    label="Server role" onChange="requestServerRoleChange"
+                                    label="{{ __('Server role') }}" onChange="requestServerRoleChange"
                                     helper="Builds can use large amounts of CPU and memory. Deployments on the same server can become slow or unreachable during a build. GitHub Actions runners need the Builds only or the Deployments and builds role."
                                     :disabled="$isValidating" :options="[
                                         ['value' => 'deployment', 'label' => 'Deployments only', 'description' => 'Runs your resources. Images are built on a build server.'],
@@ -325,7 +325,7 @@
                                     @if ($server->isTransferredAway())
                                         This server was migrated away from this Coolify instance and cannot be managed here.
                                     @elseif ($server->isFunctional())
-                                        The server is reachable, validated, and ready to host resources.
+                                        {{ __('The server is reachable, validated, and ready to host resources.') }}
                                     @else
                                         Validate the SSH connection before using this server.
                                     @endif

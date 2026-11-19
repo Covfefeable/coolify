@@ -49,7 +49,7 @@
                         id="isGeoipEnabled" label="{{ __('Geolocation') }}"
                         :options="[
                             ['value' => true, 'label' => __('Enabled')],
-                            ['value' => false, 'label' => 'Disabled'],
+                            ['value' => false, 'label' => __('Disabled')],
                         ]"
                         helper="{{ __('Country enrichment from visitor IPs. Disable to skip GeoIP lookups.') }}" />
                     <x-forms.listbox canGate="update" :canResource="$server"
@@ -57,7 +57,7 @@
                         :options="[
                             ['value' => 'full', 'label' => __('Full')],
                             ['value' => 'anonymized', 'label' => __('Anonymized (/24 IPv4, /48 IPv6)')],
-                            ['value' => 'off', 'label' => 'Disabled'],
+                            ['value' => 'off', 'label' => __('Disabled')],
                         ]"
                         helper="{{ __('How Sentinel stores visitor IPs for the Top IPs list. Anonymized keeps only the network. Disabled does not store IPs or visitor cities. When you change this setting, Sentinel deletes the stored IPs that the new setting does not allow.') }}" />
                     <x-forms.input canGate="update" :canResource="$server" type="number" min="1"

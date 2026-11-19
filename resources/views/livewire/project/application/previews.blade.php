@@ -3,13 +3,13 @@
         @php
             $canUpdate = auth()->user()->can('update', $application);
         @endphp
-        <x-application.settings-section id="preview-settings-section" title="Preview settings"
+        <x-application.settings-section id="preview-settings-section" title="{{ __('Preview settings') }}"
             helper="Automatic pull request deployments and who can trigger them.">
             <x-slot:actions>
                 @can('update', $application)
                     @if ($application->isGithubAppSource())
-                        <x-modal-input title="Pull requests"
-                            subtitle="Load open pull requests from GitHub, then configure or deploy a preview."
+                        <x-modal-input title="{{ __('Pull requests') }}"
+                            subtitle="{{ __('Load open pull requests from GitHub, then configure or deploy a preview.') }}"
                             :wireIgnore="false" :isLarge="true">
                             <x-slot:content>
                                 <x-forms.button wire:click="load_prs">
@@ -28,7 +28,7 @@
                             </x-slot:headerActions>
 
                             <div class="-m-4" wire:loading wire:target="load_prs">
-                                <x-skeleton.list :rows="3" label="Loading pull requests" />
+                                <x-skeleton.list :rows="3" label="{{ __('Loading pull requests') }}" />
                             </div>
 
                             <div class="-m-4" wire:loading.remove wire:target="load_prs">

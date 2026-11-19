@@ -74,13 +74,13 @@
                         <x-forms.listbox disabled id="is_auto_update_enabled" label="{{ __('Automatic updates') }}"
                             helper="{{ __('Controlled by the AUTOUPDATE environment variable.') }}" :options="[
                                 ['value' => true, 'label' => __('Enabled')],
-                                ['value' => false, 'label' => 'Disabled'],
+                                ['value' => false, 'label' => __('Disabled')],
                             ]" />
                     @else
                         <x-forms.listbox id="is_auto_update_enabled" label="{{ __('Automatic updates') }}"
                             onChange="instantSave" :options="[
                                 ['value' => true, 'label' => __('Enabled')],
-                                ['value' => false, 'label' => 'Disabled'],
+                                ['value' => false, 'label' => __('Disabled')],
                             ]" />
                     @endif
 
@@ -89,7 +89,7 @@
                             placeholder="0 0 * * *"
                             helper="{{ __('Cron expression or preset for installing updates.') }}" />
                     @else
-                        <x-forms.input label="{{ __('Update frequency') }}" disabled placeholder="Disabled" />
+                        <x-forms.input label="{{ __('Update frequency') }}" disabled placeholder="{{ __('Disabled') }}" />
                     @endif
                 </div>
             </x-application.settings-section>

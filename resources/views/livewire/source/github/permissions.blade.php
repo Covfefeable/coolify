@@ -23,7 +23,7 @@
                             helper="{{ __('Read access is mandatory.') }}" label="Metadata" readonly placeholder="{{ __('N/A') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app" id="pullRequests"
                             helper="Write access is needed for preview deployment status updates."
-                            label="Pull requests" readonly placeholder="{{ __('N/A') }}" />
+                            label="{{ __('Pull requests') }}" readonly placeholder="{{ __('N/A') }}" />
                     </div>
                 </x-application.settings-section>
 

@@ -139,7 +139,7 @@
         </x-slot:actions>
 
         @if ($loadFailed)
-            <x-empty title="{{ __('Could not load files') }}" description="Check the server connection and try again." />
+            <x-empty title="{{ __('Could not load files') }}" description="{{ __('Check the server connection and try again.') }}" />
             <div class="flex justify-center pb-4">
                 <x-forms.button wire:click="loadFiles">{{ __('Retry') }}</x-forms.button>
             </div>

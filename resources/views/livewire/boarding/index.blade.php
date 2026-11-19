@@ -7,9 +7,9 @@
             @if ($currentState === 'welcome')
                 <div class="w-full max-w-3xl">
                     <div class="mb-6 text-center">
-                        <h1 class="text-2xl! font-semibold!">Welcome to Coolify</h1>
+                        <h1 class="text-2xl! font-semibold!">{{ __('Welcome to Coolify') }}</h1>
                         <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                            Connect your first server and start deploying in minutes.
+                            {{ __('Connect your first server and start deploying in minutes.') }}
                         </p>
                     </div>
 
@@ -63,22 +63,17 @@
                 <x-boarding-progress :currentStep="0" />
                 <x-boarding-step title="{{ __('Platform Overview') }}">
                     <x-slot:question>
-                        Coolify automates deployment and infrastructure management on your own servers. Deploy applications
-                        from Git, manage databases, and monitor everything without vendor lock-in.
+                        {{ __('Coolify automates deployment and infrastructure management on your own servers. Deploy applications from Git, manage databases, and monitor everything without vendor lock-in.') }}
                     </x-slot:question>
                     <x-slot:explanation>
                         <p>
-                            <x-highlighted text="Automation:" /> Coolify handles server configuration, Docker management,
-                            and
-                            deployments automatically.
+                            <x-highlighted text="{{ __('Automation:') }}" /> {{ __('Coolify handles server configuration, Docker management, and deployments automatically.') }}
                         </p>
                         <p>
-                            <x-highlighted text="Self-hosted:" /> All data and configurations live on your infrastructure.
-                            Works offline except for external integrations.
+                            <x-highlighted text="{{ __('Self-hosted:') }}" /> {{ __('All data and configurations live on your infrastructure. Works offline except for external integrations.') }}
                         </p>
                         <p>
-                            <x-highlighted text="Monitoring & Alerts:" /> Get real-time notifications via Discord, Telegram,
-                            Email, and other platforms.
+                            <x-highlighted text="{{ __('Monitoring & Alerts:') }}" /> {{ __('Get real-time notifications via Discord, Telegram, Email, and other platforms.') }}
                         </p>
                     </x-slot:explanation>
                     <x-slot:actions>
@@ -92,7 +87,7 @@
                 <x-boarding-progress :currentStep="1" />
                 <x-boarding-step title="{{ __('Choose Server Type') }}">
                     <x-slot:question>
-                        Select where to deploy your applications and databases. You can add more servers later.
+                        {{ __('Select where to deploy your applications and databases. You can add more servers later.') }}
                     </x-slot:question>
                     <x-slot:actions>
                         <div class="w-full space-y-6">
@@ -164,7 +159,7 @@
                                                     <div class="min-h-0 flex-1">
                                                         <h3 class="mb-1 text-[14px] font-semibold">Hetzner Cloud</h3>
                                                         <p class="text-sm dark:text-neutral-400">
-                                                            Deploy servers directly from your Hetzner Cloud account.
+                                                            {{ __('Deploy servers directly from your Hetzner Cloud account.') }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -182,7 +177,7 @@
                                                     <div class="min-h-0 flex-1">
                                                         <h3 class="mb-1 text-[14px] font-semibold">Vultr Cloud</h3>
                                                         <p class="text-sm dark:text-neutral-400">
-                                                            Deploy servers directly from your Vultr account.
+                                                            {{ __('Deploy servers directly from your Vultr account.') }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -199,7 +194,7 @@
                                                     <div class="min-h-0 flex-1">
                                                         <h3 class="mb-1 text-[14px] font-semibold">DigitalOcean</h3>
                                                         <p class="text-sm dark:text-neutral-400">
-                                                            Deploy servers directly from your DigitalOcean account.
+                                                            {{ __('Deploy servers directly from your DigitalOcean account.') }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -216,7 +211,7 @@
                                                     <div class="min-h-0 flex-1">
                                                         <h3 class="mb-1 text-[14px] font-semibold">Hostinger</h3>
                                                         <p class="text-sm dark:text-neutral-400">
-                                                            Deploy servers directly from your Hostinger account.
+                                                            {{ __('Deploy servers directly from your Hostinger account.') }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -281,7 +276,7 @@
                 <x-boarding-progress :currentStep="2" />
                 <x-boarding-step title="{{ __('SSH Authentication') }}">
                     <x-slot:question>
-                        Configure SSH key-based authentication for secure server access.
+                        {{ __('Configure SSH key-based authentication for secure server access.') }}
                     </x-slot:question>
                     <x-slot:actions>
                         @if ($privateKeys && $privateKeys->count() > 0)
@@ -371,7 +366,7 @@
                 <x-boarding-progress :currentStep="2" />
                 <x-boarding-step title="{{ __('SSH Key Configuration') }}">
                     <x-slot:question>
-                        Configure your SSH key for server authentication.
+                        {{ __('Configure your SSH key for server authentication.') }}
                     </x-slot:question>
                     <x-slot:actions>
                         <form wire:submit='savePrivateKey' class="flex flex-col w-full gap-4">
@@ -430,12 +425,12 @@
                 <x-boarding-progress :currentStep="2" />
                 <x-boarding-step title="{{ __('Server Configuration') }}">
                     <x-slot:question>
-                        Provide connection details for your remote server.
+                        {{ __('Provide connection details for your remote server.') }}
                     </x-slot:question>
                     <x-slot:actions>
                         <form wire:submit='saveServer' class="flex flex-col w-full gap-4">
                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                <x-forms.input required placeholder="{{ __('e.g., production-app-server') }}" label="Server Name"
+                                <x-forms.input required placeholder="{{ __('e.g., production-app-server') }}" label="{{ __('Server Name') }}"
                                     id="remoteServerName" wire:model="remoteServerName" />
                                 <x-forms.input required placeholder="{{ __('IP address or hostname') }}" label="{{ __('IP Address/Hostname') }}"
                                     id="remoteServerHost" wire:model="remoteServerHost" />
@@ -460,7 +455,7 @@
                 <x-boarding-progress :currentStep="2" />
                 <x-boarding-step title="{{ __('Server Validation') }}">
                     <x-slot:question>
-                        Coolify will automatically install Docker {{ $minDockerVersion }}+ if not present.
+                        {{ __('Coolify will automatically install Docker :version+ if not present.', ['version' => $minDockerVersion]) }}
                     </x-slot:question>
                     <x-slot:actions>
                         <div class="flex w-full flex-col gap-4">
@@ -535,9 +530,9 @@
                 <x-boarding-step title="{{ __('Project Setup') }}">
                     <x-slot:question>
                         @if ($projects && $projects->count() > 0)
-                            You have existing projects. Select one or create a new project to organize your resources.
+                            {{ __('You have existing projects. Select one or create a new project to organize your resources.') }}
                         @else
-                            Create your first project to organize applications, databases, and services.
+                            {{ __('Create your first project to organize applications, databases, and services.') }}
                         @endif
                     </x-slot:question>
                     <x-slot:actions>
@@ -587,7 +582,7 @@
                         </div>
                         <h1 class="text-2xl! font-semibold!">{{ __('Setup complete') }}</h1>
                         <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                            Your server is connected and ready. Start deploying your first resource.
+                            {{ __('Your server is connected and ready. Start deploying your first resource.') }}
                         </p>
                     </div>
 

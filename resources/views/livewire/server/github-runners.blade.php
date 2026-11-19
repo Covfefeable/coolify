@@ -22,7 +22,7 @@
                         </a>
                     </x-slot:actions>
                     <x-empty size="sm" title="{{ __('This server is not enabled for builds') }}"
-                        description="GitHub Actions runners need the Builds only or the Deployments and builds role. Change the server role in the General settings."
+                        description="{{ __('GitHub Actions runners need the Builds only or the Deployments and builds role. Change the server role in the General settings.') }}"
                         icon-name="play-circle" />
                 </x-application.settings-section>
             @elseif ($this->githubApps->isEmpty())
@@ -78,21 +78,21 @@
                         </x-slot:actions>
 
                         @if (! $server->isBuildServer())
-                            <x-callout type="warning" title="Runners share this server with your resources" class="mb-4">
+                            <x-callout type="warning" title="{{ __('Runners share this server with your resources') }}" class="mb-4">
                                 Workflow jobs use the same CPU, memory, and disk as the resources on this server. A heavy
                                 job can slow down or stop them. Use a server with the Builds only role for runners when
                                 you can.
                             </x-callout>
                         @endif
                         <div x-cloak x-show="$wire.dockerMode === 'dind'">
-                            <x-callout type="warning" title="Use only for trusted repositories">
+                            <x-callout type="warning" title="{{ __('Use only for trusted repositories') }}">
                                 In the privileged Docker mode, a malicious workflow can take control of this server.
                                 Use Isolated Docker (Sysbox) or No Docker to keep jobs away from the server. Every
                                 repository of the organization can use these runners, public ones too.
                             </x-callout>
                         </div>
                         <div x-cloak x-show="$wire.allowPullRequests" class="mt-4">
-                            <x-callout type="warning" title="Pull request jobs run on this server">
+                            <x-callout type="warning" title="{{ __('Pull request jobs run on this server') }}">
                                 In a public repository, anyone can open a pull request and change its workflow. Turn
                                 on approval for fork pull request workflows in the organization's Actions settings on
                                 GitHub, and do not use the privileged Docker mode.

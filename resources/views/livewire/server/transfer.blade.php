@@ -27,7 +27,7 @@
                         @if (data_get($this->migration, 'status') === 'running')
                             <x-status-badge label="Transferring" type="warning" :data-tooltip="$exportTooltip" />
                         @elseif ($server->isTransferredAway())
-                            <x-status-badge label="Transferred away" type="warning" :data-tooltip="$exportTooltip" />
+                            <x-status-badge label="{{ __('Transferred away') }}" type="warning" :data-tooltip="$exportTooltip" />
                         @else
                             <x-status-badge label="Managed here" type="success" :data-tooltip="$exportTooltip" />
                         @endif

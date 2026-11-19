@@ -482,7 +482,7 @@
                     $portsExposesDomainHint = "You can also set a different internal port for each domain on the <a class='underline dark:text-white' href='{$applicationDomainsUrl}'>{{ __('Domains') }}</a> page.";
                 @endphp
                 <x-modal-input title="{{ __('Networking') }}" class="hidden" :wireIgnore="false"
-                    wireOpen="networkingModalOpen" subtitle="Ports the container exposes, host port mappings and internal network aliases."
+                    wireOpen="networkingModalOpen" subtitle="{{ __('Ports the container exposes, host port mappings and internal network aliases.') }}"
                     @open-networking-modal.window="modalOpen = true">
                 <x-slot:content></x-slot:content>
                 <form wire:submit="submit" class="flex flex-col">
@@ -573,12 +573,12 @@
                     </div>
                     @if (!$application->destination->server->isSwarm())
                         <x-forms.input placeholder="3000:3000" id="portsMappings" label="{{ __('Port mappings') }}"
-                            helper="A comma separated list of ports you would like to map to the host system. Useful when you do not want to use domains.<br><br><span class='inline-block font-bold dark:text-brand-light'>{{ __('Format:') }}</span> host:container<br><br><span class='inline-block font-bold dark:text-brand-light'>Example:</span> 3000:3000,3002:3002<br><br>Rolling update is not supported if you have a port mapped to the host."
+                            helper="A comma separated list of ports you would like to map to the host system. Useful when you do not want to use domains.<br><br><span class='inline-block font-bold dark:text-brand-light'>{{ __('Format:') }}</span> host:container<br><br><span class='inline-block font-bold dark:text-brand-light'>{{ __('Example:') }}</span> 3000:3000,3002:3002<br><br>Rolling update is not supported if you have a port mapped to the host."
                             x-bind:disabled="!canUpdate" />
                     @endif
                     @if (!$application->destination->server->isSwarm())
-                        <x-forms.input id="customNetworkAliases" label="Network aliases"
-                            helper="A comma separated list of custom network aliases you would like to add for container in Docker network.<br><br><span class='inline-block font-bold dark:text-brand-light'>Example:</span><br>api.internal,api.local"
+                        <x-forms.input id="customNetworkAliases" label="{{ __('Network aliases') }}"
+                            helper="A comma separated list of custom network aliases you would like to add for container in Docker network.<br><br><span class='inline-block font-bold dark:text-brand-light'>{{ __('Example:') }}</span><br>api.internal,api.local"
                             wire:model="customNetworkAliases" x-bind:disabled="!canUpdate" />
                     @endif
                 </div>
@@ -596,7 +596,7 @@
                         id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" x-bind:disabled="!canUpdate" />
                 <x-application.settings-subsection id="container-labels-section" title="{{ __('Labels') }}">
                     <div class="grid w-full gap-4 sm:grid-cols-2">
-                        <x-forms.listbox id="isContainerLabelReadonlyEnabled" label="Label management"
+                        <x-forms.listbox id="isContainerLabelReadonlyEnabled" label="{{ __('Label management') }}"
                             onChange="instantSave"
                             helper="When Coolify manages the labels, they are regenerated automatically and manual edits can be lost.<br><br>If you edit them yourself, be careful: a wrong label set can break the proxy configuration after a restart (you can always reset to the Coolify defaults)."
                             :options="[
@@ -613,9 +613,9 @@
                     </div>
                     <div class="mt-5 border-t border-neutral-200 pt-5 dark:border-white/[0.07]">
                         <div class="mb-1.5 flex items-center justify-between gap-3">
-                            <label class="flex w-fit items-center gap-1.5" style="margin-bottom: 0">Active labels</label>
+                            <label class="flex w-fit items-center gap-1.5" style="margin-bottom: 0">{{ __('Active labels') }}</label>
                             @can('update', $application)
-                                <x-modal-confirmation title="Confirm Labels Reset to Coolify Defaults?"
+                                <x-modal-confirmation title="{{ __('Confirm Labels Reset to Coolify Defaults?') }}"
                                     buttonTitle="{{ __('Reset to defaults') }}" submitAction="resetDefaultLabels(true)"
                                     :actions="[
                                         'All your custom proxy labels will be lost.',

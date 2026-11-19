@@ -6,7 +6,7 @@
 
 <div x-data="{ dnsEntriesOpen: false }" class="relative" @click.outside="dnsEntriesOpen = false">
     <button type="button" class="button" @click="dnsEntriesOpen = !dnsEntriesOpen" aria-haspopup="menu"
-        x-bind:aria-expanded="dnsEntriesOpen" title="DNS checks and records for this server">
+        x-bind:aria-expanded="dnsEntriesOpen" title="{{ __('DNS checks and records for this server') }}">
         <x-reicon name="globe" class="size-3.5" />
         DNS
         <span class="inline-flex transition-transform" :class="dnsEntriesOpen && 'rotate-180'">
@@ -64,7 +64,7 @@
                         class="application-settings-form application-settings-section relative flex w-full max-w-lg flex-col overflow-hidden"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                         <header class="flex-nowrap!">
-                            <h3 class="min-w-0 flex-1 truncate">Configure DNS on Cloudflare</h3>
+                            <h3 class="min-w-0 flex-1 truncate">{{ __('Configure DNS on Cloudflare') }}</h3>
                             <button type="button" wire:click="closeCloudflareAutoconfigureModal"
                                 class="icon-button shrink-0" aria-label="{{ __('Close') }}">
                                 <x-reicon name="x" class="size-4" />
@@ -157,7 +157,7 @@
                     class="application-settings-form application-settings-section relative flex w-full max-w-2xl flex-col overflow-hidden"
                     style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                     <header class="flex-nowrap!">
-                        <h3 class="min-w-0 flex-1 truncate">DNS entries</h3>
+                        <h3 class="min-w-0 flex-1 truncate">{{ __('DNS entries') }}</h3>
                         <button type="button" @click="closeDnsRecords()"
                             class="icon-button shrink-0" aria-label="{{ __('Close') }}">
                             <x-reicon name="x" class="size-4" />
@@ -170,11 +170,11 @@
                         </p>
 
                         @if (blank($serverIp) && count($dnsHints) === 0)
-                            <x-callout type="warning" title="No server IP">
+                            <x-callout type="warning" title="{{ __('No server IP') }}">
                                 Could not determine a public IP for this destination. Set the server IP (or instance public IPv4 for localhost) first.
                             </x-callout>
                         @elseif (count($dnsHints) === 0)
-                            <x-callout type="info" title="Nothing to configure">
+                            <x-callout type="info" title="{{ __('Nothing to configure') }}">
                                 No pending DNS entries. All listed domains already resolve correctly, or no domains are configured yet.
                                 Use Recheck after changing DNS.
                             </x-callout>

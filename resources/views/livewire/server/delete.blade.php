@@ -14,7 +14,7 @@
                 <x-application.settings-section id="server-danger-section" title="{{ __('Delete server') }}"
                     helper="Permanently remove this server and its configuration from Coolify."
                     class="server-danger-section">
-                    <x-danger-zone title="This action cannot be undone">
+                    <x-danger-zone title="{{ __('This action cannot be undone') }}">
                         <p>
                         The server will be removed from Coolify.
                         @if ($server->isTransferredAway())
@@ -28,7 +28,7 @@
                         </p>
                         @if (! $server->isTransferredAway() && $resourcesToDelete->isNotEmpty())
                             <div>
-                                <p>Deleted with "Delete all resources":</p>
+                                <p>{{ __('Deleted with "Delete all resources":') }}</p>
                                 <ul class="list-disc pl-5">
                                     @foreach ($resourcesToDelete as $resource)
                                         <li>{{ $resource->name }}</li>
@@ -50,7 +50,7 @@
                             <p>
                             Hostinger deletes the VPS only at the end of its paid period, and only if you select this in the confirmation dialog.
                             <a class="underline" href="https://hpanel.hostinger.com/" target="_blank"
-                                rel="noopener noreferrer">Manage the VPS and billing in hPanel.</a>
+                                rel="noopener noreferrer">{{ __('Manage the VPS and billing in hPanel.') }}</a>
                             </p>
                         @endif
                         <p>{{ __('Type the server name in the confirmation dialog to continue.') }}</p>

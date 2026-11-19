@@ -53,11 +53,11 @@
         @elseif ($logsUnavailable)
             @if ($servers->isEmpty())
                 <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
-                    description="Connect and validate a server before viewing resource logs."
+                    description="{{ __('Connect and validate a server before viewing resource logs.') }}"
                     icon-name="file-content" />
             @elseif ($functionalServers->isEmpty())
                 <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
-                    description="No functional servers are available, so container logs cannot be loaded."
+                    description="{{ __('No functional servers are available, so container logs cannot be loaded.') }}"
                     icon-name="file-content" />
             @elseif (count($serverErrors) > 0)
                 <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
@@ -72,11 +72,11 @@
             <div class="runtime-logs-workspace">
                 @foreach ($servers as $serverModel)
                     @if (! $serverModel->isFunctional())
-                        <x-callout type="warning" title="Server unavailable">
+                        <x-callout type="warning" title="{{ __('Server unavailable') }}">
                             {{ $serverModel->name }} is not functional, so its container logs cannot be loaded.
                         </x-callout>
                     @elseif (isset($serverErrors[$serverModel->id]))
-                        <x-callout type="warning" title="Could not load containers">
+                        <x-callout type="warning" title="{{ __('Could not load containers') }}">
                             {{ $serverModel->name }}: {{ $serverErrors[$serverModel->id] }}
                         </x-callout>
                     @endif
