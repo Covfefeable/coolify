@@ -2,10 +2,10 @@
     <form wire:submit="submit" class="flex flex-col gap-6">
         <x-unsaved-bar action="submit" />
 
-        <x-application.settings-section id="database-details-section" title="Database details"
+        <x-application.settings-section id="database-details-section" title="{{ __('Database details') }}"
             description="Manage the identity, container image, and credentials of this Redis / Valkey database.">
             <x-slot:actions>
-                <x-modal-input title="Resource details" buttonTitle="Details">
+                <x-modal-input title="{{ __('Resource details') }}" buttonTitle="{{ __('Details') }}">
                     <livewire:project.shared.resource-details :resource="$database" />
                 </x-modal-input>
             </x-slot:actions>
@@ -17,7 +17,7 @@
                         helper="Use a published Redis or Valkey image from Docker Hub, for example valkey/valkey:9-alpine or redis:8." />
                 </div>
             </div>
-            <x-application.settings-subsection id="credentials-section" title="Credentials" helper="Keep these values aligned with the credentials configured inside Redis / Valkey.">
+            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="Keep these values aligned with the credentials configured inside Redis / Valkey.">
                 <x-callout type="warning" title="{{ $database->started_at ? 'Keep credentials synchronized' : 'Verify the initial credentials' }}">
                     @if ($database->started_at)
                         Changing values here does not update Redis. Update Redis first, then synchronize the values here so
@@ -28,18 +28,18 @@
                 </x-callout>
                 <div class="mt-4 grid gap-4 lg:grid-cols-2">
                     @if (version_compare($redisVersion, '6.0', '>='))
-                        <x-forms.input label="Username" id="redisUsername" :required="!$database->started_at"
+                        <x-forms.input label="{{ __('Username') }}" id="redisUsername" :required="!$database->started_at"
                             helper="{{ $database->started_at ? 'You can only change this in the database.' : 'Shared REDIS_USERNAME values make this field read-only.' }}"
                             :disabled="!$database->started_at && $this->isSharedVariable('REDIS_USERNAME')"
                             canGate="update" :canResource="$database" />
                     @endif
                     @if ($isPasswordHiddenForMember)
-                        <x-forms.input label="Password" disabled value="Hidden (only admins can view)" />
+                        <x-forms.input label="{{ __('Password') }}" disabled value="Hidden (only admins can view)" />
                     @elseif ($isPasswordLocked)
-                        <x-forms.input label="Password" disabled value="Locked (shown once)"
+                        <x-forms.input label="{{ __('Password') }}" disabled value="Locked (shown once)"
                             helper="REDIS_PASSWORD is locked. Its value is never shown again." />
                     @else
-                        <x-forms.input label="Password" id="redisPassword" type="password"
+                        <x-forms.input label="{{ __('Password') }}" id="redisPassword" type="password"
                             :required="!$database->started_at"
                             helper="{{ $database->started_at ? 'You can only change this in the database.' : 'Shared REDIS_PASSWORD values make this field read-only.' }}"
                             :disabled="!$database->started_at && $this->isSharedVariable('REDIS_PASSWORD')"
@@ -49,7 +49,7 @@
             </x-application.settings-subsection>
         </x-application.settings-section>
 
-        <x-application.settings-section id="access-section" title="Access"
+        <x-application.settings-section id="access-section" title="{{ __('Access') }}"
             description="How applications and clients connect to this database, and whether it is reachable from the internet.">
             <x-slot:actions>
                 @if ($isPublic)
@@ -59,14 +59,14 @@
                             <livewire:project.shared.get-logs :server="$server" :resource="$database"
                                 container="{{ data_get($database, 'uuid') }}-proxy" :collapsible="false" lazy />
                         </x-slot:content>
-                        <x-forms.button @click="processDialogOpen = true">View logs</x-forms.button>
+                        <x-forms.button @click="processDialogOpen = true">{{ __('View logs') }}</x-forms.button>
                     </x-process-dialog>
                 @endif
             </x-slot:actions>
-            <x-application.settings-subsection id="connection-section" title="Connection" helper="Use these URLs to connect to the database." first>
+            <x-application.settings-subsection id="connection-section" title="{{ __('Connection') }}" helper="Use these URLs to connect to the database." first>
                 <livewire:project.database.redis.status-info :database="$database" />
             </x-application.settings-subsection>
-            <x-application.settings-subsection id="public-access-section" title="Public access" helper="Expose this database through the managed TCP proxy." class="relative">
+            <x-application.settings-subsection id="public-access-section" title="{{ __('Public access') }}" helper="Expose this database through the managed TCP proxy." class="relative">
                 <x-table.loading target="instantSave" text="Updating public access..." />
                 <div class="grid gap-4 lg:grid-cols-2">
                     <div wire:key="public-access-{{ $publicPort ?: 'unset' }}">
@@ -77,29 +77,29 @@
                             ]" />
                     </div>
                     <x-forms.input type="number" placeholder="6379" disabled="{{ $isPublic }}" id="publicPort"
-                        label="Public port" canGate="update" :canResource="$database" />
+                        label="{{ __('Public port') }}" canGate="update" :canResource="$database" />
                     <x-forms.input type="number" placeholder="3600" disabled="{{ $isPublic }}" id="publicPortTimeout"
-                        label="Proxy timeout" helper="Timeout in seconds. The default is 3600."
+                        label="{{ __('Proxy timeout') }}" helper="Timeout in seconds. The default is 3600."
                         canGate="update" :canResource="$database" />
-                    <x-forms.input placeholder="3000:6379" id="portsMappings" label="Port mappings"
+                    <x-forms.input placeholder="3000:6379" id="portsMappings" label="{{ __('Port mappings') }}"
                         helper="Comma-separated host-to-container mappings, for example 3000:6379."
                         canGate="update" :canResource="$database" />
                 </div>
             </x-application.settings-subsection>
         </x-application.settings-section>
 
-        <x-application.settings-section id="container-section" title="Container"
+        <x-application.settings-section id="container-section" title="{{ __('Container') }}"
             description="Docker options, configuration, and log forwarding for the database container.">
             @if ($isPasswordHiddenForMember)
-                <x-forms.input label="Custom Docker options" disabled value="Hidden (only admins can view)" />
+                <x-forms.input label="{{ __('Custom Docker options') }}" disabled value="Hidden (only admins can view)" />
             @else
                 <x-forms.input
                     helper="Add supported docker run options used when the container starts. Unsupported options can interfere with Coolify automation."
                     placeholder="--cap-add SYS_ADMIN --device=/dev/fuse"
-                    id="customDockerRunOptions" label="Custom Docker options" canGate="update"
+                    id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" canGate="update"
                     :canResource="$database" />
             @endif
-            <x-application.settings-subsection id="configuration-section" title="Configuration" helper="Override only the Redis / Valkey directives you need. All other defaults remain active.">
+            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="Override only the Redis / Valkey directives you need. All other defaults remain active.">
                 @if ($isPasswordHiddenForMember)
                     <x-forms.input label="Custom Redis / Valkey configuration" disabled value="Hidden (only admins can view)" />
                 @else
@@ -111,8 +111,8 @@
                         :canResource="$database" />
                 @endif
             </x-application.settings-subsection>
-            <x-application.settings-subsection id="log-delivery-section" title="Log delivery" helper="Forward container logs to the drain configured on the server.">
-                <x-forms.listbox canGate="update" :canResource="$database" id="isLogDrainEnabled" label="Log drain" live onChange="instantSaveAdvanced"
+            <x-application.settings-subsection id="log-delivery-section" title="{{ __('Log delivery') }}" helper="Forward container logs to the drain configured on the server.">
+                <x-forms.listbox canGate="update" :canResource="$database" id="isLogDrainEnabled" label="{{ __('Log drain') }}" live onChange="instantSaveAdvanced"
                     :disabled="! auth()->user()->can('update', $database)" :options="[
                         ['value' => false, 'label' => 'Do not forward logs'],
                         ['value' => true, 'label' => 'Forward logs to the server drain'],

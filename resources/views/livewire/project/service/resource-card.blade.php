@@ -81,7 +81,7 @@
                 </a>
             @endcan
         @endif
-        <button type="button" class="icon-button" title="Resource settings" aria-label="Resource settings"
+        <button type="button" class="icon-button" title="{{ __('Resource settings') }}" aria-label="{{ __('Resource settings') }}"
             @click="modalOpen = true">
             <x-reicon name="settings" class="size-4" />
         </button>
@@ -89,7 +89,7 @@
             @can('update', $service)
                 <x-modal-confirmation
                     :title="$isApplication ? 'Confirm Service Application Restart?' : 'Confirm Service Database Restart?'"
-                    buttonTitle="Restart" submitAction="restart" :actions="$isApplication
+                    buttonTitle="{{ __('Restart') }}" submitAction="restart" :actions="$isApplication
                         ? ['The selected service application will be unavailable during the restart.']
                         : ['This service database will be unavailable during the restart.']"
                     :confirmWithText="false" :confirmWithPassword="false"
@@ -143,7 +143,7 @@
                     <x-table.row-action @click="modalOpen = true">{{ __('Settings') }}</x-table.row-action>
                 </x-table.row-actions>
             @else
-                <button type="button" class="icon-button" title="Resource settings" aria-label="Resource settings"
+                <button type="button" class="icon-button" title="{{ __('Resource settings') }}" aria-label="{{ __('Resource settings') }}"
                     @click="modalOpen = true">
                     <x-reicon name="settings" class="size-4" />
                 </button>

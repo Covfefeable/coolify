@@ -151,7 +151,7 @@
                                     @can('update', $resource)
                                         <div class="hidden" aria-hidden="true">
                                             <x-modal-confirmation title="Remove server from application?" isErrorButton
-                                                buttonTitle="Remove"
+                                                buttonTitle="{{ __('Remove') }}"
                                                 submitAction="removeServer({{ data_get($destination, 'id') }},{{ data_get($destination, 'server.id') }})"
                                                 :actions="[
                                                     'This will stop the application on this server and remove it as a deployment destination.',
@@ -159,7 +159,7 @@
                                                 confirmationLabel="Enter the server name to confirm removal"
                                                 shortConfirmationLabel="Server name">
                                                 <x-slot:trigger>
-                                                    <button id="destination-remove-trigger-{{ $destination->id }}" type="button">Remove</button>
+                                                    <button id="destination-remove-trigger-{{ $destination->id }}" type="button">{{ __('Remove') }}</button>
                                                 </x-slot:trigger>
                                             </x-modal-confirmation>
                                         </div>

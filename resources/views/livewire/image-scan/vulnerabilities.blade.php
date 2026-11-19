@@ -30,7 +30,7 @@
         {{-- Main card (spec 15.7, 15.11): the status sentence and the one action first, then the why-list, the
              provenance, and the running image. One image renders open without a list frame; several images are a list,
              worst first, with the worst one open. --}}
-        <x-application.settings-section id="security-section" title="Security">
+        <x-application.settings-section id="security-section" title="{{ __('Security') }}">
             @if (filled($card['badge'] ?? null))
                 <x-slot:badges>
                     <x-status-badge :type="$card['badgeType']" :label="$card['badge']" />
@@ -250,12 +250,12 @@
                             <div @class(['data-table-header image-scan-packages-grid', 'has-image' => $showsImage])>
                                 <span>Package</span>
                                 @if ($showsImage)
-                                    <span class="image-scan-secondary">Image</span>
+                                    <span class="image-scan-secondary">{{ __('Image') }}</span>
                                 @endif
-                                <span class="image-scan-secondary">Version</span>
+                                <span class="image-scan-secondary">{{ __('Version') }}</span>
                                 <span class="image-scan-severity-cell">Severity</span>
                                 <span class="image-scan-secondary">Findings</span>
-                                <span class="sr-only">Actions</span>
+                                <span class="sr-only">{{ __('Actions') }}</span>
                             </div>
                             @foreach ($items as $group)
                                 <div wire:key="package-{{ $group['key'] }}" x-data="{ open: false }"
@@ -317,11 +317,11 @@
                                 <span>Finding</span>
                                 <span class="image-scan-secondary">Package</span>
                                 @if ($showsImage)
-                                    <span class="image-scan-secondary">Image</span>
+                                    <span class="image-scan-secondary">{{ __('Image') }}</span>
                                 @endif
-                                <span class="image-scan-secondary">Version</span>
+                                <span class="image-scan-secondary">{{ __('Version') }}</span>
                                 <span class="image-scan-severity-cell">Severity</span>
-                                <span class="sr-only">Actions</span>
+                                <span class="sr-only">{{ __('Actions') }}</span>
                             </div>
                             @foreach ($items as $row)
                                 @include('livewire.image-scan.partials.finding-row', ['row' => $row, 'nested' => false])

@@ -11,7 +11,7 @@
 
         <div class="application-settings-form w-full">
             @if (! $server->is_coolify_host)
-                <x-application.settings-section id="server-danger-section" title="Delete server"
+                <x-application.settings-section id="server-danger-section" title="{{ __('Delete server') }}"
                     helper="Permanently remove this server and its configuration from Coolify."
                     class="server-danger-section">
                     <x-danger-zone title="This action cannot be undone">
@@ -77,7 +77,7 @@
                             }
                         @endphp
                         <x-modal-confirmation title="Confirm Server Deletion?" isErrorButton
-                            buttonTitle="Delete server" submitAction="delete"
+                            buttonTitle="{{ __('Delete server') }}" submitAction="delete"
                             :actions="$deleteActions" :warningMessage="$deleteWarningMessage"
                             :checkboxes="$checkboxes" confirmationText="{{ $server->name }}"
                             confirmationLabel="Please confirm by entering the Server Name below"

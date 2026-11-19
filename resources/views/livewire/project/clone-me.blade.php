@@ -96,7 +96,7 @@
                 <div class="data-table">
                     <div class="data-table-header clone-resources-table-grid">
                         <span>{{ __('Name') }}</span>
-                        <span>Type</span>
+                        <span>{{ __('Type') }}</span>
                         <span>{{ __('Description') }}</span>
                     </div>
                     @foreach ($environment->applications->sortBy('name') as $application)

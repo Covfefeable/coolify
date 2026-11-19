@@ -114,11 +114,11 @@
                 current-route="project.service.volume-backups.index" />
 
             <div class="application-settings-form min-w-0 flex flex-col gap-6">
-        <x-application.settings-section title="Backups"
+        <x-application.settings-section title="{{ __('Backups') }}"
             helper="Manage database, persistent volume, and directory backup schedules for this service.">
             @can('update', $service)
                 <x-slot:actions>
-                    <x-modal-input title="Import backup" buttonTitle="Import backup">
+                    <x-modal-input title="{{ __('Import backup') }}" buttonTitle="{{ __('Import backup') }}">
                         <livewire:project.service.import-backup :service="$service"
                             wire:key="service-import-backup-{{ $service->id }}" />
                     </x-modal-input>
@@ -165,7 +165,7 @@
 
             <div class="grid gap-4 sm:grid-cols-3">
                 <div>
-                    <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">Schedules</p>
+                    <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Schedules') }}</p>
                     <p class="mt-1 text-xl font-semibold tabular-nums text-neutral-950 dark:text-fg">
                         {{ $backups->count() + $databaseBackups->count() }}
                     </p>
@@ -177,7 +177,7 @@
                     </p>
                 </div>
                 <div>
-                    <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">Total executions</p>
+                    <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Total executions') }}</p>
                     <p class="mt-1 text-xl font-semibold tabular-nums text-neutral-950 dark:text-fg">
                         {{ $backups->sum('executions_count') + $databaseBackups->sum('executions_count') }}
                     </p>
@@ -189,11 +189,11 @@
             <div class="relative w-full sm:max-w-sm">
                 <x-reicon name="search"
                     class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                <input type="search" x-model="search" placeholder="Search backups" aria-label="Search backups"
+                <input type="search" x-model="search" placeholder="{{ __('Search backups') }}" aria-label="{{ __('Search backups') }}"
                     class="input h-8! w-full py-0! pr-8! pl-8!" />
                 <button x-cloak x-show="search" x-on:click="search = ''" type="button"
                     class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                    aria-label="Clear search">
+                    aria-label="{{ __('Clear search') }}">
                     <span class="text-sm leading-none">×</span>
                 </button>
             </div>
@@ -223,7 +223,7 @@
             </div>
         </div>
 
-        <x-application.settings-section title="Schedules"
+        <x-application.settings-section title="{{ __('Schedules') }}"
             helper="Database, persistent volume, and directory backup schedules for this service."
             :flush="$backups->isNotEmpty() || $databaseBackups->isNotEmpty()">
             <x-table.loading target="openSchedule" text="Loading schedule..." />
@@ -238,8 +238,8 @@
                     <div class="flex min-w-[64rem] flex-col">
                     <div class="data-table-header backup-table-grid service-backup-table-grid">
                         <x-table.sort-header label="Target" asc="target_asc" desc="target_desc" />
-                        <x-table.sort-header label="Type" asc="type_asc" desc="type_desc" />
-                        <x-table.sort-header label="Schedule" asc="schedule_asc" desc="schedule_desc" />
+                        <x-table.sort-header label="{{ __('Type') }}" asc="type_asc" desc="type_desc" />
+                        <x-table.sort-header label="{{ __('Schedule') }}" asc="schedule_asc" desc="schedule_desc" />
                         <x-table.sort-header label="{{ __('Status') }}" asc="status_asc" desc="status_desc" />
                         <x-table.sort-header label="S3" asc="s3_asc" desc="s3_desc" />
                         <x-table.sort-header label="Last run" asc="lastrun_asc" desc="lastrun_desc" first="desc" />
@@ -360,7 +360,7 @@
                     </div>
                 </div>
             @else
-                <x-empty size="sm" title="No scheduled backups"
+                <x-empty size="sm" title="{{ __('No scheduled backups') }}"
                     description="Add a database, persistent volume, or directory backup schedule to protect service data."
                     icon-name="storages" />
             @endif

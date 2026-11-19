@@ -27,7 +27,7 @@
     @if ($database->is_migrated && blank($database->custom_type))
         <form wire:submit="setCustomType" class="grid gap-4 p-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
             <div>
-                <x-forms.listbox id="custom_type" label="Database type" :options="[
+                <x-forms.listbox id="custom_type" label="{{ __('Database type') }}" :options="[
                     ['value' => 'mysql', 'label' => 'MySQL'],
                     ['value' => 'mariadb', 'label' => 'MariaDB'],
                     ['value' => 'postgresql', 'label' => 'PostgreSQL'],
@@ -37,7 +37,7 @@
                     Select the database engine before enabling automated backups.
                 </p>
             </div>
-            <x-forms.button type="submit">Set database type</x-forms.button>
+            <x-forms.button type="submit">{{ __('Set database type') }}</x-forms.button>
         </form>
     @else
         @if ($database->scheduledBackups->isNotEmpty())
@@ -45,23 +45,23 @@
                 <div class="relative max-w-sm">
                     <x-reicon name="search"
                         class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                    <input type="search" x-model="search" aria-label="Search backups"
-                        class="input h-8! w-full pl-8! text-[13px]!" placeholder="Search backups" />
+                    <input type="search" x-model="search" aria-label="{{ __('Search backups') }}"
+                        class="input h-8! w-full pl-8! text-[13px]!" placeholder="{{ __('Search backups') }}" />
                 </div>
             </div>
         @endif
 
         @if ($database->scheduledBackups->isEmpty())
-            <x-empty size="sm" title="No scheduled backups"
-                description="Create a schedule to start protecting this database."
+            <x-empty size="sm" title="{{ __('No scheduled backups') }}"
+                description="{{ __('Create a schedule to start protecting this database.') }}"
                 icon-name="storages" />
         @else
             <div x-cloak x-show="search === '' || hasMatches()" class="data-table overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]">
                 <div class="data-table-header scheduled-backups-table-grid">
-                    <span>Schedule</span>
-                    <span>Latest run</span>
-                    <span>S3 storage</span>
-                    <span>Executions</span>
+                    <span>{{ __('Schedule') }}</span>
+                    <span>{{ __('Latest run') }}</span>
+                    <span>{{ __('S3 storage') }}</span>
+                    <span>{{ __('Executions') }}</span>
                     <span class="text-right">{{ __('Actions') }}</span>
                 </div>
                 @foreach ($database->scheduledBackups as $backup)
@@ -69,10 +69,10 @@
                         $latestStatus = data_get($backup->latest_log, 'status');
                         $s3StorageNames = ($backup->s3Storages->isNotEmpty() ? $backup->s3Storages : collect([$backup->s3])->filter())->pluck('name')->join(', ');
                         [$statusLabel, $statusType] = match ($latestStatus) {
-                            'success' => ['Success', 'success'],
+                            'success' => [__('Success'), 'success'],
                             'running' => ['In progress', 'warning'],
-                            'failed' => ['Failed', 'error'],
-                            default => ['Never run', 'neutral'],
+                            'failed' => [__('Failed'), 'error'],
+                            default => [__('Never run'), 'neutral'],
                         };
                         $backupRoute = $type === 'database'
                             ? route('project.database.backup.execution', [...$parameters, 'backup_uuid' => $backup->uuid])
@@ -92,7 +92,7 @@
                                 {{ $backup->frequency }}
                             </a>
                             @unless ($backup->enabled)
-                                <x-status-badge status="Disabled" />
+                                <x-status-badge status="{{ __('Disabled') }}" />
                             @endunless
                         </div>
                         <div class="flex items-center gap-2">
@@ -102,7 +102,7 @@
                             @endif
                         </div>
                         <div class="truncate text-[11px] text-neutral-600 dark:text-fg-dim" title="{{ $backup->save_s3 ? $s3StorageNames : '' }}">
-                            {{ $backup->save_s3 ? ($s3StorageNames ?: 'Unavailable') : 'Local only' }}
+                            {{ $backup->save_s3 ? ($s3StorageNames ?: __('Unavailable')) : __('Local only') }}
                         </div>
                         <div class="text-[11px] text-neutral-600 dark:text-fg-dim">
                             <a {{ wireNavigate() }} href="{{ $backupExecutionsRoute }}"
@@ -112,7 +112,7 @@
                         </div>
                         <div class="flex justify-end">
                             <a class="icon-button" {{ wireNavigate() }} href="{{ $backupRoute }}"
-                                title="Manage backup schedule" aria-label="Manage backup schedule">
+                                title="{{ __('Manage backup schedule') }}" aria-label="{{ __('Manage backup schedule') }}">
                                 <x-reicon name="settings" class="size-3.5" />
                             </a>
                         </div>
@@ -128,8 +128,8 @@
 
         <div x-cloak x-show="search !== '' && backups.length > 0 && !hasMatches()"
             class="border-t border-neutral-200 dark:border-white/[0.06]">
-            <x-empty size="sm" title="No matching backup schedules"
-                description="Try another database name, frequency, or storage name." />
+            <x-empty size="sm" title="{{ __('No matching backup schedules') }}"
+                description="{{ __('Try another database name, frequency, or storage name.') }}" />
         </div>
     @endif
 </div>

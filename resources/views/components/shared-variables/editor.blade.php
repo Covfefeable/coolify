@@ -57,7 +57,7 @@
                         class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                     <button x-cloak x-show="sharedSearch" @click="sharedSearch = ''" type="button"
                         class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                        aria-label="Clear search">
+                        aria-label="{{ __('Clear search') }}">
                         <x-reicon name="x" class="size-3" />
                     </button>
                 </div>
@@ -112,11 +112,11 @@
             @else
                 <div class="data-table flex w-full flex-col">
                     <div class="data-table-header env-table-grid-shared order-[-1]">
-                        <span>Name</span>
+                        <span>{{ __('Name') }}</span>
                         <span>Scope</span>
                         <span>{{ count($readOnlyKeys) ? 'Value / comment' : 'Comment' }}</span>
                         <span class="text-center">Multiline</span>
-                        <span class="text-right">Actions</span>
+                        <span class="text-right">{{ __('Actions') }}</span>
                     </div>
                     @foreach ($variables as $env)
                         @if (in_array($env->key, $readOnlyKeys))

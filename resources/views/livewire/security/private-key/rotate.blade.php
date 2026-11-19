@@ -19,7 +19,7 @@
                                             <x-status-badge size="sm" label="Moved" type="warning" />
                                         @break
                                         @case('failed')
-                                            <x-status-badge size="sm" label="Failed" type="error" />
+                                            <x-status-badge size="sm" label="{{ __('Failed') }}" type="error" />
                                         @break
                                         @case('old_key_not_found')
                                             <x-status-badge size="sm" label="Old key not found" type="error" />
@@ -34,7 +34,7 @@
                                             @if (data_get($row, 'transferred'))
                                                 <x-status-badge size="sm" label="Transferred" type="warning" />
                                             @elseif ($isRunning)
-                                                <x-status-badge size="sm" label="Waiting" pulse />
+                                                <x-status-badge size="sm" label="{{ __('Waiting') }}" pulse />
                                             @elseif (! data_get($row, 'reachable'))
                                                 <x-status-badge size="sm" label="Not reachable" type="warning" />
                                             @endif

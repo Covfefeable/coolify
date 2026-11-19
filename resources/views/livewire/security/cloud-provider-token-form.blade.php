@@ -14,7 +14,7 @@
             }
         }">
         @if (!$provider_locked)
-            <x-forms.listbox required id="provider" label="Provider" :wire="false" :value="$provider"
+            <x-forms.listbox required id="provider" label="{{ __('Provider') }}" :wire="false" :value="$provider"
                 x-model="selectedProvider" :options="[
                 ['value' => 'hetzner', 'label' => 'Hetzner'],
                 ['value' => 'digitalocean', 'label' => 'DigitalOcean'],
@@ -35,12 +35,12 @@
         </div>
 
         <div class="grid gap-4 lg:grid-cols-2">
-            <x-forms.input required id="name" label="Token name"
+            <x-forms.input required id="name" label="{{ __('Token name') }}"
                 x-bind:placeholder="`Production ${providerName} token`" />
-            <x-forms.input required type="password" id="token" label="API token"
+            <x-forms.input required type="password" id="token" label="{{ __('API token') }}"
                 placeholder="Paste the provider token" />
             <div class="lg:col-span-2">
-                <x-forms.textarea id="description" label="Description" rows="3"
+                <x-forms.textarea id="description" label="{{ __('Description') }}" rows="3"
                     placeholder="Optional notes about where this token is used" />
             </div>
         </div>

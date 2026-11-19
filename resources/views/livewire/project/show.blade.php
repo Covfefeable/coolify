@@ -11,7 +11,7 @@
                         <a href="{{ route('project.edit', ['project_uuid' => $project->uuid]) }}"
                             {{ wireNavigate() }}
                             class="flex size-7 shrink-0 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                            title="Project settings"
+                            title="{{ __('Project settings') }}"
                             aria-label="Open settings for {{ $project->name }}">
                             <x-reicon name="settings" class="size-4" />
                         </a>
@@ -55,7 +55,7 @@
                         class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                     <button x-cloak x-show="search" x-on:click="search = ''; page = 1" type="button"
                         class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                        aria-label="Clear search">
+                        aria-label="{{ __('Clear search') }}">
                         <span class="text-sm leading-none">×</span>
                     </button>
                 </div>
@@ -126,13 +126,13 @@
                                     <a x-show="environment.addResourceHref" :href="environment.addResourceHref"
                                         {{ wireNavigate() }}
                                         class="flex size-7.5 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                        title="Add resource" :aria-label="`Add resource to ${environment.name}`">
+                                        title="{{ __('Add resource') }}" :aria-label="`Add resource to ${environment.name}`">
                                         <x-reicon name="plus" class="size-3" />
                                     </a>
                                     <a x-show="environment.settingsHref" :href="environment.settingsHref"
                                         {{ wireNavigate() }}
                                         class="flex size-7.5 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                        title="Environment settings"
+                                        title="{{ __('Environment settings') }}"
                                         :aria-label="`Open settings for ${environment.name}`">
                                         <x-reicon name="settings" class="size-3" />
                                     </a>
@@ -182,12 +182,12 @@
                             <a x-show="environment.addResourceHref" :href="environment.addResourceHref"
                                 {{ wireNavigate() }}
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                title="Add resource" :aria-label="`Add resource to ${environment.name}`">
+                                title="{{ __('Add resource') }}" :aria-label="`Add resource to ${environment.name}`">
                                 <x-reicon name="plus" class="size-3.5" />
                             </a>
                             <a x-show="environment.settingsHref" :href="environment.settingsHref" {{ wireNavigate() }}
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                title="Environment settings"
+                                title="{{ __('Environment settings') }}"
                                 :aria-label="`Open settings for ${environment.name}`">
                                 <x-reicon name="settings" class="size-3.5" />
                             </a>

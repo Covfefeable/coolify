@@ -234,14 +234,14 @@
 
     @if ($service->isDeployable)
         <div class="hidden" aria-hidden="true">
-            <x-modal-confirmation title="Confirm Service Restart?" buttonTitle="Restart"
+            <x-modal-confirmation title="Confirm Service Restart?" buttonTitle="{{ __('Restart') }}"
                 submitAction="restartEvent" :dispatchAction="true" :actions="['This service will be restarted.']"
                 :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Confirm">
                 <x-slot:trigger>
                     <button id="service-restart-trigger" type="button">{{ __('Restart') }}</button>
                 </x-slot:trigger>
             </x-modal-confirmation>
-            <x-modal-confirmation title="Confirm Service Stopping?" buttonTitle="Stop"
+            <x-modal-confirmation title="Confirm Service Stopping?" buttonTitle="{{ __('Stop') }}"
                 submitAction="stop" :checkboxes="$checkboxes" :actions="[__('service.stop'), __('resource.non_persistent')]"
                 :confirmWithText="false" :confirmWithPassword="false" step1ButtonText="Continue"
                 step2ButtonText="Confirm">
@@ -250,7 +250,7 @@
                 </x-slot:trigger>
             </x-modal-confirmation>
             @if ($selectedResource)
-                <x-modal-confirmation title="Confirm Container Removal?" buttonTitle="Remove container"
+                <x-modal-confirmation title="{{ __('Confirm Container Removal?') }}" buttonTitle="Remove container"
                     canGate="deploy" :canResource="$service" submitAction="removeSelectedResourceContainer"
                     :actions="['The exited service resource container will be removed.', __('resource.non_persistent')]"
                     :confirmWithText="false" :confirmWithPassword="false" step1ButtonText="Continue"

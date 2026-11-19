@@ -38,7 +38,7 @@
         this.base = this.directory + fileDirectory;
     },
 }">
-    <x-forms.input label="Base directory" placeholder="/"
+    <x-forms.input label="{{ __('Base directory') }}" placeholder="/"
         helper="Repository directory used as the build root. Useful for monorepos." x-model="base"
         x-bind:disabled="{{ $disabled }}" @blur="base = directory || '/'" />
     @if ($file)

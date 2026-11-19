@@ -5,7 +5,7 @@
 
     <header class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div class="min-w-0">
-            <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">Storage</h1>
+            <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Storage') }}</h1>
             <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
                 {{ $s3->count() }} {{ Str::plural('storage destination', $s3->count()) }} for backups
             </p>
@@ -66,7 +66,7 @@
 
                     <div class="mt-auto pt-4">
                         @if ($storage->is_usable)
-                            <x-status-badge label="Connected" type="success" />
+                            <x-status-badge label="{{ __('Connected') }}" type="success" />
                         @else
                             <x-status-badge label="Not usable" type="error" />
                         @endif
@@ -75,7 +75,7 @@
             @endforeach
         </div>
         <div x-show="viewMode === 'table'" class="overflow-x-auto rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]">
-            <div class="grid min-w-[620px] grid-cols-[minmax(0,1fr)_minmax(10rem,.8fr)_9rem] border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint"><div>Storage</div><div>Description</div><div>Status</div></div>
+            <div class="grid min-w-[620px] grid-cols-[minmax(0,1fr)_minmax(10rem,.8fr)_9rem] border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint"><div>{{ __('Storage') }}</div><div>{{ __('Description') }}</div><div>{{ __('Status') }}</div></div>
             @foreach ($s3 as $storage)
                 <a x-show="matches(@js([$storage->name, $storage->description ?: ($storage->isS3() ? 'S3-compatible storage' : $storage->type->label().' storage'), $storage->is_usable ? 'Connected' : 'Not usable']))" {{ wireNavigate() }} href="/storages/{{ $storage->uuid }}" class="grid min-h-14 min-w-[620px] grid-cols-[minmax(0,1fr)_minmax(10rem,.8fr)_9rem] items-center border-b border-neutral-200 px-4 py-2.5 text-[12px] transition-colors last:border-b-0 hover:bg-neutral-50 hover:no-underline dark:border-white/[0.07] dark:hover:bg-white/[0.025]">
                     <div class="truncate font-semibold text-black dark:text-fg">{{ $storage->name }}</div>

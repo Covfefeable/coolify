@@ -54,7 +54,7 @@
                     <x-forms.input id="repository_url" required label="{{ __('Repository URL') }}"
                         placeholder="git@github.com:owner/repository.git" />
                     <div class="grid gap-4 sm:grid-cols-2">
-                        <x-forms.input id="branch" required label="Branch" />
+                        <x-forms.input id="branch" required label="{{ __('Branch') }}" />
                         <x-forms.listbox id="build_pack" label="{{ __('Build pack') }}" required live :options="[
                             ['value' => 'railpack', 'label' => 'Railpack'],
                             ['value' => 'nixpacks', 'label' => __('Nixpacks (deprecated)')],
@@ -68,7 +68,7 @@
                                     ['value' => false, 'label' => __('Web application')],
                                     ['value' => true, 'label' => __('Static site')],
                                 ]" />
-                            <x-forms.input type="number" required id="port" label="Port"
+                            <x-forms.input type="number" required id="port" label="{{ __('Port') }}"
                                 :readonly="$is_static || $build_pack === 'static'" />
                         @endif
                         @if ($is_static)

@@ -27,19 +27,19 @@ $spark = 'refreshChartData-'.$chartId.'-status';
                         wire:loading.attr="disabled" wire:target="setRange"
                         @class([$tabButtonBase, $range === '24h' ? $tabButtonActive : $tabButtonInactive])>
                         <span wire:loading.class="invisible" wire:target="setRange('24h')">24 hours</span>
-                        <x-loading compact class="absolute" wire:loading wire:target="setRange('24h')" aria-label="Loading analytics" />
+                        <x-loading compact class="absolute" wire:loading wire:target="setRange('24h')" aria-label="{{ __('Loading analytics') }}" />
                     </button>
                     <button type="button" wire:click="setRange('7d')"
                         wire:loading.attr="disabled" wire:target="setRange"
                         @class([$tabButtonBase, $range === '7d' ? $tabButtonActive : $tabButtonInactive])>
                         <span wire:loading.class="invisible" wire:target="setRange('7d')">7 days</span>
-                        <x-loading compact class="absolute" wire:loading wire:target="setRange('7d')" aria-label="Loading analytics" />
+                        <x-loading compact class="absolute" wire:loading wire:target="setRange('7d')" aria-label="{{ __('Loading analytics') }}" />
                     </button>
                     <button type="button" wire:click="setRange('30d')"
                         wire:loading.attr="disabled" wire:target="setRange"
                         @class([$tabButtonBase, $range === '30d' ? $tabButtonActive : $tabButtonInactive])>
                         <span wire:loading.class="invisible" wire:target="setRange('30d')">30 days</span>
-                        <x-loading compact class="absolute" wire:loading wire:target="setRange('30d')" aria-label="Loading analytics" />
+                        <x-loading compact class="absolute" wire:loading wire:target="setRange('30d')" aria-label="{{ __('Loading analytics') }}" />
                     </button>
                 </div>
             @endif
@@ -55,7 +55,7 @@ $spark = 'refreshChartData-'.$chartId.'-status';
         <div class="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-neutral-200 bg-neutral-200 sm:grid-cols-2 lg:grid-cols-4 dark:border-white/[0.08] dark:bg-white/[0.07]">
             <a href="{{ route('analytics') }}" {{ wireNavigate() }}
                 class="group flex flex-col bg-white px-4 py-3 transition-colors hover:bg-neutral-50 dark:bg-[color-mix(in_srgb,var(--color-app)_95%,white)] dark:hover:bg-[color-mix(in_srgb,var(--color-app)_93%,white)]">
-                <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">Requests</span>
+                <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Requests') }}</span>
                 <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg" title="{{ number_format($overview['requests'] ?? 0) }} requests">{{ compactNumber($overview['requests'] ?? 0) }}</span>
                 <div class="mt-auto pt-3">
                     @include('livewire.traffic._sparkline', [

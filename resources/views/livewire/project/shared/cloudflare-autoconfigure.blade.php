@@ -66,7 +66,7 @@
                         <header class="flex-nowrap!">
                             <h3 class="min-w-0 flex-1 truncate">Configure DNS on Cloudflare</h3>
                             <button type="button" wire:click="closeCloudflareAutoconfigureModal"
-                                class="icon-button shrink-0" aria-label="Close">
+                                class="icon-button shrink-0" aria-label="{{ __('Close') }}">
                                 <x-reicon name="x" class="size-4" />
                             </button>
                         </header>
@@ -159,7 +159,7 @@
                     <header class="flex-nowrap!">
                         <h3 class="min-w-0 flex-1 truncate">DNS entries</h3>
                         <button type="button" @click="closeDnsRecords()"
-                            class="icon-button shrink-0" aria-label="Close">
+                            class="icon-button shrink-0" aria-label="{{ __('Close') }}">
                             <x-reicon name="x" class="size-4" />
                         </button>
                     </header>
@@ -189,9 +189,9 @@
                                     <thead
                                         class="bg-neutral-50 text-[12px] uppercase tracking-wide text-neutral-500 dark:bg-coolgray-100 dark:text-fg-dim">
                                         <tr>
-                                            <th class="px-3 py-2 font-medium">Type</th>
+                                            <th class="px-3 py-2 font-medium">{{ __('Type') }}</th>
                                             <th class="px-3 py-2 font-medium">{{ __('Name') }}</th>
-                                            <th class="px-3 py-2 font-medium">Value</th>
+                                            <th class="px-3 py-2 font-medium">{{ __('Value') }}</th>
                                             <th class="px-3 py-2 font-medium"><span class="sr-only">Action</span></th>
                                         </tr>
                                     </thead>

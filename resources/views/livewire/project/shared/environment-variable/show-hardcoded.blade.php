@@ -44,12 +44,12 @@
                     <x-forms.input label="{{ __('Name') }}" :value="$key" readonly />
                     @if ($isValueHidden)
                         <div class="w-full">
-                            <label class="mb-1 flex items-center gap-1 text-sm font-medium">Value</label>
+                            <label class="mb-1 flex items-center gap-1 text-sm font-medium">{{ __('Value') }}</label>
                             <input disabled type="text" value="Hidden (only admins can view)"
                                 class="input w-full italic !text-neutral-500 dark:!text-neutral-500" />
                         </div>
                     @else
-                        <x-forms.input label="Value" :value="$value ?? ''" readonly />
+                        <x-forms.input label="{{ __('Value') }}" :value="$value ?? ''" readonly />
                     @endif
                     @if (filled($comment))
                         <x-forms.input label="Comment" :value="$comment" readonly />

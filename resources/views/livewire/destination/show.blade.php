@@ -18,14 +18,14 @@
 
             <div class="min-w-0">
                 @if ($destination->getMorphClass() !== 'App\Models\StandaloneDocker')
-                    <x-callout type="warning" title="Docker Swarm support is deprecated" class="mb-6">
+                    <x-callout type="warning" title="{{ __('Docker Swarm support is deprecated') }}" class="mb-6">
                         {{ config('deprecations.swarm') }}
                     </x-callout>
                 @endif
 
                 @if (request()->routeIs('destination.danger'))
                     <div class="application-settings-form">
-                        <x-application.settings-section id="destination-danger-section" title="Danger zone"
+                        <x-application.settings-section id="destination-danger-section" title="{{ __('Danger zone') }}"
                             helper="Destructive actions for this destination cannot be undone.">
                             <x-danger-zone title="Delete destination">
                                 <p>
@@ -56,7 +56,7 @@
                     <form wire:submit="submit" class="application-settings-form">
                     <x-unsaved-bar action="submit" />
 
-                    <x-application.settings-section title="General"
+                    <x-application.settings-section title="{{ __('General') }}"
                         :description="$destination->getMorphClass() === 'App\Models\StandaloneDocker'
                             ? 'Docker network used to connect deployed resources.'
                             : 'Deprecated Docker Swarm network.'">
@@ -67,7 +67,7 @@
                     @endif
 
                         <div class="grid gap-4 lg:grid-cols-2">
-                            <x-forms.input canGate="update" :canResource="$destination" id="name" label="Name" />
+                            <x-forms.input canGate="update" :canResource="$destination" id="name" label="{{ __('Name') }}" />
                             <x-forms.input id="serverIp" label="Server IP" readonly />
                             @if ($destination->getMorphClass() === 'App\Models\StandaloneDocker')
                                 <div class="lg:col-span-2">

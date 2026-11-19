@@ -11,13 +11,13 @@
 
         <div class="application-settings-form flex w-full flex-col gap-6">
             @if ($server->isSwarm())
-                <x-callout type="warning" title="Docker Swarm support is deprecated">
+                <x-callout type="warning" title="{{ __('Docker Swarm support is deprecated') }}">
                     {{ config('deprecations.swarm') }}
                 </x-callout>
             @endif
 
             @if ($server->isFunctional())
-                <x-application.settings-section id="server-destinations-section" title="Destinations"
+                <x-application.settings-section id="server-destinations-section" title="{{ __('Destinations') }}"
                     helper="Docker networks used to isolate and connect resources on this server." flush>
                     <x-slot:actions>
                         <div class="flex items-center gap-2">
@@ -79,9 +79,9 @@
                     </x-application.settings-section>
                 @endif
             @else
-                <x-application.settings-section title="Destinations"
+                <x-application.settings-section title="{{ __('Destinations') }}"
                     helper="Docker networks used to isolate and connect resources on this server.">
-                    <x-empty size="sm" title="Server validation required"
+                    <x-empty size="sm" title="{{ __('Server validation required') }}"
                         description="Validate this server before managing its destinations."
                         icon-name="destinations" />
                 </x-application.settings-section>

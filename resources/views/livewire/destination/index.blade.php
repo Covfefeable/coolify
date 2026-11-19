@@ -5,7 +5,7 @@
 
     <header class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div class="min-w-0">
-            <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">Destinations</h1>
+            <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Destinations') }}</h1>
             <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
                 {{ $destinations->count() }} {{ Str::plural('network endpoint', $destinations->count()) }}
             </p>
@@ -92,7 +92,7 @@
         </div>
         <div x-show="viewMode === 'table'" class="overflow-x-auto rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]">
             <div class="grid min-w-[620px] grid-cols-[minmax(0,1fr)_minmax(10rem,.7fr)_10rem] border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                <div>Destination</div><div>Server</div><div>Type</div>
+                <div>{{ __('Destination') }}</div><div>{{ __('Server') }}</div><div>{{ __('Type') }}</div>
             </div>
             @foreach ($destinations as $destination)
                 @php($isSwarm = $destination->getMorphClass() === 'App\\Models\\SwarmDocker')

@@ -82,7 +82,7 @@
                     <x-unsaved-bar action="submit"
                         targets="name,description,ip,user,port,connectionTimeout,serverTimezone,wildcardDomain" />
 
-                    <x-application.settings-section id="server-connection-section" title="Connection"
+                    <x-application.settings-section id="server-connection-section" title="{{ __('Connection') }}"
                         helper="Configure how Coolify identifies, reaches, and validates this server.">
                         <x-slot:badges>
                             @if ($server->isTransferredAway())
@@ -232,13 +232,13 @@
 
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" type="password" id="ip"
-                                label="IP address or domain"
+                                label="{{ __('IP address or domain') }}"
                                 helper="Enter a hostname or IP address without http:// or https://."
                                 required :disabled="$isValidating || $server->isTransferredAway()" />
-                            <x-forms.input canGate="update" :canResource="$server" id="user" label="SSH user"
+                            <x-forms.input canGate="update" :canResource="$server" id="user" label="{{ __('SSH user') }}"
                                 required :disabled="$isValidating || $server->isTransferredAway()" />
                             <x-forms.input canGate="update" :canResource="$server" type="number" id="port"
-                                label="SSH port" required :disabled="$isValidating || $server->isTransferredAway()" />
+                                label="{{ __('SSH port') }}" required :disabled="$isValidating || $server->isTransferredAway()" />
                         </div>
 
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">

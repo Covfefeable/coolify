@@ -38,7 +38,7 @@
                             isHighlightedButton />
                     @endif
                     <x-modal-confirmation title="Reset the host key?" temporaryDisableTwoStepConfirmation
-                        buttonTitle="Reset" submitAction="resetHostKey" :actions="[
+                        buttonTitle="{{ __('Reset') }}" submitAction="resetHostKey" :actions="[
                             'Coolify removes the trusted key and the new key.',
                             'Coolify trusts the key that the server sends on the next connection.',
                         ]" confirmationText="{{ $server->name }}" shortConfirmationLabel="Server Name"

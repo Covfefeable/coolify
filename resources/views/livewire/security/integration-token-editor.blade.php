@@ -1,8 +1,8 @@
 <div class="w-full">
     <form class="application-settings-form flex w-full flex-col gap-4" wire:submit="save">
         <div class="grid gap-4 lg:grid-cols-2">
-            <x-forms.input required id="name" label="Token name" />
-            <x-forms.input readonly label="Provider" value="{{ $integrationToken->providerName() }}" />
+            <x-forms.input required id="name" label="{{ __('Token name') }}" />
+            <x-forms.input readonly label="{{ __('Provider') }}" value="{{ $integrationToken->providerName() }}" />
             <div class="lg:col-span-2">
                 <x-forms.input type="password" id="newToken"
                     label="{{ $integrationToken->provider === 'infisical' ? 'New client secret' : 'New API token' }}"
@@ -17,18 +17,18 @@
 
         @if ($integrationToken->provider === 'infisical')
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input required id="metadata.base_url" label="Base URL"
+                <x-forms.input required id="metadata.base_url" label="{{ __('Base URL') }}"
                     placeholder="https://app.infisical.com" />
-                <x-forms.input required id="metadata.client_id" label="Client ID" />
-                <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="Request timeout (optional)"
+                <x-forms.input required id="metadata.client_id" label="{{ __('Client ID') }}" />
+                <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="{{ __('Request timeout (optional)') }}"
                     placeholder="10" helper="Seconds to wait for each request. Increase it if your instance responds slowly." />
             </div>
         @elseif ($integrationToken->provider === 'vault')
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input required id="metadata.base_url" label="Base URL"
+                <x-forms.input required id="metadata.base_url" label="{{ __('Base URL') }}"
                     placeholder="https://vault.example.com:8200" />
                 <x-forms.input id="metadata.namespace" label="Namespace (optional)" />
-                <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="Request timeout (optional)"
+                <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="{{ __('Request timeout (optional)') }}"
                     placeholder="10" helper="Seconds to wait for each request. Increase it if your instance responds slowly." />
             </div>
         @endif
@@ -126,7 +126,7 @@
         @endif
 
         <div class="flex items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
-            <x-modal-confirmation title="Delete integration token?" isErrorButton buttonTitle="Delete"
+            <x-modal-confirmation title="Delete integration token?" isErrorButton buttonTitle="{{ __('Delete') }}"
                 submitAction="delete" :actions="['This integration token will be permanently deleted.']"
                 confirmationText="{{ $integrationToken->name }}" :confirmWithPassword="false"
                 step2ButtonText="Delete token" />

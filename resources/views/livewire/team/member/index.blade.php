@@ -64,7 +64,7 @@
 
     <x-team.settings-layout>
     <div class="application-settings-form flex flex-col gap-6">
-        <x-application.settings-section title="Members" flush>
+        <x-application.settings-section title="{{ __('Members') }}" flush>
             <div
                 class="flex flex-col gap-2 border-b border-neutral-200 p-3 sm:flex-row sm:items-center sm:justify-between dark:border-white/[0.08]">
                 <div class="relative w-full max-w-sm">
@@ -75,7 +75,7 @@
                         class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                     <button x-cloak x-show="search" x-on:click="search = ''; page = 1" type="button"
                         class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                        aria-label="Clear search">
+                        aria-label="{{ __('Clear search') }}">
                         <x-reicon name="x" class="size-3" />
                     </button>
                 </div>
@@ -118,13 +118,13 @@
                     'data-table-header team-members-table-grid',
                     'team-members-table-grid-2fa' => auth()->user()?->can('manageMembers', currentTeam()),
                 ])>
-                    <x-table.sort-header label="Name" asc="name-asc" desc="name-desc" then="page = 1" />
-                    <x-table.sort-header label="Email" asc="email-asc" desc="email-desc" then="page = 1" />
-                    <x-table.sort-header label="Role" asc="role-asc" desc="role-desc" first="desc" then="page = 1" />
+                    <x-table.sort-header label="{{ __('Name') }}" asc="name-asc" desc="name-desc" then="page = 1" />
+                    <x-table.sort-header label="{{ __('Email') }}" asc="email-asc" desc="email-desc" then="page = 1" />
+                    <x-table.sort-header label="{{ __('Role') }}" asc="role-asc" desc="role-desc" first="desc" then="page = 1" />
                     @can('manageMembers', currentTeam())
                         <x-table.sort-header label="2FA" asc="twofa-asc" desc="twofa-desc" then="page = 1" />
                     @endcan
-                    <span class="text-right">Actions</span>
+                    <span class="text-right">{{ __('Actions') }}</span>
                 </div>
                 @foreach ($members as $member)
                     <livewire:team.member :member="$member" :wire:key="$member->id" />

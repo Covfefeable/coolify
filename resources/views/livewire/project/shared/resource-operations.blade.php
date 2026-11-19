@@ -152,7 +152,7 @@
     $watch('selectedMoveProject', () => selectedMoveEnvironment = null);
 " class="flex flex-col gap-6">
     @can('update', $resource)
-        <x-application.settings-section id="clone-resource-section" title="Clone resource"
+        <x-application.settings-section id="clone-resource-section" title="{{ __('Clone resource') }}"
             helper="Create a copy of this resource. Choose where it runs and where it belongs. The current values are selected by default.">
             <x-callout type="info" title="What is copied">
                 Cloning copies settings, environment variables, and resource configuration. Stored files,
@@ -269,7 +269,7 @@
             </x-application.settings-section>
         @endif
 
-        <x-application.settings-section id="move-resource-section" title="Move resource"
+        <x-application.settings-section id="move-resource-section" title="{{ __('Move resource') }}"
             helper="Transfer this resource to another project environment without changing the running deployment.">
             @if ($projects->count() > 0)
                 <div class="grid gap-4 md:grid-cols-2">
@@ -300,7 +300,7 @@
             @endif
         </x-application.settings-section>
     @else
-        <x-callout type="danger" title="Insufficient permissions">
+        <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
             You do not have permission to clone or move this resource. Contact a team administrator for access.
         </x-callout>
     @endcan

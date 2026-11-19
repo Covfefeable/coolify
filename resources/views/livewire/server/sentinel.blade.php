@@ -82,7 +82,7 @@
         </x-application.settings-section>
 
         @if ($server->isSentinelEnabled())
-            <x-application.settings-section id="server-sentinel-connection-section" title="Connection"
+            <x-application.settings-section id="server-sentinel-connection-section" title="{{ __('Connection') }}"
                 helper="Configure how Sentinel authenticates with and reports to Coolify.">
                 <x-slot:actions>
                     <div class="flex items-center gap-2">

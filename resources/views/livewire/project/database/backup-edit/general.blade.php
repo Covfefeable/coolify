@@ -1,8 +1,8 @@
 <form wire:submit="submit" class="flex flex-col gap-6">
     <x-unsaved-bar action="submit" />
 
-    <x-application.settings-section title="Backup schedule"
-        description="Choose what to back up, when it runs, and how long it may run.">
+    <x-application.settings-section title="{{ __('Backup schedule') }}"
+        description="{{ __('Choose what to back up, when it runs, and how long it may run.') }}">
         <x-slot:actions>
             {{-- Below xl the header bar is hidden, so keep the buttons here. --}}
             <div @class(['flex items-center gap-2', 'xl:hidden' => $actionsInHeader])>
@@ -96,11 +96,11 @@
             @endif
 
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <x-forms.input label="Frequency" id="frequency" required />
+                <x-forms.input label="{{ __('Frequency') }}" id="frequency" required />
                 <x-forms.input label="Timezone" id="timezone" disabled
                     helper="Uses the deployment server timezone, or the instance timezone when none is configured."
                     required />
-                <x-forms.input label="Timeout" id="timeout" type="number" min="60"
+                <x-forms.input label="{{ __('Timeout') }}" id="timeout" type="number" min="60"
                     helper="Maximum runtime in seconds of the complete backup run: the dumps and S3 uploads of all databases." required />
                 <x-forms.input label="Missing backup alert after" id="missingBackupNotificationDays" type="number"
                     min="0" max="365" suffix="days" canGate="manageBackups" :canResource="$backup->database"

@@ -182,7 +182,7 @@
 
                                     <div
                                         class="flex items-center gap-1.5" :class="viewClasses.footer">
-                                        <a class="icon-button" title="Documentation" aria-label="Documentation" :href="application.documentation" target="_blank"
+                                        <a class="icon-button" title="{{ __('Documentation') }}" aria-label="{{ __('Documentation') }}" :href="application.documentation" target="_blank"
                                             rel="noopener noreferrer" @click.stop>
                                             <x-reicon name="documentation" class="size-4" />
                                         </a>
@@ -220,7 +220,7 @@
 
                                     <div
                                         class="flex items-center gap-1.5" :class="viewClasses.footer">
-                                        <a class="icon-button" title="Documentation" aria-label="Documentation" :href="application.documentation" target="_blank"
+                                        <a class="icon-button" title="{{ __('Documentation') }}" aria-label="{{ __('Documentation') }}" :href="application.documentation" target="_blank"
                                             rel="noopener noreferrer" @click.stop>
                                             <x-reicon name="documentation" class="size-4" />
                                         </a>
@@ -288,7 +288,7 @@
                                     <div
                                         class="flex items-center gap-1.5" :class="viewClasses.footer">
                                         <a :href="databaseDocsUrl(database)" target="_blank" rel="noopener noreferrer"
-                                            class="icon-button" title="Documentation" aria-label="Documentation" @click.stop>
+                                            class="icon-button" title="{{ __('Documentation') }}" aria-label="{{ __('Documentation') }}" @click.stop>
                                             <x-reicon name="documentation" class="size-4" />
                                         </a>
                                         <a :href="databaseWebsiteUrl(database)" target="_blank" rel="noopener noreferrer"
@@ -365,7 +365,7 @@
                                         class="flex items-center gap-1.5" :class="viewClasses.footer">
                                         <a :href="getDocLink(service) || coolifyDocsUrl(service)" target="_blank"
                                             rel="noopener noreferrer" @mouseenter="resolveDocLink(service)" @click.stop
-                                            class="icon-button" title="Documentation" aria-label="Documentation" :class="{ 'opacity-60': docCheckInProgress[service.name] }">
+                                            class="icon-button" title="{{ __('Documentation') }}" aria-label="{{ __('Documentation') }}" :class="{ 'opacity-60': docCheckInProgress[service.name] }">
                                             <x-reicon name="documentation" class="size-4" />
                                         </a>
                                         <a x-show="service.website" :href="service.website"

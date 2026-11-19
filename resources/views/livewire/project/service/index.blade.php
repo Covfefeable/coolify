@@ -69,7 +69,7 @@
                                 @endif
                                 <x-forms.input canGate="update" :canResource="$serviceApplication"
                                     helper="You can change the image you would like to deploy.<br><br><span class='dark:text-warning'>WARNING. You could corrupt your data. Only do it if you know what you are doing.</span>"
-                                    label="Image" id="image"></x-forms.input>
+                                    label="{{ __('Image') }}" id="image"></x-forms.input>
                             </div>
                         </div>
 
@@ -79,7 +79,7 @@
                             class="flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-5 dark:border-white/[0.08]">
                             <div>
                                 @can('delete', $serviceApplication)
-                                    <x-modal-confirmation title="Confirm Service Application Deletion?" buttonTitle="Delete"
+                                    <x-modal-confirmation title="Confirm Service Application Deletion?" buttonTitle="{{ __('Delete') }}"
                                         isErrorButton submitAction="deleteApplication"
                                         :actions="['The selected service application container will be stopped and permanently deleted.']"
                                         confirmationText="{{ Str::headline($serviceApplication->name) }}"
@@ -95,7 +95,7 @@
                                         confirmationText="{{ Str::headline($serviceApplication->name) }}"
                                         confirmationLabel="Please confirm the execution of the actions by entering the Service Application Name below"
                                         shortConfirmationLabel="Service Application Name" />
-                                    <x-forms.button type="submit" isHighlighted>Save changes</x-forms.button>
+                                    <x-forms.button type="submit" isHighlighted>{{ __('Save changes') }}</x-forms.button>
                                 @endcan
                             </div>
                         </div>
@@ -180,12 +180,12 @@
                     <div class="space-y-5">
                         <div class="grid gap-4 sm:grid-cols-2">
                             <x-forms.input canGate="update" :canResource="$serviceDatabase" label="{{ __('Name') }}" id="humanName"
-                                placeholder="Name"></x-forms.input>
+                                placeholder="{{ __('Name') }}"></x-forms.input>
                             <x-forms.input canGate="update" :canResource="$serviceDatabase" label="{{ __('Description') }}"
                                 id="description"></x-forms.input>
                             <x-forms.input class="sm:col-span-2" canGate="update" :canResource="$serviceDatabase" required
                                 helper="You can change the image you would like to deploy.<br><br><span class='dark:text-warning'>WARNING. You could corrupt your data. Only do it if you know what you are doing.</span>"
-                                label="Image" id="image"></x-forms.input>
+                                label="{{ __('Image') }}" id="image"></x-forms.input>
                         </div>
                         <div class="border-t border-neutral-200 pt-5 dark:border-white/[0.06]">
                             <div class="mb-4 flex items-center justify-between gap-2">
@@ -246,7 +246,7 @@
                         class="flex flex-wrap items-center justify-between gap-3 border-t border-neutral-200 pt-5 dark:border-white/[0.08]">
                         <div>
                             @can('delete', $serviceDatabase)
-                                <x-modal-confirmation title="Confirm Service Database Deletion?" buttonTitle="Delete"
+                                <x-modal-confirmation title="Confirm Service Database Deletion?" buttonTitle="{{ __('Delete') }}"
                                     isErrorButton submitAction="deleteDatabase" :actions="[
                                         'The selected service database container will be stopped and permanently deleted.',
                                     ]"
@@ -263,7 +263,7 @@
                                     confirmationText="{{ Str::headline($serviceDatabase->name) }}"
                                     confirmationLabel="Please confirm the execution of the actions by entering the Service Database Name below"
                                     shortConfirmationLabel="Service Database Name" />
-                                <x-forms.button type="submit" isHighlighted>Save changes</x-forms.button>
+                                <x-forms.button type="submit" isHighlighted>{{ __('Save changes') }}</x-forms.button>
                             @endcan
                         </div>
                     </div>

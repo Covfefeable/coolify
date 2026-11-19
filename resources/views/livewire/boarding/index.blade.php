@@ -46,7 +46,7 @@
                                 <x-reicon name="arrow-right" class="size-3.5 shrink-0" />
                                 Skip setup
                             </button>
-                            <x-modal-input title="Need Help?">
+                            <x-modal-input title="{{ __('Need Help?') }}">
                                 <x-slot:content>
                                     <button type="button"
                                         class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">
@@ -138,7 +138,7 @@
                                             d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
                                     </svg>
                                     <div>
-                                        <h3 class="mb-1 text-[14px] font-semibold">IP address or domain</h3>
+                                        <h3 class="mb-1 text-[14px] font-semibold">{{ __('IP address or domain') }}</h3>
                                         <p class="text-sm dark:text-neutral-400">
                                             Connect via SSH using a server IP address or domain.
                                         </p>
@@ -237,10 +237,10 @@
                                     incorrect.</p>
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                    <x-forms.input placeholder="Default is 22" label="Port" id="remoteServerPort"
+                                    <x-forms.input placeholder="Default is 22" label="{{ __('Port') }}" id="remoteServerPort"
                                         wire:model="remoteServerPort" :value="$remoteServerPort" />
                                     <div>
-                                        <x-forms.input placeholder="Default is root" label="User" id="remoteServerUser"
+                                        <x-forms.input placeholder="Default is root" label="{{ __('User') }}" id="remoteServerUser"
                                             wire:model="remoteServerUser" :value="$remoteServerUser" />
                                         <p class="text-xs mt-1">
                                             Non-root user is experimental:
@@ -377,7 +377,7 @@
                         <form wire:submit='savePrivateKey' class="flex flex-col w-full gap-4">
                             <x-forms.input required placeholder="e.g., production-server-key" label="Key Name"
                                 id="privateKeyName" />
-                            <x-forms.input placeholder="Optional: Note what this key is used for" label="Description"
+                            <x-forms.input placeholder="Optional: Note what this key is used for" label="{{ __('Description') }}"
                                 id="privateKeyDescription" />
                             @if ($privateKeyType === 'create')
                                 <x-forms.textarea required readonly label="Private Key" id="privateKey" rows="8" />
@@ -440,7 +440,7 @@
                                 <x-forms.input required placeholder="IP address or hostname" label="IP Address/Hostname"
                                     id="remoteServerHost" wire:model="remoteServerHost" />
                             </div>
-                            <x-forms.input placeholder="Optional: Note what this server hosts" label="Description"
+                            <x-forms.input placeholder="Optional: Note what this server hosts" label="{{ __('Description') }}"
                                 id="remoteServerDescription" wire:model="remoteServerDescription" />
 
                             <x-forms.collapsible title="Advanced Settings"
@@ -620,7 +620,7 @@
                                 <x-reicon name="arrow-right" class="size-3.5 shrink-0" />
                                 Go to dashboard
                             </button>
-                            <x-modal-input title="Need Help?">
+                            <x-modal-input title="{{ __('Need Help?') }}">
                                 <x-slot:content>
                                     <button type="button"
                                         class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">
@@ -650,7 +650,7 @@
                         <x-reicon name="restart" class="size-3.5 shrink-0" />
                         Restart
                     </button>
-                    <x-modal-input title="Need Help?">
+                    <x-modal-input title="{{ __('Need Help?') }}">
                         <x-slot:content>
                             <button type="button"
                                 class="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-[12px] font-medium text-neutral-500 transition-colors hover:bg-white hover:text-coollabs dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-brand-light">

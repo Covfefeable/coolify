@@ -16,7 +16,7 @@
         <a class="menu-item menu-item-active" {{ wireNavigate() }}
             href="{{ route('project.service.index', $parameters) }}">
             <x-reicon name="settings" class="menu-item-icon" />
-            <span class="menu-item-label">General</span>
+            <span class="menu-item-label">{{ __('General') }}</span>
         </a>
     </nav>
 </x-main-nav-menu>

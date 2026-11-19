@@ -57,7 +57,7 @@
                         </div>
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" type="password" :required="$isLogDrainAxiomEnabled"
-                                id="logDrainAxiomApiKey" label="API key"
+                                id="logDrainAxiomApiKey" label="{{ __('API key') }}"
                                 :disabled="$server->isLogDrainEnabled()" />
                             <x-forms.input canGate="update" :canResource="$server" :required="$isLogDrainAxiomEnabled"
                                 id="logDrainAxiomDatasetName" label="Dataset name"
@@ -88,7 +88,7 @@
                                 helper="Optional. Log streams are named after the container, prefixed with this value (e.g. docker/&lt;container name&gt;)."
                                 :disabled="$server->isLogDrainEnabled()" />
                             <x-forms.input canGate="update" :canResource="$server" :required="$isLogDrainCloudwatchEnabled"
-                                id="logDrainCloudwatchRegion" label="Region" placeholder="us-east-1"
+                                id="logDrainCloudwatchRegion" label="{{ __('Region') }}" placeholder="us-east-1"
                                 :disabled="$server->isLogDrainEnabled()" />
                         </div>
                     </x-application.settings-section>
@@ -115,7 +115,7 @@
             @else
                 <x-application.settings-section title="Log drains"
                     helper="Forward container logs from this server to an external destination.">
-                    <x-empty size="sm" title="Server validation required"
+                    <x-empty size="sm" title="{{ __('Server validation required') }}"
                         description="Validate this server before configuring log drains."
                         icon-name="notifications" />
                 </x-application.settings-section>

@@ -9,7 +9,7 @@
                 <fieldset class="contents" wire:loading.attr="disabled"
                     wire:target="submit,resetProxyConfiguration">
 
-                <x-application.settings-section id="server-proxy-overview-section" title="Proxy configuration"
+                <x-application.settings-section id="server-proxy-overview-section" title="{{ __('Proxy configuration') }}"
                     helper="Configure the reverse proxy and request handling for this server.">
                     <x-slot:actions>
                         <div class="flex items-center gap-2">
@@ -82,7 +82,7 @@
                         @endif
                         @if ($server->proxyType() === ProxyTypes::TRAEFIK->value)
                             <x-forms.input canGate="update" :canResource="$server" placeholder="letsencrypt"
-                                id="certificateResolver" label="Certificate resolver"
+                                id="certificateResolver" label="{{ __('Certificate resolver') }}"
                                 helper="Traefik certificate resolver for generated HTTPS routes. Leave empty if Traefik uses your own certificates (for example Cloudflare Origin CA certificates in a dynamic configuration). Redeploy resources to apply the change." />
                         @endif
                     </div>
@@ -204,7 +204,7 @@
                 </x-callout>
             </x-application.settings-section>
         @else
-            <x-application.settings-section title="Proxy configuration"
+            <x-application.settings-section title="{{ __('Proxy configuration') }}"
                 helper="Choose the reverse proxy implementation for this server.">
                 @can('update', $server)
                     <div class="grid gap-3 lg:grid-cols-3">
@@ -225,14 +225,14 @@
                         @endforeach
                     </div>
                 @else
-                    <x-callout type="danger" title="Insufficient permissions">
+                    <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
                         You do not have permission to select a proxy for this server.
                     </x-callout>
                 @endcan
             </x-application.settings-section>
         @endif
     @else
-        <x-application.settings-section title="Proxy configuration"
+        <x-application.settings-section title="{{ __('Proxy configuration') }}"
             helper="Choose the reverse proxy implementation for this server.">
             @can('update', $server)
                 <div class="grid gap-3 lg:grid-cols-3">

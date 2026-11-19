@@ -3,7 +3,7 @@
     the values reads them from $wire, because the browser fills the edit form without a request.
 --}}
 <div class="grid gap-4 lg:grid-cols-2">
-    <x-forms.input required id="{{ $form }}.description" label="Description"
+    <x-forms.input required id="{{ $form }}.description" label="{{ __('Description') }}"
         placeholder="CI deployment token" />
     <x-forms.listbox id="{{ $form }}.expiresInDays" label="Expires in" :options="$expiryOptions"
         :x-effect="$form === 'editForm' ? 'options[0].label = editingToken?.keepLabel ?? options[0].label' : null" />
@@ -65,14 +65,14 @@
                     x-bind:disabled="isRoot || {{ $canUseWritePermissions ? 'false' : 'true' }}" />
             </div>
             <div class="listbox-option p-0!">
-                <x-forms.checkbox id="permission-delete" label="Delete" fullWidth
+                <x-forms.checkbox id="permission-delete" label="{{ __('Delete') }}" fullWidth
                     wire:model.live="{{ $form }}.permissions" domValue="delete"
                     helper="Delete resources and their settings (every DELETE request)."
                     :disabled="!$canUseDeletePermissions"
                     x-bind:disabled="isRoot || {{ $canUseDeletePermissions ? 'false' : 'true' }}" />
             </div>
             <div class="listbox-option p-0!">
-                <x-forms.checkbox id="permission-deploy" label="Deploy" fullWidth
+                <x-forms.checkbox id="permission-deploy" label="{{ __('Deploy') }}" fullWidth
                     wire:model.live="{{ $form }}.permissions" domValue="deploy"
                     helper="Deploy, start, stop, and restart resources. With Write, also apply changes that run on servers immediately, such as scheduled tasks, proxy configuration, and imports."
                     :disabled="!$canUseDeployPermissions"
@@ -125,11 +125,11 @@
     },
 }">
     <div class="mb-2 flex items-center gap-2">
-        <h4 class="text-[12px] font-semibold text-black dark:text-fg">Access</h4>
+        <h4 class="text-[12px] font-semibold text-black dark:text-fg">{{ __('Access') }}</h4>
         <x-helper helper="A limited token sees only the selected projects, environments, and resources, and cannot use team-level endpoints such as servers, keys, or notifications." />
     </div>
     <div class="grid gap-4 lg:grid-cols-2">
-        <x-forms.listbox id="{{ $form }}.scopeMode" label="Resources" :options="[
+        <x-forms.listbox id="{{ $form }}.scopeMode" label="{{ __('Resources') }}" :options="[
             ['value' => 'team', 'label' => 'All resources in the team', 'disabled' => !$canUseTeamScope],
             ['value' => 'selected', 'label' => 'Selected projects, environments, or resources'],
         ]" />
@@ -149,7 +149,7 @@
                     x-text="scope.split(':')[0]"></span>
                 <span class="min-w-0 flex-1 truncate text-black dark:text-fg"
                     x-text="labels[scope] ?? scope"></span>
-                <button type="button" class="icon-button shrink-0" title="Remove"
+                <button type="button" class="icon-button shrink-0" title="{{ __('Remove') }}"
                     :aria-label="'Remove ' + (labels[scope] ?? scope)"
                     @click="$wire.{{ $form }}.selectedScopes = $wire.{{ $form }}.selectedScopes.filter((value) => value !== scope)">
                     <x-reicon name="x" class="size-3.5" />

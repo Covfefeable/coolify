@@ -15,7 +15,7 @@
     <form wire:submit="submit" class="flex flex-col gap-4">
         <x-forms.input minlength="3" required id="subject" label="Subject"
             placeholder="A short summary of your feedback" autofocus />
-        <x-forms.textarea minlength="10" maxlength="1000" required rows="8" id="description" label="Details"
+        <x-forms.textarea minlength="10" maxlength="1000" required rows="8" id="description" label="{{ __('Details') }}"
             class="font-sans" spellcheck
             placeholder="What were you trying to do, what happened, and what would you like to see instead?" />
 

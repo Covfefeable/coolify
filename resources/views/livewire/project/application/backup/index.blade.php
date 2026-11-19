@@ -91,7 +91,7 @@
 
                 <div class="grid gap-4 sm:grid-cols-3">
                     <div>
-                        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">Schedules</p>
+                        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Schedules') }}</p>
                         <p class="mt-1 text-xl font-semibold tabular-nums text-neutral-950 dark:text-fg">
                             {{ $backups->count() }}
                         </p>
@@ -103,7 +103,7 @@
                         </p>
                     </div>
                     <div>
-                        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">Total executions</p>
+                        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Total executions') }}</p>
                         <p class="mt-1 text-xl font-semibold tabular-nums text-neutral-950 dark:text-fg">
                             {{ $backups->sum('executions_count') }}
                         </p>
@@ -115,11 +115,11 @@
                 <div class="relative w-full sm:max-w-sm">
                     <x-reicon name="search"
                         class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                    <input type="search" x-model="search" placeholder="Search backups" aria-label="Search backups"
+                    <input type="search" x-model="search" placeholder="{{ __('Search backups') }}" aria-label="{{ __('Search backups') }}"
                         class="input h-8! w-full py-0! pr-8! pl-8!" />
                     <button x-cloak x-show="search" x-on:click="search = ''" type="button"
                         class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                        aria-label="Clear search">
+                        aria-label="{{ __('Clear search') }}">
                         <span class="text-sm leading-none">×</span>
                     </button>
                 </div>
@@ -149,7 +149,7 @@
                 </div>
             </div>
 
-            <x-application.settings-section title="Schedules"
+            <x-application.settings-section title="{{ __('Schedules') }}"
                 helper="Persistent volume and directory backup schedules for this application."
                 :flush="$backups->isNotEmpty()">
                 <div x-cloak x-show="backups.length > 0 && filteredBackups.length === 0">
@@ -161,8 +161,8 @@
                     <div class="data-table flex w-full flex-col overflow-x-auto" x-show="filteredBackups.length > 0">
                         <div class="data-table-header backup-table-grid">
                             <x-table.sort-header label="Target" asc="target_asc" desc="target_desc" />
-                            <x-table.sort-header label="Type" asc="type_asc" desc="type_desc" />
-                            <x-table.sort-header label="Schedule" asc="schedule_asc" desc="schedule_desc" />
+                            <x-table.sort-header label="{{ __('Type') }}" asc="type_asc" desc="type_desc" />
+                            <x-table.sort-header label="{{ __('Schedule') }}" asc="schedule_asc" desc="schedule_desc" />
                             <x-table.sort-header label="{{ __('Status') }}" asc="status_asc" desc="status_desc" />
                             <x-table.sort-header label="S3" asc="s3_asc" desc="s3_desc" />
                             <x-table.sort-header label="Last run" asc="lastrun_asc" desc="lastrun_desc" first="desc" />
@@ -220,7 +220,7 @@
                         @endforeach
                     </div>
                 @else
-                    <x-empty size="sm" title="No scheduled backups"
+                    <x-empty size="sm" title="{{ __('No scheduled backups') }}"
                         description="Add a persistent volume or directory backup schedule to protect application data."
                         icon-name="storages" />
                 @endif

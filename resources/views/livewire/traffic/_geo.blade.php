@@ -52,7 +52,7 @@
     $rowClass = 'group flex min-h-10 items-center gap-3 rounded-md px-2 py-1.5 transition-colors hover:bg-neutral-50 dark:hover:bg-white/[0.03]';
 @endphp
 
-<x-application.settings-section id="analytics-country-section" title="Locations"
+<x-application.settings-section id="analytics-country-section" title="{{ __('Locations') }}"
     helper="Request volume by visitor country and city for the selected range." flush
     x-data="{
         // Storage can be blocked (sandboxed iframe, privacy mode, full quota); the switch then works without saving.

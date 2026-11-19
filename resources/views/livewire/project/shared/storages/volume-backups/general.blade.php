@@ -1,7 +1,7 @@
 <form wire:submit="save" class="application-settings-form flex flex-col gap-6">
     <x-unsaved-bar action="save" />
 
-    <x-application.settings-section title="Backup schedule"
+    <x-application.settings-section title="{{ __('Backup schedule') }}"
         description="Choose when this storage is archived and how long each backup may run.">
         <x-slot:actions>
             {{-- Below xl the header bar is hidden, so keep the buttons here. --}}
@@ -39,11 +39,11 @@
         </x-callout>
 
         <div class="mt-4 grid gap-4 lg:grid-cols-2">
-            <x-forms.input id="frequency" label="Frequency" required
+            <x-forms.input id="frequency" label="{{ __('Frequency') }}" required
                 helper="Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression." />
             <x-forms.input id="timezone" label="Timezone" disabled
                 helper="Uses the backup server timezone, or the instance timezone when none is configured." required />
-            <x-forms.input id="timeout" type="number" min="60" max="36000" label="Timeout"
+            <x-forms.input id="timeout" type="number" min="60" max="36000" label="{{ __('Timeout') }}"
                 helper="Maximum backup runtime in seconds." required />
             <x-forms.input label="Missing backup alert after" id="missingBackupNotificationDays" type="number"
                 min="0" max="365" suffix="days"

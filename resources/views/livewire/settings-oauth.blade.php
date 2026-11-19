@@ -65,10 +65,10 @@
                                 id="oauth_settings_map.{{ $provider }}.base_url" label="Issuer URL" required
                                 helper="OpenID Provider issuer URL, for example https://example.okta.com. Coolify uses it to discover the authorization, token, userinfo, and JWKS endpoints. For Microsoft Entra ID, use https://login.microsoftonline.com/&lt;tenant ID&gt;/v2.0 and add the optional ID token claims email and xms_edov to the app registration." />
                             <x-forms.input canGate="update" :canResource="$settings"
-                                id="oauth_settings_map.{{ $provider }}.client_id" label="Client ID" required />
+                                id="oauth_settings_map.{{ $provider }}.client_id" label="{{ __('Client ID') }}" required />
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.client_secret" type="password"
-                                label="Client secret" autocomplete="new-password" required />
+                                label="{{ __('Client secret') }}" autocomplete="new-password" required />
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.scopes" label="Scopes"
                                 helper="Must include openid. Common scopes are openid email profile groups." />
@@ -85,10 +85,10 @@
                                 id="oauth_settings_map.{{ $provider }}.redirect_uri"
                                 placeholder="{{ oauth_default_redirect_uri($provider) }}" label="Redirect URI" />
                             <x-forms.input canGate="update" :canResource="$settings"
-                                id="oauth_settings_map.{{ $provider }}.client_id" label="Client ID" required />
+                                id="oauth_settings_map.{{ $provider }}.client_id" label="{{ __('Client ID') }}" required />
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.client_secret" type="password"
-                                label="Client secret" autocomplete="new-password" required />
+                                label="{{ __('Client secret') }}" autocomplete="new-password" required />
                         @endif
 
                         @if ($provider === 'azure')
@@ -105,7 +105,7 @@
 
                         @if (in_array($provider, ['authentik', 'clerk', 'zitadel', 'gitlab'], true))
                             <x-forms.input canGate="update" :canResource="$settings"
-                                id="oauth_settings_map.{{ $provider }}.base_url" label="Base URL"
+                                id="oauth_settings_map.{{ $provider }}.base_url" label="{{ __('Base URL') }}"
                                 :required="in_array($provider, ['authentik', 'clerk'], true)" />
                         @endif
 

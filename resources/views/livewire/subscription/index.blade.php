@@ -3,7 +3,7 @@
         Subscribe | Coolify
     </x-slot>
 
-    <x-dashboard.navbar section="subscription" title="Subscription"
+    <x-dashboard.navbar section="subscription" title="{{ __('Subscription') }}"
         subtitle="Choose a plan for Coolify Cloud" />
 
     @if (auth()->user()->isAdminFromSession())
@@ -34,9 +34,9 @@
             @endif
         @endif
     @else
-        <x-application.settings-section title="Subscription"
+        <x-application.settings-section title="{{ __('Subscription') }}"
             description="Only team administrators can manage billing and plan limits.">
-            <x-callout type="danger" title="Insufficient Permissions">
+            <x-callout type="danger" title="{{ __('Insufficient Permissions') }}">
                 You are not an admin so you cannot manage your Team's subscription. If this does not make sense, please
                 <span class="underline cursor-pointer dark:text-white" wire:click="help">contact us</span>.
             </x-callout>

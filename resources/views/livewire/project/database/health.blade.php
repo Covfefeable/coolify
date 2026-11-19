@@ -1,7 +1,7 @@
 <form wire:submit="submit" class="application-settings-form flex flex-col gap-6">
     <x-unsaved-bar action="submit" />
 
-    <x-application.settings-section title="Healthcheck"
+    <x-application.settings-section title="{{ __('Healthcheck') }}"
         description="Define how Docker checks this database and reports its health.">
         <x-slot:actions>
             @if (!$healthCheckEnabled)
@@ -26,7 +26,7 @@
             <x-forms.input canGate="update" :canResource="$database" min="1" type="number"
                 id="healthCheckInterval" placeholder="15" label="Interval (seconds)" required />
             <x-forms.input canGate="update" :canResource="$database" min="1" type="number"
-                id="healthCheckTimeout" placeholder="5" label="Timeout (seconds)" required />
+                id="healthCheckTimeout" placeholder="5" label="{{ __('Timeout (seconds)') }}" required />
             <x-forms.input canGate="update" :canResource="$database" min="1" type="number"
                 id="healthCheckRetries" placeholder="5" label="Retries" required />
             <x-forms.input canGate="update" :canResource="$database" min="0" type="number"

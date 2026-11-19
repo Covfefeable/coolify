@@ -39,7 +39,7 @@
 }" x-init="$wire.$on('privateKeyUpdated', () => { replacing = false })"
     x-on:livewire:navigating.document="hide()">
     <div class="mb-1.5 flex items-center justify-between gap-3">
-        <label class="text-[13px] font-medium">Private key</label>
+        <label class="text-[13px] font-medium">{{ __('Private key') }}</label>
         @can('update', $private_key)
             <div class="flex items-center gap-3">
                 <button type="button"

@@ -7,11 +7,11 @@
     @endphp
 
     <div wire:poll.5000ms="$refresh">
-        <x-application.settings-section title="Executions"
+        <x-application.settings-section title="{{ __('Executions') }}"
             description="Review generated archives, availability, and cleanup status." flush>
             <x-slot:actions>
                 <x-forms.button wire:click="cleanupFailed">Cleanup failed</x-forms.button>
-                <x-modal-confirmation title="Cleanup Deleted Backup Entries?" isErrorButton
+                <x-modal-confirmation title="{{ __('Cleanup Deleted Backup Entries?') }}" isErrorButton
                     submitAction="cleanupDeleted()"
                     :actions="['This permanently deletes backup execution entries whose local and S3 files have already been deleted.', 'This only removes database entries, not backup files.']"
                     confirmationText="cleanup deleted backups"
@@ -28,10 +28,10 @@
                     <div
                         class="data-table-header volume-backup-executions-grid border-b border-neutral-200 bg-neutral-50 dark:border-white/[0.08] dark:bg-white/[0.05]">
                         <span>{{ __('Status') }}</span>
-                        <span>Archive</span>
-                        <span>Time</span>
-                        <span>Size</span>
-                        <span>Availability</span>
+                        <span>{{ __('Archive') }}</span>
+                        <span>{{ __('Time') }}</span>
+                        <span>{{ __('Size') }}</span>
+                        <span>{{ __('Availability') }}</span>
                         <span class="text-right">{{ __('Actions') }}</span>
                     </div>
 
@@ -142,7 +142,7 @@
                                 @if ($execution->status === 'success' && $execution->isDownloadable())
                                     <button type="button" class="icon-button shrink-0"
                                         x-on:click="download_volume_backup_file('{{ $execution->id }}')"
-                                        title="Download backup" aria-label="Download backup">
+                                        title="{{ __('Download backup') }}" aria-label="{{ __('Download backup') }}">
                                         <x-reicon name="upload" class="size-3.5 rotate-180" />
                                     </button>
                                 @endif
@@ -152,7 +152,7 @@
                                             wire:loading.attr="disabled"
                                             wire:target="retryRecovery({{ $execution->id }})">Retry recovery</x-table.row-action>
                                         <x-slot:danger>
-                                            <x-modal-confirmation title="Confirm Backup Deletion?" buttonFullWidth
+                                            <x-modal-confirmation title="{{ __('Confirm Backup Deletion?') }}" buttonFullWidth
                                                 submitAction="deleteBackup({{ $execution->id }})"
                                                 :checkboxes="$executionCheckboxes" :actions="$deleteActions"
                                                 confirmationText="{{ $execution->filename }}"
@@ -172,7 +172,7 @@
                                         <x-reicon name="refresh" class="size-3.5" />
                                     </button>
                                 @elseif ($execution->status !== 'running')
-                                    <x-modal-confirmation title="Confirm Backup Deletion?" isErrorButton
+                                    <x-modal-confirmation title="{{ __('Confirm Backup Deletion?') }}" isErrorButton
                                         submitAction="deleteBackup({{ $execution->id }})"
                                         :checkboxes="$executionCheckboxes" :actions="$deleteActions"
                                         confirmationText="{{ $execution->filename }}"
@@ -181,7 +181,7 @@
                                         <x-slot:trigger>
                                             <button type="button"
                                                 class="icon-button shrink-0 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
-                                                title="Delete backup" aria-label="Delete backup">
+                                                title="{{ __('Delete backup') }}" aria-label="{{ __('Delete backup') }}">
                                                 <x-reicon name="trash" class="size-3.5" />
                                             </button>
                                         </x-slot:trigger>

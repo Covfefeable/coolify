@@ -1,7 +1,7 @@
 <form wire:submit="submit" class="application-settings-form">
     <x-unsaved-bar action="submit" />
 
-    <x-application.settings-section title="General"
+    <x-application.settings-section title="{{ __('General') }}"
         description="{{ $storage->isS3() ? 'S3-compatible destination' : $storage->type->label().' destination' }} used by database and volume backups.">
         <x-slot:actions>
             @can('validateConnection', $storage)
@@ -13,9 +13,9 @@
         </x-slot:actions>
 
         <div class="grid gap-4 lg:grid-cols-2">
-            <x-forms.input canGate="update" :canResource="$storage" label="Name" id="name" />
-            <x-forms.input canGate="update" :canResource="$storage" label="Description" id="description" />
-            <x-forms.input label="Type" :value="$storage->type->label()" disabled
+            <x-forms.input canGate="update" :canResource="$storage" label="{{ __('Name') }}" id="name" />
+            <x-forms.input canGate="update" :canResource="$storage" label="{{ __('Description') }}" id="description" />
+            <x-forms.input label="{{ __('Type') }}" :value="$storage->type->label()" disabled
                 helper="The type cannot change after creation. Create a new storage for another type." />
             <div></div>
             @if ($storage->isS3())
@@ -31,7 +31,7 @@
                 @endcan
             </div>
             <x-forms.input canGate="update" :canResource="$storage" required label="Bucket" id="bucket" />
-            <x-forms.input canGate="update" :canResource="$storage" required label="Region" id="region" />
+            <x-forms.input canGate="update" :canResource="$storage" required label="{{ __('Region') }}" id="region" />
             @if ($isPasswordHiddenForMember)
                 <x-forms.input label="Access key" disabled value="Hidden (only admins can view)" />
                 <x-forms.input label="Secret key" disabled value="Hidden (only admins can view)" />
@@ -67,10 +67,10 @@
                     @endif
                 </div>
                 @if ($isPasswordHiddenForMember)
-                    <x-forms.input label="Username" disabled value="Hidden (only admins can view)" />
-                    <x-forms.input label="Password" disabled value="Hidden (only admins can view)" />
+                    <x-forms.input label="{{ __('Username') }}" disabled value="Hidden (only admins can view)" />
+                    <x-forms.input label="{{ __('Password') }}" disabled value="Hidden (only admins can view)" />
                 @elseif ($storage->type === App\Enums\BackupStorageType::Sftp)
-                    <x-forms.input canGate="update" :canResource="$storage" required label="Username" id="key"
+                    <x-forms.input canGate="update" :canResource="$storage" required label="{{ __('Username') }}" id="key"
                         autocomplete="off" />
                     <div class="lg:col-span-2">
                         @include('livewire.storage.sftp-login-fields', [
@@ -78,9 +78,9 @@
                         ])
                     </div>
                 @else
-                    <x-forms.input canGate="update" :canResource="$storage" required label="Username" id="key"
+                    <x-forms.input canGate="update" :canResource="$storage" required label="{{ __('Username') }}" id="key"
                         autocomplete="off" />
-                    <x-forms.input canGate="update" :canResource="$storage" type="password" label="Password"
+                    <x-forms.input canGate="update" :canResource="$storage" type="password" label="{{ __('Password') }}"
                         id="secret" :required="! $hasSavedSecret"
                         :placeholder="$hasSavedSecret ? 'Saved. Leave empty to keep it.' : ''" />
                 @endif

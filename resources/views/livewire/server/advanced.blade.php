@@ -16,7 +16,7 @@
                 helper="Control when Coolify checks this server and when your team is notified.">
                 <div class="grid gap-4 lg:grid-cols-3">
                     <x-forms.input canGate="update" :canResource="$server" placeholder="0 23 * * *"
-                        id="serverDiskUsageCheckFrequency" label="Check frequency" required
+                        id="serverDiskUsageCheckFrequency" label="{{ __('Check frequency') }}" required
                         helper="Cron expression or preset such as hourly, daily, weekly, monthly, or yearly." />
                     <x-forms.input canGate="update" :canResource="$server"
                         id="serverDiskUsageNotificationThreshold" type="number" min="1" max="99"
@@ -29,7 +29,7 @@
                 </div>
             </x-application.settings-section>
 
-            <x-application.settings-section id="server-backups-section" title="Backups"
+            <x-application.settings-section id="server-backups-section" title="{{ __('Backups') }}"
                 helper="Limit how much CPU volume backup compression may use on this server.">
                 <x-forms.listbox canGate="update" :canResource="$server" id="backupCompressionCpuPercentage"
                     label="Backup compression CPU" onChange="instantSave"

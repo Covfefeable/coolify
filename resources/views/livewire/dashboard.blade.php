@@ -247,7 +247,7 @@
                                             ]) }}"
                                                 {{ wireNavigate() }}
                                                 class="{{ $iconButton }}"
-                                                title="Add resource"
+                                                title="{{ __('Add resource') }}"
                                                 aria-label="Add resource to {{ $project->name }}">
                                                 <x-reicon name="plus" class="size-3" />
                                             </a>
@@ -257,7 +257,7 @@
                                         <a href="{{ route('project.edit', ['project_uuid' => $project->uuid]) }}"
                                             {{ wireNavigate() }}
                                             class="{{ $iconButton }}"
-                                            title="Project settings"
+                                            title="{{ __('Project settings') }}"
                                             aria-label="Open settings for {{ $project->name }}">
                                             <x-reicon name="settings" class="size-3" />
                                         </a>
@@ -325,7 +325,7 @@
                                             'project_uuid' => $project->uuid,
                                             'environment_uuid' => $firstEnvironment->uuid,
                                         ]) }}"
-                                            {{ wireNavigate() }} class="{{ $iconButton }}" title="Add resource"
+                                            {{ wireNavigate() }} class="{{ $iconButton }}" title="{{ __('Add resource') }}"
                                             aria-label="Add resource to {{ $project->name }}">
                                             <x-reicon name="plus" class="size-3" />
                                         </a>
@@ -333,7 +333,7 @@
                                 @endif
                                 @can('update', $project)
                                     <a href="{{ route('project.edit', ['project_uuid' => $project->uuid]) }}"
-                                        {{ wireNavigate() }} class="{{ $iconButton }}" title="Project settings"
+                                        {{ wireNavigate() }} class="{{ $iconButton }}" title="{{ __('Project settings') }}"
                                         aria-label="Open settings for {{ $project->name }}">
                                         <x-reicon name="settings" class="size-3" />
                                     </a>
@@ -386,7 +386,7 @@
                         @endcan
                     </x-empty>
                 @else
-                    <x-empty title="No servers yet"
+                    <x-empty title="{{ __('No servers yet') }}"
                         description="Connect infrastructure for your deployments."
                         icon-name="servers" size="sm">
                         @can('createAnyResource')

@@ -36,7 +36,7 @@
 {{-- These pages are in the Keys & Tokens submenu of the main sidebar (components/navbar.blade.php). --}}
 <section class="w-full max-w-none">
     <header class="settings-mobile-header xl:hidden">
-        <h1 class="settings-mobile-title">Keys & Tokens</h1>
+        <h1 class="settings-mobile-title">{{ __('Keys & Tokens') }}</h1>
         <p class="settings-mobile-description">Manage SSH keys, cloud credentials, and API access tokens.</p>
     </header>
     {{-- Feeds the page search with the Keys & Tokens pages. --}}

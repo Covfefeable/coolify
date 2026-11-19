@@ -474,7 +474,7 @@
                                 <div x-init="preselectFirstResult()">
                                     <div class="command-palette-step-header">
                                         <button type="button" @click="runPaletteTransition(() => $wire.goBack())" class="command-palette-step-back"
-                                            title="Back">
+                                            title="{{ __('Back') }}">
                                             <x-reicon name="arrow-right" class="size-3.5 rotate-180" />
                                         </button>
                                         <div class="min-w-0">
@@ -521,7 +521,7 @@
                                 <div x-init="preselectFirstResult()">
                                     <div class="command-palette-step-header">
                                         <button type="button" @click="runPaletteTransition(() => $wire.goBack())" class="command-palette-step-back"
-                                            title="Back">
+                                            title="{{ __('Back') }}">
                                             <x-reicon name="arrow-right" class="size-3.5 rotate-180" />
                                         </button>
                                         <div class="min-w-0">
@@ -569,7 +569,7 @@
                                 <div x-init="preselectFirstResult()">
                                     <div class="command-palette-step-header">
                                         <button type="button" @click="runPaletteTransition(() => $wire.goBack())" class="command-palette-step-back"
-                                            title="Back">
+                                            title="{{ __('Back') }}">
                                             <x-reicon name="arrow-right" class="size-3.5 rotate-180" />
                                         </button>
                                         <div class="min-w-0">
@@ -617,7 +617,7 @@
                                 <div x-init="preselectFirstResult()">
                                     <div class="command-palette-step-header">
                                         <button type="button" @click="runPaletteTransition(() => $wire.goBack())" class="command-palette-step-back"
-                                            title="Back">
+                                            title="{{ __('Back') }}">
                                             <x-reicon name="arrow-right" class="size-3.5 rotate-180" />
                                         </button>
                                         <div class="min-w-0">
@@ -707,12 +707,12 @@
                                             <span class="command-palette-type-badge">
                                                 <span x-show="result.type === 'navigation'">Navigation</span>
                                                 <span x-show="result.type === 'application'">Application</span>
-                                                <span x-show="result.type === 'service'">Service</span>
+                                                <span x-show="result.type === 'service'">{{ __('Service') }}</span>
                                                 <span x-show="result.type === 'database'"
                                                     x-text="result.subtype ? result.subtype.charAt(0).toUpperCase() + result.subtype.slice(1) : 'Database'"></span>
-                                                <span x-show="result.type === 'server'">Server</span>
-                                                <span x-show="result.type === 'project'">Project</span>
-                                                <span x-show="result.type === 'environment'">Environment</span>
+                                                <span x-show="result.type === 'server'">{{ __('Server') }}</span>
+                                                <span x-show="result.type === 'project'">{{ __('Project') }}</span>
+                                                <span x-show="result.type === 'environment'">{{ __('Environment') }}</span>
                                             </span>
                                         </div>
                                         <template x-if="result.project && result.environment">
@@ -798,7 +798,7 @@
                         <template
                             x-if="scope === 'global' && searchQuery.length >= 2 && pageResults.length === 0 && searchResults.length === 0 && filteredCreatableItems.length === 0 && !showServerTimingCommand && !$wire.isSelectingResource && !$wire.autoOpenResource && !isLoadingInitialData">
                             <div class="command-palette-empty">
-                                <p class="command-palette-empty-title">No results found</p>
+                                <p class="command-palette-empty-title">{{ __('No results found') }}</p>
                                 <p class="command-palette-empty-desc">
                                     Try different keywords, or type <span class="font-medium">new</span> to create a resource.
                                 </p>
@@ -854,7 +854,7 @@
                         class="{{ $createModalShell }}"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-dropdown)">
                         <header class="flex-nowrap!">
-                            <h3 class="min-w-0 flex-1 truncate">New project</h3>
+                            <h3 class="min-w-0 flex-1 truncate">{{ __('New project') }}</h3>
                             <button type="button" @click="modalOpen=false" class="{{ $createModalClose }}">
                                 <x-reicon name="x" class="size-4" />
                             </button>

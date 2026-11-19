@@ -16,7 +16,7 @@
                 :canvas-url="route('project.canvas', ['project_uuid' => $project->uuid])" />
             @can('update', $project)
                 <a href="{{ route('project.edit', ['project_uuid' => $project->uuid]) }}" {{ wireNavigate() }}
-                    class="button whitespace-nowrap" title="Project settings"
+                    class="button whitespace-nowrap" title="{{ __('Project settings') }}"
                     aria-label="Open settings for {{ $project->name }}">
                     <x-reicon name="settings" class="size-3.5" />
                     Settings

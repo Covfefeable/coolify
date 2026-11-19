@@ -110,7 +110,7 @@
 
                             <form wire:submit="submit" class="application-settings-form">
                                 <x-unsaved-bar action="submit" />
-                                <x-application.settings-section title="General"
+                                <x-application.settings-section title="{{ __('General') }}"
                                     description="Connection and authentication settings for this private GitHub source.">
                                     <x-slot:actions>
                                         @if ($isConnected)
@@ -139,12 +139,12 @@
                                     <div class="grid gap-4 lg:grid-cols-2">
                                         <x-forms.input canGate="update" :canResource="$github_app" id="name" label="App name" />
                                         <x-forms.input canGate="update" :canResource="$github_app" id="organization"
-                                            label="Organization" placeholder="Personal account when empty" />
+                                            label="{{ __('Organization') }}" placeholder="Personal account when empty" />
 
                                         @if (!isCloud())
                                             @can('makeSystemWide', \App\Models\GithubApp::class)
                                             <div class="lg:col-span-2">
-                                                <x-forms.listbox canGate="update" :canResource="$github_app" id="isSystemWide" label="Availability" :options="[
+                                                <x-forms.listbox canGate="update" :canResource="$github_app" id="isSystemWide" label="{{ __('Availability') }}" :options="[
                                                     ['value' => false, 'label' => 'Only this team'],
                                                     ['value' => true, 'label' => 'Every team on this instance'],
                                                 ]"
@@ -154,7 +154,7 @@
                                             @endcan
                                             @if ($isSystemWide)
                                                 <div class="lg:col-span-2">
-                                                    <x-callout type="warning" title="Shared with every team">
+                                                    <x-callout type="warning" title="{{ __('Shared with every team') }}">
                                                         Use team-specific GitHub Apps when you need repository isolation between teams.
                                                     </x-callout>
                                                 </div>
@@ -166,27 +166,27 @@
                                         <x-forms.input canGate="update" :canResource="$github_app" id="apiUrl"
                                             label="API URL" />
                                         <x-forms.input canGate="update" :canResource="$github_app" id="customUser"
-                                            label="User" required />
+                                            label="{{ __('User') }}" required />
                                         <x-forms.input canGate="update" :canResource="$github_app" type="number"
-                                            id="customPort" label="Port" required />
+                                            id="customPort" label="{{ __('Port') }}" required />
                                         <x-forms.input canGate="update" :canResource="$github_app" type="number" id="appId"
                                             label="App ID" required />
                                         <x-forms.input canGate="update" :canResource="$github_app" type="number"
                                             id="installationId" label="Installation ID" required />
                                         <x-forms.input canGate="update" :canResource="$github_app" id="clientId"
-                                            label="Client ID" type="password" required />
+                                            label="{{ __('Client ID') }}" type="password" required />
                                         <x-forms.input canGate="update" :canResource="$github_app" id="clientSecret"
-                                            label="Client secret" type="password" required />
+                                            label="{{ __('Client secret') }}" type="password" required />
                                         <x-forms.input canGate="update" :canResource="$github_app" id="webhookSecret"
-                                            label="Webhook secret" type="password" required />
-                                        <x-forms.listbox canGate="update" :canResource="$github_app" id="privateKeyId" label="Private key" required
+                                            label="{{ __('Webhook secret') }}" type="password" required />
+                                        <x-forms.listbox canGate="update" :canResource="$github_app" id="privateKeyId" label="{{ __('Private key') }}" required
                                             :options="$privateKeyOptions" :disabled="!auth()->user()->can('update', $github_app)" />
                                     </div>
                                 </x-application.settings-section>
                             </form>
                         @elseif ($activeTab === 'danger')
                             <div class="application-settings-form">
-                                <x-application.settings-section id="github-app-danger-section" title="Danger zone"
+                                <x-application.settings-section id="github-app-danger-section" title="{{ __('Danger zone') }}"
                                     helper="Destructive actions for this GitHub App source cannot be undone.">
                                     <x-danger-zone title="Delete GitHub App">
                                                 <p>
@@ -202,7 +202,7 @@
                                             <x-slot:action>
                                                 @can('delete', $github_app)
                                                     <x-modal-confirmation title="Confirm GitHub App Deletion?" isErrorButton
-                                                        buttonTitle="Delete" submitAction="delete"
+                                                        buttonTitle="{{ __('Delete') }}" submitAction="delete"
                                                         :actions="['The selected GitHub App will be permanently deleted.']"
                                                         confirmationText="{{ data_get($github_app, 'name') }}"
                                                         confirmationLabel="Please confirm the execution of the actions by entering the GitHub App Name below"
@@ -219,7 +219,7 @@
 
                                     @cannot('delete', $github_app)
                                         <div class="mt-4">
-                                            <x-callout type="danger" title="Insufficient permissions">
+                                            <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
                                                 Contact a team administrator if this GitHub App must be deleted.
                                             </x-callout>
                                         </div>
@@ -248,7 +248,7 @@
             @can('delete', $github_app)
                 <div class="shrink-0">
                     <x-modal-confirmation title="Confirm GitHub App Deletion?" isErrorButton
-                        buttonTitle="Delete" submitAction="delete"
+                        buttonTitle="{{ __('Delete') }}" submitAction="delete"
                         :actions="['The selected GitHub App will be permanently deleted.']"
                         confirmationText="{{ data_get($github_app, 'name') }}"
                         confirmationLabel="Please confirm the execution of the actions by entering the GitHub App Name below"
@@ -328,7 +328,7 @@
                                 ]"
                                 helper="Deployments (write) access lets Coolify show each deployment and its status on GitHub, so pull requests show the preview as deployed." />
 
-                            <x-forms.listbox id="github_runners" label="GitHub Actions runners"
+                            <x-forms.listbox id="github_runners" label="{{ __('GitHub Actions runners') }}"
                                 :disabled="blank($github_app->organization)"
                                 :options="[
                                     ['value' => false, 'label' => 'Do not run workflow jobs'],
@@ -351,7 +351,7 @@
                     <x-application.settings-section title="Manual installation" class="[&>.application-settings-section-body]:flex [&>.application-settings-section-body]:flex-1 [&>.application-settings-section-body]:flex-col"
                         description="Enter GitHub App credentials manually for GitHub Enterprise or custom permission sets.">
                         <x-slot:actions>
-                            <x-status-badge label="Advanced" type="neutral" />
+                            <x-status-badge label="{{ __('Advanced') }}" type="neutral" />
                         </x-slot:actions>
 
                         <div class="flex min-h-[24rem] flex-1 flex-col">
@@ -373,7 +373,7 @@
                 </div>
             </div>
         @else
-            <x-callout type="danger" title="Insufficient permissions">
+            <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
                 You do not have permission to create GitHub Apps. Contact your team administrator.
             </x-callout>
         @endcan

@@ -45,13 +45,13 @@
         @endif
     </div>
     <div class="flex items-center gap-1">
-        <button type="button" class="{{ $buttonClass }}" aria-label="Previous page"
+        <button type="button" class="{{ $buttonClass }}" aria-label="{{ __('Previous page') }}"
             @if (filled($previousAction)) wire:click="{{ $previousAction }}" @endif
             @if ($hasLoading) wire:loading.attr="disabled" wire:target="{{ $wireTarget }}" @endif
             @disabled($onFirstPage)>
             <x-reicon name="arrow-right" class="size-3.5 rotate-180" />
         </button>
-        <button type="button" class="{{ $buttonClass }}" aria-label="Next page"
+        <button type="button" class="{{ $buttonClass }}" aria-label="{{ __('Next page') }}"
             @if (filled($nextAction)) wire:click="{{ $nextAction }}" @endif
             @if ($hasLoading) wire:loading.attr="disabled" wire:target="{{ $wireTarget }}" @endif
             @disabled($onLastPage)>

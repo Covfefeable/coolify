@@ -15,7 +15,7 @@
     </div>
     <div class="min-w-0">
         <div class="mb-1.5 flex h-4 w-full items-center gap-1.5">
-            <label for="serverParts-port" class="mb-0! flex items-center gap-1.5 leading-4">Port</label>
+            <label for="serverParts-port" class="mb-0! flex items-center gap-1.5 leading-4">{{ __('Port') }}</label>
         </div>
         <input id="serverParts-port" type="number" class="input" wire:model="serverParts.port"
             placeholder="{{ $defaultPort }}" min="1" max="65535" inputmode="numeric"

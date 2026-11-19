@@ -33,7 +33,7 @@
                                 ->all()" />
                         @if ($link)
                             <x-modal-confirmation title="Remove secret manager source?" isErrorButton
-                                buttonTitle="Remove" submitAction="removeSource"
+                                buttonTitle="{{ __('Remove') }}" submitAction="removeSource"
                                 :actions="[$removeSourceWarning]"
                                 :confirmWithText="false" :confirmWithPassword="false"
                                 step1ButtonText="Remove source" />

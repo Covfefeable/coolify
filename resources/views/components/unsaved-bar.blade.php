@@ -68,7 +68,7 @@
         </button>
         <button type="button" wire:click="{{ $action }}" wire:loading.attr="disabled"
             class="button-highlighted flex h-8 items-center gap-2 rounded-lg px-4 text-[13px] font-semibold transition-[transform,background-color] active:scale-[0.98]">
-            <span>Save changes</span>
+            <span>{{ __('Save changes') }}</span>
             <kbd
                 class="rounded border border-current/20 bg-current/10 px-1.5 py-0.5 text-[10px] leading-none font-medium text-current">Enter</kbd>
         </button>

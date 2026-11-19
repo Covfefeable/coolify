@@ -11,7 +11,7 @@
             }
         }">
             @if ($servers->isEmpty())
-                <x-empty title="No servers yet" description="Add a server before creating server-wide variables." icon-name="servers" />
+                <x-empty title="{{ __('No servers yet') }}" description="Add a server before creating server-wide variables." icon-name="servers" />
             @else
                 <x-shared-variables.view-controls label="servers" storage-key="shared-variables-servers-view" />
 

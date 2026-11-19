@@ -17,7 +17,7 @@
         {{-- On the canvas only the way back: one labelled link to the list (its first view). --}}
         @php [$label, $icon] = reset($views); @endphp
         <a href="{{ $listUrl }}?view={{ array_key_first($views) }}" {{ wireNavigate() }} class="{{ $canvasItem }} {{ $idle }}"
-            title="List view">
+            title="{{ __('List view') }}">
             <x-reicon :name="$icon" class="size-3.5" />
             List view
         </a>

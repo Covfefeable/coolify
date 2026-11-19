@@ -22,7 +22,7 @@
             @elseif ($provider_data_error)
                 <x-application.settings-section title="Unable to load DigitalOcean"
                     description="The selected token could not access the provider API.">
-                    <x-callout type="error" title="Provider request failed">
+                    <x-callout type="error" title="{{ __('Provider request failed') }}">
                         <pre class="mt-2 whitespace-pre-wrap break-words text-[11px]">{{ $provider_data_error }}</pre>
                     </x-callout>
                     <div class="mt-4">
@@ -82,12 +82,12 @@
 
                         <div class="grid gap-4 lg:grid-cols-2">
                             <div class="lg:col-span-2">
-                                <x-forms.input id="server_name" label="Server name"
+                                <x-forms.input id="server_name" label="{{ __('Server name') }}"
                                     helper="A friendly name shown in Coolify." />
                             </div>
-                            <x-forms.listbox id="selected_region" label="Region" required live
+                            <x-forms.listbox id="selected_region" label="{{ __('Region') }}" required live
                                 placeholder="Select a region" :options="$regionOptions" />
-                            <x-forms.listbox id="selected_size" label="Size" required live
+                            <x-forms.listbox id="selected_size" label="{{ __('Size') }}" required live
                                 :disabled="!$selected_region" placeholder="Select a size"
                                 :options="$sizeOptions" />
                             <x-forms.listbox id="selected_image" label="{{ __('Image') }}" required
@@ -101,7 +101,7 @@
                                     <div
                                         class="flex min-h-8 items-center justify-between gap-3 rounded-lg border border-warning/30 bg-warning/5 px-3 py-2">
                                         <span class="text-[11px] text-neutral-600 dark:text-fg-dim">A private key is required.</span>
-                                        <x-modal-input title="New Private Key">
+                                        <x-modal-input title="{{ __('New Private Key') }}">
                                             <x-slot:content>
                                                 <button type="button" class="button">Create key</button>
                                             </x-slot:content>
@@ -110,14 +110,14 @@
                                     </div>
                                 </div>
                             @else
-                                <x-forms.listbox id="private_key_id" label="Private key" required
-                                    placeholder="Select a private key" :options="$privateKeyOptions"
+                                <x-forms.listbox id="private_key_id" label="{{ __('Private key') }}" required
+                                    placeholder="{{ __('Select a private key') }}" :options="$privateKeyOptions"
                                     helper="This key is added to the Droplet automatically." />
                             @endif
                         </div>
                     </x-application.settings-section>
 
-                    <x-application.settings-section title="Advanced options"
+                    <x-application.settings-section title="{{ __('Advanced options') }}"
                         description="Provider SSH keys, networking, monitoring, and cloud-init.">
                         @if (count($this->advancedDigitalOceanOptionsSummary) > 0)
                             <div class="mb-4 flex flex-wrap gap-1.5">
@@ -131,7 +131,7 @@
                         @endif
 
                         <div class="flex flex-col gap-4">
-                            <x-forms.listbox label="Extra SSH keys" id="selectedDigitalOceanSshKeyIds"
+                            <x-forms.listbox label="{{ __('Extra SSH keys') }}" id="selectedDigitalOceanSshKeyIds"
                                 helper="Existing keys from the DigitalOcean account." multiple searchable
                                 :disabled="count($digitalOceanSshKeys) === 0" searchPlaceholder="Search SSH keys…"
                                 :placeholder="count($digitalOceanSshKeys) ? 'Select SSH keys' : 'No account keys found'"

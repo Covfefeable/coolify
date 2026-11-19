@@ -144,8 +144,8 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ __('Backup') }}</th>
-                                                <th>Created</th>
-                                                <th>Size</th>
+                                                <th>{{ __('Created') }}</th>
+                                                <th>{{ __('Size') }}</th>
                                                 <th class="text-right">{{ __('Actions') }}</th>
                                             </tr>
                                         </thead>

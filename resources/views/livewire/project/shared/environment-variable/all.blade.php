@@ -229,7 +229,7 @@
                                 action="setTableSort" :current="$tableSort" />
                             <span class="text-center">Managed</span>
                             @if ($showEnvironmentType)
-                                <span>Type</span>
+                                <span>{{ __('Type') }}</span>
                             @endif
                             <span class="text-center">Literal</span>
                             <span class="text-center">Multiline</span>

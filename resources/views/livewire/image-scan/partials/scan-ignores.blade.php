@@ -7,7 +7,7 @@
             <span>Reason</span>
             <span>Expires</span>
             <span>Set for</span>
-            <span class="text-right">Actions</span>
+            <span class="text-right">{{ __('Actions') }}</span>
         </div>
         @foreach ($ignores as $ignore)
             @php($isTeamWide = $ignore->resource_id === null)

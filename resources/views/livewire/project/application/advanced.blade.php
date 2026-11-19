@@ -11,7 +11,7 @@
     @endphp
 
     <div class="flex flex-col gap-6">
-        <x-application.settings-section id="advanced-build-section" title="Build & deploy"
+        <x-application.settings-section id="advanced-build-section" title="{{ __('Build & deploy') }}"
             helper="How images are built, how deployments start, and how the repository is cloned.">
             <div class="grid w-full gap-4 sm:grid-cols-2">
                 <x-forms.listbox id="disableBuildCache" label="Build cache" onChange="instantSave"
@@ -111,7 +111,7 @@
             @endif
         </x-application.settings-section>
 
-        <x-application.settings-section id="advanced-container-section" title="Container"
+        <x-application.settings-section id="advanced-container-section" title="{{ __('Container') }}"
             helper="Naming, shutdown, logs, and GPU access for the deployed container.">
             <div class="grid w-full gap-4 sm:grid-cols-2">
                 <x-forms.listbox id="isConsistentContainerNameEnabled" label="Container naming" onChange="instantSave"
@@ -159,10 +159,10 @@
                         canGate="update" :canResource="$application" />
                 </div>
             </x-application.settings-subsection>
-            <x-application.settings-subsection id="advanced-logs-section" title="Logs"
+            <x-application.settings-subsection id="advanced-logs-section" title="{{ __('Logs') }}"
                 helper="Forward container logs to an external endpoint.">
                 <div class="grid w-full gap-4 sm:grid-cols-2">
-                    <x-forms.listbox id="isLogDrainEnabled" label="Log drain" onChange="instantSave"
+                    <x-forms.listbox id="isLogDrainEnabled" label="{{ __('Log drain') }}" onChange="instantSave"
                         helper="Drain logs to the log drain endpoint configured in your Server settings."
                         :options="[
                             ['value' => false, 'label' => 'Disabled'],
@@ -227,11 +227,11 @@
             @endif
         </x-application.settings-section>
 
-        <x-application.settings-section id="advanced-proxy-section" title="Proxy"
+        <x-application.settings-section id="advanced-proxy-section" title="{{ __('Proxy') }}"
             helper="How the proxy serves traffic for this application.">
             @if ($labelsManagedByCoolify)
                 <div class="grid w-full gap-4 sm:grid-cols-2">
-                    <x-forms.listbox id="isGzipEnabled" label="Gzip compression" onChange="instantSave"
+                    <x-forms.listbox id="isGzipEnabled" label="{{ __('Gzip compression') }}" onChange="instantSave"
                         helper="Some services compress data by default. In that case you do not need this."
                         :options="[
                             ['value' => true, 'label' => 'Enabled'],
@@ -244,7 +244,7 @@
                             ['value' => false, 'label' => 'Keep paths as-is'],
                         ]" :disabled="! $canUpdate" />
                     @if ($isTraefikProxy)
-                        <x-forms.listbox id="certificateResolverMode" label="Certificate resolver"
+                        <x-forms.listbox id="certificateResolverMode" label="{{ __('Certificate resolver') }}"
                             onChange="saveCertificateResolverMode"
                             helper="Traefik certificate resolver for this application's HTTPS routes. Choose <span class='font-bold'>None</span> for domains that use certificates from Traefik's dynamic configuration (for example Cloudflare Origin CA certificates). Redeploy the application to apply the change."
                             :options="[

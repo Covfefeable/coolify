@@ -104,7 +104,7 @@
     @endif
 
     @if ($application->build_pack === 'dockerimage')
-        <x-application.settings-section id="manual-preview-section" title="Manual preview"
+        <x-application.settings-section id="manual-preview-section" title="{{ __('Manual preview') }}"
             helper="Deploy a preview directly from a Docker image tag.">
             <form wire:submit.prevent="addDockerImagePreview"
                 class="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:items-end">
@@ -260,7 +260,7 @@
                     <div class="hidden" aria-hidden="true">
                         @if (!$previewIsStopped)
                             @can('deploy', $application)
-                                <x-modal-confirmation title="Stop preview deployment?" buttonTitle="Stop"
+                                <x-modal-confirmation title="Stop preview deployment?" buttonTitle="{{ __('Stop') }}"
                                     submitAction="stop({{ data_get($preview, 'pull_request_id') }})"
                                     :actions="[
                                         'This preview deployment will be stopped.',
@@ -276,7 +276,7 @@
                             @endcan
                         @endif
                         @can('delete', $application)
-                            <x-modal-confirmation title="Delete preview deployment?" buttonTitle="Delete"
+                            <x-modal-confirmation title="Delete preview deployment?" buttonTitle="{{ __('Delete') }}"
                                 isErrorButton submitAction="delete({{ data_get($preview, 'pull_request_id') }})"
                                 :actions="['All containers for this preview deployment will be stopped and permanently deleted.']"
                                 confirmationText="{{ data_get($preview, 'fqdn') . '/' }}"

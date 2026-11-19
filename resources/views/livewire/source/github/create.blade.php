@@ -5,8 +5,8 @@
         </p>
 
         <div class="grid gap-4 sm:grid-cols-2">
-            <x-forms.input id="name" label="Name" required />
-            <x-forms.input id="organization" label="Organization" :required="$use_for_github_runners"
+            <x-forms.input id="name" label="{{ __('Name') }}" required />
+            <x-forms.input id="organization" label="{{ __('Organization') }}" :required="$use_for_github_runners"
                 :helper="$use_for_github_runners
                     ? 'GitHub Actions runners are registered at organization level.'
                     : 'If empty, your GitHub user will be used. GitHub Actions runners need an organization.'"
@@ -16,11 +16,11 @@
         @if (! isCloud() && auth()->user()->can('makeSystemWide', \App\Models\GithubApp::class))
             <div x-data="{ showWarning: @entangle('is_system_wide') }">
                 <div class="max-w-xs">
-                    <x-forms.checkbox id="is_system_wide" label="System wide"
+                    <x-forms.checkbox id="is_system_wide" label="{{ __('System wide') }}"
                         helper="If checked, this GitHub App will be available for everyone in this Coolify instance." />
                 </div>
                 <div x-cloak x-show="showWarning" x-transition class="mt-3">
-                    <x-callout type="warning" title="Shared with every team">
+                    <x-callout type="warning" title="{{ __('Shared with every team') }}">
                         System-wide GitHub Apps are available to every team on this instance. Prefer team-specific apps when you need repository isolation.
                     </x-callout>
                 </div>
@@ -36,7 +36,7 @@
             <div class="mt-2 flex max-w-xs flex-col gap-1">
                 <x-forms.checkbox id="use_for_pull_request_previews" label="Pull request previews"
                     helper="Deploys pull requests and posts deployment status on them." />
-                <x-forms.checkbox id="use_for_github_runners" live label="GitHub Actions runners"
+                <x-forms.checkbox id="use_for_github_runners" live label="{{ __('GitHub Actions runners') }}"
                     helper="Runs workflow jobs on your servers. Needs an organization." />
             </div>
         </div>
@@ -69,7 +69,7 @@
         </x-forms.button>
     </form>
 @else
-    <x-callout type="danger" title="Insufficient permissions">
+    <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
         You don't have permission to create new GitHub Apps. Contact your team administrator.
     </x-callout>
 @endcan

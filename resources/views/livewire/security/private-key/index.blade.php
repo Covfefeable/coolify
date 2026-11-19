@@ -69,10 +69,10 @@
     @else
         <div>
             <div class="grid grid-cols-[minmax(0,1fr)_7rem_4.5rem] items-center gap-3 border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[13px] font-medium text-neutral-500 sm:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_7rem_4.5rem] dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                <div class="pl-11">Private key</div>
-                <div class="hidden sm:block">Description</div>
-                <div class="text-center">Status</div>
-                <div class="text-right">Actions</div>
+                <div class="pl-11">{{ __('Private key') }}</div>
+                <div class="hidden sm:block">{{ __('Description') }}</div>
+                <div class="text-center">{{ __('Status') }}</div>
+                <div class="text-right">{{ __('Actions') }}</div>
             </div>
             @foreach ($privateKeys as $key)
                 @can('view', $key)
@@ -146,10 +146,10 @@
         <div wire:loading.flex wire:target="openEditor" aria-label="Loading private key editor"
             class="w-full flex-col gap-4">
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input label="Name" required x-ref="loadingPrivateKeyName" />
-                <x-forms.input label="Description" x-ref="loadingPrivateKeyDescription" />
+                <x-forms.input label="{{ __('Name') }}" required x-ref="loadingPrivateKeyName" />
+                <x-forms.input label="{{ __('Description') }}" x-ref="loadingPrivateKeyDescription" />
                 <div class="lg:col-span-2">
-                    <x-forms.input label="Public key" loading
+                    <x-forms.input label="{{ __('Public key') }}" loading
                         helper="Copy this value to ~/.ssh/authorized_keys on the target server." />
                 </div>
                 <div class="lg:col-span-2">
@@ -161,8 +161,8 @@
                 </div>
             </div>
             <div class="flex items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
-                <x-forms.button disabled isError>Delete</x-forms.button>
-                <x-forms.button disabled isHighlighted>Save changes</x-forms.button>
+                <x-forms.button disabled isError>{{ __('Delete') }}</x-forms.button>
+                <x-forms.button disabled isHighlighted>{{ __('Save changes') }}</x-forms.button>
             </div>
         </div>
         @if ($selectedPrivateKeyUuid)

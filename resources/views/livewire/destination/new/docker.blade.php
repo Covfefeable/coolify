@@ -2,10 +2,10 @@
     <div class="w-full">
         <form class="flex w-full flex-col gap-4" wire:submit="submit">
             <div class="grid gap-4 sm:grid-cols-2">
-                <x-forms.input id="name" label="Name" required />
-                <x-forms.input id="network" label="Network" required />
+                <x-forms.input id="name" label="{{ __('Name') }}" required />
+                <x-forms.input id="network" label="{{ __('Network') }}" required />
             </div>
-            <x-forms.listbox id="serverId" label="Server" required :live="true" :options="$servers
+            <x-forms.listbox id="serverId" label="{{ __('Server') }}" required :live="true" :options="$servers
                 ->map(
                     fn($server) => [
                         'value' => (string) $server->id,
@@ -22,7 +22,7 @@
         </form>
     </div>
 @else
-    <x-callout type="danger" title="Insufficient Permissions">
+    <x-callout type="danger" title="{{ __('Insufficient Permissions') }}">
         You don't have permission to create new destinations. Please contact your team administrator for access.
     </x-callout>
 @endcan

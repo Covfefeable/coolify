@@ -8,14 +8,14 @@
                         wire:target="setSort">
                         <div
                             class="data-table-header grid-cols-[minmax(13rem,1fr)_7rem_10rem_4rem_4.5rem]">
-                            <x-table.sort-header label="Email" asc="email-asc" desc="email-desc" action="setSort"
+                            <x-table.sort-header label="{{ __('Email') }}" asc="email-asc" desc="email-desc" action="setSort"
                                 :current="$sort" />
-                            <x-table.sort-header label="Method" asc="via-asc" desc="via-desc" action="setSort"
+                            <x-table.sort-header label="{{ __('Method') }}" asc="via-asc" desc="via-desc" action="setSort"
                                 :current="$sort" />
-                            <x-table.sort-header label="Role" asc="role-asc" desc="role-desc" first="desc"
+                            <x-table.sort-header label="{{ __('Role') }}" asc="role-asc" desc="role-desc" first="desc"
                                 action="setSort" :current="$sort" />
                             <span>Link</span>
-                            <span class="text-right">Actions</span>
+                            <span class="text-right">{{ __('Actions') }}</span>
                         </div>
                         @foreach ($sortedInvitations as $invite)
                             <div wire:key="team-invitation-{{ $invite->id }}"

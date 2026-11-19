@@ -115,7 +115,7 @@
                                     wire:target="testLogin" class="button w-fit"
                                     title="Run docker login with the saved credentials">Test</button>
                             @elseif (! $error && $server->isFunctional())
-                                <x-modal-input buttonTitle="Log in" title="Log in to {{ $row['registry'] }}"
+                                <x-modal-input buttonTitle="{{ __('Log in') }}" title="Log in to {{ $row['registry'] }}"
                                     subtitle="Runs docker login on {{ $server->name }}.">
                                     <livewire:server.docker-registries.login :server="$server" :presetRegistry="$row['registry']"
                                         :key="'registry-login-'.$server->uuid.'-'.$row['registry']" />

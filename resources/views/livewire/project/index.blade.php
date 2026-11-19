@@ -8,7 +8,7 @@
             <h1 class="min-w-0 truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Projects') }}</h1>
             @can('createAnyResource')
                 <div class="w-fit shrink-0">
-                    <x-modal-input title="New Project">
+                    <x-modal-input title="{{ __('New Project') }}">
                         <x-slot:content>
                             <button type="button"
                                 class="button button-highlighted">
@@ -43,7 +43,7 @@
                         class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                     <button x-cloak x-show="search" x-on:click="search = ''; page = 1" type="button"
                         class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                        aria-label="Clear search">
+                        aria-label="{{ __('Clear search') }}">
                         <span class="text-sm leading-none">×</span>
                     </button>
                 </div>
@@ -122,12 +122,12 @@
                                     <a x-show="project.addResourceHref" :href="project.addResourceHref"
                                         {{ wireNavigate() }}
                                         class="card-icon-button flex size-7.5 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black"
-                                        title="Add resource" :aria-label="`Add resource to ${project.name}`">
+                                        title="{{ __('Add resource') }}" :aria-label="`Add resource to ${project.name}`">
                                         <x-reicon name="plus" class="size-3" />
                                     </a>
                                     <a x-show="project.settingsHref" :href="project.settingsHref" {{ wireNavigate() }}
                                         class="card-icon-button flex size-7.5 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black"
-                                        title="Project settings" :aria-label="`Open settings for ${project.name}`">
+                                        title="{{ __('Project settings') }}" :aria-label="`Open settings for ${project.name}`">
                                         <x-reicon name="settings" class="size-3" />
                                     </a>
                                 </div>
@@ -146,7 +146,7 @@
                     class="projects-table-grid border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
                     <x-table.sort-header label="{{ __('Project') }}" asc="name-asc" desc="name-desc" then="page = 1" />
                     <x-table.sort-header label="{{ __('Contents') }}" asc="resources-asc" desc="resources-desc" first="desc" then="page = 1" />
-                    <x-table.sort-header label="Created" asc="created-asc" desc="created-desc" first="desc" then="page = 1" />
+                    <x-table.sort-header label="{{ __('Created') }}" asc="created-asc" desc="created-desc" first="desc" then="page = 1" />
                     <x-table.sort-header label="{{ __('Description') }}" asc="description-asc" desc="description-desc" then="page = 1"
                         class="project-description" />
                     <span class="text-right">{{ __('Actions') }}</span>
@@ -172,11 +172,11 @@
 
                         <div class="flex items-center gap-3 text-[12px] font-medium text-neutral-600 dark:text-fg-dim">
                             <span class="inline-flex items-center gap-1" data-tooltip="Environments"
-                                aria-label="Environments">
+                                aria-label="{{ __('Environments') }}">
                                 <x-reicon name="layers" class="size-3.5 text-neutral-400 dark:text-fg-faint" />
                                 <span x-text="project.environmentCount"></span>
                             </span>
-                            <span class="inline-flex items-center gap-1" data-tooltip="Resources" aria-label="Resources">
+                            <span class="inline-flex items-center gap-1" data-tooltip="Resources" aria-label="{{ __('Resources') }}">
                                 <x-reicon name="grid" class="size-3.5 text-neutral-400 dark:text-fg-faint" />
                                 <span x-text="project.resourceCount"></span>
                             </span>
@@ -189,12 +189,12 @@
                         <div class="flex items-center justify-end gap-0.5">
                             <a x-show="project.addResourceHref" :href="project.addResourceHref" {{ wireNavigate() }}
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                title="Add resource" :aria-label="`Add resource to ${project.name}`">
+                                title="{{ __('Add resource') }}" :aria-label="`Add resource to ${project.name}`">
                                 <x-reicon name="plus" class="size-3.5" />
                             </a>
                             <a x-show="project.settingsHref" :href="project.settingsHref" {{ wireNavigate() }}
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                title="Project settings" :aria-label="`Open settings for ${project.name}`">
+                                title="{{ __('Project settings') }}" :aria-label="`Open settings for ${project.name}`">
                                 <x-reicon name="settings" class="size-3.5" />
                             </a>
                         </div>

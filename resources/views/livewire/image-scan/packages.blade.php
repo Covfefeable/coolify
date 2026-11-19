@@ -37,7 +37,7 @@
                 @if (count($typeOptions) > 0)
                     <x-table.filter :active-count="count($types)" reset-action="resetFilters">
                         @if (count($typeOptions) > 0)
-                            <span class="{{ $groupLabel }}">Type</span>
+                            <span class="{{ $groupLabel }}">{{ __('Type') }}</span>
                             @foreach ($typeOptions as $option)
                                 @php $selected = in_array($option, $types, true); @endphp
                                 <button type="button" class="listbox-option" role="option"
@@ -74,10 +74,10 @@
                     <div class="data-table">
                         <div @class(['data-table-header image-scan-sbom-grid', 'has-image' => $showsImage])>
                             <span>Package</span>
-                            <span>Version</span>
-                            <span class="image-scan-secondary">Type</span>
+                            <span>{{ __('Version') }}</span>
+                            <span class="image-scan-secondary">{{ __('Type') }}</span>
                             @if ($showsImage)
-                                <span class="image-scan-secondary">Image</span>
+                                <span class="image-scan-secondary">{{ __('Image') }}</span>
                             @endif
                             <span class="image-scan-secondary">License</span>
                         </div>

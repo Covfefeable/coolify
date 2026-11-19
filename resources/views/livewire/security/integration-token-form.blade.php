@@ -1,6 +1,6 @@
 <div class="w-full">
     <form class="application-settings-form flex w-full flex-col gap-4" wire:submit="addToken">
-        <x-forms.listbox required id="provider" label="Provider" :live="true" :options="[
+        <x-forms.listbox required id="provider" label="{{ __('Provider') }}" :live="true" :options="[
             ['value' => 'cloudflare', 'label' => 'Cloudflare'],
             ['value' => 'doppler', 'label' => 'Doppler'],
             ['value' => 'infisical', 'label' => 'Infisical'],
@@ -9,20 +9,20 @@
 
         @if ($provider === 'infisical')
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input required id="name" label="Token name" placeholder="Production secrets" />
-                <x-forms.input required id="metadata.client_id" label="Client ID"
+                <x-forms.input required id="name" label="{{ __('Token name') }}" placeholder="Production secrets" />
+                <x-forms.input required id="metadata.client_id" label="{{ __('Client ID') }}"
                     placeholder="Machine identity client ID" />
-                <x-forms.input required type="password" id="token" label="Client secret"
+                <x-forms.input required type="password" id="token" label="{{ __('Client secret') }}"
                     placeholder="Paste the machine identity client secret" />
-                <x-forms.input required id="metadata.base_url" label="Base URL"
+                <x-forms.input required id="metadata.base_url" label="{{ __('Base URL') }}"
                     placeholder="https://app.infisical.com"
                     helper="Use the URL of your self-hosted Infisical instance, or the Infisical cloud URL." />
-                <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="Request timeout (optional)"
+                <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="{{ __('Request timeout (optional)') }}"
                     placeholder="10" helper="Seconds to wait for each request. Increase it if your instance responds slowly." />
             </div>
         @else
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input required id="name" label="Token name"
+                <x-forms.input required id="name" label="{{ __('Token name') }}"
                     placeholder="{{ $provider === 'cloudflare' ? 'Production DNS' : 'Production secrets' }}" />
                 <x-forms.input required type="password" id="token"
                     label="{{ $provider === 'vault' ? 'Vault token' : 'API token' }}"
@@ -32,11 +32,11 @@
 
         @if ($provider === 'vault')
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input required id="metadata.base_url" label="Base URL"
+                <x-forms.input required id="metadata.base_url" label="{{ __('Base URL') }}"
                     placeholder="https://vault.example.com:8200" />
                 <x-forms.input id="metadata.namespace" label="Namespace (optional)"
                     placeholder="admin/team-a" helper="Only for Vault Enterprise / HCP Vault." />
-                <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="Request timeout (optional)"
+                <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="{{ __('Request timeout (optional)') }}"
                     placeholder="10" helper="Seconds to wait for each request. Increase it if your instance responds slowly." />
             </div>
         @endif

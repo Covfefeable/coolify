@@ -99,7 +99,7 @@
                 <a href="{{ $healthcheckUrl }}" {{ wireNavigate() }} role="menuitem"
                     class="flex min-h-8 flex-1 items-center gap-2.5 px-2 py-1.5">
                     <span @class($healthDot)></span>
-                    <span class="flex-1">Healthcheck</span>
+                    <span class="flex-1">{{ __('Healthcheck') }}</span>
                     <span>{{ $healthLabel }}</span>
                 </a>
                 @if ($healthLabel === 'Not configured')
@@ -111,7 +111,7 @@
         @else
             <div class="listbox-option cursor-default! gap-2.5!">
                 <span @class($healthDot)></span>
-                <span class="flex-1">Healthcheck</span>
+                <span class="flex-1">{{ __('Healthcheck') }}</span>
                 <span class="inline-flex items-center gap-1.5">
                     {{ $healthLabel }}
                     @if ($healthLabel === 'Not configured')

@@ -19,7 +19,7 @@
         @endif
         <div class="flex flex-col justify-center text-sm select-text">
             <div class="grid gap-4 md:grid-cols-2">
-                <x-forms.input label="Source Path" :value="$fileStorage->fs_path" readonly>
+                <x-forms.input label="{{ __('Source Path') }}" :value="$fileStorage->fs_path" readonly>
                     <x-slot:labelSuffix>
                         @if ($hasEnabledBackup)
                             <x-status-badge :as="$backupUrl ? 'a' : 'span'" :href="$backupUrl"
@@ -28,7 +28,7 @@
                         @endif
                     </x-slot:labelSuffix>
                 </x-forms.input>
-                <x-forms.input label="Destination Path" :value="$fileStorage->mount_path" readonly />
+                <x-forms.input label="{{ __('Destination Path') }}" :value="$fileStorage->mount_path" readonly />
             </div>
         </div>
         @if ($resource instanceof \App\Models\Application && $resource->git_based())
@@ -50,7 +50,7 @@
                     @if ($fileStorage->is_host_file)
                         @if (!$isReadOnly)
                             <x-modal-confirmation :ignoreWire="false" title="Confirm Host File Mount Removal?"
-                                buttonTitle="Delete" isErrorButton submitAction="delete" :checkboxes="$deletionCheckboxes"
+                                buttonTitle="{{ __('Delete') }}" isErrorButton submitAction="delete" :checkboxes="$deletionCheckboxes"
                                 :actions="$deletionActions"
                                 confirmationText="{{ $fs_path }}"
                                 confirmationLabel="Please confirm the execution of the actions by entering the Filepath below"
@@ -73,7 +73,7 @@
                             </x-modal-input>
                         @endif
                         @if (!$isReadOnly)
-                            <x-modal-confirmation :ignoreWire="false" title="Confirm Directory Deletion?" buttonTitle="Delete"
+                            <x-modal-confirmation :ignoreWire="false" title="Confirm Directory Deletion?" buttonTitle="{{ __('Delete') }}"
                                 isErrorButton submitAction="delete" :checkboxes="$deletionCheckboxes" :actions="$deletionActions"
                                 confirmationText="{{ $fs_path }}"
                                 confirmationLabel="Please confirm the execution of the actions by entering the Filepath below"
@@ -93,7 +93,7 @@
                         <x-forms.button type="button" wire:click="loadStorageOnServer">Load from
                             server</x-forms.button>
                         @if (!$isReadOnly)
-                            <x-modal-confirmation :ignoreWire="false" title="Confirm File Deletion?" buttonTitle="Delete"
+                            <x-modal-confirmation :ignoreWire="false" title="Confirm File Deletion?" buttonTitle="{{ __('Delete') }}"
                                 isErrorButton submitAction="delete" :checkboxes="$deletionCheckboxes" :actions="$deletionActions"
                                 confirmationText="{{ $fs_path }}"
                                 confirmationLabel="Please confirm the execution of the actions by entering the Filepath below"
@@ -123,7 +123,7 @@
                                     id="isBasedOnGit"></x-forms.checkbox>
                             </div>
                         @endif
-                        <x-callout type="info" title="Hidden (only admins can view)">
+                        <x-callout type="info" title="{{ __('Hidden (only admins can view)') }}">
                             The file content can contain secrets.
                         </x-callout>
                     @endcan
@@ -143,7 +143,7 @@
                             helper="The content shown may be outdated. Click 'Load from server' to fetch the latest version."
                             rows="20" id="content" :useMonacoEditor="$isYamlFile" monacoEditorLanguage="yaml" disabled></x-forms.textarea>
                     @else
-                        <x-callout type="info" title="Hidden (only admins can view)">
+                        <x-callout type="info" title="{{ __('Hidden (only admins can view)') }}">
                             The file content can contain secrets.
                         </x-callout>
                     @endcan

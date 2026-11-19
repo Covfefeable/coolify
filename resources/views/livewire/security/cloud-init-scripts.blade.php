@@ -31,7 +31,7 @@
                     <div class="grid grid-cols-[minmax(0,1fr)_12rem_4.5rem] items-center gap-3 border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[13px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
                         <div class="pl-11">Script</div>
                         <div>Last updated</div>
-                        <div class="text-right">Actions</div>
+                        <div class="text-right">{{ __('Actions') }}</div>
                     </div>
                     @foreach ($scripts as $script)
                         @can('view', $script)

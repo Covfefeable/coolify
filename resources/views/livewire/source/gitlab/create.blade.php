@@ -5,7 +5,7 @@
         </p>
 
         <div class="grid gap-4 sm:grid-cols-2">
-            <x-forms.input id="name" label="Name" required />
+            <x-forms.input id="name" label="{{ __('Name') }}" required />
             <x-forms.input id="group_name" label="Group name"
                 helper="Optional. Comma-separated group names to filter repositories (e.g. myorg,myteam)."
                 placeholder="All accessible repositories when empty" />
@@ -14,11 +14,11 @@
         @if (! isCloud() && auth()->user()->can('makeSystemWide', \App\Models\GitlabApp::class))
             <div x-data="{ showWarning: @entangle('is_system_wide') }">
                 <div class="max-w-xs">
-                    <x-forms.checkbox id="is_system_wide" label="System wide"
+                    <x-forms.checkbox id="is_system_wide" label="{{ __('System wide') }}"
                         helper="If checked, this GitLab App will be available for everyone in this Coolify instance." />
                 </div>
                 <div x-cloak x-show="showWarning" x-transition class="mt-3">
-                    <x-callout type="warning" title="Shared with every team">
+                    <x-callout type="warning" title="{{ __('Shared with every team') }}">
                         System-wide GitLab Apps are available to every team on this instance. Prefer team-specific apps when you need repository isolation.
                     </x-callout>
                 </div>
@@ -53,7 +53,7 @@
         </x-forms.button>
     </form>
 @else
-    <x-callout type="danger" title="Insufficient permissions">
+    <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
         You don't have permission to create new GitLab Apps. Contact your team administrator.
     </x-callout>
 @endcan

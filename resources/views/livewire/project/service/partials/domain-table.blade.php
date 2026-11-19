@@ -11,7 +11,7 @@
             @if ($showServiceColumn)
                 <span>{{ __('Service') }}</span>
             @endif
-            <span>Protocol redirect</span>
+            <span>{{ __('Protocol redirect') }}</span>
                 <span>Domain redirect</span>
                 <span>Internal port</span>
                 <span>Search indexing</span>
@@ -114,8 +114,8 @@
                     </div>
                 @endif
 
-                <div class="service-domain-detail" title="Protocol redirect">
-                    <span class="service-domain-detail-label">Protocol redirect</span>
+                <div class="service-domain-detail" title="{{ __('Protocol redirect') }}">
+                    <span class="service-domain-detail-label">{{ __('Protocol redirect') }}</span>
                     <span>{{ str_starts_with($row['url'], 'https://') && ($forceHttpsRedirects[$row['service_application_id']] ?? true) ? 'HTTP → HTTPS' : 'Disabled' }}</span>
                 </div>
                 <div class="service-domain-detail" title="{{ $directionLabel }}">
@@ -135,7 +135,7 @@
                     </span>
                 </div>
 
-                <div class="service-domain-mobile-summary" aria-label="Domain routing summary">
+                <div class="service-domain-mobile-summary" aria-label="{{ __('Domain routing summary') }}">
                     @if (str_starts_with($row['url'], 'https://') && ($forceHttpsRedirects[$row['service_application_id']] ?? true))
                         <span>HTTP → HTTPS</span>
                     @endif
@@ -154,7 +154,7 @@
                             title="View DNS records to fix" class="cursor-pointer hover:bg-neutral-200 dark:hover:bg-white/[0.1]" />
                     @elseif ($row['dns_status'] === 'checking')
                         <x-status-badge dynamic :title="$row['dns_message']">
-                            <x-loading compact aria-label="Checking DNS" />
+                            <x-loading compact aria-label="{{ __('Checking DNS') }}" />
                             <span class="truncate">Checking DNS...</span>
                         </x-status-badge>
                     @else
@@ -169,7 +169,7 @@
                             <button type="button" wire:click="checkDomainDns({{ $index }})"
                                 wire:loading.attr="disabled"
                                 wire:target="checkDomainDns({{ $index }}),checkAllDns"
-                                class="icon-button shrink-0" title="Check DNS" aria-label="Check DNS">
+                                class="icon-button shrink-0" title="{{ __('Check DNS') }}" aria-label="{{ __('Check DNS') }}">
                                 <x-reicon name="refresh" class="size-3.5" />
                             </button>
                             @if ($row['needs_force_add'] ?? false)
@@ -186,7 +186,7 @@
                                 </x-forms.button>
                             @endif
                         @else
-                            <x-table.row-actions label="Domain actions">
+                            <x-table.row-actions label="{{ __('Domain actions') }}">
                                 <x-table.row-action wire:click="checkDomainDns({{ $index }})"
                                     wire:loading.attr="disabled"
                                     wire:target="checkDomainDns({{ $index }}),checkAllDns">
@@ -198,7 +198,7 @@
                                 </x-table.row-action>
                                 <x-slot:danger>
                                     <x-modal-confirmation buttonFullWidth title="Remove domain?"
-                                        buttonTitle="Remove" isErrorButton
+                                        buttonTitle="{{ __('Remove') }}" isErrorButton
                                         canGate="update" :canResource="$service"
                                         submitAction="removeDomainByKey({{ $domainKey }})" :actions="[
                                             'This domain will be removed from the service application.',

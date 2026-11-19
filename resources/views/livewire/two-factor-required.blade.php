@@ -11,7 +11,7 @@
                     <div>{{ $code }}</div>
                 @endforeach
             </div>
-            <a href="{{ route('dashboard') }}" class="button w-full justify-center">Continue</a>
+            <a href="{{ route('dashboard') }}" class="button w-full justify-center">{{ __('Continue') }}</a>
         @elseif (session('status') === 'two-factor-authentication-enabled' || request()->user()->two_factor_secret)
             <div
                 class="flex items-center justify-center rounded-[10px] border border-neutral-200 bg-white p-5 dark:border-white/[0.07]">
@@ -64,7 +64,7 @@
             <span>Not now?</span>
             <form action="/logout" method="POST">
                 @csrf
-                <button type="submit" class="auth-text-link">Log out</button>
+                <button type="submit" class="auth-text-link">{{ __('Log out') }}</button>
             </form>
         </x-slot:footer>
     @endunless

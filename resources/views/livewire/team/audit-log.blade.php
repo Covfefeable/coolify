@@ -5,7 +5,7 @@
 
     <x-team.settings-layout>
         <div class="application-settings-form">
-            <x-application.settings-section title="Audit log"
+            <x-application.settings-section title="{{ __('Audit log') }}"
                 description="Activity from the last 90 days for the current team." flush>
                 <div
                     class="flex flex-col gap-2 border-b border-neutral-200 p-3 sm:flex-row sm:items-center dark:border-white/[0.08]">
@@ -42,9 +42,9 @@
                                 :current="$sort" />
                             <x-table.sort-header label="Activity" asc="activity-asc" desc="activity-desc"
                                 action="setSort" :current="$sort" />
-                            <x-table.sort-header label="Source" asc="source-asc" desc="source-desc" action="setSort"
+                            <x-table.sort-header label="{{ __('Source') }}" asc="source-asc" desc="source-desc" action="setSort"
                                 :current="$sort" />
-                            <x-table.sort-header label="Time" asc="time-asc" desc="time-desc" first="desc"
+                            <x-table.sort-header label="{{ __('Time') }}" asc="time-asc" desc="time-desc" first="desc"
                                 action="setSort" :current="$sort" class="justify-self-end" />
                         </div>
                         @foreach ($events as $event)

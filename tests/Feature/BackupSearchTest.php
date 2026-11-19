@@ -23,7 +23,8 @@ beforeEach(function () {
     session(['currentTeam' => $this->team]);
 });
 
-it('renders unavailable S3 storage only for S3-enabled database backups', function () {
+it('renders unavailable S3 storage only for S3-enabled database backups', function (string $locale, string $heading, string $unavailable, string $localOnly) {
+    app()->setLocale($locale);
     $server = Server::factory()->create(['team_id' => $this->team->id]);
     $destination = StandaloneDocker::where('server_id', $server->id)->firstOrFail();
     $project = Project::factory()->create(['team_id' => $this->team->id]);
@@ -59,9 +60,13 @@ it('renders unavailable S3 storage only for S3-enabled database backups', functi
 
     $response = $this->get(route('project.database.backup.index', $parameters))
         ->assertOk()
-        ->assertSee('Unavailable')
-        ->assertSee('Local only');
+        ->assertSee($heading)
+        ->assertSee($unavailable)
+        ->assertSee($localOnly);
 
     // Only the S3-enabled schedule without a linked storage shows "Unavailable".
-    expect(substr_count($response->getContent(), 'Unavailable'))->toBe(1);
-});
+    expect(substr_count($response->getContent(), $unavailable))->toBe(1);
+})->with([
+    'English' => ['en', 'Database backups', 'Unavailable', 'Local only'],
+    'Simplified Chinese' => ['zh-cn', '数据库备份', '不可用', '仅本地存储'],
+]);

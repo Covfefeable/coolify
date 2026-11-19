@@ -18,12 +18,12 @@
 
                     <div class="grid gap-4 lg:grid-cols-3">
                         <x-forms.input canGate="view" :canResource="$github_app" id="contents"
-                            helper="Read access is mandatory." label="Contents" readonly placeholder="N/A" />
+                            helper="Read access is mandatory." label="{{ __('Contents') }}" readonly placeholder="{{ __('N/A') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app" id="metadata"
-                            helper="Read access is mandatory." label="Metadata" readonly placeholder="N/A" />
+                            helper="Read access is mandatory." label="Metadata" readonly placeholder="{{ __('N/A') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app" id="pullRequests"
                             helper="Write access is needed for preview deployment status updates."
-                            label="Pull requests" readonly placeholder="N/A" />
+                            label="Pull requests" readonly placeholder="{{ __('N/A') }}" />
                     </div>
                 </x-application.settings-section>
 
@@ -32,7 +32,7 @@
                     description="Coolify creates a GitHub deployment for each deployment and updates its status, so branches and pull requests show what is deployed.">
                     <div class="grid gap-4 lg:grid-cols-3">
                         <x-forms.input canGate="view" :canResource="$github_app"
-                            label="Deployments" readonly placeholder="N/A" :value="$github_app->deployments"
+                            label="Deployments" readonly placeholder="{{ __('N/A') }}" :value="$github_app->deployments"
                             helper="Repository permission. Write access is needed to create deployments and their statuses." />
                     </div>
                     @if ($missingDeploymentRequirements !== [])
@@ -57,18 +57,18 @@
                 </x-application.settings-section>
 
                 @php($missingRunnerRequirements = $github_app->missingRunnerRequirements())
-                <x-application.settings-section title="GitHub Actions runners"
+                <x-application.settings-section title="{{ __('GitHub Actions runners') }}"
                     description="Your servers can run the organization's workflow jobs in Docker containers. Configure them in the GitHub Runners menu of a server.">
                     <div class="grid gap-4 lg:grid-cols-3">
                         <x-forms.input canGate="view" :canResource="$github_app"
-                            label="Self-hosted runners" readonly placeholder="N/A"
+                            label="Self-hosted runners" readonly placeholder="{{ __('N/A') }}"
                             :value="$github_app->organization_self_hosted_runners"
                             helper="Organization permission. Write access is needed to register runners." />
                         <x-forms.input canGate="view" :canResource="$github_app"
-                            label="Actions" readonly placeholder="N/A" :value="$github_app->actions"
+                            label="{{ __('Actions') }}" readonly placeholder="{{ __('N/A') }}" :value="$github_app->actions"
                             helper="Repository permission. Read access is needed for the Workflow job webhook event." />
                         <x-forms.input canGate="view" :canResource="$github_app"
-                            label="Webhook events" readonly placeholder="N/A"
+                            label="Webhook events" readonly placeholder="{{ __('N/A') }}"
                             :value="implode(', ', $github_app->webhook_events ?? [])"
                             helper="Refetch to update this list after you change the App on GitHub." />
                     </div>

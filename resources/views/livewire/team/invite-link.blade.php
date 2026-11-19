@@ -24,11 +24,11 @@
                 @endif
 
                 <div class="mt-4 grid gap-4 lg:grid-cols-2">
-                    <x-forms.input id="email" type="email" label="Email address"
+                    <x-forms.input id="email" type="email" label="{{ __('Email address') }}"
                         placeholder="teammate@example.com" required />
                     <div class="flex items-end gap-2">
                         <div class="min-w-0 flex-1">
-                            <x-forms.listbox id="role" label="Role" :options="array_values(array_filter([
+                            <x-forms.listbox id="role" label="{{ __('Role') }}" :options="array_values(array_filter([
                                 auth()->user()->role() === 'owner' ? ['value' => 'owner', 'label' => 'Owner'] : null,
                                 ['value' => 'admin', 'label' => 'Admin'],
                                 ['value' => 'member', 'label' => 'Member'],

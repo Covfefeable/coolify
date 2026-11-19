@@ -10,7 +10,7 @@
                     <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">
                         {{ $name ?: 'GitLab App' }}
                     </h1>
-                    <x-status-badge label="Connected" type="success" />
+                    <x-status-badge label="{{ __('Connected') }}" type="success" />
                 </div>
                 <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
                     {{ filled($groupName) ? 'GitLab App for '.$groupName : 'Private GitLab source' }}
@@ -23,7 +23,7 @@
                     </x-forms.button>
                 @endcan
                 @can('delete', $gitlab_app)
-                    <x-modal-confirmation title="Confirm GitLab App Deletion?" isErrorButton buttonTitle="Delete"
+                    <x-modal-confirmation title="Confirm GitLab App Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
                         submitAction="delete" :actions="['The selected GitLab App will be permanently deleted.']"
                         confirmationText="{{ data_get($gitlab_app, 'name') }}"
                         confirmationLabel="Please confirm by entering the GitLab App Name below"
@@ -36,22 +36,22 @@
         <form wire:submit="submit" class="application-settings-form flex flex-col gap-6">
             <x-unsaved-bar action="submit" />
 
-            <x-application.settings-section title="General"
+            <x-application.settings-section title="{{ __('General') }}"
                 description="Name, visibility, and webhook of this source.">
                 <div class="grid gap-4 lg:grid-cols-2">
-                    <x-forms.input canGate="update" :canResource="$gitlab_app" id="name" label="Name" />
+                    <x-forms.input canGate="update" :canResource="$gitlab_app" id="name" label="{{ __('Name') }}" />
 
                     @if (! isCloud())
                         @can('makeSystemWide', \App\Models\GitlabApp::class)
                             <div class="lg:col-span-2 max-w-xs">
-                                <x-forms.checkbox canGate="update" :canResource="$gitlab_app" label="System wide"
+                                <x-forms.checkbox canGate="update" :canResource="$gitlab_app" label="{{ __('System wide') }}"
                                     helper="If checked, this GitLab App will be available for everyone in this Coolify instance."
                                     instantSave id="isSystemWide" />
                             </div>
                         @endcan
                         @if ($isSystemWide)
                             <div class="lg:col-span-2">
-                                <x-callout type="warning" title="Shared with every team">
+                                <x-callout type="warning" title="{{ __('Shared with every team') }}">
                                     System-wide GitLab Apps are shared across all teams on this Coolify instance. Prefer team-specific apps when you need repository isolation.
                                 </x-callout>
                             </div>
@@ -72,7 +72,7 @@
                 </x-application.settings-subsection>
             </x-application.settings-section>
 
-            <x-application.settings-section id="connection-section" title="Connection"
+            <x-application.settings-section id="connection-section" title="{{ __('Connection') }}"
                 helper="OAuth credentials and the endpoints Coolify uses to reach this source.">
                 <x-application.settings-subsection first title="OAuth credentials"
                     helper="Application credentials from your GitLab OAuth application.">
@@ -93,9 +93,9 @@
                             label="GitLab URL" />
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="apiUrl" label="API URL" />
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="customUser"
-                            label="SSH user" />
+                            label="{{ __('SSH user') }}" />
                         <x-forms.input canGate="update" :canResource="$gitlab_app" type="number" id="customPort"
-                            label="SSH port" />
+                            label="{{ __('SSH port') }}" />
                         <div class="lg:col-span-2">
                             <x-forms.listbox canGate="update" :canResource="$gitlab_app" id="privateKeyId" label="SSH private key (optional)"
                                 :options="collect($privateKeys)->map(fn ($key) => [
@@ -111,7 +111,7 @@
         </form>
 
         <div x-data="{ search: '' }" class="application-settings-form mt-6">
-            <x-application.settings-section title="Resources"
+            <x-application.settings-section title="{{ __('Resources') }}"
                 description="Applications currently using this GitLab App." flush>
                 @if ($applications->isEmpty())
                     <x-empty title="No resources use this source"
@@ -122,17 +122,17 @@
                         <div class="relative w-full max-w-sm">
                             <x-reicon name="search"
                                 class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                            <input x-model.debounce.150ms="search" type="search" placeholder="Search resources"
+                            <input x-model.debounce.150ms="search" type="search" placeholder="{{ __('Search resources') }}"
                                 class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-3! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                         </div>
                     </div>
                     <div class="overflow-x-auto">
                         <div
                             class="grid min-w-[680px] grid-cols-[minmax(10rem,.8fr)_minmax(10rem,.8fr)_minmax(12rem,1fr)_8rem] border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                            <div>Project</div>
-                            <div>Environment</div>
-                            <div>Resource</div>
-                            <div>Repository</div>
+                            <div>{{ __('Project') }}</div>
+                            <div>{{ __('Environment') }}</div>
+                            <div>{{ __('Resource') }}</div>
+                            <div>{{ __('Repository') }}</div>
                         </div>
                         @foreach ($applications->sortBy('name', SORT_NATURAL) as $application)
                             @php
@@ -174,7 +174,7 @@
             </div>
             @can('delete', $gitlab_app)
                 <div class="shrink-0 sm:ml-auto">
-                    <x-modal-confirmation title="Confirm GitLab App Deletion?" isErrorButton buttonTitle="Delete"
+                    <x-modal-confirmation title="Confirm GitLab App Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
                         submitAction="delete" :actions="['The selected GitLab App will be permanently deleted.']"
                         confirmationText="{{ data_get($gitlab_app, 'name') }}"
                         confirmationLabel="Please confirm by entering the GitLab App Name below"
@@ -223,11 +223,11 @@
                 <x-application.settings-section title="Step 2 · Enter credentials"
                     description="Paste the Application ID and secret from GitLab, then save.">
                     <x-slot:actions>
-                        <x-forms.button type="submit">Save</x-forms.button>
+                        <x-forms.button type="submit">{{ __('Save') }}</x-forms.button>
                     </x-slot:actions>
 
                     <div class="grid gap-4 lg:grid-cols-2">
-                        <x-forms.input id="name" label="Name" />
+                        <x-forms.input id="name" label="{{ __('Name') }}" />
                         <x-forms.input id="clientId" label="Application ID" required
                             helper="The Application ID from your GitLab OAuth Application." />
                         <x-forms.input id="clientSecretInput" label="Application secret" type="password"
@@ -285,11 +285,11 @@
                                 helper="Only change this for self-hosted GitLab (e.g. https://gitlab.example.com)." />
                             <x-forms.input id="apiUrl" label="API URL"
                                 helper="Usually your GitLab URL with /api/v4 appended." />
-                            <x-forms.input id="customUser" label="SSH user" />
-                            <x-forms.input type="number" id="customPort" label="SSH port" />
+                            <x-forms.input id="customUser" label="{{ __('SSH user') }}" />
+                            <x-forms.input type="number" id="customPort" label="{{ __('SSH port') }}" />
                             @if (! isCloud() && auth()->user()->can('makeSystemWide', \App\Models\GitlabApp::class))
                                 <div class="max-w-xs lg:col-span-2">
-                                    <x-forms.checkbox label="System wide" id="isSystemWide"
+                                    <x-forms.checkbox label="{{ __('System wide') }}" id="isSystemWide"
                                         helper="If checked, this GitLab App will be available for everyone in this Coolify instance." />
                                 </div>
                             @endif

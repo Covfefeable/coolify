@@ -122,7 +122,7 @@
                         <div class="mt-5 grid w-full gap-4 border-t border-neutral-200 pt-5 sm:grid-cols-2 dark:border-white/[0.07]">
                             <x-forms.input id="httpBasicAuthUsername" label="{{ __('Username') }}" required
                                 x-bind:disabled="!canUpdate" />
-                            <x-forms.input id="httpBasicAuthPassword" type="password" label="Password" required
+                            <x-forms.input id="httpBasicAuthPassword" type="password" label="{{ __('Password') }}" required
                                 x-bind:disabled="!canUpdate" />
                         </div>
                         @php
@@ -549,18 +549,18 @@
                 <div class="grid gap-4 lg:grid-cols-[14rem_16rem_minmax(0,1fr)]">
                     <div class="min-w-0">
                     @if ($isStatic || $buildPack === 'static')
-                        <x-forms.input id="portsExposes" label="Ports exposes" readonly
+                        <x-forms.input id="portsExposes" label="{{ __('Ports exposes') }}" readonly
                             :helper="$portsExposesDomainHint"
                             canGate="update" :canResource="$application"
                             x-bind:disabled="!canUpdate" />
                     @else
                         @if ($application->settings->is_container_label_readonly_enabled === false)
-                            <x-forms.input placeholder="3000,3001" id="portsExposes" label="Ports exposes" readonly
+                            <x-forms.input placeholder="3000,3001" id="portsExposes" label="{{ __('Ports exposes') }}" readonly
                                 :helper="'Readonly labels are disabled. You can set the ports manually in the labels section.<br><br>'.$portsExposesDomainHint"
                                 canGate="update" :canResource="$application"
                                 x-bind:disabled="!canUpdate" />
                         @else
-                            <x-forms.input placeholder="3000,3001" id="portsExposes" label="Ports exposes"
+                            <x-forms.input placeholder="3000,3001" id="portsExposes" label="{{ __('Ports exposes') }}"
                                 :helper="'A comma separated list of ports your application uses. The first port will be used as default healthcheck port if nothing defined in the Healthcheck menu. Be sure to set this correctly.<br><br>'.$portsExposesDomainHint"
                                 canGate="update" :canResource="$application"
                                 x-bind:disabled="!canUpdate" />
@@ -572,7 +572,7 @@
                     </p>
                     </div>
                     @if (!$application->destination->server->isSwarm())
-                        <x-forms.input placeholder="3000:3000" id="portsMappings" label="Port mappings"
+                        <x-forms.input placeholder="3000:3000" id="portsMappings" label="{{ __('Port mappings') }}"
                             helper="A comma separated list of ports you would like to map to the host system. Useful when you do not want to use domains.<br><br><span class='inline-block font-bold dark:text-brand-light'>Format:</span> host:container<br><br><span class='inline-block font-bold dark:text-brand-light'>Example:</span> 3000:3000,3002:3002<br><br>Rolling update is not supported if you have a port mapped to the host."
                             x-bind:disabled="!canUpdate" />
                     @endif
@@ -593,7 +593,7 @@
                     <x-forms.input
                         helper="You can add custom docker run options that will be used when your container is started.<br>Note: Not all options are supported, as they could mess up Coolify's automation and could cause bad experience for users.<br><br>Check the <a class='underline dark:text-white' href='https://coolify.io/docs/knowledge-base/docker/custom-commands'>docs.</a>"
                         placeholder="--cap-add SYS_ADMIN --device=/dev/fuse --security-opt apparmor:unconfined --ulimit nofile=1024:1024 --tmpfs /run:rw,noexec,nosuid,size=65536k --hostname=myapp"
-                        id="customDockerRunOptions" label="Custom Docker options" x-bind:disabled="!canUpdate" />
+                        id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" x-bind:disabled="!canUpdate" />
                 <x-application.settings-subsection id="container-labels-section" title="Labels">
                     <div class="grid w-full gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="isContainerLabelReadonlyEnabled" label="Label management"

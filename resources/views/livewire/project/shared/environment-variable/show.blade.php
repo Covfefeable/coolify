@@ -121,12 +121,12 @@
                     <div>
                         @if ($isValueHidden)
                             <div class="w-full">
-                                <label class="mb-1 flex items-center gap-1 text-sm font-medium">Value</label>
+                                <label class="mb-1 flex items-center gap-1 text-sm font-medium">{{ __('Value') }}</label>
                                 <input disabled type="text" value="Hidden (only admins can view)"
                                     class="input w-full italic !text-neutral-500 dark:!text-neutral-500" />
                             </div>
                         @elseif ($isLocked)
-                            <x-forms.input id="newLockedValue" type="password" label="Value" :copyable="false"
+                            <x-forms.input id="newLockedValue" type="password" label="{{ __('Value') }}" :copyable="false"
                                 placeholder="Hidden after locking. Enter a new value to replace it."
                                 helper="The locked value cannot be shown. Leave this empty to keep it."
                                 :disabled="!$canUpdate || $isDisabled" />
@@ -265,7 +265,7 @@
                                 @can('delete', $this->env)
                                     @if (!$isMagicVariable)
                                         <x-modal-confirmation title="Confirm Environment Variable Deletion?" isErrorButton
-                                            buttonTitle="Delete" submitAction="delete"
+                                            buttonTitle="{{ __('Delete') }}" submitAction="delete"
                                             :actions="['The selected environment variable will be permanently deleted.']"
                                             confirmationText="{{ $key }}"
                                             confirmationLabel="Please confirm the execution of the actions by entering the Environment Variable Name below"

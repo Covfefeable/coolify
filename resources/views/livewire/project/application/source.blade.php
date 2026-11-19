@@ -2,7 +2,7 @@
     <form wire:submit="submit" class="flex flex-col gap-6">
         <x-unsaved-bar action="submit" />
 
-        <x-application.settings-section title="Repository"
+        <x-application.settings-section title="{{ __('Repository') }}"
             description="Configure the Git repository, branch, and commit Coolify deploys.">
             <x-slot:actions>
                 <div class="flex flex-wrap items-center gap-2">
@@ -24,9 +24,9 @@
             </x-slot:actions>
 
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input placeholder="coollabsio/coolify-example" id="gitRepository" label="Repository"
+                <x-forms.input placeholder="coollabsio/coolify-example" id="gitRepository" label="{{ __('Repository') }}"
                     canGate="update" :canResource="$application" />
-                <x-forms.input placeholder="main" id="gitBranch" label="Branch" canGate="update"
+                <x-forms.input placeholder="main" id="gitBranch" label="{{ __('Branch') }}" canGate="update"
                     :canResource="$application" />
                 <x-forms.input placeholder="HEAD" id="gitCommitSha" label="Commit SHA" canGate="update"
                     :canResource="$application" />
@@ -79,7 +79,7 @@
                 <div class="data-table">
                     <div class="min-w-[36rem]">
                     <div class="grid grid-cols-[minmax(0,1fr)_7rem_minmax(0,2fr)_1.75rem] items-center gap-3 border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[13px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                        <span class="pl-11">Host</span><span>Type</span><span>Fingerprint</span><span></span>
+                        <span class="pl-11">Host</span><span>{{ __('Type') }}</span><span>Fingerprint</span><span></span>
                     </div>
                     <ul class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
                     @foreach ($fingerprints as $fingerprint)
@@ -100,7 +100,7 @@
                                 <span></span>
                             @else
                             @can('update', $application)
-                            <x-modal-confirmation class="!w-auto shrink-0" title="Remove host key?" buttonTitle="Remove"
+                            <x-modal-confirmation class="!w-auto shrink-0" title="Remove host key?" buttonTitle="{{ __('Remove') }}"
                                 isErrorButton canGate="update" :canResource="$application"
                                 submitAction="removeHostKey('{{ $fingerprint['id'] }}')" :actions="[
                                     'The host key ' . $fingerprint['fingerprint'] . ' of ' . $fingerprint['host'] . ' will be removed.',
@@ -147,7 +147,7 @@
                     @endcan
                 @endif
                 <div class="grid gap-4 lg:grid-cols-2">
-                    <x-forms.input id="gitHttpsUsername" label="Username" autocomplete="off"
+                    <x-forms.input id="gitHttpsUsername" label="{{ __('Username') }}" autocomplete="off"
                         helper="Some hosts accept any username with an access token (for example Azure DevOps)."
                         canGate="update" :canResource="$application" />
                     <x-forms.input id="gitHttpsPassword" type="password" label="Password or token"
@@ -164,7 +164,7 @@
             description="The SSH key Coolify uses to clone this private repository." flush>
             <div class="data-table">
                 <div class="grid grid-cols-[minmax(0,1fr)_7rem] items-center gap-3 border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[13px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                    <span class="pl-11">Private key</span>
+                    <span class="pl-11">{{ __('Private key') }}</span>
                     <span class="text-right">Selection</span>
                 </div>
                 <div class="grid min-h-14 w-full grid-cols-[minmax(0,1fr)_7rem] items-center gap-3 px-4 py-2.5 text-left transition-colors hover:bg-neutral-50 dark:hover:bg-white/[0.025] border-b border-neutral-200 last:border-b-0 dark:border-white/[0.07]">

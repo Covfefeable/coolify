@@ -58,7 +58,7 @@
                     @include('livewire.project.new.partials.smart-scan-summary')
 
                     <div class="grid gap-4 sm:grid-cols-2">
-                        <x-forms.input id="git_branch" label="Branch"
+                        <x-forms.input id="git_branch" label="{{ __('Branch') }}"
                             :disabled="$git_source !== 'other'"
                             helper="{{ __('You can choose another branch after the application is created.') }}" />
                         <x-forms.listbox id="build_pack" label="{{ __('Build pack') }}" required live :options="[
@@ -74,7 +74,7 @@
                                     ['value' => false, 'label' => __('Web application')],
                                     ['value' => true, 'label' => __('Static site')],
                                 ]" />
-                            <x-forms.input type="number" id="port" label="Port"
+                            <x-forms.input type="number" id="port" label="{{ __('Port') }}"
                                 :readonly="$isStatic || $build_pack === 'static'"
                                 helper="{{ __('Port the application listens on.') }}" />
                         @endif

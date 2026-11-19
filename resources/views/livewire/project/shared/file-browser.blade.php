@@ -9,7 +9,7 @@
     @if ($type === 'application')
         <livewire:project.application.heading :application="$resource" wire:key="application-heading-files" />
     @elseif ($type === 'service')
-        <livewire:project.service.heading :service="$resource" :parameters="$parameters" title="Files" />
+        <livewire:project.service.heading :service="$resource" :parameters="$parameters" title="{{ __('Files') }}" />
     @else
         <livewire:project.database.heading :database="$resource" />
     @endif
@@ -48,7 +48,7 @@
             @endif
 
             <div class="min-w-0">
-    <x-application.settings-section title="Files"
+    <x-application.settings-section title="{{ __('Files') }}"
         helper="Browse and manage files inside the running container." :flush="true">
 
         <x-slot:badges>
@@ -129,7 +129,7 @@
                 </x-forms.button>
             @elseif (! $filesLoaded && ! $loadFailed)
                 {{-- Disabled placeholders keep the header at its loaded height. --}}
-                <x-forms.button type="button" disabled>Upload</x-forms.button>
+                <x-forms.button type="button" disabled>{{ __('Upload') }}</x-forms.button>
                 <x-forms.button type="button" disabled>
                     New
                     <x-reicon name="chevron-down" class="size-3.5" />
@@ -215,7 +215,7 @@
                             <span>Perms</span>
                             <span>Owner</span>
                             <span>Group</span>
-                            <span class="text-right">Size</span>
+                            <span class="text-right">{{ __('Size') }}</span>
                             <span>Modified</span>
                             <span class="text-right">{{ __('Actions') }}</span>
                         </div>
@@ -407,7 +407,7 @@
                         <x-forms.button type="button" wire:click="closeEditor"
                             @click="$dispatch('close-modal')">{{ __('Cancel') }}</x-forms.button>
                         <x-forms.button type="submit" isHighlighted
-                            @click="$dispatch('close-modal')">Save changes</x-forms.button>
+                            @click="$dispatch('close-modal')">{{ __('Save changes') }}</x-forms.button>
                     </div>
                 </form>
             </x-modal-input>

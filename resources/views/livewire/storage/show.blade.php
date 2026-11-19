@@ -65,7 +65,7 @@
                         <livewire:storage.resources :storage="$storage" :key="'resources-'.$storage->uuid" />
                     @elseif ($currentRoute === 'storage.danger')
                         <div class="application-settings-form">
-                            <x-application.settings-section id="storage-danger-section" title="Danger zone"
+                            <x-application.settings-section id="storage-danger-section" title="{{ __('Danger zone') }}"
                                 helper="Destructive actions for this S3 storage destination cannot be undone.">
                                 <x-danger-zone title="Delete storage">
                                             <p>
@@ -84,7 +84,7 @@
                                         <x-slot:action>
                                             @can('delete', $storage)
                                                 <x-modal-confirmation title="Confirm Storage Deletion?" isErrorButton
-                                                    buttonTitle="Delete" submitAction="delete"
+                                                    buttonTitle="{{ __('Delete') }}" submitAction="delete"
                                                     :actions="array_filter([
                                                         'The selected storage location will be permanently deleted from Coolify.',
                                                         $backupCount > 0
@@ -105,7 +105,7 @@
 
                                 @cannot('delete', $storage)
                                     <div class="mt-4">
-                                        <x-callout type="danger" title="Insufficient permissions">
+                                        <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
                                             Contact a team administrator if this storage must be deleted.
                                         </x-callout>
                                     </div>

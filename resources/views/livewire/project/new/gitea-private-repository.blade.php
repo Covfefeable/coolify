@@ -12,7 +12,7 @@
                     description="Create an app to grant Coolify access to selected repositories."
                     icon-name="sources">
                     <x-slot:contents>
-                        <x-modal-input buttonTitle="+ Add Gitea / Forgejo App" title="New Gitea / Forgejo App" closeOutside="false">
+                        <x-modal-input buttonTitle="+ Add Gitea / Forgejo App" title="{{ __('New Gitea / Forgejo App') }}" closeOutside="false">
                             <livewire:source.gitea.create />
                         </x-modal-input>
                     </x-slot:contents>
@@ -26,7 +26,7 @@
                     <h2>{{ __('Choose Gitea / Forgejo App') }}</h2>
                     <p>Select the Gitea / Forgejo App that can access the repository you want to deploy.</p>
                 </div>
-                <x-modal-input buttonTitle="+ Add Gitea / Forgejo App" title="New Gitea / Forgejo App" closeOutside="false">
+                <x-modal-input buttonTitle="+ Add Gitea / Forgejo App" title="{{ __('New Gitea / Forgejo App') }}" closeOutside="false">
                     <livewire:source.gitea.create />
                 </x-modal-input>
             </div>
@@ -70,7 +70,7 @@
             <div class="application-settings-section-body">
                 @if ($repositories->isNotEmpty())
                     <div class="flex items-end gap-2">
-                        <x-forms.listbox id="selected_project_id" label="Repository" searchable live
+                        <x-forms.listbox id="selected_project_id" label="{{ __('Repository') }}" searchable live
                             placeholder="Select a repository" searchPlaceholder="Search repositories…"
                             :options="$repositories->map(fn ($repository) => [
                                 'value' => data_get($repository, 'id'),
@@ -102,7 +102,7 @@
                     </div>
                     <div class="application-settings-section-body space-y-5">
                         <div class="grid gap-4 sm:grid-cols-2">
-                            <x-forms.listbox id="selected_branch_name" label="Branch" required
+                            <x-forms.listbox id="selected_branch_name" label="{{ __('Branch') }}" required
                                 :options="$branches->map(fn ($branch) => [
                                     'value' => data_get($branch, 'name'),
                                     'label' => data_get($branch, 'name'),
@@ -120,7 +120,7 @@
                                         ['value' => false, 'label' => __('Web application')],
                                         ['value' => true, 'label' => __('Static site')],
                                     ]" />
-                                <x-forms.input type="number" id="port" label="Port"
+                                <x-forms.input type="number" id="port" label="{{ __('Port') }}"
                                     :readonly="$is_static || $build_pack === 'static'"
                                     helper="{{ __('Port the application listens on.') }}" />
                             @endif

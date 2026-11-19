@@ -38,15 +38,15 @@
             </x-slot:actions>
 
             <div class="grid gap-4 md:grid-cols-2">
-                <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)" placeholder="Name" id="name"
-                    label="Name" required />
+                <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)" placeholder="{{ __('Name') }}" id="name"
+                    label="{{ __('Name') }}" required />
                 <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)"
-                    placeholder="0 0 * * * or daily" id="frequency" label="Schedule"
+                    placeholder="0 0 * * * or daily" id="frequency" label="{{ __('Schedule') }}"
                     helper="Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression. Runs in the server timezone ({{ $serverTimezone }}). Change it in the server settings."
                     required />
                 <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)" type="number"
                     placeholder="300" id="timeout" helper="Maximum execution time from 60 to 36,000 seconds."
-                    label="Timeout (seconds)" required />
+                    label="{{ __('Timeout (seconds)') }}" required />
                 <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)" placeholder="php"
                     helper="Leave empty when the resource only has one container." id="container"
                     label="{{ $type === 'service' ? 'Service' : 'Container' }}" />
@@ -72,7 +72,7 @@
         <div x-show="activeSection === 'danger'" x-cloak class="application-settings-form">
             <x-application.settings-section title="Delete scheduled task"
                 description="Permanently remove this task and its execution history.">
-                <x-danger-zone title="This action cannot be undone.">
+                <x-danger-zone title="{{ __('This action cannot be undone.') }}">
                     <p>The task stops running and cannot be restored.</p>
                     <x-slot:action>
                         <x-modal-confirmation title="Delete scheduled task?" isErrorButton buttonTitle="Delete task"

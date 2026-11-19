@@ -61,10 +61,10 @@
                     @else
                         <div class="data-table">
                             <div class="data-table-header admin-search-table-grid">
-                                <span>Name</span>
-                                <span>Email</span>
-                                <span>Subscription</span>
-                                <span class="text-right">Actions</span>
+                                <span>{{ __('Name') }}</span>
+                                <span>{{ __('Email') }}</span>
+                                <span>{{ __('Subscription') }}</span>
+                                <span class="text-right">{{ __('Actions') }}</span>
                             </div>
                             @foreach ($foundUsers as $user)
                                 @php

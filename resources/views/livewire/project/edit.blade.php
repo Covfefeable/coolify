@@ -3,7 +3,7 @@
     <div class="w-full max-w-none">
         <header class="mb-5">
             <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ $project->name }}</h1>
-            <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">Project settings</p>
+            <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">{{ __('Project settings') }}</p>
         </header>
 
         <div class="flex flex-col gap-6">
@@ -86,7 +86,7 @@
                                     </x-forms.button>
                                     @if ($project->icon_path)
                                         <x-forms.button type="button" wire:click="removeIcon" x-bind:disabled="processing"
-                                            isError>Remove</x-forms.button>
+                                            isError>{{ __('Remove') }}</x-forms.button>
                                     @endif
                                 </div>
                                 <p class="text-xs text-neutral-500 dark:text-fg-dim">JPG, PNG, or WebP. Shown in the projects list.</p>

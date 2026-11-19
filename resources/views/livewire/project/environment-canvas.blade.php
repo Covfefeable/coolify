@@ -19,7 +19,7 @@
             </a>
             @can('update', $project)
                 <a href="{{ route('project.environment.edit', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid]) }}"
-                    {{ wireNavigate() }} class="button whitespace-nowrap" title="Environment settings"
+                    {{ wireNavigate() }} class="button whitespace-nowrap" title="{{ __('Environment settings') }}"
                     aria-label="Open settings for {{ $environment->name }}">
                     <x-reicon name="settings" class="size-3.5" />
                     Settings

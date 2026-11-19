@@ -7,7 +7,7 @@
                 :options="$serverOptions->map(fn ($option) => ['value' => $option->uuid, 'label' => $option->name])->values()->all()" />
         @endif
         @if ($editRegistry === null)
-            <x-forms.listbox id="provider" label="Provider" live portal :options="$providerOptions" />
+            <x-forms.listbox id="provider" label="{{ __('Provider') }}" live portal :options="$providerOptions" />
         @endif
         @if ($preset['hint'])
             <p class="text-[12px] text-neutral-500 dark:text-fg-dim">{{ $preset['hint'] }}</p>
@@ -15,7 +15,7 @@
         <div class="grid gap-3 md:grid-cols-2">
             <x-forms.input id="registry" label="Registry" required :placeholder="$preset['placeholder']"
                 :readonly="$editRegistry !== null || $preset['registry'] !== ''" />
-            <x-forms.input id="username" label="Username" required />
+            <x-forms.input id="username" label="{{ __('Username') }}" required />
         </div>
         @if ($provider === 'google')
             <x-forms.textarea id="password" label="Service account JSON key" rows="6" required monospace

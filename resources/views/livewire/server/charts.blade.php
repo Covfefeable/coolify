@@ -19,7 +19,7 @@
                     <x-unsaved-bar action="saveMetricsSettings"
                         targets="sentinelMetricsRefreshRateSeconds,sentinelMetricsHistoryDays,sentinelPushIntervalSeconds" />
 
-                    <x-application.settings-section id="server-metrics-overview-section" title="Metrics"
+                    <x-application.settings-section id="server-metrics-overview-section" title="{{ __('Metrics') }}"
                         helper="Inspect recent CPU and memory usage reported by Sentinel.">
                         <x-slot:actions>
                             <div class="flex items-center gap-2">
@@ -363,7 +363,7 @@
                     </script>
                 @endscript
             @elseif ($server->isSentinelEnabled())
-                <x-application.settings-section id="server-metrics-overview-section" title="Metrics"
+                <x-application.settings-section id="server-metrics-overview-section" title="{{ __('Metrics') }}"
                     helper="Inspect recent CPU and memory usage reported by Sentinel.">
                     <x-empty size="sm" title="Metrics are disabled"
                         description="Enable metrics to begin collecting CPU and memory history for this server."
@@ -377,7 +377,7 @@
                     </x-empty>
                 </x-application.settings-section>
             @else
-                <x-application.settings-section id="server-metrics-overview-section" title="Metrics"
+                <x-application.settings-section id="server-metrics-overview-section" title="{{ __('Metrics') }}"
                     helper="Inspect recent CPU and memory usage reported by Sentinel.">
                     <x-empty size="sm" title="Metrics unavailable"
                         description="Sentinel metrics are unavailable on build and Swarm servers."

@@ -4,11 +4,11 @@
                 href="https://coolify.io/docs/knowledge-base/s3/introduction" target="_blank">Coolify Docs</a>.</div>
         <form class="flex flex-col gap-2" wire:submit='submit'>
             <div class="w-64">
-                <x-forms.listbox required live id="type" label="Type" :options="App\Enums\BackupStorageType::options()" />
+                <x-forms.listbox required live id="type" label="{{ __('Type') }}" :options="App\Enums\BackupStorageType::options()" />
             </div>
             <div class="flex gap-2">
-                <x-forms.input required label="Name" id="name" />
-                <x-forms.input label="Description" id="description" />
+                <x-forms.input required label="{{ __('Name') }}" id="name" />
+                <x-forms.input label="{{ __('Description') }}" id="description" />
             </div>
             @if ($type === 's3')
                 {{-- Sends the endpoint right away, so the URL style below follows the provider. --}}
@@ -19,7 +19,7 @@
                 <div class="flex gap-2">
                     <x-forms.input required label="Bucket" id="bucket" />
                     <x-forms.input required helper="Region only required for AWS. Leave it as-is for other providers."
-                        label="Region" id="region" />
+                        label="{{ __('Region') }}" id="region" />
                 </div>
                 <div class="flex gap-2">
                     <x-forms.input required type="password" label="Access Key" id="key" />
@@ -41,12 +41,12 @@
                     @include('livewire.storage.server-endpoint-fields', ['defaultPort' => $type === 'sftp' ? 22 : 21])
                 @endif
                 @if ($type === 'sftp')
-                    <x-forms.input required label="Username" id="key" autocomplete="off" />
+                    <x-forms.input required label="{{ __('Username') }}" id="key" autocomplete="off" />
                     @include('livewire.storage.sftp-login-fields')
                 @else
                     <div class="flex gap-2">
-                        <x-forms.input required label="Username" id="key" autocomplete="off" />
-                        <x-forms.input required type="password" label="Password" id="secret" />
+                        <x-forms.input required label="{{ __('Username') }}" id="key" autocomplete="off" />
+                        <x-forms.input required type="password" label="{{ __('Password') }}" id="secret" />
                     </div>
                 @endif
                 <p class="text-xs text-neutral-500 dark:text-fg-dim">Backups keep their full path on the server
@@ -61,7 +61,7 @@
         </form>
     </div>
 @else
-    <x-callout type="danger" title="Insufficient Permissions">
+    <x-callout type="danger" title="{{ __('Insufficient Permissions') }}">
         You don't have permission to create new storage configurations. Please contact your team administrator for
         access.
     </x-callout>

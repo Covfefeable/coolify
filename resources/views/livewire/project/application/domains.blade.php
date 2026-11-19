@@ -74,19 +74,19 @@
     @endif
 
     @cannot('update', $application)
-        <x-callout type="danger" title="Insufficient permissions">
+        <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
             You don't have permission to manage domains. Contact your team administrator for access.
         </x-callout>
     @endcannot
 
-    <x-application.settings-section id="domains-section" title="Domains" :flush="$hasRows" class="scroll-mt-28">
+    <x-application.settings-section id="domains-section" title="{{ __('Domains') }}" :flush="$hasRows" class="scroll-mt-28">
         <x-slot:actions>
             @if ($hasRows)
                 <div class="relative w-full sm:w-64">
                     <x-reicon name="search"
                         class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                    <input type="search" x-model="domainSearch" aria-label="Search services or domains"
-                        class="input h-8! w-full pl-8! text-[13px]!" placeholder="Search services or domains" />
+                    <input type="search" x-model="domainSearch" aria-label="{{ __('Search services or domains') }}"
+                        class="input h-8! w-full pl-8! text-[13px]!" placeholder="{{ __('Search services or domains') }}" />
                 </div>
             @endif
             <div class="flex flex-wrap items-center gap-2">
@@ -96,7 +96,7 @@
                     </div>
                     @unless ($labelsAreWritable)
                         @if (! $isCompose || count($composeServices) > 0)
-                            <x-modal-input title="Add domain" :closeOutside="false" :wireIgnore="false"
+                            <x-modal-input title="{{ __('Add domain') }}" :closeOutside="false" :wireIgnore="false"
                                 canGate="update" :canResource="$application">
                                 <x-slot:content>
                                     <button type="button"
@@ -118,7 +118,7 @@
                                     <x-forms.domain-input id="newDomainParts" errorId="newDomain" />
 
                                     @if ($addDomainDnsFailed)
-                                        <x-callout type="danger" title="DNS is not pointing to the right IP">
+                                        <x-callout type="danger" title="{{ __('DNS is not pointing to the right IP') }}">
                                             This domain does not currently resolve to this server.
                                             Traffic may not reach Coolify until you update DNS.
                                             Are you sure you want to add it anyway?
@@ -155,7 +155,7 @@
         @if ($hasRows)
             <div class="data-table-header service-domains-overview-grid">
                 <span>Domain</span>
-                <span>Protocol redirect</span>
+                <span>{{ __('Protocol redirect') }}</span>
                 <span>Domain redirect</span>
                 <span>Internal port</span>
                 <span>Search indexing</span>
@@ -168,11 +168,11 @@
                 description="No non-database services found in the Docker Compose file."
                 icon-name="globe" />
         @elseif ($isCompose && $composeDomainGroups->isEmpty())
-            <x-empty size="sm" title="No domains configured"
+            <x-empty size="sm" title="{{ __('No domains configured') }}"
                 description="Add your first domain with the Add domain button above. Choose which service receives it."
                 icon-name="globe" />
         @elseif (! $hasRows)
-            <x-empty size="sm" title="No domains configured"
+            <x-empty size="sm" title="{{ __('No domains configured') }}"
                 description="Add your first domain with the Add domain button above, or generate one with the server wildcard domain."
                 icon-name="globe" />
         @elseif ($isCompose)
@@ -231,7 +231,7 @@
                 <div x-cloak
                     x-show="domainSearch.trim() && !hasDomainSearchResults(@js($domainSearchValues))"
                     class="px-4 py-8">
-                    <x-empty size="sm" title="No domains found"
+                    <x-empty size="sm" title="{{ __('No domains found') }}"
                         description="No service or domain matches your search." icon-name="search" />
                 </div>
             </div>
@@ -249,7 +249,7 @@
             </div>
             <div x-cloak x-show="domainSearch.trim() && !hasDomainSearchResults(@js(collect($domainRows)->pluck('url')->values()))"
                 class="px-4 py-8">
-                <x-empty size="sm" title="No domains found"
+                <x-empty size="sm" title="{{ __('No domains found') }}"
                     description="No domain matches your search." icon-name="search" />
             </div>
         @endif
@@ -303,7 +303,7 @@
                         <header class="flex-nowrap!">
                             <h3 class="min-w-0 flex-1 truncate">{{ __('Domain settings') }}</h3>
                             <button type="button" @click="closeEditDomain()"
-                                class="icon-button shrink-0" aria-label="Close">
+                                class="icon-button shrink-0" aria-label="{{ __('Close') }}">
                                 <x-reicon name="x" class="size-4" />
                             </button>
                         </header>
@@ -322,7 +322,7 @@
                                     inheritedPortExpression="$wire.editingInheritedPort" />
 
                                 @if ($editDomainDnsFailed)
-                                    <x-callout type="danger" title="DNS is not pointing to the right IP">
+                                    <x-callout type="danger" title="{{ __('DNS is not pointing to the right IP') }}">
                                         This domain does not currently resolve to this server.
                                         Traffic may not reach Coolify until you update DNS.
                                         Are you sure you want to save it anyway?
@@ -337,13 +337,13 @@
                                         <div
                                             class="grid grid-cols-1 gap-4 border-t border-neutral-200 pt-4 sm:grid-cols-2 dark:border-white/10">
                                         <x-forms.listbox id="editingIndexing"
-                                            htmlId="application-domain-indexing" label="Search engine indexing" portal
+                                            htmlId="application-domain-indexing" label="{{ __('Search engine indexing') }}" portal
                                             :options="[
                                                 ['value' => 'index', 'label' => 'Indexable'],
                                                 ['value' => 'noindex', 'label' => 'Noindex'],
                                             ]" />
                                         <x-forms.listbox id="editingRedirect"
-                                            htmlId="application-domain-direction" label="www redirect"
+                                            htmlId="application-domain-direction" label="{{ __('www redirect') }}"
                                             :helper="$isCompose ? 'Applies to all domains for this Compose service.' : 'Applies to all domains for this application.'"
                                             portal
                                             :options="[
@@ -400,7 +400,7 @@
                             <h3>{{ __('Use a different port?') }}</h3>
                             <button type="button"
                                 @click="modalOpen = false; $wire.call('cancelUseUnknownPort')"
-                                class="icon-button" aria-label="Close">
+                                class="icon-button" aria-label="{{ __('Close') }}">
                                 <x-reicon name="x" class="size-4" />
                             </button>
                         </header>

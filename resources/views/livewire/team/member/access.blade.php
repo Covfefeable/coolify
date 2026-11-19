@@ -193,9 +193,9 @@
         </div>
 
         <x-slot:footer>
-            <x-forms.button @click="modalOpen = false">Cancel</x-forms.button>
+            <x-forms.button @click="modalOpen = false">{{ __('Cancel') }}</x-forms.button>
             <x-forms.button isHighlighted wire:click="save" canGate="manageMembers"
-                :canResource="$team">Save</x-forms.button>
+                :canResource="$team">{{ __('Save') }}</x-forms.button>
         </x-slot:footer>
     </x-modal-input>
     @endif

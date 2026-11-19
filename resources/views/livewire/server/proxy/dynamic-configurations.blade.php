@@ -74,7 +74,7 @@
             @else
                 <x-application.settings-section title="Dynamic configurations"
                     helper="Manage additional runtime proxy configuration.">
-                    <x-empty size="sm" title="Server validation required"
+                    <x-empty size="sm" title="{{ __('Server validation required') }}"
                         description="Validate this server before loading proxy configuration."
                         icon-name="file-content" />
                 </x-application.settings-section>

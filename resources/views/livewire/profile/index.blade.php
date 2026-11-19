@@ -115,7 +115,7 @@
                                     </x-forms.button>
                                     @if (auth()->user()->avatar_path)
                                         <x-forms.button type="button" wire:click="removeAvatar" x-bind:disabled="processing"
-                                            isError>Remove</x-forms.button>
+                                            isError>{{ __('Remove') }}</x-forms.button>
                                     @endif
                                 </div>
                                 <p class="text-xs text-neutral-500 dark:text-fg-dim">JPG, PNG, or WebP. Shown in the user menu and team member lists.</p>
@@ -126,9 +126,9 @@
                             </div>
                         </div>
                     </div>
-                    <x-forms.input id="name" label="Name" required />
+                    <x-forms.input id="name" label="{{ __('Name') }}" required />
                     <div class="flex items-end gap-2">
-                        <x-forms.input id="email" label="Email" readonly />
+                        <x-forms.input id="email" label="{{ __('Email') }}" readonly />
                         <x-forms.button @click="openEmailModal()" type="button"
                             :disabled="$uses_sso" x-bind:disabled="emailModalOpen || {{ $uses_sso ? 'true' : 'false' }}">
                             Change
@@ -165,7 +165,7 @@
                         </div>
                         <button type="button"
                             @click="@if ($show_verification) $wire.cancelEmailChange().then(() => emailModalOpen = false) @else emailModalOpen = false @endif"
-                            class="icon-button shrink-0" aria-label="Close">
+                            class="icon-button shrink-0" aria-label="{{ __('Close') }}">
                             <x-reicon name="x" class="size-4" />
                         </button>
                     </header>
@@ -201,7 +201,7 @@
             <section class="application-settings-section">
                 <div class="application-settings-section-header">
                     <div>
-                        <h2>Password</h2>
+                        <h2>{{ __('Password') }}</h2>
                         <p>Changing your password signs out every active session.</p>
                     </div>
                     <x-forms.button type="submit">Change password</x-forms.button>
@@ -301,7 +301,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Danger zone</h2>
+                    <h2>{{ __('Danger zone') }}</h2>
                     <p>Destructive actions for your account cannot be undone.</p>
                 </div>
             </div>

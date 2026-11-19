@@ -15,7 +15,7 @@
             start again when the server is back.
         </x-callout>
     @endif
-    <x-application.settings-section id="danger-zone-section" title="Danger zone"
+    <x-application.settings-section id="danger-zone-section" title="{{ __('Danger zone') }}"
         helper="Destructive resource actions cannot be undone.">
         @if (in_array($resource?->type(), ['standalone-redis', 'standalone-keydb', 'standalone-dragonfly']))
             <x-danger-zone title="Flush all data" class="mb-4">
@@ -64,7 +64,7 @@
 
         @if (!$canDelete)
             <div class="mt-4">
-                <x-callout type="danger" title="Insufficient permissions">
+                <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
                     Contact a team administrator if this resource must be deleted.
                 </x-callout>
             </div>

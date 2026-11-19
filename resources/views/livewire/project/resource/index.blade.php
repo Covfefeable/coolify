@@ -11,7 +11,7 @@
                         <a href="{{ route('project.environment.edit', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid]) }}"
                             {{ wireNavigate() }}
                             class="flex size-7 shrink-0 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                            title="Environment settings"
+                            title="{{ __('Environment settings') }}"
                             aria-label="Open settings for {{ $environment->name }}">
                             <x-reicon name="settings" class="size-4" />
                         </a>
@@ -51,7 +51,7 @@
 
         @if ($environment->isEmpty())
             @can('createAnyResource', [$environment])
-                <x-empty title="No resources yet"
+                <x-empty title="{{ __('No resources yet') }}"
                     description="Add an application, database, or service to this environment."
                     icon-name="layers">
                     <x-slot:contents>
@@ -63,7 +63,7 @@
                     </x-slot:contents>
                 </x-empty>
             @else
-                <x-empty title="No resources yet"
+                <x-empty title="{{ __('No resources yet') }}"
                     description="Add an application, database, or service to this environment."
                     icon-name="layers" />
             @endcan
@@ -73,11 +73,11 @@
                     <x-reicon name="search"
                         class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
                     <input x-model.debounce.150ms="search" x-on:input="page = 1" type="search"
-                        placeholder="Search resources"
+                        placeholder="{{ __('Search resources') }}"
                         class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                     <button x-cloak x-show="search" x-on:click="search = ''; page = 1" type="button"
                         class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                        aria-label="Clear search">
+                        aria-label="{{ __('Clear search') }}">
                         <span class="text-sm leading-none">×</span>
                     </button>
                 </div>
@@ -93,7 +93,7 @@
                                 <path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="1.7"
                                     stroke-linecap="round" />
                             </svg>
-                            <span class="truncate" x-text="activeFilterCount > 0 ? filterButtonText : 'Filter'">Filter</span>
+                            <span class="truncate" x-text="activeFilterCount > 0 ? filterButtonText : 'Filter'">{{ __('Filter') }}</span>
                             <span x-show="activeFilterCount > 0" x-cloak
                                 class="shrink-0 rounded-full bg-neutral-100 px-1.5 py-0.5 text-[10px] font-medium text-neutral-500 dark:bg-white/[0.07] dark:text-fg-dim"
                                 x-text="activeFilterCount"></span>
@@ -170,7 +170,7 @@
                 <div
                     class="environment-resource-grid border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
                     <x-table.sort-header label="{{ __('Resource') }}" asc="name-asc" desc="name-desc" then="page = 1" />
-                    <x-table.sort-header label="Type" asc="type-asc" desc="type-desc" then="page = 1" class="resource-type" />
+                    <x-table.sort-header label="{{ __('Type') }}" asc="type-asc" desc="type-desc" then="page = 1" class="resource-type" />
                     <x-table.sort-header label="{{ __('Status') }}" asc="status-asc" desc="status-desc" then="page = 1" />
                     <x-table.sort-header label="Domain" asc="domain-asc" desc="domain-desc" then="page = 1" class="resource-domain" />
                     <x-table.sort-header label="{{ __('Server') }}" asc="server-asc" desc="server-desc" then="page = 1" class="resource-server" />

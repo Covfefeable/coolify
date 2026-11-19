@@ -6,14 +6,14 @@
                 str($resource->status)->contains('running'))) x-init="$wire.loadData()"
     @endif>
     @if ($resource->getMorphClass() === 'App\Models\Application' && $resource->build_pack === 'dockercompose')
-        <x-application.settings-section id="metrics-overview-section" title="Metrics"
+        <x-application.settings-section id="metrics-overview-section" title="{{ __('Metrics') }}"
             helper="Inspect CPU and memory usage for this application.">
             <x-empty size="sm" title="Metrics unavailable"
                 description="Container metrics are not currently available for Docker Compose applications."
                 icon-name="dashboard" />
         </x-application.settings-section>
     @elseif (!$resource->destination->server->isMetricsEnabled())
-        <x-application.settings-section id="metrics-overview-section" title="Metrics"
+        <x-application.settings-section id="metrics-overview-section" title="{{ __('Metrics') }}"
             helper="Inspect CPU and memory usage for this application.">
             <x-slot:actions>
                 <a class="button"
@@ -28,7 +28,7 @@
                 icon-name="dashboard" />
         </x-application.settings-section>
     @elseif (!str($resource->status)->contains('running'))
-        <x-application.settings-section id="metrics-overview-section" title="Metrics"
+        <x-application.settings-section id="metrics-overview-section" title="{{ __('Metrics') }}"
             helper="Inspect CPU and memory usage for this application.">
             <x-slot:actions>
                 <x-status-badge status="Not running" type="neutral" />
@@ -41,7 +41,7 @@
         @if ($this->pollSeconds())
             <div wire:key="metrics-poll-{{ $this->pollSeconds() }}" wire:poll.{{ $this->pollSeconds() }}s="pollData" class="hidden"></div>
         @endif
-        <x-application.settings-section id="metrics-overview-section" title="Metrics"
+        <x-application.settings-section id="metrics-overview-section" title="{{ __('Metrics') }}"
             helper="Inspect recent CPU and memory usage reported by Sentinel.">
             <x-slot:actions>
                 <x-live-toggle :active="$live" storageKey="resource-metrics-live" />

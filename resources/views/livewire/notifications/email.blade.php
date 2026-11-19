@@ -112,17 +112,17 @@
                             <div>
                                 @can('update', $settings)
                                     <x-forms.input canGate="update" :canResource="$settings" required type="password"
-                                        id="resendApiKey" placeholder="API key" label="Resend API key"
+                                        id="resendApiKey" placeholder="{{ __('API key') }}" label="{{ __('Resend API key') }}"
                                         autocomplete="new-password" />
                                 @else
-                                    <x-forms.input disabled label="Resend API key" value="Hidden (only admins can view)" />
+                                    <x-forms.input disabled label="{{ __('Resend API key') }}" value="Hidden (only admins can view)" />
                                 @endcan
                             </div>
                             <x-forms.input canGate="update" :canResource="$settings" required id="resendFromName"
-                                helper="Name shown in email from Resend." label="From name" />
+                                helper="Name shown in email from Resend." label="{{ __('From name') }}" />
                             <x-forms.input canGate="update" :canResource="$settings" required id="resendFromAddress"
                                 helper="Address used in email from Resend. It must be on a domain verified in Resend."
-                                label="From address" />
+                                label="{{ __('From address') }}" />
                         @endif
                     </div>
                 </x-application.settings-section>
@@ -137,13 +137,13 @@
                             ['property' => 'deploymentSuccessEmailNotifications', 'label' => 'Deployment success', 'enabled' => $deploymentSuccessEmailNotifications],
                             ['property' => 'deploymentFailureEmailNotifications', 'label' => 'Deployment failure', 'enabled' => $deploymentFailureEmailNotifications],
                         ]" />
-                    <x-notification.event-multiselect :settings="$settings" id="resource-email-events" label="Resources"
+                    <x-notification.event-multiselect :settings="$settings" id="resource-email-events" label="{{ __('Resources') }}"
                         :events="[
                             ['property' => 'statusChangeEmailNotifications', 'label' => 'Resource status changes', 'enabled' => $statusChangeEmailNotifications],
                             ['property' => 'restartLimitReachedEmailNotifications', 'label' => 'Restart limit reached', 'enabled' => $restartLimitReachedEmailNotifications],
                             ['property' => 'imageVulnerabilitiesEmailNotifications', 'label' => 'Image vulnerabilities', 'enabled' => $imageVulnerabilitiesEmailNotifications],
                         ]" />
-                    <x-notification.event-multiselect :settings="$settings" id="backup-email-events" label="Backups"
+                    <x-notification.event-multiselect :settings="$settings" id="backup-email-events" label="{{ __('Backups') }}"
                         :events="[
                             ['property' => 'backupSuccessEmailNotifications', 'label' => 'Backup success', 'enabled' => $backupSuccessEmailNotifications],
                             ['property' => 'backupFailureEmailNotifications', 'label' => 'Backup failure', 'enabled' => $backupFailureEmailNotifications],
@@ -153,7 +153,7 @@
                             ['property' => 'scheduledTaskSuccessEmailNotifications', 'label' => 'Scheduled task success', 'enabled' => $scheduledTaskSuccessEmailNotifications],
                             ['property' => 'scheduledTaskFailureEmailNotifications', 'label' => 'Scheduled task failure', 'enabled' => $scheduledTaskFailureEmailNotifications],
                         ]" />
-                    <x-notification.event-multiselect :settings="$settings" id="server-email-events" label="Server"
+                    <x-notification.event-multiselect :settings="$settings" id="server-email-events" label="{{ __('Server') }}"
                         :events="[
                             ['property' => 'dockerCleanupSuccessEmailNotifications', 'label' => 'Docker cleanup success', 'enabled' => $dockerCleanupSuccessEmailNotifications],
                             ['property' => 'dockerCleanupFailureEmailNotifications', 'label' => 'Docker cleanup failure', 'enabled' => $dockerCleanupFailureEmailNotifications],

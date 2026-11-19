@@ -13,7 +13,7 @@
 
     <x-team.settings-layout>
         <div class="application-settings-form">
-            <x-application.settings-section id="team-danger-zone" title="Danger zone"
+            <x-application.settings-section id="team-danger-zone" title="{{ __('Danger zone') }}"
                 helper="Destructive actions for this team cannot be undone.">
                 <x-danger-zone title="Delete team">
                             @if (auth()->user()->roleInTeam(currentTeam()->id) !== 'owner')
@@ -88,7 +88,7 @@
                 @if (session('currentTeam.id') !== 0 && !currentTeam()->subscription && (currentTeam()->projects->isNotEmpty() || currentTeam()->servers->isNotEmpty()))
                     <div class="mt-4 overflow-hidden rounded-lg border border-neutral-200 dark:border-white/[0.08]">
                         <div class="flex items-center justify-between gap-3 border-b border-neutral-200 px-3 py-2 dark:border-white/[0.08]">
-                            <h5 class="text-sm font-medium text-black dark:text-fg">Resources</h5>
+                            <h5 class="text-sm font-medium text-black dark:text-fg">{{ __('Resources') }}</h5>
                             <x-forms.button type="button" wire:click="refreshResources">
                                 <x-reicon name="refresh" class="size-3.5" />
                                 Refresh
@@ -97,8 +97,8 @@
                         <table class="w-full text-left text-sm">
                             <thead class="bg-neutral-50 text-[11px] uppercase tracking-wide text-neutral-500 dark:bg-coolgray-100 dark:text-fg-dim">
                                 <tr>
-                                    <th class="px-3 py-2 font-medium">Resource</th>
-                                    <th class="px-3 py-2 font-medium">Name</th>
+                                    <th class="px-3 py-2 font-medium">{{ __('Resource') }}</th>
+                                    <th class="px-3 py-2 font-medium">{{ __('Name') }}</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-neutral-200 dark:divide-white/[0.08]">
@@ -106,7 +106,7 @@
                                     <tr class="text-[13px] text-neutral-600 hover:bg-neutral-50 dark:text-fg-dim dark:hover:bg-white/[0.03]">
                                         <td>
                                             <a class="block px-3 py-2.5" href="{{ route('project.show', ['project_uuid' => $project->uuid]) }}"
-                                                target="_blank" rel="noopener noreferrer">Project</a>
+                                                target="_blank" rel="noopener noreferrer">{{ __('Project') }}</a>
                                         </td>
                                         <td>
                                             <a class="block px-3 py-2.5 font-medium text-black dark:text-fg"
@@ -119,7 +119,7 @@
                                     <tr class="text-[13px] text-neutral-600 hover:bg-neutral-50 dark:text-fg-dim dark:hover:bg-white/[0.03]">
                                         <td>
                                             <a class="block px-3 py-2.5" href="{{ route('server.show', ['server_uuid' => $server->uuid]) }}"
-                                                target="_blank" rel="noopener noreferrer">Server</a>
+                                                target="_blank" rel="noopener noreferrer">{{ __('Server') }}</a>
                                         </td>
                                         <td>
                                             <a class="block px-3 py-2.5 font-medium text-black dark:text-fg"

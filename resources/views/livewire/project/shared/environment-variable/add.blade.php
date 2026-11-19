@@ -8,12 +8,12 @@
     <div>
         <template x-if="isMultiline">
             <div wire:key="env-value-textarea">
-                <x-forms.textarea id="value" label="Value" required class="font-sans" spellcheck />
+                <x-forms.textarea id="value" label="{{ __('Value') }}" required class="font-sans" spellcheck />
             </div>
         </template>
         <template x-if="!isMultiline">
             <div wire:key="env-value-input">
-                <x-forms.env-var-input placeholder="production" id="value" label="Value" required
+                <x-forms.env-var-input placeholder="production" id="value" label="{{ __('Value') }}" required
                     canGate="manageEnvironment" :canResource="$resource"
                     :availableVars="$shared ? [] : $this->availableSharedVariables"
                     :hasVaultSource="$this->hasSecretManagerSource()"

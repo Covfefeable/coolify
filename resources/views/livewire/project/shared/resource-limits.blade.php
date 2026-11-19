@@ -23,7 +23,7 @@
         </div>
     </x-application.settings-section>
 
-    <x-application.settings-section id="memory-limits-section" title="Memory"
+    <x-application.settings-section id="memory-limits-section" title="{{ __('Memory') }}"
         helper="Set hard and soft memory limits, swap allowance, and swappiness.">
         <div class="grid gap-4 sm:grid-cols-2">
             <x-forms.input canGate="update" :canResource="$resource"

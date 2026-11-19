@@ -37,7 +37,7 @@
         </p>
         @if (count($domainRows) > 0)
             <input type="search" x-model="domainSearch" aria-label="Search preview domains"
-                class="input h-8! w-full sm:w-64!" placeholder="Search services or domains" />
+                class="input h-8! w-full sm:w-64!" placeholder="{{ __('Search services or domains') }}" />
         @endif
         @can('update', $preview->application)
             @if (count($domainRows) > 0)
@@ -46,7 +46,7 @@
                     Check all DNS
                 </x-forms.button>
             @endif
-            <x-modal-input title="Add domain" :closeOutside="false" :wireIgnore="false"
+            <x-modal-input title="{{ __('Add domain') }}" :closeOutside="false" :wireIgnore="false"
                 canGate="update" :canResource="$preview->application"
                 @close-preview-domain-add.window="if ($event.detail.previewId === {{ $preview->id }}) modalOpen = false">
                 <x-slot:content>
@@ -73,14 +73,14 @@
 
     @if (count($domainRows) === 0)
         <div class="application-settings-section-body">
-            <x-empty size="sm" title="No domains configured"
+            <x-empty size="sm" title="{{ __('No domains configured') }}"
                 description="Add a domain or generate one with the server wildcard domain." icon-name="globe" />
         </div>
     @else
         <div class="application-settings-section-body is-flush overflow-visible">
             <div class="data-table-header service-domains-overview-grid">
                 <span>Domain</span>
-                <span>Protocol redirect</span>
+                <span>{{ __('Protocol redirect') }}</span>
                 <span>Domain redirect</span>
                 <span>Internal port</span>
                 <span>Search indexing</span>
@@ -125,8 +125,8 @@
                                         title="{{ getFqdnWithoutPort($row['url']) }}">{{ getFqdnWithoutPort($row['url']) }}</a>
                                 </div>
                             </div>
-                            <div class="service-domain-detail" title="Protocol redirect">
-                                <span class="service-domain-detail-label">Protocol redirect</span>
+                            <div class="service-domain-detail" title="{{ __('Protocol redirect') }}">
+                                <span class="service-domain-detail-label">{{ __('Protocol redirect') }}</span>
                                 <span>{{ str_starts_with($row['url'], 'https://') && $preview->application->isForceHttpsEnabled() ? 'HTTP → HTTPS' : 'Disabled' }}</span>
                             </div>
                             <div class="service-domain-detail" title="Domain redirect">
@@ -152,7 +152,7 @@
                                 </span>
                             </div>
 
-                            <div class="service-domain-mobile-summary" aria-label="Domain routing summary">
+                            <div class="service-domain-mobile-summary" aria-label="{{ __('Domain routing summary') }}">
                                 @if (str_starts_with($row['url'], 'https://') && $preview->application->isForceHttpsEnabled())
                                     <span>HTTP → HTTPS</span>
                                 @endif
@@ -168,7 +168,7 @@
                             <div class="service-domain-dns flex min-w-0 items-center">
                                 @if ($row['dns_status'] === 'checking')
                                     <x-status-badge dynamic :title="$row['dns_message']">
-                                        <x-loading compact aria-label="Checking DNS" />
+                                        <x-loading compact aria-label="{{ __('Checking DNS') }}" />
                                         <span class="truncate">Checking DNS...</span>
                                     </x-status-badge>
                                 @else
@@ -177,7 +177,7 @@
                             </div>
                             <div class="service-domain-actions flex items-center justify-end gap-1">
                                 @can('update', $preview->application)
-                                    <x-table.row-actions label="Domain actions">
+                                    <x-table.row-actions label="{{ __('Domain actions') }}">
                                         <x-table.row-action wire:click="checkDomainDns({{ $index }})"
                                             wire:loading.attr="disabled"
                                             wire:target="checkDomainDns({{ $index }}),checkAllDns">
@@ -190,7 +190,7 @@
                                         </x-table.row-action>
                                         <x-slot:danger>
                                             <x-modal-confirmation buttonFullWidth title="Remove domain?"
-                                                buttonTitle="Remove" isErrorButton
+                                                buttonTitle="{{ __('Remove') }}" isErrorButton
                                                 submitAction="removeDomainByKey({{ $domainKey }})"
                                                 :actions="[
                                                     'This domain will be removed from the preview deployment.',
@@ -211,7 +211,7 @@
                 @endforeach
             @endforeach
             <div x-cloak x-show="domainSearch.trim() && !@js(collect($domainRows)->map(fn ($row) => ($row['service'] ?? '').' '.$row['url'])->values()).some(value => matchesDomainSearch(value))" class="px-4 py-8">
-                <x-empty size="sm" title="No domains found" description="No service or domain matches your search." icon-name="search" />
+                <x-empty size="sm" title="{{ __('No domains found') }}" description="No service or domain matches your search." icon-name="search" />
             </div>
         </div>
     @endif
@@ -224,7 +224,7 @@
                     data-preview-domain-dialog class="application-settings-form application-settings-section relative w-full max-w-3xl">
                     <header>
                         <h3>{{ __('Domain settings') }}</h3>
-                        <button type="button" @click="closeEditDomain()" class="icon-button" aria-label="Close">
+                        <button type="button" @click="closeEditDomain()" class="icon-button" aria-label="{{ __('Close') }}">
                             <x-reicon name="x" class="size-4" />
                         </button>
                     </header>
@@ -238,11 +238,11 @@
                             </div>
                             <x-forms.domain-input id="editingDomainParts" />
                             <div class="grid grid-cols-1 gap-4 border-t border-neutral-200 pt-4 sm:grid-cols-2 dark:border-white/10">
-                                <x-forms.listbox id="preview-domain-indexing-{{ $preview->id }}" label="Search engine indexing"
+                                <x-forms.listbox id="preview-domain-indexing-{{ $preview->id }}" label="{{ __('Search engine indexing') }}"
                                     :wire="false" value="noindex" disabled
                                     helper="Preview deployments are always excluded from search indexing."
                                     :options="[['value' => 'noindex', 'label' => 'Noindex']]" />
-                                <x-forms.listbox id="preview-domain-direction-{{ $preview->id }}" label="www redirect"
+                                <x-forms.listbox id="preview-domain-direction-{{ $preview->id }}" label="{{ __('www redirect') }}"
                                     :wire="false" :value="$editingIndex !== null ? ($domainRows[$editingIndex]['redirect'] ?? 'both') : 'both'" disabled
                                     helper="Read-only preview routing configuration."
                                     :options="[
@@ -277,7 +277,7 @@
                             <h3>{{ __('Use a different port?') }}</h3>
                             <button type="button"
                                 @click="modalOpen = false; $wire.call('cancelUseUnknownPort')"
-                                class="icon-button" aria-label="Close">
+                                class="icon-button" aria-label="{{ __('Close') }}">
                                 <x-reicon name="x" class="size-4" />
                             </button>
                         </header>

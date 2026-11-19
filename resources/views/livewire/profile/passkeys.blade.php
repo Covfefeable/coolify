@@ -50,7 +50,7 @@
                         <div class="flex items-end gap-2">
                             <x-forms.input x-model="name" label="Passkey name" required maxlength="255" />
                             <x-forms.button type="submit" isHighlighted x-bind:disabled="loading">Create passkey</x-forms.button>
-                            <x-forms.button type="button" wire:click="$set('show_form', false)">Cancel</x-forms.button>
+                            <x-forms.button type="button" wire:click="$set('show_form', false)">{{ __('Cancel') }}</x-forms.button>
                         </div>
                         <p x-cloak x-show="error" x-text="error" class="text-sm text-error"></p>
                     </form>
@@ -65,7 +65,7 @@
                             <form x-cloak x-show="editing" class="flex items-end gap-2"
                                 x-on:submit.prevent="$wire.rename({{ $passkey->id }}, name).then(ok => { if (ok) { saved = name; editing = false; } })">
                                 <x-forms.input x-model="name" required maxlength="255" aria-label="Passkey name" />
-                                <x-forms.button type="submit">Save</x-forms.button>
+                                <x-forms.button type="submit">{{ __('Save') }}</x-forms.button>
                             </form>
                             <p class="mt-1 text-xs text-neutral-500 dark:text-fg-dim">
                                 {{ $passkey->authenticator ?? 'Passkey' }}
@@ -78,7 +78,7 @@
                                 <span x-text="editing ? 'Cancel' : 'Rename'"></span>
                             </x-forms.button>
                             <div wire:key="passkey-delete-{{ $passkey->id }}-{{ md5($passkey->name) }}">
-                                <x-modal-confirmation title="Delete passkey?" buttonTitle="Delete" isErrorButton
+                                <x-modal-confirmation title="Delete passkey?" buttonTitle="{{ __('Delete') }}" isErrorButton
                                     submitAction="delete({{ $passkey->id }})"
                                     :actions="['You cannot sign in with this passkey after it is deleted.']"
                                     confirmationText="{{ $passkey->name }}"

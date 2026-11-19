@@ -12,7 +12,7 @@
                     <div x-show="modalOpen" x-trap.inert.noscroll="modalOpen"
                         class="application-settings-form application-settings-section relative flex w-full max-w-2xl flex-col overflow-hidden">
                         <header class="flex-nowrap!"><h3 class="min-w-0 flex-1 truncate">Configure DNS</h3>
-                            <button type="button" wire:click="closeDnsProviderModal" class="icon-button" aria-label="Close"><x-reicon name="x" class="size-4" /></button>
+                            <button type="button" wire:click="closeDnsProviderModal" class="icon-button" aria-label="{{ __('Close') }}"><x-reicon name="x" class="size-4" /></button>
                         </header>
                         <div class="application-settings-section-body flex flex-col gap-3">
                             <p class="text-sm text-neutral-600 dark:text-fg-dim">Coolify matched each hostname to a zone available through your connected DNS credentials.</p>

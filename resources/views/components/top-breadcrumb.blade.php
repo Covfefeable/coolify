@@ -135,7 +135,7 @@
     @endif
 
     @if ($currentStorage)
-        <x-breadcrumb-switcher title="Storage" :label="$currentStorage->name" :uuid="$currentStorage->uuid" :items="$storages->map(fn ($storage) => [
+        <x-breadcrumb-switcher title="{{ __('Storage') }}" :label="$currentStorage->name" :uuid="$currentStorage->uuid" :items="$storages->map(fn ($storage) => [
             'label' => $storage->name,
             'uuid' => $storage->uuid,
             'href' => route('storage.show', ['storage_uuid' => $storage->uuid]),
@@ -158,7 +158,7 @@
                 ? filled($currentSource->installation_id)
                 : filled($currentSource->access_token);
         @endphp
-        <x-breadcrumb-switcher title="Sources" :label="$currentSource->name ?: 'Source'" :uuid="$currentSource->uuid" :items="$sources->map(fn ($source) => [
+        <x-breadcrumb-switcher title="{{ __('Sources') }}" :label="$currentSource->name ?: 'Source'" :uuid="$currentSource->uuid" :items="$sources->map(fn ($source) => [
             'label' => $source->name ?: class_basename($source),
             'uuid' => $source->uuid,
             'href' => match (true) {
@@ -182,7 +182,7 @@
     @endif
 
     @if ($currentDestination)
-        <x-breadcrumb-switcher title="Destinations" :label="$currentDestination->name" :uuid="$currentDestination->uuid" :items="$destinations->map(fn ($destination) => [
+        <x-breadcrumb-switcher title="{{ __('Destinations') }}" :label="$currentDestination->name" :uuid="$currentDestination->uuid" :items="$destinations->map(fn ($destination) => [
             'label' => $destination->name,
             'uuid' => $destination->uuid,
             'href' => route('destination.show', ['destination_uuid' => $destination->uuid]),
@@ -202,7 +202,7 @@
     @endif
 
     @if ($currentTag)
-        <x-breadcrumb-switcher title="Tags" :label="$currentTag->name" :items="collect([[
+        <x-breadcrumb-switcher title="{{ __('Tags') }}" :label="$currentTag->name" :items="collect([[
             'label' => 'All tags',
             'href' => route('tags.show'),
             'active' => false,
@@ -277,7 +277,7 @@
     @endif
 
     @if ($currentResource)
-        <x-breadcrumb-switcher title="Resources" :label="$currentResource->name" :uuid="$currentResource->uuid" :items="$resourceItems">
+        <x-breadcrumb-switcher title="{{ __('Resources') }}" :label="$currentResource->name" :uuid="$currentResource->uuid" :items="$resourceItems">
             <x-slot:meta>
                 {{-- Below xl, the page heading shows the status. --}}
                 <div class="hidden xl:flex">

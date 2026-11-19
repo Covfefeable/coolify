@@ -29,7 +29,7 @@ $serverListboxOptions = array_merge(
     {{-- Header --}}
     <div class="flex flex-col gap-4">
         <div class="min-w-0">
-            <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">Metrics</h1>
+            <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Metrics') }}</h1>
             <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
                 Resource usage across every server, reported by Sentinel.
             </p>
@@ -56,7 +56,7 @@ $serverListboxOptions = array_merge(
                             <x-loading compact aria-label="Loading metrics" />
                         </div>
                     </div>
-                    <x-live-toggle :active="$live" storageKey="metrics-live" :restoreLive="$range === '24h'" title="Turn live refresh on or off (updates every 60 seconds)" />
+                    <x-live-toggle :active="$live" storageKey="metrics-live" :restoreLive="$range === '24h'" title="{{ __('Turn live refresh on or off (updates every 60 seconds)') }}" />
                 </div>
             </div>
         @endif
@@ -87,7 +87,7 @@ $serverListboxOptions = array_merge(
         </x-empty>
     @else
         {{-- Overview KPIs --}}
-        <x-application.settings-section id="metrics-overview-section" title="Overview"
+        <x-application.settings-section id="metrics-overview-section" title="{{ __('Overview') }}"
             helper="{{ $scoped ? 'Current resource usage for the selected server.' : 'Current resource usage across the selected servers.' }}">
             <div class="grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-neutral-200 sm:grid-cols-3 lg:grid-cols-6 dark:bg-white/[0.07]">
                 <div class="flex flex-col bg-[var(--coollabs-base)] px-4 py-3">
@@ -229,7 +229,7 @@ $serverListboxOptions = array_merge(
         </div>
 
         {{-- Servers table --}}
-        <x-application.settings-section id="metrics-servers-section" title="Servers" flush
+        <x-application.settings-section id="metrics-servers-section" title="{{ __('Servers') }}" flush
             helper="Per-server resource pressure. Select a column header to sort.">
             <div class="data-table" x-data="trafficTable({ per: Number.MAX_SAFE_INTEGER, key: 'cpu' })">
                 <div class="data-table-header fleet-servers-table-grid border-b-0!">

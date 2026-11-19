@@ -382,14 +382,14 @@
                             <div class="logs-viewer-search relative">
                                 <x-reicon name="search"
                                     class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                                <input type="search" x-ref="search" x-model.debounce.300ms="searchQuery" placeholder="Find in logs"
-                                    aria-label="Find in logs" :aria-keyshortcuts="findShortcutLabel === '⌘F' ? 'Meta+F' : 'Control+F'"
+                                <input type="search" x-ref="search" x-model.debounce.300ms="searchQuery" placeholder="{{ __('Find in logs') }}"
+                                    aria-label="{{ __('Find in logs') }}" :aria-keyshortcuts="findShortcutLabel === '⌘F' ? 'Meta+F' : 'Control+F'"
                                     class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint" />
                                 <kbd x-cloak x-show="!searchQuery" x-text="findShortcutLabel" aria-hidden="true"
                                     class="pointer-events-none absolute top-1/2 right-2 z-10 -translate-y-1/2 rounded border border-neutral-200 px-1 font-sans text-[10px] leading-4 text-neutral-400 dark:border-white/[0.08] dark:text-fg-faint"></kbd>
                                 <button x-cloak x-show="searchQuery" x-on:click="searchQuery = ''" type="button"
                                     class="absolute top-1/2 right-2 z-10 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                                    aria-label="Clear search">
+                                    aria-label="{{ __('Clear search') }}">
                                     <x-reicon name="x" class="size-3" />
                                 </button>
                             </div>
@@ -432,7 +432,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                                     </svg>
-                                    <span>Export</span>
+                                    <span>{{ __('Export') }}</span>
                                     <x-reicon name="chevron-down" class="size-3 transition-transform" ::class="open ? 'rotate-180' : ''" />
                                 </button></x-slot:trigger>
                                 <div x-data="{ downloadingAllLogs: false }">

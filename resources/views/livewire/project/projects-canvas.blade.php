@@ -23,7 +23,7 @@
         </div>
     </div>
     @can('createAnyResource')
-        <x-modal-input title="New Project" x-on:open-new-project.window="modalOpen = true">
+        <x-modal-input title="{{ __('New Project') }}" x-on:open-new-project.window="modalOpen = true">
             <x-slot:content></x-slot:content>
             <livewire:project.add-empty />
         </x-modal-input>

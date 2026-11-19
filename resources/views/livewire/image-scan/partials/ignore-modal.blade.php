@@ -74,7 +74,7 @@
             </div>
         </form>
         <x-slot:footer>
-            <x-forms.button class="normal-case!" type="button" x-on:click="$dispatch('close-modal')">Cancel</x-forms.button>
+            <x-forms.button class="normal-case!" type="button" x-on:click="$dispatch('close-modal')">{{ __('Cancel') }}</x-forms.button>
             <x-forms.button class="normal-case!" type="button" isHighlighted x-on:click="submit()"
                 x-bind:disabled="saving || reason.trim() === ''">Ignore</x-forms.button>
         </x-slot:footer>

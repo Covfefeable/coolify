@@ -47,7 +47,7 @@
 
             @if ($showDashboard)
                 <a href="{{ route('dashboard') }}" {{ wireNavigate() }}>
-                    <x-forms.button type="button">Dashboard</x-forms.button>
+                    <x-forms.button type="button">{{ __('Dashboard') }}</x-forms.button>
                 </a>
             @endif
 

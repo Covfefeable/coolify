@@ -4,7 +4,7 @@
             Connect a Gitea or Forgejo OAuth2 application (Gitea.com, Codeberg, or your own instance) for private repositories, webhooks, and deployments.
         </p>
 
-        <x-forms.listbox id="provider" label="Provider" onChange="selectProvider" :onChangeArgs="[]"
+        <x-forms.listbox id="provider" label="{{ __('Provider') }}" onChange="selectProvider" :onChangeArgs="[]"
             :options="[
                 ['value' => 'gitea.com', 'label' => 'Gitea.com'],
                 ['value' => 'codeberg.org', 'label' => 'Codeberg (Forgejo)'],
@@ -13,8 +13,8 @@
             helper="Codeberg runs Forgejo. For your own Gitea or Forgejo instance, select Self-hosted and enter its URL below." />
 
         <div class="grid gap-4 sm:grid-cols-2">
-            <x-forms.input id="name" label="Name" required />
-            <x-forms.input id="organization" label="Organization"
+            <x-forms.input id="name" label="{{ __('Name') }}" required />
+            <x-forms.input id="organization" label="{{ __('Organization') }}"
                 helper="Optional. Comma-separated organization or user names to filter repositories (e.g. myorg,myuser)."
                 placeholder="All accessible repositories when empty" />
         </div>
@@ -22,11 +22,11 @@
         @if (! isCloud())
             <div x-data="{ showWarning: @entangle('is_system_wide') }">
                 <div class="max-w-xs">
-                    <x-forms.checkbox id="is_system_wide" label="System wide"
+                    <x-forms.checkbox id="is_system_wide" label="{{ __('System wide') }}"
                         helper="If checked, this Gitea / Forgejo App will be available for everyone in this Coolify instance." />
                 </div>
                 <div x-cloak x-show="showWarning" x-transition class="mt-3">
-                    <x-callout type="warning" title="Shared with every team">
+                    <x-callout type="warning" title="{{ __('Shared with every team') }}">
                         System-wide Gitea / Forgejo Apps are available to every team on this instance. Prefer team-specific apps when you need repository isolation.
                     </x-callout>
                 </div>
@@ -61,7 +61,7 @@
         </x-forms.button>
     </form>
 @else
-    <x-callout type="danger" title="Insufficient permissions">
+    <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
         You don't have permission to create new Gitea / Forgejo Apps. Contact your team administrator.
     </x-callout>
 @endcan

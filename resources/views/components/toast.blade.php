@@ -152,7 +152,7 @@
                         <x-reicon name="check" x-show="toast.copied" class="size-3.5" />
                     </button>
 
-                    <button type="button" @click="removeToast(toast.id)" aria-label="Dismiss"
+                    <button type="button" @click="removeToast(toast.id)" aria-label="{{ __('Dismiss') }}"
                         class="absolute right-2.5 top-2.5 flex size-7 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-black/5 hover:text-neutral-700 dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">
                         <x-reicon name="x" class="size-3.5" />
                     </button>

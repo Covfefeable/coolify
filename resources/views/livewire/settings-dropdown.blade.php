@@ -243,7 +243,7 @@
                             </button>
                             <button type="button"
                                 class="flex w-10 items-center justify-center border-r border-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-35 dark:border-white/[0.10] dark:text-fg-dim dark:hover:bg-white/[0.06]"
-                                aria-label="Previous page" title="Previous page" @click="goToPage(page - 1)"
+                                aria-label="{{ __('Previous page') }}" title="{{ __('Previous page') }}" @click="goToPage(page - 1)"
                                 :disabled="page === 1">
                                 <svg class="size-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                     <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1.8"
@@ -255,7 +255,7 @@
                                 x-text="page"></span>
                             <button type="button"
                                 class="flex w-10 items-center justify-center border-r border-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-35 dark:border-white/[0.10] dark:text-fg-dim dark:hover:bg-white/[0.06]"
-                                aria-label="Next page" title="Next page" @click="goToPage(page + 1)"
+                                aria-label="{{ __('Next page') }}" title="{{ __('Next page') }}" @click="goToPage(page + 1)"
                                 :disabled="page === lastPage">
                                 <svg class="size-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                     <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1.8"

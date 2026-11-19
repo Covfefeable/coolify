@@ -11,7 +11,7 @@
                 description="Create an app to grant Coolify access to selected repositories."
                 icon-name="sources">
                 <x-slot:contents>
-                    <x-modal-input buttonTitle="+ Add GitHub App" title="New GitHub App" closeOutside="false">
+                    <x-modal-input buttonTitle="+ Add GitHub App" title="{{ __('New GitHub App') }}" closeOutside="false">
                         <livewire:source.github.create />
                     </x-modal-input>
                 </x-slot:contents>
@@ -24,7 +24,7 @@
                     <h2>{{ __('Choose GitHub App') }}</h2>
                     <p>Select the installation that can access the repository you want to deploy.</p>
                 </div>
-                <x-modal-input buttonTitle="+ Add GitHub App" title="New GitHub App" closeOutside="false">
+                <x-modal-input buttonTitle="+ Add GitHub App" title="{{ __('New GitHub App') }}" closeOutside="false">
                     <livewire:source.github.create />
                 </x-modal-input>
             </div>
@@ -72,7 +72,7 @@
             <div class="application-settings-section-body">
                 @if ($repositories->isNotEmpty())
                     <div class="flex items-end gap-2">
-                        <x-forms.listbox searchable id="selected_repository_id" label="Repository" required live
+                        <x-forms.listbox searchable id="selected_repository_id" label="{{ __('Repository') }}" required live
                             searchPlaceholder="Search repositories…"
                             :options="$repositories->map(fn ($repository) => [
                                 'value' => data_get($repository, 'id'),
@@ -107,7 +107,7 @@
                         @include('livewire.project.new.partials.smart-scan-summary')
 
                         <div class="grid gap-4 sm:grid-cols-2">
-                            <x-forms.listbox searchable id="selected_branch_name" label="Branch" required
+                            <x-forms.listbox searchable id="selected_branch_name" label="{{ __('Branch') }}" required
                                 searchPlaceholder="Search branches…"
                                 :options="$branches->map(fn ($branch) => [
                                     'value' => data_get($branch, 'name'),
@@ -126,7 +126,7 @@
                                         ['value' => false, 'label' => __('Web application')],
                                         ['value' => true, 'label' => __('Static site')],
                                     ]" />
-                                <x-forms.input type="number" id="port" label="Port"
+                                <x-forms.input type="number" id="port" label="{{ __('Port') }}"
                                     :readonly="$is_static || $build_pack === 'static'"
                                     helper="{{ __('Port the application listens on.') }}" />
                             @endif

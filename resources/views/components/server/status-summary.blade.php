@@ -65,7 +65,7 @@
                 'bg-success' => $serverReady,
                 'bg-error' => ! $serverReady,
             ])></span>
-            <span class="flex-1">Server</span>
+            <span class="flex-1">{{ __('Server') }}</span>
             <span>{{ $serverReady ? 'Ready' : 'Unavailable' }}</span>
         </div>
         @if ($server->proxySet())
@@ -77,7 +77,7 @@
                     'bg-warning' => $proxyNeedsAttention && ($proxyUpdateAvailable || in_array($proxyStatus, ['starting', 'restarting', 'stopping'], true)),
                     'bg-error' => $proxyNeedsAttention && ! $proxyUpdateAvailable && ! in_array($proxyStatus, ['starting', 'restarting', 'stopping'], true),
                 ])></span>
-                <span class="flex-1">Proxy</span>
+                <span class="flex-1">{{ __('Proxy') }}</span>
                 <span>{{ $proxyStatusLabel }}</span>
             </a>
         @endif

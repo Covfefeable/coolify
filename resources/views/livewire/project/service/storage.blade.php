@@ -128,7 +128,7 @@
                                                     <x-forms.input canGate="update" :canResource="$resource" placeholder="pv-name"
                                                         id="name" label="{{ __('Name') }}" required helper="Volume name." />
                                                     <x-forms.input canGate="update" :canResource="$resource"
-                                                        placeholder="/tmp/root" id="mount_path" label="Destination Path"
+                                                        placeholder="/tmp/root" id="mount_path" label="{{ __('Destination Path') }}"
                                                         required helper="Directory inside the container." />
                                                     <div class="flex justify-end pt-2">
                                                         <x-forms.button canGate="update" :canResource="$resource" type="submit">
@@ -206,12 +206,12 @@
                                                     </div>
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/etc/nginx/nginx.conf" id="file_storage_path"
-                                                        label="Destination Path" required
+                                                        label="{{ __('Destination Path') }}" required
                                                         x-on:input="filePath = $event.target.value"
                                                         helper="File location inside the container" />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/srv/config/app.conf" id="file_storage_source"
-                                                        label="Source Path"
+                                                        label="{{ __('Source Path') }}"
                                                         x-on:input="sourcePath = $event.target.value"
                                                         helper="Optional. File location on the host: an absolute path anywhere on the host, or a path relative to the resource directory. Empty: Coolify keeps the file in the resource directory. Coolify never deletes a file outside the resource directory." />
                                                     <x-forms.textarea canGate="update" :canResource="$resource" label="Content"
@@ -278,7 +278,7 @@
                                                         helper="Existing file on the host system." />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/etc/nginx/nginx.conf"
-                                                        id="host_file_storage_destination" label="Destination Path"
+                                                        id="host_file_storage_destination" label="{{ __('Destination Path') }}"
                                                         required helper="File location inside the container." />
                                                     <div class="flex justify-end pt-2">
                                                         <x-forms.button canGate="update" :canResource="$resource" type="submit">

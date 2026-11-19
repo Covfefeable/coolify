@@ -8,7 +8,7 @@
             {{-- Exclude is_auto_update_enabled (instantSave) so the bar does not flash. --}}
             <x-unsaved-bar action="submit" targets="update_check_frequency,auto_update_frequency,update_channel,update_custom_tag" />
 
-            <x-application.settings-section title="Updates"
+            <x-application.settings-section title="{{ __('Updates') }}"
                 helper="Install the latest Coolify version manually when an update is available.">
                 <x-slot:actions>
                     <livewire:upgrade :full-button="true" key="settings-upgrade" />
@@ -60,7 +60,7 @@
                         </x-callout>
                     </div>
 
-                    <x-forms.input required id="update_check_frequency" label="Check frequency"
+                    <x-forms.input required id="update_check_frequency" label="{{ __('Check frequency') }}"
                         placeholder="0 * * * *"
                         helper="A cron expression or preset such as hourly, daily, weekly, monthly, or yearly." />
 

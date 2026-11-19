@@ -81,7 +81,7 @@
                                     class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                                 <button x-cloak x-show="search" x-on:click="search = ''; page = 1" type="button"
                                     class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
-                                    aria-label="Clear search">
+                                    aria-label="{{ __('Clear search') }}">
                                     <x-reicon name="x" class="size-3" />
                                 </button>
                             </div>
@@ -98,12 +98,12 @@
                     @else
                         <div x-cloak x-show="filteredTokens.length > 0" class="data-table">
                             <div class="data-table-header api-tokens-table-grid">
-                                <span>Description</span>
+                                <span>{{ __('Description') }}</span>
                                 <span>Permissions</span>
                                 <span>Last used</span>
-                                <span>Created</span>
+                                <span>{{ __('Created') }}</span>
                                 <span>Expires</span>
-                                <span class="text-right">Actions</span>
+                                <span class="text-right">{{ __('Actions') }}</span>
                             </div>
                             @foreach ($tokens as $token)
                                 <div wire:key="api-token-{{ $token->id }}"
@@ -254,7 +254,7 @@
                 </form>
 
                 <x-slot:footer>
-                    <x-forms.button @click="modalOpen = false">Cancel</x-forms.button>
+                    <x-forms.button @click="modalOpen = false">{{ __('Cancel') }}</x-forms.button>
                     <x-forms.button isHighlighted type="submit" form="api-token-create-form">Create token</x-forms.button>
                 </x-slot:footer>
             </x-modal-input>
@@ -276,8 +276,8 @@
                 </form>
 
                 <x-slot:footer>
-                    <x-forms.button @click="modalOpen = false">Cancel</x-forms.button>
-                    <x-forms.button isHighlighted type="submit" form="api-token-edit-form">Save changes</x-forms.button>
+                    <x-forms.button @click="modalOpen = false">{{ __('Cancel') }}</x-forms.button>
+                    <x-forms.button isHighlighted type="submit" form="api-token-edit-form">{{ __('Save changes') }}</x-forms.button>
                 </x-slot:footer>
             </x-modal-input>
         @endcan

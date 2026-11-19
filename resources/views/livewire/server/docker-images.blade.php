@@ -50,15 +50,15 @@
                 @else
                     <div class="data-table transition-opacity" wire:loading.class="opacity-50 pointer-events-none" wire:target="setSort">
                         <div class="data-table-header server-images-table-grid">
-                            <x-table.sort-header label="Repository" asc="repository_asc" desc="repository_desc"
+                            <x-table.sort-header label="{{ __('Repository') }}" asc="repository_asc" desc="repository_desc"
                                 action="setSort" :current="$sort" />
-                            <x-table.sort-header label="Tag" asc="tag_asc" desc="tag_desc" action="setSort"
+                            <x-table.sort-header label="{{ __('Tag') }}" asc="tag_asc" desc="tag_desc" action="setSort"
                                 :current="$sort" />
                             <x-table.sort-header label="Image ID" asc="id_asc" desc="id_desc" action="setSort"
                                 :current="$sort" />
-                            <x-table.sort-header label="Created" asc="created_asc" desc="created_desc" first="desc"
+                            <x-table.sort-header label="{{ __('Created') }}" asc="created_asc" desc="created_desc" first="desc"
                                 action="setSort" :current="$sort" />
-                            <x-table.sort-header label="Size" asc="size_asc" desc="size_desc" first="desc"
+                            <x-table.sort-header label="{{ __('Size') }}" asc="size_asc" desc="size_desc" first="desc"
                                 action="setSort" :current="$sort" />
                             <x-table.sort-header label="Used by" asc="used_asc" desc="used_desc" action="setSort"
                                 :current="$sort" />

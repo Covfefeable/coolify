@@ -48,13 +48,13 @@
                     @if ($emailProvider === 'smtp')
                         @include('livewire.partials.smtp-server-picker')
                     @elseif ($emailProvider === 'resend')
-                        <x-forms.input required type="password" id="resendApiKey" placeholder="API key"
-                            label="Resend API key" autocomplete="new-password" />
+                        <x-forms.input required type="password" id="resendApiKey" placeholder="{{ __('API key') }}"
+                            label="{{ __('Resend API key') }}" autocomplete="new-password" />
                         <x-forms.input required id="resendFromName" helper="Name shown in email from Resend."
-                            label="From name" />
+                            label="{{ __('From name') }}" />
                         <x-forms.input required id="resendFromAddress"
                             helper="Address used in email from Resend. It must be on a domain verified in Resend."
-                            label="From address" />
+                            label="{{ __('From address') }}" />
                     @endif
 
                     @if ($emailProvider !== 'none')

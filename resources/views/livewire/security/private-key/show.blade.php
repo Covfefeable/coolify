@@ -3,11 +3,11 @@
     <form wire:submit="changePrivateKey" class="flex flex-col gap-4"
         wire:loading.class="pointer-events-none opacity-50" wire:target="delete">
         <div class="grid gap-4 lg:grid-cols-2">
-            <x-forms.input canGate="update" :canResource="$private_key" id="name" label="Name" required />
-            <x-forms.input canGate="update" :canResource="$private_key" id="description" label="Description" />
+            <x-forms.input canGate="update" :canResource="$private_key" id="name" label="{{ __('Name') }}" required />
+            <x-forms.input canGate="update" :canResource="$private_key" id="description" label="{{ __('Description') }}" />
             <div class="lg:col-span-2">
                 <x-forms.input canGate="update" :canResource="$private_key" readonly id="public_key"
-                    label="Public key" helper="Copy this value to ~/.ssh/authorized_keys on the target server." />
+                    label="{{ __('Public key') }}" helper="Copy this value to ~/.ssh/authorized_keys on the target server." />
             </div>
             @include('livewire.security.private-key.partials.key-field')
             <div class="lg:col-span-2">
@@ -49,7 +49,7 @@
         </div>
         <div class="flex items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
             @can('delete', $private_key)
-                <x-modal-confirmation title="Confirm Private Key Deletion?" isErrorButton buttonTitle="Delete"
+                <x-modal-confirmation title="Confirm Private Key Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
                     @confirm-old-key-deletion.window="if ($event.detail.id === {{ $private_key->id }}) modalOpen = true"
                     submitAction="delete" :disabled="$isInUse" :disabledTooltip="$deleteDisabledReason"
                     :actions="['This private key will be permanently deleted.', 'Coolify does not remove its public key from servers. To remove it, rotate the key before you delete it.']" confirmationText="{{ $private_key->name }}"
@@ -59,7 +59,7 @@
                 @can('update', $private_key)
                     <livewire:security.private-key.rotate :privateKeyId="$private_key->id" wire:key="rotate-modal-{{ $private_key->id }}" />
                 @endcan
-                <x-forms.button type="submit" isHighlighted>Save changes</x-forms.button>
+                <x-forms.button type="submit" isHighlighted>{{ __('Save changes') }}</x-forms.button>
             </div>
         </div>
     </form>

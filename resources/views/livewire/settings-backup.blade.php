@@ -13,12 +13,12 @@
 
                     <x-application.settings-section title="Instance database">
                         <div class="grid gap-4 lg:grid-cols-2">
-                            <x-forms.input label="Name" readonly :value="$database->name" />
-                            <x-forms.input label="Description" id="description" />
+                            <x-forms.input label="{{ __('Name') }}" readonly :value="$database->name" />
+                            <x-forms.input label="{{ __('Description') }}" id="description" />
                             <div class="lg:col-span-2">
                                 <x-forms.input label="UUID" readonly :value="$database->uuid" />
                             </div>
-                            <x-forms.input label="User" readonly :value="$database->postgres_user" />
+                            <x-forms.input label="{{ __('User') }}" readonly :value="$database->postgres_user" />
                         </div>
                     </x-application.settings-section>
                 </form>

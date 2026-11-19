@@ -19,11 +19,11 @@
                     @can('update', $settings)
                         <x-forms.input type="password" :required="$pushoverEnabled" id="pushoverUserKey" label="User key"
                             helper="Find this in the Pushover dashboard." />
-                        <x-forms.input type="password" :required="$pushoverEnabled" id="pushoverApiToken" label="API token"
+                        <x-forms.input type="password" :required="$pushoverEnabled" id="pushoverApiToken" label="{{ __('API token') }}"
                             helper="Create an application in Pushover to generate this token." />
                     @else
                         <x-forms.input disabled label="User key" value="Hidden (only admins can view)" />
-                        <x-forms.input disabled label="API token" value="Hidden (only admins can view)" />
+                        <x-forms.input disabled label="{{ __('API token') }}" value="Hidden (only admins can view)" />
                     @endcan
                 </div>
             </x-application.settings-section>

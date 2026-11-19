@@ -20,7 +20,7 @@
     </div>
 
     @if ($servers->isEmpty())
-        <x-empty title="No servers yet"
+        <x-empty title="{{ __('No servers yet') }}"
             description="Add a server to manage its Docker registry logins."
             icon-name="servers" />
     @else

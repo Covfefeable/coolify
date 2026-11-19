@@ -38,18 +38,18 @@
                         <livewire:project.service.edit-compose serviceId="{{ $service->id }}" />
                     </x-modal-input>
                 @endcan
-                <x-modal-input title="Resource details" buttonTitle="Details">
+                <x-modal-input title="{{ __('Resource details') }}" buttonTitle="{{ __('Details') }}">
                     <livewire:project.shared.resource-details :resource="$service" />
                 </x-modal-input>
             </div>
         </x-slot:actions>
 
         <div class="grid gap-4 lg:grid-cols-2">
-            <x-forms.input canGate="update" :canResource="$service" id="name" required label="Service name"
+            <x-forms.input canGate="update" :canResource="$service" id="name" required label="{{ __('Service name') }}"
                 placeholder="My WordPress site" />
             <x-forms.input canGate="update" :canResource="$service" id="description" label="{{ __('Description') }}" />
         </div>
-        <x-application.settings-subsection id="service-network-section" title="Network" helper="Control whether this Compose stack joins Coolify's predefined network.">
+        <x-application.settings-subsection id="service-network-section" title="{{ __('Network') }}" helper="Control whether this Compose stack joins Coolify's predefined network.">
             <x-forms.listbox canGate="update" :canResource="$service" id="connectToDockerNetwork" label="Network attachment" live onChange="instantSave"
                 :disabled="! auth()->user()->can('update', $service)" :options="[
                     ['value' => false, 'label' => 'Use the stack network only'],

@@ -16,7 +16,7 @@
                     <x-deprecated-badge />
                 </x-slot:actions>
 
-                <x-callout type="warning" title="Docker Swarm support is deprecated">
+                <x-callout type="warning" title="{{ __('Docker Swarm support is deprecated') }}">
                     {{ config('deprecations.swarm') }}
                     <a class="font-medium underline" href="https://coolify.io/docs/knowledge-base/docker/swarm"
                         target="_blank">Read the migration guidance.</a>

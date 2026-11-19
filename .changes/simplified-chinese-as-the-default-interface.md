@@ -5,3 +5,5 @@ Simplified Chinese as the default interface language, with translations for navi
 
 - The resource picker, repository deployment forms, and repository scan results also support Simplified Chinese
 - Application configuration and deployment history show Simplified Chinese labels and guidance
+- Database backup schedules and execution history show Simplified Chinese labels
+- Common forms, actions, and accessibility labels across the dashboard, resources, servers, integrations, and settings support Simplified Chinese

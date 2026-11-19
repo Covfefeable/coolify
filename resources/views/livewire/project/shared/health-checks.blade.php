@@ -5,13 +5,13 @@
 <form wire:submit="submit" class="application-settings-form flex flex-col gap-6">
     <x-unsaved-bar action="submit" />
 
-    <x-application.settings-section id="healthcheck-configuration-section" title="Healthcheck"
+    <x-application.settings-section id="healthcheck-configuration-section" title="{{ __('Healthcheck') }}"
         helper="Define how Coolify determines whether this application is ready to receive traffic.">
         <x-slot:actions>
             @if (!$healthCheckEnabled)
                 <x-modal-confirmation :disabled="!auth()->user()->can('update', $resource)"
                     :authDisabled="!auth()->user()->can('update', $resource)"
-                    title="Enable healthcheck?" buttonTitle="Enable"
+                    title="Enable healthcheck?" buttonTitle="{{ __('Enable') }}"
                     submitAction="toggleHealthcheck" :actions="['Enable healthcheck for this resource.']"
                     warningMessage="If the healthcheck fails, your application will become inaccessible. Review the <a href='https://coolify.io/docs/knowledge-base/health-checks' target='_blank' class='underline text-white'>Healthchecks guide</a> before continuing."
                     step2ButtonText="Enable healthcheck" :confirmWithText="false"
@@ -49,7 +49,7 @@
             <x-application.settings-subsection id="healthcheck-request-section" title="HTTP request"
                 helper="Coolify sends this request from inside the container and evaluates the response.">
                 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                    <x-forms.listbox id="healthCheckMethod" label="Method" required :options="[
+                    <x-forms.listbox id="healthCheckMethod" label="{{ __('Method') }}" required :options="[
                         ['value' => 'GET', 'label' => 'GET'],
                         ['value' => 'HEAD', 'label' => 'HEAD'],
                         ['value' => 'POST', 'label' => 'POST'],
@@ -63,7 +63,7 @@
                         placeholder="localhost" label="Host" required />
                     <x-forms.input canGate="update" :canResource="$resource" type="number"
                         id="healthCheckPort" helper="Uses the first exposed port when empty." placeholder="80"
-                        label="Port" />
+                        label="{{ __('Port') }}" />
                 </div>
                 <div class="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_10rem]">
                     <x-forms.input canGate="update" :canResource="$resource" id="healthCheckPath"
@@ -100,7 +100,7 @@
                 <x-forms.input canGate="update" :canResource="$resource" min="1" type="number"
                     id="healthCheckInterval" placeholder="30" label="Interval (seconds)" required />
                 <x-forms.input canGate="update" :canResource="$resource" min="1" type="number"
-                    id="healthCheckTimeout" placeholder="30" label="Timeout (seconds)" required />
+                    id="healthCheckTimeout" placeholder="30" label="{{ __('Timeout (seconds)') }}" required />
                 <x-forms.input canGate="update" :canResource="$resource" min="1" type="number"
                     id="healthCheckRetries" placeholder="3" label="Retries" required />
                 <x-forms.input canGate="update" :canResource="$resource" min="1" type="number"

@@ -9,7 +9,7 @@
                  the bar does not flash while the snapshot catches up. --}}
             <x-unsaved-bar action="submit"
                 targets="fqdn,instance_name,public_ipv4,public_ipv6,dev_helper_version" />
-            <x-application.settings-section title="General">
+            <x-application.settings-section title="{{ __('General') }}">
                 <div class="grid gap-4 lg:grid-cols-2">
                     <div @class([
                         'lg:col-span-2' => !str_starts_with(strtolower($fqdn ?? ''), 'https://'),

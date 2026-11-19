@@ -20,9 +20,9 @@
             <div class="data-table-header {{ $gridClass }} {{ $hasSourcePaths ? 'has-source' : '' }}">
                 <span>Storage Name</span>
                 @if ($hasSourcePaths)
-                    <span>Source Path</span>
+                    <span>{{ __('Source Path') }}</span>
                 @endif
-                <span>Destination Path</span>
+                <span>{{ __('Destination Path') }}</span>
                 @if ($supportsPreviewSuffix)
                     <div class="volumes-col-pr flex items-center gap-1.5">
                         <span>PR suffix</span>
@@ -73,9 +73,9 @@
 
                             @if ($hasSourcePaths)
                                 <div class="volumes-cell-source min-w-0">
-                                    <span class="volumes-mobile-label volumes-field-label">Source Path</span>
+                                    <span class="volumes-mobile-label volumes-field-label">{{ __('Source Path') }}</span>
                                     @if (filled($storage->host_path))
-                                        <x-forms.input aria-label="Source Path" :value="$storage->host_path" readonly />
+                                        <x-forms.input aria-label="{{ __('Source Path') }}" :value="$storage->host_path" readonly />
                                     @else
                                         <span class="data-table-cell-dash">-</span>
                                     @endif
@@ -83,7 +83,7 @@
                             @endif
 
                             <div class="volumes-cell-dest min-w-0">
-                                <span class="volumes-mobile-label volumes-field-label">Destination Path</span>
+                                <span class="volumes-mobile-label volumes-field-label">{{ __('Destination Path') }}</span>
                                 <span
                                     class="block min-w-0 truncate text-[13px] text-neutral-950 dark:text-fg"
                                     title="{{ $form['mountPath'] }}">{{ $form['mountPath'] }}</span>
@@ -107,13 +107,13 @@
                                             'table-badge underline-offset-2 hover:underline',
                                             'table-badge-success' => $hasS3Backup,
                                         ])
-                                            title="Volume backup is enabled"
+                                            title="{{ __('Volume backup is enabled') }}"
                                             aria-label="{{ $hasS3Backup ? 'Backups are saved to S3' : 'Backups are stored locally only' }}">
                                             {{ $hasS3Backup ? 'S3' : 'Local' }}
                                         </a>
                                     @else
                                         <span @class(['table-badge', 'table-badge-success' => $hasS3Backup])
-                                            title="Volume backup is enabled"
+                                            title="{{ __('Volume backup is enabled') }}"
                                             aria-label="{{ $hasS3Backup ? 'Backups are saved to S3' : 'Backups are stored locally only' }}">
                                             {{ $hasS3Backup ? 'S3' : 'Local' }}
                                         </span>
@@ -236,9 +236,9 @@
 
                             @if ($hasSourcePaths)
                                 <div class="volumes-cell-source min-w-0">
-                                    <span class="volumes-mobile-label volumes-field-label">Source Path</span>
+                                    <span class="volumes-mobile-label volumes-field-label">{{ __('Source Path') }}</span>
                                     @if (filled($storage->host_path))
-                                        <x-forms.input aria-label="Source Path" :value="$storage->host_path" readonly />
+                                        <x-forms.input aria-label="{{ __('Source Path') }}" :value="$storage->host_path" readonly />
                                     @else
                                         <span class="data-table-cell-dash">-</span>
                                     @endif
@@ -246,7 +246,7 @@
                             @endif
 
                             <div class="volumes-cell-dest min-w-0">
-                                <span class="volumes-mobile-label volumes-field-label">Destination Path</span>
+                                <span class="volumes-mobile-label volumes-field-label">{{ __('Destination Path') }}</span>
                                 <x-forms.input id="forms.{{ $id }}.mountPath" required
                                     placeholder="/path/in/container" />
                             </div>
@@ -272,13 +272,13 @@
                                             'table-badge underline-offset-2 hover:underline',
                                             'table-badge-success' => $hasS3Backup,
                                         ])
-                                            title="Volume backup is enabled"
+                                            title="{{ __('Volume backup is enabled') }}"
                                             aria-label="{{ $hasS3Backup ? 'Backups are saved to S3' : 'Backups are stored locally only' }}">
                                             {{ $hasS3Backup ? 'S3' : 'Local' }}
                                         </a>
                                     @else
                                         <span @class(['table-badge', 'table-badge-success' => $hasS3Backup])
-                                            title="Volume backup is enabled"
+                                            title="{{ __('Volume backup is enabled') }}"
                                             aria-label="{{ $hasS3Backup ? 'Backups are saved to S3' : 'Backups are stored locally only' }}">
                                             {{ $hasS3Backup ? 'S3' : 'Local' }}
                                         </span>
@@ -321,7 +321,7 @@
                                                     @endif
                                                 </x-modal-input>
                                             @elseif (method_exists($resource, 'isBackupSolutionAvailable') && $resource->isBackupSolutionAvailable())
-                                                <x-modal-input title="New Scheduled Backup" :wireIgnore="false">
+                                                <x-modal-input title="{{ __('New Scheduled Backup') }}" :wireIgnore="false">
                                                     <x-slot:content>
                                                         <x-table.row-action>{{ __('Backup') }}</x-table.row-action>
                                                     </x-slot:content>
@@ -371,7 +371,7 @@
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                         <header>
                             <h3>Change the volume name?</h3>
-                            <button type="button" aria-label="Close"
+                            <button type="button" aria-label="{{ __('Close') }}"
                                 @click="modalOpen = false; $wire.cancelRename({{ $pendingRename['storageId'] }})"
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">
                                 <x-reicon name="x" class="size-4" />

@@ -19,7 +19,7 @@
     </x-slot>
 
     <div class="min-w-0">
-        <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">Security</h1>
+        <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Security') }}</h1>
         <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
             What each resource of your team needs, from its last image scan.
         </p>
@@ -48,7 +48,7 @@
             </x-slot:search>
 
             <x-table.filter :active-count="count($statuses) + count($servers) + count($projects)" reset-action="resetFilters">
-                <span class="{{ $groupLabel }}">Status</span>
+                <span class="{{ $groupLabel }}">{{ __('Status') }}</span>
                 @foreach ($statusOptions as $option => $optionLabel)
                     @php
                         $selected = in_array($option, $statuses, true);
@@ -68,7 +68,7 @@
                     </button>
                 @endforeach
                 @if ($serverOptions !== [])
-                    <span class="{{ $groupLabel }}">Server</span>
+                    <span class="{{ $groupLabel }}">{{ __('Server') }}</span>
                     @foreach ($serverOptions as $uuid => $name)
                         @php
                             $selected = in_array($uuid, $servers, true);
@@ -89,7 +89,7 @@
                     @endforeach
                 @endif
                 @if ($projectOptions !== [])
-                    <span class="{{ $groupLabel }}">Project</span>
+                    <span class="{{ $groupLabel }}">{{ __('Project') }}</span>
                     @foreach ($projectOptions as $uuid => $name)
                         @php
                             $selected = in_array($uuid, $projects, true);
@@ -124,7 +124,7 @@
                 @elseif ($hasFilters)
                     <x-empty size="sm" title="No matching resources" description="Try other filters, or reset them." />
                 @elseif (! $hasResources)
-                    <x-empty size="sm" title="No resources yet" description="The resources of your team show here." />
+                    <x-empty size="sm" title="{{ __('No resources yet') }}" description="The resources of your team show here." />
                 @elseif ($hidesNotChecked)
                     <x-empty size="sm" title="No resource was scanned yet"
                         description="Resources that were not scanned are hidden. Coolify scans an image when it deploys or starts it on a server that scans images." />
@@ -132,10 +132,10 @@
             @else
                 <div class="data-table">
                     <div class="data-table-header image-scan-fleet-grid">
-                        <span>Resource</span>
+                        <span>{{ __('Resource') }}</span>
                         <span>{{ $searching ? 'Match' : 'Status' }}</span>
                         <span class="image-scan-fleet-action">{{ $searching ? 'State' : 'Action' }}</span>
-                        <span class="image-scan-secondary">Server</span>
+                        <span class="image-scan-secondary">{{ __('Server') }}</span>
                         <span class="image-scan-secondary image-scan-fleet-tertiary">Checked</span>
                     </div>
                     @foreach ($items as $entry)

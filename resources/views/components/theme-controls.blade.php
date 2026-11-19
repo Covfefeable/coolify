@@ -306,7 +306,7 @@
                         <button type="button" @click="dialogOpen = false"
                             class="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-neutral-500 outline-0 transition-colors hover:bg-neutral-100 hover:text-black focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">
                             <x-reicon name="x" class="size-4" />
-                            <span class="sr-only">Close</span>
+                            <span class="sr-only">{{ __('Close') }}</span>
                         </button>
                     </header>
                     <template x-if="dialogOpen">
@@ -350,7 +350,7 @@
                                     <div class="flex min-w-0 flex-1 flex-col gap-2 p-3"
                                         :style="`background: ${draftColors.background}; color: ${textOn(draftColors.background)}`">
                                         <div class="flex items-center justify-between gap-2">
-                                            <span class="text-sm font-semibold">Projects</span>
+                                            <span class="text-sm font-semibold">{{ __('Projects') }}</span>
                                             <span class="rounded-md px-2 py-1 text-[11px] font-medium"
                                                 :style="`background: ${accentFill(draftColors.accent)}; color: ${accentTextOn(draftColors.accent)}`">+ New</span>
                                         </div>
@@ -361,7 +361,7 @@
                                         </div>
                                         <div class="rounded-md border p-2.5"
                                             :style="`background: color-mix(in oklab, ${textOn(draftColors.background)} 4%, ${draftColors.background}); border-color: color-mix(in oklab, ${textOn(draftColors.background)} 14%, ${draftColors.background})`">
-                                            <div class="font-medium">Website</div>
+                                            <div class="font-medium">{{ __('Website') }}</div>
                                             <div class="mt-0.5 opacity-60">staging</div>
                                         </div>
                                     </div>
@@ -427,7 +427,7 @@
                     </template>
                     <footer
                         class="flex shrink-0 flex-wrap items-center justify-end gap-2 border-t border-neutral-200 px-4 py-3 dark:border-white/[0.08]">
-                        <x-forms.button @click="dialogOpen = false">Cancel</x-forms.button>
+                        <x-forms.button @click="dialogOpen = false">{{ __('Cancel') }}</x-forms.button>
                         <x-forms.button isHighlighted @click="saveCustomTheme()">Save theme</x-forms.button>
                     </footer>
                 </div>

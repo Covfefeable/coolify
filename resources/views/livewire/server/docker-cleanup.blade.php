@@ -56,7 +56,7 @@
                         </div>
                     @endif
                     <x-application.settings-subsection id="docker-cleanup-configuration-section"
-                        title="Schedule"
+                        title="{{ __('Schedule') }}"
                         helper="Choose when cleanup runs and whether it should wait for a disk threshold.">
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" placeholder="0 0 * * *"

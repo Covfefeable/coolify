@@ -155,7 +155,7 @@
 
     @if ($database->destination->server->isFunctional())
         <div class="hidden" aria-hidden="true">
-            <x-modal-confirmation title="Confirm Database Restart?" buttonTitle="Restart"
+            <x-modal-confirmation title="Confirm Database Restart?" buttonTitle="{{ __('Restart') }}"
                 submitAction="restartEvent" :actions="[
                     'This database will be unavailable during the restart.',
                     'If the database is currently in use, data could be lost.',
@@ -165,7 +165,7 @@
                     <button id="database-restart-trigger" type="button">{{ __('Restart') }}</button>
                 </x-slot:trigger>
             </x-modal-confirmation>
-            <x-modal-confirmation title="Confirm Database Stopping?" buttonTitle="Stop" submitAction="stop"
+            <x-modal-confirmation title="Confirm Database Stopping?" buttonTitle="{{ __('Stop') }}" submitAction="stop"
                 :checkboxes="$checkboxes" :actions="[
                     'This database will be stopped.',
                     'If the database is currently in use, data could be lost.',

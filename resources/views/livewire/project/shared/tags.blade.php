@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-6">
-    <x-application.settings-section id="tag-assignment-section" title="Tags"
+    <x-application.settings-section id="tag-assignment-section" title="{{ __('Tags') }}"
         helper="Organize this resource with reusable team tags. Separate multiple tag names with spaces.">
         @can('update', $resource)
             <form wire:submit="submit"
@@ -14,7 +14,7 @@
                 </x-forms.button>
             </form>
         @else
-            <x-callout type="danger" title="Insufficient permissions">
+            <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
                 You do not have permission to manage tags for this resource.
             </x-callout>
         @endcan

@@ -86,7 +86,7 @@
                     </x-callout>
                 @else
                     @cannot('update', $server)
-                        <x-callout type="danger" title="Insufficient permissions">
+                        <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
                             You do not have permission to configure Cloudflare Tunnel for this server.
                         </x-callout>
                     @else

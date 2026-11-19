@@ -77,7 +77,7 @@
                 </x-application.settings-subsection>
             </x-application.settings-section>
 
-            <x-application.settings-section id="network-section" title="Network"
+            <x-application.settings-section id="network-section" title="{{ __('Network') }}"
                 helper="Domain validation and the internal targets that outbound requests may reach.">
                 <x-application.settings-subsection first id="dns-section" title="DNS validation">
                     <div class="grid gap-4 lg:grid-cols-2">
@@ -109,7 +109,7 @@
                             @elseif (filled(config('services.domain_connect.private_key')))
                                 <x-status-badge status="Using DOMAIN_CONNECT_PRIVATE_KEY from environment" type="neutral" />
                             @else
-                                <x-callout type="info" title="Not configured">
+                                <x-callout type="info" title="{{ __('Not configured') }}">
                                     Automated Cloudflare DNS (Domain Connect) stays hidden until a private key is set.
                                 </x-callout>
                             @endif
@@ -174,7 +174,7 @@
                 </div>
             </x-application.settings-section>
 
-            <x-application.settings-section id="storage-section" title="Storage"
+            <x-application.settings-section id="storage-section" title="{{ __('Storage') }}"
                 helper="Where Coolify stores uploaded images and how users download files.">
                 <x-application.settings-subsection first id="avatar-storage-section" title="Image storage"
                     helper="Choose where compressed profile pictures and project icons are stored. Use S3 for multi-instance or cloud deployments so every application replica can access the same files.">

@@ -136,7 +136,7 @@
                     @endphp
                     <div @class(['grid gap-4', 'lg:grid-cols-3' => $autoUpdatesSupported])>
                         <x-forms.input canGate="update" :canResource="$server" id="patchCheckFrequency"
-                            label="Check frequency" placeholder="weekly (default, on Sunday)"
+                            label="{{ __('Check frequency') }}" placeholder="weekly (default, on Sunday)"
                             helper="Cron expression or preset such as daily, weekly, or monthly. Leave empty for the default: weekly, at a fixed time on Sunday. Coolify notifies your team when updates are available and when a check starts to fail." />
                         @if ($autoUpdatesSupported)
                             <div class="w-full">

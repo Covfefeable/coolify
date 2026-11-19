@@ -10,7 +10,7 @@
                     <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">
                         {{ $name ?: 'Gitea / Forgejo App' }}
                     </h1>
-                    <x-status-badge label="Connected" type="success" />
+                    <x-status-badge label="{{ __('Connected') }}" type="success" />
                 </div>
                 <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
                     {{ filled($organization) ? 'Gitea / Forgejo App for '.$organization : 'Private Gitea / Forgejo source' }}
@@ -23,7 +23,7 @@
                     </x-forms.button>
                 @endcan
                 @can('delete', $gitea_app)
-                    <x-modal-confirmation title="Confirm Gitea / Forgejo App Deletion?" isErrorButton buttonTitle="Delete"
+                    <x-modal-confirmation title="Confirm Gitea / Forgejo App Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
                         submitAction="delete" :actions="['The selected Gitea / Forgejo App will be permanently deleted.']"
                         confirmationText="{{ data_get($gitea_app, 'name') }}"
                         confirmationLabel="Please confirm by entering the Gitea / Forgejo App Name below"
@@ -36,20 +36,20 @@
         <form wire:submit="submit" class="application-settings-form flex flex-col gap-6">
             <x-unsaved-bar action="submit" />
 
-            <x-application.settings-section title="General"
+            <x-application.settings-section title="{{ __('General') }}"
                 description="Name, visibility, and webhook of this source.">
                 <div class="grid gap-4 lg:grid-cols-2">
-                    <x-forms.input canGate="update" :canResource="$gitea_app" id="name" label="Name" />
+                    <x-forms.input canGate="update" :canResource="$gitea_app" id="name" label="{{ __('Name') }}" />
 
                     @if (! isCloud())
                         <div class="lg:col-span-2 max-w-xs">
-                            <x-forms.checkbox canGate="update" :canResource="$gitea_app" label="System wide"
+                            <x-forms.checkbox canGate="update" :canResource="$gitea_app" label="{{ __('System wide') }}"
                                 helper="If checked, this Gitea / Forgejo App will be available for everyone in this Coolify instance."
                                 instantSave id="isSystemWide" />
                         </div>
                         @if ($isSystemWide)
                             <div class="lg:col-span-2">
-                                <x-callout type="warning" title="Shared with every team">
+                                <x-callout type="warning" title="{{ __('Shared with every team') }}">
                                     System-wide Gitea / Forgejo Apps are shared across all teams on this Coolify instance. Prefer team-specific apps when you need repository isolation.
                                 </x-callout>
                             </div>
@@ -64,23 +64,23 @@
                                 value="{{ rtrim($this->resolvePublicBaseUrl(), '/') }}/webhooks/source/gitea/events" />
                         </div>
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="webhookSecret"
-                            label="Webhook secret" type="password"
+                            label="{{ __('Webhook secret') }}" type="password"
                             helper="Set this as the Secret in a Gitea webhook (user, organization, or repository settings → Webhooks → Add webhook → Gitea or Forgejo), content type application/json, trigger on Push and Pull Request events. Stored encrypted." />
                     </div>
                 </x-application.settings-subsection>
             </x-application.settings-section>
 
-            <x-application.settings-section id="connection-section" title="Connection"
+            <x-application.settings-section id="connection-section" title="{{ __('Connection') }}"
                 helper="OAuth credentials and the endpoints Coolify uses to reach this source.">
                 <x-application.settings-subsection first title="OAuth credentials"
                     helper="Client credentials from your Gitea or Forgejo OAuth2 application.">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="clientId"
-                            label="Client ID" />
+                            label="{{ __('Client ID') }}" />
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="clientSecretInput"
-                            label="Client secret" type="password"
+                            label="{{ __('Client secret') }}" type="password"
                             helper="Stored encrypted. Leave empty to keep the existing secret." />
-                        <x-forms.input canGate="update" :canResource="$gitea_app" id="organization" label="Organization"
+                        <x-forms.input canGate="update" :canResource="$gitea_app" id="organization" label="{{ __('Organization') }}"
                             helper="Comma-separated organization or user names to filter visible repositories." />
                     </div>
                 </x-application.settings-subsection>
@@ -91,9 +91,9 @@
                             label="Instance URL" />
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="apiUrl" label="API URL" />
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="customUser"
-                            label="SSH user" />
+                            label="{{ __('SSH user') }}" />
                         <x-forms.input canGate="update" :canResource="$gitea_app" type="number" id="customPort"
-                            label="SSH port" />
+                            label="{{ __('SSH port') }}" />
                         <div class="lg:col-span-2">
                             <x-forms.listbox canGate="update" :canResource="$gitea_app" id="privateKeyId" label="SSH private key (optional)"
                                 :options="collect($privateKeys)->map(fn ($key) => [
@@ -109,7 +109,7 @@
         </form>
 
         <div x-data="{ search: '' }" class="application-settings-form mt-6">
-            <x-application.settings-section title="Resources"
+            <x-application.settings-section title="{{ __('Resources') }}"
                 description="Applications currently using this Gitea / Forgejo App." flush>
                 @if ($applications->isEmpty())
                     <x-empty title="No resources use this source"
@@ -120,17 +120,17 @@
                         <div class="relative w-full max-w-sm">
                             <x-reicon name="search"
                                 class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                            <input x-model.debounce.150ms="search" type="search" placeholder="Search resources"
+                            <input x-model.debounce.150ms="search" type="search" placeholder="{{ __('Search resources') }}"
                                 class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-3! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                         </div>
                     </div>
                     <div class="overflow-x-auto">
                         <div
                             class="grid min-w-[680px] grid-cols-[minmax(10rem,.8fr)_minmax(10rem,.8fr)_minmax(12rem,1fr)_8rem] border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                            <div>Project</div>
-                            <div>Environment</div>
-                            <div>Resource</div>
-                            <div>Repository</div>
+                            <div>{{ __('Project') }}</div>
+                            <div>{{ __('Environment') }}</div>
+                            <div>{{ __('Resource') }}</div>
+                            <div>{{ __('Repository') }}</div>
                         </div>
                         @foreach ($applications->sortBy('name', SORT_NATURAL) as $application)
                             @php
@@ -172,7 +172,7 @@
             </div>
             @can('delete', $gitea_app)
                 <div class="shrink-0 sm:ml-auto">
-                    <x-modal-confirmation title="Confirm Gitea / Forgejo App Deletion?" isErrorButton buttonTitle="Delete"
+                    <x-modal-confirmation title="Confirm Gitea / Forgejo App Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
                         submitAction="delete" :actions="['The selected Gitea / Forgejo App will be permanently deleted.']"
                         confirmationText="{{ data_get($gitea_app, 'name') }}"
                         confirmationLabel="Please confirm by entering the Gitea / Forgejo App Name below"
@@ -218,17 +218,17 @@
                 <x-application.settings-section title="Step 2 · Enter credentials"
                     description="Paste the Client ID and Client secret from Gitea or Forgejo, then save.">
                     <x-slot:actions>
-                        <x-forms.button type="submit">Save</x-forms.button>
+                        <x-forms.button type="submit">{{ __('Save') }}</x-forms.button>
                     </x-slot:actions>
 
                     <div class="grid gap-4 lg:grid-cols-2">
-                        <x-forms.input id="name" label="Name" />
-                        <x-forms.input id="clientId" label="Client ID" required
+                        <x-forms.input id="name" label="{{ __('Name') }}" />
+                        <x-forms.input id="clientId" label="{{ __('Client ID') }}" required
                             helper="The Client ID from your Gitea or Forgejo OAuth2 application." />
-                        <x-forms.input id="clientSecretInput" label="Client secret" type="password"
+                        <x-forms.input id="clientSecretInput" label="{{ __('Client secret') }}" type="password"
                             :required="blank($clientSecretInput) && blank(data_get($gitea_app, 'client_secret'))"
                             helper="The Client secret from your Gitea or Forgejo OAuth2 application. Saved encrypted." />
-                        <x-forms.input id="organization" label="Organization"
+                        <x-forms.input id="organization" label="{{ __('Organization') }}"
                             helper="Optional. Comma-separated organization or user names to filter repositories." />
                     </div>
 
@@ -280,11 +280,11 @@
                                 helper="Only change this for self-hosted Gitea or Forgejo (e.g. https://git.example.com)." />
                             <x-forms.input id="apiUrl" label="API URL"
                                 helper="Usually your instance URL with /api/v1 appended." />
-                            <x-forms.input id="customUser" label="SSH user" />
-                            <x-forms.input type="number" id="customPort" label="SSH port" />
+                            <x-forms.input id="customUser" label="{{ __('SSH user') }}" />
+                            <x-forms.input type="number" id="customPort" label="{{ __('SSH port') }}" />
                             @if (! isCloud())
                                 <div class="max-w-xs lg:col-span-2">
-                                    <x-forms.checkbox label="System wide" id="isSystemWide"
+                                    <x-forms.checkbox label="{{ __('System wide') }}" id="isSystemWide"
                                         helper="If checked, this Gitea / Forgejo App will be available for everyone in this Coolify instance." />
                                 </div>
                             @endif

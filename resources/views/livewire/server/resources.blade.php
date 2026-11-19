@@ -8,7 +8,7 @@
     <div class="server-settings-workspace application-settings-workspace mt-4 grid w-full max-w-none min-w-0 gap-8 lg:mt-0 xl:grid-cols-[210px_minmax(0,1fr)] xl:gap-8">
         <x-server.sidebar :server="$server" activeMenu="resources" />
         <div class="application-settings-form min-w-0 w-full">
-        <x-application.settings-section id="server-resources-section" title="Resources"
+        <x-application.settings-section id="server-resources-section" title="{{ __('Resources') }}"
             helper="Review Coolify-managed resources and other Docker containers running on this server."
             flush>
             <x-slot:actions>
@@ -43,7 +43,7 @@
                     <button type="button" wire:click="$set('search', '')" @class([
                         'absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg',
                         'hidden' => blank($search),
-                    ]) aria-label="Clear search">
+                    ]) aria-label="{{ __('Clear search') }}">
                         <x-reicon name="x" class="size-3" />
                     </button>
                 </div>
@@ -59,7 +59,7 @@
                             <x-table.sort-header label="{{ __('Name') }}" asc="name_asc" desc="name_desc" action="setSort" :current="$sort" />
                             <x-table.sort-header label="{{ __('Project') }}" asc="project_asc" desc="project_desc" action="setSort" :current="$sort" />
                             <x-table.sort-header label="{{ __('Environment') }}" asc="environment_asc" desc="environment_desc" action="setSort" :current="$sort" />
-                            <x-table.sort-header label="Type" asc="type_asc" desc="type_desc" action="setSort" :current="$sort" />
+                            <x-table.sort-header label="{{ __('Type') }}" asc="type_asc" desc="type_desc" action="setSort" :current="$sort" />
                             <x-table.sort-header label="{{ __('Status') }}" asc="status_asc" desc="status_desc" action="setSort" :current="$sort" />
                         </div>
                         @foreach ($resources as $resource)

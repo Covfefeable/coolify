@@ -10,7 +10,7 @@
         <livewire:project.database.heading :database="$resource" />
     @elseif ($type === 'service')
         <livewire:project.service.heading :service="$resource" :parameters="$parameters" :query="$query"
-            title="Logs" />
+            title="{{ __('Logs') }}" />
     @endif
 
     @php
@@ -52,19 +52,19 @@
             <x-skeleton.logs />
         @elseif ($logsUnavailable)
             @if ($servers->isEmpty())
-                <x-empty size="lg" title="Runtime logs unavailable"
+                <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
                     description="Connect and validate a server before viewing resource logs."
                     icon-name="file-content" />
             @elseif ($functionalServers->isEmpty())
-                <x-empty size="lg" title="Runtime logs unavailable"
+                <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
                     description="No functional servers are available, so container logs cannot be loaded."
                     icon-name="file-content" />
             @elseif (count($serverErrors) > 0)
-                <x-empty size="lg" title="Runtime logs unavailable"
+                <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
                     description="Could not load containers: {{ collect($serverErrors)->first() }}"
                     icon-name="file-content" />
             @else
-                <x-empty size="lg" title="Runtime logs unavailable"
+                <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
                     description="No containers are running, so there are no runtime logs to show."
                     icon-name="file-content" />
             @endif
@@ -88,7 +88,7 @@
                             @if (count($logTargets['deployments']) > 1)
                                 <div class="w-full sm:w-60" wire:key="runtime-logs-deployments">
                                     <x-forms.listbox id="pullRequestId" label="Deployment" live searchable portal
-                                        searchPlaceholder="Search deployments" :options="$logTargets['deployments']" />
+                                        searchPlaceholder="{{ __('Search deployments') }}" :options="$logTargets['deployments']" />
                                 </div>
                             @endif
                             @if (count($logTargets['services']) > 1)
@@ -109,7 +109,7 @@
                         :collapsible="false"
                         :fill="true" />
                 @else
-                    <x-empty size="lg" title="Runtime logs unavailable"
+                    <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
                         description="No containers are running, so there are no runtime logs to show."
                         icon-name="file-content" />
                 @endif

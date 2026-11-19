@@ -11,7 +11,7 @@
 
         <div class="application-settings-form flex w-full flex-col gap-6">
             @if (! $server->canBuildApplications())
-                <x-application.settings-section id="github-runners-section" title="GitHub Actions runners"
+                <x-application.settings-section id="github-runners-section" title="{{ __('GitHub Actions runners') }}"
                     helper="Each workflow job runs in a new container that is deleted after the job.">
                     <x-slot:actions>
                         <x-beta-badge />
@@ -31,7 +31,7 @@
                     under Sources, and select "Run workflow jobs on your servers" when you register it.
                 </x-callout>
             @elseif (! $this->config?->is_enabled)
-                <x-application.settings-section id="github-runners-section" title="GitHub Actions runners"
+                <x-application.settings-section id="github-runners-section" title="{{ __('GitHub Actions runners') }}"
                     helper="Each workflow job runs in a new container that is deleted after the job.">
                     <x-slot:actions>
                         <x-beta-badge />
@@ -65,7 +65,7 @@
                 <form wire:submit="submit" class="contents">
                     <x-unsaved-bar action="submit"
                         targets="githubAppId,labels,maxRunners,dockerMode,runnerImage,cpuLimit,memoryLimit,capacityWaitTimeout,idleTimeout,jobTimeout,isDedicated,allowPullRequests" />
-                    <x-application.settings-section id="github-runners-section" title="GitHub Actions runners"
+                    <x-application.settings-section id="github-runners-section" title="{{ __('GitHub Actions runners') }}"
                         helper="Each workflow job runs in a new container that is deleted after the job. Use runs-on: [self-hosted, <your label>] in the workflow.">
                         <x-slot:actions>
                             <x-beta-badge />
@@ -150,7 +150,7 @@
                         </div>
                     </x-application.settings-section>
 
-                    <x-application.settings-section id="github-runners-resources-section" title="Resources"
+                    <x-application.settings-section id="github-runners-resources-section" title="{{ __('Resources') }}"
                         helper="Limits apply to the runner container and to its Docker sidecar.">
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input id="maxRunners" type="number" min="1" max="32" label="Parallel runners"

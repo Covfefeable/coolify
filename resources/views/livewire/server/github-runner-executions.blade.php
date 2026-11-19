@@ -40,7 +40,7 @@
                 @endif
                 @if ($execution->isActive())
                     @can('update', $server)
-                        <x-modal-confirmation title="Cancel this runner?" buttonTitle="Cancel"
+                        <x-modal-confirmation title="Cancel this runner?" buttonTitle="{{ __('Cancel') }}"
                             submitAction="cancel({{ $execution->id }})" :actions="[
                                 'The runner will be stopped and removed.',
                                 'A running workflow job fails.',

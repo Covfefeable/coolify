@@ -17,7 +17,7 @@
                     <button type="button" wire:click="$set('search', '')" @class([
                         'absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg',
                         'hidden' => blank($search),
-                    ]) aria-label="Clear search">
+                    ]) aria-label="{{ __('Clear search') }}">
                         <x-reicon name="x" class="size-3" />
                     </button>
                 </div>
@@ -45,9 +45,9 @@
                     wire:loading.class="opacity-50 pointer-events-none"
                     wire:target="setPage,previousPage,nextPage">
                     <div class="data-table-header admin-users-table-grid">
-                        <span>Name</span>
-                        <span>Email</span>
-                        <span class="text-right">Actions</span>
+                        <span>{{ __('Name') }}</span>
+                        <span>{{ __('Email') }}</span>
+                        <span class="text-right">{{ __('Actions') }}</span>
                     </div>
                     @foreach ($users as $user)
                         <div wire:key="instance-user-{{ $user->id }}"
