@@ -46,7 +46,7 @@
                     <p class="{{ $note }}">
                         {{ $versionNote['text'] }}
                         @if ($versionNote['link'] !== null)
-                            <a href="{{ $versionNote['link'] }}" class="{{ $link }}" {{ wireNavigate() }}>Registry logins</a>
+                            <a href="{{ $versionNote['link'] }}" class="{{ $link }}" {{ wireNavigate() }}>{{ __('Registry logins') }}</a>
                         @endif
                     </p>
                 @endforeach
@@ -62,7 +62,7 @@
             @if ($canUpdate)
                 <button type="button" class="{{ $link }}"
                     wire:click="removeImageOverride({{ \Illuminate\Support\Js::from($row['override']['service']) }})"
-                    title="The next deploy uses the image of the compose file again.">{{ __('Use the compose file') }}</button>
+                    title="{{ __('The next deploy uses the image of the compose file again.') }}">{{ __('Use the compose file') }}</button>
             @endif
         </p>
     @endif
@@ -129,7 +129,7 @@
 
     @if ($row['provenance'] !== null)
         <p class="max-w-3xl text-[12px] leading-5 text-neutral-500 dark:text-fg-faint">
-            <span class="font-medium text-neutral-700 dark:text-fg-dim">How Coolify knows:</span>
+            <span class="font-medium text-neutral-700 dark:text-fg-dim">{{ __('How Coolify knows:') }}</span>
             {{ $row['provenance'] }}
         </p>
     @endif

@@ -24,10 +24,10 @@
         {{-- Keyed so the lazy-load morph does not reuse the placeholder skeleton nodes. --}}
         <div wire:key="analytics-{{ $dimension }}-table" x-data="trafficTable()">
             <div class="flex items-center gap-3 px-4 py-2 text-[11px] font-medium text-neutral-500 dark:text-fg-dim">
-                @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => 'Name', 'text' => true, 'class' => 'min-w-0 flex-1'])
+                @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => __('Name'), 'text' => true, 'class' => 'min-w-0 flex-1'])
                 <span class="hidden w-16 shrink-0 sm:inline" aria-hidden="true"></span>
-                @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => 'Requests', 'class' => 'w-16 shrink-0'])
-                @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => 'Bandwidth', 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
+                @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => __('Requests'), 'class' => 'w-16 shrink-0'])
+                @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
             </div>
             <div class="flex flex-col">
             @foreach ($rows as $row)

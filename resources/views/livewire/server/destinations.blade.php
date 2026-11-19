@@ -59,7 +59,7 @@
 
                 @if ($networks->count() > 0)
                     <x-application.settings-section id="server-found-networks-section" title="{{ __('Discovered networks') }}"
-                        helper="Networks found on the server that are not registered as Coolify destinations."
+                        helper="{{ __('Networks found on the server that are not registered as Coolify destinations.') }}"
                         flush>
                         @foreach ($networks as $network)
                             <div

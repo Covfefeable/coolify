@@ -13,7 +13,7 @@
             $hostScanError = $hostScan?->error_code?->message([...($hostScan->error_context ?? []), 'server' => $server->name]);
         @endphp
         <x-application.settings-section id="server-host-vulnerabilities-section" title="{{ __('Vulnerabilities') }}"
-            helper="Known vulnerabilities in the operating system packages of this server. Coolify scans them with the image scanner every day and after a package update. Problems that the distribution does not fix are not shown."
+            helper="{{ __('Known vulnerabilities in the operating system packages of this server. Coolify scans them with the image scanner every day and after a package update. Problems that the distribution does not fix are not shown.') }}"
             flush>
             <x-slot:badges>
                 @if ($hostScanError && ! $hostScanRunning)
@@ -280,7 +280,7 @@
                                     @endif
                                     <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Package') }}</dt>
                                     <dd class="min-w-0 break-all font-mono">{{ $finding->package }}</dd>
-                                    <dt class="text-neutral-500 dark:text-fg-faint">Installed</dt>
+                                    <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Installed') }}</dt>
                                     <dd class="min-w-0 break-all font-mono">{{ $finding->version }}</dd>
                                     <dt class="text-neutral-500 dark:text-fg-faint">Fixed in</dt>
                                     <dd class="min-w-0 break-all font-mono">{{ $finding->fixedIn ?? 'No fix yet' }}</dd>
@@ -296,7 +296,7 @@
                                         </dd>
                                     @endif
                                     @if ($kernelStatus !== null || $isOtherKernel)
-                                        <dt class="text-neutral-500 dark:text-fg-faint">Kernel</dt>
+                                        <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Kernel') }}</dt>
                                         <dd class="min-w-0 break-words">
                                             @if ($kernelStatus === 'fixed_after_reboot')
                                                 The server runs kernel <span class="font-mono">{{ $runningKernel }}</span>. The kernel that starts after a reboot has the fix. Reboot the server to use it.
@@ -308,22 +308,22 @@
                                         </dd>
                                     @endif
                                     @if ($finding->cvssScore !== null)
-                                        <dt class="text-neutral-500 dark:text-fg-faint">CVSS score</dt>
+                                        <dt class="text-neutral-500 dark:text-fg-faint">{{ __('CVSS score') }}</dt>
                                         <dd>{{ number_format($finding->cvssScore, 1) }}</dd>
                                     @endif
                                     @if ($finding->kev)
-                                        <dt class="text-neutral-500 dark:text-fg-faint">Exploited</dt>
+                                        <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Exploited') }}</dt>
                                         <dd>{{ __('Attackers are using this, according to CISA.') }}</dd>
                                     @elseif ($likelihood !== null)
-                                        <dt class="text-neutral-500 dark:text-fg-faint">Exploit likelihood</dt>
+                                        <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Exploit likelihood') }}</dt>
                                         <dd>{{ $likelihood }}</dd>
                                     @endif
                                     @if ($aliases !== [])
-                                        <dt class="text-neutral-500 dark:text-fg-faint">Also known as</dt>
+                                        <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Also known as') }}</dt>
                                         <dd class="min-w-0 break-all font-mono">{{ implode(', ', $aliases) }}</dd>
                                     @endif
                                     @if ($advisoryUrl !== null)
-                                        <dt class="text-neutral-500 dark:text-fg-faint">Advisory</dt>
+                                        <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Advisory') }}</dt>
                                         <dd><a href="{{ $advisoryUrl }}" target="_blank" rel="noopener noreferrer" class="font-medium underline underline-offset-4">Open {{ $finding->displayId }}</a></dd>
                                     @endif
                                 </dl>

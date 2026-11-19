@@ -40,7 +40,7 @@
                 @if ($isSuggested)
                     <span
                         class="min-w-0 text-[13px] text-black sm:truncate dark:text-white"
-                        title="{{ $row['url'] }} (not configured yet)">
+                        title="{{ $row['url'] }} {{ __('(not configured yet)') }}">
                         {{ $row['url'] }}
                     </span>
                 @else
@@ -86,7 +86,7 @@
             title="{{ ($row['has_port_override'] ?? false) ? 'Custom internal port for this domain' : 'Inherited from the application or Compose service port' }}">
             <span class="service-domain-detail-label">{{ __('Internal port') }}</span>
             @if (filled($row['internal_port'] ?? null))
-                <span aria-label="Internal port {{ $row['internal_port'] }}">{{ $row['internal_port'] }}</span>
+                <span aria-label="{{ __('Internal port :port', ['port' => $row['internal_port']]) }}">{{ $row['internal_port'] }}</span>
             @else
                 <span role="img" aria-label="{{ __('No internal port') }}" title="{{ __('No internal port. Set Ports Exposes or a per-domain internal port so the proxy can route this domain.') }}" class="text-red-500 dark:text-red-400">
                     <x-reicon name="alert-triangle" class="size-4" />
@@ -167,7 +167,7 @@
                                 submitAction="removeDomainByKey({{ $domainKey }})" :actions="[
                                     'This domain will be removed from the application.',
                                     'Redeploy or restart may be required for proxy changes.',
-                                ]" :checkboxes="[['id' => 'deleteManagedDns', 'label' => 'Also delete the DNS record created by Coolify, if present.']]"
+                                ]" :checkboxes="[['id' => 'deleteManagedDns', 'label' => __('Also delete the DNS record created by Coolify, if present.')]]"
                                 :confirmWithPassword="false" :confirmWithText="false" step2ButtonText="{{ __('Remove domain') }}">
                                 <x-slot:trigger>
                                     <x-table.row-action>{{ __('Delete') }}</x-table.row-action>

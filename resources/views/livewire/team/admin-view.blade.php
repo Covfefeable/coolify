@@ -5,7 +5,7 @@
 
     <x-team.settings-layout>
     <div class="application-settings-form">
-        <x-application.settings-section title="Instance users" flush>
+        <x-application.settings-section title="{{ __('Instance users') }}" flush>
             <form wire:submit.prevent="submitSearch"
                 class="flex flex-col gap-2 border-b border-neutral-200 p-3 sm:flex-row sm:items-center sm:justify-between dark:border-white/[0.08]">
                 <div class="relative w-full max-w-sm">
@@ -25,8 +25,8 @@
                     <div class="w-full sm:w-40">
                         <x-forms.listbox id="teamFilter" live :options="[
                             ['value' => 'all', 'label' => 'All users'],
-                            ['value' => 'current', 'label' => 'Current team'],
-                            ['value' => 'outside', 'label' => 'Outside team'],
+                            ['value' => 'current', 'label' => __('Current team')],
+                            ['value' => 'outside', 'label' => __('Outside team')],
                         ]" />
                     </div>
                     <div class="w-full sm:w-40">
@@ -65,7 +65,7 @@
                                 {{ $user->email }}
                             </div>
                             <div class="flex justify-end">
-                                <x-modal-confirmation title="Confirm User Deletion?"
+                                <x-modal-confirmation title="{{ __('Confirm User Deletion?') }}"
                                     submitAction="delete({{ $user->id }})" :actions="[
                                         'The selected user and their default team resources will be permanently deleted.',
                                     ]"
@@ -75,7 +75,7 @@
                                     <x-slot:trigger>
                                         <button type="button"
                                             class="icon-button shrink-0 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
-                                            title="Delete user" aria-label="Delete {{ $user->name }}">
+                                            title="{{ __('Delete user') }}" aria-label="Delete {{ $user->name }}">
                                             <x-reicon name="trash" class="size-3.5" />
                                         </button>
                                     </x-slot:trigger>

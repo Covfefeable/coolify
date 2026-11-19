@@ -4,7 +4,7 @@
         @can('update', $resource)
             <form wire:submit="submit"
                 class="grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
-                <x-forms.input id="newTags" label="Tag names"
+                <x-forms.input id="newTags" label="{{ __('Tag names') }}"
                     helper="Existing tags are assigned automatically. New names create team tags."
                     placeholder="production api customer-a" />
                 <x-forms.button type="submit"
@@ -20,7 +20,7 @@
         @endcan
     </x-application.settings-section>
 
-    <x-application.settings-section id="assigned-tags-section" title="Assigned tags"
+    <x-application.settings-section id="assigned-tags-section" title="{{ __('Assigned tags') }}"
         helper="Tags currently attached to this resource." flush>
         @forelse (data_get($this->resource, 'tags', []) as $tag)
             <div wire:key="assigned-tag-{{ $tag->id }}"
@@ -39,15 +39,15 @@
                 @endcan
             </div>
         @empty
-            <x-empty size="sm" title="No tags assigned"
-                description="Add a tag above or select one from your team's available tags."
+            <x-empty size="sm" title="{{ __('No tags assigned') }}"
+                description="{{ __('Add a tag above or select one from your team\'s available tags.') }}"
                 icon-name="tags" />
         @endforelse
     </x-application.settings-section>
 
     @can('update', $resource)
         @if (count($filteredTags) > 0)
-            <x-application.settings-section id="available-tags-section" title="Available tags"
+            <x-application.settings-section id="available-tags-section" title="{{ __('Available tags') }}"
                 helper="Assign an existing team tag with one click.">
                 <div class="flex flex-wrap gap-2">
                     @foreach ($filteredTags as $tag)

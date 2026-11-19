@@ -83,7 +83,7 @@
 
         @if ($server->isSentinelEnabled())
             <x-application.settings-section id="server-sentinel-connection-section" title="{{ __('Connection') }}"
-                helper="Configure how Sentinel authenticates with and reports to Coolify.">
+                helper="{{ __('Configure how Sentinel authenticates with and reports to Coolify.') }}">
                 <x-slot:actions>
                     <div class="flex items-center gap-2">
                         @can('manageSentinel', $server)
@@ -114,10 +114,10 @@
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$server" id="sentinelCustomUrl"
                             required label="Coolify URL"
-                            helper="Public URL used by Sentinel to reach this Coolify instance." />
+                            helper="{{ __('Public URL used by Sentinel to reach this Coolify instance.') }}" />
                         <x-forms.input canGate="update" :canResource="$server" type="password"
                             id="sentinelToken" label="{{ __('Sentinel token') }}" required
-                            helper="Authentication token used by Sentinel." />
+                            helper="{{ __('Authentication token used by Sentinel.') }}" />
                     </div>
                 </div>
             </x-application.settings-section>
@@ -125,7 +125,7 @@
             @if (isDev())
                 <x-application.settings-section id="server-sentinel-development-section"
                     title="{{ __('Development overrides') }}"
-                    helper="Local testing controls that are unavailable in production.">
+                    helper="{{ __('Local testing controls that are unavailable in production.') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.listbox id="isSentinelDebugEnabled" label="{{ __('Debug logging') }}"
                             onChange="instantSave" :options="[
@@ -149,7 +149,7 @@
                                 <div class="min-w-0 flex-1">
                                     <x-forms.input canGate="update" :canResource="$server" x-model="customImage"
                                         placeholder="sentinel:latest" label="Custom Docker image"
-                                        helper="Leave empty to use the default Sentinel image." />
+                                        helper="{{ __('Leave empty to use the default Sentinel image.') }}" />
                                 </div>
                                 <x-forms.button canGate="update" :canResource="$server"
                                     x-on:click="applyCustomImage()">

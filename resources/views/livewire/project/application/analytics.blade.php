@@ -176,24 +176,24 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
 
                 @include('livewire.traffic._breakdown-section', [
                     'dimension' => 'protocol',
-                    'label' => 'Top HTTP versions',
+                    'label' => __('Top HTTP versions'),
                     'rows' => data_get($breakdowns, 'protocol', []),
-                    'helper' => 'Request volume by negotiated HTTP protocol version.',
+                    'helper' => __('Request volume by negotiated HTTP protocol version.'),
                 ])
             </div>
 
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 @include('livewire.traffic._breakdown-section', [
                     'dimension' => 'cache',
-                    'label' => 'Top cache statuses',
+                    'label' => __('Top cache statuses'),
                     'rows' => data_get($breakdowns, 'cache', []),
                     'helper' => 'Reverse-proxy cache outcome (hit, miss, bypass, …) by request count.',
                 ])
                 @include('livewire.traffic._breakdown-section', [
                     'dimension' => 'status',
-                    'label' => 'Top status codes',
+                    'label' => __('Top status codes'),
                     'rows' => data_get($breakdowns, 'status', []),
-                    'helper' => 'Most frequent HTTP response status codes for the selected range.',
+                    'helper' => __('Most frequent HTTP response status codes for the selected range.'),
                 ])
             </div>
 
@@ -208,7 +208,7 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
                 @endforeach
                 @include('livewire.traffic._breakdown-section', [
                     'dimension' => 'agent',
-                    'label' => 'AI agents & bots',
+                    'label' => __('AI agents & bots'),
                     'rows' => data_get($breakdowns, 'agent', []),
                     'helper' => 'Bot and AI-crawler traffic (GPTBot, ClaudeBot, Googlebot, …) by request count.',
                 ])

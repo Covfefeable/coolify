@@ -496,7 +496,7 @@
                                     clip-rule="evenodd" />
                             </svg>
                             <div>
-                                <span class="font-semibold">PORT environment variable detected
+                                <span class="font-semibold"> {{ __('PORT environment variable detected') }}
                                     ({{ $this->detectedPortInfo['port'] }})</span>
                                 <p class="mt-1">Your Ports Exposes field is empty. Consider setting it to
                                     <strong>{{ $this->detectedPortInfo['port'] }}</strong> to ensure the proxy routes

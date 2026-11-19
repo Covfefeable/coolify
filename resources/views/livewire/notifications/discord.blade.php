@@ -8,7 +8,7 @@
         <form wire:submit="submit">
             <x-unsaved-bar action="submit" />
             <x-application.settings-section title="Discord"
-                description="Send team notifications to a Discord channel through an incoming webhook.">
+                description="{{ __('Send team notifications to a Discord channel through an incoming webhook.') }}">
                 <x-slot:actions>
                     <x-notification.channel-actions :enabled="$discordEnabled" enabledProperty="discordEnabled"
                         toggleMethod="instantSaveDiscordEnabled" :canUpdate="auth()->user()->can('update', $settings)"
@@ -16,12 +16,12 @@
                 </x-slot:actions>
 
                 <div class="grid gap-4 lg:grid-cols-2">
-                    <x-forms.listbox canGate="update" :canResource="$settings" id="discordPingEnabled" label="Critical event mention"
+                    <x-forms.listbox canGate="update" :canResource="$settings" id="discordPingEnabled" label="{{ __('Critical event mention') }}"
                         helper="Mention @here when a critical event occurs."
                         onChange="instantSaveDiscordPingEnabled"
                         :disabled="!auth()->user()->can('update', $settings)" :options="[
                             ['value' => true, 'label' => 'Mention @here'],
-                            ['value' => false, 'label' => 'Do not mention'],
+                            ['value' => false, 'label' => __('Do not mention')],
                         ]" />
                     <div class="lg:col-span-2">
                         @can('update', $settings)

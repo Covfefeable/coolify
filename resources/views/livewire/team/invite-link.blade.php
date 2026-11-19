@@ -1,8 +1,8 @@
 <div>
     @can('manageInvitations', currentTeam())
         <form wire:submit="viaLink">
-            <x-application.settings-section title="Invite a member"
-                description="Create a reusable invitation link or deliver it by email.">
+            <x-application.settings-section title="{{ __('Invite a member') }}"
+                description="{{ __('Create a reusable invitation link or deliver it by email.') }}">
                 <x-slot:actions>
                     @if (is_transactional_emails_enabled())
                         <x-forms.button type="button" wire:click.prevent="viaEmail">
@@ -18,7 +18,7 @@
                 </x-slot:actions>
 
                 @if (!is_transactional_emails_enabled() && isInstanceAdmin())
-                    <x-callout type="warning" title="Email delivery is not configured">
+                    <x-callout type="warning" title="{{ __('Email delivery is not configured') }}">
                         Configure transactional email in instance settings to send invitations directly.
                     </x-callout>
                 @endif
@@ -31,7 +31,7 @@
                             <x-forms.listbox id="role" label="{{ __('Role') }}" :options="array_values(array_filter([
                                 auth()->user()->role() === 'owner' ? ['value' => 'owner', 'label' => 'Owner'] : null,
                                 ['value' => 'admin', 'label' => __('Admin')],
-                                ['value' => 'member', 'label' => 'Member'],
+                                ['value' => 'member', 'label' => __('Member')],
                             ]))" />
                         </div>
                         <div x-show="$wire.role === 'member'" class="shrink-0">

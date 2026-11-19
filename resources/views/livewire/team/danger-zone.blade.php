@@ -40,8 +40,8 @@
                                     from Coolify. This action cannot be undone.
                                 </p>
                                 <ul class="space-y-1 text-xs">
-                                    <li>• All members will lose access to this team.</li>
-                                    <li>• This team cannot be restored from Coolify after deletion.</li>
+                                    <li>{{ __('• All members will lose access to this team.') }}</li>
+                                    <li>{{ __('• This team cannot be restored from Coolify after deletion.') }}</li>
                                 </ul>
                             @else
                                 <p>
@@ -78,7 +78,7 @@
                                     step2ButtonText="{{ __('Permanently Delete') }}" canGate="delete"
                                     :canResource="$team" />
                             @else
-                                <x-forms.button isError disabled tooltip="Resolve the requirements shown before deleting this team.">
+                                <x-forms.button isError disabled tooltip="{{ __('Resolve the requirements shown before deleting this team.') }}">
                                     {{ __('Delete team') }}
                                 </x-forms.button>
                             @endif

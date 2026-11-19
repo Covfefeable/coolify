@@ -1,5 +1,5 @@
 <div class="lg:col-span-2">
-    <x-forms.input readonly id="fingerprint" label="Fingerprint" />
+    <x-forms.input readonly id="fingerprint" label="{{ __('Fingerprint') }}" />
 </div>
 <div class="lg:col-span-2" x-data="{
     replacing: false,

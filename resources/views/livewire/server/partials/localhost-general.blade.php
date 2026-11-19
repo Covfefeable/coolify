@@ -1,7 +1,7 @@
                 <form wire:submit.prevent="submit" class="application-settings-form flex flex-col gap-6">
                     <x-unsaved-bar action="submit" />
                     <x-application.settings-section id="server-overview-section" title="{{ __('Server overview') }}"
-                        helper="Operating system and hardware details for the server running this Coolify instance.">
+                        helper="{{ __('Operating system and hardware details for the server running this Coolify instance.') }}">
                         <x-slot:actions>
                             <x-forms.button type="button" wire:click="refreshServerMetadata"
                                 :disabled="! $server->isFunctional()"
@@ -58,7 +58,7 @@
                     @endif
 
                     <x-application.settings-section id="server-connection-section" title="{{ __('Connection') }}"
-                        helper="Configure how Coolify identifies and connects to this server.">
+                        helper="{{ __('Configure how Coolify identifies and connects to this server.') }}">
                         <div class="grid gap-4 sm:grid-cols-2">
                             <x-forms.input canGate="update" :canResource="$server" id="name" label="{{ __('Name') }}"
                                 required :disabled="$isValidating" />
@@ -83,7 +83,7 @@
                                 helper="{{ __('Seconds to wait before an SSH connection fails.') }}" min="1" max="300"
                                 required :disabled="$isValidating" />
                             <x-forms.listbox searchable id="serverTimezone" label="{{ __('Server timezone') }}"
-                                helper="Used for backup schedules, cron jobs, and displayed timestamps."
+                                helper="{{ __('Used for backup schedules, cron jobs, and displayed timestamps.') }}"
                                 searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="No matching timezone"
                                 :options="collect($this->timezones)->map(fn ($timezone) => [
                                     'value' => $timezone,

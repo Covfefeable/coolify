@@ -1,6 +1,6 @@
 <form wire:submit="submit" class="application-settings-form flex flex-col">
     <x-unsaved-bar action="submit" />
-    <x-application.settings-section id="preview-template-section" title="Preview URL template"
+    <x-application.settings-section id="preview-template-section" title="{{ __('Preview URL template') }}"
         helper="Define how Coolify generates domains for pull request deployments.">
         <x-slot:actions>
             @can('update', $application)
@@ -17,7 +17,7 @@
         @if ($previewUrlTemplate)
             <div
                 class="mt-4 flex items-center justify-between gap-3 rounded-lg bg-neutral-100 px-3 py-2.5 ring-1 ring-neutral-200 dark:bg-white/[0.04] dark:ring-white/[0.07]">
-                <span class="text-[13px] text-neutral-500 dark:text-fg-dim">Generated pattern</span>
+                <span class="text-[13px] text-neutral-500 dark:text-fg-dim">{{ __('Generated pattern') }}</span>
                 <code class="break-all text-right font-mono text-xs text-neutral-700 dark:text-fg">
                     {{ $previewUrlTemplate }}
                 </code>

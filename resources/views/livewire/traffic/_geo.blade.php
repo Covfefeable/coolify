@@ -71,7 +71,7 @@
         @if ($hasData)
         <div wire:key="geo-view-{{ $globeId }}"
             class="inline-flex items-center gap-0.5 rounded-lg bg-neutral-100 p-1 dark:bg-white/[0.04]"
-            role="group" aria-label="Location detail">
+            role="group" aria-label="{{ __('Location detail') }}">
             @foreach (['countries' => 'Countries', 'cities' => 'Cities'] as $viewKey => $viewLabel)
                 <button type="button" @click="setView('{{ $viewKey }}')"
                     :aria-pressed="view === '{{ $viewKey }}' ? 'true' : 'false'"

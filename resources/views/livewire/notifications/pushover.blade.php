@@ -8,7 +8,7 @@
         <form wire:submit="submit">
             <x-unsaved-bar action="submit" />
             <x-application.settings-section title="Pushover"
-                description="Deliver team alerts through your Pushover application.">
+                description="{{ __('Deliver team alerts through your Pushover application.') }}">
                 <x-slot:actions>
                     <x-notification.channel-actions :enabled="$pushoverEnabled" enabledProperty="pushoverEnabled"
                         toggleMethod="instantSavePushoverEnabled" :canUpdate="auth()->user()->can('update', $settings)"

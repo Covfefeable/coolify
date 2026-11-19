@@ -17,8 +17,8 @@
 {{-- The pages are in the Settings submenu of the main sidebar (components/navbar.blade.php). --}}
 <section class="application-settings-workspace w-full max-w-none">
     <header class="settings-mobile-header xl:hidden">
-        <h1 class="settings-mobile-title">Instance Settings</h1>
-        <p class="settings-mobile-description">Configure global settings for this Coolify instance.</p>
+        <h1 class="settings-mobile-title">{{ __('Instance Settings') }}</h1>
+        <p class="settings-mobile-description">{{ __('Configure global settings for this Coolify instance.') }}</p>
     </header>
     {{-- Feeds the page search with the settings pages. --}}
     <div hidden data-settings-search-items="{{ json_encode(settingsSearchItems($settingsMenuSections, [])) }}"></div>

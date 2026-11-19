@@ -16,9 +16,9 @@
                     <x-application.settings-section title="{{ __('What you will set up') }}" flush>
                         <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
                             @foreach ([
-                                ['icon' => 'servers', 'title' => 'Server connection', 'description' => 'Connect through SSH to host your resources.'],
-                                ['icon' => 'settings', 'title' => 'Docker environment', 'description' => 'Validate and configure the deployment runtime.'],
-                                ['icon' => 'projects', 'title' => 'Project structure', 'description' => 'Create a project and its first environment.'],
+                                ['icon' => 'servers', 'title' => __('Server connection'), 'description' => __('Connect through SSH to host your resources.')],
+                                ['icon' => 'settings', 'title' => __('Docker environment'), 'description' => __('Validate and configure the deployment runtime.')],
+                                ['icon' => 'projects', 'title' => __('Project structure'), 'description' => __('Create a project and its first environment.')],
                             ] as $onboardingItem)
                                 <div class="flex min-h-14 items-center gap-3 px-4 py-3">
                                     <span
@@ -470,10 +470,10 @@
                                 </div>
                                 <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
                                     @foreach ([
-                                        ['icon' => 'keys', 'title' => 'Test SSH connection', 'description' => 'Verify key-based authentication'],
-                                        ['icon' => 'servers', 'title' => 'Check OS compatibility', 'description' => 'Verify supported Linux distribution'],
-                                        ['icon' => 'layers', 'title' => 'Install Docker Engine', 'description' => 'Auto-install if version '.$minDockerVersion.'+ not found'],
-                                        ['icon' => 'globe', 'title' => 'Configure network', 'description' => 'Set up Docker networks and proxy'],
+                                        ['icon' => 'keys', 'title' => __('Test SSH connection'), 'description' => __('Verify key-based authentication')],
+                                        ['icon' => 'servers', 'title' => __('Check OS compatibility'), 'description' => __('Verify supported Linux distribution')],
+                                        ['icon' => 'layers', 'title' => __('Install Docker Engine'), 'description' => __('Auto-install if version :version+ not found', ['version' => $minDockerVersion])],
+                                        ['icon' => 'globe', 'title' => __('Configure network'), 'description' => __('Set up Docker networks and proxy')],
                                     ] as $validationCheckpoint)
                                         <x-checkpoint-item :icon="$validationCheckpoint['icon']"
                                             :title="$validationCheckpoint['title']"
@@ -490,7 +490,7 @@
                                         </div>
                                     </header>
                                     <div class="application-settings-section-body">
-                                        <livewire:activity-monitor header="Prerequisites installation logs"
+                                        <livewire:activity-monitor header="{{ __('Prerequisites installation logs') }}"
                                             :showWaiting="false" />
                                     </div>
                                 </section>
@@ -510,18 +510,15 @@
                     </x-slot:actions>
                     <x-slot:explanation>
                         <p>
-                            <x-highlighted text="Automated Setup:" /> Coolify installs Docker Engine, Docker Compose, and
-                            configures system requirements automatically.
+                            <x-highlighted text="{{ __('Automated Setup:') }}" /> {{ __('Coolify installs Docker Engine, Docker Compose, and configures system requirements automatically.') }}
                         </p>
                         <p>
-                            <x-highlighted text="Version Requirements:" /> Minimum Docker Engine {{ $minDockerVersion }}.x
-                            required.
+                            <x-highlighted text="{{ __('Version Requirements:') }}" /> {{ __('Docker Engine :version.x or later is required.', ['version' => $minDockerVersion]) }}
                             <a target="_blank" class="underline hover:text-coollabs"
                                 href="https://docs.docker.com/engine/install/#server">{{ __('Manual installation guide') }}</a>
                         </p>
                         <p>
-                            <x-highlighted text="System Configuration:" /> Sets up Docker networks, proxy configuration, and
-                            resource monitoring.
+                            <x-highlighted text="{{ __('System Configuration:') }}" /> {{ __('Sets up Docker networks, proxy configuration, and resource monitoring.') }}
                         </p>
                     </x-slot:explanation>
                 </x-boarding-step>

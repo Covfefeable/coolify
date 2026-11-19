@@ -86,8 +86,8 @@
             @endif
         </div>
     @empty
-        <x-empty size="sm" title="No executions yet"
-            description="Run this task now or wait for its next scheduled execution."
+        <x-empty size="sm" title="{{ __('No executions yet') }}"
+            description="{{ __('Run this task now or wait for its next scheduled execution.') }}"
             icon-name="browser-terminal" />
     @endforelse
 </div>

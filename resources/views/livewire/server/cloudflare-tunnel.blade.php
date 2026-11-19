@@ -11,7 +11,7 @@
 
         <div class="application-settings-form flex w-full flex-col gap-6">
             <x-application.settings-section id="server-cloudflare-overview-section" title="{{ __('Cloudflare Tunnel') }}"
-                helper="Proxy SSH traffic through Cloudflare so the server SSH port can remain closed.">
+                helper="{{ __('Proxy SSH traffic through Cloudflare so the server SSH port can remain closed.') }}">
                 <x-slot:actions>
                     @if ($isCloudflareTunnelsEnabled && auth()->user()->can('update', $server))
                         <x-forms.button wire:click="updateCloudflareTunnel">{{ __('Update Cloudflare Tunnel') }}</x-forms.button>
@@ -163,9 +163,9 @@
                                 <form class="mt-4" @submit.prevent="$wire.dispatch('automatedCloudflareConfig')">
                                     <div class="grid gap-4 lg:grid-cols-2">
                                         <x-forms.input id="cloudflare_token" required label="{{ __('Tunnel token') }}" type="password"
-                                            helper="The token of the tunnel connector, from the Cloudflare dashboard." />
+                                            helper="{{ __('The token of the tunnel connector, from the Cloudflare dashboard.') }}" />
                                         <x-forms.input id="ssh_domain" label="{{ __('SSH domain') }}" required
-                                            helper="The public hostname of the tunnel that routes to SSH on this server, without a protocol." />
+                                            helper="{{ __('The public hostname of the tunnel that routes to SSH on this server, without a protocol.') }}" />
                                     </div>
                                     <div class="mt-4 flex justify-end">
                                         <x-forms.button type="submit">{{ __('Configure tunnel') }}</x-forms.button>

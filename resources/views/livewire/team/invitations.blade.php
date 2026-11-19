@@ -1,8 +1,8 @@
 <div>
     @can('manageInvitations', currentTeam())
         @if ($invitations->count() > 0)
-            <x-application.settings-section title="Pending invitations"
-                description="Invitation links that have not been accepted yet." flush>
+            <x-application.settings-section title="{{ __('Pending invitations') }}"
+                description="{{ __('Invitation links that have not been accepted yet.') }}" flush>
                 <div class="overflow-x-auto">
                     <div class="data-table min-w-[600px] transition-opacity" wire:loading.class="opacity-50 pointer-events-none"
                         wire:target="setSort">
@@ -14,7 +14,7 @@
                                 :current="$sort" />
                             <x-table.sort-header label="{{ __('Role') }}" asc="role-asc" desc="role-desc" first="desc"
                                 action="setSort" :current="$sort" />
-                            <span>Link</span>
+                            <span>{{ __('Link') }}</span>
                             <span class="text-right">{{ __('Actions') }}</span>
                         </div>
                         @foreach ($sortedInvitations as $invite)
@@ -36,10 +36,10 @@
                                     @endif
                                 </div>
                                 <div class="flex items-center">
-                                    <x-copy-button :value="$invite->link" label="Copy invitation link" />
+                                    <x-copy-button :value="$invite->link" label="{{ __('Copy invitation link') }}" />
                                 </div>
                                 <div class="flex justify-end">
-                                    <x-modal-confirmation title="Revoke invitation?"
+                                    <x-modal-confirmation title="{{ __('Revoke invitation?') }}"
                                         submitAction="deleteInvitation({{ $invite->id }})"
                                         :actions="['The invitation link for ' . $invite->email . ' stops working.']"
                                         :confirmWithText="false" :confirmWithPassword="false"

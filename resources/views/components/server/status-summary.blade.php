@@ -50,7 +50,7 @@
     <div x-cloak x-show="open" x-transition.origin.top.left
         class="listbox-panel top-8! right-auto! left-0! z-[90]! w-64! min-w-64!" role="menu">
         <div class="flex items-center gap-1 px-3 py-2 text-[11px] font-medium text-neutral-400 dark:text-fg-faint">
-            <span>System status</span>
+            <span>{{ __('System status') }}</span>
             @if ($server->proxySet() && auth()->user()?->can('manageProxy', $server))
                 <button type="button" wire:click="checkProxyStatus" wire:loading.attr="disabled"
                     wire:target="checkProxyStatus" aria-label="{{ __('Refresh status') }}" title="{{ __('Refresh status') }}"

@@ -8,7 +8,7 @@
         <form wire:submit="submit">
             <x-unsaved-bar action="submit" />
             <x-application.settings-section title="Slack"
-                description="Send team notifications to Slack through an incoming webhook.">
+                description="{{ __('Send team notifications to Slack through an incoming webhook.') }}">
                 <x-slot:actions>
                     <x-notification.channel-actions :enabled="$slackEnabled" enabledProperty="slackEnabled"
                         toggleMethod="instantSaveSlackEnabled" :canUpdate="auth()->user()->can('update', $settings)"

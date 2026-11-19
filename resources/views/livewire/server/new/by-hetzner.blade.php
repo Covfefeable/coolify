@@ -15,12 +15,12 @@
     @elseif ($current_step === 2)
         <div wire:init="loadHetznerData">
             @if ($loading_data)
-                <x-application.settings-section title="Loading Hetzner"
-                    description="Fetching locations, server types, images, and account resources.">
-                    <x-skeleton.form :fields="6" label="Loading Hetzner data" />
+                <x-application.settings-section title="{{ __('Loading Hetzner') }}"
+                    description="{{ __('Fetching locations, server types, images, and account resources.') }}">
+                    <x-skeleton.form :fields="6" label="{{ __('Loading Hetzner data') }}" />
                 </x-application.settings-section>
             @elseif ($provider_data_error)
-                <x-application.settings-section title="Unable to load Hetzner"
+                <x-application.settings-section title="{{ __('Unable to load Hetzner') }}"
                     description="{{ __('The selected token could not access the provider API.') }}">
                     <x-callout type="error" title="{{ __('Provider request failed') }}">
                         <pre class="mt-2 whitespace-pre-wrap break-words text-[11px]">{{ $provider_data_error }}</pre>
@@ -68,8 +68,8 @@
                 @endphp
 
                 <form wire:submit="submit" class="flex flex-col gap-6">
-                    <x-application.settings-section title="Hetzner server"
-                        description="Choose the location, hardware, operating system, and Coolify SSH key.">
+                    <x-application.settings-section title="{{ __('Hetzner server') }}"
+                        description="{{ __('Choose the location, hardware, operating system, and Coolify SSH key.') }}">
                         <x-slot:actions>
                             <button type="submit"
                                 class="button button-highlighted"
@@ -86,9 +86,9 @@
                                 <x-forms.input id="server_name" label="{{ __('Server name') }}"
                                     helper="{{ __('A friendly name shown in Coolify.') }}" />
                             </div>
-                            <x-forms.listbox id="selected_location" label="Location" required live
+                            <x-forms.listbox id="selected_location" label="{{ __('Location') }}" required live
                                 placeholder="{{ __('Select a location') }}" :options="$locationOptions" />
-                            <x-forms.listbox id="selected_server_type" label="Server type" required live
+                            <x-forms.listbox id="selected_server_type" label="{{ __('Server type') }}" required live
                                 :disabled="!$selected_location" placeholder="{{ __('Select a server type') }}"
                                 :options="$serverTypeOptions" />
                             <x-forms.listbox id="selected_image" label="{{ __('Image') }}" required
@@ -96,7 +96,7 @@
                                 :options="$imageOptions" />
                             @if ($private_keys->isEmpty())
                                 <div>
-                                    <label class="mb-1.5 flex w-fit items-center gap-1.5">Private key
+                                    <label class="mb-1.5 flex w-fit items-center gap-1.5">{{ __('Private key') }}
                                         <x-highlighted text="*" />
                                     </label>
                                     <div
@@ -113,13 +113,13 @@
                             @else
                                 <x-forms.listbox id="private_key_id" label="{{ __('Private key') }}" required
                                     placeholder="{{ __('Select a private key') }}" :options="$privateKeyOptions"
-                                    helper="This key is added to the Hetzner server automatically." />
+                                    helper="{{ __('This key is added to the Hetzner server automatically.') }}" />
                             @endif
                         </div>
                     </x-application.settings-section>
 
                     <x-application.settings-section title="{{ __('Advanced options') }}"
-                        description="Provider SSH keys, networking, backups, and cloud-init.">
+                        description="{{ __('Provider SSH keys, networking, backups, and cloud-init.') }}">
                         @if (count($this->advancedHetznerOptionsSummary) > 0)
                             <div class="mb-4 flex flex-wrap gap-1.5">
                                 @foreach ($this->advancedHetznerOptionsSummary as $summaryItem)
@@ -133,18 +133,18 @@
 
                         <div class="flex flex-col gap-4">
                             <x-forms.listbox label="{{ __('Extra SSH keys') }}" id="selectedHetznerSshKeyIds"
-                                helper="Existing keys from the Hetzner account." multiple searchable
+                                helper="{{ __('Existing keys from the Hetzner account.') }}" multiple searchable
                                 :disabled="count($hetznerSshKeys) === 0" searchPlaceholder="{{ __('Search SSH keys…') }}"
                                 :placeholder="count($hetznerSshKeys) ? 'Select SSH keys' : 'No account keys found'"
                                 :options="collect($hetznerSshKeys)->map(fn ($sshKey) => ['value' => $sshKey['id'], 'label' => $sshKey['name']])->values()->all()" />
 
                             <div class="grid gap-4 lg:grid-cols-2">
-                                <x-forms.listbox label="Firewalls" id="selectedHetznerFirewallIds"
+                                <x-forms.listbox label="{{ __('Firewalls') }}" id="selectedHetznerFirewallIds"
                                     multiple searchable :disabled="count($hetznerFirewalls) === 0"
                                     searchPlaceholder="{{ __('Search firewalls…') }}"
                                     :placeholder="count($hetznerFirewalls) ? 'Select firewalls' : 'No firewalls found'"
                                     :options="collect($hetznerFirewalls)->map(fn ($firewall) => ['value' => $firewall['id'], 'label' => $firewall['name']])->values()->all()" />
-                                <x-forms.listbox label="Private networks" id="selectedHetznerNetworkIds"
+                                <x-forms.listbox label="{{ __('Private networks') }}" id="selectedHetznerNetworkIds"
                                     multiple searchable :disabled="count($this->availableNetworks) === 0"
                                     searchPlaceholder="{{ __('Search networks…') }}"
                                     :placeholder="count($this->availableNetworks) ? 'Select networks' : 'No compatible networks'"
@@ -156,9 +156,9 @@
                             </div>
 
                             <div class="grid gap-3 lg:grid-cols-3">
-                                <x-forms.checkbox id="enable_ipv4" label="Enable IPv4" fullWidth />
+                                <x-forms.checkbox id="enable_ipv4" label="{{ __('Enable IPv4') }}" fullWidth />
                                 <x-forms.checkbox id="enable_ipv6" label="{{ __('Enable IPv6') }}" fullWidth />
-                                <x-forms.checkbox id="enable_backups" label="Enable Hetzner backups" fullWidth
+                                <x-forms.checkbox id="enable_backups" label="{{ __('Enable Hetzner backups') }}" fullWidth
                                     helper="Adds 20% to the provider server price." />
                             </div>
 

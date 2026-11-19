@@ -30,10 +30,10 @@
             </x-application.settings-section>
 
             <x-application.settings-section id="server-backups-section" title="{{ __('Backups') }}"
-                helper="Limit how much CPU volume backup compression may use on this server.">
+                helper="{{ __('Limit how much CPU volume backup compression may use on this server.') }}">
                 <x-forms.listbox canGate="update" :canResource="$server" id="backupCompressionCpuPercentage"
                     label="{{ __('Backup compression CPU') }}" onChange="instantSave"
-                    helper="Sets how many CPU threads can be used to compress volume backups, based on this server's available CPUs." :options="[
+                    helper="{{ __('Sets how many CPU threads can be used to compress volume backups, based on this server\'s available CPUs.') }}" :options="[
                         ['value' => 25, 'label' => 'Low (25%)'],
                         ['value' => 50, 'label' => 'Balanced (50%)'],
                         ['value' => 75, 'label' => 'High (75%)'],

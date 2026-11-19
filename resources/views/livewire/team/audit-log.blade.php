@@ -6,7 +6,7 @@
     <x-team.settings-layout>
         <div class="application-settings-form">
             <x-application.settings-section title="{{ __('Audit log') }}"
-                description="Activity from the last 90 days for the current team." flush>
+                description="{{ __('Activity from the last 90 days for the current team.') }}" flush>
                 <div
                     class="flex flex-col gap-2 border-b border-neutral-200 p-3 sm:flex-row sm:items-center dark:border-white/[0.08]">
                     <div class="relative min-w-0 flex-1 sm:max-w-sm">
@@ -38,9 +38,9 @@
                         <div class="data-table transition-opacity" wire:loading.class="opacity-50 pointer-events-none"
                             wire:target="search,action,source,setSort,setPage,previousPage,nextPage">
                         <div class="grid min-w-[760px] grid-cols-[14rem_minmax(0,1fr)_12rem_9rem] gap-4 border-b border-neutral-200 px-4 py-2 text-[11px] font-medium uppercase tracking-wide text-neutral-500 dark:border-white/[0.07] dark:text-fg-faint">
-                            <x-table.sort-header label="Actor" asc="actor-asc" desc="actor-desc" action="setSort"
+                            <x-table.sort-header label="{{ __('Actor') }}" asc="actor-asc" desc="actor-desc" action="setSort"
                                 :current="$sort" />
-                            <x-table.sort-header label="Activity" asc="activity-asc" desc="activity-desc"
+                            <x-table.sort-header label="{{ __('Activity') }}" asc="activity-asc" desc="activity-desc"
                                 action="setSort" :current="$sort" />
                             <x-table.sort-header label="{{ __('Source') }}" asc="source-asc" desc="source-desc" action="setSort"
                                 :current="$sort" />
@@ -99,8 +99,8 @@
                                     class="border-t border-neutral-200 bg-neutral-50 px-4 py-3 dark:border-white/[0.07] dark:bg-white/[0.02]">
                                     <div class="grid grid-cols-[12rem_minmax(0,1fr)_minmax(0,1fr)] gap-4 pb-2 text-[10px] font-medium uppercase tracking-wide text-neutral-500 dark:text-fg-faint">
                                         <span>{{ __('Field') }}</span>
-                                        <span>Previous value</span>
-                                        <span>New value</span>
+                                        <span>{{ __('Previous value') }}</span>
+                                        <span>{{ __('New value') }}</span>
                                     </div>
                                     @foreach ($event->changes as $field => $change)
                                         <div class="grid grid-cols-[12rem_minmax(0,1fr)_minmax(0,1fr)] gap-4 border-t border-neutral-200 py-2 text-[12px] dark:border-white/[0.07]">
@@ -127,7 +127,7 @@
                     </x-table-pagination>
                 @else
                     <x-empty title="{{ __('No activity found') }}"
-                        description="Team actions will appear here as they happen." icon-name="time-back" size="sm" />
+                        description="{{ __('Team actions will appear here as they happen.') }}" icon-name="time-back" size="sm" />
                 @endif
             </x-application.settings-section>
         </div>

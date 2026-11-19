@@ -129,7 +129,7 @@
                                     @if ($canUpdate && ! $form['canDeleteStale'] && ! $form['canDeleteToApplyDriverOptions'])
                                         <x-modal-input title="{{ __('Configure Volume Backup') }}" :wireIgnore="false">
                                             <x-slot:content>
-                                                <button type="button" class="icon-button shrink-0" title="Configure volume backup"
+                                                <button type="button" class="icon-button shrink-0" title="{{ __('Configure volume backup') }}"
                                                     aria-label="Configure backup for {{ $form['name'] }}">
                                                     <x-reicon name="database" class="size-3.5" />
                                                 </button>
@@ -145,7 +145,7 @@
                                             @endif
                                         </x-modal-input>
                                     @elseif ($canUpdate || $form['canDeleteStale'] || $form['canDeleteToApplyDriverOptions'])
-                                        <x-table.row-actions label="Storage actions">
+                                        <x-table.row-actions label="{{ __('Storage actions') }}">
                                             @if ($canUpdate)
                                                 <x-modal-input title="{{ __('Configure Volume Backup') }}" :wireIgnore="false">
                                                     <x-slot:content>
@@ -165,11 +165,11 @@
                                             @if ($form['canDeleteStale'] || $form['canDeleteToApplyDriverOptions'])
                                                 <x-slot:danger>
                                                     @if ($form['canDeleteStale'])
-                                                        <x-modal-confirmation title="Remove stale volume entry?" buttonFullWidth
+                                                        <x-modal-confirmation title="{{ __('Remove stale volume entry?') }}" buttonFullWidth
                                                             submitAction="delete({{ $id }})"
                                                             :checkboxes="[[
                                                                 'id' => 'deleteDockerVolume',
-                                                                'label' => 'Also permanently delete the Docker volume and all its data.',
+                                                                'label' => __('Also permanently delete the Docker volume and all its data.'),
                                                                 'default_warning' => 'The Docker volume and its data will not be deleted.',
                                                             ]]"
                                                             :actions="array_values(array_filter([
@@ -189,11 +189,11 @@
                                                         </x-modal-confirmation>
                                                     @endif
                                                     @if ($form['canDeleteToApplyDriverOptions'])
-                                                        <x-modal-confirmation title="Delete volume entry to apply driver options?" buttonFullWidth
+                                                        <x-modal-confirmation title="{{ __('Delete volume entry to apply driver options?') }}" buttonFullWidth
                                                             submitAction="delete({{ $id }})"
                                                             :checkboxes="[[
                                                                 'id' => 'deleteDockerVolume',
-                                                                'label' => 'Permanently delete the Docker volume and all data in it. The next deployment creates the volume again with the driver options.',
+                                                                'label' => __('Permanently delete the Docker volume and all data in it. The next deployment creates the volume again with the driver options.'),
                                                                 'default_warning' => 'The Docker volume and its data stay on the server. The driver options are not applied, because Docker keeps using the existing volume.',
                                                             ]]"
                                                             :actions="[
@@ -259,7 +259,7 @@
                                     </div>
                                     <x-forms.listbox id="forms.{{ $id }}.isPreviewSuffixEnabled" portal :options="[
                                         ['value' => true, 'label' => __('Add suffix')],
-                                        ['value' => false, 'label' => 'Share volume'],
+                                        ['value' => false, 'label' => __('Share volume')],
                                     ]" canGate="update" :canResource="$resource" />
                                 </div>
                             @endif
@@ -298,11 +298,11 @@
                                 @endphp
                                 @if ($form['isShared'] && ! $hasBackupAction)
                                     <button type="button" wire:click="submit({{ $id }})" class="icon-button shrink-0"
-                                        title="Update storage" aria-label="Update {{ $form['name'] }}">
+                                        title="{{ __('Update storage') }}" aria-label="Update {{ $form['name'] }}">
                                         <x-reicon name="check" class="size-3.5" />
                                     </button>
                                 @else
-                                    <x-table.row-actions label="Storage actions">
+                                    <x-table.row-actions label="{{ __('Storage actions') }}">
                                         <x-table.row-action wire:click="submit({{ $id }})">{{ __('Update') }}</x-table.row-action>
                                         @can('update', $resource)
                                             @if ($showBackupAction && ! $form['isShared'])
@@ -332,7 +332,7 @@
                                         @endcan
                                         @unless ($form['isShared'])
                                             <x-slot:danger>
-                                                <x-modal-confirmation title="Confirm persistent storage deletion?" buttonFullWidth
+                                                <x-modal-confirmation title="{{ __('Confirm persistent storage deletion?') }}" buttonFullWidth
                                                     submitAction="delete({{ $id }})" :actions="[
                                                         'The selected persistent storage/volume will be permanently deleted.',
                                                         'If the persistent storage/volume is actvily used by a resource data will be lost.',
@@ -370,7 +370,7 @@
                         class="application-settings-form application-settings-section relative w-full lg:min-w-[36rem] lg:max-w-2xl"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                         <header>
-                            <h3>Change the volume name?</h3>
+                            <h3>{{ __('Change the volume name?') }}</h3>
                             <button type="button" aria-label="{{ __('Close') }}"
                                 @click="modalOpen = false; $wire.cancelRename({{ $pendingRename['storageId'] }})"
                                 class="flex size-7 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg">
@@ -378,12 +378,12 @@
                             </button>
                         </header>
                         <div class="application-settings-section-body">
-                            <x-callout type="warning" title="The data does not move to the new volume" class="mb-4">
+                            <x-callout type="warning" title="{{ __('The data does not move to the new volume') }}" class="mb-4">
                                 <ul class="mt-2 ml-4 list-disc">
-                                    <li>Changing the name does not rename or move the Docker volume.</li>
+                                    <li>{{ __('Changing the name does not rename or move the Docker volume.') }}</li>
                                     <li>After the next restart or deployment, the resource uses the Docker volume <strong>{{ $pendingRename['to'] }}</strong>. If that volume does not exist, Docker creates it empty.</li>
                                     <li>Your data stays in <strong>{{ $pendingRename['from'] }}</strong>. Coolify does not copy it, and does not delete it when you delete this resource.</li>
-                                    <li>To keep your data, stop the resource and copy the data into the new volume before you start it again.</li>
+                                    <li>{{ __('To keep your data, stop the resource and copy the data into the new volume before you start it again.') }}</li>
                                 </ul>
                             </x-callout>
 

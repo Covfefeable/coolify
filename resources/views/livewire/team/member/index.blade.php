@@ -86,7 +86,7 @@
                                 ['value' => 'all', 'label' => 'All roles'],
                                 ['value' => 'owner', 'label' => __('Owner')],
                                 ['value' => 'admin', 'label' => __('Admin')],
-                                ['value' => 'member', 'label' => 'Member'],
+                                ['value' => 'member', 'label' => __('Member')],
                             ]" />
                     </div>
                     <div class="w-full sm:w-40 min-[901px]:hidden">
@@ -108,7 +108,7 @@
                     @if ($membersWithoutTwoFactorCount > 0)
                         <span class="text-warning-700 dark:text-warning">{{ $membersWithoutTwoFactorCount }} of {{ $members->count() }} {{ Str::plural('member', $members->count()) }} {{ $membersWithoutTwoFactorCount === 1 ? 'does' : 'do' }} not have two-factor authentication enabled.</span>
                     @else
-                        <span class="text-neutral-500 dark:text-fg-dim">All members have two-factor authentication enabled.</span>
+                        <span class="text-neutral-500 dark:text-fg-dim">{{ __('All members have two-factor authentication enabled.') }}</span>
                     @endif
                 </div>
             @endcan
@@ -133,7 +133,7 @@
 
             <div x-cloak x-show="filteredMembers.length === 0">
                 <x-empty size="sm" title="{{ __('No matching members') }}"
-                    description="Try a different name, email address, or role." />
+                    description="{{ __('Try a different name, email address, or role.') }}" />
             </div>
 
             <x-client-pagination total="filteredMembers.length" x-cloak x-show="filteredMembers.length > 0"

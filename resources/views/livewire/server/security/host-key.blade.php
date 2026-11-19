@@ -9,7 +9,7 @@
         </x-callout>
     @endif
 
-    <x-application.settings-section id="server-host-key-section" title="SSH host key"
+    <x-application.settings-section id="server-host-key-section" title="{{ __('SSH host key') }}"
         helper="Coolify trusts the first host key of the server. Later, a different key is reported (warn mode, the default) or refused (enforce mode). The setting below sets enforce mode for this server only.<br><br>An instance admin sets the mode for all servers with <code>SSH_HOST_KEY_CHECKING=enforce</code> (or <code>warn</code>, <code>off</code>) in <code>/data/coolify/source/.env</code>, then restarts Coolify.">
         <x-slot:badges>
             @if (count($pendingFingerprints) > 0)
@@ -27,7 +27,7 @@
                 <div class="flex flex-wrap items-center gap-2"
                     wire:key="host-key-actions-{{ $server->settings->ssh_host_key_pending ? hash('sha256', $server->settings->ssh_host_key_pending) : 'none' }}-{{ $server->settings->is_ssh_host_key_check_disabled ? 'off' : 'on' }}">
                     @if (count($pendingFingerprints) > 0)
-                        <x-modal-confirmation title="Trust the new host key?" temporaryDisableTwoStepConfirmation
+                        <x-modal-confirmation title="{{ __('Trust the new host key?') }}" temporaryDisableTwoStepConfirmation
                             buttonTitle="{{ __('Trust new key') }}"
                             submitAction="trustPendingKey('{{ hash('sha256', $server->settings->ssh_host_key_pending) }}')"
                             :actions="[
@@ -37,7 +37,7 @@
                             shortConfirmationLabel="Server Name" step3ButtonText="Trust New Key"
                             isHighlightedButton />
                     @endif
-                    <x-modal-confirmation title="Reset the host key?" temporaryDisableTwoStepConfirmation
+                    <x-modal-confirmation title="{{ __('Reset the host key?') }}" temporaryDisableTwoStepConfirmation
                         buttonTitle="{{ __('Reset') }}" submitAction="resetHostKey" :actions="[
                             'Coolify removes the trusted key and the new key.',
                             'Coolify trusts the key that the server sends on the next connection.',
@@ -62,7 +62,7 @@
 
         <div class="flex flex-col gap-3 text-sm">
             @if ($mode === 'off')
-                <x-callout type="warning" title="The host key check is off">
+                <x-callout type="warning" title="{{ __('The host key check is off') }}">
                     {{ $server->settings->is_ssh_host_key_check_disabled ? 'Disabled for this server.' : 'Disabled for this instance (SSH_HOST_KEY_CHECKING=off).' }}
                 </x-callout>
             @endif
@@ -76,7 +76,7 @@
                     @forelse ($fingerprints as $fingerprint)
                         <code class="block break-all text-xs">{{ $fingerprint }}</code>
                     @empty
-                        <p class="font-medium text-neutral-950 dark:text-fg">No key yet</p>
+                        <p class="font-medium text-neutral-950 dark:text-fg">{{ __('No key yet') }}</p>
                     @endforelse
                     <p class="mt-1 text-xs text-neutral-500 dark:text-fg-dim">
                         @if (count($fingerprints) > 0)
@@ -102,7 +102,7 @@
             {{-- The choice only changes something when the instance warns; an instance "enforce" or "off" decides alone. --}}
             @if ($instanceMode !== 'enforce' && $instanceMode !== 'off' && ! $server->settings->is_ssh_host_key_check_disabled)
                 <div class="max-w-sm">
-                    <x-forms.listbox id="checkMode" label="When the host key changes" onChange="setHostKeyCheckMode"
+                    <x-forms.listbox id="checkMode" label="{{ __('When the host key changes') }}" onChange="setHostKeyCheckMode"
                         :onChangeArgs="[]" canGate="update" :canResource="$server"
                         helper="Warn: Coolify connects and reports the new key. Enforce: Coolify refuses to connect until you trust or reset the new key, so deployments, backups, and checks on this server stop. A reinstall of the server also changes the key."
                         :options="[

@@ -202,14 +202,14 @@
                                                 <td class="px-3 py-2.5">
                                                     @include('livewire.project.shared.partials.dns-copy-cell', [
                                                         'text' => $record['name'],
-                                                        'label' => 'Copy name',
+                                                        'label' => __('Copy name'),
                                                         'break' => true,
                                                     ])
                                                 </td>
                                                 <td class="px-3 py-2.5">
                                                     @include('livewire.project.shared.partials.dns-copy-cell', [
                                                         'text' => $record['value'],
-                                                        'label' => 'Copy value',
+                                                        'label' => __('Copy value'),
                                                         'break' => true,
                                                     ])
                                                 </td>

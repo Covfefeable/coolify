@@ -6,6 +6,6 @@
         <x-error-page
             code="402"
             title="{{ __('Payment required') }}"
-            description="A valid subscription or payment is required to continue." />
+            description="{{ __('A valid subscription or payment is required to continue.') }}" />
     </body>
 @endsection

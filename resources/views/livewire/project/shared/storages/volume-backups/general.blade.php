@@ -2,7 +2,7 @@
     <x-unsaved-bar action="save" />
 
     <x-application.settings-section title="{{ __('Backup schedule') }}"
-        description="Choose when this storage is archived and how long each backup may run.">
+        description="{{ __('Choose when this storage is archived and how long each backup may run.') }}">
         <x-slot:actions>
             {{-- Below xl the header bar is hidden, so keep the buttons here. --}}
             <div @class(['flex items-center gap-2', 'xl:hidden' => $actionsInHeader && $backup])>
@@ -26,14 +26,14 @@
             </span>
         </div>
 
-        <x-callout type="warning" title="File-level consistency">
+        <x-callout type="warning" title="{{ __('File-level consistency') }}">
             Archives created while the application writes to this storage can be inconsistent. Stopping containers
             during the archive is safer, but briefly interrupts the application.
             <div class="mt-4">
-                <x-forms.listbox id="stopDuringBackup" label="Archive behavior" live onChange="instantSave"
+                <x-forms.listbox id="stopDuringBackup" label="{{ __('Archive behavior') }}" live onChange="instantSave"
                     :options="[
                         ['value' => false, 'label' => 'Keep containers running'],
-                        ['value' => true, 'label' => 'Stop containers during archive'],
+                        ['value' => true, 'label' => __('Stop containers during archive')],
                     ]" />
             </div>
         </x-callout>

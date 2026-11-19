@@ -16,7 +16,7 @@
                 {{ __('Refresh') }}
             </button>
             @if ($server->isFunctional())
-                <x-modal-input buttonTitle="{{ __('New') }}" title="Log in to a registry"
+                <x-modal-input buttonTitle="{{ __('New') }}" title="{{ __('Log in to a registry') }}"
                     subtitle="Runs docker login on {{ $server->name }}.">
                     <livewire:server.docker-registries.login :server="$server"
                         :key="'registry-login-'.$server->uuid" />
@@ -39,7 +39,7 @@
         <div class="overflow-x-auto">
             <div
                 class="grid min-w-[760px] grid-cols-[minmax(0,1fr)_9rem_minmax(0,1fr)_4.5rem] border-b border-neutral-200 px-4 py-2 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:text-fg-faint">
-                <div>Registry</div>
+                <div>{{ __('Registry') }}</div>
                 <div>{{ __('Status') }}</div>
                 <div>Used by</div>
                 <div class="text-right">{{ __('Actions') }}</div>
@@ -57,15 +57,15 @@
                         <div class="truncate font-mono">{{ $row['registry'] }}</div>
                         <div>
                             @if ($row['logged_in'] && ($loginChecks[$row['registry']]['ok'] ?? true) === false)
-                                <x-status-badge type="error" label="Login failed"
+                                <x-status-badge type="error" label="{{ __('Login failed') }}"
                                     :title="$loginChecks[$row['registry']]['message']" />
                             @elseif ($row['logged_in'])
                                 <x-status-badge type="success"
                                     :label="$row['source'] === 'credHelpers' ? 'Credential helper' : 'Logged in'" />
                             @elseif ($error)
-                                <x-status-badge label="Unknown" />
+                                <x-status-badge label="{{ __('Unknown') }}" />
                             @else
-                                <x-status-badge :type="$row['registry'] === 'docker.io' ? 'neutral' : 'warning'" label="Not logged in"
+                                <x-status-badge :type="$row['registry'] === 'docker.io' ? 'neutral' : 'warning'" label="{{ __('Not logged in') }}"
                                     :title="$row['registry'] === 'docker.io' ? 'Public Docker Hub images do not need a login.' : null" />
                             @endif
                         </div>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="flex justify-end">
                             @if ($row['logged_in'] && $row['source'] === 'auths')
-                                <x-table.row-actions label="Registry actions">
+                                <x-table.row-actions label="{{ __('Registry actions') }}">
                                     <x-table.row-action wire:click="testLogin({{ \Illuminate\Support\Js::from($row['registry']) }})" wire:loading.attr="disabled"
                                         wire:target="testLogin" title="{{ __('Run docker login with the saved credentials') }}">{{ __('Test') }}</x-table.row-action>
                                     <x-modal-input title="Edit login for {{ $row['registry'] }}"

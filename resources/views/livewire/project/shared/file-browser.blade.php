@@ -156,7 +156,7 @@
             </x-empty>
         @elseif ($shellUnavailable)
             <x-empty title="{{ __('File browser is not available') }}"
-                description="Coolify cannot open the files of this container. {{ $helperError }}">
+                description="{{ __('Coolify cannot open the files of this container.') }} {{ $helperError }}">
                 <x-slot:icon>
                     <x-reicon name="folder" class="size-8" />
                 </x-slot:icon>

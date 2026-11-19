@@ -66,7 +66,7 @@
                     <x-unsaved-bar action="submit"
                         targets="githubAppId,labels,maxRunners,dockerMode,runnerImage,cpuLimit,memoryLimit,capacityWaitTimeout,idleTimeout,jobTimeout,isDedicated,allowPullRequests" />
                     <x-application.settings-section id="github-runners-section" title="{{ __('GitHub Actions runners') }}"
-                        helper="Each workflow job runs in a new container that is deleted after the job. Use runs-on: [self-hosted, <your label>] in the workflow.">
+                        helper="{{ __('Each workflow job runs in a new container that is deleted after the job. Use runs-on: [self-hosted, <your label>] in the workflow.') }}">
                         <x-slot:actions>
                             <x-beta-badge />
                             @can('update', $server)
@@ -129,7 +129,7 @@
                                     ->map(fn($app) => ['value' => $app->id, 'label' => $app->name . ' (' . $app->organization . ')'])
                                     ->values()
                                     ->all()"
-                                helper="Organization GitHub App that receives the Workflow job webhook events." />
+                                helper="{{ __('Organization GitHub App that receives the Workflow job webhook events.') }}" />
                             <x-forms.input id="labels" label="{{ __('Labels') }}" required canGate="update" :canResource="$server"
                                 placeholder="coolify"
                                 helper="Comma-separated custom labels. Coolify also registers self-hosted and linux. Jobs must ask for at least one custom label." />
@@ -139,27 +139,27 @@
                                         ['value' => false, 'label' => 'Also build applications'],
                                         ['value' => true, 'label' => __('Dedicated to runners')],
                                     ]"
-                                    helper="Dedicated servers are not used for application builds while runners are enabled." />
+                                    helper="{{ __('Dedicated servers are not used for application builds while runners are enabled.') }}" />
                             @endif
                             <x-forms.listbox id="allowPullRequests" label="{{ __('Pull request jobs') }}" canGate="update"
                                 :canResource="$server" :options="[
                                     ['value' => false, 'label' => 'Refuse pull request jobs'],
                                     ['value' => true, 'label' => __('Run pull request jobs')],
                                 ]"
-                                helper="Runners fail jobs that a pull request started (pull_request, pull_request_target, and review events) before any step runs. Push, schedule, and manual jobs always run. Applies to runners that start after you save." />
+                                helper="{{ __('Runners fail jobs that a pull request started (pull_request, pull_request_target, and review events) before any step runs. Push, schedule, and manual jobs always run. Applies to runners that start after you save.') }}" />
                         </div>
                     </x-application.settings-section>
 
                     <x-application.settings-section id="github-runners-resources-section" title="{{ __('Resources') }}"
-                        helper="Limits apply to the runner container and to its Docker sidecar.">
+                        helper="{{ __('Limits apply to the runner container and to its Docker sidecar.') }}">
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input id="maxRunners" type="number" min="1" max="32" label="{{ __('Parallel runners') }}"
                                 required canGate="update" :canResource="$server"
-                                helper="Jobs wait in the queue when all runners are busy." />
+                                helper="{{ __('Jobs wait in the queue when all runners are busy.') }}" />
                             <x-forms.input id="cpuLimit" label="{{ __('CPU limit') }}" placeholder="2" canGate="update"
-                                :canResource="$server" helper="Number of CPUs for each runner. Empty means no limit." />
+                                :canResource="$server" helper="{{ __('Number of CPUs for each runner. Empty means no limit.') }}" />
                             <x-forms.input id="memoryLimit" label="{{ __('Memory limit') }}" placeholder="4g" canGate="update"
-                                :canResource="$server" helper="Memory for each runner, for example 4g. Empty means no limit." />
+                                :canResource="$server" helper="{{ __('Memory for each runner, for example 4g. Empty means no limit.') }}" />
                             <x-forms.listbox id="dockerMode" label="{{ __('Docker in jobs') }}" canGate="update"
                                 :canResource="$server" :options="[
                                     ['value' => 'dind', 'label' => 'Docker (privileged, full host access)'],
@@ -169,7 +169,7 @@
                                 helper="Docker: each job gets a private Docker daemon. The daemon runs privileged, so a job can get root access to this server. Use it only for trusted repositories.<br><br>Isolated Docker: each job gets a private Docker daemon in an unprivileged Sysbox container. Everything that needs Docker works, and root in the job has no rights on this server. Needs Sysbox on the server.<br><br>No Docker: jobs run in an unprivileged container. JavaScript actions, composite actions, and shell steps work. Docker container actions, services, container jobs, and docker commands fail.<br><br>The host Docker socket is never shared." />
                             <x-forms.input id="runnerImage" label="{{ __('Runner image') }}" canGate="update" :canResource="$server"
                                 :placeholder="config('constants.github_runner.image')"
-                                helper="Empty uses the latest official runner image, which Coolify pulls for every runner. Set a tag, for example ghcr.io/actions/actions-runner:2.337.0, to pin a version, or use a custom image based on the official one to add tools. GitHub stops sending jobs to runners that are more than 30 days old." />
+                                helper="{{ __('Empty uses the latest official runner image, which Coolify pulls for every runner. Set a tag, for example ghcr.io/actions/actions-runner:2.337.0, to pin a version, or use a custom image based on the official one to add tools. GitHub stops sending jobs to runners that are more than 30 days old.') }}" />
                         </div>
                         <div x-cloak x-show="$wire.dockerMode === 'sysbox'" class="mt-4">
                             <livewire:server.sysbox-status :server="$server" />
@@ -177,7 +177,7 @@
                     </x-application.settings-section>
 
                     <x-application.settings-section id="github-runners-timeouts-section" title="{{ __('Timeouts') }}"
-                        helper="All values are in minutes.">
+                        helper="{{ __('All values are in minutes.') }}">
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input id="capacityWaitTimeout" type="number" min="1" max="1440"
                                 label="{{ __('Queue wait') }}" required canGate="update" :canResource="$server"
@@ -203,7 +203,7 @@
 
             @if ($server->canBuildApplications() && $this->config?->is_enabled)
                 <x-application.settings-section id="github-runners-executions-section" title="{{ __('Recent runners') }}"
-                    helper="Queued jobs, active runners, and their results. The list updates every 10 seconds." flush>
+                    helper="{{ __('Queued jobs, active runners, and their results. The list updates every 10 seconds.') }}" flush>
                     <livewire:server.github-runner-executions :server="$server" />
                 </x-application.settings-section>
             @endif

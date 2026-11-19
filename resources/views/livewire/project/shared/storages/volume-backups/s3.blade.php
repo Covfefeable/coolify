@@ -1,6 +1,6 @@
 @if ($availableS3Storages->isEmpty())
     <x-application.settings-section title="{{ __('S3 storage') }}"
-        description="Send volume backup archives to a validated object storage destination." flush>
+        description="{{ __('Send volume backup archives to a validated object storage destination.') }}" flush>
         <x-empty title="{{ __('No validated S3 storage') }}"
             description="{{ __('Add and validate an S3 storage destination before enabling remote backups.') }}"
             icon-name="storages">
@@ -11,7 +11,7 @@
     </x-application.settings-section>
 @else
     <x-application.settings-section title="{{ __('S3 storage') }}"
-        description="Choose where remote copies are stored and whether local archives are retained.">
+        description="{{ __('Choose where remote copies are stored and whether local archives are retained.') }}">
         <x-slot:actions>
             @if (! $saveToS3)
                 <x-forms.button type="button" wire:click="toggleS3" wire:loading.attr="disabled"

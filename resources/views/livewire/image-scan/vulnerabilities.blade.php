@@ -19,8 +19,8 @@
             @endif
         </x-empty>
     @elseif ($offState === 'application')
-        <x-empty title="Image scanning is off for this app."
-            description="Turn on Scan this app in the settings below." icon-name="shield-alert" />
+        <x-empty title="{{ __('Image scanning is off for this app.') }}"
+            description="{{ __('Turn on Scan this app in the settings below.') }}" icon-name="shield-alert" />
     @else
         @php
             $isScanning = $progress !== null;
@@ -52,7 +52,7 @@
 
             <div class="flex flex-col gap-4">
                 @foreach ($errorMessages as $error)
-                    <x-callout type="danger" title="The last scan could not run">
+                    <x-callout type="danger" title="{{ __('The last scan could not run') }}">
                         {{ $error['message'] }}
                         <x-image-scan.error-log :detail="$error['detail']" />
                     </x-callout>
@@ -125,7 +125,7 @@
                                     <p class="-mt-1 truncate px-3 pb-2 text-[11px] text-neutral-500 sm:pl-8.5 dark:text-fg-faint" title="{{ $versionNote['text'] }}">
                                         {{ $versionNote['text'] }}
                                         @if ($versionNote['link'] !== null)
-                                            <a href="{{ $versionNote['link'] }}" class="underline underline-offset-4 hover:text-neutral-950 dark:hover:text-fg" {{ wireNavigate() }}>Registry logins</a>
+                                            <a href="{{ $versionNote['link'] }}" class="underline underline-offset-4 hover:text-neutral-950 dark:hover:text-fg" {{ wireNavigate() }}>{{ __('Registry logins') }}</a>
                                         @endif
                                     </p>
                                 @endforeach
@@ -160,7 +160,7 @@
 
                 @if ($truncated)
                     <div class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
-                        <x-callout type="info" title="Too many results">Only part of the results is shown, with the problems that attackers are using first.</x-callout>
+                        <x-callout type="info" title="Too many results">{{ __('Only part of the results is shown, with the problems that attackers are using first.') }}</x-callout>
                     </div>
                 @endif
 
@@ -172,7 +172,7 @@
 
                     @unless ($showIgnored)
                         <div class="inline-flex max-w-full flex-wrap items-center gap-0.5 rounded-lg bg-neutral-100 p-1 dark:bg-white/[0.04]"
-                            role="group" aria-label="Fix state">
+                            role="group" aria-label="{{ __('Fix state') }}">
                             @foreach ($fixStates as $value => $label)
                                 <button type="button" wire:click="setFixState('{{ $value }}')"
                                     aria-pressed="{{ $fixState === $value ? 'true' : 'false' }}"
@@ -207,7 +207,7 @@
 
                     @unless ($showIgnored)
                         <div class="inline-flex items-center gap-0.5 rounded-lg bg-neutral-100 p-1 dark:bg-white/[0.04]"
-                            role="group" aria-label="Group results">
+                            role="group" aria-label="{{ __('Group results') }}">
                             @foreach (['package' => 'By package', 'cve' => 'By CVE'] as $value => $label)
                                 <button type="button" wire:click="$set('view', '{{ $value }}')"
                                     aria-pressed="{{ $view === $value ? 'true' : 'false' }}"
@@ -219,7 +219,7 @@
 
                 @if ($showIgnored)
                     <div class="flex items-center justify-between gap-2 border-b border-neutral-200 px-4 py-2 dark:border-white/[0.08]">
-                        <span class="text-[12px] font-medium text-neutral-700 dark:text-fg">Ignored</span>
+                        <span class="text-[12px] font-medium text-neutral-700 dark:text-fg">{{ __('Ignored') }}</span>
                         <button type="button" class="text-[12px] font-medium text-coollabs hover:underline dark:text-brand-light"
                             wire:click="$set('showIgnored', false)">{{ __('Back to the results') }}</button>
                     </div>
@@ -230,7 +230,7 @@
 
                     @if ($items->isEmpty())
                         @if (! $showIgnored && ! $hasFilters && $fixState === 'fixed')
-                            <x-empty size="sm" title="No finding has a fixed version.">
+                            <x-empty size="sm" title="{{ __('No finding has a fixed version.') }}">
                                 @if ($stateCounts['no_fix'] > 0)
                                     <x-slot:actions>
                                         <button type="button" class="button normal-case!" wire:click="setFixState('no_fix')">
@@ -241,7 +241,7 @@
                             </x-empty>
                         @elseif ($hasFilters)
                             <x-empty size="sm" title="{{ __('No matching findings') }}"
-                                description="Try another search, or reset the filters." />
+                                description="{{ __('Try another search, or reset the filters.') }}" />
                         @else
                             <x-empty size="sm" :title="$showIgnored ? 'No ignored findings.' : 'No findings in this group.'" />
                         @endif
@@ -254,7 +254,7 @@
                                 @endif
                                 <span class="image-scan-secondary">{{ __('Version') }}</span>
                                 <span class="image-scan-severity-cell">{{ __('Severity') }}</span>
-                                <span class="image-scan-secondary">Findings</span>
+                                <span class="image-scan-secondary">{{ __('Findings') }}</span>
                                 <span class="sr-only">{{ __('Actions') }}</span>
                             </div>
                             @foreach ($items as $group)
@@ -314,7 +314,7 @@
                     @else
                         <div class="data-table">
                             <div @class(['data-table-header image-scan-findings-grid', 'has-image' => $showsImage])>
-                                <span>Finding</span>
+                                <span>{{ __('Finding') }}</span>
                                 <span class="image-scan-secondary">{{ __('Package') }}</span>
                                 @if ($showsImage)
                                     <span class="image-scan-secondary">{{ __('Image') }}</span>

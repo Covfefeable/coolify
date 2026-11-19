@@ -33,7 +33,7 @@
             @unless ($isValueHidden)
                 <x-copy-button resolve="$wire.copyValue()" label="{{ __('Copy value') }}" />
             @endunless
-            <x-modal-input title="Environment variable details" :closeOutside="false">
+            <x-modal-input title="{{ __('Environment variable details') }}" :closeOutside="false">
                 <x-slot:content>
                     <button type="button" data-env-settings-trigger class="icon-button shrink-0"
                         title="{{ __('View environment variable') }}" aria-label="{{ __('View environment variable') }}">

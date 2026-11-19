@@ -137,7 +137,7 @@
                                 title="{{ ($row['has_port_override'] ?? false) ? 'Custom internal port for this domain' : 'Inherited from the application or Compose service port' }}">
                                 <span class="service-domain-detail-label">{{ __('Internal port') }}</span>
                                 @if (filled($row['internal_port'] ?? null))
-                                    <span aria-label="Internal port {{ $row['internal_port'] }}">{{ $row['internal_port'] }}</span>
+                                    <span aria-label="{{ __('Internal port :port', ['port' => $row['internal_port']]) }}">{{ $row['internal_port'] }}</span>
                                 @else
                                     <span role="img" aria-label="{{ __('No internal port') }}" title="{{ __('No internal port. Set Ports Exposes or a per-domain internal port so the proxy can route this domain.') }}" class="text-red-500 dark:text-red-400">
                                         <x-reicon name="alert-triangle" class="size-4" />
@@ -283,7 +283,7 @@
                         </header>
                         <div class="application-settings-section-body">
                             <x-callout type="warning" title="{{ __('Unrecognized internal port') }}" class="mb-4">
-                                Port <strong>{{ $unrecognizedPort }}</strong> is not listed in Ports Exposes
+                                {{ __('Port') }} <strong>{{ $unrecognizedPort }}</strong> is not listed in Ports Exposes
                                 and is not used by any application domain. The proxy will still route to it,
                                 but the container may not be listening there.
                             </x-callout>

@@ -18,7 +18,7 @@
                             {{ __('Reload') }}
                         </x-forms.button>
                         @can('update', $server)
-                            <x-modal-input buttonTitle="{{ __('+ Add') }}" title="New Dynamic Configuration">
+                            <x-modal-input buttonTitle="{{ __('+ Add') }}" title="{{ __('New Dynamic Configuration') }}">
                                 <livewire:server.proxy.new-dynamic-configuration :server_id="$server->id" />
                             </x-modal-input>
                         @endcan
@@ -27,7 +27,7 @@
 
                 <div x-init="$wire.initLoadDynamicConfigurations" class="contents">
                     <x-skeleton.settings-sections wire:loading.flex wire:target="initLoadDynamicConfigurations"
-                        label="Loading dynamic configurations" />
+                        label="{{ __('Loading dynamic configurations') }}" />
 
                     @if ($contents?->isNotEmpty())
                         @foreach ($contents as $fileName => $value)
@@ -65,17 +65,17 @@
                         @endforeach
                     @else
                         <x-application.settings-section wire:loading.remove title="{{ __('Dynamic configurations') }}">
-                            <x-empty size="sm" title="No dynamic configurations"
-                                description="Add a configuration file to extend the proxy at runtime."
+                            <x-empty size="sm" title="{{ __('No dynamic configurations') }}"
+                                description="{{ __('Add a configuration file to extend the proxy at runtime.') }}"
                                 icon-name="file-content" />
                         </x-application.settings-section>
                     @endif
                 </div>
             @else
                 <x-application.settings-section title="{{ __('Dynamic configurations') }}"
-                    helper="Manage additional runtime proxy configuration.">
+                    helper="{{ __('Manage additional runtime proxy configuration.') }}">
                     <x-empty size="sm" title="{{ __('Server validation required') }}"
-                        description="Validate this server before loading proxy configuration."
+                        description="{{ __('Validate this server before loading proxy configuration.') }}"
                         icon-name="file-content" />
                 </x-application.settings-section>
             @endif

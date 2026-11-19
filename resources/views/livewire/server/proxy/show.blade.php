@@ -13,9 +13,9 @@
         @else
             <div class="application-settings-form w-full">
                 <x-application.settings-section title="{{ __('Proxy') }}"
-                    helper="Configure the reverse proxy for this server.">
+                    helper="{{ __('Configure the reverse proxy for this server.') }}">
                     <x-empty size="sm" title="{{ __('Server validation required') }}"
-                        description="Validate this server before configuring its proxy."
+                        description="{{ __('Validate this server before configuring its proxy.') }}"
                         icon-name="servers" />
                 </x-application.settings-section>
             </div>

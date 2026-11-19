@@ -9,7 +9,7 @@
         <x-server.sidebar :server="$server" activeMenu="resources" />
         <div class="application-settings-form min-w-0 w-full">
         <x-application.settings-section id="server-resources-section" title="{{ __('Resources') }}"
-            helper="Review Coolify-managed resources and other Docker containers running on this server."
+            helper="{{ __('Review Coolify-managed resources and other Docker containers running on this server.') }}"
             flush>
             <x-slot:actions>
                 <div class="inline-flex w-fit rounded-[10px] bg-neutral-100 p-1 dark:bg-white/[0.05]">

@@ -33,13 +33,13 @@
     <div class="application-settings-form flex w-full min-w-0 flex-col gap-6">
         @if (! $server->isFunctional())
             <x-empty size="sm" icon-name="shield-alert" title="Coolify cannot reach {{ $server->name }}."
-                description="Patching runs commands on the server. Validate the server first." />
+                description="{{ __('Patching runs commands on the server. Validate the server first.') }}" />
         @else
         <form wire:submit="submit">
             <x-unsaved-bar action="submit" />
 
-            <x-application.settings-section id="server-patching-overview-section" title="Server patching"
-                helper="Discover and apply operating system package updates.">
+            <x-application.settings-section id="server-patching-overview-section" title="{{ __('Server patching') }}"
+                helper="{{ __('Discover and apply operating system package updates.') }}">
                 <x-slot:badges>
                     @if ($checking)
                         <x-status-badge status="Checking…" type="neutral" spinning />
@@ -137,11 +137,11 @@
                     <div @class(['grid gap-4', 'lg:grid-cols-3' => $autoUpdatesSupported])>
                         <x-forms.input canGate="update" :canResource="$server" id="patchCheckFrequency"
                             label="{{ __('Check frequency') }}" placeholder="weekly (default, on Sunday)"
-                            helper="Cron expression or preset such as daily, weekly, or monthly. Leave empty for the default: weekly, at a fixed time on Sunday. Coolify notifies your team when updates are available and when a check starts to fail." />
+                            helper="{{ __('Cron expression or preset such as daily, weekly, or monthly. Leave empty for the default: weekly, at a fixed time on Sunday. Coolify notifies your team when updates are available and when a check starts to fail.') }}" />
                         @if ($autoUpdatesSupported)
                             <div class="w-full">
                             <div class="mb-1.5 flex h-4 w-full items-center gap-1.5">
-                                <label class="mb-0! flex items-center gap-1 text-sm font-medium leading-4">Automatic security updates</label>
+                                <label class="mb-0! flex items-center gap-1 text-sm font-medium leading-4">{{ __('Automatic security updates') }}</label>
                                 <x-helper helper="{{ $packageManager === 'apt' ? 'Uses unattended-upgrades for the security origins only.' : 'Uses dnf-automatic with upgrade_type = security.' }} Turning it off removes the Coolify configuration and keeps the operating system default." />
                             </div>
                             <div class="input flex items-center justify-between gap-2 pr-1!">
@@ -152,7 +152,7 @@
                                 @can('update', $server)
                                     <div class="flex shrink-0" wire:key="auto-security-updates-{{ $autoSecurityUpdates ? 'on' : 'off' }}">
                                         @if ($autoSecurityUpdates)
-                                            <x-modal-confirmation title="Turn off automatic security updates?"
+                                            <x-modal-confirmation title="{{ __('Turn off automatic security updates?') }}"
                                                 submitAction="toggleAutomaticSecurityUpdates"
                                                 warningMessage="Security fixes are then not installed automatically by Coolify."
                                                 temporaryDisableTwoStepConfirmation :confirmWithText="false"
@@ -169,7 +169,7 @@
                                                 </x-slot:trigger>
                                             </x-modal-confirmation>
                                         @else
-                                            <x-modal-confirmation title="Turn on automatic security updates?"
+                                            <x-modal-confirmation title="{{ __('Turn on automatic security updates?') }}"
                                                 warningMessage="Updates run without you. Your resources can stop for a short time during an update. You can turn this off at any time."
                                                 submitAction="toggleAutomaticSecurityUpdates"
                                                 temporaryDisableTwoStepConfirmation :confirmWithText="false"
@@ -193,17 +193,17 @@
                             </div>
                         </div>
                         <x-forms.input canGate="update" :canResource="$server" id="autoSecurityUpdatesTime"
-                                label="Maintenance window" placeholder="03:00"
-                                helper="Daily start time (24-hour HH:MM) in the time zone of the server. Updates that need a reboot are installed, but the server is not rebooted." />
+                                label="{{ __('Maintenance window') }}" placeholder="03:00"
+                                helper="{{ __('Daily start time (24-hour HH:MM) in the time zone of the server. Updates that need a reboot are installed, but the server is not rebooted.') }}" />
                         @endif
                     </div>
 
-                    <x-callout type="info" title="Supported package managers">
+                    <x-callout type="info" title="{{ __('Supported package managers') }}">
                         Automated package discovery currently supports apk, apt, dnf, pacman, and zypper. Automatic
                         security updates are available for apt and dnf (Debian, Ubuntu, and RHEL family)@if ($packageManager && ! $autoUpdatesSupported); this server uses {{ $packageManager }}@endif.
                         Status notifications can be managed from
                         <a class="font-medium underline" href="{{ route('notifications.email') }}"
-                            {{ wireNavigate() }}>notification settings</a>.
+                            {{ wireNavigate() }}>{{ __('notification settings') }}</a>.
                     </x-callout>
                 </div>
             </x-application.settings-section>
@@ -211,8 +211,8 @@
 
         @if ($checking)
             <div wire:poll.10s="loadResult">
-                <x-application.settings-section title="Checking for updates"
-                    helper="Package discovery runs in the background and can take several minutes.">
+                <x-application.settings-section title="{{ __('Checking for updates') }}"
+                    helper="{{ __('Package discovery runs in the background and can take several minutes.') }}">
                     <div class="flex items-center gap-3 py-4 text-sm text-neutral-600 dark:text-fg-dim">
                         <x-loading />
                         Inspecting installed packages…
@@ -222,7 +222,7 @@
         @elseif ($error)
             <x-application.settings-section id="server-package-updates-section" title="{{ __('Package updates') }}"
                 helper="{{ __('Available operating system updates for this server.') }}">
-                <x-callout type="danger" title="Could not check for updates">
+                <x-callout type="danger" title="{{ __('Could not check for updates') }}">
                     {{ $error }}
                 </x-callout>
             </x-application.settings-section>
@@ -232,8 +232,8 @@
                 <x-slot:badges>
                     <x-status-badge status="Up to date" type="success" />
                 </x-slot:badges>
-                <x-empty size="sm" title="Server is up to date"
-                    description="No package updates are currently available." icon-name="check-circle" />
+                <x-empty size="sm" title="{{ __('Server is up to date') }}"
+                    description="{{ __('No package updates are currently available.') }}" icon-name="check-circle" />
             </x-application.settings-section>
         @elseif ($totalUpdates > 0)
             <x-application.settings-section id="server-package-updates-section" title="{{ __('Package updates') }}"
@@ -255,7 +255,7 @@
                             <x-forms.button type="button" wire:click="$set('selectedPackages', [])">{{ __('Clear selection') }}</x-forms.button>
                             {{-- The dialog has wire:ignore; a new key renders it again when the selection changes. --}}
                             <div wire:key="update-selected-{{ md5(implode(',', $selectedPackages)) }}">
-                            <x-modal-confirmation title="Update selected packages?"
+                            <x-modal-confirmation title="{{ __('Update selected packages?') }}"
                                 buttonTitle="Update {{ count($selectedPackages) }} selected" isHighlightedButton
                                 submitAction="updateSelectedPackages" :actions="[
                                     'Coolify updates ' . implode(', ', $selectedPackages) . '.',
@@ -267,7 +267,7 @@
                                 :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Update') }}" />
                             </div>
                         @else
-                        <x-modal-confirmation title="Confirm package update?" buttonTitle="{{ __('Update all packages') }}"
+                        <x-modal-confirmation title="{{ __('Confirm package update?') }}" buttonTitle="{{ __('Update all packages') }}"
                             isHighlightedButton submitAction="updateAllPackages" :actions="[
                                 'All packages will be updated to their latest available versions.',
                                 $riskyUpdates > 0
@@ -284,7 +284,7 @@
 
                 @if ($fullUpgradeOnly)
                     <div class="px-4 pt-4">
-                        <x-callout type="info" title="Full system upgrade only">
+                        <x-callout type="info" title="{{ __('Full system upgrade only') }}">
                             Arch Linux does not support partial upgrades, so packages cannot be updated one by one.
                         </x-callout>
                     </div>
@@ -292,8 +292,8 @@
 
                 @if ($shownUpdates->isEmpty())
                     <div class="p-6">
-                        <x-empty size="sm" title="No matching updates"
-                            description="Try another package name, or clear the search." icon-name="search" />
+                        <x-empty size="sm" title="{{ __('No matching updates') }}"
+                            description="{{ __('Try another package name, or clear the search.') }}" icon-name="search" />
                     </div>
                 @else
                 <div class="data-table">
@@ -304,12 +304,12 @@
                         <span class="flex items-center">
                             @if ($canSelect)
                                 <input type="checkbox" wire:click="toggleAllPackages" @checked($allMatchingSelected)
-                                    aria-label="Select all packages" wire:loading.attr="disabled"
+                                    aria-label="{{ __('Select all packages') }}" wire:loading.attr="disabled"
                                     class="size-4 cursor-pointer rounded-sm border-neutral-300 text-accent focus:ring-accent dark:border-white/20 dark:bg-transparent" />
                             @endif
                         </span>
                         <span>{{ __('Package') }}</span>
-                        <span>New version</span>
+                        <span>{{ __('New version') }}</span>
                     </div>
                     @foreach ($shownUpdates as $update)
                         <div wire:key="package-update-{{ data_get($update, 'package') }}-{{ data_get($update, 'architecture') }}"
@@ -363,8 +363,8 @@
         @endif
 
         @if (! $checking && ! $error && count($heldUpdates) > 0)
-            <x-application.settings-section id="server-held-updates-section" title="Held back updates"
-                helper="The package manager does not install these updates. Phased rollout: Ubuntu releases the update to a part of all servers at a time, and this server gets it in a later phase. Held: a package hold (apt-mark hold) or a version pin (/etc/apk/world) on the server blocks the update."
+            <x-application.settings-section id="server-held-updates-section" title="{{ __('Held back updates') }}"
+                helper="{{ __('The package manager does not install these updates. Phased rollout: Ubuntu releases the update to a part of all servers at a time, and this server gets it in a later phase. Held: a package hold (apt-mark hold) or a version pin (/etc/apk/world) on the server blocks the update.') }}"
                 flush>
                 <x-slot:badges>
                     <x-status-badge :status="count($heldUpdates) . ' held'" type="warning" />
@@ -372,7 +372,7 @@
                 <div class="data-table">
                     <div class="data-table-header held-updates-table-grid">
                         <span>{{ __('Package') }}</span>
-                        <span>New version</span>
+                        <span>{{ __('New version') }}</span>
                         <span class="text-right">{{ __('Reason') }}</span>
                     </div>
                     @foreach ($heldUpdates as $update)

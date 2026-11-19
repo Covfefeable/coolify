@@ -11,7 +11,7 @@
 
         <div class="application-settings-form w-full min-w-0">
             <x-application.settings-section id="server-docker-images-section" title="{{ __('Images') }}"
-                helper="Docker images stored on this server. Images that no container uses can be deleted here."
+                helper="{{ __('Docker images stored on this server. Images that no container uses can be deleted here.') }}"
                 flush>
                 @if ($usage)
                     <x-slot:badges>

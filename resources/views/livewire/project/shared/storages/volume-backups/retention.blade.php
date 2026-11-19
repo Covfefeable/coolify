@@ -1,5 +1,5 @@
 <x-application.settings-section title="{{ __('Retention') }}"
-    description="The first reached limit removes the oldest archive. Use 0 for unlimited retention.">
+    description="{{ __('The first reached limit removes the oldest archive. Use 0 for unlimited retention.') }}">
     <div>
         <h3 class="mb-3 text-sm font-semibold text-black dark:text-fg">{{ __('Local backups') }}</h3>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

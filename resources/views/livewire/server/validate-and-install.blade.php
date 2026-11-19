@@ -86,7 +86,7 @@
         <div data-validation-checkpoints
             class="shrink-0 overflow-hidden rounded-[10px] border border-neutral-200 dark:border-white/[0.08]">
             <div class="border-b border-neutral-200 px-4 py-2.5 dark:border-white/[0.08]">
-                <h3 class="text-[13px] font-medium text-neutral-600 dark:text-fg-dim">Validation checkpoints</h3>
+                <h3 class="text-[13px] font-medium text-neutral-600 dark:text-fg-dim">{{ __('Validation checkpoints') }}</h3>
             </div>
             <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
                 @foreach ($checkpoints as $checkpoint)

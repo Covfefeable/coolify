@@ -154,7 +154,7 @@
     @can('update', $resource)
         <x-application.settings-section id="clone-resource-section" title="{{ __('Clone resource') }}"
             helper="Create a copy of this resource. Choose where it runs and where it belongs. The current values are selected by default.">
-            <x-callout type="info" title="What is copied">
+            <x-callout type="info" title="{{ __('What is copied') }}">
                 Cloning copies settings, environment variables, and resource configuration. Stored files,
                 database records, and other persistent data are copied only when you select Clone volume data.
             </x-callout>
@@ -164,7 +164,7 @@
                     x-model="selectedCloneServer" x-effect="options = cloneServerOptions"
                     placeholder="{{ __('Choose a server…') }}" />
 
-                <x-forms.listbox id="clone-resource-destination" label="Network destination" :wire="false"
+                <x-forms.listbox id="clone-resource-destination" label="{{ __('Network destination') }}" :wire="false"
                     x-model="selectedCloneDestination" x-effect="options = cloneDestinationOptions"
                     x-bind:disabled="selectedCloneServer === null || selectedCloneServer === ''"
                     placeholder="{{ __('Choose a destination…') }}"
@@ -181,7 +181,7 @@
             </div>
 
             <div class="mt-4 flex">
-                <x-forms.checkbox id="cloneVolumeData" live label="Clone volume data"
+                <x-forms.checkbox id="cloneVolumeData" live label="{{ __('Clone volume data') }}"
                     helper="Copies the data of the persistent volumes to the clone. A running source resource is stopped while the data is copied and started again afterwards." />
             </div>
 
@@ -191,7 +191,7 @@
                     <p class="text-[13px] text-neutral-500 dark:text-fg-dim">
                         A running resource is stopped while its volume data is copied.
                     </p>
-                    <x-modal-confirmation title="Clone this resource with its volume data?" submitAction="clone-resource-confirmed"
+                    <x-modal-confirmation title="{{ __('Clone this resource with its volume data?') }}" submitAction="clone-resource-confirmed"
                         dispatchAction :confirmWithText="false" :confirmWithPassword="false"
                         step2ButtonText="{{ __('Clone resource') }}"
                         warningMessage="A running resource is unavailable while its volume data is copied."
@@ -219,24 +219,24 @@
         </x-application.settings-section>
 
         @if (isDev())
-            <x-application.settings-section id="migrate-destination-section" title="Migrate to another server"
+            <x-application.settings-section id="migrate-destination-section" title="{{ __('Migrate to another server') }}"
                 helper="Move this resource to a different validated and reachable server. The resource is stopped and persistent volumes can be transferred.">
                 <x-slot:actions>
                     <x-status-badge status="Dev" type="warning" />
                 </x-slot:actions>
-                <x-callout type="warning" title="Downtime">
+                <x-callout type="warning" title="{{ __('Downtime') }}">
                     Migration stops the resource on the source server. After volume transfer finishes, redeploy on
                     the target server. Source volumes are left in place for safety — clean them up manually when you
                     confirm the migration succeeded. Only other servers that are validated and reachable are listed.
                 </x-callout>
 
                 <div class="mt-4 grid gap-4 md:grid-cols-2">
-                    <x-forms.listbox id="migrate-resource-server" label="Target server" :wire="false"
+                    <x-forms.listbox id="migrate-resource-server" label="{{ __('Target server') }}" :wire="false"
                         x-model="selectedMigrateServer" x-effect="options = migrateServerOptions"
                         placeholder="{{ __('Choose a server…') }}"
                         emptyText="{{ __('No other validated and reachable servers are available.') }}" />
 
-                    <x-forms.listbox id="migrate-resource-destination" label="Network destination" :wire="false"
+                    <x-forms.listbox id="migrate-resource-destination" label="{{ __('Network destination') }}" :wire="false"
                         x-model="selectedMigrateDestination" x-effect="options = migrateDestinationOptions"
                         x-bind:disabled="selectedMigrateServer === null || selectedMigrateServer === ''"
                         placeholder="{{ __('Choose a destination…') }}"
@@ -244,7 +244,7 @@
                 </div>
 
                 <div x-show="selectedMigrateDestination" x-cloak class="mt-4 flex">
-                    <x-forms.checkbox id="migrateVolumeData" live label="Migrate persistent volume data"
+                    <x-forms.checkbox id="migrateVolumeData" live label="{{ __('Migrate persistent volume data') }}"
                         helper="Named Docker volumes and bind-mount host paths are transferred when both servers are managed by Coolify." />
                 </div>
 
@@ -254,7 +254,7 @@
                         The resource keeps the same UUID and configuration. Only the hosting server and network
                         destination change.
                     </p>
-                    <x-modal-confirmation title="Migrate this resource?" submitAction="migrate-resource-confirmed"
+                    <x-modal-confirmation title="{{ __('Migrate this resource?') }}" submitAction="migrate-resource-confirmed"
                         dispatchAction :confirmWithText="false" :confirmWithPassword="false"
                         step2ButtonText="{{ __('Migrate resource') }}"
                         :actions="[
@@ -294,8 +294,8 @@
                     </x-forms.button>
                 </div>
             @else
-                <x-empty size="sm" title="No destination environments"
-                    description="Create another project or environment before moving this resource."
+                <x-empty size="sm" title="{{ __('No destination environments') }}"
+                    description="{{ __('Create another project or environment before moving this resource.') }}"
                     icon-name="projects" />
             @endif
         </x-application.settings-section>

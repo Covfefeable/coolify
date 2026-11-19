@@ -15,7 +15,7 @@
                         'lg:col-span-2' => !str_starts_with(strtolower($fqdn ?? ''), 'https://'),
                     ])>
                         <x-forms.input canGate="update" :canResource="$settings" id="fqdn" label="URL"
-                            helper="Enter the full URL of the instance (for example, https://dashboard.example.com).<br><br><span class='text-coollabs dark:text-brand-light'>Important:</span> Include <b>https://</b> to secure the dashboard with HTTPS.<br><br>Passkeys are tied to this domain. If you change it, users must add their passkeys again."
+                            helper="Enter the full URL of the instance (for example, https://dashboard.example.com).<br><br><span class='text-coollabs dark:text-brand-light'>{{ __('Important:') }}</span> Include <b>https://</b> to secure the dashboard with HTTPS.<br><br>Passkeys are tied to this domain. If you change it, users must add their passkeys again."
                             placeholder="https://coolify.yourdomain.com" />
                     </div>
 
@@ -80,10 +80,10 @@
         confirmAction="confirmDomainUsage">
         <x-slot:consequences>
             <ul class="mt-2 ml-4 list-disc">
-                <li>The Coolify instance domain will conflict with existing resources.</li>
-                <li>SSL certificates might not work correctly.</li>
-                <li>Routing behavior will be unpredictable.</li>
-                <li>You may not be able to access the Coolify dashboard properly.</li>
+                <li>{{ __('The Coolify instance domain will conflict with existing resources.') }}</li>
+                <li>{{ __('SSL certificates might not work correctly.') }}</li>
+                <li>{{ __('Routing behavior will be unpredictable.') }}</li>
+                <li>{{ __('You may not be able to access the Coolify dashboard properly.') }}</li>
             </ul>
         </x-slot:consequences>
     </x-domain-conflict-modal>

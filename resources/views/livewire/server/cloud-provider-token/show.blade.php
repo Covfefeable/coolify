@@ -13,7 +13,7 @@
             @if ($server->hetzner_server_id || $server->vultr_instance_id || $server->digitalocean_droplet_id || $server->hostinger_virtual_machine_id)
                 <x-application.settings-section id="server-cloud-token-section"
                     title="{{ $providerName }} token"
-                    helper="Choose the cloud credential used to manage this server." flush>
+                    helper="{{ __('Choose the cloud credential used to manage this server.') }}" flush>
                     <x-slot:actions>
                         <div class="flex items-center gap-2">
                             <x-forms.button canGate="update" :canResource="$server"
@@ -64,10 +64,10 @@
                     @endforelse
                 </x-application.settings-section>
             @else
-                <x-application.settings-section title="Cloud token"
-                    helper="Cloud credentials are available for servers created through a supported provider.">
-                    <x-empty size="sm" title="No cloud provider integration"
-                        description="This server was not created through a supported cloud provider, so it does not require a managed cloud token."
+                <x-application.settings-section title="{{ __('Cloud token') }}"
+                    helper="{{ __('Cloud credentials are available for servers created through a supported provider.') }}">
+                    <x-empty size="sm" title="{{ __('No cloud provider integration') }}"
+                        description="{{ __('This server was not created through a supported cloud provider, so it does not require a managed cloud token.') }}"
                         icon-name="keys" />
                 </x-application.settings-section>
             @endif

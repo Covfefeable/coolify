@@ -1,10 +1,10 @@
 <div>
     @if ($isInstalled)
-        <x-callout type="success" title="Sysbox is installed">
+        <x-callout type="success" title="{{ __('Sysbox is installed') }}">
             Jobs get a private Docker daemon in an unprivileged container.
         </x-callout>
     @else
-        <x-callout type="warning" title="Sysbox is not installed">
+        <x-callout type="warning" title="{{ __('Sysbox is not installed') }}">
             Isolated Docker needs the Sysbox runtime. Coolify installs Sysbox
             {{ config('constants.github_runner.sysbox.version') }} from the official package
             (Debian and Ubuntu, kernel 5.12 or newer). Docker reloads its configuration, and

@@ -8,7 +8,7 @@
             <div class="flex h-full min-h-0 flex-col gap-3">
                 @if ($server->id === 0)
                     <div class="shrink-0 rounded-lg border border-warning/30 bg-warning/10 p-3 text-sm text-warning">
-                        <span class="font-semibold">{{ __('Note:') }}</span> This is the localhost server where Coolify runs.
+                        <span class="font-semibold">{{ __('Note:') }}</span> {{ __('This is the localhost server where Coolify runs.') }}
                         {{ __('During proxy restart, the connection may be temporarily lost.') }}
                         {{ __('If logs stop updating, please refresh the browser after a few minutes.') }}
                     </div>

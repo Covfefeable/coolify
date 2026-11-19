@@ -23,7 +23,7 @@
                 @can('update', $storage)
                     {{-- Sends the endpoint right away, so the URL style below follows the provider. --}}
                     <div x-on:change="$wire.$commit()">
-                        <x-forms.domain-input id="endpointParts" errorId="endpoint" host-label="Host"
+                        <x-forms.domain-input id="endpointParts" errorId="endpoint" host-label="{{ __('Host') }}"
                             host-placeholder="minio.internal or 192.168.1.50" />
                     </div>
                 @else
@@ -52,7 +52,7 @@
                 <div class="lg:col-span-2">
                     @if ($storage->type === App\Enums\BackupStorageType::Webdav)
                         @can('update', $storage)
-                            <x-forms.domain-input id="endpointParts" errorId="endpoint" host-label="Host"
+                            <x-forms.domain-input id="endpointParts" errorId="endpoint" host-label="{{ __('Host') }}"
                                 host-placeholder="cloud.example.com" port-placeholder="443"
                     path-placeholder="/remote.php/dav/files/USER/backups"
                     path-helper="The path of the backup directory on the WebDAV server, for example /remote.php/dav/files/USER/backups for Nextcloud." />

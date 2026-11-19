@@ -16,14 +16,14 @@
     @elseif ($current_step === 2)
         <div wire:init="loadHostingerData">
             @if ($loading_data)
-                <x-application.settings-section title="Loading Hostinger"
-                    description="Fetching data centers, plans, billing periods, and operating systems.">
+                <x-application.settings-section title="{{ __('Loading Hostinger') }}"
+                    description="{{ __('Fetching data centers, plans, billing periods, and operating systems.') }}">
                     <div class="flex min-h-40 items-center justify-center">
                         <x-loading text="Loading Hostinger data..." />
                     </div>
                 </x-application.settings-section>
             @elseif ($provider_data_error)
-                <x-application.settings-section title="Unable to load Hostinger"
+                <x-application.settings-section title="{{ __('Unable to load Hostinger') }}"
                     description="{{ __('The selected token could not access the provider API.') }}">
                     <x-callout type="error" title="{{ __('Provider request failed') }}">
                         <pre class="mt-2 whitespace-pre-wrap break-words text-[11px]">{{ $provider_data_error }}</pre>
@@ -61,8 +61,8 @@
                 @endphp
 
                 <form wire:submit="submit" class="flex flex-col gap-6">
-                    <x-application.settings-section title="Hostinger server"
-                        description="Choose the data center, plan, operating system, and Coolify SSH key.">
+                    <x-application.settings-section title="{{ __('Hostinger server') }}"
+                        description="{{ __('Choose the data center, plan, operating system, and Coolify SSH key.') }}">
                         <x-slot:actions>
                             <button type="submit" class="button button-highlighted"
                                 wire:loading.attr="disabled" wire:target="submit"
@@ -77,21 +77,21 @@
                                 <x-forms.input id="server_name" label="{{ __('Server name') }}"
                                     helper="A friendly name shown in Coolify and used as the VPS hostname." />
                             </div>
-                            <x-forms.listbox id="selected_data_center_id" label="Data center" required live
+                            <x-forms.listbox id="selected_data_center_id" label="{{ __('Data center') }}" required live
                                 placeholder="{{ __('Select a data center') }}" :options="$dataCenterOptions" />
-                            <x-forms.listbox id="selected_price_id" label="Plan and billing period" required live
+                            <x-forms.listbox id="selected_price_id" label="{{ __('Plan and billing period') }}" required live
                                 :disabled="!$selected_data_center_id" placeholder="{{ __('Select a plan') }}"
                                 :options="$priceOptions" />
-                            <x-forms.listbox id="selected_os_template_id" label="Operating system" required live
+                            <x-forms.listbox id="selected_os_template_id" label="{{ __('Operating system') }}" required live
                                 :disabled="!$selected_price_id" placeholder="{{ __('Select an operating system') }}"
                                 :options="$osTemplateOptions" />
-                            <x-forms.listbox id="selected_app_template_id" label="Operating system with application"
-                                live :disabled="!$selected_price_id" placeholder="Or select an operating system with an application"
+                            <x-forms.listbox id="selected_app_template_id" label="{{ __('Operating system with application') }}"
+                                live :disabled="!$selected_price_id" placeholder="{{ __('Or select an operating system with an application') }}"
                                 :options="$appTemplateOptions"
-                                helper="Replaces the operating system selected above. Applications and panels, such as another Coolify or CyberPanel, can conflict with the Coolify proxy on ports 80 and 443." />
+                                helper="{{ __('Replaces the operating system selected above. Applications and panels, such as another Coolify or CyberPanel, can conflict with the Coolify proxy on ports 80 and 443.') }}" />
                             @if ($private_keys->isEmpty())
                                 <div>
-                                    <label class="mb-1.5 flex w-fit items-center gap-1.5">Private key
+                                    <label class="mb-1.5 flex w-fit items-center gap-1.5">{{ __('Private key') }}
                                         <x-highlighted text="*" />
                                     </label>
                                     <div
@@ -108,30 +108,30 @@
                             @else
                                 <x-forms.listbox id="private_key_id" label="{{ __('Private key') }}" required
                                     placeholder="{{ __('Select a private key') }}" :options="$privateKeyOptions"
-                                    helper="This key is added to the Hostinger VPS automatically." />
+                                    helper="{{ __('This key is added to the Hostinger VPS automatically.') }}" />
                             @endif
                         </div>
                     </x-application.settings-section>
 
                     <x-application.settings-section title="{{ __('Advanced options') }}"
-                        description="Provider backups, account SSH keys, and post-install automation.">
+                        description="{{ __('Provider backups, account SSH keys, and post-install automation.') }}">
                         <div class="flex flex-col gap-4">
                             <div class="-mx-2.5 grid gap-3 lg:grid-cols-2">
                                 <x-forms.checkbox id="enable_backups" label="Enable weekly Hostinger backups (extra cost)" fullWidth
-                                    helper="Hostinger charges extra for backups. Check the price in hPanel before you enable them." />
+                                    helper="{{ __('Hostinger charges extra for backups. Check the price in hPanel before you enable them.') }}" />
                             </div>
                             <x-forms.listbox label="{{ __('Extra SSH keys') }}" id="selected_public_key_ids"
-                                helper="Existing keys from the Hostinger account." multiple searchable
+                                helper="{{ __('Existing keys from the Hostinger account.') }}" multiple searchable
                                 :disabled="count($hostinger_public_keys) === 0" searchPlaceholder="{{ __('Search SSH keys…') }}"
                                 :placeholder="count($hostinger_public_keys) ? 'Select SSH keys' : 'No account keys found'"
                                 :options="collect($hostinger_public_keys)->map(fn ($publicKey) => ['value' => $publicKey['id'], 'label' => $publicKey['name']])->values()->all()" />
                             @if ($post_install_scripts)
                                 <x-forms.listbox id="selected_post_install_script_id"
-                                    label="Hostinger post-install script"
+                                    label="{{ __('Hostinger post-install script') }}"
                                     placeholder="{{ __('No post-install script') }}" :options="$postInstallScriptOptions"
-                                    helper="Hostinger runs this as /post_install after setup and writes output to /post_install.log." />
+                                    helper="{{ __('Hostinger runs this as /post_install after setup and writes output to /post_install.log.') }}" />
                             @endif
-                            <x-callout type="warning" title="This purchase is billed by Hostinger">
+                            <x-callout type="warning" title="{{ __('This purchase is billed by Hostinger') }}">
                                 The VPS is purchased with your Hostinger account's default payment method. Review the
                                 selected plan and billing period before continuing.
                             </x-callout>

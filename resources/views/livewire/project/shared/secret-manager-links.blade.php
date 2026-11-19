@@ -3,12 +3,12 @@
         $secretManagerDescription = 'Reference remote secrets in your environment variables with {{vault.KEY}}. Values are fetched at deployment time and are never stored in the Coolify database. Changing the source does not re-check existing references — missing keys fail the next deployment.';
         $removeSourceWarning = 'Existing {{vault.*}} reference variables will fail the next deployment until they are removed too.';
     @endphp
-    <x-application.settings-section title="Secret manager" :description="$secretManagerDescription">
+    <x-application.settings-section title="{{ __('Secret manager') }}" :description="$secretManagerDescription">
 
         @if (! $link && $availableTokens->isEmpty())
             @can('viewAny', \App\Models\IntegrationToken::class)
-                <x-empty title="No secret manager tokens"
-                    description="Add a Doppler, Infisical, or HashiCorp Vault token first."
+                <x-empty title="{{ __('No secret manager tokens') }}"
+                    description="{{ __('Add a Doppler, Infisical, or HashiCorp Vault token first.') }}"
                     icon-name="keys" size="sm">
                     <x-slot:actions>
                         <a class="button" href="{{ route('security.integration-tokens') }}" {{ wireNavigate() }}>
@@ -24,7 +24,7 @@
             @can('update', $resource)
                 <div class="application-settings-form flex w-full flex-col gap-4">
                     <div class="flex items-end gap-2">
-                        <x-forms.listbox id="integration_token_uuid" label="Integration token" :live="true"
+                        <x-forms.listbox id="integration_token_uuid" label="{{ __('Integration token') }}" :live="true"
                             placeholder="{{ __('Select a secret manager token') }}" :options="$availableTokens
                                 ->map(fn ($token) => [
                                     'value' => $token->uuid,
@@ -32,7 +32,7 @@
                                 ])
                                 ->all()" />
                         @if ($link)
-                            <x-modal-confirmation title="Remove secret manager source?" isErrorButton
+                            <x-modal-confirmation title="{{ __('Remove secret manager source?') }}" isErrorButton
                                 buttonTitle="{{ __('Remove') }}" submitAction="removeSource"
                                 :actions="[$removeSourceWarning]"
                                 :confirmWithText="false" :confirmWithPassword="false"
@@ -56,18 +56,18 @@
                             @endif
                         @elseif ($selectedToken?->provider === 'infisical')
                             <div class="grid gap-4 lg:grid-cols-3">
-                                <x-forms.input required id="settings.project_id" label="Project ID"
+                                <x-forms.input required id="settings.project_id" label="{{ __('Project ID') }}"
                                     canGate="useTeamCredentials" :canResource="$resource" wire:blur="saveSettings" />
-                                <x-forms.input required id="settings.environment" label="Environment slug"
+                                <x-forms.input required id="settings.environment" label="{{ __('Environment slug') }}"
                                     placeholder="prod" canGate="useTeamCredentials" :canResource="$resource" wire:blur="saveSettings" />
-                                <x-forms.input id="settings.secret_path" label="Secret path" placeholder="/"
+                                <x-forms.input id="settings.secret_path" label="{{ __('Secret path') }}" placeholder="/"
                                     canGate="useTeamCredentials" :canResource="$resource" wire:blur="saveSettings" />
                             </div>
                         @elseif ($selectedToken?->provider === 'vault')
                             <div class="grid gap-4 lg:grid-cols-2">
-                                <x-forms.input required id="settings.mount" label="KV v2 mount" placeholder="secret"
+                                <x-forms.input required id="settings.mount" label="{{ __('KV v2 mount') }}" placeholder="secret"
                                     canGate="useTeamCredentials" :canResource="$resource" wire:blur="saveSettings" />
-                                <x-forms.input required id="settings.path" label="Secret path"
+                                <x-forms.input required id="settings.path" label="{{ __('Secret path') }}"
                                     placeholder="my-app/production" canGate="useTeamCredentials" :canResource="$resource" wire:blur="saveSettings" />
                             </div>
                         @endif
@@ -90,7 +90,7 @@
                                         No secrets found at this source.
                                     </div>
                                 @else
-                                    <x-forms.input label="Search keys" placeholder="{{ __('Filter key names') }}"
+                                    <x-forms.input label="{{ __('Search keys') }}" placeholder="{{ __('Filter key names') }}"
                                         wire:model.live.debounce.300ms="search" />
                                     <div class="divide-y divide-neutral-200 rounded-lg border border-neutral-200 dark:divide-white/[0.07] dark:border-white/[0.08]">
                                         @forelse ($filteredKeys as $key)

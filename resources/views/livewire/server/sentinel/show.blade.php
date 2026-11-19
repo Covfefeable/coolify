@@ -13,9 +13,9 @@
         @else
             <div class="application-settings-form w-full">
                 <x-application.settings-section title="Sentinel"
-                    helper="Monitor server and container health while collecting metrics.">
+                    helper="{{ __('Monitor server and container health while collecting metrics.') }}">
                     <x-empty size="sm" title="{{ __('Server validation required') }}"
-                        description="Validate this server before enabling Sentinel."
+                        description="{{ __('Validate this server before enabling Sentinel.') }}"
                         icon-name="dashboard" />
                 </x-application.settings-section>
             </div>

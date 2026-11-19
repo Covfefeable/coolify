@@ -10,7 +10,7 @@
                     wire:target="submit,resetProxyConfiguration">
 
                 <x-application.settings-section id="server-proxy-overview-section" title="{{ __('Proxy configuration') }}"
-                    helper="Configure the reverse proxy and request handling for this server.">
+                    helper="{{ __('Configure the reverse proxy and request handling for this server.') }}">
                     <x-slot:actions>
                         <div class="flex items-center gap-2">
                             <x-status-badge :status="str($server->proxy->status)->headline()"
@@ -60,16 +60,16 @@
                 </x-application.settings-section>
 
                 <x-application.settings-section id="server-proxy-routing-section" title="{{ __('Routing behavior') }}"
-                    helper="Control generated labels and requests that do not match a running resource.">
+                    helper="{{ __('Control generated labels and requests that do not match a running resource.') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.listbox id="generateExactLabels" label="{{ __('Generated labels') }}"
-                            helper="<ul class='list-disc space-y-1 pl-4'><li><span class='font-semibold'>{{ __('All supported proxies:') }}</span> {{ __('Traefik and Caddy labels are both generated, so switching the proxy keeps routing working.') }}</li><li><span class='font-semibold'>Active proxy only:</span> generates fewer labels, but all resources must be redeployed to become accessible again after each proxy switch.</li></ul>"
+                            helper="<ul class='list-disc space-y-1 pl-4'><li><span class='font-semibold'>{{ __('All supported proxies:') }}</span> {{ __('Traefik and Caddy labels are both generated, so switching the proxy keeps routing working.') }}</li><li><span class='font-semibold'>{{ __('Active proxy only:') }}</span> generates fewer labels, but all resources must be redeployed to become accessible again after each proxy switch.</li></ul>"
                             onChange="instantSave" :options="[
                                 ['value' => false, 'label' => 'Labels for all supported proxies'],
                                 ['value' => true, 'label' => __('Labels for the active proxy only')],
                             ]" />
                         <x-forms.listbox id="redirectEnabled" label="Unknown requests"
-                            helper="Control the 503 response for unknown hosts and stopped services. Custom request handling shows an error page or redirects to a URL."
+                            helper="{{ __('Control the 503 response for unknown hosts and stopped services. Custom request handling shows an error page or redirects to a URL.') }}"
                             onChange="instantSaveRedirect" :options="[
                                 ['value' => false, 'label' => 'Return the default 503 response'],
                                 ['value' => true, 'label' => __('Use custom request handling')],
@@ -78,12 +78,12 @@
                             <x-forms.input canGate="update" :canResource="$server"
                                 placeholder="https://app.coolify.io" id="redirectUrl"
                                 label="{{ __('Redirect URL') }}"
-                                helper="Leave empty to return a 503 response instead of redirecting." />
+                                helper="{{ __('Leave empty to return a 503 response instead of redirecting.') }}" />
                         @endif
                         @if ($server->proxyType() === ProxyTypes::TRAEFIK->value)
                             <x-forms.input canGate="update" :canResource="$server" placeholder="letsencrypt"
                                 id="certificateResolver" label="{{ __('Certificate resolver') }}"
-                                helper="Traefik certificate resolver for generated HTTPS routes. Leave empty if Traefik uses your own certificates (for example Cloudflare Origin CA certificates in a dynamic configuration). Redeploy resources to apply the change." />
+                                helper="{{ __('Traefik certificate resolver for generated HTTPS routes. Leave empty if Traefik uses your own certificates (for example Cloudflare Origin CA certificates in a dynamic configuration). Redeploy resources to apply the change.') }}" />
                         @endif
                     </div>
                     @if ($redirectEnabled && ! $server->isSwarm())
@@ -111,7 +111,7 @@
                 @if ($server->proxyType() === ProxyTypes::TRAEFIK->value || $server->proxyType() === 'CADDY')
                     <x-application.settings-section id="server-proxy-file-section" :title="$proxyTitle"
                         x-init="$wire.loadProxyConfiguration()"
-                        helper="Edit the generated proxy compose configuration used on this server.">
+                        helper="{{ __('Edit the generated proxy compose configuration used on this server.') }}">
                         <x-slot:actions>
                             @can('update', $server)
                                 @if ($proxySettings)
@@ -192,7 +192,7 @@
             </form>
         @elseif($selectedProxy === 'NONE')
             <x-application.settings-section title="{{ __('Custom proxy') }}"
-                helper="Coolify will not manage a reverse proxy for this server.">
+                helper="{{ __('Coolify will not manage a reverse proxy for this server.') }}">
                 <x-slot:actions>
                     @can('update', $server)
                         <x-forms.button wire:click.prevent="changeProxy">{{ __('Switch proxy') }}</x-forms.button>

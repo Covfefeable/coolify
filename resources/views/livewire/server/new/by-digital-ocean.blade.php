@@ -68,7 +68,7 @@
 
                 <form wire:submit="submit" class="flex flex-col gap-6">
                     <x-application.settings-section title="DigitalOcean Droplet"
-                        description="Choose the region, size, image, and Coolify SSH key.">
+                        description="{{ __('Choose the region, size, image, and Coolify SSH key.') }}">
                         <x-slot:actions>
                             <button type="submit"
                                 class="button button-highlighted"
@@ -95,7 +95,7 @@
                                 :options="$imageOptions" />
                             @if ($private_keys->isEmpty())
                                 <div>
-                                    <label class="mb-1.5 flex w-fit items-center gap-1.5">Private key
+                                    <label class="mb-1.5 flex w-fit items-center gap-1.5">{{ __('Private key') }}
                                         <x-highlighted text="*" />
                                     </label>
                                     <div
@@ -112,13 +112,13 @@
                             @else
                                 <x-forms.listbox id="private_key_id" label="{{ __('Private key') }}" required
                                     placeholder="{{ __('Select a private key') }}" :options="$privateKeyOptions"
-                                    helper="This key is added to the Droplet automatically." />
+                                    helper="{{ __('This key is added to the Droplet automatically.') }}" />
                             @endif
                         </div>
                     </x-application.settings-section>
 
                     <x-application.settings-section title="{{ __('Advanced options') }}"
-                        description="Provider SSH keys, networking, monitoring, and cloud-init.">
+                        description="{{ __('Provider SSH keys, networking, monitoring, and cloud-init.') }}">
                         @if (count($this->advancedDigitalOceanOptionsSummary) > 0)
                             <div class="mb-4 flex flex-wrap gap-1.5">
                                 @foreach ($this->advancedDigitalOceanOptionsSummary as $summaryItem)
@@ -132,14 +132,14 @@
 
                         <div class="flex flex-col gap-4">
                             <x-forms.listbox label="{{ __('Extra SSH keys') }}" id="selectedDigitalOceanSshKeyIds"
-                                helper="Existing keys from the DigitalOcean account." multiple searchable
+                                helper="{{ __('Existing keys from the DigitalOcean account.') }}" multiple searchable
                                 :disabled="count($digitalOceanSshKeys) === 0" searchPlaceholder="{{ __('Search SSH keys…') }}"
                                 :placeholder="count($digitalOceanSshKeys) ? 'Select SSH keys' : 'No account keys found'"
                                 :options="collect($digitalOceanSshKeys)->map(fn ($sshKey) => ['value' => $sshKey['id'], 'label' => $sshKey['name'] ?? $sshKey['fingerprint']])->values()->all()" />
 
                             <div class="grid gap-3 lg:grid-cols-2">
                                 <x-forms.checkbox id="enable_ipv6" label="{{ __('Enable IPv6') }}" fullWidth />
-                                <x-forms.checkbox id="monitoring" label="Enable DigitalOcean monitoring"
+                                <x-forms.checkbox id="monitoring" label="{{ __('Enable DigitalOcean monitoring') }}"
                                     fullWidth />
                             </div>
 

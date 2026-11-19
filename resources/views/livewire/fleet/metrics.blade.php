@@ -91,7 +91,7 @@ $serverListboxOptions = array_merge(
             helper="{{ $scoped ? 'Current resource usage for the selected server.' : 'Current resource usage across the selected servers.' }}">
             <div class="grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-neutral-200 sm:grid-cols-3 lg:grid-cols-6 dark:bg-white/[0.07]">
                 <div class="flex flex-col bg-[var(--coollabs-base)] px-4 py-3">
-                    <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">Servers online</span>
+                    <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Servers online') }}</span>
                     <span class="mt-1 text-xl font-semibold tabular-nums text-black dark:text-fg">{{ $kpis['serversOnline'] ?? 0 }}<span class="text-neutral-400 dark:text-fg-faint">/{{ $kpis['serversTotal'] ?? 0 }}</span></span>
                     @php
                         $sTotal = max(1, (int) ($kpis['serversTotal'] ?? 0));
@@ -151,7 +151,7 @@ $serverListboxOptions = array_merge(
                             'categories' => $chartData['sparkCategories'] ?? [],
                             'event' => 'refreshChartData-'.$chartId,
                             'key' => 'memSpark',
-                            'label' => 'Memory used',
+                            'label' => __('Memory used'),
                             'format' => 'bytes',
                         ])
                     </div>
@@ -183,13 +183,13 @@ $serverListboxOptions = array_merge(
                             'categories' => $chartData['sparkCategories'] ?? [],
                             'event' => 'refreshChartData-'.$chartId,
                             'key' => 'netSpark',
-                            'label' => 'Network',
+                            'label' => __('Network'),
                             'format' => 'bytes',
                         ])
                     </div>
                 </div>
                 <div class="col-span-2 flex flex-col bg-[var(--coollabs-base)] px-4 py-3 sm:col-span-1">
-                    <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">Containers</span>
+                    <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Containers') }}</span>
                     <span class="mt-1 text-xl font-semibold tabular-nums text-black dark:text-fg">{{ compactNumber($kpis['containers'] ?? 0) }}</span>
                     <div class="mt-auto pt-3">
                         <div class="flex h-9 flex-col justify-center">
@@ -233,11 +233,11 @@ $serverListboxOptions = array_merge(
             helper="Per-server resource pressure. Select a column header to sort.">
             <div class="data-table" x-data="trafficTable({ per: Number.MAX_SAFE_INTEGER, key: 'cpu' })">
                 <div class="data-table-header fleet-servers-table-grid border-b-0!">
-                    @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => 'Server', 'text' => true, 'class' => 'justify-self-start'])
+                    @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => __('Server'), 'text' => true, 'class' => 'justify-self-start'])
                     @foreach (['cpu' => 'CPU', 'memory' => 'Memory', 'disk' => 'Disk', 'load' => 'Load', 'network' => 'Network'] as $column => $label)
                         @include('livewire.traffic._sort-header', ['column' => $column, 'label' => $label, 'text' => true, 'dir' => 'desc', 'class' => 'justify-self-start', 'title' => $column === 'cpu' ? 'Sort by CPU. 100% means that all cores of the server are fully busy.' : null])
                     @endforeach
-                    @include('livewire.traffic._sort-header', ['column' => 'containers', 'label' => 'Containers', 'class' => 'justify-self-end'])
+                    @include('livewire.traffic._sort-header', ['column' => 'containers', 'label' => __('Containers'), 'class' => 'justify-self-end'])
                 </div>
                 <div class="flex flex-col">
                     @foreach (collect($serverRows)->sortByDesc(fn ($r) => $r['cpu'] ?? -1) as $row)
@@ -261,7 +261,7 @@ $serverListboxOptions = array_merge(
                                 <a href="{{ route('server.metrics', ['server_uuid' => $row['uuid']]) }}"
                                     class="min-w-0 truncate text-[13px] font-medium text-black hover:underline dark:text-fg" {{ wireNavigate() }}>{{ $row['name'] }}</a>
                                 @if (! $row['online'])
-                                    <span class="table-badge table-badge-warning shrink-0">Offline</span>
+                                    <span class="table-badge table-badge-warning shrink-0">{{ __('Offline') }}</span>
                                 @elseif (! $row['reporting'])
                                     <span class="table-badge shrink-0" title="{{ __('Coolify can reach this server, but Sentinel did not return current metrics.') }}">{{ __('No metrics') }}</span>
                                 @endif
@@ -297,8 +297,8 @@ $serverListboxOptions = array_merge(
                 <div class="data-table" x-data="trafficTable({ per: Number.MAX_SAFE_INTEGER, key: 'cpu' })">
                     <div class="data-table-header fleet-containers-table-grid border-b-0!">
                         <span class="text-center">#</span>
-                        @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => 'Container', 'text' => true, 'class' => 'justify-self-start'])
-                        @include('livewire.traffic._sort-header', ['column' => 'server', 'label' => 'Server', 'text' => true, 'class' => 'justify-self-start'])
+                        @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => __('Container'), 'text' => true, 'class' => 'justify-self-start'])
+                        @include('livewire.traffic._sort-header', ['column' => 'server', 'label' => __('Server'), 'text' => true, 'class' => 'justify-self-start'])
                         @foreach ($containerMetrics as $key => $label)
                             @include('livewire.traffic._sort-header', ['column' => $key, 'label' => $label, 'class' => 'justify-self-end', 'title' => $key === 'cpu' ? 'Sort by CPU. 100% means one CPU core is fully busy, so a container can go above 100%.' : null])
                         @endforeach

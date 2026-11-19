@@ -287,12 +287,12 @@
         :class="fullscreen ? '' : '2xl:sticky 2xl:top-4'">
             <div id="screen" :class="fullscreen ? 'fullscreen flex flex-col' : 'mt-2 flex flex-1 min-h-0 flex-col overflow-hidden lg:mt-0'">
                 @if ($this->hostKeyChangedSourceUrl)
-                    <x-callout type="danger" title="The SSH host key of the Git host changed" class="mb-2 shrink-0">
+                    <x-callout type="danger" title="{{ __('The SSH host key of the Git host changed') }}" class="mb-2 shrink-0">
                         The Git host sent an SSH host key that is not the saved or published key. This can be an attack. Ask the
                         administrator of the Git host if the key changed. Then fetch the current key, compare its
                         fingerprint with the fingerprint from the administrator, and accept it only if they are the same.
                         <a href="{{ $this->hostKeyChangedSourceUrl }}#ssh-host-keys" {{ wireNavigate() }}
-                            class="font-medium underline underline-offset-2">Open SSH host keys</a>
+                            class="font-medium underline underline-offset-2">{{ __('Open SSH host keys') }}</a>
                     </x-callout>
                 @endif
                 <div @if ($isKeepAliveOn) wire:poll.2000ms="polling" @endif
@@ -415,8 +415,8 @@
                                     @can('update', $application)
                                         <button type="button" class="listbox-option" role="menuitemcheckbox"
                                             aria-checked="{{ $is_debug_enabled ? 'true' : 'false' }}" wire:click="toggleDebug">
-                                            <span class="flex-1 text-left">Debug logs</span>
-                                            <x-loading compact wire:loading.flex wire:target="toggleDebug" class="hidden" aria-label="Loading debug logs..." />
+                                            <span class="flex-1 text-left">{{ __('Debug logs') }}</span>
+                                            <x-loading compact wire:loading.flex wire:target="toggleDebug" class="hidden" aria-label="{{ __('Loading debug logs...') }}" />
                                             @if ($is_debug_enabled)
                                                 <span wire:loading.remove wire:target="toggleDebug">✓</span>
                                             @endif
@@ -436,14 +436,14 @@
                                     <x-reicon name="chevron-down" class="size-3 transition-transform" ::class="open ? 'rotate-180' : ''" />
                                 </button></x-slot:trigger>
                                 <div x-data="{ downloadingAllLogs: false }">
-                                    <p class="px-2 py-1.5 text-xs text-neutral-500 dark:text-fg-dim">Copied and downloaded logs hide secrets.</p>
+                                    <p class="px-2 py-1.5 text-xs text-neutral-500 dark:text-fg-dim">{{ __('Copied and downloaded logs hide secrets.') }}</p>
                                     <button type="button" role="menuitem" class="listbox-option"
                                         x-on:click="copyLogs(); open = false">
-                                        <span class="flex-1 text-left">Copy visible logs</span>
+                                        <span class="flex-1 text-left">{{ __('Copy visible logs') }}</span>
                                     </button>
                                     <button type="button" role="menuitem" class="listbox-option"
                                         x-on:click="downloadLogs(); open = false">
-                                        <span class="flex-1 text-left">Download visible logs</span>
+                                        <span class="flex-1 text-left">{{ __('Download visible logs') }}</span>
                                     </button>
                                     @can('update', $application)
                                         <button type="button" role="menuitem" x-on:click="
@@ -516,7 +516,7 @@
                                         ])>{{ $lineContent }}</span>
                                 </div>
                             @empty
-                                <span class="mb-2 font-logs text-neutral-400">No logs yet.</span>
+                                <span class="mb-2 font-logs text-neutral-400">{{ __('No logs yet.') }}</span>
                             @endforelse
                         </div>
                     </div>

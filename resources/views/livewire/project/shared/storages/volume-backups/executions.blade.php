@@ -8,7 +8,7 @@
 
     <div wire:poll.5000ms="$refresh">
         <x-application.settings-section title="{{ __('Executions') }}"
-            description="Review generated archives, availability, and cleanup status." flush>
+            description="{{ __('Review generated archives, availability, and cleanup status.') }}" flush>
             <x-slot:actions>
                 <x-forms.button wire:click="cleanupFailed">{{ __('Cleanup failed') }}</x-forms.button>
                 <x-modal-confirmation title="{{ __('Cleanup Deleted Backup Entries?') }}" isErrorButton
@@ -147,7 +147,7 @@
                                     </button>
                                 @endif
                                 @if ($recoveryPending && $execution->status !== 'running')
-                                    <x-table.row-actions label="Backup actions">
+                                    <x-table.row-actions label="{{ __('Backup actions') }}">
                                         <x-table.row-action wire:click="retryRecovery({{ $execution->id }})"
                                             wire:loading.attr="disabled"
                                             wire:target="retryRecovery({{ $execution->id }})">{{ __('Retry recovery') }}</x-table.row-action>
@@ -205,8 +205,8 @@
                     </x-table-pagination>
                 </div>
             @else
-                <x-empty size="sm" title="No executions"
-                    description="Run the backup schedule to create its first execution."
+                <x-empty size="sm" title="{{ __('No executions') }}"
+                    description="{{ __('Run the backup schedule to create its first execution.') }}"
                     icon-name="storages" />
             @endif
         </x-application.settings-section>

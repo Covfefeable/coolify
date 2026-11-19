@@ -9,12 +9,12 @@
     @if ($server->proxyType() === ProxyTypes::TRAEFIK->value)
         <x-application.settings-section id="server-proxy-certificates-section" title="{{ __('TLS certificates') }}"
             x-init="$wire.loadTraefikCertificates()"
-            helper="Review certificates stored in Traefik's acme.json file. Traefik renews every certificate in this file, also when no route uses its domain any more. Deleting an entry removes it from local ACME storage. It does not revoke the certificate at the certificate authority. If a route still uses the domain, Traefik requests a new certificate after the restart.">
+            helper="{{ __('Review certificates stored in Traefik\'s acme.json file. Traefik renews every certificate in this file, also when no route uses its domain any more. Deleting an entry removes it from local ACME storage. It does not revoke the certificate at the certificate authority. If a route still uses the domain, Traefik requests a new certificate after the restart.') }}">
             <x-slot:actions>
                 @php $unusedCertificates = collect($traefikCertificates)->where('in_use', false); @endphp
                 @if ($unusedCertificates->isNotEmpty())
                     @can('update', $server)
-                        <x-modal-confirmation title="Delete Unused TLS Certificates?" isErrorButton
+                        <x-modal-confirmation title="{{ __('Delete Unused TLS Certificates?') }}" isErrorButton
                             buttonTitle="Delete unused ({{ $unusedCertificates->count() }})"
                             submitAction="deleteUnusedTraefikCertificates"
                             :actions="[
@@ -40,8 +40,8 @@
 
             <div wire:loading.remove wire:target="loadTraefikCertificates">
                 @if ($traefikCertificatesLoaded && count($traefikCertificates) === 0)
-                    <x-empty size="sm" title="No TLS certificates found"
-                        description="Traefik's ACME storage does not contain certificate entries."
+                    <x-empty size="sm" title="{{ __('No TLS certificates found') }}"
+                        description="{{ __('Traefik\'s ACME storage does not contain certificate entries.') }}"
                         icon-name="shield-star" />
                 @elseif (count($traefikCertificates) > 0)
                     <div class="overflow-hidden rounded-lg ring-1 ring-neutral-200 dark:ring-white/[0.08]">
@@ -50,8 +50,8 @@
                                 <thead>
                                     <tr>
                                         <th>{{ __('Domain') }}</th>
-                                        <th>Resolver</th>
-                                        <th>Alternative names</th>
+                                        <th>{{ __('Resolver') }}</th>
+                                        <th>{{ __('Alternative names') }}</th>
                                         <th>{{ __('Expires') }}</th>
                                         <th class="text-right">{{ __('Actions') }}</th>
                                     </tr>
@@ -64,7 +64,7 @@
                                                     {{ $certificate['main_domain'] }}
                                                     @if (($certificate['in_use'] ?? null) === false)
                                                         <x-status-badge label="{{ __('Not used') }}" type="warning" size="sm"
-                                                            title="No route and no resource on this server uses this domain. Traefik renews the certificate until you delete it." />
+                                                            title="{{ __('No route and no resource on this server uses this domain. Traefik renews the certificate until you delete it.') }}" />
                                                     @endif
                                                 </div>
                                             </td>
@@ -96,7 +96,7 @@
                                             <td>
                                                 @can('update', $server)
                                                     <div class="flex justify-end">
-                                                        <x-modal-confirmation title="Delete TLS Certificate?"
+                                                        <x-modal-confirmation title="{{ __('Delete TLS Certificate?') }}"
                                                             submitAction="deleteTraefikCertificate({{ $certificate['id'] }})"
                                                             :actions="[
                                                                 'Save the current acme.json as a backup that you can restore below.',
@@ -112,7 +112,7 @@
                                                             <x-slot:trigger>
                                                                 <button type="button"
                                                                     class="icon-button shrink-0 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
-                                                                    title="Delete certificate" aria-label="Delete certificate for {{ $certificate['main_domain'] }}">
+                                                                    title="{{ __('Delete certificate') }}" aria-label="Delete certificate for {{ $certificate['main_domain'] }}">
                                                                     <x-reicon name="trash" class="size-3.5" />
                                                                 </button>
                                                             </x-slot:trigger>
@@ -132,7 +132,7 @@
                     @if (count($traefikAcmeBackups) > 0)
                         <div class="mt-6 flex flex-col gap-2">
                             <div>
-                                <h4 class="text-sm font-medium text-neutral-950 dark:text-fg">acme.json backups</h4>
+                                <h4 class="text-sm font-medium text-neutral-950 dark:text-fg">{{ __('acme.json backups') }}</h4>
                                 <p class="mt-1 text-xs text-neutral-500 dark:text-fg-dim">
                                     Coolify saves a copy of acme.json before it changes the file and keeps the
                                     last {{ \App\Actions\Proxy\ListTraefikAcmeBackups::KEEP }} copies.
@@ -159,8 +159,8 @@
                                                     <td>{{ formatBytes($backup['size']) }}</td>
                                                     <td>
                                                         <div class="flex justify-end">
-                                                            <x-table.row-actions label="Backup actions">
-                                                                <x-modal-confirmation title="Restore acme.json Backup?"
+                                                            <x-table.row-actions label="{{ __('Backup actions') }}">
+                                                                <x-modal-confirmation title="{{ __('Restore acme.json Backup?') }}"
                                                                     buttonFullWidth
                                                                     submitAction="restoreTraefikAcmeBackup('{{ $backup['name'] }}')"
                                                                     :checkboxes="[
@@ -179,7 +179,7 @@
                                                                     </x-slot:trigger>
                                                                 </x-modal-confirmation>
                                                                 <x-slot:danger>
-                                                                    <x-modal-confirmation title="Delete acme.json Backup?"
+                                                                    <x-modal-confirmation title="{{ __('Delete acme.json Backup?') }}"
                                                                         buttonFullWidth
                                                                         submitAction="deleteTraefikAcmeBackup('{{ $backup['name'] }}')"
                                                                         :actions="['Delete the backup '.$backup['name'].'.']"

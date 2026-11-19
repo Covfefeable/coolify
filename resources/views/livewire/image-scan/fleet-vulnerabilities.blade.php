@@ -35,7 +35,7 @@
                 :title="$serversNotScanning === 1 ? '1 server does not scan images.' : $serversNotScanning.' servers do not scan images.'"
                 on-dismiss="localStorage.setItem({{ \Illuminate\Support\Js::from($serversKey) }}, '1'); hidden = true">
                 <a href="{{ route('server.index') }}" {{ wireNavigate() }}
-                    class="font-medium text-coollabs hover:underline dark:text-brand-light">Go to servers</a>
+                    class="font-medium text-coollabs hover:underline dark:text-brand-light">{{ __('Go to servers') }}</a>
             </x-callout>
         </div>
     @endif
@@ -119,15 +119,15 @@
 
             @if ($items->isEmpty())
                 @if ($searching)
-                    <x-empty size="sm" title="No scanned image has this vulnerability or package."
-                        description="Check the ID, or search for the package name." />
+                    <x-empty size="sm" title="{{ __('No scanned image has this vulnerability or package.') }}"
+                        description="{{ __('Check the ID, or search for the package name.') }}" />
                 @elseif ($hasFilters)
                     <x-empty size="sm" title="{{ __('No matching resources') }}" description="{{ __('Try other filters, or reset them.') }}" />
                 @elseif (! $hasResources)
                     <x-empty size="sm" title="{{ __('No resources yet') }}" description="{{ __('The resources of your team show here.') }}" />
                 @elseif ($hidesNotChecked)
                     <x-empty size="sm" title="{{ __('No resource was scanned yet') }}"
-                        description="Resources that were not scanned are hidden. Coolify scans an image when it deploys or starts it on a server that scans images." />
+                        description="{{ __('Resources that were not scanned are hidden. Coolify scans an image when it deploys or starts it on a server that scans images.') }}" />
                 @endif
             @else
                 <div class="data-table">
@@ -136,7 +136,7 @@
                         <span>{{ $searching ? 'Match' : 'Status' }}</span>
                         <span class="image-scan-fleet-action">{{ $searching ? 'State' : 'Action' }}</span>
                         <span class="image-scan-secondary">{{ __('Server') }}</span>
-                        <span class="image-scan-secondary image-scan-fleet-tertiary">Checked</span>
+                        <span class="image-scan-secondary image-scan-fleet-tertiary">{{ __('Checked') }}</span>
                     </div>
                     @foreach ($items as $entry)
                         @php

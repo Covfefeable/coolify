@@ -249,8 +249,8 @@ $appListboxOptions = array_merge(
                             <div class="flex items-center gap-3 px-4 py-2 text-[11px] font-medium text-neutral-500 dark:text-fg-dim">
                                 @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => 'Application / service', 'text' => true, 'class' => 'min-w-0 flex-1'])
                                 <span class="hidden w-16 shrink-0 sm:inline" aria-hidden="true"></span>
-                                @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => 'Requests', 'class' => 'w-16 shrink-0'])
-                                @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => 'Bandwidth', 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
+                                @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => __('Requests'), 'class' => 'w-16 shrink-0'])
+                                @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
                                 <span class="size-3.5 shrink-0" aria-hidden="true"></span>
                             </div>
                             <div class="flex flex-col">
@@ -323,7 +323,7 @@ $appListboxOptions = array_merge(
 
             @include('livewire.traffic._breakdown-section', [
                 'dimension' => 'protocol',
-                'label' => 'Top HTTP versions',
+                'label' => __('Top HTTP versions'),
                 'rows' => data_get($breakdowns, 'protocol', []),
                 'helper' => 'Request volume by negotiated HTTP protocol version.',
             ])
@@ -332,13 +332,13 @@ $appListboxOptions = array_merge(
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
             @include('livewire.traffic._breakdown-section', [
                 'dimension' => 'cache',
-                'label' => 'Top cache statuses',
+                'label' => __('Top cache statuses'),
                 'rows' => data_get($breakdowns, 'cache', []),
                 'helper' => 'Reverse-proxy cache outcome (hit, miss, bypass, …) by request count.',
             ])
             @include('livewire.traffic._breakdown-section', [
                 'dimension' => 'status',
-                'label' => 'Top status codes',
+                'label' => __('Top status codes'),
                 'rows' => data_get($breakdowns, 'status', []),
                 'helper' => 'Most frequent HTTP response status codes for the selected range.',
             ])
@@ -355,7 +355,7 @@ $appListboxOptions = array_merge(
             @endforeach
             @include('livewire.traffic._breakdown-section', [
                 'dimension' => 'agent',
-                'label' => 'AI agents & bots',
+                'label' => __('AI agents & bots'),
                 'rows' => data_get($breakdowns, 'agent', []),
                 'helper' => 'Bot and AI-crawler traffic (GPTBot, ClaudeBot, Googlebot, …) by request count.',
             ])

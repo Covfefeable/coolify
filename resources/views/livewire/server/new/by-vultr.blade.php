@@ -15,12 +15,12 @@
     @elseif ($current_step === 2)
         <div wire:init="loadVultrData">
             @if ($loading_data)
-                <x-application.settings-section title="Loading Vultr"
-                    description="Fetching regions, plans, operating systems, and account resources.">
-                    <x-skeleton.form :fields="6" label="Loading Vultr data" />
+                <x-application.settings-section title="{{ __('Loading Vultr') }}"
+                    description="{{ __('Fetching regions, plans, operating systems, and account resources.') }}">
+                    <x-skeleton.form :fields="6" label="{{ __('Loading Vultr data') }}" />
                 </x-application.settings-section>
             @elseif ($provider_data_error)
-                <x-application.settings-section title="Unable to load Vultr"
+                <x-application.settings-section title="{{ __('Unable to load Vultr') }}"
                     description="{{ __('The selected token could not access the provider API.') }}">
                     <x-callout type="error" title="{{ __('Provider request failed') }}">
                         <pre class="mt-2 whitespace-pre-wrap break-words text-[11px]">{{ $provider_data_error }}</pre>
@@ -66,8 +66,8 @@
                 @endphp
 
                 <form wire:submit="submit" class="flex flex-col gap-6">
-                    <x-application.settings-section title="Vultr server"
-                        description="Choose the region, plan, operating system, and Coolify SSH key.">
+                    <x-application.settings-section title="{{ __('Vultr server') }}"
+                        description="{{ __('Choose the region, plan, operating system, and Coolify SSH key.') }}">
                         <x-slot:actions>
                             <button type="submit"
                                 class="button button-highlighted"
@@ -86,14 +86,14 @@
                             </div>
                             <x-forms.listbox id="selected_region" label="{{ __('Region') }}" required live
                                 placeholder="{{ __('Select a region') }}" :options="$regionOptions" />
-                            <x-forms.listbox id="selected_plan" label="Plan" required live
+                            <x-forms.listbox id="selected_plan" label="{{ __('Plan') }}" required live
                                 :disabled="!$selected_region" placeholder="{{ __('Select a plan') }}"
                                 :options="$planOptions" />
-                            <x-forms.listbox id="selected_os_id" label="Operating system" required
+                            <x-forms.listbox id="selected_os_id" label="{{ __('Operating system') }}" required
                                 placeholder="{{ __('Select an operating system') }}" :options="$osOptions" />
                             @if ($private_keys->isEmpty())
                                 <div>
-                                    <label class="mb-1.5 flex w-fit items-center gap-1.5">Private key
+                                    <label class="mb-1.5 flex w-fit items-center gap-1.5">{{ __('Private key') }}
                                         <x-highlighted text="*" />
                                     </label>
                                     <div
@@ -110,13 +110,13 @@
                             @else
                                 <x-forms.listbox id="private_key_id" label="{{ __('Private key') }}" required
                                     placeholder="{{ __('Select a private key') }}" :options="$privateKeyOptions"
-                                    helper="This key is added to the Vultr server automatically." />
+                                    helper="{{ __('This key is added to the Vultr server automatically.') }}" />
                             @endif
                         </div>
                     </x-application.settings-section>
 
                     <x-application.settings-section title="{{ __('Advanced options') }}"
-                        description="Provider SSH keys, networking, and cloud-init.">
+                        description="{{ __('Provider SSH keys, networking, and cloud-init.') }}">
                         @if (count($this->advancedVultrOptionsSummary) > 0)
                             <div class="mb-4 flex flex-wrap gap-1.5">
                                 @foreach ($this->advancedVultrOptionsSummary as $summaryItem)
@@ -130,14 +130,14 @@
 
                         <div class="flex flex-col gap-4">
                             <x-forms.listbox label="{{ __('Extra SSH keys') }}" id="selectedVultrSshKeyIds"
-                                helper="Existing keys from the Vultr account." multiple searchable
+                                helper="{{ __('Existing keys from the Vultr account.') }}" multiple searchable
                                 :disabled="count($vultrSshKeys) === 0" searchPlaceholder="{{ __('Search SSH keys…') }}"
                                 :placeholder="count($vultrSshKeys) ? 'Select SSH keys' : 'No account keys found'"
                                 :options="collect($vultrSshKeys)->map(fn ($sshKey) => ['value' => $sshKey['id'], 'label' => $sshKey['name']])->values()->all()" />
 
                             <div class="grid gap-3 lg:grid-cols-2">
                                 <x-forms.checkbox id="enable_ipv6" label="{{ __('Enable IPv6') }}" fullWidth />
-                                <x-forms.checkbox id="disable_public_ipv4" label="Disable public IPv4" fullWidth />
+                                <x-forms.checkbox id="disable_public_ipv4" label="{{ __('Disable public IPv4') }}" fullWidth />
                             </div>
 
                             <div class="border-t border-neutral-200 pt-4 dark:border-white/[0.08]">

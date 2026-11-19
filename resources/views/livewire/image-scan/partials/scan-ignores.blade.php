@@ -1,9 +1,9 @@
 @if ($ignores->isEmpty())
-    <x-empty size="sm" title="No ignored findings." />
+    <x-empty size="sm" title="{{ __('No ignored findings.') }}" />
 @else
     <div class="data-table">
         <div class="data-table-header image-scan-ignores-table-grid">
-            <span>Finding or package</span>
+            <span>{{ __('Finding or package') }}</span>
             <span>{{ __('Reason') }}</span>
             <span>{{ __('Expires') }}</span>
             <span>Set for</span>

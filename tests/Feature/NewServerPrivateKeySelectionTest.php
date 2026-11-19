@@ -38,6 +38,18 @@ beforeEach(function () {
     ]));
 });
 
+it('renders the server connection form and image scanning settings in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+
+    Livewire::test(ByIp::class, [
+        'private_keys' => collect([$this->existingPrivateKey]),
+        'limit_reached' => false,
+    ])
+        ->assertSee('使用 SSH 连接信息添加已有的 Linux 服务器。')
+        ->assertSee('扫描镜像漏洞')
+        ->assertSee('Existing SSH Key');
+});
+
 it('generates and preselects a new private key without clearing server form data', function () {
     $component = Livewire::test(ByIp::class, [
         'private_keys' => collect([$this->existingPrivateKey]),

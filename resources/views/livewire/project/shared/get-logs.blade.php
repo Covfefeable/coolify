@@ -292,7 +292,7 @@
                                         <span data-line-text class="logs-viewer-line-text"><template x-if="multipleSources && row.line.source"><span class="runtime-log-source" :style="{ color: row.line.sourceColor }" x-text="row.line.source"></span></template><span class="runtime-log-message"><template x-for="(segment, segmentIndex) in highlight(row.line.text)" :key="segmentIndex"><span :class="segment.match ? 'log-highlight' : ''" x-text="segment.text"></span></template></span></span>
                                     </div>
                                     <template x-if="isLogExpanded(row.line.id)">
-                                        <pre class="runtime-log-detail" aria-label="Full log entry"
+                                        <pre class="runtime-log-detail" aria-label="{{ __('Full log entry') }}"
                                             x-text="formatLogDetails(row.line.text)"></pre>
                                     </template>
                                 </div>

@@ -8,7 +8,7 @@
         <form wire:submit="submit">
             <x-unsaved-bar action="submit" />
             <x-application.settings-section title="Webhook"
-                description="Send JSON event payloads to your own HTTP endpoint.">
+                description="{{ __('Send JSON event payloads to your own HTTP endpoint.') }}">
                 <x-slot:actions>
                     <x-notification.channel-actions :enabled="$webhookEnabled" enabledProperty="webhookEnabled"
                         toggleMethod="instantSaveWebhookEnabled" :canUpdate="auth()->user()->can('update', $settings)"

@@ -1,6 +1,6 @@
 <div>
     @if ($selectedTask)
-        <x-modal-input title="Edit scheduled task" :subtitle="$selectedTask->name" wireOpen="taskModalOpen" :wireIgnore="false" isLarge fixedHeight>
+        <x-modal-input title="{{ __('Edit scheduled task') }}" :subtitle="$selectedTask->name" wireOpen="taskModalOpen" :wireIgnore="false" isLarge fixedHeight>
             <x-slot:content><span></span></x-slot:content>
 
             <livewire:project.shared.scheduled-task.show :resource="$resource" :task="$selectedTask"
@@ -8,11 +8,11 @@
         </x-modal-input>
     @endif
 
-    <x-application.settings-section id="scheduled-tasks-section" title="Scheduled tasks"
+    <x-application.settings-section id="scheduled-tasks-section" title="{{ __('Scheduled tasks') }}"
         helper="Run commands inside this resource automatically using a cron schedule." flush>
         <x-slot:actions>
             @can('update', $resource)
-                <x-modal-input title="New scheduled task" :closeOutside="false">
+                <x-modal-input title="{{ __('New scheduled task') }}" :closeOutside="false">
                     <x-slot:content>
                         <button type="button"
                             class="button button-highlighted">
@@ -69,8 +69,8 @@
                 <x-status-badge :status="$statusLabel" :type="$statusType" />
             </div>
         @empty
-            <x-empty title="No scheduled tasks"
-                description="Create a task to run maintenance commands, scripts, or recurring jobs automatically."
+            <x-empty title="{{ __('No scheduled tasks') }}"
+                description="{{ __('Create a task to run maintenance commands, scripts, or recurring jobs automatically.') }}"
                 icon-name="browser-terminal" />
         @endforelse
     </x-application.settings-section>

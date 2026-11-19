@@ -10,8 +10,8 @@
         @endphp
 
         <form wire:submit="submit">
-            <x-application.settings-section title="Connect a server"
-                description="Add an existing Linux server using its SSH connection details.">
+            <x-application.settings-section title="{{ __('Connect a server') }}"
+                description="{{ __('Add an existing Linux server using its SSH connection details.') }}">
                 <x-slot:actions>
                     <button type="submit"
                         class="button button-highlighted">
@@ -22,7 +22,7 @@
 
                 <div class="mb-5">
                     <x-forms.input id="ip" label="{{ __('IP address or domain') }}" required
-                        helper="For example 127.0.0.1 or server.example.com." />
+                        helper="{{ __('For example 127.0.0.1 or server.example.com.') }}" />
                 </div>
 
                 <div class="mb-5">
@@ -84,11 +84,11 @@
                         <x-forms.input type="number" id="port" label="{{ __('Port') }}" required />
                     </div>
                     <x-forms.listbox id="server_role"
-                        helper="Choose whether this server runs deployments, application builds, or both. GitHub Actions runners need the Builds only or the Deployments and builds role."
+                        helper="{{ __('Choose whether this server runs deployments, application builds, or both. GitHub Actions runners need the Builds only or the Deployments and builds role.') }}"
                         label="{{ __('Server role') }}" :options="[
                             ['value' => 'deployment', 'label' => 'Deployments only', 'description' => 'Runs your resources. Images are built on a build server.'],
-                            ['value' => 'build', 'label' => 'Builds only', 'description' => 'Builds images for other servers and runs GitHub Actions runners.'],
-                            ['value' => 'both', 'label' => 'Deployments and builds', 'description' => 'Builds and runs your resources on this server. Can also run GitHub Actions runners.'],
+                            ['value' => 'build', 'label' => __('Builds only'), 'description' => 'Builds images for other servers and runs GitHub Actions runners.'],
+                            ['value' => 'both', 'label' => __('Deployments and builds'), 'description' => 'Builds and runs your resources on this server. Can also run GitHub Actions runners.'],
                         ]" />
                 </x-forms.collapsible>
             </x-application.settings-section>

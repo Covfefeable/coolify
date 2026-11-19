@@ -83,7 +83,7 @@
                         targets="name,description,ip,user,port,connectionTimeout,serverTimezone,wildcardDomain" />
 
                     <x-application.settings-section id="server-connection-section" title="{{ __('Connection') }}"
-                        helper="Configure how Coolify identifies, reaches, and validates this server.">
+                        helper="{{ __('Configure how Coolify identifies, reaches, and validates this server.') }}">
                         <x-slot:badges>
                             @if ($server->isTransferredAway())
                                 <x-status-badge label="{{ __('Transferred away') }}" type="warning" />
@@ -247,7 +247,7 @@
                                 helper="{{ __('Seconds to wait before an SSH connection fails.') }}" min="1" max="300"
                                 required :disabled="$isValidating" />
                             <x-forms.listbox searchable id="serverTimezone" label="{{ __('Server timezone') }}"
-                                helper="Used for backups, cron jobs, and displayed timestamps."
+                                helper="{{ __('Used for backups, cron jobs, and displayed timestamps.') }}"
                                 searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="No matching timezone"
                                 :options="collect($this->timezones)->map(fn ($timezone) => [
                                     'value' => $timezone,
@@ -265,18 +265,18 @@
                             <div class="mt-4 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                                 <x-forms.listbox canGate="update" :canResource="$server" id="serverRole"
                                     label="{{ __('Server role') }}" onChange="requestServerRoleChange"
-                                    helper="Builds can use large amounts of CPU and memory. Deployments on the same server can become slow or unreachable during a build. GitHub Actions runners need the Builds only or the Deployments and builds role."
+                                    helper="{{ __('Builds can use large amounts of CPU and memory. Deployments on the same server can become slow or unreachable during a build. GitHub Actions runners need the Builds only or the Deployments and builds role.') }}"
                                     :disabled="$isValidating" :options="[
                                         ['value' => 'deployment', 'label' => 'Deployments only', 'description' => 'Runs your resources. Images are built on a build server.'],
-                                        ['value' => 'build', 'label' => 'Builds only', 'description' => 'Builds images for other servers and runs GitHub Actions runners.'],
-                                        ['value' => 'both', 'label' => 'Deployments and builds', 'description' => 'Builds and runs your resources on this server. Can also run GitHub Actions runners.'],
+                                        ['value' => 'build', 'label' => __('Builds only'), 'description' => 'Builds images for other servers and runs GitHub Actions runners.'],
+                                        ['value' => 'both', 'label' => __('Deployments and builds'), 'description' => 'Builds and runs your resources on this server. Can also run GitHub Actions runners.'],
                                     ]" />
                             </div>
                         @endif
                     </x-application.settings-section>
 
                     <x-application.settings-section id="server-overview-section" title="{{ __('Server overview') }}"
-                        helper="Provider state, operating system, and hardware details.">
+                        helper="{{ __('Provider state, operating system, and hardware details.') }}">
                         @if ($provider)
                             <x-slot:badges>
                                 <x-status-badge :label="$provider . ($providerStatus ? ' · ' . ucfirst($providerStatus) : '')"
@@ -352,7 +352,7 @@
         </div>
     </div>
 
-    <x-modal-confirmation title="Use this server for deployments and builds?"
+    <x-modal-confirmation title="{{ __('Use this server for deployments and builds?') }}"
         submitAction="confirmServerRoleChange" :confirmWithText="false" :confirmWithPassword="false"
         step2ButtonText="{{ __('Enable deployments and builds') }}"
         warningMessage="Builds can use a large amount of CPU and memory. During a build, deployed resources on this server can become slow or unreachable."

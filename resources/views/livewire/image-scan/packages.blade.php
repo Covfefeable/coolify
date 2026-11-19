@@ -7,7 +7,7 @@
 
 <div class="contents">
     @if ($scans->isNotEmpty())
-        <x-application.settings-section id="packages-section" title="Packages and SBOM" collapsible flush
+        <x-application.settings-section id="packages-section" title="{{ __('Packages and SBOM') }}" collapsible flush
             helper="The software packages that Coolify found in the image, with their versions and licenses. The SBOM (software bill of materials) is the full list of these packages in a standard format (CycloneDX or SPDX). Download it for audits or for other security tools.">
             <x-slot:actions>
                 <x-table.dropdown role="menu" panel-class="min-w-56! p-1!">
@@ -61,7 +61,7 @@
 
             @if ($truncated)
                 <div class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
-                    <x-callout type="info" title="Too many packages">Only the first 10,000 are shown.</x-callout>
+                    <x-callout type="info" title="Too many packages">{{ __('Only the first 10,000 are shown.') }}</x-callout>
                 </div>
             @endif
 
@@ -79,7 +79,7 @@
                             @if ($showsImage)
                                 <span class="image-scan-secondary">{{ __('Image') }}</span>
                             @endif
-                            <span class="image-scan-secondary">License</span>
+                            <span class="image-scan-secondary">{{ __('License') }}</span>
                         </div>
                         @foreach ($items as $package)
                             <div wire:key="sbom-package-{{ $package['key'] }}"

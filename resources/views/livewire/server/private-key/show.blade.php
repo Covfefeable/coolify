@@ -11,7 +11,7 @@
 
         <div class="application-settings-form flex w-full flex-col gap-6">
             <x-application.settings-section id="server-private-keys-section" title="{{ __('Private key') }}"
-                helper="Choose the SSH key Coolify uses to connect to this server." flush>
+                helper="{{ __('Choose the SSH key Coolify uses to connect to this server.') }}" flush>
                 <x-slot:actions>
                     <div class="flex items-center gap-2">
                         <x-forms.button canGate="update" :canResource="$server"
@@ -99,7 +99,7 @@
                     </div>
                 @empty
                     <x-empty size="sm" title="{{ __('No private keys') }}"
-                        description="Add or generate a private key to connect to this server."
+                        description="{{ __('Add or generate a private key to connect to this server.') }}"
                         icon-name="keys" />
                 @endforelse
             </x-application.settings-section>

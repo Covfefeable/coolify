@@ -12,7 +12,7 @@
         <div class="application-settings-form w-full">
             @if (! $server->is_coolify_host)
                 <x-application.settings-section id="server-danger-section" title="{{ __('Delete server') }}"
-                    helper="Permanently remove this server and its configuration from Coolify."
+                    helper="{{ __('Permanently remove this server and its configuration from Coolify.') }}"
                     class="server-danger-section">
                     <x-danger-zone title="{{ __('This action cannot be undone') }}">
                         <p>

@@ -155,7 +155,7 @@
             @if ($openCount > 0)
                 @can('update', $server)
                     <div class="mt-4 flex justify-end">
-                        <x-modal-confirmation title="Finish with open steps?" submitAction="finishTransfer"
+                        <x-modal-confirmation title="{{ __('Finish with open steps?') }}" submitAction="finishTransfer"
                             :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Finish the transfer') }}"
                             :warningMessage="'<strong>'.$openCount.' steps are not OK or done.</strong> Coolify does not check them again. Webhooks, DNS records, or runners can still point to the other instance.'"
                             :actions="collect($openGroups)->flatMap(fn ($group) => $group['items'])->map(fn ($step) => 'Skipped: '.$step['label'])->all()">

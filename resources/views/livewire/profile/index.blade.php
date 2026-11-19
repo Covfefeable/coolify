@@ -219,7 +219,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Two-factor authentication</h2>
+                    <h2>{{ __('Two-factor authentication') }}</h2>
                     <p>Add a time-based one-time password to protect your account.</p>
                 </div>
                 @if (request()->user()->two_factor_confirmed_at)

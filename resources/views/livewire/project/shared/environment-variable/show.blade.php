@@ -34,11 +34,11 @@
                 <x-helper :helper="e($comment)" />
             @endif
             @if ($is_really_required)
-                <span class="table-badge table-badge-danger shrink-0">Required</span>
+                <span class="table-badge table-badge-danger shrink-0">{{ __('Required') }}</span>
             @endif
             @if ($composeInfo)
                 <span class="table-badge shrink-0"
-                    title="Used by Compose services: {{ implode(', ', $composeInfo['services']) }}">Used by Compose</span>
+                    title="Used by Compose services: {{ implode(', ', $composeInfo['services']) }}">{{ __('Used by Compose') }}</span>
             @endif
         </div>
         @if (! $isSharedVariable)
@@ -127,7 +127,7 @@
                             </div>
                         @elseif ($isLocked)
                             <x-forms.input id="newLockedValue" type="password" label="{{ __('Value') }}" :copyable="false"
-                                placeholder="Hidden after locking. Enter a new value to replace it."
+                                placeholder="{{ __('Hidden after locking. Enter a new value to replace it.') }}"
                                 helper="The locked value cannot be shown. Leave this empty to keep it."
                                 :disabled="!$canUpdate || $isDisabled" />
                         @else
@@ -190,7 +190,7 @@
                     </div>
 
                     @if ($legacyEscapingChangesValue)
-                        <x-callout type="warning" title="Old escaping">
+                        <x-callout type="warning" title="{{ __('Old escaping') }}">
                             This variable was saved before Coolify passed exact values, so the container gets a
                             changed value (for example, with extra backslashes or quotes). To pass the exact value,
                             delete this variable and add it again, then restart. If a database already uses this
@@ -199,10 +199,10 @@
                     @endif
 
                     @if ($is_shared)
-                        <x-forms.input disabled type="password" id="real_value" label="Resolved value" />
+                        <x-forms.input disabled type="password" id="real_value" label="{{ __('Resolved value') }}" />
                     @endif
                     @if ($composeInfo)
-                        <x-callout type="info" title="Used by Docker Compose">
+                        <x-callout type="info" title="{{ __('Used by Docker Compose') }}">
                             Used by: {{ implode(', ', $composeInfo['services']) }}.
                             @if ($composeInfo['default'] !== null)
                                 Compose default: <span class="font-mono">{{ $composeInfo['default'] }}</span>.
@@ -222,14 +222,14 @@
                         <div
                             class="grid gap-4 border-t border-neutral-200 pt-4 dark:border-white/[0.07] sm:grid-cols-2">
                             @if ($showValueType)
-                                <x-forms.listbox id="is_multiline" label="Value type" :live="true" :options="[
+                                <x-forms.listbox id="is_multiline" label="{{ __('Value type') }}" :live="true" :options="[
                                     ['value' => false, 'label' => 'Single line'],
                                     ['value' => true, 'label' => __('Multiline')],
                                 ]"
                                     :disabled="! $canUpdate" />
                             @endif
                             @if ($showInterpolation)
-                                <x-forms.listbox id="is_literal" label="Interpolation" :options="[
+                                <x-forms.listbox id="is_literal" label="{{ __('Interpolation') }}" :options="[
                                     ['value' => false, 'label' => 'Interpolate $VARIABLES'],
                                     ['value' => true, 'label' => 'Literal (keep $ characters as-is)'],
                                 ]"
@@ -237,9 +237,9 @@
                                     :disabled="! $canUpdate" />
                             @endif
                             @if ($showBuildtime)
-                                <x-forms.listbox id="is_buildtime" label="Build time" :options="[
+                                <x-forms.listbox id="is_buildtime" label="{{ __('Build time') }}" :options="[
                                     ['value' => true, 'label' => 'Available during build'],
-                                    ['value' => false, 'label' => 'Not available during build'],
+                                    ['value' => false, 'label' => __('Not available during build')],
                                 ]"
                                     helper="{{ __('Make this variable available during the Docker build process. Useful for build secrets and dependencies.') }}"
                                     :disabled="! $canUpdate" />
@@ -247,7 +247,7 @@
                             @if ($showRuntime)
                                 <x-forms.listbox id="is_runtime" label="{{ __('Runtime') }}" :options="[
                                     ['value' => true, 'label' => 'Available in the container'],
-                                    ['value' => false, 'label' => 'Not available in the container'],
+                                    ['value' => false, 'label' => __('Not available in the container')],
                                 ]" helper="{{ __('Make this variable available in the running container at runtime.') }}"
                                     :disabled="! $canUpdate" />
                             @endif
@@ -264,7 +264,7 @@
                             <div data-environment-variable-delete-action>
                                 @can('delete', $this->env)
                                     @if (!$isMagicVariable)
-                                        <x-modal-confirmation title="Confirm Environment Variable Deletion?" isErrorButton
+                                        <x-modal-confirmation title="{{ __('Confirm Environment Variable Deletion?') }}" isErrorButton
                                             buttonTitle="{{ __('Delete') }}" submitAction="delete"
                                             :actions="['The selected environment variable will be permanently deleted.']"
                                             confirmationText="{{ $key }}"
@@ -276,14 +276,14 @@
                             </div>
                             <div class="ml-auto flex flex-wrap gap-2" data-environment-variable-update-actions>
                                 @if ($this->connectLink)
-                                    <a href="{{ $this->connectLink }}" class="button" title="Add this variable to resources, and see which resources use it">
+                                    <a href="{{ $this->connectLink }}" class="button" title="{{ __('Add this variable to resources, and see which resources use it') }}">
                                         <x-reicon name="link" class="size-3.5" />
                                         Connect to resources
                                     </a>
                                 @endif
                                 @if ($canUpdate && !$isLocked && !$isMagicVariable)
                                     <div wire:key="env-lock-action-{{ $env->id }}">
-                                        <x-modal-confirmation title="Lock Environment Variable?" buttonTitle="{{ __('Lock') }}"
+                                        <x-modal-confirmation title="{{ __('Lock Environment Variable?') }}" buttonTitle="{{ __('Lock') }}"
                                             submitAction="lock"
                                             :actions="['The value will be hidden. You cannot see or copy it again.', 'You can still replace the value with a new one, but you cannot unlock the variable.']"
                                             :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Lock') }}" />

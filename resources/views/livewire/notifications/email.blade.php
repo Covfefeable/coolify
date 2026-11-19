@@ -52,7 +52,7 @@
                                     onChange="instantSave"
                                     :disabled="!auth()->user()->can('update', $settings)" :options="[
                                         ['value' => true, 'label' => 'Use hosted email service'],
-                                        ['value' => false, 'label' => 'Use team email settings'],
+                                        ['value' => false, 'label' => __('Use team email settings')],
                                     ]" />
                             </div>
                         @else
@@ -61,7 +61,7 @@
                                     onChange="instantSave"
                                     :disabled="!auth()->user()->can('update', $settings)" :options="[
                                         ['value' => true, 'label' => 'Use system-wide settings'],
-                                        ['value' => false, 'label' => 'Use team email settings'],
+                                        ['value' => false, 'label' => __('Use team email settings')],
                                     ]" />
                             </div>
                         @endif
@@ -72,7 +72,7 @@
 
         @if (!$useInstanceEmailSettings)
             <div class="application-settings-form">
-                <x-application.settings-section title="Email provider"
+                <x-application.settings-section title="{{ __('Email provider') }}"
                     description="{{ __('Only one provider sends email. Select a provider to see its settings.') }}">
                     <x-slot:badges>
                         <div class="w-40">
@@ -135,39 +135,39 @@
                     <x-notification.event-multiselect :settings="$settings" id="deployment-email-events" label="{{ __('Deployments') }}"
                         :events="[
                             ['property' => 'deploymentSuccessEmailNotifications', 'label' => 'Deployment success', 'enabled' => $deploymentSuccessEmailNotifications],
-                            ['property' => 'deploymentFailureEmailNotifications', 'label' => 'Deployment failure', 'enabled' => $deploymentFailureEmailNotifications],
+                            ['property' => 'deploymentFailureEmailNotifications', 'label' => __('Deployment failure'), 'enabled' => $deploymentFailureEmailNotifications],
                         ]" />
                     <x-notification.event-multiselect :settings="$settings" id="resource-email-events" label="{{ __('Resources') }}"
                         :events="[
                             ['property' => 'statusChangeEmailNotifications', 'label' => 'Resource status changes', 'enabled' => $statusChangeEmailNotifications],
-                            ['property' => 'restartLimitReachedEmailNotifications', 'label' => 'Restart limit reached', 'enabled' => $restartLimitReachedEmailNotifications],
-                            ['property' => 'imageVulnerabilitiesEmailNotifications', 'label' => 'Image vulnerabilities', 'enabled' => $imageVulnerabilitiesEmailNotifications],
+                            ['property' => 'restartLimitReachedEmailNotifications', 'label' => __('Restart limit reached'), 'enabled' => $restartLimitReachedEmailNotifications],
+                            ['property' => 'imageVulnerabilitiesEmailNotifications', 'label' => __('Image vulnerabilities'), 'enabled' => $imageVulnerabilitiesEmailNotifications],
                         ]" />
                     <x-notification.event-multiselect :settings="$settings" id="backup-email-events" label="{{ __('Backups') }}"
                         :events="[
                             ['property' => 'backupSuccessEmailNotifications', 'label' => 'Backup success', 'enabled' => $backupSuccessEmailNotifications],
-                            ['property' => 'backupFailureEmailNotifications', 'label' => 'Backup failure', 'enabled' => $backupFailureEmailNotifications],
+                            ['property' => 'backupFailureEmailNotifications', 'label' => __('Backup failure'), 'enabled' => $backupFailureEmailNotifications],
                         ]" />
                     <x-notification.event-multiselect :settings="$settings" id="scheduled-task-email-events"
-                        label="Scheduled tasks" :events="[
+                        label="{{ __('Scheduled tasks') }}" :events="[
                             ['property' => 'scheduledTaskSuccessEmailNotifications', 'label' => 'Scheduled task success', 'enabled' => $scheduledTaskSuccessEmailNotifications],
-                            ['property' => 'scheduledTaskFailureEmailNotifications', 'label' => 'Scheduled task failure', 'enabled' => $scheduledTaskFailureEmailNotifications],
+                            ['property' => 'scheduledTaskFailureEmailNotifications', 'label' => __('Scheduled task failure'), 'enabled' => $scheduledTaskFailureEmailNotifications],
                         ]" />
                     <x-notification.event-multiselect :settings="$settings" id="server-email-events" label="{{ __('Server') }}"
                         :events="[
                             ['property' => 'dockerCleanupSuccessEmailNotifications', 'label' => 'Docker cleanup success', 'enabled' => $dockerCleanupSuccessEmailNotifications],
-                            ['property' => 'dockerCleanupFailureEmailNotifications', 'label' => 'Docker cleanup failure', 'enabled' => $dockerCleanupFailureEmailNotifications],
-                            ['property' => 'serverDiskUsageEmailNotifications', 'label' => 'Server disk usage', 'enabled' => $serverDiskUsageEmailNotifications],
-                            ['property' => 'serverReachableEmailNotifications', 'label' => 'Server reachable', 'enabled' => $serverReachableEmailNotifications],
-                            ['property' => 'serverUnreachableEmailNotifications', 'label' => 'Server unreachable', 'enabled' => $serverUnreachableEmailNotifications],
-                            ['property' => 'serverPatchEmailNotifications', 'label' => 'Server patching', 'enabled' => $serverPatchEmailNotifications],
-                            ['property' => 'traefikOutdatedEmailNotifications', 'label' => 'Traefik proxy outdated', 'enabled' => $traefikOutdatedEmailNotifications],
+                            ['property' => 'dockerCleanupFailureEmailNotifications', 'label' => __('Docker cleanup failure'), 'enabled' => $dockerCleanupFailureEmailNotifications],
+                            ['property' => 'serverDiskUsageEmailNotifications', 'label' => __('Server disk usage'), 'enabled' => $serverDiskUsageEmailNotifications],
+                            ['property' => 'serverReachableEmailNotifications', 'label' => __('Server reachable'), 'enabled' => $serverReachableEmailNotifications],
+                            ['property' => 'serverUnreachableEmailNotifications', 'label' => __('Server unreachable'), 'enabled' => $serverUnreachableEmailNotifications],
+                            ['property' => 'serverPatchEmailNotifications', 'label' => __('Server patching'), 'enabled' => $serverPatchEmailNotifications],
+                            ['property' => 'traefikOutdatedEmailNotifications', 'label' => __('Traefik proxy outdated'), 'enabled' => $traefikOutdatedEmailNotifications],
                         ]" />
                 </div>
                 <div class="mt-4">
                     <x-forms.checkbox canGate="update" :canResource="$settings" instantSave="instantSaveDeploymentCommitDetails"
                         id="deploymentCommitDetailsEmailNotifications"
-                        label="Include commit details in deployment emails"
+                        label="{{ __('Include commit details in deployment emails') }}"
                         helper="Adds the commit SHA, branch, and commit message to deployment success and failure emails." />
                 </div>
             </x-application.settings-section>

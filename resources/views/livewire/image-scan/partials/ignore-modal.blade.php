@@ -33,9 +33,12 @@
     },
 }" x-on:open-ignore-modal.window="open($event.detail)">
     @php
-        $ignoreTitle = new \Illuminate\Support\HtmlString(
-            '<span x-text="kind === \'package\' ? \'Ignore package\' : \'Ignore finding\'">Ignore finding</span>'
-        );
+        $ignoreTitle = new \Illuminate\Support\HtmlString(sprintf(
+            '<span x-text="kind === \'package\' ? %s : %s">%s</span>',
+            e((string) \Illuminate\Support\Js::from(__('Ignore package'))),
+            e((string) \Illuminate\Support\Js::from(__('Ignore finding'))),
+            e(__('Ignore finding')),
+        ));
     @endphp
     <x-modal-input :title="$ignoreTitle" x-on:open-ignore-modal.window="modalOpen = true">
         <x-slot:content></x-slot:content>
@@ -52,7 +55,7 @@
                 <x-forms.listbox id="image-scan-ignore-scope" label="{{ __('Scope') }}" :wire="false" x-model="scope" value="resource"
                     :options="array_values(array_filter([
                         ['value' => 'resource', 'label' => 'This resource'],
-                        $canIgnoreForTeam ? ['value' => 'team', 'label' => 'All team resources'] : null,
+                        $canIgnoreForTeam ? ['value' => 'team', 'label' => __('All team resources')] : null,
                     ]))" />
                 {{-- Ignores of problems that attackers are using or are likely to use always expire (spec 15.2). --}}
                 <template x-if="neverAllowed">

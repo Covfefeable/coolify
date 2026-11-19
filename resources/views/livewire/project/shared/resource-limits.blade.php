@@ -37,7 +37,7 @@
                 label="{{ __('Memory and swap limit') }}" id="limitsMemorySwap" />
             <x-forms.input canGate="update" :canResource="$resource"
                 helper="Controls how aggressively anonymous memory is swapped. Enter a value from 0 to 100."
-                type="number" min="0" max="100" label="Swappiness" id="limitsMemorySwappiness" />
+                type="number" min="0" max="100" label="{{ __('Swappiness') }}" id="limitsMemorySwappiness" />
         </div>
         <p class="mt-4 text-xs leading-5 text-neutral-500 dark:text-fg-dim">
             Accepted units are <code class="font-mono">b</code>, <code class="font-mono">k</code>,

@@ -61,7 +61,7 @@
                     icon-name="file-content" />
             @elseif (count($serverErrors) > 0)
                 <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"
-                    description="Could not load containers: {{ collect($serverErrors)->first() }}"
+                    description="{{ __('Could not load containers:') }} {{ collect($serverErrors)->first() }}"
                     icon-name="file-content" />
             @else
                 <x-empty size="lg" title="{{ __('Runtime logs unavailable') }}"

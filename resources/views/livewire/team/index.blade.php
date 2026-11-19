@@ -8,7 +8,7 @@
         <form wire:submit="submit" class="application-settings-form">
             <x-unsaved-bar action="submit" />
             <x-application.settings-section title="{{ __('General') }}"
-                description="Manage this team's identity and shared API access.">
+                description="{{ __('Manage this team\'s identity and shared API access.') }}">
                 <div class="grid gap-4 lg:grid-cols-2">
                     <div class="lg:col-span-2" x-data="{
                         processing: false,
@@ -64,7 +64,7 @@
                                             <x-forms.button type="button" wire:click="removeAvatar" x-bind:disabled="processing" isError>{{ __('Remove') }}</x-forms.button>
                                         @endif
                                     </div>
-                                    <p class="text-xs text-neutral-500 dark:text-fg-dim">JPG, PNG, or WebP. Shown in the team switcher.</p>
+                                    <p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('JPG, PNG, or WebP. Shown in the team switcher.') }}</p>
                                     <p x-cloak x-show="uploadError" x-text="uploadError" class="text-xs text-red-500"></p>
                                     @error('avatar') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                                 </div>
@@ -78,25 +78,25 @@
                             helper="Controls whether this team's API tokens can use the instance MCP endpoint."
                             :disabled="! auth()->user()->can('update', $team)" :options="[
                                 ['value' => false, 'label' => 'Disabled for this team'],
-                                ['value' => true, 'label' => 'Enabled for this team'],
+                                ['value' => true, 'label' => __('Enabled for this team')],
                             ]" />
                     </div>
                     <div class="lg:col-span-2">
                         <x-forms.listbox canGate="update" :canResource="$team"
-                            id="is_build_server_fallback_enabled" label="Build server fallback"
+                            id="is_build_server_fallback_enabled" label="{{ __('Build server fallback') }}"
                             helper="Controls what happens when an application is configured to use a dedicated build server, but no usable build server is available."
                             :disabled="! auth()->user()->can('update', $team)" :options="[
                                 ['value' => true, 'label' => 'Build on the deployment server'],
-                                ['value' => false, 'label' => 'Fail the deployment'],
+                                ['value' => false, 'label' => __('Fail the deployment')],
                             ]" />
                     </div>
                     <div class="lg:col-span-2">
                         <x-forms.listbox canGate="update" :canResource="$team" id="is_two_factor_required"
-                            label="Two-factor authentication"
+                            label="{{ __('Two-factor authentication') }}"
                             helper="When required, members without two-factor authentication must configure it before they can use this team."
                             :disabled="! auth()->user()->can('update', $team)" :options="[
                                 ['value' => false, 'label' => 'Optional for members'],
-                                ['value' => true, 'label' => 'Required for all members'],
+                                ['value' => true, 'label' => __('Required for all members')],
                             ]" />
                     </div>
                 </div>

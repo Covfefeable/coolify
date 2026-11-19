@@ -44,7 +44,7 @@
 <section class="w-full max-w-none">
     <header class="settings-mobile-header xl:hidden">
         <h1 class="settings-mobile-title">{{ __('Team') }}</h1>
-        <p class="settings-mobile-description">Manage your team, members, and access settings.</p>
+        <p class="settings-mobile-description">{{ __('Manage your team, members, and access settings.') }}</p>
     </header>
     {{-- Feeds the page search with the team pages. --}}
     <div hidden data-settings-search-items="{{ json_encode(settingsSearchItems(['Team' => $teamMenuItems], [])) }}"></div>

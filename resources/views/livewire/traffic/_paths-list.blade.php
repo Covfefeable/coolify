@@ -25,13 +25,13 @@
          pager and sort buttons stop working. --}}
     <div wire:key="{{ $keyPrefix }}-table" x-data="trafficTable()">
         <div class="flex items-center gap-3 px-4 py-2 text-[11px] font-medium text-neutral-500 dark:text-fg-dim">
-            @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => 'Path', 'text' => true, 'class' => 'min-w-0 flex-1'])
+            @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => __('Path'), 'text' => true, 'class' => 'min-w-0 flex-1'])
             <span class="hidden w-16 shrink-0 sm:inline" aria-hidden="true"></span>
-            @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => 'Requests', 'class' => 'w-16 shrink-0'])
+            @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => __('Requests'), 'class' => 'w-16 shrink-0'])
             @include('livewire.traffic._sort-header', ['column' => 's4xx', 'label' => '4xx', 'class' => 'hidden w-12 shrink-0 sm:inline-flex', 'title' => 'HTTP 4xx client-error responses'])
             @include('livewire.traffic._sort-header', ['column' => 's5xx', 'label' => '5xx', 'class' => 'w-12 shrink-0', 'title' => 'HTTP 5xx server-error responses'])
-            @include('livewire.traffic._sort-header', ['column' => 'errorRate', 'label' => 'Error %', 'class' => 'hidden w-14 shrink-0 lg:inline-flex', 'title' => 'Percentage of requests with a 4xx or 5xx response'])
-            @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => 'Bandwidth', 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
+            @include('livewire.traffic._sort-header', ['column' => 'errorRate', 'label' => __('Error %'), 'class' => 'hidden w-14 shrink-0 lg:inline-flex', 'title' => 'Percentage of requests with a 4xx or 5xx response'])
+            @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
             @include('livewire.traffic._sort-header', ['column' => 'p95', 'label' => 'p95', 'class' => 'hidden w-16 shrink-0 md:inline-flex', 'title' => '95% of requests completed within this response time'])
         </div>
         <div class="flex flex-col">
@@ -56,7 +56,7 @@
                     class="flex min-h-11 items-center gap-3 border-t border-neutral-200 px-4 py-2 transition-colors hover:bg-neutral-50 dark:border-white/[0.07] dark:hover:bg-white/[0.03]">
                     @if ($isOther)
                         <span class="min-w-0 flex-1 truncate text-[12px] text-neutral-500 dark:text-fg-dim"
-                            title="All paths outside the top paths that Sentinel tracks">Other paths</span>
+                            title="All paths outside the top paths that Sentinel tracks">{{ __('Other paths') }}</span>
                     @else
                         <span class="flex min-w-0 flex-1 items-baseline gap-1.5">
                             @if ($href)
@@ -81,7 +81,7 @@
                     <span @class(['w-12 shrink-0 text-right text-[12px] tabular-nums', $s5xx > 0 ? 'font-medium text-purple-600 dark:text-purple-400' : $muted])
                         title="{{ number_format($s5xx) }} server-error responses">{{ compactNumber($s5xx) }}</span>
                     <span @class(['hidden w-14 shrink-0 text-right text-[11px] tabular-nums lg:inline', $errorRate > 0 ? 'text-neutral-500 dark:text-fg-dim' : $muted])
-                        title="Combined 4xx and 5xx response rate">{{ $errorRate }}%</span>
+                        title="{{ __('Combined 4xx and 5xx response rate') }}">{{ $errorRate }}%</span>
                     <span class="hidden w-16 shrink-0 text-right text-[11px] tabular-nums text-neutral-400 sm:inline dark:text-fg-faint">{{ formatBytes($bytesOut) }}</span>
                     <span class="hidden w-16 shrink-0 text-right text-[11px] tabular-nums text-neutral-400 md:inline dark:text-fg-faint"
                         title="p95 latency: {{ number_format($p95, 1) }} ms">{{ formatLatency($p95) }}</span>
