@@ -31,7 +31,7 @@
                                 <x-reicon name="servers" class="size-4.5" />
                             </div>
                             <div>
-                                <p class="text-sm font-medium text-neutral-950 dark:text-fg">Localhost</p>
+                                <p class="text-sm font-medium text-neutral-950 dark:text-fg">{{ __('Localhost') }}</p>
                                 <p class="mt-1 text-xs leading-5 text-neutral-500 dark:text-fg-dim">
                                     @if ($server->isFunctional())
                                         The server is reachable, validated, and ready to host resources.
@@ -79,10 +79,10 @@
 
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" type="number"
-                                id="connectionTimeout" label="Connection timeout"
+                                id="connectionTimeout" label="{{ __('Connection timeout') }}"
                                 helper="{{ __('Seconds to wait before an SSH connection fails.') }}" min="1" max="300"
                                 required :disabled="$isValidating" />
-                            <x-forms.listbox searchable id="serverTimezone" label="Server timezone"
+                            <x-forms.listbox searchable id="serverTimezone" label="{{ __('Server timezone') }}"
                                 helper="Used for backup schedules, cron jobs, and displayed timestamps."
                                 searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="No matching timezone"
                                 :options="collect($this->timezones)->map(fn ($timezone) => [
@@ -90,7 +90,7 @@
                                     'label' => $timezone,
                                 ])->all()" :disabled="$isValidating" canGate="update" :canResource="$server" />
                             <x-forms.input canGate="update" :canResource="$server"
-                                placeholder="https://example.com" id="wildcardDomain" label="Wildcard domain"
+                                placeholder="https://example.com" id="wildcardDomain" label="{{ __('Wildcard domain') }}"
                                 helper="{{ __('New resources can receive generated subdomains from this domain.') }}"
                                 :disabled="$isValidating" />
                         </div>

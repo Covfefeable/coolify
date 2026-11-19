@@ -11,13 +11,13 @@ $cpuHelper = $scoped
     : 'Average CPU usage of the servers. The value of each server is the average of all its CPU cores, so 100% means that all cores are fully busy. Servers are not weighted by their number of cores.';
 
 $rangeListboxOptions = [
-    ['value' => '24h', 'label' => 'Last 24 hours'],
-    ['value' => '7d', 'label' => 'Last 7 days'],
-    ['value' => '30d', 'label' => 'Last 30 days'],
+    ['value' => '24h', 'label' => __('Last 24 hours')],
+    ['value' => '7d', 'label' => __('Last 7 days')],
+    ['value' => '30d', 'label' => __('Last 30 days')],
 ];
 
 $serverListboxOptions = array_merge(
-    [['value' => '', 'label' => 'All servers']],
+    [['value' => '', 'label' => __('All servers')]],
     collect($serverOptions)->map(fn ($name, $uuid) => ['value' => $uuid, 'label' => $name])->values()->all(),
 );
 ?>

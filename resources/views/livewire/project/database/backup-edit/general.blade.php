@@ -19,7 +19,7 @@
                 @endif
                 <x-forms.button type="button" wire:click="backupNow"
                     :disabled="! str($status)->startsWith('running')"
-                    :tooltip="! str($status)->startsWith('running') ? 'The database must be running to start a backup.' : null">Back up now</x-forms.button>
+                    :tooltip="! str($status)->startsWith('running') ? 'The database must be running to start a backup.' : null">{{ __('Back up now') }}</x-forms.button>
             </div>
         </x-slot:actions>
 
@@ -97,12 +97,12 @@
 
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <x-forms.input label="{{ __('Frequency') }}" id="frequency" required />
-                <x-forms.input label="Timezone" id="timezone" disabled
+                <x-forms.input label="{{ __('Timezone') }}" id="timezone" disabled
                     helper="Uses the deployment server timezone, or the instance timezone when none is configured."
                     required />
                 <x-forms.input label="{{ __('Timeout') }}" id="timeout" type="number" min="60"
                     helper="Maximum runtime in seconds of the complete backup run: the dumps and S3 uploads of all databases." required />
-                <x-forms.input label="Missing backup alert after" id="missingBackupNotificationDays" type="number"
+                <x-forms.input label="{{ __('Missing backup alert after') }}" id="missingBackupNotificationDays" type="number"
                     min="0" max="365" suffix="days" canGate="manageBackups" :canResource="$backup->database"
                     helper="{{ __('Notify through backup failure channels after this many days without an execution. Use 0 to disable.') }}" required />
             </div>

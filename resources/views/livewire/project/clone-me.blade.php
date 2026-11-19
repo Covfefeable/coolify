@@ -42,7 +42,7 @@
                 @endphp
                 <div class="data-table">
                     <div class="data-table-header clone-destinations-table-grid">
-                        <span><span class="sr-only">Selected</span></span>
+                        <span><span class="sr-only">{{ __('Selected') }}</span></span>
                         <span>{{ __('Server') }}</span>
                         <span>{{ __('Network') }}</span>
                     </div>

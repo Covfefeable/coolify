@@ -53,7 +53,7 @@
                                 rel="noopener noreferrer">Manage the VPS and billing in hPanel.</a>
                             </p>
                         @endif
-                        <p>Type the server name in the confirmation dialog to continue.</p>
+                        <p>{{ __('Type the server name in the confirmation dialog to continue.') }}</p>
                         <x-slot:action>
                         @php
                             $deleteActions = $server->isTransferredAway()
@@ -76,7 +76,7 @@
                                     .'<a class="underline font-semibold" href="https://hpanel.hostinger.com/" target="_blank" rel="noopener noreferrer">cancel the VPS in hPanel</a>.';
                             }
                         @endphp
-                        <x-modal-confirmation title="Confirm Server Deletion?" isErrorButton
+                        <x-modal-confirmation title="{{ __('Confirm Server Deletion?') }}" isErrorButton
                             buttonTitle="{{ __('Delete server') }}" submitAction="delete"
                             :actions="$deleteActions" :warningMessage="$deleteWarningMessage"
                             :checkboxes="$checkboxes" confirmationText="{{ $server->name }}"

@@ -50,7 +50,7 @@
         <div class="hidden" wire:poll.2000ms="pollDnsChecks" aria-hidden="true"></div>
     @endif
     @if ($labelsAreWritable)
-        <x-callout type="warning" title="Domains managed via labels" class="mb-4">
+        <x-callout type="warning" title="{{ __('Domains managed via labels') }}" class="mb-4">
             Container label readonly mode is disabled. Domains must be set in the Labels section on the General page.
             @unless ($isCompose)
                 <a class="mt-2 block font-medium underline"
@@ -67,7 +67,7 @@
     @endif
 
     @if ($isCompose && count($composeServices) === 0)
-        <x-callout type="info" title="No services">
+        <x-callout type="info" title="{{ __('No services') }}">
             No non-database services found in the Docker Compose file. Domains can only be assigned to application
             services.
         </x-callout>
@@ -154,26 +154,26 @@
 
         @if ($hasRows)
             <div class="data-table-header service-domains-overview-grid">
-                <span>Domain</span>
+                <span>{{ __('Domain') }}</span>
                 <span>{{ __('Protocol redirect') }}</span>
                 <span>{{ __('Domain redirect') }}</span>
-                <span>Internal port</span>
-                <span>Search indexing</span>
-                <span>DNS status</span>
+                <span>{{ __('Internal port') }}</span>
+                <span>{{ __('Search indexing') }}</span>
+                <span>{{ __('DNS status') }}</span>
                 <span class="text-right">{{ __('Actions') }}</span>
             </div>
         @endif
         @if ($isCompose && count($composeServices) === 0 && ! $hasRows)
-            <x-empty size="sm" title="No services available"
-                description="No non-database services found in the Docker Compose file."
+            <x-empty size="sm" title="{{ __('No services available') }}"
+                description="{{ __('No non-database services found in the Docker Compose file.') }}"
                 icon-name="globe" />
         @elseif ($isCompose && $composeDomainGroups->isEmpty())
             <x-empty size="sm" title="{{ __('No domains configured') }}"
-                description="Add your first domain with the Add domain button above. Choose which service receives it."
+                description="{{ __('Add your first domain with the Add domain button above. Choose which service receives it.') }}"
                 icon-name="globe" />
         @elseif (! $hasRows)
             <x-empty size="sm" title="{{ __('No domains configured') }}"
-                description="Add your first domain with the Add domain button above, or generate one with the server wildcard domain."
+                description="{{ __('Add your first domain with the Add domain button above, or generate one with the server wildcard domain.') }}"
                 icon-name="globe" />
         @elseif ($isCompose)
             @php
@@ -250,13 +250,13 @@
             <div x-cloak x-show="domainSearch.trim() && !hasDomainSearchResults(@js(collect($domainRows)->pluck('url')->values()))"
                 class="px-4 py-8">
                 <x-empty size="sm" title="{{ __('No domains found') }}"
-                    description="No domain matches your search." icon-name="search" />
+                    description="{{ __('No domain matches your search.') }}" icon-name="search" />
             </div>
         @endif
     </x-application.settings-section>
 
     @if ($hasRows && ! $labelsAreWritable)
-        <x-application.settings-section id="domain-redirects-section" title="Redirects"
+        <x-application.settings-section id="domain-redirects-section" title="{{ __('Redirects') }}"
             helper="Applies to all domains of this application.">
             <div class="grid gap-4 lg:grid-cols-2">
                 @if ($hasHttpsDomains)
@@ -269,11 +269,11 @@
                         ]" :disabled="! auth()->user()->can('update', $application)" />
                 @endif
                 <x-forms.listbox canGate="update" :canResource="$application" id="isPermanentRedirectEnabled"
-                    label="Redirect type" onChange="updatePermanentRedirect"
+                    label="{{ __('Redirect type') }}" onChange="updatePermanentRedirect"
                     helper="Applies to the HTTP to HTTPS and www redirects. Permanent (301/308) is better for SEO, but browsers cache it. Use Temporary (302/307) while you test a redirect."
                     :options="[
                         ['value' => false, 'label' => 'Temporary'],
-                        ['value' => true, 'label' => 'Permanent'],
+                        ['value' => true, 'label' => __('Permanent')],
                     ]" :disabled="! auth()->user()->can('update', $application)" />
             </div>
         </x-application.settings-section>
@@ -340,7 +340,7 @@
                                             htmlId="application-domain-indexing" label="{{ __('Search engine indexing') }}" portal
                                             :options="[
                                                 ['value' => 'index', 'label' => 'Indexable'],
-                                                ['value' => 'noindex', 'label' => 'Noindex'],
+                                                ['value' => 'noindex', 'label' => __('Noindex')],
                                             ]" />
                                         <x-forms.listbox id="editingRedirect"
                                             htmlId="application-domain-direction" label="{{ __('www redirect') }}"
@@ -348,8 +348,8 @@
                                             portal
                                             :options="[
                                                 ['value' => 'both', 'label' => 'No redirect'],
-                                                ['value' => 'www', 'label' => 'Redirect to www'],
-                                                ['value' => 'non-www', 'label' => 'Redirect to non-www'],
+                                                ['value' => 'www', 'label' => __('Redirect to www')],
+                                                ['value' => 'non-www', 'label' => __('Redirect to non-www')],
                                             ]" />
                                         </div>
                                     @endcan

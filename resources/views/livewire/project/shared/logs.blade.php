@@ -87,7 +87,7 @@
                         <div class="flex shrink-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end">
                             @if (count($logTargets['deployments']) > 1)
                                 <div class="w-full sm:w-60" wire:key="runtime-logs-deployments">
-                                    <x-forms.listbox id="pullRequestId" label="Deployment" live searchable portal
+                                    <x-forms.listbox id="pullRequestId" label="{{ __('Deployment') }}" live searchable portal
                                         searchPlaceholder="{{ __('Search deployments') }}" :options="$logTargets['deployments']" />
                                 </div>
                             @endif

@@ -79,12 +79,12 @@
     @else
         <div class="application-settings-section-body is-flush overflow-visible">
             <div class="data-table-header service-domains-overview-grid">
-                <span>Domain</span>
+                <span>{{ __('Domain') }}</span>
                 <span>{{ __('Protocol redirect') }}</span>
                 <span>{{ __('Domain redirect') }}</span>
-                <span>Internal port</span>
-                <span>Search indexing</span>
-                <span>DNS status</span>
+                <span>{{ __('Internal port') }}</span>
+                <span>{{ __('Search indexing') }}</span>
+                <span>{{ __('DNS status') }}</span>
                 <span class="text-right">{{ __('Actions') }}</span>
             </div>
             @foreach (collect($domainRows)->groupBy(fn ($row) => $row['service'] ?? '', preserveKeys: true) as $serviceName => $rows)
@@ -135,7 +135,7 @@
                             </div>
                             <div class="service-domain-detail"
                                 title="{{ ($row['has_port_override'] ?? false) ? 'Custom internal port for this domain' : 'Inherited from the application or Compose service port' }}">
-                                <span class="service-domain-detail-label">Internal port</span>
+                                <span class="service-domain-detail-label">{{ __('Internal port') }}</span>
                                 @if (filled($row['internal_port'] ?? null))
                                     <span aria-label="Internal port {{ $row['internal_port'] }}">{{ $row['internal_port'] }}</span>
                                 @else
@@ -145,7 +145,7 @@
                                 @endif
                             </div>
                             <div class="service-domain-detail">
-                                <span class="service-domain-detail-label">Search indexing</span>
+                                <span class="service-domain-detail-label">{{ __('Search indexing') }}</span>
                                 <span role="img" aria-label="{{ __('Search indexing blocked') }}"
                                     title="{{ __('Search indexing blocked') }}">
                                     <x-reicon name="x" class="size-4" />
@@ -159,17 +159,17 @@
                                 @if (in_array($row['redirect'] ?? 'both', ['www', 'non-www'], true))
                                     <span>{{ ($row['redirect'] ?? 'both') === 'www' ? 'non-www → www' : 'www → non-www' }}</span>
                                 @elseif (! str_starts_with($row['url'], 'https://') || ! $preview->application->isForceHttpsEnabled())
-                                    <span>No redirects</span>
+                                    <span>{{ __('No redirects') }}</span>
                                 @endif
                                 <span>Port {{ $row['internal_port'] ?? 'missing' }}</span>
-                                <span>Noindex</span>
+                                <span>{{ __('Noindex') }}</span>
                             </div>
 
                             <div class="service-domain-dns flex min-w-0 items-center">
                                 @if ($row['dns_status'] === 'checking')
                                     <x-status-badge dynamic :title="$row['dns_message']">
                                         <x-loading compact aria-label="{{ __('Checking DNS') }}" />
-                                        <span class="truncate">Checking DNS...</span>
+                                        <span class="truncate">{{ __('Checking DNS...') }}</span>
                                     </x-status-badge>
                                 @else
                                     <x-status-badge :status="$dnsLabel" :type="$dnsType" :title="$row['dns_message']" />
@@ -241,14 +241,14 @@
                                 <x-forms.listbox id="preview-domain-indexing-{{ $preview->id }}" label="{{ __('Search engine indexing') }}"
                                     :wire="false" value="noindex" disabled
                                     helper="Preview deployments are always excluded from search indexing."
-                                    :options="[['value' => 'noindex', 'label' => 'Noindex']]" />
+                                    :options="[['value' => 'noindex', 'label' => __('Noindex')]]" />
                                 <x-forms.listbox id="preview-domain-direction-{{ $preview->id }}" label="{{ __('www redirect') }}"
                                     :wire="false" :value="$editingIndex !== null ? ($domainRows[$editingIndex]['redirect'] ?? 'both') : 'both'" disabled
                                     helper="Read-only preview routing configuration."
                                     :options="[
                                         ['value' => 'both', 'label' => 'No redirect'],
-                                        ['value' => 'www', 'label' => 'Redirect to www'],
-                                        ['value' => 'non-www', 'label' => 'Redirect to non-www'],
+                                        ['value' => 'www', 'label' => __('Redirect to www')],
+                                        ['value' => 'non-www', 'label' => __('Redirect to non-www')],
                                     ]" />
                             </div>
                             <div class="flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/10">

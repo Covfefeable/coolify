@@ -288,7 +288,7 @@
                                 <x-forms.listbox id="use_custom_webhook_endpoint" label="{{ __('Webhook endpoint') }}"
                                     :live="true" :options="[
                                         ['value' => false, 'label' => 'Use an instance endpoint'],
-                                        ['value' => true, 'label' => 'Use a custom endpoint'],
+                                        ['value' => true, 'label' => __('Use a custom endpoint')],
                                     ]"
                                     x-model="useCustomWebhookEndpoint"
                                     helper="{{ __('Use a custom public URL when Coolify is behind a tunnel or reverse proxy.') }}" />

@@ -31,7 +31,7 @@
         <span class="data-table-cell-dash">-</span>
         <div class="flex items-center justify-end gap-0.5 justify-self-end">
             @unless ($isValueHidden)
-                <x-copy-button resolve="$wire.copyValue()" label="Copy value" />
+                <x-copy-button resolve="$wire.copyValue()" label="{{ __('Copy value') }}" />
             @endunless
             <x-modal-input title="Environment variable details" :closeOutside="false">
                 <x-slot:content>

@@ -49,10 +49,10 @@
                             <table class="w-full min-w-3xl">
                                 <thead>
                                     <tr>
-                                        <th>Domain</th>
+                                        <th>{{ __('Domain') }}</th>
                                         <th>Resolver</th>
                                         <th>Alternative names</th>
-                                        <th>Expires</th>
+                                        <th>{{ __('Expires') }}</th>
                                         <th class="text-right">{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
@@ -87,7 +87,7 @@
                                                         @endforeach
                                                     </div>
                                                 @else
-                                                    <span class="text-neutral-500 dark:text-fg-dim">None</span>
+                                                    <span class="text-neutral-500 dark:text-fg-dim">{{ __('None') }}</span>
                                                 @endif
                                             </td>
                                             <td>

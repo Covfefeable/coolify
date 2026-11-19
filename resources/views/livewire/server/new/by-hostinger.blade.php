@@ -9,7 +9,7 @@
                 New to Hostinger?
                 <a href="https://www.hostinger.com/vps/coolify-hosting?ref=coolify.io" target="_blank"
                     rel="noopener noreferrer"
-                    class="font-medium text-coollabs hover:underline dark:text-brand-light">Create an account</a>
+                    class="font-medium text-coollabs hover:underline dark:text-brand-light">{{ __('Create an account') }}</a>
                 through Coolify's affiliate link.
             </p>
         </div>
@@ -30,7 +30,7 @@
                     </x-callout>
                     <div class="mt-4">
                         <a class="button" href="{{ route('server.create.type', ['type' => 'hostinger']) }}"
-                            {{ wireNavigate() }}>Select another token</a>
+                            {{ wireNavigate() }}>{{ __('Select another token') }}</a>
                     </div>
                 </x-application.settings-section>
             @else
@@ -96,7 +96,7 @@
                                     </label>
                                     <div
                                         class="flex min-h-8 items-center justify-between gap-3 rounded-lg border border-warning/30 bg-warning/5 px-3 py-2">
-                                        <span class="text-[11px] text-neutral-600 dark:text-fg-dim">A private key is required.</span>
+                                        <span class="text-[11px] text-neutral-600 dark:text-fg-dim">{{ __('A private key is required.') }}</span>
                                         <x-modal-input title="{{ __('New Private Key') }}">
                                             <x-slot:content>
                                                 <button type="button" class="button">{{ __('Create key') }}</button>

@@ -195,7 +195,7 @@
                             class="absolute inset-0 z-20 flex items-start justify-start p-6 sm:p-10">
                             <div class="terminal-target-picker w-full max-w-md rounded-lg border p-2 shadow-[var(--shadow-dropdown)]">
                                 <div class="px-2 pt-1 pb-2">
-                                    <div class="text-sm font-semibold text-white/80">Start a terminal session</div>
+                                    <div class="text-sm font-semibold text-white/80">{{ __('Start a terminal session') }}</div>
                                     <div class="mt-0.5 text-[11px] text-white/45">
                                     Choose a container to start a session
                                     </div>

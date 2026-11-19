@@ -172,7 +172,7 @@
                     <x-table.sort-header label="{{ __('Resource') }}" asc="name-asc" desc="name-desc" then="page = 1" />
                     <x-table.sort-header label="{{ __('Type') }}" asc="type-asc" desc="type-desc" then="page = 1" class="resource-type" />
                     <x-table.sort-header label="{{ __('Status') }}" asc="status-asc" desc="status-desc" then="page = 1" />
-                    <x-table.sort-header label="Domain" asc="domain-asc" desc="domain-desc" then="page = 1" class="resource-domain" />
+                    <x-table.sort-header label="{{ __('Domain') }}" asc="domain-asc" desc="domain-desc" then="page = 1" class="resource-domain" />
                     <x-table.sort-header label="{{ __('Server') }}" asc="server-asc" desc="server-desc" then="page = 1" class="resource-server" />
                     <div class="resource-tags">{{ __('Tags') }}</div>
                 </div>

@@ -512,7 +512,7 @@
                                             </button>
                                         @endforeach
                                     @else
-                                        <div class="command-palette-status is-error">No servers available</div>
+                                        <div class="command-palette-status is-error">{{ __('No servers available') }}</div>
                                     @endif
                                 </div>
                             @endif
@@ -705,7 +705,7 @@
                                         <div class="command-palette-item-title">
                                             <span class="command-palette-item-name" x-text="result.name"></span>
                                             <span class="command-palette-type-badge">
-                                                <span x-show="result.type === 'navigation'">Navigation</span>
+                                                <span x-show="result.type === 'navigation'">{{ __('Navigation') }}</span>
                                                 <span x-show="result.type === 'application'">Application</span>
                                                 <span x-show="result.type === 'service'">{{ __('Service') }}</span>
                                                 <span x-show="result.type === 'database'"

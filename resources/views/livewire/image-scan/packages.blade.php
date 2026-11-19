@@ -73,7 +73,7 @@
                 @else
                     <div class="data-table">
                         <div @class(['data-table-header image-scan-sbom-grid', 'has-image' => $showsImage])>
-                            <span>Package</span>
+                            <span>{{ __('Package') }}</span>
                             <span>{{ __('Version') }}</span>
                             <span class="image-scan-secondary">{{ __('Type') }}</span>
                             @if ($showsImage)

@@ -7,15 +7,15 @@
 <div class="data-table w-full">
     @if ($showHeader)
         <div class="data-table-header {{ $gridClass }}">
-            <span>Domain</span>
+            <span>{{ __('Domain') }}</span>
             @if ($showServiceColumn)
                 <span>{{ __('Service') }}</span>
             @endif
             <span>{{ __('Protocol redirect') }}</span>
                 <span>{{ __('Domain redirect') }}</span>
-                <span>Internal port</span>
-                <span>Search indexing</span>
-                <span>DNS status</span>
+                <span>{{ __('Internal port') }}</span>
+                <span>{{ __('Search indexing') }}</span>
+                <span>{{ __('DNS status') }}</span>
             <span class="text-right">{{ __('Actions') }}</span>
         </div>
     @endif
@@ -124,11 +124,11 @@
                 </div>
                 <div class="service-domain-detail"
                     title="{{ ($row['has_port_override'] ?? false) ? 'Custom internal port for this domain' : 'Inherited from the Coolify service port' }}">
-                    <span class="service-domain-detail-label">Internal port</span>
+                    <span class="service-domain-detail-label">{{ __('Internal port') }}</span>
                     <span @if (filled($row['internal_port'] ?? null)) aria-label="Internal port {{ $row['internal_port'] }}" @endif>{{ $row['internal_port'] ?? '—' }}</span>
                 </div>
                 <div class="service-domain-detail">
-                    <span class="service-domain-detail-label">Search indexing</span>
+                    <span class="service-domain-detail-label">{{ __('Search indexing') }}</span>
                     <span role="img" aria-label="{{ $isNoindexed ? 'Search indexing blocked' : 'Search indexing allowed' }}"
                         title="{{ $isNoindexed ? 'Search indexing blocked' : 'Search indexing allowed' }}">
                         <x-reicon :name="$isNoindexed ? 'x' : 'check'" class="size-4" />
@@ -142,7 +142,7 @@
                     @if (in_array($rowDirection, ['www', 'non-www'], true))
                         <span>{{ $rowDirection === 'www' ? 'non-www → www' : 'www → non-www' }}</span>
                     @elseif (! str_starts_with($row['url'], 'https://') || ! ($forceHttpsRedirects[$row['service_application_id']] ?? true))
-                        <span>No redirects</span>
+                        <span>{{ __('No redirects') }}</span>
                     @endif
                     <span>Port {{ $row['internal_port'] ?? 'missing' }}</span>
                     <span>{{ $isNoindexed ? 'Noindex' : 'Indexable' }}</span>
@@ -155,7 +155,7 @@
                     @elseif ($row['dns_status'] === 'checking')
                         <x-status-badge dynamic :title="$row['dns_message']">
                             <x-loading compact aria-label="{{ __('Checking DNS') }}" />
-                            <span class="truncate">Checking DNS...</span>
+                            <span class="truncate">{{ __('Checking DNS...') }}</span>
                         </x-status-badge>
                     @else
                         <x-status-badge :status="$dnsLabel" :type="$dnsType"

@@ -11,7 +11,7 @@
 
 <div class="grid gap-4 sm:grid-cols-[8rem_minmax(0,1fr)_8rem]">
     <div class="min-w-0">
-        <x-forms.listbox id="{{ $id }}.scheme" htmlId="{{ $id }}-protocol" label="Protocol" portal :options="[
+        <x-forms.listbox id="{{ $id }}.scheme" htmlId="{{ $id }}-protocol" label="{{ __('Protocol') }}" portal :options="[
             ['value' => 'https', 'label' => 'https'],
             ['value' => 'http', 'label' => 'http'],
         ]" />
@@ -33,7 +33,7 @@
             <p class="mt-1 text-[12px] text-red-500">
                 @if ($validationLink)
                     {{ str($message)->beforeLast($validationLink)->trim() }}
-                    <a class="font-medium underline" href="{{ $validationLink }}">Set them here.</a>
+                    <a class="font-medium underline" href="{{ $validationLink }}">{{ __('Set them here.') }}</a>
                 @else
                     {{ $message }}
                 @endif
@@ -55,7 +55,7 @@
     @if ($inheritedPortExpression)
         <div class="min-w-0 sm:col-span-3"
             x-show="!({{ $inheritedPortExpression }}) && !$wire.{{ $id }}?.port" x-cloak>
-            <x-callout type="danger" title="Port is required">
+            <x-callout type="danger" title="{{ __('Port is required') }}">
                 The proxy cannot route this domain. Enter the port your container listens on in the Port field.
             </x-callout>
         </div>
@@ -63,7 +63,7 @@
 
     <div class="min-w-0 sm:col-span-3">
         <div class="mb-1.5 flex h-4 w-full items-center gap-1.5">
-            <label for="{{ $id }}-path" class="mb-0! flex items-center gap-1.5 leading-4">Path</label>
+            <label for="{{ $id }}-path" class="mb-0! flex items-center gap-1.5 leading-4">{{ __('Path') }}</label>
         </div>
         <input id="{{ $id }}-path" type="text" class="input" wire:model="{{ $id }}.path"
             placeholder="{{ $pathPlaceholder }}" autocomplete="off" />

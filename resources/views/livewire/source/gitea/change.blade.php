@@ -99,7 +99,7 @@
                                 :options="collect($privateKeys)->map(fn ($key) => [
                                     'value' => $key->id,
                                     'label' => $key->name,
-                                ])->prepend(['value' => null, 'label' => 'None'])->values()->all()"
+                                ])->prepend(['value' => null, 'label' => __('None')])->values()->all()"
                                 :disabled="! auth()->user()->can('update', $gitea_app)" />
                         </div>
                     </div>
@@ -215,7 +215,7 @@
             </x-application.settings-section>
 
             <form wire:submit="submit" class="contents">
-                <x-application.settings-section title="Step 2 · Enter credentials"
+                <x-application.settings-section title="{{ __('Step 2 · Enter credentials') }}"
                     description="Paste the Client ID and Client secret from Gitea or Forgejo, then save.">
                     <x-slot:actions>
                         <x-forms.button type="submit">{{ __('Save') }}</x-forms.button>
@@ -241,14 +241,14 @@
                                 <x-forms.listbox id="use_custom_webhook_endpoint" label="{{ __('Webhook endpoint') }}"
                                     :live="true" :options="[
                                         ['value' => false, 'label' => 'Use an instance endpoint'],
-                                        ['value' => true, 'label' => 'Use a custom endpoint'],
+                                        ['value' => true, 'label' => __('Use a custom endpoint')],
                                     ]"
                                     x-model="useCustomWebhookEndpoint"
                                     helper="{{ __('Use a custom public URL when Coolify is behind a tunnel or reverse proxy.') }}" />
                             </div>
                             <div class="lg:col-span-2" x-show="!useCustomWebhookEndpoint">
                                 <x-forms.listbox id="webhook_endpoint" x-model="webhookEndpoint"
-                                    label="Selected endpoint"
+                                    label="{{ __('Selected endpoint') }}"
                                     helper="Gitea or Forgejo will use this endpoint unless custom mode is enabled."
                                     :options="collect([$fqdn, $ipv4, $ipv6, config('app.url')])
                                         ->filter()->unique()->map(fn ($endpoint) => [

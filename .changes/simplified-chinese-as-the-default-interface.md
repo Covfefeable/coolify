@@ -17,3 +17,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Resource charts, Git integration forms, and shared confirmation controls include additional Simplified Chinese translations
 - Buttons, tooltips, and file storage confirmations have broader Simplified Chinese coverage
 - Docker cleanup, registry guidance, log drain settings, and text field placeholders include Simplified Chinese translations
+- Appearance, server settings, and registration guidance include additional Simplified Chinese translations

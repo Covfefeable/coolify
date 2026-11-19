@@ -74,7 +74,7 @@
 <aside class="application-settings-navigation in-main-nav min-w-0"
     data-settings-search-items="{{ json_encode(settingsSearchItems($groupedItems, $databaseRouteParameters, ['project.database.configuration' => $pageSections])) }}">
 @endif
-    <nav aria-label="Database settings"
+    <nav aria-label="{{ __('Database settings') }}"
         class="grid grid-cols-1 gap-0.5">
         @foreach ($groupedItems as $groupLabel => $groupItems)
             @unless ($loop->first)

@@ -186,7 +186,7 @@
                     <x-image-scan.image-select :options="$imageOptions" :selected="$images" action="selectImage" />
 
                     <x-table.filter :active-count="count($severities)" reset-action="resetFilters">
-                        <span class="px-2 pb-1 pt-2 text-[10px] font-medium uppercase tracking-wider text-neutral-400 dark:text-fg-faint">Severity</span>
+                        <span class="px-2 pb-1 pt-2 text-[10px] font-medium uppercase tracking-wider text-neutral-400 dark:text-fg-faint">{{ __('Severity') }}</span>
                         @foreach ($severityOptions as $option)
                             @php $selected = in_array($option, $severities, true); @endphp
                             <button type="button" class="listbox-option" role="option"
@@ -248,12 +248,12 @@
                     @elseif (! $showIgnored && $view === 'package')
                         <div class="data-table">
                             <div @class(['data-table-header image-scan-packages-grid', 'has-image' => $showsImage])>
-                                <span>Package</span>
+                                <span>{{ __('Package') }}</span>
                                 @if ($showsImage)
                                     <span class="image-scan-secondary">{{ __('Image') }}</span>
                                 @endif
                                 <span class="image-scan-secondary">{{ __('Version') }}</span>
-                                <span class="image-scan-severity-cell">Severity</span>
+                                <span class="image-scan-severity-cell">{{ __('Severity') }}</span>
                                 <span class="image-scan-secondary">Findings</span>
                                 <span class="sr-only">{{ __('Actions') }}</span>
                             </div>
@@ -315,12 +315,12 @@
                         <div class="data-table">
                             <div @class(['data-table-header image-scan-findings-grid', 'has-image' => $showsImage])>
                                 <span>Finding</span>
-                                <span class="image-scan-secondary">Package</span>
+                                <span class="image-scan-secondary">{{ __('Package') }}</span>
                                 @if ($showsImage)
                                     <span class="image-scan-secondary">{{ __('Image') }}</span>
                                 @endif
                                 <span class="image-scan-secondary">{{ __('Version') }}</span>
-                                <span class="image-scan-severity-cell">Severity</span>
+                                <span class="image-scan-severity-cell">{{ __('Severity') }}</span>
                                 <span class="sr-only">{{ __('Actions') }}</span>
                             </div>
                             @foreach ($items as $row)

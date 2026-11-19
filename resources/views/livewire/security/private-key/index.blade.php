@@ -154,7 +154,7 @@
                 </div>
                 <div class="lg:col-span-2">
                     <div class="mb-1.5 flex items-center justify-between gap-3">
-                        <label class="text-[13px] font-medium">Private key <span class="text-helper">*</span></label>
+                        <label class="text-[13px] font-medium">{{ __('Private key') }} <span class="text-helper">*</span></label>
                         <span class="text-[11px] font-medium text-neutral-400 dark:text-fg-faint">Edit key</span>
                     </div>
                     <x-forms.input loading :allowToPeak="false" />

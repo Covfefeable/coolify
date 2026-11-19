@@ -60,14 +60,14 @@
                         ['value' => 'https', 'label' => 'HTTPS'],
                     ]" :disabled="! $canUpdate" />
                     <x-forms.input canGate="update" :canResource="$resource" id="healthCheckHost"
-                        placeholder="localhost" label="Host" required />
+                        placeholder="localhost" label="{{ __('Host') }}" required />
                     <x-forms.input canGate="update" :canResource="$resource" type="number"
                         id="healthCheckPort" helper="Uses the first exposed port when empty." placeholder="80"
                         label="{{ __('Port') }}" />
                 </div>
                 <div class="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_10rem]">
                     <x-forms.input canGate="update" :canResource="$resource" id="healthCheckPath"
-                        placeholder="/health" label="Path" required />
+                        placeholder="/health" label="{{ __('Path') }}" required />
                     <x-forms.input canGate="update" :canResource="$resource" type="number"
                         id="healthCheckReturnCode" placeholder="200" label="Expected code" required />
                 </div>

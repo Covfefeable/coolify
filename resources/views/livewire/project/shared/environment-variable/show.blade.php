@@ -95,7 +95,7 @@
                 </a>
             @endif
             @if (! $isLocked && ! $isValueHidden)
-                <x-copy-button resolve="$wire.copyValue()" label="Copy value" />
+                <x-copy-button resolve="$wire.copyValue()" label="{{ __('Copy value') }}" />
             @endif
             {{-- Open modal immediately (Alpine); decrypt value in a follow-up Livewire request. --}}
             <x-modal-input title="{{ __('Edit environment variable') }}" :closeOutside="false" :wireIgnore="false"

@@ -176,10 +176,10 @@
                     <div class="data-table">
                         <div class="data-table-header host-vulnerabilities-table-grid">
                             <x-table.sort-header label="Vulnerability" asc="vulnerability_asc" desc="vulnerability_desc" action="sortFindings" :current="$sortBy" />
-                            <x-table.sort-header label="Package" asc="package_asc" desc="package_desc" action="sortFindings" :current="$sortBy" />
+                            <x-table.sort-header label="{{ __('Package') }}" asc="package_asc" desc="package_desc" action="sortFindings" :current="$sortBy" />
                             <x-table.sort-header label="Fixed in" asc="fixed_asc" desc="fixed_desc" action="sortFindings" :current="$sortBy" />
                             <div class="flex justify-end">
-                                <x-table.sort-header label="Severity" asc="severity_asc" desc="severity_desc" first="desc" action="sortFindings" :current="$sortBy" />
+                                <x-table.sort-header label="{{ __('Severity') }}" asc="severity_asc" desc="severity_desc" first="desc" action="sortFindings" :current="$sortBy" />
                             </div>
                             <span class="text-right">Action</span>
                         </div>
@@ -278,7 +278,7 @@
                                     @if (filled($finding->summary ?: $finding->title))
                                         <dd class="col-span-2 mb-1 max-w-3xl leading-5">{{ $finding->summary ?: $finding->title }}</dd>
                                     @endif
-                                    <dt class="text-neutral-500 dark:text-fg-faint">Package</dt>
+                                    <dt class="text-neutral-500 dark:text-fg-faint">{{ __('Package') }}</dt>
                                     <dd class="min-w-0 break-all font-mono">{{ $finding->package }}</dd>
                                     <dt class="text-neutral-500 dark:text-fg-faint">Installed</dt>
                                     <dd class="min-w-0 break-all font-mono">{{ $finding->version }}</dd>

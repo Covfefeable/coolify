@@ -15,7 +15,7 @@
 
 <div @class(['relative', 'w-full' => $fullWidth]) x-data="{ open: false }"
     x-effect="$dispatch('resource-actions-toggled', { open })" @keydown.escape.window="open = false">
-    <button type="button" x-ref="trigger" @click="open = !open" @click.outside="open = false" title="Open application links"
+    <button type="button" x-ref="trigger" @click="open = !open" @click.outside="open = false" title="{{ __('Open application links') }}"
         @class([
             'app-tab shrink-0 gap-1' => !$fullWidth && !$compact,
             'button w-full justify-between' => $fullWidth,
@@ -44,7 +44,7 @@
             @if (data_get($application, 'gitBrancLocation'))
                 <a target="_blank" class="{{ $linkItemClasses }}" href="{{ $application->gitBranchLocation }}">
                     <x-git-icon git="{{ $application->source?->getMorphClass() }}" />
-                    <span class="min-w-0 truncate">Git Repository</span>
+                    <span class="min-w-0 truncate">{{ __('Git Repository') }}</span>
                 </a>
             @endif
             @if (data_get($application, 'build_pack') === 'dockercompose')
@@ -52,7 +52,7 @@
                     @if (data_get($fqdn, 'domain'))
                         @foreach (explode(',', data_get($fqdn, 'domain')) as $domain)
                             <a class="{{ $linkItemClasses }}" target="_blank" href="{{ getFqdnWithoutPort($domain) }}">
-                                <span class="deployment-badge deployment-badge-production">Production</span>
+                                <span class="deployment-badge deployment-badge-production">{{ __('Production') }}</span>
                                 <span class="min-w-0 truncate">{{ getFqdnWithoutPort($domain) }}</span>
                             </a>
                         @endforeach
@@ -62,7 +62,7 @@
             @if (data_get($application, 'fqdn'))
                 @foreach (str(data_get($application, 'fqdn'))->explode(',') as $fqdn)
                     <a class="{{ $linkItemClasses }}" target="_blank" href="{{ getFqdnWithoutPort($fqdn) }}">
-                        <span class="deployment-badge deployment-badge-production">Production</span>
+                        <span class="deployment-badge deployment-badge-production">{{ __('Production') }}</span>
                         <span class="min-w-0 truncate">{{ getFqdnWithoutPort($fqdn) }}</span>
                     </a>
                 @endforeach
@@ -118,7 +118,7 @@
                 @endforeach
             @endif
         @else
-            <div class="listbox-option justify-start! cursor-default!">No links available</div>
+            <div class="listbox-option justify-start! cursor-default!">{{ __('No links available') }}</div>
         @endif
     </div>
 </div>

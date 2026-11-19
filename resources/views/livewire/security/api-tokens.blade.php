@@ -99,10 +99,10 @@
                         <div x-cloak x-show="filteredTokens.length > 0" class="data-table">
                             <div class="data-table-header api-tokens-table-grid">
                                 <span>{{ __('Description') }}</span>
-                                <span>Permissions</span>
+                                <span>{{ __('Permissions') }}</span>
                                 <span>Last used</span>
                                 <span>{{ __('Created') }}</span>
-                                <span>Expires</span>
+                                <span>{{ __('Expires') }}</span>
                                 <span class="text-right">{{ __('Actions') }}</span>
                             </div>
                             @foreach ($tokens as $token)

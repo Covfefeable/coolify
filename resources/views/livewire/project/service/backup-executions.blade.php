@@ -13,7 +13,7 @@
             <x-slot:content><span></span></x-slot:content>
             <div class="flex flex-col gap-5">
                 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                    <div><p class="text-xs text-neutral-500 dark:text-fg-dim">Target</p><p class="mt-1 text-sm font-medium">{{ $selectedExecution['target'] }}</p></div>
+                    <div><p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('Target') }}</p><p class="mt-1 text-sm font-medium">{{ $selectedExecution['target'] }}</p></div>
                     <div><p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('Status') }}</p><p class="mt-1 text-sm font-medium">{{ str($selectedExecution['status'])->headline() }}</p></div>
                     <div><p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('Started') }}</p><p class="mt-1 text-sm font-medium" title="{{ $selectedExecution['started_at']->diffForHumans() }}">{{ formatDateInServerTimezone($selectedExecution['started_at'], $server) }}</p></div>
                     <div><p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('Size') }}</p><p class="mt-1 text-sm font-medium">{{ $selectedExecution['size'] ? formatBytes($selectedExecution['size']) : '-' }}</p></div>

@@ -13,7 +13,7 @@
         <div class="grid gap-4 md:grid-cols-3">
             <x-forms.input canGate="update" :canResource="$resource" placeholder="1.5"
                 helper="Set to 0 to use all available CPUs. Decimal values such as 0.5 are supported."
-                label="CPU limit" id="limitsCpus" />
+                label="{{ __('CPU limit') }}" id="limitsCpus" />
             <x-forms.input canGate="update" :canResource="$resource" placeholder="0-2"
                 helper="Restrict execution to specific cores, for example 0-2 or 0,1,3. Leave empty for all cores."
                 label="CPU set" id="limitsCpuset" />
@@ -31,7 +31,7 @@
                 label="Memory reservation" id="limitsMemoryReservation" />
             <x-forms.input canGate="update" :canResource="$resource"
                 helper="Maximum memory available to the container. Set to 0 for unlimited."
-                label="Memory limit" id="limitsMemory" />
+                label="{{ __('Memory limit') }}" id="limitsMemory" />
             <x-forms.input canGate="update" :canResource="$resource"
                 helper="Combined memory and swap allowance. Use values such as 512m or 2g."
                 label="Memory and swap limit" id="limitsMemorySwap" />

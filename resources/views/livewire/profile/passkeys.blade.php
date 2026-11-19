@@ -6,7 +6,7 @@
         <section class="application-settings-section">
             <div class="application-settings-section-header">
                 <div>
-                    <h2>Passkeys</h2>
+                    <h2>{{ __('Passkeys') }}</h2>
                     <p>Sign in with your fingerprint, face, or a security key. A passkey sign-in skips two-factor authentication.</p>
                 </div>
                 @if ($available && ! $show_form)

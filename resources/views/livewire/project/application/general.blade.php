@@ -116,7 +116,7 @@
                         helper="HTTP Basic Authentication adds the required authentication labels to the proxy. Coolify currently supports a single username and password."
                         :options="[
                             ['value' => false, 'label' => 'None'],
-                            ['value' => true, 'label' => 'HTTP Basic Authentication'],
+                            ['value' => true, 'label' => __('HTTP Basic Authentication')],
                         ]" x-bind:disabled="!canUpdate" />
                     @if ($isHttpBasicAuthEnabled)
                         <div class="mt-5 grid w-full gap-4 border-t border-neutral-200 pt-5 sm:grid-cols-2 dark:border-white/[0.07]">
@@ -228,11 +228,11 @@
                                             <x-forms.input x-bind:disabled="shouldDisable()"
                                                 placeholder="docker compose build" id="dockerComposeCustomBuildCommand"
                                                 helper="The compose file path (<span class='dark:text-brand-light'>-f</span> flag) and environment variables (<span class='dark:text-brand-light'>--env-file</span> flag) are automatically injected based on your Base Directory and Docker Compose Location settings. You can override by providing your own <span class='dark:text-brand-light'>-f</span> or <span class='dark:text-brand-light'>--env-file</span> flags.<br><br>If you use this, you need to specify paths relatively and should use the same compose file in the custom command, otherwise the automatically configured labels / etc won't work.<br><br>Example usage: <span class='dark:text-brand-light'>docker compose build</span>"
-                                                label="Custom build command" />
+                                                label="{{ __('Custom build command') }}" />
                                             <x-forms.input x-bind:disabled="shouldDisable()"
                                                 placeholder="docker compose up -d" id="dockerComposeCustomStartCommand"
                                                 helper="The compose file path (<span class='dark:text-brand-light'>-f</span> flag) and environment variables (<span class='dark:text-brand-light'>--env-file</span> flag) are automatically injected based on your Base Directory and Docker Compose Location settings. You can override by providing your own <span class='dark:text-brand-light'>-f</span> or <span class='dark:text-brand-light'>--env-file</span> flags.<br><br>If you use this, you need to specify paths relatively and should use the same compose file in the custom command, otherwise the automatically configured labels / etc won't work.<br><br>Example usage: <span class='dark:text-brand-light'>docker compose up -d</span>"
-                                                label="Custom start command" />
+                                                label="{{ __('Custom start command') }}" />
                                         </div>
                                         @if ($this->dockerComposeCustomBuildCommand)
                                             <div wire:key="docker-compose-build-preview">
@@ -339,7 +339,7 @@
                         @endcan
                     </div>
                     <x-forms.textarea id="customNginxConfiguration"
-                        placeholder="Empty means default configuration will be used." rows="10"
+                        placeholder="{{ __('Empty means default configuration will be used.') }}" rows="10"
                         monacoEditorLanguage="nginx" useMonacoEditor x-bind:disabled="!canUpdate" />
                 </div>
             @endif
@@ -481,7 +481,7 @@
                     ]);
                     $portsExposesDomainHint = "You can also set a different internal port for each domain on the <a class='underline dark:text-white' href='{$applicationDomainsUrl}'>{{ __('Domains') }}</a> page.";
                 @endphp
-                <x-modal-input title="Networking" class="hidden" :wireIgnore="false"
+                <x-modal-input title="{{ __('Networking') }}" class="hidden" :wireIgnore="false"
                     wireOpen="networkingModalOpen" subtitle="Ports the container exposes, host port mappings and internal network aliases."
                     @open-networking-modal.window="modalOpen = true">
                 <x-slot:content></x-slot:content>
@@ -514,7 +514,7 @@
                                     clip-rule="evenodd" />
                             </svg>
                             <div>
-                                <span class="font-semibold">PORT mismatch detected</span>
+                                <span class="font-semibold">{{ __('PORT mismatch detected') }}</span>
                                 <p class="mt-1">Your PORT environment variable is set to
                                     <strong>{{ $this->detectedPortInfo['port'] }}</strong>, but it's not in your Ports
                                     Exposes
@@ -531,7 +531,7 @@
                                     clip-rule="evenodd" />
                             </svg>
                             <div>
-                                <span class="font-semibold">PORT environment variable configured</span>
+                                <span class="font-semibold">{{ __('PORT environment variable configured') }}</span>
                                 <p class="mt-1">Your PORT environment variable
                                     ({{ $this->detectedPortInfo['port'] }}) matches
                                     your Ports Exposes configuration.</p>
@@ -540,7 +540,7 @@
                     @endif
                 @endif
                 @if ((empty($portsExposes) || $portsExposes === '0') && !empty($fqdn))
-                    <x-callout type="info" title="No ports exposed" class="mb-4">
+                    <x-callout type="info" title="{{ __('No ports exposed') }}" class="mb-4">
                         This application does not expose any ports and will not be reachable through the proxy or your domains.
                         This behavior is normal for background workers, bots, or scheduled tasks.
                         If your application needs to handle HTTP traffic, please specify the port(s) it listens on.
@@ -573,7 +573,7 @@
                     </div>
                     @if (!$application->destination->server->isSwarm())
                         <x-forms.input placeholder="3000:3000" id="portsMappings" label="{{ __('Port mappings') }}"
-                            helper="A comma separated list of ports you would like to map to the host system. Useful when you do not want to use domains.<br><br><span class='inline-block font-bold dark:text-brand-light'>Format:</span> host:container<br><br><span class='inline-block font-bold dark:text-brand-light'>Example:</span> 3000:3000,3002:3002<br><br>Rolling update is not supported if you have a port mapped to the host."
+                            helper="A comma separated list of ports you would like to map to the host system. Useful when you do not want to use domains.<br><br><span class='inline-block font-bold dark:text-brand-light'>{{ __('Format:') }}</span> host:container<br><br><span class='inline-block font-bold dark:text-brand-light'>Example:</span> 3000:3000,3002:3002<br><br>Rolling update is not supported if you have a port mapped to the host."
                             x-bind:disabled="!canUpdate" />
                     @endif
                     @if (!$application->destination->server->isSwarm())
@@ -594,7 +594,7 @@
                         helper="You can add custom docker run options that will be used when your container is started.<br>Note: Not all options are supported, as they could mess up Coolify's automation and could cause bad experience for users.<br><br>Check the <a class='underline dark:text-white' href='https://coolify.io/docs/knowledge-base/docker/custom-commands'>docs.</a>"
                         placeholder="--cap-add SYS_ADMIN --device=/dev/fuse --security-opt apparmor:unconfined --ulimit nofile=1024:1024 --tmpfs /run:rw,noexec,nosuid,size=65536k --hostname=myapp"
                         id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" x-bind:disabled="!canUpdate" />
-                <x-application.settings-subsection id="container-labels-section" title="Labels">
+                <x-application.settings-subsection id="container-labels-section" title="{{ __('Labels') }}">
                     <div class="grid w-full gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="isContainerLabelReadonlyEnabled" label="Label management"
                             onChange="instantSave"

@@ -170,7 +170,7 @@
                         <span class="min-w-0 flex-1 truncate text-sm font-medium text-black dark:text-white">{{ $heading }}</span>
                         @if ($hasHttpsDomains)
                             <div class="flex w-full items-center gap-2 sm:w-auto service-domains-https">
-                                <label for="service-force-https-{{ $appId }}-trigger" class="mb-0! whitespace-nowrap text-[12px]!">Redirect HTTP to HTTPS</label>
+                                <label for="service-force-https-{{ $appId }}-trigger" class="mb-0! whitespace-nowrap text-[12px]!">{{ __('Redirect HTTP to HTTPS') }}</label>
                                 <x-helper helper="{{ __('Disable only when Cloudflare Tunnel or another proxy connects to Coolify over HTTP. Keep enabled when Cloudflare uses Full or Full (Strict) SSL.') }}" />
                                 <x-forms.listbox canGate="update" :canResource="$service" id="forceHttpsRedirects.{{ $appId }}"
                                     htmlId="service-force-https-{{ $appId }}" preserveValue portal
@@ -183,7 +183,7 @@
                             </div>
                         @endif
                         <div class="flex w-full items-center gap-2 sm:w-auto service-domains-https">
-                            <label for="service-permanent-redirect-{{ $appId }}-trigger" class="mb-0! whitespace-nowrap text-[12px]!">Redirect type</label>
+                            <label for="service-permanent-redirect-{{ $appId }}-trigger" class="mb-0! whitespace-nowrap text-[12px]!">{{ __('Redirect type') }}</label>
                             <x-helper helper="Applies to the HTTP to HTTPS and www redirects. Permanent (301/308) is better for SEO, but browsers cache it. Use Temporary (302/307) while you test a redirect." />
                             <x-forms.listbox canGate="update" :canResource="$service" id="permanentRedirects.{{ $appId }}"
                                 htmlId="service-permanent-redirect-{{ $appId }}" preserveValue portal
@@ -191,7 +191,7 @@
                                 :onChangeArgs="[(int) $appId]"
                                 :options="[
                                     ['value' => false, 'label' => 'Temporary'],
-                                    ['value' => true, 'label' => 'Permanent'],
+                                    ['value' => true, 'label' => __('Permanent')],
                                 ]" :disabled="! auth()->user()->can('update', $service)" />
                         </div>
                     </div>
@@ -284,7 +284,7 @@
                                             label="{{ __('Search engine indexing') }}" portal
                                             :options="[
                                                 ['value' => 'index', 'label' => 'Indexable'],
-                                                ['value' => 'noindex', 'label' => 'Noindex'],
+                                                ['value' => 'noindex', 'label' => __('Noindex')],
                                             ]" />
                                         <x-forms.listbox id="editingRedirect" htmlId="service-domain-direction"
                                             label="{{ __('www redirect') }}"
@@ -292,8 +292,8 @@
                                             portal
                                             :options="[
                                                 ['value' => 'both', 'label' => 'No redirect'],
-                                                ['value' => 'www', 'label' => 'Redirect to www'],
-                                                ['value' => 'non-www', 'label' => 'Redirect to non-www'],
+                                                ['value' => 'www', 'label' => __('Redirect to www')],
+                                                ['value' => 'non-www', 'label' => __('Redirect to non-www')],
                                             ]" />
                                     </div>
                                     <div class="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/10">

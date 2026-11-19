@@ -104,7 +104,7 @@
                                 <x-forms.listbox id="selectedStorages.{{ $backup->id }}" :options="$storageOptions"
                                     portal />
                                 <button type="button" class="button shrink-0"
-                                    wire:click="moveBackup({{ $backup->id }})">Move</button>
+                                    wire:click="moveBackup({{ $backup->id }})">{{ __('Move') }}</button>
                             </div>
                             <div class="flex justify-end" wire:key="disableS3-{{ $backup->id }}">
                                 <x-modal-confirmation title="{{ __('Remove this storage from the backup schedule?') }}"
@@ -153,7 +153,7 @@
                             <x-forms.listbox id="selectedVolumeStorages.{{ $backup->id }}" :options="$storageOptions"
                                 portal />
                             <button type="button" class="button shrink-0"
-                                wire:click="moveVolumeBackup({{ $backup->id }})">Move</button>
+                                wire:click="moveVolumeBackup({{ $backup->id }})">{{ __('Move') }}</button>
                         </div>
                         <div class="flex justify-end" wire:key="disableVolumeS3-{{ $backup->id }}">
                             <x-modal-confirmation title="{{ __('Remove this storage from the backup schedule?') }}"

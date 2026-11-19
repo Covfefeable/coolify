@@ -1,8 +1,8 @@
 <?php
 $rangeListboxOptions = [
-    ['value' => '24h', 'label' => 'Last 24 hours'],
-    ['value' => '7d', 'label' => 'Last 7 days'],
-    ['value' => '30d', 'label' => 'Last 30 days'],
+    ['value' => '24h', 'label' => __('Last 24 hours')],
+    ['value' => '7d', 'label' => __('Last 7 days')],
+    ['value' => '30d', 'label' => __('Last 30 days')],
 ];
 
 $dimensionLabels = [
@@ -28,14 +28,14 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
                 </x-slot:actions>
             @endif
             <x-empty size="sm" title="{{ __('Traffic analytics is not enabled') }}"
-                description="Enable Sentinel traffic analytics for this server to start collecting request analytics."
+                description="{{ __('Enable Sentinel traffic analytics for this server to start collecting request analytics.') }}"
                 icon-name="network" />
         </x-application.settings-section>
     @elseif (! $overview)
         <x-application.settings-section id="analytics-section" title="{{ __('Analytics') }}"
             helper="{{ __('Inspect traffic statistics reported by Sentinel.') }}">
             <x-empty size="sm" title="{{ __('No analytics data yet') }}"
-                description="We could not load traffic analytics for the selected range. Try a different range or check back shortly."
+                description="{{ __('We could not load traffic analytics for the selected range. Try a different range or check back shortly.') }}"
                 icon-name="network" />
         </x-application.settings-section>
     @else
@@ -96,7 +96,7 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
                         </div>
                     </div>
                     <div class="flex flex-col bg-[var(--coollabs-base)] px-4 py-3">
-                        <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">Bandwidth</span>
+                        <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Bandwidth') }}</span>
                         <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg">{{ formatBytes($this->bandwidthBytes()) }}</span>
                         <div class="mt-auto pt-3">
                             @include('livewire.traffic._sparkline', [
@@ -109,7 +109,7 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
                         </div>
                     </div>
                     <div class="flex flex-col bg-[var(--coollabs-base)] px-4 py-3">
-                        <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">Error rate</span>
+                        <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Error rate') }}</span>
                         <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg">{{ $this->errorRate() }}%</span>
                         <div class="mt-auto pt-3">
                             @include('livewire.traffic._sparkline', [

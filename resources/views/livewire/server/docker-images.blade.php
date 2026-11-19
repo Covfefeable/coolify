@@ -31,14 +31,14 @@
                         <x-reicon name="search"
                             class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
                         <input wire:model.live.debounce.300ms="search" type="search"
-                            placeholder="{{ __('Search images by repository, tag or ID') }}" aria-label="Search images"
+                            placeholder="{{ __('Search images by repository, tag or ID') }}" aria-label="{{ __('Search images') }}"
                             class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                     </div>
                 </div>
 
                 @if (!$loaded)
                     <div role="status">
-                        <span class="sr-only">Reading images from the Docker daemon</span>
+                        <span class="sr-only">{{ __('Reading images from the Docker daemon') }}</span>
                         <x-skeleton.table flush :rows="6" />
                     </div>
                 @elseif ($visibleImages->isEmpty())
@@ -78,7 +78,7 @@
                                     <span class="truncate font-mono text-[11px] text-neutral-600 dark:text-fg-dim">
                                         {{ $image['short_id'] }}
                                     </span>
-                                    <x-copy-button :value="$image['id']" label="Copy image ID" />
+                                    <x-copy-button :value="$image['id']" label="{{ __('Copy image ID') }}" />
                                 </div>
                                 <div class="truncate text-[11px] text-neutral-600 dark:text-fg-dim">
                                     {{ $image['created'] }}
@@ -97,7 +97,7 @@
                                 <div class="flex justify-end">
                                     @if ($image['containers'] === [])
                                         @can('update', $server)
-                                            <x-modal-confirmation title="Delete Docker Image?"
+                                            <x-modal-confirmation title="{{ __('Delete Docker Image?') }}"
                                                 submitAction="delete({{ $image['reference'] }})" :actions="[
                                                     'Delete ' . $image['reference'] . ' from this server.',
                                                     'It has to be pulled or built again before it can be used.',
@@ -109,7 +109,7 @@
                                                 <x-slot:trigger>
                                                     <button type="button"
                                                         class="icon-button shrink-0 text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300"
-                                                        title="Delete image" aria-label="Delete {{ $image['reference'] }}">
+                                                        title="{{ __('Delete image') }}" aria-label="Delete {{ $image['reference'] }}">
                                                         <x-reicon name="trash" class="size-3.5" />
                                                     </button>
                                                 </x-slot:trigger>

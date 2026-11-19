@@ -84,7 +84,7 @@
         </div>
         <div class="service-domain-detail"
             title="{{ ($row['has_port_override'] ?? false) ? 'Custom internal port for this domain' : 'Inherited from the application or Compose service port' }}">
-            <span class="service-domain-detail-label">Internal port</span>
+            <span class="service-domain-detail-label">{{ __('Internal port') }}</span>
             @if (filled($row['internal_port'] ?? null))
                 <span aria-label="Internal port {{ $row['internal_port'] }}">{{ $row['internal_port'] }}</span>
             @else
@@ -94,7 +94,7 @@
             @endif
         </div>
         <div class="service-domain-detail">
-            <span class="service-domain-detail-label">Search indexing</span>
+            <span class="service-domain-detail-label">{{ __('Search indexing') }}</span>
             <span role="img" aria-label="{{ $isNoindexed ? 'Search indexing blocked' : 'Search indexing allowed' }}"
                 title="{{ $isNoindexed ? 'Search indexing blocked' : 'Search indexing allowed' }}">
                 <x-reicon :name="$isNoindexed ? 'x' : 'check'" class="size-4" />
@@ -108,7 +108,7 @@
             @if (in_array($rowDirection, ['www', 'non-www'], true))
                 <span>{{ $rowDirection === 'www' ? 'non-www → www' : 'www → non-www' }}</span>
             @elseif (! str_starts_with($row['url'], 'https://') || ! $isForceHttpsEnabled)
-                <span>No redirects</span>
+                <span>{{ __('No redirects') }}</span>
             @endif
             <span>Port {{ $row['internal_port'] ?? 'missing' }}</span>
             <span>{{ $isNoindexed ? 'Noindex' : 'Indexable' }}</span>
@@ -121,7 +121,7 @@
             @elseif ($row['dns_status'] === 'checking')
                 <x-status-badge dynamic :title="$row['dns_message']">
                     <x-loading compact aria-label="{{ __('Checking DNS') }}" />
-                    <span class="truncate">Checking DNS...</span>
+                    <span class="truncate">{{ __('Checking DNS...') }}</span>
                 </x-status-badge>
             @else
                 <x-status-badge :status="$dnsLabel" :type="$dnsType"

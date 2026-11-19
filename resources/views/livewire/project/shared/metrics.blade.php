@@ -47,14 +47,14 @@
                 <x-live-toggle :active="$live" storageKey="resource-metrics-live" />
             </x-slot:actions>
             <div class="max-w-xs">
-                <x-forms.listbox id="interval" label="Time range" onChange="setInterval" :options="[
+                <x-forms.listbox id="interval" label="{{ __('Time range') }}" onChange="setInterval" :options="[
                     ['value' => 5, 'label' => 'Last 5 minutes'],
-                    ['value' => 10, 'label' => 'Last 10 minutes'],
-                    ['value' => 30, 'label' => 'Last 30 minutes'],
-                    ['value' => 60, 'label' => 'Last hour'],
-                    ['value' => 720, 'label' => 'Last 12 hours'],
-                    ['value' => 10080, 'label' => 'Last week'],
-                    ['value' => 43200, 'label' => 'Last 30 days'],
+                    ['value' => 10, 'label' => __('Last 10 minutes')],
+                    ['value' => 30, 'label' => __('Last 30 minutes')],
+                    ['value' => 60, 'label' => __('Last hour')],
+                    ['value' => 720, 'label' => __('Last 12 hours')],
+                    ['value' => 10080, 'label' => __('Last week')],
+                    ['value' => 43200, 'label' => __('Last 30 days')],
                 ]" />
             </div>
             <p class="mt-3 text-xs leading-5 text-neutral-500 dark:text-fg-dim">

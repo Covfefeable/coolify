@@ -35,7 +35,7 @@
         $backups->map(fn ($backup) => [
             'value' => strtolower($backup->targetType()),
             'label' => $backup->targetType(),
-        ])->push(['value' => 'database', 'label' => 'Database'])->unique('value')->values()
+        ])->push(['value' => 'database', 'label' => __('Database')])->unique('value')->values()
     )->values()),
     get filteredBackups() {
         const query = this.search.toLowerCase();

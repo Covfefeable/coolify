@@ -268,7 +268,7 @@
                         <x-callout type="danger" title="{{ __('Warning') }}" class="mb-4">
                             {!! $warningMessage ?: 'This operation is permanent and cannot be undone. Please think again before proceeding!' !!}
                         </x-callout>
-                        <div class="mb-2 text-[12px] font-medium text-neutral-700 dark:text-fg-dim">The following actions will be performed:</div>
+                        <div class="mb-2 text-[12px] font-medium text-neutral-700 dark:text-fg-dim">{{ __('The following actions will be performed:') }}</div>
                         <ul class="mb-4 space-y-2">
                             @foreach ($actions as $action)
                                 <li class="flex items-start gap-2 text-[12px] leading-5 text-red-600 dark:text-red-400">
@@ -296,7 +296,7 @@
                         @if (!$disableTwoStepConfirmation)
                             @if ($confirmWithText)
                                 <div class="mb-4">
-                                    <h4 class="mb-1 text-[12px] font-semibold">Confirm actions</h4>
+                                    <h4 class="mb-1 text-[12px] font-semibold">{{ __('Confirm actions') }}</h4>
                                     <p class="mb-2 text-[12px] leading-5 text-neutral-500 dark:text-fg-dim">{{ $confirmationLabel }}</p>
                                     <div class="relative mb-2" x-data="{ decodedText: confirmationText }">
                                         <div class="relative">

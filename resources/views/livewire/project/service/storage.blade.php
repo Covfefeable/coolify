@@ -500,7 +500,7 @@
                     <div class="data-table-header external-volumes-table-grid">
                         <span>Volume</span>
                         <span>Docker volume</span>
-                        <span>Mount path</span>
+                        <span>{{ __('Mount path') }}</span>
                         <span>{{ __('Service') }}</span>
                     </div>
                     @foreach ($externalVolumes as $externalVolume)
@@ -520,7 +520,7 @@
                                         title="{{ $externalVolume['dockerName'] }}">{{ $externalVolume['dockerName'] }}</span>
                                 </div>
                                 <div class="min-w-0">
-                                    <span class="volumes-mobile-label volumes-field-label">Mount path</span>
+                                    <span class="volumes-mobile-label volumes-field-label">{{ __('Mount path') }}</span>
                                     @foreach ($externalVolume['mountPaths'] as $mountPath)
                                         <span class="block min-w-0 truncate text-neutral-950 dark:text-fg"
                                             title="{{ $mountPath }}">{{ $mountPath }}</span>

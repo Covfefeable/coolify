@@ -61,6 +61,18 @@ it('shows how to open the setup window again when it is closed', function () {
         ->assertDontSee('Create account');
 });
 
+it('localizes setup window guidance while preserving the restart command', function () {
+    app()->setLocale('zh-cn');
+    RootSetupWindow::openIfNoUserExists();
+    $this->travel(RootSetupWindow::MINUTES * 60 + 1)->seconds();
+
+    $this->get('/register')
+        ->assertOk()
+        ->assertSee('初始化窗口已关闭')
+        ->assertSee('前 '.RootSetupWindow::MINUTES.' 分钟内')
+        ->assertSee('docker restart coolify');
+});
+
 it('does not open the setup window when a user exists', function () {
     User::factory()->create(['id' => 0]);
 

@@ -78,7 +78,7 @@
                     helper="Application credentials from your GitLab OAuth application.">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="clientId"
-                            label="Application ID" />
+                            label="{{ __('Application ID') }}" />
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="clientSecretInput"
                             label="Application secret" type="password"
                             helper="{{ __('Stored encrypted. Leave empty to keep the existing secret.') }}" />
@@ -101,7 +101,7 @@
                                 :options="collect($privateKeys)->map(fn ($key) => [
                                     'value' => $key->id,
                                     'label' => $key->name,
-                                ])->prepend(['value' => null, 'label' => 'None'])->values()->all()"
+                                ])->prepend(['value' => null, 'label' => __('None')])->values()->all()"
                                 :disabled="! auth()->user()->can('update', $gitlab_app)" />
                         </div>
                     </div>
@@ -220,7 +220,7 @@
             </x-application.settings-section>
 
             <form wire:submit="submit" class="contents">
-                <x-application.settings-section title="Step 2 · Enter credentials"
+                <x-application.settings-section title="{{ __('Step 2 · Enter credentials') }}"
                     description="Paste the Application ID and secret from GitLab, then save.">
                     <x-slot:actions>
                         <x-forms.button type="submit">{{ __('Save') }}</x-forms.button>
@@ -228,7 +228,7 @@
 
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input id="name" label="{{ __('Name') }}" />
-                        <x-forms.input id="clientId" label="Application ID" required
+                        <x-forms.input id="clientId" label="{{ __('Application ID') }}" required
                             helper="The Application ID from your GitLab OAuth Application." />
                         <x-forms.input id="clientSecretInput" label="Application secret" type="password"
                             :required="blank($clientSecretInput) && blank(data_get($gitlab_app, 'client_secret'))"
@@ -246,14 +246,14 @@
                                 <x-forms.listbox id="use_custom_webhook_endpoint" label="{{ __('Webhook endpoint') }}"
                                     :live="true" :options="[
                                         ['value' => false, 'label' => 'Use an instance endpoint'],
-                                        ['value' => true, 'label' => 'Use a custom endpoint'],
+                                        ['value' => true, 'label' => __('Use a custom endpoint')],
                                     ]"
                                     x-model="useCustomWebhookEndpoint"
                                     helper="{{ __('Use a custom public URL when Coolify is behind a tunnel or reverse proxy.') }}" />
                             </div>
                             <div class="lg:col-span-2" x-show="!useCustomWebhookEndpoint">
                                 <x-forms.listbox id="webhook_endpoint" x-model="webhookEndpoint"
-                                    label="Selected endpoint"
+                                    label="{{ __('Selected endpoint') }}"
                                     helper="GitLab will use this endpoint unless custom mode is enabled."
                                     :options="collect([$fqdn, $ipv4, $ipv6, config('app.url')])
                                         ->filter()->unique()->map(fn ($endpoint) => [

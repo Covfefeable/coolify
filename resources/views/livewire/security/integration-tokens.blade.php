@@ -5,7 +5,7 @@
 
     <x-security.settings-layout>
         <div class="application-settings-form">
-            <x-application.settings-section title="Integration tokens"
+            <x-application.settings-section title="{{ __('Integration tokens') }}"
                 description="Credentials used by third-party integrations such as DNS providers and secret managers." flush>
                 <x-slot:actions>
                     @can('create', App\Models\IntegrationToken::class)

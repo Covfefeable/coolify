@@ -35,7 +35,7 @@
 
                     <div class="flex flex-wrap items-center gap-2 sm:justify-end">
                         <a href="{{ route('server.show', ['server_uuid' => data_get($resource, 'destination.server.uuid')]) }}"
-                            {{ wireNavigate() }} class="button">Open server</a>
+                            {{ wireNavigate() }} class="button">{{ __('Open server') }}</a>
                         <x-application.restart-limit-warning :application="$resource" />
                         @if ($hasAdditionalDestinations)
                             @can('deploy', $resource)
@@ -104,7 +104,7 @@
 
                                 <div class="flex flex-wrap items-center gap-2 lg:justify-end">
                                     <a href="{{ route('server.show', ['server_uuid' => data_get($destination, 'server.uuid')]) }}"
-                                        {{ wireNavigate() }} class="button">Open server</a>
+                                        {{ wireNavigate() }} class="button">{{ __('Open server') }}</a>
                                     @can('deploy', $resource)
                                         <div class="relative" x-data="{ open: false }" @click.outside="open = false"
                                             @keydown.escape.window="open = false">
@@ -208,7 +208,7 @@
                             @endforeach
                         </div>
                     @else
-                        <x-empty size="sm" title="No servers available"
+                        <x-empty size="sm" title="{{ __('No servers available') }}"
                             description="Every usable server is already attached, or no additional server networks are configured."
                             icon-name="servers" />
                     @endif
@@ -257,7 +257,7 @@
 
                     <div class="flex flex-wrap items-center gap-2 sm:justify-end">
                         <a href="{{ route('server.show', ['server_uuid' => data_get($resource, 'destination.server.uuid')]) }}"
-                            {{ wireNavigate() }} class="button">Open server</a>
+                            {{ wireNavigate() }} class="button">{{ __('Open server') }}</a>
                         @if (method_exists($resource, 'stoppedAfterRestartLimit'))
                             <x-application.restart-limit-warning :application="$resource" />
                         @endif

@@ -17,7 +17,7 @@
                         <x-forms.button wire:click="updateCloudflareTunnel">{{ __('Update Cloudflare Tunnel') }}</x-forms.button>
                         <x-process-dialog @cloudflare-tunnel-update-started.window="processDialogOpen = true"
                             closeWithX size="xl">
-                            <x-slot:title>Cloudflare Tunnel Update Logs</x-slot:title>
+                            <x-slot:title>{{ __('Cloudflare Tunnel Update Logs') }}</x-slot:title>
                             <x-slot:content>
                                 <livewire:activity-monitor fullHeight />
                             </x-slot:content>
@@ -31,7 +31,7 @@
                         </a>
                     @endif
                     @if (!$isCloudflareTunnelsEnabled && $server->isFunctional() && auth()->user()->can('update', $server))
-                        <x-modal-confirmation title="Confirm manual Cloudflare Tunnel configuration"
+                        <x-modal-confirmation title="{{ __('Confirm manual Cloudflare Tunnel configuration') }}"
                             buttonTitle="{{ __('I configured the tunnel manually') }}"
                             submitAction="manualCloudflareConfig" :actions="[
                                 'Cloudflare and cloudflared have already been configured.',
@@ -52,12 +52,12 @@
                             <code>{{ \App\Services\CloudflareTunnelService::tunnelName($server) }}</code>).
                         </p>
                     @endif
-                    <x-callout type="warning" title="Disabling the tunnel can interrupt server access">
+                    <x-callout type="warning" title="{{ __('Disabling the tunnel can interrupt server access') }}">
                         The server IP must be restored to its direct address after disabling the tunnel.
                     </x-callout>
                     @can('update', $server)
                         <div class="mt-4">
-                            <x-modal-confirmation title="Disable Cloudflare Tunnel?"
+                            <x-modal-confirmation title="{{ __('Disable Cloudflare Tunnel?') }}"
                                 buttonTitle="{{ __('Disable Cloudflare Tunnel') }}" isErrorButton
                                 submitAction="toggleCloudflareTunnels" :actions="array_merge(
                                     ['Cloudflare Tunnel will be disabled for this server.'],
@@ -77,7 +77,7 @@
                         </div>
                     @endcan
                 @elseif (!$server->isFunctional())
-                    <x-callout type="info" title="Validate the server for automated setup">
+                    <x-callout type="info" title="{{ __('Validate the server for automated setup') }}">
                         Automated configuration requires a validated server, a Cloudflare token, and an SSH domain.
                         You can also
                         <button type="button" wire:click="manualCloudflareConfig" class="font-medium underline">
@@ -91,14 +91,14 @@
                         </x-callout>
                     @else
                         <x-process-dialog @automated.window="processDialogOpen = true" closeWithX size="xl">
-                            <x-slot:title>Cloudflare Tunnel Configuration Logs</x-slot:title>
+                            <x-slot:title>{{ __('Cloudflare Tunnel Configuration Logs') }}</x-slot:title>
                             <x-slot:content>
                                 <livewire:activity-monitor fullHeight />
                             </x-slot:content>
                         </x-process-dialog>
 
                         @if ($tunnelTokens->isEmpty())
-                            <x-callout type="info" title="No Cloudflare token can manage tunnels">
+                            <x-callout type="info" title="{{ __('No Cloudflare token can manage tunnels') }}">
                                 @if ($hasCloudflareTokens)
                                     Enable the Cloudflare Tunnel capability on a Cloudflare token
                                 @else
@@ -106,7 +106,7 @@
                                 @endif
                                 in
                                 <a href="{{ route('security.integration-tokens') }}" class="font-medium underline"
-                                    {{ wireNavigate() }}>Integration tokens</a>.
+                                    {{ wireNavigate() }}>{{ __('Integration tokens') }}</a>.
                                 The token needs Account - Cloudflare Tunnel - Edit, Zone - DNS - Edit, and Zone - Zone - Read.
                             </x-callout>
                             @can('create', App\Models\IntegrationToken::class)
@@ -126,10 +126,10 @@
                         @else
                             <form wire:submit="apiCloudflareConfig">
                                 <div class="grid gap-4 lg:grid-cols-2">
-                                    <x-forms.listbox id="cloudflare_integration_token_id" label="Cloudflare token"
+                                    <x-forms.listbox id="cloudflare_integration_token_id" label="{{ __('Cloudflare token') }}"
                                         required placeholder="{{ __('Select a token') }}"
                                         :options="$tunnelTokens->map(fn ($token) => ['value' => $token->id, 'label' => $token->name])->all()" />
-                                    <x-forms.input id="api_ssh_domain" label="SSH hostname" required
+                                    <x-forms.input id="api_ssh_domain" label="{{ __('SSH hostname') }}" required
                                         placeholder="ssh.example.com"
                                         helper="A hostname in a zone of the selected token. Cloudflare routes it to SSH port {{ $server->port }} of this server." />
                                 </div>
@@ -139,12 +139,12 @@
                             </form>
                             @if ($dnsConflict)
                                 <div class="mt-4">
-                                    <x-callout type="warning" title="A DNS record already exists">
+                                    <x-callout type="warning" title="{{ __('A DNS record already exists') }}">
                                         {{ $dnsConflict['hostname'] }} already points to {{ $dnsConflict['current'] }}.
                                         Replace it with the tunnel record to continue.
                                     </x-callout>
                                     <div class="mt-4">
-                                        <x-modal-confirmation title="Replace DNS record?" buttonTitle="{{ __('Replace DNS record') }}"
+                                        <x-modal-confirmation title="{{ __('Replace DNS record?') }}" buttonTitle="{{ __('Replace DNS record') }}"
                                             submitAction="replaceDnsAndConfigure" :actions="[
                                                 'The DNS record of '.$dnsConflict['hostname'].' will point to the Cloudflare tunnel.',
                                                 'Traffic that uses the current record value will stop.',
@@ -155,16 +155,16 @@
                         @endif
 
                         <div class="mt-4 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
-                            <x-forms.collapsible title="Use an existing tunnel with its tunnel token">
+                            <x-forms.collapsible title="{{ __('Use an existing tunnel with its tunnel token') }}">
                                 <p class="text-sm leading-6 text-neutral-600 dark:text-fg-dim">
                                     For a tunnel you created in the Cloudflare dashboard. Coolify does not need a
                                     Cloudflare API token for this.
                                 </p>
                                 <form class="mt-4" @submit.prevent="$wire.dispatch('automatedCloudflareConfig')">
                                     <div class="grid gap-4 lg:grid-cols-2">
-                                        <x-forms.input id="cloudflare_token" required label="Tunnel token" type="password"
+                                        <x-forms.input id="cloudflare_token" required label="{{ __('Tunnel token') }}" type="password"
                                             helper="The token of the tunnel connector, from the Cloudflare dashboard." />
-                                        <x-forms.input id="ssh_domain" label="SSH domain" required
+                                        <x-forms.input id="ssh_domain" label="{{ __('SSH domain') }}" required
                                             helper="The public hostname of the tunnel that routes to SSH on this server, without a protocol." />
                                     </div>
                                     <div class="mt-4 flex justify-end">

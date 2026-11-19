@@ -96,7 +96,7 @@
                     <div class="application-settings-section-header">
                         <div>
                             <h2>{{ __('Build configuration') }}</h2>
-                            <p>Choose the branch and build strategy for this application.</p>
+                            <p>{{ __('Choose the branch and build strategy for this application.') }}</p>
                         </div>
                         <x-forms.button type="submit" isHighlighted>{{ __('Continue') }}</x-forms.button>
                     </div>

@@ -88,7 +88,7 @@ $spark = 'refreshChartData-'.$chartId.'-status';
             </a>
             <a href="{{ route('analytics') }}" {{ wireNavigate() }}
                 class="group flex flex-col bg-white px-4 py-3 transition-colors hover:bg-neutral-50 dark:bg-[color-mix(in_srgb,var(--color-app)_95%,white)] dark:hover:bg-[color-mix(in_srgb,var(--color-app)_93%,white)]">
-                <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">Bandwidth</span>
+                <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Bandwidth') }}</span>
                 <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg">{{ formatBytes($this->bandwidthBytes()) }}</span>
                 <div class="mt-auto pt-3">
                     @include('livewire.traffic._sparkline', [
@@ -102,7 +102,7 @@ $spark = 'refreshChartData-'.$chartId.'-status';
             </a>
             <a href="{{ route('analytics') }}" {{ wireNavigate() }}
                 class="group flex flex-col bg-white px-4 py-3 transition-colors hover:bg-neutral-50 dark:bg-[color-mix(in_srgb,var(--color-app)_95%,white)] dark:hover:bg-[color-mix(in_srgb,var(--color-app)_93%,white)]">
-                <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">Error rate</span>
+                <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Error rate') }}</span>
                 <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg">{{ $this->errorRate() }}%</span>
                 <div class="mt-auto pt-3">
                     @include('livewire.traffic._sparkline', [

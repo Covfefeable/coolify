@@ -79,7 +79,7 @@
                 <div class="data-table">
                     <div class="min-w-[36rem]">
                     <div class="grid grid-cols-[minmax(0,1fr)_7rem_minmax(0,2fr)_1.75rem] items-center gap-3 border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[13px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                        <span class="pl-11">Host</span><span>{{ __('Type') }}</span><span>Fingerprint</span><span></span>
+                        <span class="pl-11">{{ __('Host') }}</span><span>{{ __('Type') }}</span><span>Fingerprint</span><span></span>
                     </div>
                     <ul class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
                     @foreach ($fingerprints as $fingerprint)
@@ -174,7 +174,7 @@
                         </div>
                         <span class="truncate text-[13px] font-semibold text-black dark:text-fg">{{ $privateKeyName }}</span>
                     </div>
-                    <div class="flex justify-end"><x-status-badge label="Selected" type="success" /></div>
+                    <div class="flex justify-end"><x-status-badge label="{{ __('Selected') }}" type="success" /></div>
                 </div>
                 @can('update', $application)
                     @foreach ($privateKeys as $key)
@@ -232,7 +232,7 @@
                                 <div class="flex min-w-0 flex-wrap items-center gap-2">
                                     <span
                                         class="truncate text-[13px] font-semibold text-black dark:text-fg">{{ $currentSource->name }}</span>
-                                    <x-status-badge label="Current" type="success" />
+                                    <x-status-badge label="{{ __('Current') }}" type="success" />
                                 </div>
                                 <p class="mt-0.5 truncate text-[11px] text-neutral-500 dark:text-fg-faint">
                                     {{ $currentSourceSubtitle }}

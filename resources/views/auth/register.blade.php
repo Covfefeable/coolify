@@ -17,25 +17,19 @@ $email = getOldOrLocal('email', 'test3@example.com');
             @if ($isRootSetupWindowPending)
                 <x-auth.alert type="warning">
                     <p class="font-medium">{{ __('Coolify is starting') }}</p>
-                    <p class="mt-0.5 text-black/70 dark:text-white/70">Coolify has not finished its start-up tasks.
-                        Wait a few seconds, then reload this page. If this message stays, run this command on the
-                        server:</p>
+                    <p class="mt-0.5 text-black/70 dark:text-white/70">{{ __('Coolify has not finished its start-up tasks. Wait a few seconds, then reload this page. If this message stays, run this command on the server:') }}</p>
                     <code class="mt-2 block font-mono text-xs">docker restart coolify</code>
                 </x-auth.alert>
             @elseif ($isRootSetupWindowClosed)
                 <x-auth.alert type="warning">
                     <p class="font-medium">{{ __('Setup window closed') }}</p>
-                    <p class="mt-0.5 text-black/70 dark:text-white/70">You can create the root account only in the
-                        first {{ \App\Support\RootSetupWindow::MINUTES }} minutes after Coolify
-                        starts. To open the window again, run this command on the server, then reload this page:</p>
+                    <p class="mt-0.5 text-black/70 dark:text-white/70">{{ __('You can create the root account only in the first :minutes minutes after Coolify starts. To open the window again, run this command on the server, then reload this page:', ['minutes' => \App\Support\RootSetupWindow::MINUTES]) }}</p>
                     <code class="mt-2 block font-mono text-xs">docker restart coolify</code>
                 </x-auth.alert>
             @elseif ($isFirstUser)
                 <x-auth.alert type="warning">
                     <p class="font-medium">{{ __('Full instance access') }}</p>
-                    <p class="mt-0.5 text-black/70 dark:text-white/70">This first account becomes the root user.
-                        Create it within {{ \App\Support\RootSetupWindow::MINUTES }} minutes after
-                        Coolify starts.</p>
+                    <p class="mt-0.5 text-black/70 dark:text-white/70">{{ __('This first account becomes the root user. Create it within :minutes minutes after Coolify starts.', ['minutes' => \App\Support\RootSetupWindow::MINUTES]) }}</p>
                 </x-auth.alert>
             @endif
 

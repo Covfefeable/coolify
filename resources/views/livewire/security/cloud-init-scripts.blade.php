@@ -35,7 +35,7 @@
                     </div>
                     @foreach ($scripts as $script)
                         @can('view', $script)
-                            <x-modal-input title="Edit Cloud-Init Script" isFullWidth :wireIgnore="false" :contentClicks="false"
+                            <x-modal-input title="{{ __('Edit Cloud-Init Script') }}" isFullWidth :wireIgnore="false" :contentClicks="false"
                                 wire:key="cloud-init-script-{{ $script->id }}"
                                 class="border-b border-neutral-200 last:border-b-0 dark:border-white/[0.07]">
                                 <x-slot:content>

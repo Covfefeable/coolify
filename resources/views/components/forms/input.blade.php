@@ -120,7 +120,7 @@
             <span class="text-red-500 label-text-alt">
                 @if ($validationLink)
                     {{ str($message)->beforeLast($validationLink)->trim() }}
-                    <a class="font-medium underline" href="{{ $validationLink }}">Set them here.</a>
+                    <a class="font-medium underline" href="{{ $validationLink }}">{{ __('Set them here.') }}</a>
                 @else
                     {{ $message }}
                 @endif

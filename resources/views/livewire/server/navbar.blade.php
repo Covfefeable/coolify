@@ -8,7 +8,7 @@
             <div class="flex h-full min-h-0 flex-col gap-3">
                 @if ($server->id === 0)
                     <div class="shrink-0 rounded-lg border border-warning/30 bg-warning/10 p-3 text-sm text-warning">
-                        <span class="font-semibold">Note:</span> This is the localhost server where Coolify runs.
+                        <span class="font-semibold">{{ __('Note:') }}</span> This is the localhost server where Coolify runs.
                         During proxy restart, the connection may be temporarily lost.
                         If logs stop updating, please refresh the browser after a few minutes.
                     </div>
@@ -119,14 +119,14 @@
                 x-data="{ open: false, search: '', servers: @js($serverSwitcherOptions) }"
                 @click.outside="open = false" @keydown.escape.window="open = false">
                 <div class="flex h-8 max-w-56 min-w-0 items-center rounded-md xl:max-w-72">
-                    <a href="{{ route('server.show', ['server_uuid' => $server->uuid]) }}" {{ wireNavigate() }} title="Go to server"
+                    <a href="{{ route('server.show', ['server_uuid' => $server->uuid]) }}" {{ wireNavigate() }} title="{{ __('Go to server') }}"
                         class="flex h-8 min-w-0 items-center rounded-l-md pr-1 pl-2 transition-colors hover:bg-neutral-100 dark:hover:bg-white/[0.05]">
                         <span class="min-w-0 truncate font-semibold text-black dark:text-fg">
                             {{ $server->name }}
                         </span>
                     </a>
                     <button type="button" class="flex h-8 shrink-0 items-center rounded-r-md px-0.5 transition-colors hover:bg-neutral-100 dark:hover:bg-white/[0.05]"
-                        @click="open = !open" :aria-expanded="open" aria-label="Switch server">
+                        @click="open = !open" :aria-expanded="open" aria-label="{{ __('Switch server') }}">
                         <svg class="size-4 shrink-0 text-neutral-400 dark:text-fg-faint" viewBox="0 0 24 24"
                             fill="none" aria-hidden="true">
                             <path d="M8 9l4-4 4 4M8 15l4 4 4-4" stroke="currentColor" stroke-width="1.6"
@@ -224,7 +224,7 @@
                         {{-- Programmatic open only (proxy actions menu and the pending-changes warning).
                              Keep fully display:none so the modal shells never reserve a layout row. --}}
                         <div class="hidden" aria-hidden="true">
-                            <x-modal-confirmation title="Confirm Proxy Restart?" buttonTitle="{{ __('Restart Proxy') }}"
+                            <x-modal-confirmation title="{{ __('Confirm Proxy Restart?') }}" buttonTitle="{{ __('Restart Proxy') }}"
                                 submitAction="restart" :actions="[
                                     'This proxy will be stopped and started again.',
                                     'All resources hosted on Coolify will be unavailable during the restart.',
@@ -236,7 +236,7 @@
                                     </button>
                                 </x-slot:trigger>
                             </x-modal-confirmation>
-                            <x-modal-confirmation title="Confirm Proxy Stopping?" buttonTitle="{{ __('Stop Proxy') }}"
+                            <x-modal-confirmation title="{{ __('Confirm Proxy Stopping?') }}" buttonTitle="{{ __('Stop Proxy') }}"
                                 submitAction="stop(true)" :actions="[
                                     'The Coolify proxy will be stopped.',
                                     'All resources hosted on Coolify will be unavailable.',

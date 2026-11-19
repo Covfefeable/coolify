@@ -17,18 +17,18 @@
                         host-placeholder="minio.internal or 192.168.1.50" />
                 </div>
                 <div class="flex gap-2">
-                    <x-forms.input required label="Bucket" id="bucket" />
+                    <x-forms.input required label="{{ __('Bucket') }}" id="bucket" />
                     <x-forms.input required helper="Region only required for AWS. Leave it as-is for other providers."
                         label="{{ __('Region') }}" id="region" />
                 </div>
                 <div class="flex gap-2">
-                    <x-forms.input required type="password" label="Access Key" id="key" />
-                    <x-forms.input required type="password" label="Secret Key" id="secret" />
+                    <x-forms.input required type="password" label="{{ __('Access Key') }}" id="key" />
+                    <x-forms.input required type="password" label="{{ __('Secret Key') }}" id="secret" />
                 </div>
                 <div class="w-64">
-                    <x-forms.checkbox id="usePathStyleEndpoint" label="Use path-style URLs"
+                    <x-forms.checkbox id="usePathStyleEndpoint" label="{{ __('Use path-style URLs') }}"
                         helper="Turn this off for providers that only accept virtual-hosted-style URLs (bucket.endpoint). Coolify turns it off for Alibaba Cloud OSS, Tencent Cloud COS, and Volcengine TOS, and when the provider rejects path-style URLs." />
-                    <x-forms.checkbox id="skipTlsVerification" label="Skip TLS certificate verification"
+                    <x-forms.checkbox id="skipTlsVerification" label="{{ __('Skip TLS certificate verification') }}"
                         helper="Turn this on only for an endpoint with a self-signed or private CA certificate. Coolify and the backup helper then accept any certificate, so an attacker on the network path can read or change your backups. Browsers that download files from this storage must still trust the certificate." />
                 </div>
             @else

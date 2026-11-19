@@ -98,7 +98,7 @@
                                 <div x-cloak x-show="expanded" x-collapse
                                     class="border-t border-neutral-200 bg-neutral-50 px-4 py-3 dark:border-white/[0.07] dark:bg-white/[0.02]">
                                     <div class="grid grid-cols-[12rem_minmax(0,1fr)_minmax(0,1fr)] gap-4 pb-2 text-[10px] font-medium uppercase tracking-wide text-neutral-500 dark:text-fg-faint">
-                                        <span>Field</span>
+                                        <span>{{ __('Field') }}</span>
                                         <span>Previous value</span>
                                         <span>New value</span>
                                     </div>

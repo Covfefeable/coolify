@@ -21,12 +21,12 @@
                             <x-external-link />
                         </a>
                     </x-slot:actions>
-                    <x-empty size="sm" title="This server is not enabled for builds"
+                    <x-empty size="sm" title="{{ __('This server is not enabled for builds') }}"
                         description="GitHub Actions runners need the Builds only or the Deployments and builds role. Change the server role in the General settings."
                         icon-name="play-circle" />
                 </x-application.settings-section>
             @elseif ($this->githubApps->isEmpty())
-                <x-callout type="info" title="No organization GitHub App">
+                <x-callout type="info" title="{{ __('No organization GitHub App') }}">
                     Runners are registered at organization level. Add a GitHub App that belongs to an organization
                     under Sources, and select "Run workflow jobs on your servers" when you register it.
                 </x-callout>
@@ -36,8 +36,8 @@
                     <x-slot:actions>
                         <x-beta-badge />
                     </x-slot:actions>
-                    <x-empty size="sm" title="Runners are disabled"
-                        description="Enable runners to take GitHub Actions workflow jobs on this server."
+                    <x-empty size="sm" title="{{ __('Runners are disabled') }}"
+                        description="{{ __('Enable runners to take GitHub Actions workflow jobs on this server.') }}"
                         icon-name="play-circle">
                         <x-slot:contents>
                             @if ($server->isBuildServer())
@@ -46,7 +46,7 @@
                                     {{ __('Enable runners') }}
                                 </x-forms.button>
                             @else
-                                <x-modal-confirmation title="Enable runners on this server?"
+                                <x-modal-confirmation title="{{ __('Enable runners on this server?') }}"
                                     submitAction="toggleEnabled" :confirmWithText="false"
                                     :confirmWithPassword="false" step2ButtonText="{{ __('Enable runners') }}"
                                     warningMessage="This server also runs your resources. We do not recommend GitHub Actions runners here: workflow jobs use the same CPU, memory, and disk, and a heavy job can slow down or stop your resources. Use a server with the Builds only role for runners when you can."
@@ -100,7 +100,7 @@
                         </div>
 
                         @if ($this->selectedApp && $this->selectedApp->missingRunnerRequirements() !== [])
-                            <x-callout type="danger" title="The GitHub App is not ready" class="mt-4">
+                            <x-callout type="danger" title="{{ __('The GitHub App is not ready') }}" class="mt-4">
                                 Update the App on GitHub, then click Refetch on the App's Permissions page. Missing:
                                 <ul class="mt-1 list-disc pl-4">
                                     @foreach ($this->selectedApp->missingRunnerRequirements() as $requirement)
@@ -130,21 +130,21 @@
                                     ->values()
                                     ->all()"
                                 helper="Organization GitHub App that receives the Workflow job webhook events." />
-                            <x-forms.input id="labels" label="Labels" required canGate="update" :canResource="$server"
+                            <x-forms.input id="labels" label="{{ __('Labels') }}" required canGate="update" :canResource="$server"
                                 placeholder="coolify"
                                 helper="Comma-separated custom labels. Coolify also registers self-hosted and linux. Jobs must ask for at least one custom label." />
                             @if ($server->isBuildServer())
-                                <x-forms.listbox id="isDedicated" label="Application builds" canGate="update"
+                                <x-forms.listbox id="isDedicated" label="{{ __('Application builds') }}" canGate="update"
                                     :canResource="$server" :options="[
                                         ['value' => false, 'label' => 'Also build applications'],
-                                        ['value' => true, 'label' => 'Dedicated to runners'],
+                                        ['value' => true, 'label' => __('Dedicated to runners')],
                                     ]"
                                     helper="Dedicated servers are not used for application builds while runners are enabled." />
                             @endif
-                            <x-forms.listbox id="allowPullRequests" label="Pull request jobs" canGate="update"
+                            <x-forms.listbox id="allowPullRequests" label="{{ __('Pull request jobs') }}" canGate="update"
                                 :canResource="$server" :options="[
                                     ['value' => false, 'label' => 'Refuse pull request jobs'],
-                                    ['value' => true, 'label' => 'Run pull request jobs'],
+                                    ['value' => true, 'label' => __('Run pull request jobs')],
                                 ]"
                                 helper="Runners fail jobs that a pull request started (pull_request, pull_request_target, and review events) before any step runs. Push, schedule, and manual jobs always run. Applies to runners that start after you save." />
                         </div>
@@ -153,21 +153,21 @@
                     <x-application.settings-section id="github-runners-resources-section" title="{{ __('Resources') }}"
                         helper="Limits apply to the runner container and to its Docker sidecar.">
                         <div class="grid gap-4 lg:grid-cols-3">
-                            <x-forms.input id="maxRunners" type="number" min="1" max="32" label="Parallel runners"
+                            <x-forms.input id="maxRunners" type="number" min="1" max="32" label="{{ __('Parallel runners') }}"
                                 required canGate="update" :canResource="$server"
                                 helper="Jobs wait in the queue when all runners are busy." />
-                            <x-forms.input id="cpuLimit" label="CPU limit" placeholder="2" canGate="update"
+                            <x-forms.input id="cpuLimit" label="{{ __('CPU limit') }}" placeholder="2" canGate="update"
                                 :canResource="$server" helper="Number of CPUs for each runner. Empty means no limit." />
-                            <x-forms.input id="memoryLimit" label="Memory limit" placeholder="4g" canGate="update"
+                            <x-forms.input id="memoryLimit" label="{{ __('Memory limit') }}" placeholder="4g" canGate="update"
                                 :canResource="$server" helper="Memory for each runner, for example 4g. Empty means no limit." />
-                            <x-forms.listbox id="dockerMode" label="Docker in jobs" canGate="update"
+                            <x-forms.listbox id="dockerMode" label="{{ __('Docker in jobs') }}" canGate="update"
                                 :canResource="$server" :options="[
                                     ['value' => 'dind', 'label' => 'Docker (privileged, full host access)'],
                                     ['value' => 'sysbox', 'label' => 'Isolated Docker (Sysbox)'],
                                     ['value' => 'none', 'label' => 'No Docker (isolated, no container actions)'],
                                 ]"
                                 helper="Docker: each job gets a private Docker daemon. The daemon runs privileged, so a job can get root access to this server. Use it only for trusted repositories.<br><br>Isolated Docker: each job gets a private Docker daemon in an unprivileged Sysbox container. Everything that needs Docker works, and root in the job has no rights on this server. Needs Sysbox on the server.<br><br>No Docker: jobs run in an unprivileged container. JavaScript actions, composite actions, and shell steps work. Docker container actions, services, container jobs, and docker commands fail.<br><br>The host Docker socket is never shared." />
-                            <x-forms.input id="runnerImage" label="Runner image" canGate="update" :canResource="$server"
+                            <x-forms.input id="runnerImage" label="{{ __('Runner image') }}" canGate="update" :canResource="$server"
                                 :placeholder="config('constants.github_runner.image')"
                                 helper="Empty uses the latest official runner image, which Coolify pulls for every runner. Set a tag, for example ghcr.io/actions/actions-runner:2.337.0, to pin a version, or use a custom image based on the official one to add tools. GitHub stops sending jobs to runners that are more than 30 days old." />
                         </div>
@@ -176,16 +176,16 @@
                         </div>
                     </x-application.settings-section>
 
-                    <x-application.settings-section id="github-runners-timeouts-section" title="Timeouts"
+                    <x-application.settings-section id="github-runners-timeouts-section" title="{{ __('Timeouts') }}"
                         helper="All values are in minutes.">
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input id="capacityWaitTimeout" type="number" min="1" max="1440"
-                                label="Queue wait" required canGate="update" :canResource="$server"
+                                label="{{ __('Queue wait') }}" required canGate="update" :canResource="$server"
                                 helper="A job that waits longer for a free runner is dropped." />
-                            <x-forms.input id="idleTimeout" type="number" min="1" max="1440" label="Idle runner"
+                            <x-forms.input id="idleTimeout" type="number" min="1" max="1440" label="{{ __('Idle runner') }}"
                                 required canGate="update" :canResource="$server"
                                 helper="A runner that gets no job in this time is removed." />
-                            <x-forms.input id="jobTimeout" type="number" min="1" max="7200" label="Job" required
+                            <x-forms.input id="jobTimeout" type="number" min="1" max="7200" label="{{ __('Job') }}" required
                                 canGate="update" :canResource="$server"
                                 helper="A job that runs longer is stopped." />
                         </div>
@@ -193,7 +193,7 @@
                 </form>
                 @can('update', $server)
                     <x-process-dialog @sysbox-install-started.window="processDialogOpen = true" closeWithX size="xl">
-                        <x-slot:title>Sysbox Installation Logs</x-slot:title>
+                        <x-slot:title>{{ __('Sysbox Installation Logs') }}</x-slot:title>
                         <x-slot:content>
                             <livewire:activity-monitor fullHeight />
                         </x-slot:content>
@@ -202,7 +202,7 @@
             @endif
 
             @if ($server->canBuildApplications() && $this->config?->is_enabled)
-                <x-application.settings-section id="github-runners-executions-section" title="Recent runners"
+                <x-application.settings-section id="github-runners-executions-section" title="{{ __('Recent runners') }}"
                     helper="Queued jobs, active runners, and their results. The list updates every 10 seconds." flush>
                     <livewire:server.github-runner-executions :server="$server" />
                 </x-application.settings-section>

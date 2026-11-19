@@ -8,11 +8,11 @@
 
             <dl class="divide-y divide-neutral-200 rounded-lg border border-neutral-200 text-sm dark:divide-white/10 dark:border-white/10">
                 <div class="flex items-center justify-between gap-4 px-3 py-2.5">
-                    <dt class="text-neutral-500 dark:text-fg-dim">Team</dt>
+                    <dt class="text-neutral-500 dark:text-fg-dim">{{ __('Team') }}</dt>
                     <dd class="min-w-0 truncate font-medium text-neutral-900 dark:text-white">{{ $team->name }}</dd>
                 </div>
                 <div class="flex items-center justify-between gap-4 px-3 py-2.5">
-                    <dt class="text-neutral-500 dark:text-fg-dim">Role</dt>
+                    <dt class="text-neutral-500 dark:text-fg-dim">{{ __('Role') }}</dt>
                     <dd class="font-medium text-neutral-900 dark:text-white">{{ ucfirst($invitation->role) }}</dd>
                 </div>
             </dl>

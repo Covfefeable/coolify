@@ -43,7 +43,7 @@
                 <x-skeleton class="size-40 rounded-full" />
             </div>
         </x-application.settings-section>
-        <x-application.settings-section id="analytics-protocol-section" title="Top HTTP versions">
+        <x-application.settings-section id="analytics-protocol-section" title="{{ __('Top HTTP versions') }}">
             <x-skeleton.table :rows="5" />
         </x-application.settings-section>
     </div>

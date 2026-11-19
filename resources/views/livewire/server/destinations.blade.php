@@ -58,7 +58,7 @@
                 </x-application.settings-section>
 
                 @if ($networks->count() > 0)
-                    <x-application.settings-section id="server-found-networks-section" title="Discovered networks"
+                    <x-application.settings-section id="server-found-networks-section" title="{{ __('Discovered networks') }}"
                         helper="Networks found on the server that are not registered as Coolify destinations."
                         flush>
                         @foreach ($networks as $network)
@@ -82,7 +82,7 @@
                 <x-application.settings-section title="{{ __('Destinations') }}"
                     helper="{{ __('Docker networks used to isolate and connect resources on this server.') }}">
                     <x-empty size="sm" title="{{ __('Server validation required') }}"
-                        description="Validate this server before managing its destinations."
+                        description="{{ __('Validate this server before managing its destinations.') }}"
                         icon-name="destinations" />
                 </x-application.settings-section>
             @endif

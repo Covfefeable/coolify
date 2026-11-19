@@ -34,7 +34,7 @@
                 <span class="min-w-0 truncate">{{ $link }}</span>
             </a>
         @empty
-            <div class="listbox-option justify-start! cursor-default!">No links available</div>
+            <div class="listbox-option justify-start! cursor-default!">{{ __('No links available') }}</div>
         @endforelse
     </div>
 </div>

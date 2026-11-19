@@ -44,7 +44,7 @@
                             @if (! in_array(data_get($row, 'status'), [null, 'moved'], true))
                                 <span class="text-xs text-neutral-500 dark:text-fg-dim">{{ data_get($row, 'message') }}</span>
                             @elseif (data_get($row, 'status') === null && data_get($row, 'transferred'))
-                                <span class="text-xs text-neutral-500 dark:text-fg-dim">Another Coolify instance manages this server now.</span>
+                                <span class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('Another Coolify instance manages this server now.') }}</span>
                             @endif
                         </li>
                     @endforeach

@@ -17,7 +17,7 @@
                                 :type="str($server->proxy->status)->contains('running') ? 'success' : 'neutral'" />
                             @if ($server->proxy->status === 'exited' || $server->proxy->status === 'removing')
                                 @can('update', $server)
-                                    <x-modal-confirmation title="Confirm Proxy Switching?"
+                                    <x-modal-confirmation title="{{ __('Confirm Proxy Switching?') }}"
                                         buttonTitle="{{ __('Switch proxy') }}" submitAction="changeProxy"
                                         :actions="['Custom proxy configurations may be reset to their default settings.']"
                                         warningMessage="Review the proxy switching guide before continuing."
@@ -59,14 +59,14 @@
                     @endif
                 </x-application.settings-section>
 
-                <x-application.settings-section id="server-proxy-routing-section" title="Routing behavior"
+                <x-application.settings-section id="server-proxy-routing-section" title="{{ __('Routing behavior') }}"
                     helper="Control generated labels and requests that do not match a running resource.">
                     <div class="grid gap-4 lg:grid-cols-2">
-                        <x-forms.listbox id="generateExactLabels" label="Generated labels"
-                            helper="<ul class='list-disc space-y-1 pl-4'><li><span class='font-semibold'>All supported proxies:</span> Traefik and Caddy labels are both generated, so switching the proxy keeps routing working.</li><li><span class='font-semibold'>Active proxy only:</span> generates fewer labels, but all resources must be redeployed to become accessible again after each proxy switch.</li></ul>"
+                        <x-forms.listbox id="generateExactLabels" label="{{ __('Generated labels') }}"
+                            helper="<ul class='list-disc space-y-1 pl-4'><li><span class='font-semibold'>{{ __('All supported proxies:') }}</span> Traefik and Caddy labels are both generated, so switching the proxy keeps routing working.</li><li><span class='font-semibold'>Active proxy only:</span> generates fewer labels, but all resources must be redeployed to become accessible again after each proxy switch.</li></ul>"
                             onChange="instantSave" :options="[
                                 ['value' => false, 'label' => 'Labels for all supported proxies'],
-                                ['value' => true, 'label' => 'Labels for the active proxy only'],
+                                ['value' => true, 'label' => __('Labels for the active proxy only')],
                             ]" />
                         <x-forms.listbox id="redirectEnabled" label="Unknown requests"
                             helper="Control the 503 response for unknown hosts and stopped services. Custom request handling shows an error page or redirects to a URL."
@@ -209,7 +209,7 @@
                     <div class="grid gap-3 lg:grid-cols-3">
                         @foreach ([
                             ['value' => 'NONE', 'title' => 'Custom', 'description' => 'Manage the proxy outside Coolify.'],
-                            ['value' => 'TRAEFIK', 'title' => 'Traefik', 'description' => 'Use the default Coolify proxy.'],
+                            ['value' => 'TRAEFIK', 'title' => 'Traefik', 'description' => __('Use the default Coolify proxy.')],
                             ['value' => 'CADDY', 'title' => 'Caddy', 'description' => 'Use the Coolify Caddy integration.'],
                         ] as $proxyOption)
                             <button type="button" wire:click="selectProxy('{{ $proxyOption['value'] }}')"
@@ -237,7 +237,7 @@
                 <div class="grid gap-3 lg:grid-cols-3">
                     @foreach ([
                         ['value' => 'NONE', 'title' => 'Custom', 'description' => 'Manage the proxy outside Coolify.'],
-                        ['value' => 'TRAEFIK', 'title' => 'Traefik', 'description' => 'Use the default Coolify proxy.'],
+                        ['value' => 'TRAEFIK', 'title' => 'Traefik', 'description' => __('Use the default Coolify proxy.')],
                         ['value' => 'CADDY', 'title' => 'Caddy', 'description' => 'Use the Coolify Caddy integration.'],
                     ] as $proxyOption)
                         <button type="button" wire:click="selectProxy('{{ $proxyOption['value'] }}')"

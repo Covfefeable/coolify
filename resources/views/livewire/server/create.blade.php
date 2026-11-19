@@ -18,8 +18,8 @@
         <div class="application-settings-form flex flex-col gap-6">
             <section class="application-settings-section">
                 <div class="application-settings-section-header">
-                    <h2 class="application-settings-section-title">Add a server</h2>
-                    <p class="application-settings-section-description">Connect a server you already manage.</p>
+                    <h2 class="application-settings-section-title">{{ __('Add a server') }}</h2>
+                    <p class="application-settings-section-description">{{ __('Connect a server you already manage.') }}</p>
                 </div>
                 <div class="application-settings-section-body is-flush">
                     <div class="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -46,8 +46,8 @@
             @can('viewAny', App\Models\CloudProviderToken::class)
                 <section class="application-settings-section">
                     <div class="application-settings-section-header">
-                        <h2 class="application-settings-section-title">Provision a server</h2>
-                        <p class="application-settings-section-description">Create a server with a cloud provider.</p>
+                        <h2 class="application-settings-section-title">{{ __('Provision a server') }}</h2>
+                        <p class="application-settings-section-description">{{ __('Create a server with a cloud provider.') }}</p>
                     </div>
                     <div class="application-settings-section-body is-flush">
                         <div class="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 lg:grid-cols-4">

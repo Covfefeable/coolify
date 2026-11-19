@@ -4,7 +4,7 @@
             @if ($isApplication)
                 <x-forms.listbox id="appScanEnabled" label="Scan this app" onChange="$commit"
                     :disabled="! $canEdit" helper="Off stops the scans of this app's image."
-                    :options="[['value' => '1', 'label' => 'On'], ['value' => '0', 'label' => 'Off']]" />
+                    :options="[['value' => '1', 'label' => 'On'], ['value' => '0', 'label' => __('Off')]]" />
                 @if ($isDockerImage)
                     <x-forms.listbox id="buildsByTeam" label="Who builds this image" onChange="$commit"
                         :disabled="! $canEdit"

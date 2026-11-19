@@ -11,7 +11,7 @@
 
 <div class="mt-4 border-t border-neutral-200 pt-3 dark:border-white/[0.08]">
     <div class="mb-2 flex items-center gap-2">
-        <h4 class="text-[12px] font-semibold text-black dark:text-fg">Permissions</h4>
+        <h4 class="text-[12px] font-semibold text-black dark:text-fg">{{ __('Permissions') }}</h4>
         <x-helper helper="Only grant the abilities this token needs." />
     </div>
     {{-- A fixed panel escapes the scrolling modal body, so it is not cut off. --}}
@@ -134,7 +134,7 @@
             ['value' => 'selected', 'label' => 'Selected projects, environments, or resources'],
         ]" />
         <div class="min-w-0">
-            <x-forms.listbox id="{{ $form }}.selectedScopes" label="Selected" multiple searchable :portal="! $inModal" countLabel="resource"
+            <x-forms.listbox id="{{ $form }}.selectedScopes" label="{{ __('Selected') }}" multiple searchable :portal="! $inModal" countLabel="resource"
                 x-bind:disabled="!isSelectedMode"
                 placeholder="{{ __('Choose projects, environments, or resources') }}"
                 emptyText="{{ __('No projects or resources available.') }}"

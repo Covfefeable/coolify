@@ -68,7 +68,7 @@
             <x-slot:actions>
                 @if ($isPublic)
                     <x-process-dialog closeWithX size="xl">
-                        <x-slot:title>Proxy logs</x-slot:title>
+                        <x-slot:title>{{ __('Proxy logs') }}</x-slot:title>
                         <x-slot:content>
                             <livewire:project.shared.get-logs :server="$server" :resource="$database"
                                 container="{{ data_get($database, 'uuid') }}-proxy" :collapsible="false" lazy />
@@ -117,7 +117,7 @@
                 <x-forms.listbox canGate="update" :canResource="$database" id="isLogDrainEnabled" label="{{ __('Log drain') }}" live onChange="instantSaveAdvanced"
                     :disabled="! auth()->user()->can('update', $database)" :options="[
                         ['value' => false, 'label' => 'Do not forward logs'],
-                        ['value' => true, 'label' => 'Forward logs to the server drain'],
+                        ['value' => true, 'label' => __('Forward logs to the server drain')],
                     ]" />
             </x-application.settings-subsection>
         </x-application.settings-section>

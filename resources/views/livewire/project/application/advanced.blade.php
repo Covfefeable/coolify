@@ -14,23 +14,23 @@
         <x-application.settings-section id="advanced-build-section" title="{{ __('Build & deploy') }}"
             helper="How images are built, how deployments start, and how the repository is cloned.">
             <div class="grid w-full gap-4 sm:grid-cols-2">
-                <x-forms.listbox id="disableBuildCache" label="Build cache" onChange="instantSave"
+                <x-forms.listbox id="disableBuildCache" label="{{ __('Build cache') }}" onChange="instantSave"
                     helper="Disabling the cache forces a completely fresh Docker build on every deployment."
                     :options="[
                         ['value' => false, 'label' => 'Use Docker build cache'],
-                        ['value' => true, 'label' => 'Rebuild from scratch every time'],
+                        ['value' => true, 'label' => __('Rebuild from scratch every time')],
                     ]" :disabled="! $canUpdate" />
                 <x-forms.listbox id="injectBuildArgsToDockerfile" label="Build arguments" onChange="instantSave"
                     helper="When injected automatically, Coolify adds ARG statements to your Dockerfile for build-time variables. Manage them manually to preserve Docker build cache."
                     :options="[
                         ['value' => true, 'label' => 'Inject build args automatically'],
-                        ['value' => false, 'label' => 'Managed manually in Dockerfile'],
+                        ['value' => false, 'label' => __('Managed manually in Dockerfile')],
                     ]" :disabled="! $canUpdate" />
                 <x-forms.listbox id="includeSourceCommitInBuild" label="Source commit availability" onChange="instantSave"
                     helper="SOURCE_COMMIT (git commit hash) is always available at runtime. Making it available during build invalidates the cache on every commit."
                     :options="[
                         ['value' => false, 'label' => 'Runtime only (preserves cache)'],
-                        ['value' => true, 'label' => 'Available during build'],
+                        ['value' => true, 'label' => __('Available during build')],
                     ]" :disabled="! $canUpdate" />
                 <x-forms.listbox id="includeNetworkHostsInBuild" label="Network hosts during build" onChange="instantSave"
                     helper="When added, the build can reach the containers on the destination network by name. Each time a resource on the network is added or removed, the Docker build cache is invalidated. Preview deployments are never added, and no hosts are added on a build server."
@@ -40,28 +40,28 @@
                     ]" :disabled="! $canUpdate" />
             </div>
             @if ($application->git_based())
-                <x-application.settings-subsection id="advanced-deployment-section" title="Deployment"
+                <x-application.settings-subsection id="advanced-deployment-section" title="{{ __('Deployment') }}"
                     helper="Automatic deployments from Git webhooks.">
                     <div class="grid w-full gap-4 sm:grid-cols-2">
-                        <x-forms.listbox id="isAutoDeployEnabled" label="Auto deploy" onChange="instantSave"
+                        <x-forms.listbox id="isAutoDeployEnabled" label="{{ __('Auto deploy') }}" onChange="instantSave"
                             helper="Automatically deploy new commits based on Git webhooks."
                             :options="[
                                 ['value' => true, 'label' => 'Deploy on push (webhooks)'],
-                                ['value' => false, 'label' => 'Manual deployments only'],
+                                ['value' => false, 'label' => __('Manual deployments only')],
                             ]" :disabled="! $canUpdate" />
                         <x-forms.listbox id="isAutoCancelQueuedDeploymentsEnabled" label="Queued webhook deployments"
                             onChange="instantSave"
                             helper="When a newer push arrives, cancel the older webhook deployments that still wait in the queue, so only the latest commit is built. Manual, API, restart, and rollback deployments are never cancelled."
                             :options="[
                                 ['value' => true, 'label' => 'Cancel when a newer push arrives'],
-                                ['value' => false, 'label' => 'Deploy every push'],
+                                ['value' => false, 'label' => __('Deploy every push')],
                             ]" :disabled="! $canUpdate || $isAutoCancelBuildingDeploymentsEnabled" />
                         <x-forms.listbox id="isAutoCancelBuildingDeploymentsEnabled" label="Building webhook deployments"
                             onChange="instantSave"
                             helper="When a newer push arrives, also stop the older webhook deployment that is still building. A deployment that already started to replace containers always finishes. This also cancels queued webhook deployments."
                             :options="[
                                 ['value' => false, 'label' => 'Let the build finish'],
-                                ['value' => true, 'label' => 'Stop the build when a newer push arrives'],
+                                ['value' => true, 'label' => __('Stop the build when a newer push arrives')],
                             ]" :disabled="! $canUpdate" />
                     </div>
                 </x-application.settings-subsection>
@@ -69,11 +69,11 @@
                 <x-application.settings-subsection id="advanced-git-section" title="Git"
                     helper="Options applied while cloning the repository during builds.">
                     <div class="grid w-full gap-4 sm:grid-cols-2">
-                        <x-forms.listbox id="isGitSubmodulesEnabled" label="Submodules" onChange="instantSave"
+                        <x-forms.listbox id="isGitSubmodulesEnabled" label="{{ __('Submodules') }}" onChange="instantSave"
                             helper="Allow Git submodules during the build process."
                             :options="[
                                 ['value' => true, 'label' => 'Clone submodules'],
-                                ['value' => false, 'label' => 'Skip submodules'],
+                                ['value' => false, 'label' => __('Skip submodules')],
                             ]" :disabled="! $canUpdate" />
                         <x-forms.listbox id="isGitLfsEnabled" label="Git LFS" onChange="instantSave"
                             helper="Allow Git LFS during the build process."
@@ -94,7 +94,7 @@
                 <x-application.settings-subsection id="advanced-compose-section" title="Docker compose"
                     helper="Advanced behavior for compose-based deployments.">
                     <div class="grid w-full gap-4 sm:grid-cols-2">
-                        <x-forms.listbox id="isRawComposeDeploymentEnabled" label="Compose deployment" onChange="instantSave"
+                        <x-forms.listbox id="isRawComposeDeploymentEnabled" label="{{ __('Compose deployment') }}" onChange="instantSave"
                             helper="WARNING: Advanced use cases only. In raw mode your compose file is deployed as-is. Nothing is modified by Coolify and you need to configure the proxy parts. More info in the <a class='underline dark:text-white' href='https://coolify.io/docs/knowledge-base/docker/compose#raw-docker-compose-deployment'>documentation</a>."
                             :options="[
                                 ['value' => false, 'label' => 'Managed by Coolify'],
@@ -104,7 +104,7 @@
                             helper="By default a compose resource only gets its own internal network. Connecting to a Coolify predefined network may require different internal DNS names. More info <a class='underline dark:text-white' target='_blank' href='https://coolify.io/docs/knowledge-base/docker/compose#connect-to-predefined-networks'>here</a>."
                             :options="[
                                 ['value' => false, 'label' => 'Isolated network only'],
-                                ['value' => true, 'label' => 'Connect to predefined network'],
+                                ['value' => true, 'label' => __('Connect to predefined network')],
                             ]" :disabled="! $canUpdate" />
                     </div>
                 </x-application.settings-subsection>
@@ -114,8 +114,8 @@
         <x-application.settings-section id="advanced-container-section" title="{{ __('Container') }}"
             helper="Naming, shutdown, logs, and GPU access for the deployed container.">
             <div class="grid w-full gap-4 sm:grid-cols-2">
-                <x-forms.listbox id="isConsistentContainerNameEnabled" label="Container naming" onChange="instantSave"
-                    helper="With a consistent name the container is always called {{ $application->uuid }}. <span class='font-bold dark:text-warning'>You will lose the rolling update feature!</span>"
+                <x-forms.listbox id="isConsistentContainerNameEnabled" label="{{ __('Container naming') }}" onChange="instantSave"
+                    helper="With a consistent name the container is always called {{ $application->uuid }}. <span class='font-bold dark:text-warning'>{{ __('You will lose the rolling update feature!') }}</span>"
                     :options="[
                         ['value' => false, 'label' => 'Generated name (rolling updates)'],
                         ['value' => true, 'label' => 'Consistent name (no rolling updates)'],
@@ -124,8 +124,8 @@
                     <form wire:submit="saveCustomName" class="w-full">
                         <x-unsaved-bar action="saveCustomName" targets="customInternalName" />
                         <x-forms.input
-                            helper="You can add a custom name for your container.<br><br>The name is converted to slug format when saved. <span class='font-bold dark:text-warning'>You will lose the rolling update feature!</span>"
-                            id="customInternalName" label="Custom container name" canGate="update"
+                            helper="You can add a custom name for your container.<br><br>{{ __('The name is converted to slug format when saved.') }} <span class='font-bold dark:text-warning'>You will lose the rolling update feature!</span>"
+                            id="customInternalName" label="{{ __('Custom container name') }}" canGate="update"
                             :canResource="$application" />
                     </form>
                 @else
@@ -133,12 +133,12 @@
                         <x-unsaved-bar action="saveCustomNamePrefix" targets="customContainerNamePrefix" />
                         <x-forms.input
                             helper="Optional prefix for generated container names. Containers are named <span class='font-bold'>prefix-timestamp</span>, for example <span class='font-bold'>shop-api-20260908T141530</span>, instead of starting with <span class='font-bold'>{{ $application->uuid }}</span>.<br><br>The prefix is converted to slug format when saved, can be up to {{ \App\Models\ApplicationSetting::MAX_CONTAINER_NAME_PREFIX_LENGTH }} characters and must be unique on this server. Rolling updates keep working."
-                            id="customContainerNamePrefix" label="Container name prefix" placeholder="{{ __('e.g. my-api') }}"
+                            id="customContainerNamePrefix" label="{{ __('Container name prefix') }}" placeholder="{{ __('e.g. my-api') }}"
                             canGate="update" :canResource="$application" />
                     </form>
                 @endif
             </div>
-            <x-application.settings-subsection id="advanced-operations-section" title="Operations"
+            <x-application.settings-subsection id="advanced-operations-section" title="{{ __('Operations') }}"
                 helper="Shutdown and restart behavior for this application's containers.">
                 <div class="grid w-full gap-4 lg:grid-cols-2">
                     <x-forms.input type="number" id="stopGracePeriod" label="Stop grace period (seconds)"
@@ -153,7 +153,7 @@
                             helper="How long to wait after the new container is healthy before the old containers stop during a rolling update. The proxy needs this time to send traffic to the new container. Saved automatically. Default: {{ DEFAULT_ROLLING_UPDATE_DRAIN_SECONDS }} seconds. Range: 0-{{ MAX_ROLLING_UPDATE_DRAIN_SECONDS }} seconds. Set to 0 to turn off the wait."
                             canGate="update" :canResource="$application" />
                     @endif
-                    <x-forms.input type="number" min="0" id="maxRestartCount" label="Max restart count"
+                    <x-forms.input type="number" min="0" id="maxRestartCount" label="{{ __('Max restart count') }}"
                         wire:change="saveMaxRestartCount"
                         helper="Maximum number of restarts before Coolify automatically stops the application and sends a notification. Saved automatically. Set to 0 to disable the limit."
                         canGate="update" :canResource="$application" />
@@ -166,7 +166,7 @@
                         helper="Drain logs to the log drain endpoint configured in your Server settings."
                         :options="[
                             ['value' => false, 'label' => 'Disabled'],
-                            ['value' => true, 'label' => 'Send logs to the log drain endpoint'],
+                            ['value' => true, 'label' => __('Send logs to the log drain endpoint')],
                         ]" :disabled="! $canUpdate" />
                 </div>
             </x-application.settings-subsection>

@@ -1,8 +1,8 @@
 <?php
 $rangeListboxOptions = [
-    ['value' => '24h', 'label' => 'Last 24 hours'],
-    ['value' => '7d', 'label' => 'Last 7 days'],
-    ['value' => '30d', 'label' => 'Last 30 days'],
+    ['value' => '24h', 'label' => __('Last 24 hours')],
+    ['value' => '7d', 'label' => __('Last 7 days')],
+    ['value' => '30d', 'label' => __('Last 30 days')],
 ];
 
 $dimensionLabels = [
@@ -14,11 +14,11 @@ $dimensionLabels = [
 $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-1.5 inline-flex items-center rounded-full bg-amber-100 px-1.5 py-0.5 text-[9px] font-medium tracking-wide text-amber-700 uppercase dark:bg-amber-500/10 dark:text-amber-400">~ approximate</span>';
 
 $serverListboxOptions = array_merge(
-    [['value' => '', 'label' => 'All servers']],
+    [['value' => '', 'label' => __('All servers')]],
     collect($serverOptions)->map(fn ($name, $uuid) => ['value' => $uuid, 'label' => $name])->values()->all(),
 );
 $appListboxOptions = array_merge(
-    [['value' => '', 'label' => 'All resources']],
+    [['value' => '', 'label' => __('All resources')]],
     $appGroupedOptions,
 );
 ?>
@@ -169,7 +169,7 @@ $appListboxOptions = array_merge(
                     </div>
                 </div>
                 <div class="flex flex-col bg-[var(--coollabs-base)] px-4 py-3">
-                    <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">Bandwidth</span>
+                    <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Bandwidth') }}</span>
                     <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg">{{ formatBytes($this->bandwidthBytes()) }}</span>
                     <div class="mt-auto pt-3">
                         @include('livewire.traffic._sparkline', [
@@ -182,7 +182,7 @@ $appListboxOptions = array_merge(
                     </div>
                 </div>
                 <div class="flex flex-col bg-[var(--coollabs-base)] px-4 py-3">
-                    <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">Error rate</span>
+                    <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Error rate') }}</span>
                     <span class="mt-1 text-xl font-semibold text-black tabular-nums dark:text-fg">{{ $this->errorRate() }}%</span>
                     <div class="mt-auto pt-3">
                         @include('livewire.traffic._sparkline', [

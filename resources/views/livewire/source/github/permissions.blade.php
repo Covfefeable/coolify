@@ -1,5 +1,5 @@
             <div class="application-settings-form flex flex-col gap-6">
-                <x-application.settings-section title="Permissions"
+                <x-application.settings-section title="{{ __('Permissions') }}"
                     description="GitHub permissions currently granted to this App.">
                     <x-slot:actions>
                         @can('view', $github_app)

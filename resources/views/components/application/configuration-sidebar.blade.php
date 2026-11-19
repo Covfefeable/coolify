@@ -253,7 +253,7 @@
     'is-flush' => $flush,
 ]) data-settings-search-items="{{ json_encode($settingsSearchItems) }}">
 @endif
-                <nav aria-label="Configuration sections"
+                <nav aria-label="{{ __('Configuration sections') }}"
                     class="grid grid-cols-1 gap-0.5">
                     @foreach ($groupedMenuItems as $groupLabel => $groupItems)
                         @unless ($loop->first)

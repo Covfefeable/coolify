@@ -9,7 +9,7 @@
                     @if ($isMaintenanceEnabled)
                         <x-status-badge label="On" type="success" />
                     @else
-                        <x-status-badge label="Off" type="neutral" />
+                        <x-status-badge label="{{ __('Off') }}" type="neutral" />
                     @endif
                 </span>
             </x-slot:badges>

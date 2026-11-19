@@ -308,7 +308,7 @@
                                     class="size-4 cursor-pointer rounded-sm border-neutral-300 text-accent focus:ring-accent dark:border-white/20 dark:bg-transparent" />
                             @endif
                         </span>
-                        <span>Package</span>
+                        <span>{{ __('Package') }}</span>
                         <span>New version</span>
                     </div>
                     @foreach ($shownUpdates as $update)
@@ -371,9 +371,9 @@
                 </x-slot:badges>
                 <div class="data-table">
                     <div class="data-table-header held-updates-table-grid">
-                        <span>Package</span>
+                        <span>{{ __('Package') }}</span>
                         <span>New version</span>
-                        <span class="text-right">Reason</span>
+                        <span class="text-right">{{ __('Reason') }}</span>
                     </div>
                     @foreach ($heldUpdates as $update)
                         <div wire:key="held-update-{{ data_get($update, 'package') }}-{{ data_get($update, 'architecture') }}"

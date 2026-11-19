@@ -4,8 +4,8 @@
     <div class="data-table">
         <div class="data-table-header image-scan-ignores-table-grid">
             <span>Finding or package</span>
-            <span>Reason</span>
-            <span>Expires</span>
+            <span>{{ __('Reason') }}</span>
+            <span>{{ __('Expires') }}</span>
             <span>Set for</span>
             <span class="text-right">{{ __('Actions') }}</span>
         </div>

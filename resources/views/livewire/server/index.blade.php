@@ -102,7 +102,7 @@
     }">
         @if ($servers->isEmpty())
             <x-empty title="{{ __('No servers yet') }}"
-                description="Add a server to deploy applications, databases, and services."
+                description="{{ __('Add a server to deploy applications, databases, and services.') }}"
                 icon-name="servers" />
         @else
             <div class="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -194,7 +194,7 @@
                     <div>{{ __('Server') }}</div>
                     <div class="hidden md:block">{{ __('Resources') }}</div>
                     @if ($showPatches)
-                        <div class="hidden lg:block">Patches</div>
+                        <div class="hidden lg:block">{{ __('Patches') }}</div>
                     @endif
                     <div>{{ __('Status') }}</div>
                 </div>
@@ -258,7 +258,7 @@
             <div x-show="filteredServers.length === 0"
                 class="flex min-h-52 flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 text-center dark:border-white/[0.08] dark:bg-white/[0.05]">
                 <x-reicon name="search" class="mb-3 size-6 text-neutral-300 dark:text-fg-faint" />
-                <p class="text-[13px] font-medium">No matching servers</p>
+                <p class="text-[13px] font-medium">{{ __('No matching servers') }}</p>
                 <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">{{ __('Try a different search.') }}</p>
             </div>
         @endif

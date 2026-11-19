@@ -40,7 +40,7 @@
                 @endif
                 @if ($execution->isActive())
                     @can('update', $server)
-                        <x-modal-confirmation title="Cancel this runner?" buttonTitle="{{ __('Cancel') }}"
+                        <x-modal-confirmation title="{{ __('Cancel this runner?') }}" buttonTitle="{{ __('Cancel') }}"
                             submitAction="cancel({{ $execution->id }})" :actions="[
                                 'The runner will be stopped and removed.',
                                 'A running workflow job fails.',
@@ -52,7 +52,7 @@
             </div>
         </div>
     @empty
-        <x-empty size="sm" title="No runners yet"
-            description="Workflow jobs that ask for this server's labels appear here." icon-name="servers" />
+        <x-empty size="sm" title="{{ __('No runners yet') }}"
+            description="{{ __('Workflow jobs that ask for this server\'s labels appear here.') }}" icon-name="servers" />
     @endforelse
 </div>

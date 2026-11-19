@@ -243,10 +243,10 @@
 
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" type="number"
-                                id="connectionTimeout" label="Connection timeout"
+                                id="connectionTimeout" label="{{ __('Connection timeout') }}"
                                 helper="{{ __('Seconds to wait before an SSH connection fails.') }}" min="1" max="300"
                                 required :disabled="$isValidating" />
-                            <x-forms.listbox searchable id="serverTimezone" label="Server timezone"
+                            <x-forms.listbox searchable id="serverTimezone" label="{{ __('Server timezone') }}"
                                 helper="Used for backups, cron jobs, and displayed timestamps."
                                 searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="No matching timezone"
                                 :options="collect($this->timezones)->map(fn ($timezone) => [
@@ -255,7 +255,7 @@
                                 ])->all()" :disabled="$isValidating" canGate="update" :canResource="$server" />
                             @if (!$isSwarmWorker && $serverRole !== 'build')
                                 <x-forms.input canGate="update" :canResource="$server"
-                                    placeholder="https://example.com" id="wildcardDomain" label="Wildcard domain"
+                                    placeholder="https://example.com" id="wildcardDomain" label="{{ __('Wildcard domain') }}"
                                     helper="{{ __('New resources can receive generated subdomains from this domain.') }}"
                                     :disabled="$isValidating" />
                             @endif

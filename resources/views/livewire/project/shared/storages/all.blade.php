@@ -18,14 +18,14 @@
     @if ($resource->persistentStorages->isNotEmpty())
         <div class="data-table w-full">
             <div class="data-table-header {{ $gridClass }} {{ $hasSourcePaths ? 'has-source' : '' }}">
-                <span>Storage Name</span>
+                <span>{{ __('Storage Name') }}</span>
                 @if ($hasSourcePaths)
                     <span>{{ __('Source Path') }}</span>
                 @endif
                 <span>{{ __('Destination Path') }}</span>
                 @if ($supportsPreviewSuffix)
                     <div class="volumes-col-pr flex items-center gap-1.5">
-                        <span>PR suffix</span>
+                        <span>{{ __('PR suffix') }}</span>
                         <x-helper helper="{{ __('Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews.') }}" />
                     </div>
                 @endif
@@ -53,7 +53,7 @@
                     <div class="env-table-item" wire:key="storage-row-{{ $id }}">
                         <div class="data-table-row {{ $gridClass }} {{ $hasSourcePaths ? 'has-source' : '' }} text-[13px] text-neutral-700 dark:text-fg-dim">
                             <div class="volumes-cell-name min-w-0">
-                                <span class="volumes-mobile-label volumes-field-label">Storage Name</span>
+                                <span class="volumes-mobile-label volumes-field-label">{{ __('Storage Name') }}</span>
                                 <div class="flex min-w-0 items-center gap-2">
                                     <span
                                         class="min-w-0 truncate text-[13px] font-medium text-neutral-950 dark:text-fg"
@@ -92,7 +92,7 @@
                             @if ($supportsPreviewSuffix)
                                 <div class="volumes-col-pr min-w-0">
                                     <div class="volumes-mobile-label volumes-field-label flex items-center gap-1.5">
-                                        <span>PR suffix</span>
+                                        <span>{{ __('PR suffix') }}</span>
                                         <x-helper helper="{{ __('Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews.') }}" />
                                     </div>
                                     <span>{{ $form['isPreviewSuffixEnabled'] ? 'Add suffix' : 'Share volume' }}</span>
@@ -221,7 +221,7 @@
                     <form wire:submit="submit({{ $id }})" class="env-table-item" wire:key="storage-row-{{ $id }}">
                         <div class="data-table-row {{ $gridClass }} {{ $hasSourcePaths ? 'has-source' : '' }}">
                             <div class="volumes-cell-name min-w-0">
-                                <span class="volumes-mobile-label volumes-field-label">Storage Name</span>
+                                <span class="volumes-mobile-label volumes-field-label">{{ __('Storage Name') }}</span>
                                 <div class="flex min-w-0 items-center gap-2">
                                     <div class="min-w-0 flex-1">
                                         <x-forms.input id="forms.{{ $id }}.name" required :readonly="$form['isShared']" />
@@ -254,7 +254,7 @@
                             @if ($supportsPreviewSuffix)
                                 <div class="volumes-col-pr min-w-0">
                                     <div class="volumes-mobile-label volumes-field-label flex items-center gap-1.5">
-                                        <span>PR suffix</span>
+                                        <span>{{ __('PR suffix') }}</span>
                                         <x-helper helper="{{ __('Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews.') }}" />
                                     </div>
                                     <x-forms.listbox id="forms.{{ $id }}.isPreviewSuffixEnabled" portal :options="[

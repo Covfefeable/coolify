@@ -27,7 +27,7 @@
                     <div class="text-right">{{ __('Actions') }}</div>
                 </div>
                 @foreach ($tokens as $savedToken)
-                    <x-modal-input title="Edit Cloud Token" isFullWidth :wireIgnore="false" :contentClicks="false"
+                    <x-modal-input title="{{ __('Edit Cloud Token') }}" isFullWidth :wireIgnore="false" :contentClicks="false"
                         wire:key="cloud-token-{{ $savedToken->id }}"
                         class="border-b border-neutral-200 last:border-b-0 dark:border-white/[0.07]">
                         <x-slot:content>

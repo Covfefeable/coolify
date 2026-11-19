@@ -97,7 +97,7 @@
                     <x-slot:actions>
                         <div class="w-full space-y-6">
                             <section>
-                                <h3 class="text-base font-semibold">Add a server</h3>
+                                <h3 class="text-base font-semibold">{{ __('Add a server') }}</h3>
                                 <p class="mb-3 text-sm text-neutral-500 dark:text-neutral-400">Use this machine or connect a server you already manage.</p>
                                 <div class="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
                             <button
@@ -150,8 +150,8 @@
 
                             @can('viewAny', App\Models\CloudProviderToken::class)
                                 <section>
-                                    <h3 class="text-base font-semibold">Provision a server</h3>
-                                    <p class="mb-3 text-sm text-neutral-500 dark:text-neutral-400">Create a server with a cloud provider.</p>
+                                    <h3 class="text-base font-semibold">{{ __('Provision a server') }}</h3>
+                                    <p class="mb-3 text-sm text-neutral-500 dark:text-neutral-400">{{ __('Create a server with a cloud provider.') }}</p>
                                     <div class="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
                                 @if ($currentState === 'select-server-type')
                                     <x-modal-input title="Connect a Hetzner Server" isFullWidth>
@@ -502,7 +502,7 @@
                             @endif
 
                             <x-process-dialog closeWithX size="xl">
-                                <x-slot:title>Server validation</x-slot:title>
+                                <x-slot:title>{{ __('Server validation') }}</x-slot:title>
                                 <x-slot:content>
                                     <livewire:server.validate-and-install :server="$this->createdServer" />
                                 </x-slot:content>

@@ -3,16 +3,16 @@
     <section class="application-settings-section">
         <div class="application-settings-section-header">
             <div>
-                <h2>Color theme</h2>
-                <p>Choose the color scheme used in this browser.</p>
+                <h2>{{ __('Color theme') }}</h2>
+                <p>{{ __('Choose the color scheme used in this browser.') }}</p>
             </div>
         </div>
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             @foreach ([
-                ['value' => 'light', 'label' => 'Light', 'description' => 'Bright surfaces and dark text.', 'preview' => 'bg-white'],
-                ['value' => 'system', 'label' => 'System', 'description' => 'Follow your operating system.', 'preview' => 'bg-gradient-to-r from-white via-neutral-400 to-[#050505]'],
-                ['value' => 'dark', 'label' => 'Dark', 'description' => 'Dark surfaces and soft contrast.', 'preview' => 'bg-[#181818]'],
-                ['value' => 'custom', 'label' => 'Custom', 'description' => 'Pick a preset or your own colors.', 'preview' => ''],
+                ['value' => 'light', 'label' => __('Light'), 'description' => __('Bright surfaces and dark text.'), 'preview' => 'bg-white'],
+                ['value' => 'system', 'label' => __('System'), 'description' => __('Follow your operating system.'), 'preview' => 'bg-gradient-to-r from-white via-neutral-400 to-[#050505]'],
+                ['value' => 'dark', 'label' => __('Dark'), 'description' => __('Dark surfaces and soft contrast.'), 'preview' => 'bg-[#181818]'],
+                ['value' => 'custom', 'label' => __('Custom'), 'description' => __('Pick a preset or your own colors.'), 'preview' => ''],
             ] as $option)
                 @if ($option['value'] === 'custom')
                     <div role="button" tabindex="0" @click="openCustomDialog()" @keydown.enter.prevent="openCustomDialog()"
@@ -72,14 +72,14 @@
         <div class="application-settings-section-header">
             <div>
                 <h2>UI scale</h2>
-                <p>Choose the size of text and controls. Phones always use 100%.</p>
+                <p>{{ __('Choose the size of text and controls. Phones always use 100%.') }}</p>
             </div>
         </div>
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-3">
             @foreach ([
-                ['value' => '80', 'label' => '80%', 'description' => 'Show more content on the screen.', 'size' => 'text-base'],
-                ['value' => '90', 'label' => '90%', 'description' => 'Smaller text and controls.', 'size' => 'text-lg'],
-                ['value' => '100', 'label' => '100%', 'description' => 'The default size.', 'size' => 'text-xl'],
+                ['value' => '80', 'label' => '80%', 'description' => __('Show more content on the screen.'), 'size' => 'text-base'],
+                ['value' => '90', 'label' => '90%', 'description' => __('Smaller text and controls.'), 'size' => 'text-lg'],
+                ['value' => '100', 'label' => '100%', 'description' => __('The default size.'), 'size' => 'text-xl'],
             ] as $option)
                 <button type="button" @click="setUiScale('{{ $option['value'] }}')"
                     class="group overflow-hidden rounded-[10px] border border-neutral-200 bg-white text-left transition-[border-color,box-shadow] hover:border-neutral-300 hover:shadow-sm dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:border-white/[0.12]"
@@ -105,14 +105,14 @@
     <section class="application-settings-section">
         <div class="application-settings-section-header">
             <div>
-                <h2>Page width</h2>
-                <p>Choose how content uses the available browser width.</p>
+                <h2>{{ __('Page width') }}</h2>
+                <p>{{ __('Choose how content uses the available browser width.') }}</p>
             </div>
         </div>
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-2">
             @foreach ([
-                ['value' => 'full', 'label' => 'Full width', 'description' => 'Use all available space for page content.'],
-                ['value' => 'centered', 'label' => 'Centered', 'description' => 'Keep content centered at a comfortable maximum width.'],
+                ['value' => 'full', 'label' => __('Full width'), 'description' => 'Use all available space for page content.'],
+                ['value' => 'centered', 'label' => __('Centered'), 'description' => 'Keep content centered at a comfortable maximum width.'],
             ] as $option)
                 <button type="button" @click="setWidth('{{ $option['value'] }}')"
                     class="group overflow-hidden rounded-[10px] border border-neutral-200 bg-white text-left transition-[border-color,box-shadow] hover:border-neutral-300 hover:shadow-sm dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:border-white/[0.12]"
@@ -145,14 +145,14 @@
     <section class="application-settings-section">
         <div class="application-settings-section-header">
             <div>
-                <h2>Navigation style</h2>
-                <p>Choose how the top bar and sidebars sit on the page.</p>
+                <h2>{{ __('Navigation style') }}</h2>
+                <p>{{ __('Choose how the top bar and sidebars sit on the page.') }}</p>
             </div>
         </div>
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-2">
             @foreach ([
-                ['value' => 'default', 'label' => 'Default', 'description' => 'Top bar and sidebars run edge to edge.'],
-                ['value' => 'floating', 'label' => 'Floating', 'description' => 'Framed panels float on a dotted backdrop, like the canvas.'],
+                ['value' => 'default', 'label' => __('Default'), 'description' => 'Top bar and sidebars run edge to edge.'],
+                ['value' => 'floating', 'label' => __('Floating'), 'description' => 'Framed panels float on a dotted backdrop, like the canvas.'],
             ] as $option)
                 <button type="button" @click="setNavStyle('{{ $option['value'] }}')"
                     class="group overflow-hidden rounded-[10px] border border-neutral-200 bg-white text-left transition-[border-color,box-shadow] hover:border-neutral-300 hover:shadow-sm dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:border-white/[0.12]"
@@ -197,14 +197,14 @@
     <section class="application-settings-section">
         <div class="application-settings-section-header">
             <div>
-                <h2>Style</h2>
-                <p>Choose how buttons and sidebar items look.</p>
+                <h2>{{ __('Style') }}</h2>
+                <p>{{ __('Choose how buttons and sidebar items look.') }}</p>
             </div>
         </div>
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-2">
             @foreach ([
-                ['value' => '3d', 'label' => '3D', 'description' => 'Buttons and sidebar icons sit on a raised edge that lifts on hover.'],
-                ['value' => 'flat', 'label' => 'Flat', 'description' => 'No raised edges. Sidebar items are plain rows with a highlight for the current page.'],
+                ['value' => '3d', 'label' => '3D', 'description' => __('Buttons and sidebar icons sit on a raised edge that lifts on hover.')],
+                ['value' => 'flat', 'label' => __('Flat'), 'description' => 'No raised edges. Sidebar items are plain rows with a highlight for the current page.'],
             ] as $option)
                 <button type="button" @click="setNavItems('{{ $option['value'] }}')"
                     class="group overflow-hidden rounded-[10px] border border-neutral-200 bg-white text-left transition-[border-color,box-shadow] hover:border-neutral-300 hover:shadow-sm dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:border-white/[0.12]"
@@ -245,14 +245,14 @@
     <section class="application-settings-section">
         <div class="application-settings-section-header">
             <div>
-                <h2>Chart times</h2>
-                <p>Choose which times chart tooltips show.</p>
+                <h2>{{ __('Chart times') }}</h2>
+                <p>{{ __('Choose which times chart tooltips show.') }}</p>
             </div>
         </div>
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-2">
             @foreach ([
-                ['value' => 'local', 'label' => 'Your time', 'description' => 'Show the time in the time zone of this browser.', 'lines' => ['Oct 24, 12:30:33']],
-                ['value' => 'utc', 'label' => 'Your time and UTC', 'description' => 'Also show the UTC time. Use it to compare with server logs.', 'lines' => ['Your time: Oct 24, 12:30:33 GMT+2', 'UTC: Oct 24, 10:30:33 UTC']],
+                ['value' => 'local', 'label' => __('Your time'), 'description' => 'Show the time in the time zone of this browser.', 'lines' => ['Oct 24, 12:30:33']],
+                ['value' => 'utc', 'label' => __('Your time and UTC'), 'description' => 'Also show the UTC time. Use it to compare with server logs.', 'lines' => ['Your time: Oct 24, 12:30:33 GMT+2', 'UTC: Oct 24, 10:30:33 UTC']],
             ] as $option)
                 <button type="button" @click="setChartTimes('{{ $option['value'] }}')"
                     class="group overflow-hidden rounded-[10px] border border-neutral-200 bg-white text-left transition-[border-color,box-shadow] hover:border-neutral-300 hover:shadow-sm dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:border-white/[0.12]"
@@ -298,7 +298,7 @@
                     style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-modal)">
                     <header class="shrink-0">
                         <div class="min-w-0 flex-1 py-0.5">
-                            <h3 id="custom-theme-title" class="truncate">Custom theme</h3>
+                            <h3 id="custom-theme-title" class="truncate">{{ __('Custom theme') }}</h3>
                             <p class="mt-0.5 text-xs text-neutral-500 dark:text-fg-dim">
                                 Colors of Coolify in this browser. Text stays readable on every color.
                             </p>
@@ -312,7 +312,7 @@
                     <template x-if="dialogOpen">
                         <div class="application-settings-section-body grid min-h-0 flex-1 gap-6 overflow-y-auto lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
                             <div>
-                                <div class="mb-2 text-xs font-medium text-neutral-500 dark:text-fg-dim">Presets</div>
+                                <div class="mb-2 text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Presets') }}</div>
                                 <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
                                     <template x-for="preset in presets" :key="preset.name">
                                         <button type="button" @click="setDraft(preset.theme && { ...preset.theme })"
@@ -356,7 +356,7 @@
                                         </div>
                                         <div class="rounded-md border p-2.5"
                                             :style="`background: color-mix(in oklab, ${textOn(draftColors.background)} 4%, ${draftColors.background}); border-color: color-mix(in oklab, ${textOn(draftColors.background)} 14%, ${draftColors.background})`">
-                                            <div class="font-medium">My first project</div>
+                                            <div class="font-medium">{{ __('My first project') }}</div>
                                             <div class="mt-0.5 opacity-60">production</div>
                                         </div>
                                         <div class="rounded-md border p-2.5"
@@ -368,7 +368,7 @@
                                 </div>
 
                                 <div>
-                                    <div class="mb-2 text-xs font-medium text-neutral-500 dark:text-fg-dim">Colors</div>
+                                    <div class="mb-2 text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Colors') }}</div>
                                     <div class="flex flex-col gap-2.5">
                                         @foreach ([
                                             'sidebar' => ['Sidebar', 'The navigation on the left'],
@@ -401,7 +401,7 @@
 
                                 <div>
                                     <label for="custom-theme-share-code"
-                                        class="mb-2 block text-xs font-medium text-neutral-500 dark:text-fg-dim">Share code</label>
+                                        class="mb-2 block text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('Share code') }}</label>
                                     <div class="flex gap-2">
                                         <input id="custom-theme-share-code" x-ref="shareCode" type="text" autocomplete="off"
                                             spellcheck="false" :value="shareCode"

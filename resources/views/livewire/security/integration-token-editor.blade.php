@@ -35,7 +35,7 @@
 
         @if ($integrationToken->provider === 'cloudflare')
             <fieldset>
-                <legend class="text-sm font-medium text-black dark:text-fg">Capabilities</legend>
+                <legend class="text-sm font-medium text-black dark:text-fg">{{ __('Capabilities') }}</legend>
                 <div class="mt-3 rounded-lg border border-neutral-200 p-1 dark:border-white/[0.08]">
                     <x-forms.checkbox id="edit-dns-capability" label="DNS" domValue="dns" fullWidth
                         :disabled="in_array('tunnel', $capabilities, true)" wire:model.live="capabilities" />
@@ -53,14 +53,14 @@
                 @enderror
             </fieldset>
             <div class="rounded-lg border border-neutral-200 p-1 dark:border-white/[0.08]">
-                <x-forms.checkbox id="edit-automatic-dns" label="Automatically configure DNS" fullWidth
+                <x-forms.checkbox id="edit-automatic-dns" label="{{ __('Automatically configure DNS') }}" fullWidth
                     wire:model.live="automaticDns" canGate="update" :canResource="$integrationToken" />
                 <p class="px-2.5 pb-2 text-[11px] text-neutral-500 dark:text-fg-dim">
                     Create DNS records automatically when a new domain has one unambiguous matching credential.
                 </p>
             </div>
             <div class="rounded-lg border border-neutral-200 p-1 dark:border-white/[0.08]">
-                <x-forms.checkbox id="edit-proxied-dns" label="Proxy DNS records through Cloudflare" fullWidth
+                <x-forms.checkbox id="edit-proxied-dns" label="{{ __('Proxy DNS records through Cloudflare') }}" fullWidth
                     wire:model.live="proxiedDns" canGate="update" :canResource="$integrationToken" />
                 <p class="px-2.5 pb-2 text-[11px] text-neutral-500 dark:text-fg-dim">
                     Create new DNS records with the Cloudflare proxy on (orange cloud), so the server IP is not public. Existing records keep their proxy status.
@@ -76,7 +76,7 @@
 
         @if ($integrationToken->provider === 'cloudflare' && in_array('dns', $capabilities, true))
             <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-[11px] leading-5 text-neutral-600 dark:border-white/[0.08] dark:bg-white/[0.025] dark:text-fg-dim">
-                <div class="font-medium text-black dark:text-fg">Required Cloudflare permissions</div>
+                <div class="font-medium text-black dark:text-fg">{{ __('Required Cloudflare permissions') }}</div>
                 <ul class="list-inside list-disc">
                     <li>Zone - DNS - Edit</li>
                     <li>Zone - Zone - Read</li>
