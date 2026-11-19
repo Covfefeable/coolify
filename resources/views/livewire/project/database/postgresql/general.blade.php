@@ -33,7 +33,7 @@
                         <x-forms.input label="{{ __('Password') }}" id="postgresPassword" type="password" required
                             canGate="update" :canResource="$database" />
                     @endif
-                    <x-forms.input label="Initial database" id="postgresDb"
+                    <x-forms.input label="{{ __('Initial database') }}" id="postgresDb"
                         placeholder="If empty, it will match the username."
                         :readonly="(bool) $database->started_at" canGate="update" :canResource="$database"
                         helper="{{ $database->started_at ? 'You can only change this in the database.' : null }}" />
@@ -123,9 +123,9 @@
             @can('update', $database)
                 <x-modal-input buttonTitle="{{ __('+ Add') }}" title="New initialization script">
                     <form class="flex w-full flex-col gap-4" wire:submit="save_new_init_script">
-                        <x-forms.input placeholder="create_test_db.sql" id="new_filename" label="Filename" required />
+                        <x-forms.input placeholder="create_test_db.sql" id="new_filename" label="{{ __('Filename') }}" required />
                         <x-forms.textarea rows="16" placeholder="CREATE DATABASE test;" id="new_content"
-                            label="Content" required />
+                            label="{{ __('Content') }}" required />
                         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                             <x-forms.button type="submit">Add script</x-forms.button>
                         </div>

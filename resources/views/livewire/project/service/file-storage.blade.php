@@ -107,7 +107,7 @@
                     @can('update', $resource)
                         @if (data_get($resource, 'settings.is_preserve_repository_enabled'))
                             <div class="w-full sm:w-96">
-                                <x-forms.checkbox instantSave label="Is this based on the Git repository?"
+                                <x-forms.checkbox instantSave label="{{ __('Is this based on the Git repository?') }}"
                                     id="isBasedOnGit"></x-forms.checkbox>
                             </div>
                         @endif
@@ -119,7 +119,7 @@
                     @else
                         @if (data_get($resource, 'settings.is_preserve_repository_enabled'))
                             <div class="w-full sm:w-96">
-                                <x-forms.checkbox disabled label="Is this based on the Git repository?"
+                                <x-forms.checkbox disabled label="{{ __('Is this based on the Git repository?') }}"
                                     id="isBasedOnGit"></x-forms.checkbox>
                             </div>
                         @endif
@@ -133,7 +133,7 @@
                 @if (!$fileStorage->is_directory && !$fileStorage->is_host_file)
                     @if (data_get($resource, 'settings.is_preserve_repository_enabled'))
                         <div class="w-full sm:w-96">
-                            <x-forms.checkbox disabled label="Is this based on the Git repository?"
+                            <x-forms.checkbox disabled label="{{ __('Is this based on the Git repository?') }}"
                                 id="isBasedOnGit"></x-forms.checkbox>
                         </div>
                     @endif

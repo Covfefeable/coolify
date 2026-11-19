@@ -87,7 +87,7 @@
                 </x-callout>
                 <div class="mt-4">
                     <x-forms.input canGate="update" :canResource="$resource" id="healthCheckCommand"
-                        label="Command" placeholder="pg_isready -U postgres"
+                        label="{{ __('Command') }}" placeholder="pg_isready -U postgres"
                         helper="Use a single executable command without shell expansion."
                         required x-bind:required="$wire.healthCheckType === 'cmd'" />
                 </div>

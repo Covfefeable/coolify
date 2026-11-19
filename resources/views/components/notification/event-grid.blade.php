@@ -75,7 +75,7 @@
 @endphp
 
 <div class="flex flex-col gap-6">
-    <x-application.settings-section title="Notification events"
+    <x-application.settings-section title="{{ __('Notification events') }}"
         description="Choose which events send a notification on this channel.">
         <div class="grid gap-4 lg:grid-cols-2">
             @foreach ($eventGroups as $group => $events)

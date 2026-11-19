@@ -104,7 +104,7 @@
                 </a>
                 @if ($healthLabel === 'Not configured')
                     <span class="inline-flex pr-2">
-                        <x-helper label="About unconfigured healthchecks" :helper="$healthHelper" />
+                        <x-helper label="{{ __('About unconfigured healthchecks') }}" :helper="$healthHelper" />
                     </span>
                 @endif
             </div>
@@ -115,7 +115,7 @@
                 <span class="inline-flex items-center gap-1.5">
                     {{ $healthLabel }}
                     @if ($healthLabel === 'Not configured')
-                        <x-helper label="About unconfigured healthchecks" :helper="$healthHelper" />
+                        <x-helper label="{{ __('About unconfigured healthchecks') }}" :helper="$healthHelper" />
                     @endif
                 </span>
             </div>

@@ -197,7 +197,7 @@
                                     Edit
                                 </x-table.row-action>
                                 <x-slot:danger>
-                                    <x-modal-confirmation buttonFullWidth title="Remove domain?"
+                                    <x-modal-confirmation buttonFullWidth title="{{ __('Remove domain?') }}"
                                         buttonTitle="{{ __('Remove') }}" isErrorButton
                                         canGate="update" :canResource="$service"
                                         submitAction="removeDomainByKey({{ $domainKey }})" :actions="[

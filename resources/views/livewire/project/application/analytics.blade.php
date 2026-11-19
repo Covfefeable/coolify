@@ -17,7 +17,7 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
 <div class="flex flex-col gap-6">
     @if (! $enabled)
         <x-application.settings-section id="analytics-section" title="{{ __('Analytics') }}"
-            helper="Inspect traffic statistics reported by Sentinel.">
+            helper="{{ __('Inspect traffic statistics reported by Sentinel.') }}">
             @if ($analyticsServerUuid)
                 <x-slot:actions>
                     <a class="button" href="{{ route('server.analytics', ['server_uuid' => $analyticsServerUuid]) }}"
@@ -33,7 +33,7 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
         </x-application.settings-section>
     @elseif (! $overview)
         <x-application.settings-section id="analytics-section" title="{{ __('Analytics') }}"
-            helper="Inspect traffic statistics reported by Sentinel.">
+            helper="{{ __('Inspect traffic statistics reported by Sentinel.') }}">
             <x-empty size="sm" title="{{ __('No analytics data yet') }}"
                 description="We could not load traffic analytics for the selected range. Try a different range or check back shortly."
                 icon-name="network" />
@@ -48,7 +48,7 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
             @endif
 
             <x-application.settings-section id="analytics-range-section" title="{{ __('Analytics') }}"
-                helper="Inspect traffic statistics reported by Sentinel.">
+                helper="{{ __('Inspect traffic statistics reported by Sentinel.') }}">
                 <x-slot:actions>
                     <div class="flex items-center gap-2">
                         <div class="relative w-full transition-opacity sm:w-44"
@@ -143,17 +143,17 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
             </x-application.settings-section>
 
             <x-application.settings-section id="analytics-requests-section" title="{{ __('Requests') }}" flush
-                helper="Total request volume over time for the selected range.">
+                helper="{{ __('Total request volume over time for the selected range.') }}">
                 @include('livewire.traffic._requests-chart')
             </x-application.settings-section>
 
             <x-application.settings-section id="analytics-status-codes-section" title="{{ __('Status codes') }}"
-                helper="Share of responses by HTTP status class for the selected range.">
+                helper="{{ __('Share of responses by HTTP status class for the selected range.') }}">
                 @include('livewire.traffic._status-codes')
             </x-application.settings-section>
 
             <x-application.settings-section id="analytics-paths-section" title="{{ __('Top paths') }}"
-                helper="Most requested paths for the selected range." flush>
+                helper="{{ __('Most requested paths for the selected range.') }}" flush>
                 @include('livewire.traffic._paths-list', ['paths' => $topPaths])
             </x-application.settings-section>
 
@@ -166,7 +166,7 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
             {{-- Requests by device type (donut) + HTTP versions / cache / status. --}}
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 <x-application.settings-section id="analytics-device-section" title="{{ __('Requests by device type') }}"
-                    helper="Share of requests by client device class for the selected range.">
+                    helper="{{ __('Share of requests by client device class for the selected range.') }}">
                     @php $deviceChart = $this->deviceChartData(); @endphp
                     @include('livewire.traffic._device-chart', [
                         'labels' => $deviceChart['labels'],

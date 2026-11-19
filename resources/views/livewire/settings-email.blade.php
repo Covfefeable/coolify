@@ -10,8 +10,8 @@
             targets="smtpFromName,smtpFromAddress,smtpHost,smtpPort,smtpEncryption,smtpUsername,smtpPassword,smtpTimeout,smtpEhloDomain,resendApiKey,resendFromName,resendFromAddress,notificationFromName,notificationFromAddress" />
 
         <form wire:submit="submit">
-            <x-application.settings-section title="Email delivery"
-                description="Only one provider sends email. Select a provider to see its settings.">
+            <x-application.settings-section title="{{ __('Email delivery') }}"
+                description="{{ __('Only one provider sends email. Select a provider to see its settings.') }}">
                 <x-slot:badges>
                     <div class="w-40">
                         <x-forms.listbox id="emailProvider" onChange="selectEmailProvider"
@@ -33,7 +33,7 @@
 
                     @if ($emailProvider !== $this->activeEmailProvider)
                         <div class="lg:col-span-3">
-                            <x-callout type="warning" title="Not active yet">
+                            <x-callout type="warning" title="{{ __('Not active yet') }}">
                                 Enter the {{ email_provider_labels()[$emailProvider] }} settings and save.
                                 @if ($this->activeEmailProvider === 'none')
                                     Until then, Coolify does not send email.
@@ -50,10 +50,10 @@
                     @elseif ($emailProvider === 'resend')
                         <x-forms.input required type="password" id="resendApiKey" placeholder="{{ __('API key') }}"
                             label="{{ __('Resend API key') }}" autocomplete="new-password" />
-                        <x-forms.input required id="resendFromName" helper="Name shown in email from Resend."
+                        <x-forms.input required id="resendFromName" helper="{{ __('Name shown in email from Resend.') }}"
                             label="{{ __('From name') }}" />
                         <x-forms.input required id="resendFromAddress"
-                            helper="Address used in email from Resend. It must be on a domain verified in Resend."
+                            helper="{{ __('Address used in email from Resend. It must be on a domain verified in Resend.') }}"
                             label="{{ __('From address') }}" />
                     @endif
 

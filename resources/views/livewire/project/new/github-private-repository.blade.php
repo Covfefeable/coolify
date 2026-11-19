@@ -8,7 +8,7 @@
                 </div>
             </div>
             <x-empty title="No GitHub Apps"
-                description="Create an app to grant Coolify access to selected repositories."
+                description="{{ __('Create an app to grant Coolify access to selected repositories.') }}"
                 icon-name="sources">
                 <x-slot:contents>
                     <x-modal-input buttonTitle="+ Add GitHub App" title="{{ __('New GitHub App') }}" closeOutside="false">
@@ -87,7 +87,7 @@
                         </x-forms.button>
                     </div>
                 @else
-                    <x-empty size="sm" title="No repositories available"
+                    <x-empty size="sm" title="{{ __('No repositories available') }}"
                         description="Review this GitHub App installation and grant access to a repository." />
                 @endif
             </div>

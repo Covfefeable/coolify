@@ -6,7 +6,7 @@
 
         <div class="grid gap-4 sm:grid-cols-2">
             <x-forms.input id="name" label="{{ __('Name') }}" required />
-            <x-forms.input id="group_name" label="Group name"
+            <x-forms.input id="group_name" label="{{ __('Group name') }}"
                 helper="Optional. Comma-separated group names to filter repositories (e.g. myorg,myteam)."
                 placeholder="All accessible repositories when empty" />
         </div>
@@ -15,7 +15,7 @@
             <div x-data="{ showWarning: @entangle('is_system_wide') }">
                 <div class="max-w-xs">
                     <x-forms.checkbox id="is_system_wide" label="{{ __('System wide') }}"
-                        helper="If checked, this GitLab App will be available for everyone in this Coolify instance." />
+                        helper="{{ __('If checked, this GitLab App will be available for everyone in this Coolify instance.') }}" />
                 </div>
                 <div x-cloak x-show="showWarning" x-transition class="mt-3">
                     <x-callout type="warning" title="{{ __('Shared with every team') }}">
@@ -38,12 +38,12 @@
             </button>
             <div x-cloak x-show="open" x-collapse.duration.200ms class="border-t border-neutral-200 px-3 py-3 dark:border-white/[0.08]">
                 <div class="grid gap-4 sm:grid-cols-2">
-                    <x-forms.input id="html_url" label="GitLab URL" required
+                    <x-forms.input id="html_url" label="{{ __('GitLab URL') }}" required
                         helper="For self-hosted GitLab, enter your instance URL (e.g. https://gitlab.example.com)." />
                     <x-forms.input id="api_url" label="API URL" required
                         helper="Usually your GitLab URL with /api/v4 appended." />
-                    <x-forms.input id="custom_user" label="Custom Git user" required />
-                    <x-forms.input id="custom_port" type="number" label="Custom Git port" required />
+                    <x-forms.input id="custom_user" label="{{ __('Custom Git user') }}" required />
+                    <x-forms.input id="custom_port" type="number" label="{{ __('Custom Git port') }}" required />
                 </div>
             </div>
         </div>

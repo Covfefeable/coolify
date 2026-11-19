@@ -52,7 +52,7 @@
                         <x-forms.input label="{{ __('Value') }}" :value="$value ?? ''" readonly />
                     @endif
                     @if (filled($comment))
-                        <x-forms.input label="Comment" :value="$comment" readonly />
+                        <x-forms.input label="{{ __('Comment') }}" :value="$comment" readonly />
                     @endif
                     <x-callout type="info" :title="$composeType === 'derived' ? 'Derived in Compose' : 'Defined in Compose'">
                         @if ($composeType === 'derived')

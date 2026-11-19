@@ -166,7 +166,7 @@
 
                 <x-table.toolbar class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
                     <x-slot:search>
-                        <x-table.search placeholder="Search by ID or package" loading-target="search"
+                        <x-table.search placeholder="{{ __('Search by ID or package') }}" loading-target="search"
                             wire:model.live.debounce.300ms="search" />
                     </x-slot:search>
 
@@ -282,7 +282,7 @@
                                             <x-image-scan.severity-badge :severity="$group['severity']" />
                                             @if ($group['kev'])
                                                 <span data-tooltip="Attackers are using this, according to CISA.">
-                                                    <x-status-badge type="error" label="Known exploited" />
+                                                    <x-status-badge type="error" label="{{ __('Known exploited') }}" />
                                                 </span>
                                             @endif
                                         </span>

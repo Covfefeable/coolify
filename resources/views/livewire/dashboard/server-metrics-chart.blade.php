@@ -50,7 +50,7 @@
                         },
                         series: [
                             { name: 'CPU', data: [] },
-                            { name: 'Memory', data: [] },
+                            { name: @js(__('Memory')), data: [] },
                         ],
                         colors: [
                             'rgba(30, 144, 255, 0.52)',
@@ -113,7 +113,7 @@
                             data: chartData[0].cpu ?? [],
                         },
                         {
-                            name: 'Memory',
+                            name: @js(__('Memory')),
                             data: chartData[0].memory ?? [],
                         },
                     ]);

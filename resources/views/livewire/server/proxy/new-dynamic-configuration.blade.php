@@ -1,5 +1,5 @@
 <form wire:submit.prevent="addDynamicConfiguration" class="flex flex-col w-full gap-4">
-    <x-forms.input canGate="update" :canResource="$server" id="fileName" label="Filename" required />
+    <x-forms.input canGate="update" :canResource="$server" id="fileName" label="{{ __('Filename') }}" required />
     <x-forms.textarea canGate="update" :canResource="$server" allowTab useMonacoEditor
         monacoEditorLanguage="{{ $server->proxyType() === \App\Enums\ProxyTypes::TRAEFIK->value ? 'yaml' : '' }}" id="value" label="{{ __('Configuration') }}"
         required rows="20" />

@@ -45,7 +45,7 @@
                         @can('makeSystemWide', \App\Models\GitlabApp::class)
                             <div class="lg:col-span-2 max-w-xs">
                                 <x-forms.checkbox canGate="update" :canResource="$gitlab_app" label="{{ __('System wide') }}"
-                                    helper="If checked, this GitLab App will be available for everyone in this Coolify instance."
+                                    helper="{{ __('If checked, this GitLab App will be available for everyone in this Coolify instance.') }}"
                                     instantSave id="isSystemWide" />
                             </div>
                         @endcan
@@ -82,7 +82,7 @@
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="clientSecretInput"
                             label="Application secret" type="password"
                             helper="Stored encrypted. Leave empty to keep the existing secret." />
-                        <x-forms.input canGate="update" :canResource="$gitlab_app" id="groupName" label="Group name"
+                        <x-forms.input canGate="update" :canResource="$gitlab_app" id="groupName" label="{{ __('Group name') }}"
                             helper="Comma-separated group names to filter visible repositories." />
                     </div>
                 </x-application.settings-subsection>
@@ -90,7 +90,7 @@
                     helper="Override endpoints and SSH settings for self-hosted GitLab.">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="htmlUrl"
-                            label="GitLab URL" />
+                            label="{{ __('GitLab URL') }}" />
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="apiUrl" label="API URL" />
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="customUser"
                             label="{{ __('SSH user') }}" />
@@ -205,7 +205,7 @@
                     </a>
                     <ul class="list-inside list-disc space-y-1.5">
                         <li>
-                            Set <strong class="text-black dark:text-fg">Redirect URI</strong> to:
+                            Set <strong class="text-black dark:text-fg">{{ __('Redirect URI') }}</strong> to:
                             <code class="rounded bg-neutral-100 px-1.5 py-0.5 text-[11px] dark:bg-white/[0.06]"
                                 x-text="redirectUri || @js($redirectUri)">{{ $redirectUri }}</code>
                         </li>
@@ -233,7 +233,7 @@
                         <x-forms.input id="clientSecretInput" label="Application secret" type="password"
                             :required="blank($clientSecretInput) && blank(data_get($gitlab_app, 'client_secret'))"
                             helper="The Secret from your GitLab OAuth Application. Saved encrypted." />
-                        <x-forms.input id="groupName" label="Group name"
+                        <x-forms.input id="groupName" label="{{ __('Group name') }}"
                             helper="Optional. Comma-separated group names to filter repositories." />
                     </div>
 
@@ -243,13 +243,13 @@
                                 GitLab will redirect back to this Coolify URL. It must match the Callback URL on your GitLab OAuth Application exactly.
                             </div>
                             <div class="lg:col-span-2 max-w-md">
-                                <x-forms.listbox id="use_custom_webhook_endpoint" label="Webhook endpoint"
+                                <x-forms.listbox id="use_custom_webhook_endpoint" label="{{ __('Webhook endpoint') }}"
                                     :live="true" :options="[
                                         ['value' => false, 'label' => 'Use an instance endpoint'],
                                         ['value' => true, 'label' => 'Use a custom endpoint'],
                                     ]"
                                     x-model="useCustomWebhookEndpoint"
-                                    helper="Use a custom public URL when Coolify is behind a tunnel or reverse proxy." />
+                                    helper="{{ __('Use a custom public URL when Coolify is behind a tunnel or reverse proxy.') }}" />
                             </div>
                             <div class="lg:col-span-2" x-show="!useCustomWebhookEndpoint">
                                 <x-forms.listbox id="webhook_endpoint" x-model="webhookEndpoint"
@@ -263,7 +263,7 @@
                             </div>
                             <div class="lg:col-span-2" x-cloak x-show="useCustomWebhookEndpoint">
                                 <x-forms.input x-model="customWebhookEndpoint" id="custom_webhook_endpoint"
-                                    type="url" label="Custom endpoint"
+                                    type="url" label="{{ __('Custom endpoint') }}"
                                     placeholder="https://coolify.example.com"
                                     helper="GitLab will use this custom public URL. Do not include /webhooks." />
                             </div>
@@ -281,7 +281,7 @@
                         </button>
                         <div x-cloak x-show="open" x-collapse.duration.200ms
                             class="mt-3 grid gap-4 rounded-lg border border-neutral-200 p-3 lg:grid-cols-2 dark:border-white/[0.08]">
-                            <x-forms.input id="htmlUrl" label="GitLab URL"
+                            <x-forms.input id="htmlUrl" label="{{ __('GitLab URL') }}"
                                 helper="Only change this for self-hosted GitLab (e.g. https://gitlab.example.com)." />
                             <x-forms.input id="apiUrl" label="API URL"
                                 helper="Usually your GitLab URL with /api/v4 appended." />
@@ -290,7 +290,7 @@
                             @if (! isCloud() && auth()->user()->can('makeSystemWide', \App\Models\GitlabApp::class))
                                 <div class="max-w-xs lg:col-span-2">
                                     <x-forms.checkbox label="{{ __('System wide') }}" id="isSystemWide"
-                                        helper="If checked, this GitLab App will be available for everyone in this Coolify instance." />
+                                        helper="{{ __('If checked, this GitLab App will be available for everyone in this Coolify instance.') }}" />
                                 </div>
                             @endif
                         </div>

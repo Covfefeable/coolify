@@ -69,7 +69,7 @@
                                     !auth()->user()->currentTeam()->personal_team &&
                                     !currentTeam()->subscription &&
                                     $deletionBlockers === [])
-                                <x-modal-confirmation title="Confirm Team Deletion?" buttonTitle="Delete team"
+                                <x-modal-confirmation title="{{ __('Confirm Team Deletion?') }}" buttonTitle="Delete team"
                                     isErrorButton submitAction="delete"
                                     :actions="['The current team will be permanently deleted from Coolify and the database.']"
                                     confirmationText="{{ currentTeam()->name }}"

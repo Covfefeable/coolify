@@ -25,7 +25,7 @@
                     readonly aria-live="polite">
             </div>
         @endif
-        <x-forms.copy-input label="Docker network" :text="$application->destination->network" />
+        <x-forms.copy-input label="{{ __('Docker network') }}" :text="$application->destination->network" />
         <x-forms.copy-input label="Exposed ports" :text="$exposedPorts ?: 'None'" />
         <x-forms.copy-input label="Network aliases" :text="$networkAliases->implode(', ') ?: 'None'" />
     </div>

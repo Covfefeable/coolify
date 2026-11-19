@@ -53,7 +53,7 @@
             </div>
             <div class="mt-4">
                 <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)"
-                    placeholder="php artisan schedule:run" id="command" label="Command" required />
+                    placeholder="php artisan schedule:run" id="command" label="{{ __('Command') }}" required />
             </div>
             <div class="mt-2 md:w-1/2">
                 <x-forms.checkbox canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)"

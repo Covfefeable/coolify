@@ -7,34 +7,34 @@
     @endif>
     @if ($resource->getMorphClass() === 'App\Models\Application' && $resource->build_pack === 'dockercompose')
         <x-application.settings-section id="metrics-overview-section" title="{{ __('Metrics') }}"
-            helper="Inspect CPU and memory usage for this application.">
+            helper="{{ __('Inspect CPU and memory usage for this application.') }}">
             <x-empty size="sm" title="{{ __('Metrics unavailable') }}"
-                description="Container metrics are not currently available for Docker Compose applications."
+                description="{{ __('Container metrics are not currently available for Docker Compose applications.') }}"
                 icon-name="dashboard" />
         </x-application.settings-section>
     @elseif (!$resource->destination->server->isMetricsEnabled())
         <x-application.settings-section id="metrics-overview-section" title="{{ __('Metrics') }}"
-            helper="Inspect CPU and memory usage for this application.">
+            helper="{{ __('Inspect CPU and memory usage for this application.') }}">
             <x-slot:actions>
                 <a class="button"
                     href="{{ route('server.metrics', ['server_uuid' => $resource->destination->server->uuid]) }}"
                     {{ wireNavigate() }}>
-                    Server metrics
+                    {{ __('Server metrics') }}
                     <x-external-link />
                 </a>
             </x-slot:actions>
-            <x-empty size="sm" title="Metrics are not enabled"
-                description="Enable metrics for this server before collecting application usage data."
+            <x-empty size="sm" title="{{ __('Metrics are not enabled') }}"
+                description="{{ __('Enable metrics for this server before collecting application usage data.') }}"
                 icon-name="dashboard" />
         </x-application.settings-section>
     @elseif (!str($resource->status)->contains('running'))
         <x-application.settings-section id="metrics-overview-section" title="{{ __('Metrics') }}"
-            helper="Inspect CPU and memory usage for this application.">
+            helper="{{ __('Inspect CPU and memory usage for this application.') }}">
             <x-slot:actions>
                 <x-status-badge status="Not running" type="neutral" />
             </x-slot:actions>
-            <x-empty size="sm" title="Container is not running"
-                description="Start the application to begin collecting CPU and memory metrics."
+            <x-empty size="sm" title="{{ __('Container is not running') }}"
+                description="{{ __('Start the application to begin collecting CPU and memory metrics.') }}"
                 icon-name="dashboard" />
         </x-application.settings-section>
     @else
@@ -63,7 +63,7 @@
         </x-application.settings-section>
 
         <x-application.settings-section id="cpu-metrics-section" title="{{ __('CPU usage') }}"
-            helper="CPU usage of the container, as in docker stats. 100% means one CPU core is fully busy, so a container that uses more than one core can go above 100%. The maximum is the number of cores × 100%.">
+            helper="{{ __('CPU usage of the container, as in docker stats. 100% means one CPU core is fully busy, so a container that uses more than one core can go above 100%. The maximum is the number of cores × 100%.') }}">
             <x-slot:actions>
                 <div wire:ignore id="{!! $chartId !!}-cpu-legend" class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs"></div>
             </x-slot:actions>
@@ -141,7 +141,7 @@
                             },
                         },
                         noData: {
-                            text: 'Loading CPU metrics…',
+                            text: @js(__('Loading CPU metrics…')),
                             style: {
                                 color: textColor,
                             },
@@ -205,7 +205,7 @@
                                 },
                             },
                             noData: {
-                                text: 'No CPU metrics available',
+                                text: @js(__('No CPU metrics available')),
                                 style: {
                                     color: textColor,
                                 },
@@ -224,7 +224,7 @@
         </x-application.settings-section>
 
         <x-application.settings-section id="memory-metrics-section" title="{{ __('Memory usage') }}"
-            helper="Memory consumed by the application container, measured in megabytes.">
+            helper="{{ __('Memory consumed by the application container, measured in megabytes.') }}">
             <x-slot:actions>
                 <div wire:ignore id="{!! $chartId !!}-memory-legend" class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs"></div>
             </x-slot:actions>
@@ -253,7 +253,7 @@
                             background: 'transparent',
                         },
                         series: [{
-                            name: 'Memory',
+                            name: @js(__('Memory')),
                             data: [],
                         }],
                         colors: [ramColor],
@@ -300,7 +300,7 @@
                             },
                         },
                         noData: {
-                            text: 'Loading memory metrics…',
+                            text: @js(__('Loading memory metrics…')),
                             style: {
                                 color: textColor,
                             },
@@ -336,7 +336,7 @@
                         memoryChart.updateOptions({
                             colors: [ramColor],
                             series: [{
-                                name: 'Memory',
+                                name: @js(__('Memory')),
                                 data: chartData[0].seriesData,
                             }],
                             xaxis: {
@@ -360,14 +360,14 @@
                                 },
                             },
                             noData: {
-                                text: 'No memory metrics available',
+                                text: @js(__('No memory metrics available')),
                                 style: {
                                     color: textColor,
                                 },
                             },
                         });
                         renderChartLegend(document.getElementById('{!! $chartId !!}-memory-legend'), [{
-                            name: 'Memory',
+                            name: @js(__('Memory')),
                             color: ramColor,
                             data: chartData[0].seriesData,
                             formatter: formatMemory,

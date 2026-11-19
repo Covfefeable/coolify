@@ -209,8 +209,8 @@
                 <div class="application-settings-section-body grid gap-4 sm:grid-cols-2">
                     <x-forms.input class="sm:col-span-2" id="current_password" label="Current password"
                         required type="password" :copyable="false" />
-                    <x-forms.input id="new_password" label="New password" required type="password" :copyable="false" />
-                    <x-forms.input id="new_password_confirmation" label="Confirm new password" required
+                    <x-forms.input id="new_password" label="{{ __('New password') }}" required type="password" :copyable="false" />
+                    <x-forms.input id="new_password_confirmation" label="{{ __('Confirm new password') }}" required
                         type="password" :copyable="false" />
                 </div>
             </section>
@@ -250,7 +250,7 @@
                                 x-init="$nextTick(() => $el.querySelector('input[name=code]')?.focus())">
                                 @csrf
                                 <x-forms.input name="code" type="text" inputmode="numeric" pattern="[0-9]*" id="code"
-                                    label="One-time code" required />
+                                    label="{{ __('One-time code') }}" required />
                                 <x-forms.button type="submit">Validate 2FA</x-forms.button>
                             </form>
                             <div x-data="{ showCode: false }">

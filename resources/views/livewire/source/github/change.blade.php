@@ -285,13 +285,13 @@
 
                         <div class="flex min-h-[24rem] flex-1 flex-col gap-4">
                             @if (!isCloud() || isDev())
-                                <x-forms.listbox id="use_custom_webhook_endpoint" label="Webhook endpoint"
+                                <x-forms.listbox id="use_custom_webhook_endpoint" label="{{ __('Webhook endpoint') }}"
                                     :live="true" :options="[
                                         ['value' => false, 'label' => 'Use an instance endpoint'],
                                         ['value' => true, 'label' => 'Use a custom endpoint'],
                                     ]"
                                     x-model="useCustomWebhookEndpoint"
-                                    helper="Use a custom public URL when Coolify is behind a tunnel or reverse proxy." />
+                                    helper="{{ __('Use a custom public URL when Coolify is behind a tunnel or reverse proxy.') }}" />
                                 <div x-show="!useCustomWebhookEndpoint">
                                     <x-forms.listbox id="webhook_endpoint" label="Instance endpoint"
                                         :options="$endpointOptions" x-model="webhookEndpoint" />
@@ -299,7 +299,7 @@
                                 <div x-cloak x-show="useCustomWebhookEndpoint">
                                     <x-forms.input canGate="create" :canResource="$github_app"
                                         x-model="customWebhookEndpoint" id="custom_webhook_endpoint" type="url"
-                                        label="Custom endpoint" placeholder="https://coolify.example.com"
+                                        label="{{ __('Custom endpoint') }}" placeholder="https://coolify.example.com"
                                         helper="Do not include /webhooks." />
                                 </div>
                             @else

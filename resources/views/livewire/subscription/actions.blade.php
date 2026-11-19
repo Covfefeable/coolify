@@ -192,7 +192,7 @@
 
                                 {{-- Reduction Warning --}}
                                 <div x-show="isReduction" x-cloak>
-                                    <x-callout type="danger" title="Warning">
+                                    <x-callout type="danger" title="{{ __('Warning') }}">
                                         Reducing below your active server count will deactivate excess servers.
                                     </x-callout>
                                 </div>

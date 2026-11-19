@@ -57,7 +57,7 @@
                 animations: { enabled: false },
                 background: 'transparent',
             },
-            series: [{ name: 'Requests', data: initialPoints }],
+            series: [{ name: @js(__('Requests')), data: initialPoints }],
             colors: [accent()],
             dataLabels: { enabled: false },
             stroke: { width: 2, curve: 'smooth' },
@@ -86,7 +86,7 @@
             },
             legend: { show: false },
             noData: {
-                text: 'Loading requests…',
+                text: @js(__('Loading requests…')),
                 style: { color: textColor },
             },
             tooltip: {
@@ -130,7 +130,7 @@
                 },
                 tooltip: { x: { format: timeFormat(data.range) } },
             });
-            chart.updateSeries([{ name: 'Requests', data: points }]);
+            chart.updateSeries([{ name: @js(__('Requests')), data: points }]);
         });
         });
     })();

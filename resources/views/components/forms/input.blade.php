@@ -69,7 +69,7 @@
                 </button>
             @endif
             @if ($copyable)
-                <x-copy-button :resolve="$copyResolve" label="Copy to clipboard"
+                <x-copy-button :resolve="$copyResolve" label="{{ __('Copy to clipboard') }}"
                     class="absolute top-1/2 z-10 -translate-y-1/2 {{ $allowToPeak ? 'right-8' : 'right-1' }}" />
             @endif
 
@@ -103,7 +103,7 @@
                 </div>
             </div>
         @elseif ($copyable)
-                <x-copy-button :resolve="$copyResolve" label="Copy to clipboard"
+                <x-copy-button :resolve="$copyResolve" label="{{ __('Copy to clipboard') }}"
                     class="absolute top-1/2 right-1 z-10 -translate-y-1/2" />
             </div>
         @endif

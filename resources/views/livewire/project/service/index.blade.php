@@ -13,7 +13,7 @@
         @elseif (! $embedded)
             <x-main-nav-menu :depth="1" back-label="Service" back-title="Back to the service menu"
                 :name="$serviceApplication->human_name ?: $serviceApplication->name">
-                <nav aria-label="Compose resource settings"
+                <nav aria-label="{{ __('Compose resource settings') }}"
                     class="grid grid-cols-1 gap-0.5">
                 <a class="menu-item" data-page-only {{ wireNavigate() }}
                     href="{{ route('project.service.configuration', [...$parameters, 'stack_service_uuid' => null]) }}">
@@ -144,7 +144,7 @@
                                                 One or more of your domains use port <strong>{{ $requestedPort }}</strong>.
                                             </x-callout>
 
-                                            <x-callout type="danger" title="What will happen if you continue?" class="mb-4">
+                                            <x-callout type="danger" title="{{ __('What will happen if you continue?') }}" class="mb-4">
                                                 <ul class="mt-2 ml-4 list-disc">
                                                     <li>The service may become unreachable</li>
                                                     <li>The proxy may not be able to route traffic correctly</li>

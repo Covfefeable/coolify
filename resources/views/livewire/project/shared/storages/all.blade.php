@@ -26,7 +26,7 @@
                 @if ($supportsPreviewSuffix)
                     <div class="volumes-col-pr flex items-center gap-1.5">
                         <span>PR suffix</span>
-                        <x-helper helper="Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews." />
+                        <x-helper helper="{{ __('Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews.') }}" />
                     </div>
                 @endif
                 <span class="volumes-col-backup text-center">{{ __('Backup') }}</span>
@@ -93,7 +93,7 @@
                                 <div class="volumes-col-pr min-w-0">
                                     <div class="volumes-mobile-label volumes-field-label flex items-center gap-1.5">
                                         <span>PR suffix</span>
-                                        <x-helper helper="Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews." />
+                                        <x-helper helper="{{ __('Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews.') }}" />
                                     </div>
                                     <span>{{ $form['isPreviewSuffixEnabled'] ? 'Add suffix' : 'Share volume' }}</span>
                                 </div>
@@ -127,7 +127,7 @@
                                 <div
                                     class="volumes-col-actions volumes-cell-actions flex flex-nowrap items-center justify-end gap-1.5">
                                     @if ($canUpdate && ! $form['canDeleteStale'] && ! $form['canDeleteToApplyDriverOptions'])
-                                        <x-modal-input title="Configure Volume Backup" :wireIgnore="false">
+                                        <x-modal-input title="{{ __('Configure Volume Backup') }}" :wireIgnore="false">
                                             <x-slot:content>
                                                 <button type="button" class="icon-button shrink-0" title="Configure volume backup"
                                                     aria-label="Configure backup for {{ $form['name'] }}">
@@ -147,7 +147,7 @@
                                     @elseif ($canUpdate || $form['canDeleteStale'] || $form['canDeleteToApplyDriverOptions'])
                                         <x-table.row-actions label="Storage actions">
                                             @if ($canUpdate)
-                                                <x-modal-input title="Configure Volume Backup" :wireIgnore="false">
+                                                <x-modal-input title="{{ __('Configure Volume Backup') }}" :wireIgnore="false">
                                                     <x-slot:content>
                                                         <x-table.row-action>{{ __('Backup') }}</x-table.row-action>
                                                     </x-slot:content>
@@ -255,7 +255,7 @@
                                 <div class="volumes-col-pr min-w-0">
                                     <div class="volumes-mobile-label volumes-field-label flex items-center gap-1.5">
                                         <span>PR suffix</span>
-                                        <x-helper helper="Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews." />
+                                        <x-helper helper="{{ __('Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews.') }}" />
                                     </div>
                                     <x-forms.listbox id="forms.{{ $id }}.isPreviewSuffixEnabled" portal :options="[
                                         ['value' => true, 'label' => 'Add suffix'],
@@ -306,7 +306,7 @@
                                         <x-table.row-action wire:click="submit({{ $id }})">Update</x-table.row-action>
                                         @can('update', $resource)
                                             @if ($showBackupAction && ! $form['isShared'])
-                                                <x-modal-input title="Configure Volume Backup" :wireIgnore="false">
+                                                <x-modal-input title="{{ __('Configure Volume Backup') }}" :wireIgnore="false">
                                                     <x-slot:content>
                                                         <x-table.row-action>{{ __('Backup') }}</x-table.row-action>
                                                     </x-slot:content>

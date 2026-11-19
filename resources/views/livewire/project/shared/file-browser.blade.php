@@ -148,7 +148,7 @@
                 <x-loading text="Loading files..." />
             </div>
         @elseif (! $containerRunning)
-            <x-empty title="Container is not running"
+            <x-empty title="{{ __('Container is not running') }}"
                 description="Start the container to browse its files.">
                 <x-slot:icon>
                     <x-reicon name="folder" class="size-8" />

@@ -294,7 +294,7 @@
                                         },
                                     },
                                     noData: {
-                                        text: 'No CPU metrics available',
+                                        text: @js(__('No CPU metrics available')),
                                         style: {
                                             color: textColor,
                                         },
@@ -303,7 +303,7 @@
                                 memoryChart.updateOptions({
                                     colors: [ramColor],
                                     series: [{
-                                        name: 'Memory',
+                                        name: @js(__('Memory')),
                                         data: data.memorySeries,
                                     }],
                                     xaxis: {
@@ -328,36 +328,36 @@
                                         },
                                     },
                                     noData: {
-                                        text: 'No memory metrics available',
+                                        text: @js(__('No memory metrics available')),
                                         style: {
                                             color: textColor,
                                         },
                                     },
                                 });
                                 diskChart.updateOptions({
-                                    series: [{ name: 'Disk', data: data.diskSeries || [] }],
-                                    noData: { text: 'No disk metrics available' },
+                                    series: [{ name: @js(__('Disk')), data: data.diskSeries || [] }],
+                                    noData: { text: @js(__('No disk metrics available')) },
                                 });
                                 networkChart.updateOptions({
                                     series: [
                                         { name: 'RX', data: data.networkRxSeries || [] },
                                         { name: 'TX', data: data.networkTxSeries || [] },
                                     ],
-                                    noData: { text: 'No network metrics available' },
+                                    noData: { text: @js(__('No network metrics available')) },
                                 });
                                 loadChart.updateOptions({
-                                    series: [{ name: 'Load', data: data.loadSeries || [] }],
-                                    noData: { text: 'No load metrics available' },
+                                    series: [{ name: @js(__('Load')), data: data.loadSeries || [] }],
+                                    noData: { text: @js(__('No load metrics available')) },
                                 });
 
                                 renderLegend('cpu', [{ name: 'CPU', color: cpuColor, data: data.cpuSeries, formatter: formatPercent }]);
-                                renderLegend('memory', [{ name: 'Memory', color: ramColor, data: data.memorySeries, formatter: formatPercent }]);
+                                renderLegend('memory', [{ name: @js(__('Memory')), color: ramColor, data: data.memorySeries, formatter: formatPercent }]);
                                 renderLegend('network', [
                                     { name: 'RX', color: '#10b981', data: data.networkRxSeries, formatter: formatRate },
                                     { name: 'TX', color: '#f59e0b', data: data.networkTxSeries, formatter: formatRate },
                                 ]);
-                                renderLegend('load', [{ name: 'Load', color: '#14b8a6', data: data.loadSeries, formatter: formatNumber }]);
-                                renderLegend('disk', [{ name: 'Disk', color: '#ef4444', data: data.diskSeries, formatter: formatPercent }]);
+                                renderLegend('load', [{ name: @js(__('Load')), color: '#14b8a6', data: data.loadSeries, formatter: formatNumber }]);
+                                renderLegend('disk', [{ name: @js(__('Disk')), color: '#ef4444', data: data.diskSeries, formatter: formatPercent }]);
                             });
                         })();
                     </script>

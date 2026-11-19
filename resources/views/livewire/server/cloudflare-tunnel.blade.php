@@ -127,7 +127,7 @@
                             <form wire:submit="apiCloudflareConfig">
                                 <div class="grid gap-4 lg:grid-cols-2">
                                     <x-forms.listbox id="cloudflare_integration_token_id" label="Cloudflare token"
-                                        required placeholder="Select a token"
+                                        required placeholder="{{ __('Select a token') }}"
                                         :options="$tunnelTokens->map(fn ($token) => ['value' => $token->id, 'label' => $token->name])->all()" />
                                     <x-forms.input id="api_ssh_domain" label="SSH hostname" required
                                         placeholder="ssh.example.com"

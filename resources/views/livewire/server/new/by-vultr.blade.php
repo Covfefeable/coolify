@@ -136,7 +136,7 @@
                                 :options="collect($vultrSshKeys)->map(fn ($sshKey) => ['value' => $sshKey['id'], 'label' => $sshKey['name']])->values()->all()" />
 
                             <div class="grid gap-3 lg:grid-cols-2">
-                                <x-forms.checkbox id="enable_ipv6" label="Enable IPv6" fullWidth />
+                                <x-forms.checkbox id="enable_ipv6" label="{{ __('Enable IPv6') }}" fullWidth />
                                 <x-forms.checkbox id="disable_public_ipv4" label="Disable public IPv4" fullWidth />
                             </div>
 
@@ -144,17 +144,17 @@
                                 <div class="flex flex-col gap-4">
                                     <div class="grid items-end gap-3 lg:grid-cols-[minmax(0,1fr)_auto]">
                                         <x-forms.listbox id="selected_cloud_init_script_id"
-                                            label="Saved cloud-init script" live :options="$scriptOptions" />
+                                            label="{{ __('Saved cloud-init script') }}" live :options="$scriptOptions" />
                                         <button type="button" class="button"
                                             wire:click="clearCloudInitScript">Clear</button>
                                     </div>
-                                    <x-forms.textarea id="cloud_init_script" label="Cloud-init script"
+                                    <x-forms.textarea id="cloud_init_script" label="{{ __('Cloud-init script') }}"
                                         rows="8" monospace />
                                     <div class="grid items-end gap-4 lg:grid-cols-2">
                                         <x-forms.checkbox id="save_cloud_init_script"
-                                            label="Save this script for later" />
+                                            label="{{ __('Save this script for later') }}" />
                                         @if ($save_cloud_init_script)
-                                            <x-forms.input id="cloud_init_script_name" label="Saved script name" />
+                                            <x-forms.input id="cloud_init_script_name" label="{{ __('Saved script name') }}" />
                                         @endif
                                     </div>
                                 </div>

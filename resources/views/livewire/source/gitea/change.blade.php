@@ -44,7 +44,7 @@
                     @if (! isCloud())
                         <div class="lg:col-span-2 max-w-xs">
                             <x-forms.checkbox canGate="update" :canResource="$gitea_app" label="{{ __('System wide') }}"
-                                helper="If checked, this Gitea / Forgejo App will be available for everyone in this Coolify instance."
+                                helper="{{ __('If checked, this Gitea / Forgejo App will be available for everyone in this Coolify instance.') }}"
                                 instantSave id="isSystemWide" />
                         </div>
                         @if ($isSystemWide)
@@ -88,7 +88,7 @@
                     helper="Override endpoints and SSH settings for self-hosted Gitea or Forgejo.">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="htmlUrl"
-                            label="Instance URL" />
+                            label="{{ __('Instance URL') }}" />
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="apiUrl" label="API URL" />
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="customUser"
                             label="{{ __('SSH user') }}" />
@@ -203,7 +203,7 @@
                     </a>
                     <ul class="list-inside list-disc space-y-1.5">
                         <li>
-                            Set <strong class="text-black dark:text-fg">Redirect URI</strong> to:
+                            Set <strong class="text-black dark:text-fg">{{ __('Redirect URI') }}</strong> to:
                             <code class="rounded bg-neutral-100 px-1.5 py-0.5 text-[11px] dark:bg-white/[0.06]"
                                 x-text="redirectUri || @js($redirectUri)">{{ $redirectUri }}</code>
                         </li>
@@ -238,13 +238,13 @@
                                 Gitea or Forgejo will redirect back to this Coolify URL. It must match the Redirect URI on your Gitea or Forgejo OAuth2 application exactly.
                             </div>
                             <div class="lg:col-span-2 max-w-md">
-                                <x-forms.listbox id="use_custom_webhook_endpoint" label="Webhook endpoint"
+                                <x-forms.listbox id="use_custom_webhook_endpoint" label="{{ __('Webhook endpoint') }}"
                                     :live="true" :options="[
                                         ['value' => false, 'label' => 'Use an instance endpoint'],
                                         ['value' => true, 'label' => 'Use a custom endpoint'],
                                     ]"
                                     x-model="useCustomWebhookEndpoint"
-                                    helper="Use a custom public URL when Coolify is behind a tunnel or reverse proxy." />
+                                    helper="{{ __('Use a custom public URL when Coolify is behind a tunnel or reverse proxy.') }}" />
                             </div>
                             <div class="lg:col-span-2" x-show="!useCustomWebhookEndpoint">
                                 <x-forms.listbox id="webhook_endpoint" x-model="webhookEndpoint"
@@ -258,7 +258,7 @@
                             </div>
                             <div class="lg:col-span-2" x-cloak x-show="useCustomWebhookEndpoint">
                                 <x-forms.input x-model="customWebhookEndpoint" id="custom_webhook_endpoint"
-                                    type="url" label="Custom endpoint"
+                                    type="url" label="{{ __('Custom endpoint') }}"
                                     placeholder="https://coolify.example.com"
                                     helper="Gitea or Forgejo will use this custom public URL. Do not include /webhooks." />
                             </div>
@@ -276,7 +276,7 @@
                         </button>
                         <div x-cloak x-show="open" x-collapse.duration.200ms
                             class="mt-3 grid gap-4 rounded-lg border border-neutral-200 p-3 lg:grid-cols-2 dark:border-white/[0.08]">
-                            <x-forms.input id="htmlUrl" label="Instance URL"
+                            <x-forms.input id="htmlUrl" label="{{ __('Instance URL') }}"
                                 helper="Only change this for self-hosted Gitea or Forgejo (e.g. https://git.example.com)." />
                             <x-forms.input id="apiUrl" label="API URL"
                                 helper="Usually your instance URL with /api/v1 appended." />
@@ -285,7 +285,7 @@
                             @if (! isCloud())
                                 <div class="max-w-xs lg:col-span-2">
                                     <x-forms.checkbox label="{{ __('System wide') }}" id="isSystemWide"
-                                        helper="If checked, this Gitea / Forgejo App will be available for everyone in this Coolify instance." />
+                                        helper="{{ __('If checked, this Gitea / Forgejo App will be available for everyone in this Coolify instance.') }}" />
                                 </div>
                             @endif
                         </div>

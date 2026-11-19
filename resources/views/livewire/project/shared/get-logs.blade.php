@@ -165,7 +165,7 @@
                                     <button type="button" class="listbox-option" role="menuitemcheckbox"
                                         :aria-checked="logFilters.warning" x-on:click="toggleLogFilter('warning')">
                                         <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
-                                        <span class="flex-1 text-left">Warning</span>
+                                        <span class="flex-1 text-left">{{ __('Warning') }}</span>
                                         <span x-show="logFilters.warning">✓</span>
                                     </button>
                                     <button type="button" class="listbox-option" role="menuitemcheckbox"

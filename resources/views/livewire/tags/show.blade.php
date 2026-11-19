@@ -276,7 +276,7 @@
                 </div>
                 <div
                     class="rounded-xl border border-neutral-200 bg-white p-3 dark:border-white/[0.08] dark:bg-white/[0.05]">
-                    <p class="text-[11px] font-medium text-neutral-500 dark:text-fg-faint">Active deployments</p>
+                    <p class="text-[11px] font-medium text-neutral-500 dark:text-fg-faint">{{ __('Active deployments') }}</p>
                     <p class="mt-1 text-[20px] font-semibold tracking-tight text-black dark:text-fg">
                         {{ collect($deploymentsPerTagPerServer ?? [])->flatten(1)->count() }}
                     </p>
@@ -412,7 +412,7 @@
                 @endif
             </x-application.settings-section>
 
-            <x-application.settings-section title="Active deployments"
+            <x-application.settings-section title="{{ __('Active deployments') }}"
                 description="Queued and running deployments for applications using this tag." flush>
                 <x-slot:actions>
                     @if (count($deploymentsPerTagPerServer ?? []) > 0)

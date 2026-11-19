@@ -236,7 +236,7 @@
                     @if (! $submenuItem['active'] || $navContext) x-cloak @endif class="contents">
                     <ul role="list" class="flex flex-col gap-y-0.5" :class="navSwap && 'nav-swap-' + navSwap">
                         <li class="mb-1">
-                            <button type="button" @click="submenu = ''; navSwap = 'back'" title="Back to the main menu" aria-label="Back to the main menu"
+                            <button type="button" @click="submenu = ''; navSwap = 'back'" title="{{ __('Back to the main menu') }}" aria-label="{{ __('Back to the main menu') }}"
                                 class="menu-item menu-back bg-transparent! hover:bg-neutral-100! dark:hover:bg-white/[0.06]!" :class="collapsed && 'lg:justify-center lg:px-0'">
                                 {{-- As wide as a menu icon (with its tile), so the chevron lines up with the icons below. --}}
                                 <span class="menu-back-icon flex shrink-0 items-center justify-center">
@@ -362,7 +362,7 @@
     <div class="sidebar-footer shrink-0 -mx-2 hidden flex-col gap-1 bg-neutral-50 px-2 py-2 dark:bg-transparent lg:-mx-3 lg:flex lg:px-3">
         <div class="flex items-center gap-1" :class="collapsed ? 'flex-col justify-center' : 'justify-between'">
             <x-top-user-menu sidebar />
-            <button type="button" @click="toggleSidebar()" title="Toggle sidebar" aria-label="Toggle sidebar"
+            <button type="button" @click="toggleSidebar()" title="{{ __('Toggle sidebar') }}" aria-label="{{ __('Toggle sidebar') }}"
                 class="menu-item sidebar-toggle w-8 shrink-0 justify-center px-0">
                 <svg class="menu-item-icon" viewBox="0 0 24 24" fill="none">
                     <rect x="3" y="5" width="18" height="14" rx="4" stroke="currentColor" stroke-width="1.6" />

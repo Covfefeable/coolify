@@ -265,7 +265,7 @@
 
                     <!-- Step 2: Confirm deletion -->
                     <div x-show="step === 2">
-                        <x-callout type="danger" title="Warning" class="mb-4">
+                        <x-callout type="danger" title="{{ __('Warning') }}" class="mb-4">
                             {!! $warningMessage ?: 'This operation is permanent and cannot be undone. Please think again before proceeding!' !!}
                         </x-callout>
                         <div class="mb-2 text-[12px] font-medium text-neutral-700 dark:text-fg-dim">The following actions will be performed:</div>
@@ -378,7 +378,7 @@
                                             value="{{ auth()->user()->email }}" style="display: none;">
                                         <input type="password" id="password-confirm-{{ $passwordConfirm }}"
                                             x-model="password" x-init="$nextTick(() => $el.focus())"
-                                            class="w-full input" placeholder="Enter your password"
+                                            class="w-full input" placeholder="{{ __('Enter your password') }}"
                                             autocomplete="current-password">
                                     </form>
                                 </template>

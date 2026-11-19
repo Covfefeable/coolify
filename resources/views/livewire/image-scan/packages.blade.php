@@ -30,7 +30,7 @@
 
             <x-table.toolbar class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
                 <x-slot:search>
-                    <x-table.search placeholder="Search packages" loading-target="search"
+                    <x-table.search placeholder="{{ __('Search packages') }}" loading-target="search"
                         wire:model.live.debounce.300ms="search" />
                 </x-slot:search>
                 <x-image-scan.image-select :options="$imageOptions" :selected="$images" action="showImage" />

@@ -7,7 +7,7 @@
             <x-forms.input canGate="update" :canResource="$private_key" id="description" label="{{ __('Description') }}" />
             <div class="lg:col-span-2">
                 <x-forms.input canGate="update" :canResource="$private_key" readonly id="public_key"
-                    label="{{ __('Public key') }}" helper="Copy this value to ~/.ssh/authorized_keys on the target server." />
+                    label="{{ __('Public key') }}" helper="{{ __('Copy this value to ~/.ssh/authorized_keys on the target server.') }}" />
             </div>
             @include('livewire.security.private-key.partials.key-field')
             <div class="lg:col-span-2">

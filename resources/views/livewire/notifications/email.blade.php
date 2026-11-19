@@ -7,7 +7,7 @@
     <div class="flex flex-col gap-6">
         <form wire:submit="submit" class="application-settings-form">
             <x-unsaved-bar action="submit" />
-            <x-application.settings-section title="Email delivery">
+            <x-application.settings-section title="{{ __('Email delivery') }}">
                 <x-slot:actions>
                     @php
                         $canSendTest = auth()->user()->isAdminFromSession() && auth()->user()->can('sendTest', $settings);
@@ -18,7 +18,7 @@
                         };
                     @endphp
                     @if ($sendTestReason === null)
-                        <x-modal-input title="Send Test Email">
+                        <x-modal-input title="{{ __('Send Test Email') }}">
                             <x-slot:content>
                                 <button type="button" class="button">
                                     <x-reicon name="notifications" class="size-3.5" />
@@ -27,7 +27,7 @@
                             </x-slot:content>
                             <form wire:submit.prevent="sendTestEmail" class="flex w-full flex-col gap-4">
                                 <x-forms.input wire:model="testEmailAddress" placeholder="test@example.com"
-                                    id="testEmailAddress" label="Recipient" required />
+                                    id="testEmailAddress" label="{{ __('Recipient') }}" required />
                                 <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                                     <button type="submit" @click="modalOpen=false"
                                         class="button button-highlighted">
@@ -48,7 +48,7 @@
                     <div class="lg:col-span-2">
                         @if (isCloud())
                             <div class="w-full sm:w-72">
-                                <x-forms.listbox canGate="update" :canResource="$settings" id="useInstanceEmailSettings" label="Email service"
+                                <x-forms.listbox canGate="update" :canResource="$settings" id="useInstanceEmailSettings" label="{{ __('Email service') }}"
                                     onChange="instantSave"
                                     :disabled="!auth()->user()->can('update', $settings)" :options="[
                                         ['value' => true, 'label' => 'Use hosted email service'],
@@ -57,7 +57,7 @@
                             </div>
                         @else
                             <div class="w-full sm:w-72">
-                                <x-forms.listbox canGate="update" :canResource="$settings" id="useInstanceEmailSettings" label="Email service"
+                                <x-forms.listbox canGate="update" :canResource="$settings" id="useInstanceEmailSettings" label="{{ __('Email service') }}"
                                     onChange="instantSave"
                                     :disabled="!auth()->user()->can('update', $settings)" :options="[
                                         ['value' => true, 'label' => 'Use system-wide settings'],
@@ -73,7 +73,7 @@
         @if (!$useInstanceEmailSettings)
             <div class="application-settings-form">
                 <x-application.settings-section title="Email provider"
-                    description="Only one provider sends email. Select a provider to see its settings.">
+                    description="{{ __('Only one provider sends email. Select a provider to see its settings.') }}">
                     <x-slot:badges>
                         <div class="w-40">
                             <x-forms.listbox canGate="update" :canResource="$settings" id="emailProvider"
@@ -94,7 +94,7 @@
 
                         @if ($emailProvider !== $this->activeEmailProvider)
                             <div class="lg:col-span-3">
-                                <x-callout type="warning" title="Not active yet">
+                                <x-callout type="warning" title="{{ __('Not active yet') }}">
                                     Enter the {{ email_provider_labels()[$emailProvider] }} settings and save.
                                     @if ($this->activeEmailProvider === 'none')
                                         Until then, the team does not get email notifications.
@@ -119,9 +119,9 @@
                                 @endcan
                             </div>
                             <x-forms.input canGate="update" :canResource="$settings" required id="resendFromName"
-                                helper="Name shown in email from Resend." label="{{ __('From name') }}" />
+                                helper="{{ __('Name shown in email from Resend.') }}" label="{{ __('From name') }}" />
                             <x-forms.input canGate="update" :canResource="$settings" required id="resendFromAddress"
-                                helper="Address used in email from Resend. It must be on a domain verified in Resend."
+                                helper="{{ __('Address used in email from Resend. It must be on a domain verified in Resend.') }}"
                                 label="{{ __('From address') }}" />
                         @endif
                     </div>
@@ -130,7 +130,7 @@
         @endif
 
         <div class="application-settings-form">
-            <x-application.settings-section title="Notification events">
+            <x-application.settings-section title="{{ __('Notification events') }}">
                 <div class="grid gap-4 lg:grid-cols-2">
                     <x-notification.event-multiselect :settings="$settings" id="deployment-email-events" label="Deployments"
                         :events="[

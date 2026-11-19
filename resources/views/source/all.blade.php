@@ -138,7 +138,7 @@
                                 @if ($source->isConnected())
                                     <x-status-badge label="{{ __('Connected') }}" type="success" />
                                 @else
-                                    <x-status-badge label="Setup required" type="warning" />
+                                    <x-status-badge label="{{ __('Setup required') }}" type="warning" />
                                 @endif
                             </div>
                         </a>
@@ -165,7 +165,7 @@
                                 @if ($source->isConnected())
                                     <x-status-badge label="{{ __('Connected') }}" type="success" />
                                 @else
-                                    <x-status-badge label="Setup required" type="warning" />
+                                    <x-status-badge label="{{ __('Setup required') }}" type="warning" />
                                 @endif
                             </div>
                         </a>

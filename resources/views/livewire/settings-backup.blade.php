@@ -40,7 +40,7 @@
 
                 <livewire:project.database.backup-executions :backup="$backup" />
             @else
-                <x-application.settings-section title="Instance backup">
+                <x-application.settings-section title="{{ __('Instance backup') }}">
                     <x-empty title="{{ __('Backup is not configured') }}"
                         description="Coolify needs an internal database resource to create automatic backups."
                         icon-name="database" size="sm">
@@ -53,7 +53,7 @@
                 </x-application.settings-section>
             @endif
         @else
-            <x-application.settings-section title="Instance backup">
+            <x-application.settings-section title="{{ __('Instance backup') }}">
                 <x-callout type="danger" title="Localhost is not ready">
                     Validate the localhost connection before configuring instance backups.
                     <a href="{{ route('server.show', [$server->uuid]) }}" class="font-medium underline"

@@ -53,7 +53,7 @@
                         </div>`;
                     },
                 },
-                noData: { text: 'Loading devices…', style: { color: textColor } },
+                noData: { text: @js(__('Loading devices…')), style: { color: textColor } },
             });
             chart.render();
 

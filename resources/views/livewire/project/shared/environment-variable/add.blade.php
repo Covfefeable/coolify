@@ -2,7 +2,7 @@
     x-data="{ isMultiline: $wire.entangle('is_multiline') }">
     <div class="grid gap-4 sm:grid-cols-2">
         <x-forms.input placeholder="NODE_ENV" id="key" label="{{ __('Name') }}" required />
-        <x-forms.input id="comment" label="Comment" placeholder="Optional note"
+        <x-forms.input id="comment" label="{{ __('Comment') }}" placeholder="Optional note"
             helper="Add a note to document what this environment variable is used for." maxlength="256" />
     </div>
     <div>

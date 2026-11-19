@@ -1,7 +1,7 @@
 <form wire:submit="submit" class="application-settings-form flex flex-col gap-4 px-4 py-4">
     <x-unsaved-bar action="submit" />
     <div class="flex items-end gap-2">
-        <x-forms.input id="filename" label="Filename" />
+        <x-forms.input id="filename" label="{{ __('Filename') }}" />
         <x-modal-confirmation title="Delete initialization script?" buttonTitle="{{ __('Delete') }}" isErrorButton
             submitAction="delete" :actions="[
                 'Permanently delete this initialization script from the database and server.',
@@ -11,5 +11,5 @@
             shortConfirmationLabel="Script name" :confirmWithPassword="false"
             step2ButtonText="Permanently delete" />
     </div>
-    <x-forms.textarea id="content" label="Content" rows="12" />
+    <x-forms.textarea id="content" label="{{ __('Content') }}" rows="12" />
 </form>

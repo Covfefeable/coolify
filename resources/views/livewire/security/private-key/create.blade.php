@@ -9,7 +9,7 @@
             </div>
             <div class="lg:col-span-2">
                 <x-forms.input id="publicKey" readonly label="{{ __('Public key') }}"
-                    helper="Copy this value to ~/.ssh/authorized_keys on the target server." />
+                    helper="{{ __('Copy this value to ~/.ssh/authorized_keys on the target server.') }}" />
             </div>
         </div>
         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">

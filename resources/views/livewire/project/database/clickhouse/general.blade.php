@@ -42,7 +42,7 @@
             </div>
             <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="Keep these values aligned with the credentials configured inside ClickHouse.">
                 @if (!$database->started_at)
-                    <x-callout type="warning" title="Verify the initial credentials">
+                    <x-callout type="warning" title="{{ __('Verify the initial credentials') }}">
                         You can only change these credentials here before the first start. Later changes must be made inside
                         the database.
                     </x-callout>
@@ -103,7 +103,7 @@
         </x-application.settings-section>
 
         <x-application.settings-section id="container-section" title="{{ __('Container') }}"
-            description="Docker options and log forwarding for the database container.">
+            description="{{ __('Docker options and log forwarding for the database container.') }}">
             @if ($isPasswordHiddenForMember)
                 <x-forms.input label="{{ __('Custom Docker options') }}" disabled value="Hidden (only admins can view)" />
             @else

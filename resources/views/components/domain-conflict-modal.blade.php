@@ -54,7 +54,7 @@
                             </ul>
                         </div>
 
-                        <x-callout type="warning" title="What will happen if you continue?" class="mb-4">
+                        <x-callout type="warning" title="{{ __('What will happen if you continue?') }}" class="mb-4">
                             @if (isset($consequences))
                                 {{ $consequences }}
                             @else

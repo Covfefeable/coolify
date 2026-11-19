@@ -45,7 +45,7 @@
             <x-image-scan.severity-badge :severity="strtolower($finding->severity)" />
             @if ($finding->kev)
                 <span data-tooltip="Attackers are using this, according to CISA.">
-                    <x-status-badge type="error" label="Known exploited" />
+                    <x-status-badge type="error" label="{{ __('Known exploited') }}" />
                 </span>
             @endif
         </span>

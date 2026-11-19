@@ -150,7 +150,7 @@
                 <x-forms.input label="{{ __('Description') }}" x-ref="loadingPrivateKeyDescription" />
                 <div class="lg:col-span-2">
                     <x-forms.input label="{{ __('Public key') }}" loading
-                        helper="Copy this value to ~/.ssh/authorized_keys on the target server." />
+                        helper="{{ __('Copy this value to ~/.ssh/authorized_keys on the target server.') }}" />
                 </div>
                 <div class="lg:col-span-2">
                     <div class="mb-1.5 flex items-center justify-between gap-3">

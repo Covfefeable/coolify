@@ -68,7 +68,7 @@
                                     <p class="text-sm font-medium text-neutral-950 dark:text-fg">
                                         {{ data_get($network, 'Name') }}
                                     </p>
-                                    <p class="mt-0.5 text-xs text-neutral-500 dark:text-fg-dim">Docker network</p>
+                                    <p class="mt-0.5 text-xs text-neutral-500 dark:text-fg-dim">{{ __('Docker network') }}</p>
                                 </div>
                                 <x-forms.button canGate="update" :canResource="$server"
                                     wire:click="add('{{ data_get($network, 'Name') }}')">

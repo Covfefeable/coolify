@@ -58,8 +58,8 @@
                         helper="For GitHub Enterprise, enter your instance URL (e.g. https://github.example.com)." />
                     <x-forms.input id="api_url" label="API URL" required
                         helper="Usually https://api.github.com or your Enterprise API base URL." />
-                    <x-forms.input id="custom_user" label="Custom Git user" required />
-                    <x-forms.input id="custom_port" type="number" label="Custom Git port" required />
+                    <x-forms.input id="custom_user" label="{{ __('Custom Git user') }}" required />
+                    <x-forms.input id="custom_port" type="number" label="{{ __('Custom Git port') }}" required />
                 </div>
             </div>
         </div>

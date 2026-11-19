@@ -189,7 +189,7 @@
                                             Edit
                                         </x-table.row-action>
                                         <x-slot:danger>
-                                            <x-modal-confirmation buttonFullWidth title="Remove domain?"
+                                            <x-modal-confirmation buttonFullWidth title="{{ __('Remove domain?') }}"
                                                 buttonTitle="{{ __('Remove') }}" isErrorButton
                                                 submitAction="removeDomainByKey({{ $domainKey }})"
                                                 :actions="[
@@ -211,7 +211,7 @@
                 @endforeach
             @endforeach
             <div x-cloak x-show="domainSearch.trim() && !@js(collect($domainRows)->map(fn ($row) => ($row['service'] ?? '').' '.$row['url'])->values()).some(value => matchesDomainSearch(value))" class="px-4 py-8">
-                <x-empty size="sm" title="{{ __('No domains found') }}" description="No service or domain matches your search." icon-name="search" />
+                <x-empty size="sm" title="{{ __('No domains found') }}" description="{{ __('No service or domain matches your search.') }}" icon-name="search" />
             </div>
         </div>
     @endif

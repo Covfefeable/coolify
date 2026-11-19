@@ -29,7 +29,7 @@
                 </button>
             @endforeach
             <div class="mt-1 border-t border-neutral-200 pt-1 dark:border-white/[0.08]">
-                <x-modal-input title="New Team">
+                <x-modal-input title="{{ __('New Team') }}">
                     <x-slot:content>
                         <button type="button" class="listbox-option w-full" @click="open = false">
                             <x-reicon name="plus" class="size-3.5 shrink-0" />
@@ -74,7 +74,7 @@
                 </button>
             @endforeach
             <div class="mt-1 border-t border-neutral-200 pt-1 dark:border-white/[0.08]">
-                <x-modal-input title="New Team">
+                <x-modal-input title="{{ __('New Team') }}">
                     <x-slot:content>
                         <button type="button" class="listbox-option w-full" @click="teamOpen = false">
                             <x-reicon name="plus" class="size-3.5 shrink-0" />

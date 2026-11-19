@@ -7,7 +7,7 @@
             <x-deprecated-badge />
         </x-slot:actions>
 
-        <x-callout type="warning" title="Deprecated">
+        <x-callout type="warning" title="{{ __('Deprecated') }}">
             {{ config('deprecations.swarm') }}
         </x-callout>
 

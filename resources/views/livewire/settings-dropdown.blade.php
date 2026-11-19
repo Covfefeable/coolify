@@ -66,13 +66,13 @@
     }
 }" class="{{ in_array($trigger, ['changelog-sidebar', 'account-menu'], true) ? 'w-full' : '' }}">
     @if ($trigger === 'changelog-sidebar')
-        <button wire:click="openWhatsNewModal" type="button" title="What's New" aria-label="What's New"
+        <button wire:click="openWhatsNewModal" type="button" title="{{ __('What\'s New') }}" aria-label="{{ __('What\'s New') }}"
             class="relative text-left menu-item">
             <svg class="menu-item-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                     d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.091-3.091L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.091-3.091L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.091 3.091L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.091 3.091ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.456-2.456L14.25 6l1.035-.259a3.375 3.375 0 0 0 2.456-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
             </svg>
-            <span class="text-left menu-item-label" :class="collapsed && 'lg:hidden'">What's New</span>
+            <span class="text-left menu-item-label" :class="collapsed && 'lg:hidden'">{{ __('What\'s New') }}</span>
             @if ($unreadCount > 0)
                 <span
                     class="absolute right-2 top-1/2 -translate-y-1/2 bg-error text-white text-[10px] rounded-full min-w-4 h-4 px-1 flex items-center justify-center"
@@ -234,7 +234,7 @@
                             class="inline-flex h-8 overflow-hidden rounded-lg border border-neutral-200 dark:border-white/[0.10]">
                             <button type="button"
                                 class="flex w-10 items-center justify-center border-r border-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-35 dark:border-white/[0.10] dark:text-fg-dim dark:hover:bg-white/[0.06]"
-                                aria-label="First page" title="First page" @click="goToPage(1)"
+                                aria-label="{{ __('First page') }}" title="{{ __('First page') }}" @click="goToPage(1)"
                                 :disabled="page === 1">
                                 <svg class="size-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                     <path d="M18 6L12 12L18 18M11 6L5 12L11 18" stroke="currentColor"
@@ -264,7 +264,7 @@
                             </button>
                             <button type="button"
                                 class="flex w-10 items-center justify-center text-neutral-500 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-35 dark:text-fg-dim dark:hover:bg-white/[0.06]"
-                                aria-label="Last page" title="Last page" @click="goToPage(lastPage)"
+                                aria-label="{{ __('Last page') }}" title="{{ __('Last page') }}" @click="goToPage(lastPage)"
                                 :disabled="page === lastPage">
                                 <svg class="size-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                     <path d="M6 6L12 12L6 18M13 6L19 12L13 18" stroke="currentColor"

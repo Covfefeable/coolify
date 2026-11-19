@@ -211,7 +211,7 @@
                 x-show="domainSearch.trim() && !hasDomainSearchResults(@js($domainSearchValues))"
                 class="px-4 py-8">
                 <x-empty size="sm" title="{{ __('No domains found') }}"
-                    description="No service or domain matches your search." icon-name="search" />
+                    description="{{ __('No service or domain matches your search.') }}" icon-name="search" />
             </div>
         </div>
     @endif

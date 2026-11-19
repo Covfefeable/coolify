@@ -14,12 +14,12 @@
                     Updating…
                 </x-forms.button>
             @else
-            <button type="button" title="Upgrade in progress" aria-label="Upgrade in progress"
+            <button type="button" title="{{ __('Upgrade in progress') }}" aria-label="{{ __('Upgrade in progress') }}"
                 @click="modalOpen=true" x-show="showProgress" x-cloak
                 class="inline-flex h-[18px] cursor-pointer items-center rounded-full bg-coollabs/10 px-1.5 text-[9.5px] font-semibold leading-none text-coollabs ring-1 ring-inset ring-coollabs/25 transition-colors hover:bg-coollabs/15 dark:bg-warning/15 dark:text-warning dark:ring-warning/25 dark:hover:bg-warning/20">
                 Updating
             </button>
-            <button type="button" title="Update available" aria-label="Update available"
+            <button type="button" title="{{ __('Update available') }}" aria-label="{{ __('Update available') }}"
                 @click="modalOpen=true" x-show="!showProgress" x-cloak
                 class="inline-flex h-[18px] cursor-pointer items-center rounded-full bg-coollabs/10 px-1.5 text-[9.5px] font-semibold leading-none text-coollabs ring-1 ring-inset ring-coollabs/25 transition-colors hover:bg-coollabs/15 dark:bg-warning/15 dark:text-warning dark:ring-warning/25 dark:hover:bg-warning/20">
                 Update available
@@ -148,7 +148,7 @@
                             {{-- Confirmation View --}}
                             <template x-if="!showProgress">
                                 <div class="flex flex-col gap-4">
-                                    <x-callout type="warning" title="Caution">
+                                    <x-callout type="warning" title="{{ __('Caution') }}">
                                         <p>Any deployments running during the update process will fail.</p>
                                     </x-callout>
 

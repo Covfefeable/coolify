@@ -26,7 +26,7 @@
                             helper="You can only change this in the database." canGate="update" :canResource="$database" />
                     @endif
                 @else
-                    <x-callout type="warning" title="Verify the initial credentials">
+                    <x-callout type="warning" title="{{ __('Verify the initial credentials') }}">
                         You can only change this password here before the first start. Later changes must be made inside the
                         database.
                     </x-callout>
@@ -75,7 +75,7 @@
                         label="{{ __('Proxy timeout') }}" helper="{{ __('Timeout in seconds. The default is 3600.') }}"
                         canGate="update" :canResource="$database" />
                     <x-forms.input placeholder="3000:6379" id="portsMappings" label="{{ __('Port mappings') }}"
-                        helper="Comma-separated host-to-container mappings, for example 3000:6379."
+                        helper="{{ __('Comma-separated host-to-container mappings, for example 3000:6379.') }}"
                         canGate="update" :canResource="$database" />
                 </div>
             </x-application.settings-subsection>

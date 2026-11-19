@@ -53,6 +53,23 @@ dataset('range metrics components', [
     ]],
 ]);
 
+it('shows Simplified Chinese guidance when application metrics are disabled', function () {
+    app()->setLocale('zh-cn');
+    $project = Project::factory()->create(['team_id' => $this->team->id]);
+    $environment = Environment::factory()->create(['project_id' => $project->id]);
+    $destination = $this->server->standaloneDockers()->firstOrFail();
+    $application = Application::factory()->create([
+        'environment_id' => $environment->id,
+        'destination_id' => $destination->id,
+        'destination_type' => $destination->getMorphClass(),
+    ]);
+
+    Livewire::test(ResourceMetrics::class, ['resource' => $application])
+        ->assertSee('查看此应用的 CPU 和内存用量。')
+        ->assertSee('尚未启用指标收集')
+        ->assertSee('在此服务器上启用指标收集后，即可记录应用用量。');
+});
+
 it('refreshes short ranges live every five seconds by default', function (Closure $build) {
     /** @var Testable $component */
     [$component, $event] = $build->call($this);

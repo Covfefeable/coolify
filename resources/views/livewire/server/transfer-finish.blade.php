@@ -79,7 +79,7 @@
                                         <div class="flex shrink-0 items-center gap-1">
                                             @if ($hasMenu)
                                             <div class="relative" @click.outside="menu = false" @keydown.escape.window="menu = false">
-                                                <button type="button" class="icon-button" title="More actions" aria-haspopup="menu"
+                                                <button type="button" class="icon-button" title="{{ __('More actions') }}" aria-haspopup="menu"
                                                     :aria-expanded="menu" @click="menu = !menu">
                                                     <x-reicon name="dots-horizontal" class="size-4" />
                                                 </button>

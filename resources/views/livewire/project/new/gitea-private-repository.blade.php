@@ -9,7 +9,7 @@
             </div>
             <div class="application-settings-section-body">
                 <x-empty title="No Gitea / Forgejo Apps"
-                    description="Create an app to grant Coolify access to selected repositories."
+                    description="{{ __('Create an app to grant Coolify access to selected repositories.') }}"
                     icon-name="sources">
                     <x-slot:contents>
                         <x-modal-input buttonTitle="+ Add Gitea / Forgejo App" title="{{ __('New Gitea / Forgejo App') }}" closeOutside="false">
@@ -84,7 +84,7 @@
                         </x-forms.button>
                     </div>
                 @else
-                    <x-empty size="sm" title="No repositories available"
+                    <x-empty size="sm" title="{{ __('No repositories available') }}"
                         description="Review this Gitea / Forgejo App configuration and grant access to a repository." />
                 @endif
             </div>

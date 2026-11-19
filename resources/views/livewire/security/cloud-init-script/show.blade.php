@@ -4,7 +4,7 @@
             <x-forms.input canGate="update" :canResource="$cloudInitScript" id="name" label="{{ __('Script name') }}" required />
             <x-forms.textarea canGate="update" :canResource="$cloudInitScript" id="script"
                 label="{{ __('Script content') }}" rows="16" monospace
-                helper="Cloud-config YAML or another script accepted by your provider." required />
+                helper="{{ __('Cloud-config YAML or another script accepted by your provider.') }}" required />
             <div class="flex items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                 @can('delete', $cloudInitScript)
                     <x-modal-confirmation title="Confirm Script Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
@@ -44,7 +44,7 @@
                     label="{{ __('Script name') }}" required />
                 <x-forms.textarea canGate="update" :canResource="$cloudInitScript" id="script"
                     label="{{ __('Script content') }}" rows="18" monospace
-                    helper="Cloud-config YAML or another script accepted by your provider." required />
+                    helper="{{ __('Cloud-config YAML or another script accepted by your provider.') }}" required />
             </div>
         </x-application.settings-section>
     </form>

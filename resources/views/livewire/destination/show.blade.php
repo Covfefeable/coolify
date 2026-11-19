@@ -27,7 +27,7 @@
                     <div class="application-settings-form">
                         <x-application.settings-section id="destination-danger-section" title="{{ __('Danger zone') }}"
                             helper="Destructive actions for this destination cannot be undone.">
-                            <x-danger-zone title="Delete destination">
+                            <x-danger-zone title="{{ __('Delete destination') }}">
                                 <p>
                                     Permanently delete <strong class="font-semibold">{{ $destination->name }}</strong>
                                     from Coolify. The Docker network is also removed from the server.
@@ -36,7 +36,7 @@
                                 <x-slot:action>
                                     @if ($network !== 'coolify')
                                         <x-modal-confirmation title="Confirm Destination Deletion?"
-                                            buttonTitle="Delete destination" isErrorButton submitAction="delete"
+                                            buttonTitle="{{ __('Delete destination') }}" isErrorButton submitAction="delete"
                                             :actions="['This permanently deletes the destination and its Docker network.']"
                                             confirmationText="{{ $destination->name }}"
                                             confirmationLabel="Please confirm by entering the Destination Name below"
@@ -62,7 +62,7 @@
                             : 'Deprecated Docker Swarm network.'">
                     @if ($destination->getMorphClass() !== 'App\Models\StandaloneDocker')
                         <x-slot:actions>
-                            <x-status-badge label="Deprecated" type="warning" />
+                            <x-status-badge label="{{ __('Deprecated') }}" type="warning" />
                         </x-slot:actions>
                     @endif
 
@@ -71,7 +71,7 @@
                             <x-forms.input id="serverIp" label="Server IP" readonly />
                             @if ($destination->getMorphClass() === 'App\Models\StandaloneDocker')
                                 <div class="lg:col-span-2">
-                                    <x-forms.input id="network" label="Docker network" readonly />
+                                    <x-forms.input id="network" label="{{ __('Docker network') }}" readonly />
                                 </div>
                             @endif
                         </div>

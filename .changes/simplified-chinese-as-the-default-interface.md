@@ -14,3 +14,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Shared variable pages show Simplified Chinese headings, editor controls, and empty states
 - Traffic analytics, fleet metrics, and update settings include Simplified Chinese guidance and controls
 - Server navigation and breadcrumbs use Simplified Chinese, with broader coverage of tooltips, buttons, and empty states
+- Resource charts, Git integration forms, and shared confirmation controls include additional Simplified Chinese translations

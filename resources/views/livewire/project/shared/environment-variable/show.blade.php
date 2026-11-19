@@ -98,12 +98,12 @@
                 <x-copy-button resolve="$wire.copyValue()" label="Copy value" />
             @endif
             {{-- Open modal immediately (Alpine); decrypt value in a follow-up Livewire request. --}}
-            <x-modal-input title="Edit environment variable" :closeOutside="false" :wireIgnore="false"
+            <x-modal-input title="{{ __('Edit environment variable') }}" :closeOutside="false" :wireIgnore="false"
                 wireOpen="editorOpen"
                 @environment-variable-updated.window="if ($event.detail.envId === {{ (int) $env->id }}) modalOpen = false">
                 <x-slot:content>
                     <button type="button" wire:click="loadValues" data-env-settings-trigger class="icon-button shrink-0"
-                        title="Edit environment variable" aria-label="Edit environment variable">
+                        title="{{ __('Edit environment variable') }}" aria-label="{{ __('Edit environment variable') }}">
                         <x-reicon name="settings" class="size-3.5" />
                     </button>
                 </x-slot:content>
@@ -113,7 +113,7 @@
                     <div class="grid items-end gap-4 sm:grid-cols-2">
                         <x-forms.input id="key" label="{{ __('Name') }}" :required="$is_redis_credential"
                             :disabled="!$canEditValue || $is_redis_credential || $composeInfo !== null" />
-                        <x-forms.input id="comment" label="Comment" placeholder="Optional note"
+                        <x-forms.input id="comment" label="{{ __('Comment') }}" placeholder="Optional note"
                             helper="Add a note to document what this environment variable is used for." maxlength="256"
                             :disabled="!$canUpdate" />
                     </div>

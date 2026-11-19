@@ -24,7 +24,7 @@
                 x-init="$nextTick(() => $el.querySelector('input[name=code]')?.focus())">
                 @csrf
                 <x-forms.input name="code" type="text" inputmode="numeric" pattern="[0-9]*" id="code"
-                    label="One-time code" required />
+                    label="{{ __('One-time code') }}" required />
                 {{-- Livewire views replace $errors with the component bag, so read the Fortify error from the session. --}}
                 @if ($codeError = session('errors')?->getBag('confirmTwoFactorAuthentication')->first('code'))
                     <x-auth.alert type="error">{{ $codeError }}</x-auth.alert>

@@ -30,7 +30,7 @@
         <livewire:project.database.sqlite.connect-application :database="$database" />
 
         <x-application.settings-section id="container-section" title="{{ __('Container') }}"
-            description="Docker options and log forwarding for the database container.">
+            description="{{ __('Docker options and log forwarding for the database container.') }}">
             @if ($isPasswordHiddenForMember)
                 <x-forms.input label="{{ __('Custom Docker options') }}" disabled value="Hidden (only admins can view)" />
             @else

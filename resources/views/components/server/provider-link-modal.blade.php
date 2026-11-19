@@ -37,7 +37,7 @@
         </p>
 
         <x-forms.listbox :id="$tokenModel" label="{{ $providerLabel }} token"
-            placeholder="Select a token" :options="$tokenOptions" live />
+            placeholder="{{ __('Select a token') }}" :options="$tokenOptions" live />
 
         <div class="grid items-end gap-2 sm:grid-cols-[minmax(0,1fr)_auto]">
             <x-forms.input :id="$manualModel" :label="$manualLabel"

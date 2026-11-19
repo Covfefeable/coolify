@@ -62,7 +62,7 @@
             <div class="flex-1">
                 <label class="text-[13px] font-medium">Enter your password to reveal the private key</label>
                 <input type="password" class="w-full input" x-model="password" autocomplete="current-password"
-                    x-on:keydown.enter.prevent="reveal()" placeholder="Enter your password">
+                    x-on:keydown.enter.prevent="reveal()" placeholder="{{ __('Enter your password') }}">
             </div>
             <x-forms.button type="button" x-on:click="reveal()" x-bind:disabled="!password || revealing">
                 Reveal

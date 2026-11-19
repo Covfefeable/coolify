@@ -45,7 +45,7 @@ $appListboxOptions = array_merge(
                 @if ($scopedServerUuid === null)
                     <div class="relative w-full transition-opacity sm:w-52"
                         wire:loading.class="pointer-events-none opacity-60" wire:target="serverUuid">
-                        <x-forms.listbox id="serverUuid" live :options="$serverListboxOptions" placeholder="All servers" />
+                        <x-forms.listbox id="serverUuid" live :options="$serverListboxOptions" placeholder="{{ __('All servers') }}" />
                         <div class="absolute inset-0 hidden items-center justify-center rounded-lg bg-white/70 dark:bg-base/70"
                             wire:loading.flex wire:target="serverUuid">
                             <x-loading compact aria-label="{{ __('Loading analytics') }}" />
@@ -217,13 +217,13 @@ $appListboxOptions = array_merge(
 
         {{-- Requests over time (single area series). --}}
         <x-application.settings-section id="analytics-requests-section" title="{{ __('Requests') }}" flush
-            helper="Total request volume over time for the selected range.">
+            helper="{{ __('Total request volume over time for the selected range.') }}">
             @include('livewire.traffic._requests-chart')
         </x-application.settings-section>
 
         {{-- Status codes: stacked bar of responses by status class. --}}
         <x-application.settings-section id="analytics-status-codes-section" title="{{ __('Status codes') }}"
-            helper="Share of responses by HTTP status class for the selected range.">
+            helper="{{ __('Share of responses by HTTP status class for the selected range.') }}">
             @include('livewire.traffic._status-codes')
         </x-application.settings-section>
 
@@ -299,7 +299,7 @@ $appListboxOptions = array_merge(
 
         {{-- Top paths (full width). --}}
         <x-application.settings-section id="analytics-paths-section" title="{{ __('Top paths') }}"
-            helper="Most requested paths for the selected range." flush>
+            helper="{{ __('Most requested paths for the selected range.') }}" flush>
             @include('livewire.traffic._paths-list', ['paths' => $topPaths])
         </x-application.settings-section>
 
@@ -313,7 +313,7 @@ $appListboxOptions = array_merge(
         {{-- Requests by device type (donut) + HTTP versions / cache / status. --}}
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
             <x-application.settings-section id="analytics-device-section" title="{{ __('Requests by device type') }}"
-                helper="Share of requests by client device class for the selected range.">
+                helper="{{ __('Share of requests by client device class for the selected range.') }}">
                 @php $deviceChart = $this->deviceChartData(); @endphp
                 @include('livewire.traffic._device-chart', [
                     'labels' => $deviceChart['labels'],

@@ -48,8 +48,8 @@
                         </p>
                     </div>
                     @if ($enableSsl && $certificateValidUntil)
-                        <x-modal-confirmation title="Regenerate SSL Certificates"
-                            buttonTitle="Regenerate SSL Certificates" :actions="[
+                        <x-modal-confirmation title="{{ __('Regenerate SSL Certificates') }}"
+                            buttonTitle="{{ __('Regenerate SSL Certificates') }}" :actions="[
                                 'The SSL certificate of this database will be regenerated.',
                                 'You must restart the database after regenerating the certificate to start using the new certificate.',
                             ]"

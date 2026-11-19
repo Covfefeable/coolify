@@ -39,7 +39,7 @@ $serverListboxOptions = array_merge(
             <div class="flex flex-wrap items-center gap-2">
                 <div class="relative w-full transition-opacity sm:w-52"
                     wire:loading.class="pointer-events-none opacity-60" wire:target="serverUuid">
-                    <x-forms.listbox id="serverUuid" live :options="$serverListboxOptions" placeholder="All servers"
+                    <x-forms.listbox id="serverUuid" live :options="$serverListboxOptions" placeholder="{{ __('All servers') }}"
                         canGate="view" :canResource="$servers->first()" />
                     <div class="absolute inset-0 hidden items-center justify-center rounded-lg bg-white/70 dark:bg-base/70"
                         wire:loading.flex wire:target="serverUuid">
@@ -396,7 +396,7 @@ $serverListboxOptions = array_merge(
                     legend: { show: false },
                     xaxis: { type: 'datetime', labels: { datetimeUTC: true, style: { colors: axisColor } } },
                     yaxis: { min: 0, max: max => max > 0 ? max * 1.2 : 1, forceNiceScale: true, tickAmount: 4, labels: { style: { colors: axisColor }, formatter } },
-                    noData: { text: 'No data for this range', style: { color: axisColor } },
+                    noData: { text: @js(__('No data for this range')), style: { color: axisColor } },
                     tooltip: { shared: true, intersect: false, marker: { show: false }, custom: customTooltip(formatter) },
                 });
 
@@ -404,9 +404,9 @@ $serverListboxOptions = array_merge(
 
                 const build = data => ({
                     cpu: { series: [{ name: 'CPU %', data: data.cpu || [] }], colors: ['#3b82f6'], formatter: fmtPercent },
-                    memory: { series: [{ name: 'Memory', data: data.memory || [] }], colors: ['#8b5cf6'], formatter: fmtBytes },
+                    memory: { series: [{ name: @js(__('Memory')), data: data.memory || [] }], colors: ['#8b5cf6'], formatter: fmtBytes },
                     network: { series: [{ name: 'RX', data: data.networkRx || [] }, { name: 'TX', data: data.networkTx || [] }], colors: ['#10b981', '#f59e0b'], formatter: fmtRate },
-                    load: { series: [{ name: 'Load', data: data.load || [] }], colors: ['#14b8a6'], formatter: fmtNumber },
+                    load: { series: [{ name: @js(__('Load')), data: data.load || [] }], colors: ['#14b8a6'], formatter: fmtNumber },
                     disk: { series: [{ name: 'Disk %', data: data.disk || [] }], colors: ['#ef4444'], formatter: fmtPercent },
                 });
 
