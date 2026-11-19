@@ -60,7 +60,7 @@
 
     <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.07]">
         <x-forms.button type="submit" @click="modalOpen = false">
-            Add variable
+            {{ __('Add variable') }}
         </x-forms.button>
     </div>
 </form>

@@ -19,7 +19,7 @@
         <a href="{{ $listUrl }}?view={{ array_key_first($views) }}" {{ wireNavigate() }} class="{{ $canvasItem }} {{ $idle }}"
             title="{{ __('List view') }}">
             <x-reicon :name="$icon" class="size-3.5" />
-            List view
+            {{ __('List view') }}
         </a>
     @else
         {{-- Only the view that is not current shows, as an icon: the button switches to that view.
@@ -29,7 +29,7 @@
             @foreach ($views as $mode => [$label, $icon])
                 <button type="button" x-on:click="setViewMode(@js($mode))" x-show="viewMode !== @js($mode)" x-cloak
                     class="{{ $canvasItem }} {{ $idle }} w-7.5 justify-center px-0!"
-                    title="{{ $label }}" aria-label="{{ $label }}">
+                    title="{{ __($label) }}" aria-label="{{ __($label) }}">
                     <x-reicon :name="$icon" class="size-3.5" />
                 </button>
             @endforeach
@@ -38,12 +38,12 @@
         @if (filled($canvasUrl))
             {{-- A label and a purple "Try it" badge, so people notice the canvas view. --}}
             <a href="{{ $canvasUrl }}" {{ wireNavigate() }}
-                class="{{ $canvasItem }} {{ $idle }}" title="Canvas view (beta): see everything and how it connects">
+                class="{{ $canvasItem }} {{ $idle }}" title="{{ __('Canvas view (beta): see everything and how it connects') }}">
                 <x-reicon name="deploy-canvas" class="size-3.5" />
-                Canvas
+                {{ __('Canvas') }}
                 <span
                     class="ml-0.5 inline-flex items-center rounded-full bg-coollabs px-1.5 py-px text-[10px] leading-4 font-semibold text-white">
-                    Try it
+                    {{ __('Try it') }}
                 </span>
             </a>
         @endif

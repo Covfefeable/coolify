@@ -23,7 +23,7 @@
             <x-slot:actions>
                 <x-forms.button wire:click='switch' wire:loading.attr="disabled"
                     wire:target="loadEnvironmentVariables,switch">
-                    {{ $view === 'normal' ? 'Developer view' : 'Normal view' }}
+                    {{ $view === 'normal' ? __('Developer view') : __('Normal view') }}
                 </x-forms.button>
             </x-slot:actions>
         @endcan

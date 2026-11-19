@@ -48,6 +48,20 @@ afterEach(function () {
     });
 });
 
+test('the team variables page renders the shared editor in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+
+    Livewire::test(Index::class)
+        ->assertSee('团队变量')
+        ->assertSee('开发者视图')
+        ->assertSee('画布')
+        ->assertSee('试用')
+        ->assertSee('排序')
+        ->assertSee('添加变量')
+        ->assertSee('没有共享变量')
+        ->assertSee('添加变量后，此范围内的资源即可引用它。');
+});
+
 test('environment shared variable dev view saves without openssl_encrypt error', function () {
     Livewire::test(Show::class, [
         'project_uuid' => $this->project->uuid,

@@ -1,5 +1,5 @@
 <div>
-    <x-slot:title>Project Variables | Coolify</x-slot>
+    <x-slot:title>{{ __('Project Variables') }} | Coolify</x-slot>
 
     <x-shared-variables.layout>
         <div class="w-full" x-data="{
@@ -11,7 +11,7 @@
             }
         }">
             @if ($projects->isEmpty())
-                <x-empty title="No projects" description="Projects that you can read show here. Create a project to add project-wide variables."
+                <x-empty title="{{ __('No projects') }}" description="{{ __('Projects that you can read show here. Create a project to add project-wide variables.') }}"
                     icon-name="projects" />
             @else
                 <x-shared-variables.view-controls label="projects" storage-key="shared-variables-projects-view" />
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="mt-auto pt-4 text-[11px] text-neutral-500 dark:text-fg-dim">
-                                {{ $project->environment_variables()->count() }} {{ Str::plural('variable', $project->environment_variables()->count()) }}
+                                {{ $project->environment_variables()->count() }} {{ __(Str::plural('variable', $project->environment_variables()->count())) }}
                             </div>
                         </a>
                     @endforeach
