@@ -20,11 +20,11 @@
                     @endif
                 </div>
                 @if (! $counts)
-                    <p class="text-xs text-neutral-500 dark:text-fg-dim">Nothing uses this key.</p>
+                    <p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('Nothing uses this key.') }}</p>
                 @else
                     @if (array_sum($counts) > 5)
                         <input type="search" class="input mb-2" placeholder="{{ __('Search by name') }}"
-                            aria-label="Search where this key is used" wire:model.live.debounce.300ms="usageSearch"
+                            aria-label="{{ __('Search where this key is used') }}" wire:model.live.debounce.300ms="usageSearch"
                             x-on:keydown.enter.prevent />
                     @endif
                     <ul class="max-h-48 divide-y divide-neutral-200 overflow-y-auto rounded-md border border-neutral-200 text-sm dark:divide-white/[0.06] dark:border-white/[0.08]">
@@ -49,7 +49,7 @@
         </div>
         <div class="flex items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
             @can('delete', $private_key)
-                <x-modal-confirmation title="Confirm Private Key Deletion?" isErrorButton buttonTitle="{{ __('Delete') }}"
+                <x-modal-confirmation title="{{ __('Confirm Private Key Deletion?') }}" isErrorButton buttonTitle="{{ __('Delete') }}"
                     @confirm-old-key-deletion.window="if ($event.detail.id === {{ $private_key->id }}) modalOpen = true"
                     submitAction="delete" :disabled="$isInUse" :disabledTooltip="$deleteDisabledReason"
                     :actions="['This private key will be permanently deleted.', 'Coolify does not remove its public key from servers. To remove it, rotate the key before you delete it.']" confirmationText="{{ $private_key->name }}"

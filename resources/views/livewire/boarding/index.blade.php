@@ -13,7 +13,7 @@
                         </p>
                     </div>
 
-                    <x-application.settings-section title="What you will set up" flush>
+                    <x-application.settings-section title="{{ __('What you will set up') }}" flush>
                         <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
                             @foreach ([
                                 ['icon' => 'servers', 'title' => 'Server connection', 'description' => 'Connect through SSH to host your resources.'],
@@ -61,7 +61,7 @@
                 </div>
             @elseif ($currentState === 'explanation')
                 <x-boarding-progress :currentStep="0" />
-                <x-boarding-step title="Platform Overview">
+                <x-boarding-step title="{{ __('Platform Overview') }}">
                     <x-slot:question>
                         Coolify automates deployment and infrastructure management on your own servers. Deploy applications
                         from Git, manage databases, and monitor everything without vendor lock-in.
@@ -90,7 +90,7 @@
                 </x-boarding-step>
             @elseif ($currentState === 'select-server-type')
                 <x-boarding-progress :currentStep="1" />
-                <x-boarding-step title="Choose Server Type">
+                <x-boarding-step title="{{ __('Choose Server Type') }}">
                     <x-slot:question>
                         Select where to deploy your applications and databases. You can add more servers later.
                     </x-slot:question>
@@ -98,12 +98,12 @@
                         <div class="w-full space-y-6">
                             <section>
                                 <h3 class="text-base font-semibold">{{ __('Add a server') }}</h3>
-                                <p class="mb-3 text-sm text-neutral-500 dark:text-neutral-400">Use this machine or connect a server you already manage.</p>
+                                <p class="mb-3 text-sm text-neutral-500 dark:text-neutral-400">{{ __('Use this machine or connect a server you already manage.') }}</p>
                                 <div class="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
                             <button
                                 class="group relative cursor-pointer min-h-36 rounded-[10px] border border-neutral-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]"
                                 wire:target="setServerType('localhost')" wire:click="setServerType('localhost')">
-                                <span role="button" tabindex="0" aria-label="About this machine"
+                                <span role="button" tabindex="0" aria-label="{{ __('About this machine') }}"
                                     data-tooltip="{{ __('The machine running Coolify. Not recommended for production workloads due to resource contention.') }}"
                                     @click.stop @keydown.enter.stop @keydown.space.prevent.stop
                                     class="absolute top-3 right-3 flex size-6 items-center justify-center rounded-full border border-neutral-200 text-[11px] font-semibold text-neutral-500 hover:border-coollabs/35 hover:text-coollabs dark:border-white/[0.1] dark:text-fg-dim dark:hover:border-brand-light/30 dark:hover:text-brand-light">i</span>
@@ -127,7 +127,7 @@
                             <button
                                 class="group relative cursor-pointer min-h-36 rounded-[10px] border border-neutral-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]"
                                 wire:target="setServerType('remote')" wire:click="setServerType('remote')">
-                                <span role="button" tabindex="0" aria-label="About remote servers"
+                                <span role="button" tabindex="0" aria-label="{{ __('About remote servers') }}"
                                     data-tooltip="{{ __('Any SSH-accessible server, including cloud VPS, bare metal, and self-hosted infrastructure.') }}"
                                     @click.stop @keydown.enter.stop @keydown.space.prevent.stop
                                     class="absolute top-3 right-3 flex size-6 items-center justify-center rounded-full border border-neutral-200 text-[11px] font-semibold text-neutral-500 hover:border-coollabs/35 hover:text-coollabs dark:border-white/[0.1] dark:text-fg-dim dark:hover:border-brand-light/30 dark:hover:text-brand-light">i</span>
@@ -154,7 +154,7 @@
                                     <p class="mb-3 text-sm text-neutral-500 dark:text-neutral-400">{{ __('Create a server with a cloud provider.') }}</p>
                                     <div class="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
                                 @if ($currentState === 'select-server-type')
-                                    <x-modal-input title="Connect a Hetzner Server" isFullWidth>
+                                    <x-modal-input title="{{ __('Connect a Hetzner Server') }}" isFullWidth>
                                         <x-slot:content>
                                             <div
                                                 class="group relative cursor-pointer flex h-full min-h-36 flex-col rounded-[10px] border border-neutral-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]">
@@ -172,7 +172,7 @@
                                         </x-slot:content>
                                         <livewire:server.new.by-hetzner :limit_reached="false" :from_onboarding="true" />
                                     </x-modal-input>
-                                    <x-modal-input title="Connect a Vultr Server" isFullWidth>
+                                    <x-modal-input title="{{ __('Connect a Vultr Server') }}" isFullWidth>
                                         <x-slot:content>
                                             <div
                                                 class="group relative cursor-pointer flex h-full min-h-36 flex-col rounded-[10px] border border-neutral-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]">
@@ -190,7 +190,7 @@
                                         </x-slot:content>
                                         <livewire:server.new.by-vultr :limit_reached="false" :from_onboarding="true" />
                                     </x-modal-input>
-                                    <x-modal-input title="Connect a DigitalOcean Server" isFullWidth>
+                                    <x-modal-input title="{{ __('Connect a DigitalOcean Server') }}" isFullWidth>
                                         <x-slot:content>
                                             <div
                                                 class="group relative cursor-pointer flex h-full min-h-36 flex-col rounded-[10px] border border-neutral-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.05] dark:hover:border-white/[0.14]">
@@ -207,7 +207,7 @@
                                         </x-slot:content>
                                         <livewire:server.new.by-digital-ocean :limit_reached="false" :from_onboarding="true" />
                                     </x-modal-input>
-                                    <x-modal-input title="Connect a Hostinger Server" isFullWidth>
+                                    <x-modal-input title="{{ __('Connect a Hostinger Server') }}" isFullWidth>
                                         <x-slot:content>
                                             <div
                                                 class="group relative cursor-pointer flex h-full min-h-36 flex-col rounded-[10px] border border-neutral-200 bg-white p-4 text-left shadow-sm transition-all hover:-translate-y-px hover:border-neutral-300 hover:shadow-md dark:border-white/[0.08] dark:bg-white/[0.025] dark:hover:border-white/[0.14]">
@@ -232,7 +232,7 @@
 
                         @if (!$serverReachable)
                             <div class="mt-6 p-4 border border-error rounded-lg text-gray-800 dark:text-gray-200">
-                                <h2 class="text-lg font-bold mb-2">Server is not reachable</h2>
+                                <h2 class="text-lg font-bold mb-2">{{ __('Server is not reachable') }}</h2>
                                 <p class="mb-4">Please check the connection details below and correct them if they are
                                     incorrect.</p>
 
@@ -251,7 +251,7 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <p class="mb-2">If the connection details are correct, please ensure:</p>
+                                    <p class="mb-2">{{ __('If the connection details are correct, please ensure:') }}</p>
                                     <ul class="list-disc list-inside">
                                         <li>The correct public key is in your <code
                                                 class="bg-red-200 dark:bg-red-900 px-1 rounded-sm">~/.ssh/authorized_keys</code>
@@ -267,7 +267,7 @@
                                 </p>
 
                                 <x-forms.input readonly id="serverPublicKey" class="mb-4"
-                                    label="Current Public Key"></x-forms.input>
+                                    label="{{ __('Current Public Key') }}"></x-forms.input>
 
                                 <x-forms.button class="w-full justify-center" wire:click="saveAndValidateServer"
                                     isHighlighted>
@@ -279,7 +279,7 @@
                 </x-boarding-step>
             @elseif ($currentState === 'private-key')
                 <x-boarding-progress :currentStep="2" />
-                <x-boarding-step title="SSH Authentication">
+                <x-boarding-step title="{{ __('SSH Authentication') }}">
                     <x-slot:question>
                         Configure SSH key-based authentication for secure server access.
                     </x-slot:question>
@@ -301,7 +301,7 @@
                                         class="flex flex-col gap-3 sm:flex-row sm:items-end">
                                         <div class="min-w-0 flex-1">
                                             <x-forms.listbox id="selectedExistingPrivateKey"
-                                                label="Existing SSH key" :options="$privateKeyOptions" :tooltip="false" />
+                                                label="{{ __('Existing SSH key') }}" :options="$privateKeyOptions" :tooltip="false" />
                                         </div>
                                         <x-forms.button type="submit">{{ __('Use selected key') }}</x-forms.button>
                                     </form>
@@ -369,7 +369,7 @@
                 </x-boarding-step>
             @elseif ($currentState === 'create-private-key')
                 <x-boarding-progress :currentStep="2" />
-                <x-boarding-step title="SSH Key Configuration">
+                <x-boarding-step title="{{ __('SSH Key Configuration') }}">
                     <x-slot:question>
                         Configure your SSH key for server authentication.
                     </x-slot:question>
@@ -381,7 +381,7 @@
                                 id="privateKeyDescription" />
                             @if ($privateKeyType === 'create')
                                 <x-forms.textarea required readonly label="{{ __('Private Key') }}" id="privateKey" rows="8" />
-                                <x-forms.textarea rows="7" readonly label="Public Key" id="publicKey" />
+                                <x-forms.textarea rows="7" readonly label="{{ __('Public Key') }}" id="publicKey" />
                             @else
                                 <x-forms.textarea required placeholder="-----BEGIN OPENSSH PRIVATE KEY-----" label="{{ __('Private Key') }}"
                                     id="privateKey" rows="8" />
@@ -396,7 +396,7 @@
                                                 clip-rule="evenodd" />
                                         </svg>
                                         <div>
-                                            <p class="font-bold text-warning mb-1">Action Required</p>
+                                            <p class="font-bold text-warning mb-1">{{ __('Action Required') }}</p>
                                             <p class="text-sm dark:text-white text-black">
                                                 Copy the public key above and add it to your server's
                                                 <code
@@ -412,7 +412,7 @@
                     </x-slot:actions>
                     <x-slot:explanation>
                         <p>
-                            <x-highlighted text="Key Storage:" /> Private keys are encrypted at rest in Coolify's database.
+                            <x-highlighted text="Key Storage:" /> {{ __('Private keys are encrypted at rest in Coolify\'s database.') }}
                         </p>
                         <p>
                             <x-highlighted text="Public Key Distribution:" /> Deploy the public key to
@@ -428,7 +428,7 @@
                 </x-boarding-step>
             @elseif ($currentState === 'create-server')
                 <x-boarding-progress :currentStep="2" />
-                <x-boarding-step title="Server Configuration">
+                <x-boarding-step title="{{ __('Server Configuration') }}">
                     <x-slot:question>
                         Provide connection details for your remote server.
                     </x-slot:question>
@@ -437,13 +437,13 @@
                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                 <x-forms.input required placeholder="{{ __('e.g., production-app-server') }}" label="Server Name"
                                     id="remoteServerName" wire:model="remoteServerName" />
-                                <x-forms.input required placeholder="{{ __('IP address or hostname') }}" label="IP Address/Hostname"
+                                <x-forms.input required placeholder="{{ __('IP address or hostname') }}" label="{{ __('IP Address/Hostname') }}"
                                     id="remoteServerHost" wire:model="remoteServerHost" />
                             </div>
                             <x-forms.input placeholder="{{ __('Optional: Note what this server hosts') }}" label="{{ __('Description') }}"
                                 id="remoteServerDescription" wire:model="remoteServerDescription" />
 
-                            <x-forms.collapsible title="Advanced Settings"
+                            <x-forms.collapsible title="{{ __('Advanced Settings') }}"
                                 content-class="grid grid-cols-1 gap-4 lg:grid-cols-2">
                                 <x-forms.input placeholder="{{ __('Default: 22') }}" label="SSH Port" type="number"
                                     id="remoteServerPort" wire:model="remoteServerPort" />
@@ -458,7 +458,7 @@
                 </x-boarding-step>
             @elseif ($currentState === 'validate-server')
                 <x-boarding-progress :currentStep="2" />
-                <x-boarding-step title="Server Validation">
+                <x-boarding-step title="{{ __('Server Validation') }}">
                     <x-slot:question>
                         Coolify will automatically install Docker {{ $minDockerVersion }}+ if not present.
                     </x-slot:question>
@@ -491,7 +491,7 @@
                                 <section class="application-settings-section">
                                     <header>
                                         <div class="flex items-center gap-2">
-                                            <h3>Installing prerequisites</h3>
+                                            <h3>{{ __('Installing prerequisites') }}</h3>
                                         </div>
                                     </header>
                                     <div class="application-settings-section-body">
@@ -522,7 +522,7 @@
                             <x-highlighted text="Version Requirements:" /> Minimum Docker Engine {{ $minDockerVersion }}.x
                             required.
                             <a target="_blank" class="underline hover:text-coollabs"
-                                href="https://docs.docker.com/engine/install/#server">Manual installation guide</a>
+                                href="https://docs.docker.com/engine/install/#server">{{ __('Manual installation guide') }}</a>
                         </p>
                         <p>
                             <x-highlighted text="System Configuration:" /> Sets up Docker networks, proxy configuration, and
@@ -532,7 +532,7 @@
                 </x-boarding-step>
             @elseif ($currentState === 'create-project')
                 <x-boarding-progress :currentStep="3" />
-                <x-boarding-step title="Project Setup">
+                <x-boarding-step title="{{ __('Project Setup') }}">
                     <x-slot:question>
                         @if ($projects && $projects->count() > 0)
                             You have existing projects. Select one or create a new project to organize your resources.
@@ -562,13 +562,13 @@
                                         <div class="w-full border-t border-neutral-300 dark:border-coolgray-400"></div>
                                     </div>
                                     <div class="relative flex justify-center text-sm">
-                                        <span class="px-2 text-neutral-500 dark:text-neutral-400">Or use existing</span>
+                                        <span class="px-2 text-neutral-500 dark:text-neutral-400">{{ __('Or use existing') }}</span>
                                     </div>
                                 </div>
                                 <form wire:submit="selectExistingProject"
                                     class="flex flex-col gap-3 sm:flex-row sm:items-end">
                                     <div class="min-w-0 flex-1">
-                                        <x-forms.listbox id="selectedProject" label="Existing project"
+                                        <x-forms.listbox id="selectedProject" label="{{ __('Existing project') }}"
                                             :options="$projectOptions" />
                                     </div>
                                     <x-forms.button type="submit">{{ __('Use selected project') }}</x-forms.button>
@@ -585,7 +585,7 @@
                             class="mx-auto mb-4 flex size-12 items-center justify-center rounded-[10px] border border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                             <x-reicon name="check-circle" class="size-6" />
                         </div>
-                        <h1 class="text-2xl! font-semibold!">Setup complete</h1>
+                        <h1 class="text-2xl! font-semibold!">{{ __('Setup complete') }}</h1>
                         <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
                             Your server is connected and ready. Start deploying your first resource.
                         </p>

@@ -3,7 +3,7 @@
         <x-unsaved-bar action="submit" />
 
         <x-application.settings-section title="{{ __('Repository') }}"
-            description="Configure the Git repository, branch, and commit Coolify deploys.">
+            description="{{ __('Configure the Git repository, branch, and commit Coolify deploys.') }}">
             <x-slot:actions>
                 <div class="flex flex-wrap items-center gap-2">
                     <a target="_blank" class="button" href="{{ $application?->gitBranchLocation }}">
@@ -28,7 +28,7 @@
                     canGate="update" :canResource="$application" />
                 <x-forms.input placeholder="main" id="gitBranch" label="{{ __('Branch') }}" canGate="update"
                     :canResource="$application" />
-                <x-forms.input placeholder="HEAD" id="gitCommitSha" label="Commit SHA" canGate="update"
+                <x-forms.input placeholder="HEAD" id="gitCommitSha" label="{{ __('Commit SHA') }}" canGate="update"
                     :canResource="$application" />
             </div>
         </x-application.settings-section>
@@ -37,7 +37,7 @@
             $usesGitSsh = $application->gitSshHost() !== null;
         @endphp
         @if ($usesGitSsh || filled($application->git_ssh_known_hosts))
-        <x-application.settings-section id="ssh-host-keys" title="SSH host keys" x-data="{ editManually: false }" x-on:known-hosts-invalid.window="editManually = true" flush
+        <x-application.settings-section id="ssh-host-keys" title="{{ __('SSH host keys') }}" x-data="{ editManually: false }" x-on:known-hosts-invalid.window="editManually = true" flush
             description="The host keys that git over SSH accepts for self-hosted Git hosts. On the first deployment, Coolify saves the key that the host sends, and later deployments fail if the key changes. To accept a new key (also of a submodule host), click Fetch current host key, compare the fingerprint with the fingerprint from the administrator of the Git host, and click Accept. GitHub, GitLab.com, and Bitbucket Cloud always accept their published keys. If GitHub or Bitbucket Cloud changes its keys, click Fetch current host key to read the new keys from their official HTTPS endpoint. If GitLab.com changes its keys, click Fetch current host key and compare the fingerprint with the keys on docs.gitlab.com.">
             @can('update', $application)
                 <x-slot:actions>
@@ -54,7 +54,7 @@
                 </x-slot:actions>
             @endcan
             @if ($fetchedHostKeys !== [])
-                <x-callout type="warning" title="Compare these fingerprints before you accept them" class="mb-4">
+                <x-callout type="warning" title="{{ __('Compare these fingerprints before you accept them') }}" class="mb-4">
                     <p>These are the keys that the Git host sends now. Accept them only if the fingerprint is the same
                         as the fingerprint from the administrator of the Git host.</p>
                     <ul class="my-2 flex flex-col gap-1">
@@ -73,8 +73,8 @@
                 $fingerprints = [...$this->publishedHostKeyFingerprints(), ...$this->knownHostFingerprints()];
             @endphp
             @if ($fingerprints === [])
-                <x-empty size="sm" icon-name="keys" title="No saved host keys"
-                    description="The next deployment saves the key that the Git host sends. To save it now, click Fetch current host key." />
+                <x-empty size="sm" icon-name="keys" title="{{ __('No saved host keys') }}"
+                    description="{{ __('The next deployment saves the key that the Git host sends. To save it now, click Fetch current host key.') }}" />
             @else
                 <div class="data-table">
                     <div class="min-w-[36rem]">
@@ -90,7 +90,7 @@
                                 <div class="min-w-0">
                                     <span class="break-all text-[13px] font-semibold text-black dark:text-fg">{{ $fingerprint['host'] }}</span>
                                     @if ($fingerprint['published'])
-                                        <p class="text-[12px] text-neutral-500 dark:text-fg-dim">Published by the provider, used for every deployment</p>
+                                        <p class="text-[12px] text-neutral-500 dark:text-fg-dim">{{ __('Published by the provider, used for every deployment') }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                 <span></span>
                             @else
                             @can('update', $application)
-                            <x-modal-confirmation class="!w-auto shrink-0" title="Remove host key?" buttonTitle="{{ __('Remove') }}"
+                            <x-modal-confirmation class="!w-auto shrink-0" title="{{ __('Remove host key?') }}" buttonTitle="{{ __('Remove') }}"
                                 isErrorButton canGate="update" :canResource="$application"
                                 submitAction="removeHostKey('{{ $fingerprint['id'] }}')" :actions="[
                                     'The host key ' . $fingerprint['fingerprint'] . ' of ' . $fingerprint['host'] . ' will be removed.',
@@ -125,7 +125,7 @@
             @can('update', $application)
                 <div id="manual-host-keys" x-show="editManually" x-cloak class="p-4">
                     <div>
-                        <x-forms.textarea id="gitSshKnownHosts" rows="4" label="Known hosts"
+                        <x-forms.textarea id="gitSshKnownHosts" rows="4" label="{{ __('Known hosts') }}"
                             helper="One line for each key: host key-type key. Use [host]:port for a custom SSH port. GitHub and Bitbucket Cloud use their published keys and cannot be added here. Click Save to apply."
                             placeholder="[git.example.com]:2222 ssh-ed25519 AAAA..." canGate="update"
                             :canResource="$application" />
@@ -135,7 +135,7 @@
         </x-application.settings-section>
         @endif
         @if ($application->deploymentType() === 'other')
-            <x-application.settings-section title="HTTPS credentials"
+            <x-application.settings-section title="{{ __('HTTPS credentials') }}"
                 description="The username and password or access token Coolify uses to clone a private repository from a custom Git host (Azure DevOps, Bitbucket, Gitea, and others) over HTTP(S). Coolify sends them only to the host of the repository URL and never shows the saved password or token.">
                 @if ($hasGitHttpsPassword)
                     @can('update', $application)
@@ -150,7 +150,7 @@
                     <x-forms.input id="gitHttpsUsername" label="{{ __('Username') }}" autocomplete="off"
                         helper="Some hosts accept any username with an access token (for example Azure DevOps)."
                         canGate="update" :canResource="$application" />
-                    <x-forms.input id="gitHttpsPassword" type="password" label="Password or token"
+                    <x-forms.input id="gitHttpsPassword" type="password" label="{{ __('Password or token') }}"
                         autocomplete="new-password"
                         placeholder="{{ $hasGitHttpsPassword ? 'Saved. Enter a new value to replace it.' : '' }}"
                         canGate="update" :canResource="$application" />
@@ -160,12 +160,12 @@
     </form>
 
     @if (filled($privateKeyId))
-        <x-application.settings-section title="Deploy key"
-            description="The SSH key Coolify uses to clone this private repository." flush>
+        <x-application.settings-section title="{{ __('Deploy key') }}"
+            description="{{ __('The SSH key Coolify uses to clone this private repository.') }}" flush>
             <div class="data-table">
                 <div class="grid grid-cols-[minmax(0,1fr)_7rem] items-center gap-3 border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[13px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
                     <span class="pl-11">{{ __('Private key') }}</span>
-                    <span class="text-right">Selection</span>
+                    <span class="text-right">{{ __('Selection') }}</span>
                 </div>
                 <div class="grid min-h-14 w-full grid-cols-[minmax(0,1fr)_7rem] items-center gap-3 px-4 py-2.5 text-left transition-colors hover:bg-neutral-50 dark:hover:bg-white/[0.025] border-b border-neutral-200 last:border-b-0 dark:border-white/[0.07]">
                     <div class="flex min-w-0 items-center gap-3">
@@ -217,8 +217,8 @@
                     default => 'Connected source',
                 };
             @endphp
-            <x-application.settings-section title="Git source"
-                description="Switch the Git provider App Coolify uses to clone this repository.">
+            <x-application.settings-section title="{{ __('Git source') }}"
+                description="{{ __('Switch the Git provider App Coolify uses to clone this repository.') }}">
                 <div class="grid gap-2 sm:grid-cols-2">
                     @if ($currentSource)
                         <div
@@ -257,7 +257,7 @@
                                 default => 'Git source',
                             };
                         @endphp
-                        <x-modal-confirmation title="Change Git source?"
+                        <x-modal-confirmation title="{{ __('Change Git source?') }}"
                             :actions="['Change Git source to ' . $source->name]" :buttonFullWidth="true"
                             submitAction="changeSource({{ $source->id }}, {{ $sourceMorph }})"
                             :confirmWithText="true" confirmationText="Change Git Source"
@@ -284,8 +284,8 @@
                     @empty
                         @if (! $currentSource)
                             <div class="col-span-full">
-                                <x-empty title="No other sources"
-                                    description="Connect another Git source before moving this application."
+                                <x-empty title="{{ __('No other sources') }}"
+                                    description="{{ __('Connect another Git source before moving this application.') }}"
                                     icon-name="sources" size="sm">
                                     <x-slot:contents>
                                         <a href="{{ route('source.all') }}" {{ wireNavigate() }} class="button">

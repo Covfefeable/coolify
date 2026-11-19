@@ -4,19 +4,19 @@
     </x-slot>
 
     <x-security.settings-layout>
-        <x-application.settings-section title="Private keys"
-            description="SSH keys used to connect servers and private repositories." flush>
+        <x-application.settings-section title="{{ __('Private keys') }}"
+            description="{{ __('SSH keys used to connect servers and private repositories.') }}" flush>
         <x-slot:actions>
             @can('create', App\Models\PrivateKey::class)
-                <x-modal-confirmation title="Confirm unused SSH Key Deletion?"
+                <x-modal-confirmation title="{{ __('Confirm unused SSH Key Deletion?') }}"
                     isErrorButton submitAction="cleanupUnusedKeys"
                     :actions="['All unused SSH keys (marked with unused) are permanently deleted.']"
                     :confirmWithText="false" :confirmWithPassword="false">
                     <x-slot:trigger>
                         <button type="button"
                             class="button button-error whitespace-nowrap">
-                            <span class="max-sm:hidden">Delete unused keys</span>
-                            <span class="sm:hidden">Delete unused</span>
+                            <span class="max-sm:hidden">{{ __('Delete unused keys') }}</span>
+                            <span class="sm:hidden">{{ __('Delete unused') }}</span>
                         </button>
                     </x-slot:trigger>
                 </x-modal-confirmation>
@@ -27,7 +27,7 @@
                         class="button whitespace-nowrap button-highlighted"
                         aria-haspopup="menu" :aria-expanded="dropdownOpen">
                         <x-reicon name="plus" class="size-3.5" />
-                        <span class="max-sm:hidden">New private key</span>
+                        <span class="max-sm:hidden">{{ __('New private key') }}</span>
                         <span class="sm:hidden">New key</span>
                         <x-reicon name="chevron-down" class="size-3 opacity-55" />
                     </button>
@@ -63,8 +63,8 @@
 
 
     @if ($privateKeys->isEmpty())
-        <x-empty title="No private keys yet"
-            description="Generate or add an SSH key to connect Coolify to servers and private repositories."
+        <x-empty title="{{ __('No private keys yet') }}"
+            description="{{ __('Generate or add an SSH key to connect Coolify to servers and private repositories.') }}"
             icon-name="keys" />
     @else
         <div>
@@ -99,11 +99,11 @@
                             @if ($key->isInUse())
                                 <x-status-badge label="In use" type="success" />
                             @else
-                                <x-status-badge label="Unused" type="warning" />
+                                <x-status-badge label="{{ __('Unused') }}" type="warning" />
                             @endif
                         </div>
                         <div class="flex justify-end">
-                            <button type="button" class="icon-button" title="Edit private key"
+                            <button type="button" class="icon-button" title="{{ __('Edit private key') }}"
                                 aria-label="Edit {{ $key->name }}"
                                 @click="$dispatch('open-private-key-editor', { name: @js($key->name), description: @js($key->description ?? '') })"
                                 wire:click="openEditor('{{ $key->uuid }}')">
@@ -114,7 +114,7 @@
                     </div>
                 @else
                     <div class="grid min-h-14 cursor-not-allowed grid-cols-[minmax(0,1fr)_7rem_4.5rem] items-center gap-3 border-b border-neutral-200 px-4 py-2.5 opacity-65 last:border-b-0 sm:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_7rem_4.5rem] dark:border-white/[0.07]"
-                        title="You do not have permission to view this private key">
+                        title="{{ __('You do not have permission to view this private key') }}">
                         <div class="flex items-start gap-3">
                             <div
                                 class="flex size-8 shrink-0 items-center justify-center rounded-lg border border-neutral-200 bg-white text-neutral-400 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
@@ -128,9 +128,9 @@
                         </div>
                         <p class="hidden truncate text-[12px] text-neutral-500 sm:block dark:text-fg-dim">{{ $key->description ?: '-' }}</p>
                         <div class="flex flex-wrap justify-center gap-2">
-                            <x-status-badge label="View only" type="neutral" />
+                            <x-status-badge label="{{ __('View only') }}" type="neutral" />
                             @if (!$key->isInUse())
-                                <x-status-badge label="Unused" type="warning" />
+                                <x-status-badge label="{{ __('Unused') }}" type="warning" />
                             @endif
                         </div>
                         <span class="size-7"></span>
@@ -140,10 +140,10 @@
         </div>
     @endif
 
-    <x-modal-input title="Edit Private Key" :wireIgnore="false" :contentClicks="false"
+    <x-modal-input title="{{ __('Edit Private Key') }}" :wireIgnore="false" :contentClicks="false"
         @open-private-key-editor.window="modalOpen=true; $nextTick(() => { $refs.loadingPrivateKeyName.value = $event.detail.name; $refs.loadingPrivateKeyDescription.value = $event.detail.description })">
         <x-slot:content><span class="hidden" aria-hidden="true"></span></x-slot:content>
-        <div wire:loading.flex wire:target="openEditor" aria-label="Loading private key editor"
+        <div wire:loading.flex wire:target="openEditor" aria-label="{{ __('Loading private key editor') }}"
             class="w-full flex-col gap-4">
             <div class="grid gap-4 lg:grid-cols-2">
                 <x-forms.input label="{{ __('Name') }}" required x-ref="loadingPrivateKeyName" />

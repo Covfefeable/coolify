@@ -1,6 +1,6 @@
 <div>
         <x-process-dialog @startupdate.window="processDialogOpen = true" closeWithX size="xl">
-            <x-slot:title>Package Update Logs</x-slot:title>
+            <x-slot:title>{{ __('Package Update Logs') }}</x-slot:title>
             <x-slot:content>
                 <div class="flex h-full min-h-0 flex-col">
                     <livewire:activity-monitor fullHeight />
@@ -65,9 +65,9 @@
             @if (! $hostScanAvailable && ! $hostScan)
                 <div class="p-4">
                     <x-empty size="sm" icon-name="shield-alert" title="Image scanning is off for {{ $server->name }}."
-                        description="Enable image scanning below to also scan the operating system packages of this server.">
+                        description="{{ __('Enable image scanning below to also scan the operating system packages of this server.') }}">
                         <x-slot:actions>
-                            <a class="text-[13px] font-medium underline" href="#server-image-scanning-section">Image scanning settings</a>
+                            <a class="text-[13px] font-medium underline" href="#server-image-scanning-section">{{ __('Image scanning settings') }}</a>
                         </x-slot:actions>
                     </x-empty>
                 </div>
@@ -103,7 +103,7 @@
                     @endif
 
                     @if ($rebootRequired)
-                        <x-callout type="warning" title="Reboot required">
+                        <x-callout type="warning" title="{{ __('Reboot required') }}">
                             <div class="flex flex-wrap items-center justify-between gap-3">
                                 <span>
                                     @if (($kernelStatusCounts['fixed_after_reboot'] ?? 0) > 0)
@@ -147,7 +147,7 @@
                         </div>
                     @endif
                     @if ($hostScanError)
-                        <x-callout type="danger" title="The last scan failed">
+                        <x-callout type="danger" title="{{ __('The last scan failed') }}">
                             {{ $hostScanError }}
                             @can('update', $server)
                                 <x-image-scan.error-log :detail="data_get($hostScan->error_context, 'detail')" />
@@ -155,33 +155,33 @@
                         </x-callout>
                     @endif
                     @if ($hostScan?->eol)
-                        <x-callout type="warning" title="Operating system is end of life">
+                        <x-callout type="warning" title="{{ __('Operating system is end of life') }}">
                             {{ data_get($hostScan->eol, 'name') }} {{ data_get($hostScan->eol, 'version') }} gets no
                             security updates anymore. Upgrade the operating system of this server.
                         </x-callout>
                     @endif
                     @if ($hostScan?->scanned_at && $hostFindings === [])
-                        <x-empty size="sm" title="No relevant vulnerabilities"
-                            description="The installed packages have no critical, high, or exploited vulnerabilities."
+                        <x-empty size="sm" title="{{ __('No relevant vulnerabilities') }}"
+                            description="{{ __('The installed packages have no critical, high, or exploited vulnerabilities.') }}"
                             icon-name="check-circle" />
                     @endif
                 </div>
 
                 @if ($hostFindings !== [] && $shownHostFindings->isEmpty())
                     <div class="border-t border-neutral-200 p-6 dark:border-white/[0.08]">
-                        <x-empty size="sm" title="No matching vulnerabilities"
-                            description="Try another ID or package, or clear the search." icon-name="search" />
+                        <x-empty size="sm" title="{{ __('No matching vulnerabilities') }}"
+                            description="{{ __('Try another ID or package, or clear the search.') }}" icon-name="search" />
                     </div>
                 @elseif ($hostFindings !== [])
                     <div class="data-table">
                         <div class="data-table-header host-vulnerabilities-table-grid">
-                            <x-table.sort-header label="Vulnerability" asc="vulnerability_asc" desc="vulnerability_desc" action="sortFindings" :current="$sortBy" />
+                            <x-table.sort-header label="{{ __('Vulnerability') }}" asc="vulnerability_asc" desc="vulnerability_desc" action="sortFindings" :current="$sortBy" />
                             <x-table.sort-header label="{{ __('Package') }}" asc="package_asc" desc="package_desc" action="sortFindings" :current="$sortBy" />
                             <x-table.sort-header label="Fixed in" asc="fixed_asc" desc="fixed_desc" action="sortFindings" :current="$sortBy" />
                             <div class="flex justify-end">
                                 <x-table.sort-header label="{{ __('Severity') }}" asc="severity_asc" desc="severity_desc" first="desc" action="sortFindings" :current="$sortBy" />
                             </div>
-                            <span class="text-right">Action</span>
+                            <span class="text-right">{{ __('Action') }}</span>
                         </div>
                         @foreach ($shownHostFindings as $finding)
                             @php

@@ -81,7 +81,9 @@ it('blocks non-admin members from the file browser', function () {
         ->assertForbidden();
 });
 
-it('shows a stopped state when the container is not running', function () {
+it('shows a stopped state when the container is not running', function (string $locale, string $message) {
+    app()->setLocale($locale);
+
     $application = Application::factory()->create([
         'environment_id' => $this->environment->id,
         'destination_id' => $this->destination->id,
@@ -94,8 +96,11 @@ it('shows a stopped state when the container is not running', function () {
 
     Livewire::test(FileBrowser::class, ['resource' => $application])
         ->assertSet('containerRunning', false)
-        ->assertSee('Start the container to browse its files');
-});
+        ->assertSee($message);
+})->with([
+    'English' => ['en', 'Start the container to browse its files'],
+    'Simplified Chinese' => ['zh-cn', '启动容器后即可浏览文件。'],
+]);
 
 it('loads the default directory in a deferred request for a running database', function () {
     Process::fake(['*' => Process::sequence()

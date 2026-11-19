@@ -84,7 +84,7 @@
                         <x-forms.listbox id="member-role-filter" :wire="false" x-model="roleFilter"
                             x-effect="page = 1" :value="'all'" :options="[
                                 ['value' => 'all', 'label' => 'All roles'],
-                                ['value' => 'owner', 'label' => 'Owner'],
+                                ['value' => 'owner', 'label' => __('Owner')],
                                 ['value' => 'admin', 'label' => __('Admin')],
                                 ['value' => 'member', 'label' => 'Member'],
                             ]" />

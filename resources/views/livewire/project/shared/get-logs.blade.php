@@ -60,7 +60,7 @@
                                     </svg>
                                 @endif
                             </button>
-                            <button x-on:click="refresh()" title="Refresh Logs" {{ $streamLogs ? 'disabled' : '' }}
+                            <button x-on:click="refresh()" title="{{ __('Refresh Logs') }}" {{ $streamLogs ? 'disabled' : '' }}
                                 class="runtime-log-icon-button">
                                 <x-reicon name="refresh" class="size-3.5" />
                             </button>
@@ -93,19 +93,19 @@
                             <div class="logs-viewer-meta">
                                 <form x-on:submit.prevent="refreshLines()" class="logs-viewer-lines runtime-log-lines-group">
                                     <span class="logs-viewer-lines-label relative" :aria-busy="loadingLines">
-                                        <span :class="loadingLines ? 'invisible' : ''">Lines</span>
+                                        <span :class="loadingLines ? 'invisible' : ''">{{ __('Lines') }}</span>
                                         <x-loading compact x-cloak x-show="loadingLines" aria-label="{{ __('Loading logs') }}"
                                             class="absolute inset-0 text-inherit!" />
                                     </span>
                                     <input type="number" wire:model="numberOfLines" x-on:input="allLines = Number($event.target.value) === -1" placeholder="100" min="-1" max="50000"
                                         title="Number of lines (max 50,000; use -1 for all)" {{ $streamLogs ? 'readonly' : '' }}
                                         class="input logs-viewer-lines-input" />
-                                    <button type="button" x-on:click="showAllLogs()" title="Show all logs"
+                                    <button type="button" x-on:click="showAllLogs()" title="{{ __('Show all logs') }}"
                                         :class="allLines ? 'runtime-log-lines-all-active' : ''"
                                         :aria-pressed="allLines" :aria-busy="loadingAll"
                                         class="runtime-log-lines-all relative" {{ $streamLogs ? 'disabled' : '' }}>
-                                        <span :class="loadingAll ? 'invisible' : ''">All</span>
-                                        <x-loading compact x-cloak x-show="loadingAll" aria-label="Loading all logs"
+                                        <span :class="loadingAll ? 'invisible' : ''">{{ __('All') }}</span>
+                                        <x-loading compact x-cloak x-show="loadingAll" aria-label="{{ __('Loading all logs') }}"
                                             class="absolute inset-0 text-inherit!" />
                                     </button>
                                 </form>
@@ -135,31 +135,31 @@
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                                     </svg>
-                                    <span>View</span>
+                                    <span>{{ __('View') }}</span>
                                     <x-reicon name="chevron-down" class="size-3 transition-transform" ::class="open ? 'rotate-180' : ''" />
                                 </button></x-slot:trigger>
                                 <div>
-                                    <p class="runtime-log-menu-label">Display</p>
+                                    <p class="runtime-log-menu-label">{{ __('Display') }}</p>
                                     <button type="button" class="listbox-option" role="menuitemcheckbox"
                                         :aria-checked="$wire.showTimeStamps" wire:click="toggleTimestamps">
-                                        <span class="flex-1 text-left">Timestamps</span>
+                                        <span class="flex-1 text-left">{{ __('Timestamps') }}</span>
                                         <span x-show="$wire.showTimeStamps">✓</span>
                                     </button>
                                     <button type="button" class="listbox-option" role="menuitemcheckbox"
                                         :aria-checked="textView" x-on:click="toggleTextView">
-                                        <span class="flex-1 text-left">Text view</span>
+                                        <span class="flex-1 text-left">{{ __('Text view') }}</span>
                                         <span x-show="textView">✓</span>
                                     </button>
                                     <button type="button" class="listbox-option" role="menuitemcheckbox"
                                         :aria-checked="colorLogs" x-on:click="toggleColorLogs">
-                                        <span class="flex-1 text-left">Color by level</span>
+                                        <span class="flex-1 text-left">{{ __('Color by level') }}</span>
                                         <span x-show="colorLogs">✓</span>
                                     </button>
-                                    <p class="runtime-log-menu-label">Log levels</p>
+                                    <p class="runtime-log-menu-label">{{ __('Log levels') }}</p>
                                     <button type="button" class="listbox-option" role="menuitemcheckbox"
                                         :aria-checked="logFilters.error" x-on:click="toggleLogFilter('error')">
                                         <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
-                                        <span class="flex-1 text-left">Error</span>
+                                        <span class="flex-1 text-left">{{ __('Error') }}</span>
                                         <span x-show="logFilters.error">✓</span>
                                     </button>
                                     <button type="button" class="listbox-option" role="menuitemcheckbox"
@@ -171,13 +171,13 @@
                                     <button type="button" class="listbox-option" role="menuitemcheckbox"
                                         :aria-checked="logFilters.debug" x-on:click="toggleLogFilter('debug')">
                                         <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
-                                        <span class="flex-1 text-left">Debug</span>
+                                        <span class="flex-1 text-left">{{ __('Debug') }}</span>
                                         <span x-show="logFilters.debug">✓</span>
                                     </button>
                                     <button type="button" class="listbox-option" role="menuitemcheckbox"
                                         :aria-checked="logFilters.info" x-on:click="toggleLogFilter('info')">
                                         <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-                                        <span class="flex-1 text-left">Info</span>
+                                        <span class="flex-1 text-left">{{ __('Info') }}</span>
                                         <span x-show="logFilters.info">✓</span>
                                     </button>
                                 </div>
@@ -195,7 +195,7 @@
                                     <x-reicon name="chevron-down" class="size-3 transition-transform" ::class="open ? 'rotate-180' : ''" />
                                 </button></x-slot:trigger>
                                 <div x-data="{ downloadingAllLogs: false }">
-                                    <p class="px-2 py-1.5 text-xs text-neutral-500 dark:text-fg-dim">Copied and downloaded logs hide secrets. The live view shows the raw output.</p>
+                                    <p class="px-2 py-1.5 text-xs text-neutral-500 dark:text-fg-dim">{{ __('Copied and downloaded logs hide secrets. The live view shows the raw output.') }}</p>
                                     <button type="button" role="menuitem" class="listbox-option"
                                         x-on:click="
                                             open = false;
@@ -237,7 +237,7 @@
                                         :disabled="downloadingAllLogs"
                                         :class="{ 'opacity-50 cursor-not-allowed': downloadingAllLogs }"
                                         class="listbox-option">
-                                        <span x-show="!downloadingAllLogs" class="flex-1 text-left">Download all logs</span>
+                                        <span x-show="!downloadingAllLogs" class="flex-1 text-left">{{ __('Download all logs') }}</span>
                                         <span x-show="downloadingAllLogs" class="flex items-center gap-2">
                                             <svg class="w-4 h-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -262,8 +262,8 @@
                     </div>
                     <div class="runtime-log-empty" x-show="!loading && lineCount === 0" role="status">
                         <div>
-                            <p>No logs yet</p>
-                            <span>Logs will appear here when the container produces output.</span>
+                            <p>{{ __('No logs yet') }}</p>
+                            <span>{{ __('Logs will appear here when the container produces output.') }}</span>
                         </div>
                     </div>
                     {{-- Alpine renders only the visible rows. Livewire must not morph them. --}}
@@ -273,7 +273,7 @@
                         <div x-ref="columns" x-show="!textView" class="runtime-log-columns" aria-hidden="true">
                             <span x-show="$wire.showTimeStamps">{{ __('Time') }}</span>
                             <span>{{ __('Type') }}</span>
-                            <span>Message</span>
+                            <span>{{ __('Message') }}</span>
                         </div>
                         <div x-ref="list" class="runtime-log-virtual-list" :style="{ height: totalSize + 'px' }">
                             <template x-for="row in virtualRows" :key="row.key">

@@ -6,7 +6,7 @@
     <livewire:server.navbar :server="$server" />
 
     <x-process-dialog @startupdate.window="processDialogOpen = true" closeWithX size="xl">
-        <x-slot:title>Package Update Logs</x-slot:title>
+        <x-slot:title>{{ __('Package Update Logs') }}</x-slot:title>
         <x-slot:content>
             <div class="flex h-full min-h-0 flex-col">
                 <livewire:activity-monitor fullHeight />

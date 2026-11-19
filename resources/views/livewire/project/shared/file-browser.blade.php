@@ -68,7 +68,7 @@
             @if ($containerRunning && $filesLoaded && ! $shellUnavailable)
                 <input type="file" class="hidden" x-ref="uploadInput"
                     @change="if ($event.target.files.length) { uploadFile($event.target.files[0]); $event.target.value = '' }" />
-                <x-forms.button type="button" title="Upload a file to this folder" canGate="canAccessTerminal" :canResource="$resource"
+                <x-forms.button type="button" title="{{ __('Upload a file to this folder') }}" canGate="canAccessTerminal" :canResource="$resource"
                     wire:target="uploadFile" @click="$refs.uploadInput.click()">
                     {{ __('Upload') }}
                 </x-forms.button>
@@ -95,7 +95,7 @@
                                 <form x-data="{ name: '' }"
                                     @submit.prevent="run('Creating file...', () => $wire.createFile(name)); name=''; $dispatch('close-modal')"
                                     class="flex flex-col gap-4">
-                                    <x-forms.input id="newFileName" label="File name" x-model="name"
+                                    <x-forms.input id="newFileName" label="{{ __('File name') }}" x-model="name"
                                         placeholder="config.yml" required />
                                     <div class="flex justify-end">
                                         <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">{{ __('Create file') }}</x-forms.button>
@@ -103,17 +103,17 @@
                                 </form>
                             </x-modal-input>
 
-                            <x-modal-input title="New folder">
+                            <x-modal-input title="{{ __('New folder') }}">
                                 <x-slot:content>
                                     <button type="button" class="listbox-option" @click="creationMenuOpen = false">
                                         <x-reicon name="folder" class="size-3.5 shrink-0" />
-                                        <span class="flex-1 text-left">New folder</span>
+                                        <span class="flex-1 text-left">{{ __('New folder') }}</span>
                                     </button>
                                 </x-slot:content>
                                 <form x-data="{ name: '' }"
                                     @submit.prevent="run('Creating folder...', () => $wire.createDirectory(name)); name=''; $dispatch('close-modal')"
                                     class="flex flex-col gap-4">
-                                    <x-forms.input id="newFolderName" label="Folder name" x-model="name"
+                                    <x-forms.input id="newFolderName" label="{{ __('Folder name') }}" x-model="name"
                                         placeholder="plugins" required />
                                     <div class="flex justify-end">
                                         <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">{{ __('Create folder') }}</x-forms.button>
@@ -124,7 +124,7 @@
                     </template>
                 </div>
 
-                <x-forms.button type="button" @click="run('Loading files...', () => $wire.refresh())" title="Refresh this folder">
+                <x-forms.button type="button" @click="run('Loading files...', () => $wire.refresh())" title="{{ __('Refresh this folder') }}">
                     Refresh
                 </x-forms.button>
             @elseif (! $filesLoaded && ! $loadFailed)
@@ -139,7 +139,7 @@
         </x-slot:actions>
 
         @if ($loadFailed)
-            <x-empty title="Could not load files" description="Check the server connection and try again." />
+            <x-empty title="{{ __('Could not load files') }}" description="Check the server connection and try again." />
             <div class="flex justify-center pb-4">
                 <x-forms.button wire:click="loadFiles">{{ __('Retry') }}</x-forms.button>
             </div>
@@ -149,13 +149,13 @@
             </div>
         @elseif (! $containerRunning)
             <x-empty title="{{ __('Container is not running') }}"
-                description="Start the container to browse its files.">
+                description="{{ __('Start the container to browse its files.') }}">
                 <x-slot:icon>
                     <x-reicon name="folder" class="size-8" />
                 </x-slot:icon>
             </x-empty>
         @elseif ($shellUnavailable)
-            <x-empty title="File browser is not available"
+            <x-empty title="{{ __('File browser is not available') }}"
                 description="Coolify cannot open the files of this container. {{ $helperError }}">
                 <x-slot:icon>
                     <x-reicon name="folder" class="size-8" />
@@ -201,8 +201,8 @@
                 :class="dragging ? 'ring-2 ring-coollabs/40 dark:ring-white/30' : ''"
                 class="transition-[box-shadow] duration-150 ease-out motion-reduce:transition-none">
                 @if (count($entries) === 0)
-                    <x-empty size="sm" title="This folder is empty"
-                        description="Upload a file to get started.">
+                    <x-empty size="sm" title="{{ __('This folder is empty') }}"
+                        description="{{ __('Upload a file to get started.') }}">
                         <x-slot:icon>
                             <x-reicon name="folder" class="size-8" />
                         </x-slot:icon>
@@ -212,11 +212,11 @@
                         <div class="data-table-header file-table-grid">
                             <span></span>
                             <span>{{ __('Name') }}</span>
-                            <span>Perms</span>
-                            <span>Owner</span>
-                            <span>Group</span>
+                            <span>{{ __('Perms') }}</span>
+                            <span>{{ __('Owner') }}</span>
+                            <span>{{ __('Group') }}</span>
                             <span class="text-right">{{ __('Size') }}</span>
-                            <span>Modified</span>
+                            <span>{{ __('Modified') }}</span>
                             <span class="text-right">{{ __('Actions') }}</span>
                         </div>
                         @foreach ($entries as $entry)
@@ -235,9 +235,9 @@
                                 </div>
                                 {{-- Permissions (click to chmod) --}}
                                 <div class="min-w-0">
-                                    <x-modal-input title="Change permissions">
+                                    <x-modal-input title="{{ __('Change permissions') }}">
                                         <x-slot:content>
-                                            <button type="button" title="Edit permissions"
+                                            <button type="button" title="{{ __('Edit permissions') }}"
                                                 class="cursor-pointer rounded-md px-1.5 py-0.5 font-mono text-xs text-coollabs-subtle hover:bg-black/5 hover:text-current dark:hover:bg-white/[0.06]">
                                                 {{ $entry['perms'] ?: '-' }}
                                             </button>
@@ -249,7 +249,7 @@
                                                 Set the octal permission mode for
                                                 <span class="font-medium">{{ $entry['name'] }}</span>.
                                             </p>
-                                            <x-forms.input id="chmodMode-{{ $loop->index }}" label="Octal mode"
+                                            <x-forms.input id="chmodMode-{{ $loop->index }}" label="{{ __('Octal mode') }}"
                                                 x-model="mode" placeholder="644" required />
                                             <div class="flex justify-end">
                                                 <x-forms.button type="submit" isHighlighted canGate="canAccessTerminal" :canResource="$resource">{{ __('Apply') }}</x-forms.button>
@@ -275,7 +275,7 @@
                                      double-encodes the quotes and breaks the handler. --}}
                                 <div class="flex items-center justify-end"
                                     x-data="{ name: @js($entry['name']), isDir: @js($entry['type'] === 'dir') }">
-                                    <x-table.row-actions label="File actions">
+                                    <x-table.row-actions label="{{ __('File actions') }}">
                                         @if ($entry['type'] !== 'dir')
                                             <x-table.row-action
                                                 x-on:click="run('Opening file...', () => $wire.openEditor(name))">
@@ -301,7 +301,7 @@
                                             </form>
                                         </x-modal-input>
                                         <x-slot:danger>
-                                            <x-modal-input title="Delete this item?">
+                                            <x-modal-input title="{{ __('Delete this item?') }}">
                                                 <x-slot:content>
                                                     <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
                                                 </x-slot:content>
@@ -329,7 +329,7 @@
             </div>
 
             {{-- Editor modal (opens when a text file is loaded) --}}
-            <x-modal-input title="Edit file" :wireOpen="'editorOpen'" :content="true" wireIgnore="false" isLarge>
+            <x-modal-input title="{{ __('Edit file') }}" :wireOpen="'editorOpen'" :content="true" wireIgnore="false" isLarge>
                 <x-slot:content>
                     <span class="hidden"></span>
                 </x-slot:content>

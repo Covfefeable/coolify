@@ -192,7 +192,7 @@
                                             <th class="px-3 py-2 font-medium">{{ __('Type') }}</th>
                                             <th class="px-3 py-2 font-medium">{{ __('Name') }}</th>
                                             <th class="px-3 py-2 font-medium">{{ __('Value') }}</th>
-                                            <th class="px-3 py-2 font-medium"><span class="sr-only">Action</span></th>
+                                            <th class="px-3 py-2 font-medium"><span class="sr-only">{{ __('Action') }}</span></th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-neutral-200 dark:divide-coolgray-300">

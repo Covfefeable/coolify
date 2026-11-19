@@ -15,12 +15,12 @@
     @elseif ($current_step === 2)
         <div wire:init="loadDigitalOceanData">
             @if ($loading_data)
-                <x-application.settings-section title="Loading DigitalOcean"
-                    description="Fetching regions, sizes, images, and account resources.">
-                    <x-skeleton.form :fields="6" label="Loading DigitalOcean data" />
+                <x-application.settings-section title="{{ __('Loading DigitalOcean') }}"
+                    description="{{ __('Fetching regions, sizes, images, and account resources.') }}">
+                    <x-skeleton.form :fields="6" label="{{ __('Loading DigitalOcean data') }}" />
                 </x-application.settings-section>
             @elseif ($provider_data_error)
-                <x-application.settings-section title="Unable to load DigitalOcean"
+                <x-application.settings-section title="{{ __('Unable to load DigitalOcean') }}"
                     description="{{ __('The selected token could not access the provider API.') }}">
                     <x-callout type="error" title="{{ __('Provider request failed') }}">
                         <pre class="mt-2 whitespace-pre-wrap break-words text-[11px]">{{ $provider_data_error }}</pre>

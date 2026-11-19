@@ -36,7 +36,7 @@
                     @if (
                         $server->proxy->last_applied_settings &&
                             $server->proxy->last_saved_settings !== $server->proxy->last_applied_settings)
-                        <x-callout type="warning" title="Your configuration changed, please restart the proxy." />
+                        <x-callout type="warning" title="{{ __('Your configuration changed, please restart the proxy.') }}" />
                     @elseif ($server->hasPendingProxyConfiguration())
                         <x-callout type="warning" title="{{ __('Restart required') }}">
                             Restart the proxy to apply TLS certificate changes.
@@ -72,12 +72,12 @@
                             helper="Control the 503 response for unknown hosts and stopped services. Custom request handling shows an error page or redirects to a URL."
                             onChange="instantSaveRedirect" :options="[
                                 ['value' => false, 'label' => 'Return the default 503 response'],
-                                ['value' => true, 'label' => 'Use custom request handling'],
+                                ['value' => true, 'label' => __('Use custom request handling')],
                             ]" />
                         @if ($redirectEnabled)
                             <x-forms.input canGate="update" :canResource="$server"
                                 placeholder="https://app.coolify.io" id="redirectUrl"
-                                label="Redirect URL"
+                                label="{{ __('Redirect URL') }}"
                                 helper="Leave empty to return a 503 response instead of redirecting." />
                         @endif
                         @if ($server->proxyType() === ProxyTypes::TRAEFIK->value)
@@ -115,7 +115,7 @@
                         <x-slot:actions>
                             @can('update', $server)
                                 @if ($proxySettings)
-                                    <x-modal-confirmation title="Reset Proxy Configuration?"
+                                    <x-modal-confirmation title="{{ __('Reset Proxy Configuration?') }}"
                                         buttonTitle="{{ __('Reset configuration') }}"
                                         submitAction="resetProxyConfiguration" :actions="[
                                             'Reset the proxy configuration to Coolify defaults.',
@@ -131,31 +131,31 @@
 
                         @if ($server->proxyType() === ProxyTypes::TRAEFIK->value)
                             @if ($this->traefikVersionForWarning === 'latest')
-                                <x-callout type="warning" title="Unpinned Traefik version">
+                                <x-callout type="warning" title="{{ __('Unpinned Traefik version') }}">
                                     The proxy uses the <span class="font-mono">latest</span> tag. Pin
                                     <span class="font-mono">traefik:{{ $this->latestTraefikVersion }}</span>
                                     for predictable updates.
                                 </x-callout>
                             @endif
                             @if ($this->isTraefikOutdated)
-                                <x-callout type="warning" title="Traefik patch update available">
+                                <x-callout type="warning" title="{{ __('Traefik patch update available') }}">
                                     {{ $server->detected_traefik_version ? 'Running version' : 'Configured image' }}
                                     v{{ ltrim($this->traefikVersionForWarning, 'v') }}. The latest patch
                                     for this branch is {{ $this->latestTraefikVersion }}. Test the update before applying it
                                     to production servers.
                                     <a class="font-medium underline"
                                         href="https://coolify.io/docs/core/networking/proxy/traefik/update"
-                                        target="_blank">Learn how to update Traefik.</a>
+                                        target="_blank">{{ __('Learn how to update Traefik.') }}</a>
                                 </x-callout>
                             @endif
                             @if ($this->newerTraefikBranchAvailable)
-                                <x-callout type="info" title="New Traefik minor version available">
+                                <x-callout type="info" title="{{ __('New Traefik minor version available') }}">
                                     {{ $this->newerTraefikBranchAvailable }} is available (latest patch:
                                     {{ $this->latestNewerTraefikVersion }}). Review the Traefik changelog for breaking
                                     changes before upgrading.
                                     <a class="font-medium underline"
                                         href="https://coolify.io/docs/core/networking/proxy/traefik/update"
-                                        target="_blank">Learn how to update Traefik.</a>
+                                        target="_blank">{{ __('Learn how to update Traefik.') }}</a>
                                 </x-callout>
                             @endif
                         @elseif ($this->outdatedCaddyImage)
@@ -164,7 +164,7 @@
 
                         <div wire:loading.flex wire:target="loadProxyConfiguration" role="status"
                             class="mt-4 hidden flex-col gap-2">
-                            <span class="sr-only">Loading proxy configuration</span>
+                            <span class="sr-only">{{ __('Loading proxy configuration') }}</span>
                             <x-skeleton class="h-2.5 w-56 rounded-full" />
                             <x-skeleton class="h-96 w-full rounded-lg" />
                         </div>
@@ -191,14 +191,14 @@
                 </fieldset>
             </form>
         @elseif($selectedProxy === 'NONE')
-            <x-application.settings-section title="Custom proxy"
+            <x-application.settings-section title="{{ __('Custom proxy') }}"
                 helper="Coolify will not manage a reverse proxy for this server.">
                 <x-slot:actions>
                     @can('update', $server)
                         <x-forms.button wire:click.prevent="changeProxy">{{ __('Switch proxy') }}</x-forms.button>
                     @endcan
                 </x-slot:actions>
-                <x-callout type="info" title="Custom proxy selected">
+                <x-callout type="info" title="{{ __('Custom proxy selected') }}">
                     Configure and operate the proxy outside Coolify.
                 </x-callout>
             </x-application.settings-section>

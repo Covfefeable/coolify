@@ -21,7 +21,7 @@
             <x-forms.textarea id="password" label="Service account JSON key" rows="6" required monospace
                 wire:key="registry-password-json" />
         @else
-            <x-forms.input id="password" type="password" label="Password or token" required
+            <x-forms.input id="password" type="password" label="{{ __('Password or token') }}" required
                 wire:key="registry-password-token" />
         @endif
         <p class="text-[12px] text-neutral-500 dark:text-fg-dim">
