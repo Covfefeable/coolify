@@ -94,6 +94,19 @@ function createApplicationWithVolume(array $applicationAttributes = [], array $v
     return [$application, $volume];
 }
 
+it('renders the persistent storage mount menu in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+    [$application] = createApplicationWithVolume();
+
+    Livewire::test(Storage::class, ['resource' => $application])
+        ->assertSee('持久存储')
+        ->assertSee('添加挂载')
+        ->assertSee('卷挂载')
+        ->assertSee('文件挂载')
+        ->assertSee('主机文件挂载')
+        ->assertSee('目录挂载');
+});
+
 it('creates named Docker volumes without a source path in swarm mode', function () {
     [$application] = createApplicationWithVolume();
     $application->persistentStorages()->delete();

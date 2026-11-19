@@ -53,7 +53,7 @@
 
 <x-main-nav-menu back-label="{{ __('Dashboard') }}" :name="$service->name" :nav-only="$navOnly"
     data-settings-search-items="{{ json_encode(settingsSearchItems($groupedItems, $serviceRouteParameters)) }}">
-    <nav aria-label="Service settings"
+    <nav aria-label="{{ __('Service settings') }}"
         class="grid grid-cols-1 gap-0.5">
         @foreach ($groupedItems as $groupLabel => $groupItems)
             @unless ($loop->first)

@@ -108,13 +108,13 @@
                                             'table-badge-success' => $hasS3Backup,
                                         ])
                                             title="{{ __('Volume backup is enabled') }}"
-                                            aria-label="{{ $hasS3Backup ? 'Backups are saved to S3' : 'Backups are stored locally only' }}">
+                                            aria-label="{{ $hasS3Backup ? __('Backups are saved to S3') : __('Backups are stored locally only') }}">
                                             {{ $hasS3Backup ? 'S3' : 'Local' }}
                                         </a>
                                     @else
                                         <span @class(['table-badge', 'table-badge-success' => $hasS3Backup])
                                             title="{{ __('Volume backup is enabled') }}"
-                                            aria-label="{{ $hasS3Backup ? 'Backups are saved to S3' : 'Backups are stored locally only' }}">
+                                            aria-label="{{ $hasS3Backup ? __('Backups are saved to S3') : __('Backups are stored locally only') }}">
                                             {{ $hasS3Backup ? 'S3' : 'Local' }}
                                         </span>
                                     @endif
@@ -130,7 +130,7 @@
                                         <x-modal-input title="{{ __('Configure Volume Backup') }}" :wireIgnore="false">
                                             <x-slot:content>
                                                 <button type="button" class="icon-button shrink-0" title="{{ __('Configure volume backup') }}"
-                                                    aria-label="Configure backup for {{ $form['name'] }}">
+                                                    aria-label="{{ __('Configure backup for :name', ['name' => $form['name']]) }}">
                                                     <x-reicon name="database" class="size-3.5" />
                                                 </button>
                                             </x-slot:content>
@@ -273,13 +273,13 @@
                                             'table-badge-success' => $hasS3Backup,
                                         ])
                                             title="{{ __('Volume backup is enabled') }}"
-                                            aria-label="{{ $hasS3Backup ? 'Backups are saved to S3' : 'Backups are stored locally only' }}">
+                                            aria-label="{{ $hasS3Backup ? __('Backups are saved to S3') : __('Backups are stored locally only') }}">
                                             {{ $hasS3Backup ? 'S3' : 'Local' }}
                                         </a>
                                     @else
                                         <span @class(['table-badge', 'table-badge-success' => $hasS3Backup])
                                             title="{{ __('Volume backup is enabled') }}"
-                                            aria-label="{{ $hasS3Backup ? 'Backups are saved to S3' : 'Backups are stored locally only' }}">
+                                            aria-label="{{ $hasS3Backup ? __('Backups are saved to S3') : __('Backups are stored locally only') }}">
                                             {{ $hasS3Backup ? 'S3' : 'Local' }}
                                         </span>
                                     @endif
@@ -298,7 +298,7 @@
                                 @endphp
                                 @if ($form['isShared'] && ! $hasBackupAction)
                                     <button type="button" wire:click="submit({{ $id }})" class="icon-button shrink-0"
-                                        title="{{ __('Update storage') }}" aria-label="Update {{ $form['name'] }}">
+                                        title="{{ __('Update storage') }}" aria-label="{{ __('Update :name', ['name' => $form['name']]) }}">
                                         <x-reicon name="check" class="size-3.5" />
                                     </button>
                                 @else

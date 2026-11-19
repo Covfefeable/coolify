@@ -11,6 +11,7 @@ use App\Models\StandaloneDocker;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Js;
 use Illuminate\Support\Str;
 use Livewire\Livewire;
 
@@ -54,6 +55,20 @@ beforeEach(function () {
         'environment_uuid' => $environment->uuid,
         'service_uuid' => $this->service->uuid,
     ];
+});
+
+test('the heading renders the deploy button and its menu in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+    $this->runningApp->forceFill(['status' => 'exited'])->save();
+
+    Livewire::test(ServiceHeading::class, [
+        'service' => $this->service->fresh(),
+        'parameters' => $this->parameters,
+        'query' => [],
+    ])->assertSee('部署')
+        ->assertSeeHtml((string) Js::from('正在部署…'))
+        ->assertSee('强制部署')
+        ->assertDontSee('Force Deploy');
 });
 
 test('the heading shows the status of the selected service resource', function () {

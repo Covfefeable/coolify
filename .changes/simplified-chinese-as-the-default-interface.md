@@ -23,3 +23,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Server setup, Sentinel status, reverse proxy guidance, and application health checks include additional Simplified Chinese translations
 - Cloud server forms, proxy certificates, server security settings, scheduled tasks, storage, and team access include additional Simplified Chinese translations
 - Database and Compose service settings, Git sources, user profiles, global search, and backup destinations include additional Simplified Chinese translations
+- Deploy actions and the persistent storage mount menu use Simplified Chinese

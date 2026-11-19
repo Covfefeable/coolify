@@ -59,7 +59,7 @@
                             @if ($selectedResource && $selectedResource->container_present !== false && $selectedResourceStatus->startsWith('exited'))
                                 <x-slot:main @click="document.getElementById('selected-resource-remove-trigger')?.click()">
                                     <x-reicon name="trash" class="size-3.5" />
-                                    Remove container
+                                    {{ __('Remove container') }}
                                 </x-slot:main>
                             @elseif ($serviceStatus->contains('running') || $serviceStatus->contains('degraded'))
                                 <x-slot:main x-bind:disabled="deploying"
@@ -72,14 +72,14 @@
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
                                         @click="$wire.dispatch('pullAndRestartEvent'); open = false" role="menuitem">
                                         <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                                        Restart (pull latest)
+                                        {{ __('Restart (pull latest)') }}
                                     </button>
                                 @endif
                                 @if ($serviceStatus->contains('degraded'))
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
                                         @click="$wire.dispatch('forceDeployEvent'); open = false" role="menuitem">
                                         <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                                        Force Restart
+                                        {{ __('Force Restart') }}
                                     </button>
                                 @endif
                                 <button type="button" class="listbox-option justify-start! gap-2.5!"
@@ -92,18 +92,18 @@
                                 <x-slot:main x-bind:disabled="deploying" @click="deploying = true; $wire.dispatch('startEvent')">
                                     <x-loading-on-button x-show="deploying" x-cloak />
                                     <x-reicon name="play-circle" class="size-3.5" x-show="!deploying" />
-                                    <span x-text="deploying ? 'Deploying…' : 'Deploy'">{{ __('Deploy') }}</span>
+                                    <span x-text="deploying ? @js(__('Deploying…')) : @js(__('Deploy'))">{{ __('Deploy') }}</span>
                                 </x-slot:main>
                                 <button type="button" class="listbox-option justify-start! gap-2.5!"
                                     @click="$wire.dispatch('forceDeployEvent'); open = false" role="menuitem">
                                     <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                                    Force Deploy
+                                    {{ __('Force Deploy') }}
                                 </button>
                                 <button type="button" class="listbox-option justify-start! gap-2.5!"
                                     @disabled(!auth()->user()->can('stop', $service))
                                     @click="$wire.dispatch('cleanupEvent'); open = false" role="menuitem">
                                     <x-reicon name="trash" class="size-3.5 opacity-70" />
-                                    Force Cleanup Containers
+                                    {{ __('Force Cleanup Containers') }}
                                 </button>
                             @endif
                         </x-split-action>
@@ -126,8 +126,8 @@
                                 <div class="listbox-option cursor-default! justify-start! gap-2.5! text-neutral-400! dark:text-fg-faint!"
                                     role="menuitem" aria-disabled="true">
                                     <x-reicon name="play-circle" class="size-3.5 opacity-70" />
-                                    <span>Deploy (<a href="{{ $environmentVariablesUrl }}" {{ wireNavigate() }}
-                                            class="cursor-pointer underline underline-offset-2">missing required env vars</a>)</span>
+                                    <span>{{ __('Deploy') }} (<a href="{{ $environmentVariablesUrl }}" {{ wireNavigate() }}
+                                            class="cursor-pointer underline underline-offset-2">{{ __('missing required env vars') }}</a>)</span>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                                 @if ($selectedResource && $selectedResource->container_present !== false && $selectedResourceStatus->startsWith('exited'))
                             <x-slot:main @click="document.getElementById('selected-resource-remove-trigger')?.click()">
                                 <x-reicon name="trash" class="size-3.5" />
-                                Remove container
+                                {{ __('Remove container') }}
                             </x-slot:main>
                         @elseif ($serviceStatus->contains('running') || $serviceStatus->contains('degraded'))
                                     <x-slot:main x-bind:disabled="deploying"
@@ -167,14 +167,14 @@
                                         <button type="button" class="listbox-option justify-start! gap-2.5!"
                                             @click="$wire.dispatch('pullAndRestartEvent'); open = false" role="menuitem">
                                             <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                                            Pull latest and restart
+                                            {{ __('Pull latest and restart') }}
                                         </button>
                                     @endif
                                     @if ($serviceStatus->contains('degraded'))
                                         <button type="button" class="listbox-option justify-start! gap-2.5!"
                                             @click="$wire.dispatch('forceDeployEvent'); open = false" role="menuitem">
                                             <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                                            Force Restart
+                                            {{ __('Force Restart') }}
                                         </button>
                                     @endif
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
@@ -187,18 +187,18 @@
                                     <x-slot:main x-bind:disabled="deploying" @click="deploying = true; $wire.dispatch('startEvent')">
                                         <x-loading-on-button x-show="deploying" x-cloak />
                                         <x-reicon name="play-circle" class="size-3.5" x-show="!deploying" />
-                                        <span x-text="deploying ? 'Deploying…' : 'Deploy'">{{ __('Deploy') }}</span>
+                                        <span x-text="deploying ? @js(__('Deploying…')) : @js(__('Deploy'))">{{ __('Deploy') }}</span>
                                     </x-slot:main>
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
                                         @click="$wire.dispatch('forceDeployEvent'); open = false" role="menuitem">
                                         <x-reicon name="refresh" class="size-3.5 opacity-70" />
-                                        Force Deploy
+                                        {{ __('Force Deploy') }}
                                     </button>
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
                                         @disabled(!auth()->user()->can('stop', $service))
                                         @click="$wire.dispatch('cleanupEvent'); open = false" role="menuitem">
                                         <x-reicon name="trash" class="size-3.5 opacity-70" />
-                                        Force Cleanup Containers
+                                        {{ __('Force Cleanup Containers') }}
                                     </button>
                                 @endif
                             </x-split-action>
@@ -218,8 +218,8 @@
                                     <div class="listbox-option cursor-default! justify-start! gap-2.5! text-neutral-400! dark:text-fg-faint!"
                                         role="menuitem" aria-disabled="true">
                                         <x-reicon name="play-circle" class="size-3.5 opacity-70" />
-                                        <span>Deploy (<a href="{{ $environmentVariablesUrl }}" {{ wireNavigate() }}
-                                                class="cursor-pointer underline underline-offset-2">missing required env vars</a>)</span>
+                                        <span>{{ __('Deploy') }} (<a href="{{ $environmentVariablesUrl }}" {{ wireNavigate() }}
+                                                class="cursor-pointer underline underline-offset-2">{{ __('missing required env vars') }}</a>)</span>
                                     </div>
                                 </div>
                             </div>

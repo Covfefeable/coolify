@@ -21,8 +21,8 @@
             $resource->getMorphClass() == 'App\Models\StandaloneSqlite')
         <x-application.settings-section id="storage-mounts-section" title="{{ __('Persistent storage') }}" :flush="true"
             :helper="$resource instanceof \App\Models\Application && $resource->git_based()
-                ? 'Preview deployment volumes can use a -pr-#PRNumber suffix so each pull request receives isolated storage.'
-                : 'Mount volumes, files, or directories to preserve data between deployments.'">
+                ? __('Preview deployment volumes can use a -pr-#PRNumber suffix so each pull request receives isolated storage.')
+                : __('Mount volumes, files, or directories to preserve data between deployments.')">
             <x-slot:actions>
                 @if ($resource?->build_pack !== 'dockercompose')
                     @can('update', $resource)
@@ -45,7 +45,7 @@
                                     @click="dropdownOpen = !dropdownOpen" aria-haspopup="menu"
                                     x-bind:aria-expanded="dropdownOpen">
                                     <x-reicon name="plus" class="size-3.5" />
-                                    Add mount
+                                    {{ __('Add mount') }}
                                     <x-reicon name="chevron-down" class="size-3 opacity-55" />
                                 </x-forms.button>
 
@@ -55,22 +55,22 @@
                                     <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
                                         @click="volumeModalOpen = true; dropdownOpen = false">
                                         <x-reicon name="storages" class="size-3.5 shrink-0 opacity-70" />
-                                        Volume mount
+                                        {{ __('Volume mount') }}
                                     </button>
                                     <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
                                         @click="fileModalOpen = true; dropdownOpen = false">
                                         <x-reicon name="file" class="size-3.5 shrink-0 opacity-70" />
-                                        File mount
+                                        {{ __('File mount') }}
                                     </button>
                                     <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
                                         @click="hostFileModalOpen = true; dropdownOpen = false">
                                         <x-reicon name="file-content" class="size-3.5 shrink-0 opacity-70" />
-                                        Host file mount
+                                        {{ __('Host file mount') }}
                                     </button>
                                     <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
                                         @click="directoryModalOpen = true; dropdownOpen = false">
                                         <x-reicon name="folder" class="size-3.5 shrink-0 opacity-70" />
-                                        Directory mount
+                                        {{ __('Directory mount') }}
                                     </button>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                                 </p>
                                                 <div class="flex flex-col gap-4">
                                                     <x-forms.input canGate="update" :canResource="$resource" placeholder="pv-name"
-                                                        id="name" label="{{ __('Name') }}" required helper="Volume name." />
+                                                        id="name" label="{{ __('Name') }}" required helper="{{ __('Volume name.') }}" />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/tmp/root" id="mount_path" label="{{ __('Destination Path') }}"
                                                         required helper="{{ __('Directory inside the container.') }}" />
@@ -197,7 +197,7 @@
                                                 }"
                                                 wire:submit='submitFileStorage'>
                                                 <p class="text-[13px] leading-5 text-neutral-500 dark:text-fg-dim">
-                                                    Create a managed file on the host and mount it inside the container.
+                                                    {{ __('Create a managed file on the host and mount it inside the container.') }}
                                                 </p>
                                                 <div class="flex flex-col gap-4">
                                                     <div class="rounded-lg bg-neutral-100 p-3 text-xs ring-1 ring-neutral-200 dark:bg-white/[0.04] dark:ring-white/[0.07]">
@@ -208,12 +208,12 @@
                                                         placeholder="/etc/nginx/nginx.conf" id="file_storage_path"
                                                         label="{{ __('Destination Path') }}" required
                                                         x-on:input="filePath = $event.target.value"
-                                                        helper="File location inside the container" />
+                                                        helper="{{ __('File location inside the container') }}" />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/srv/config/app.conf" id="file_storage_source"
                                                         label="{{ __('Source Path') }}"
                                                         x-on:input="sourcePath = $event.target.value"
-                                                        helper="Optional. File location on the host: an absolute path anywhere on the host, or a path relative to the resource directory. Empty: Coolify keeps the file in the resource directory. Coolify never deletes a file outside the resource directory." />
+                                                        helper="{{ __('Optional. File location on the host: an absolute path anywhere on the host, or a path relative to the resource directory. Empty: Coolify keeps the file in the resource directory. Coolify never deletes a file outside the resource directory.') }}" />
                                                     <x-forms.textarea canGate="update" :canResource="$resource" label="{{ __('Content') }}"
                                                         id="file_storage_content"></x-forms.textarea>
                                                     <div class="flex justify-end pt-2">
@@ -268,18 +268,17 @@
                                             <form class="flex w-full flex-col gap-4"
                                                 wire:submit='submitHostFileStorage'>
                                                 <p class="text-[13px] leading-5 text-neutral-500 dark:text-fg-dim">
-                                                    Bind an existing host file into the container. Coolify will not modify
-                                                    or delete the source file.
+                                                    {{ __('Bind an existing host file into the container. Coolify will not modify or delete the source file.') }}
                                                 </p>
                                                 <div class="flex flex-col gap-4">
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/etc/nginx/nginx.conf"
                                                         id="host_file_storage_source" label="{{ __('Host File Path') }}" required
-                                                        helper="Existing file on the host system." />
+                                                        helper="{{ __('Existing file on the host system.') }}" />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/etc/nginx/nginx.conf"
                                                         id="host_file_storage_destination" label="{{ __('Destination Path') }}"
-                                                        required helper="File location inside the container." />
+                                                        required helper="{{ __('File location inside the container.') }}" />
                                                     <div class="flex justify-end pt-2">
                                                         <x-forms.button canGate="update" :canResource="$resource" type="submit">
                                                             {{ __('Add host file') }}
@@ -332,13 +331,13 @@
                                             <form class="flex w-full flex-col gap-4"
                                                 wire:submit='submitFileStorageDirectory'>
                                                 <p class="text-[13px] leading-5 text-neutral-500 dark:text-fg-dim">
-                                                    Bind a directory from the host system into the container.
+                                                    {{ __('Bind a directory from the host system into the container.') }}
                                                 </p>
                                                 <div class="flex flex-col gap-4">
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="{{ application_configuration_dir() }}/{{ $resource->uuid }}/etc/nginx"
                                                         id="file_storage_directory_source" label="{{ __('Source Directory') }}"
-                                                        required helper="Directory on the host: an absolute path anywhere on the host, or a path relative to the resource directory. Coolify creates it when it is missing, and never deletes a directory outside the resource directory." />
+                                                        required helper="{{ __('Directory on the host: an absolute path anywhere on the host, or a path relative to the resource directory. Coolify creates it when it is missing, and never deletes a directory outside the resource directory.') }}" />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/etc/nginx" id="file_storage_directory_destination"
                                                         label="{{ __('Destination Directory') }}" required
@@ -421,7 +420,7 @@
         {{-- Service stack resources: one settings card + table per service --}}
         <x-application.settings-section :id="'storage-service-'.$resource->uuid"
             :title="Str::headline($resource->name)" :flush="true"
-            helper="Volume mounts for this compose service. Compose-managed mounts are read-only in the dashboard.">
+            helper="{{ __('Volume mounts for this compose service. Compose-managed mounts are read-only in the dashboard.') }}">
             <x-slot:actions>
                 @if ($hasVolumes || $hasFiles || $hasDirectories)
                     <div
@@ -490,11 +489,11 @@
         {{-- External Compose volumes: read-only, no storage entry, never removed by Coolify --}}
         <x-application.settings-section :id="'external-volumes-'.$resource->uuid" title="{{ __('External volumes') }}"
             :flush="true"
-            helper="Docker volumes that the Docker Compose file declares with external: true. Coolify mounts them as written.">
+            helper="{{ __('Docker volumes that the Docker Compose file declares with external: true. Coolify mounts them as written.') }}">
             <div class="flex w-full flex-col">
                 <div
                     class="border-b border-neutral-200 px-4 py-3 text-[13px] leading-5 text-neutral-500 dark:border-white/[0.08] dark:text-fg-dim">
-                    Managed outside Coolify. Coolify never removes these volumes.
+                    {{ __('Managed outside Coolify. Coolify never removes these volumes.') }}
                 </div>
                 <div class="data-table w-full">
                     <div class="data-table-header external-volumes-table-grid">
