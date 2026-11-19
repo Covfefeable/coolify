@@ -13,7 +13,7 @@ $spark = 'refreshChartData-'.$chartId.'-status';
     <div class="mb-3 flex items-end justify-between gap-4">
         <div>
             <h2 class="text-[14px]! leading-5! font-semibold! text-black dark:text-fg">
-                Traffic analytics
+                {{ __('Traffic analytics') }}
             </h2>
             <p class="mt-0.5 text-[11px] text-neutral-500 dark:text-fg-faint">
                 Team-wide request volume across servers with traffic analytics enabled
@@ -70,7 +70,7 @@ $spark = 'refreshChartData-'.$chartId.'-status';
             <a href="{{ route('analytics') }}" {{ wireNavigate() }}
                 class="group flex flex-col bg-white px-4 py-3 transition-colors hover:bg-neutral-50 dark:bg-[color-mix(in_srgb,var(--color-app)_95%,white)] dark:hover:bg-[color-mix(in_srgb,var(--color-app)_93%,white)]">
                 <span class="flex items-center text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">
-                    Unique visitors
+                    {{ __('Unique visitors') }}
                     @if ($uniquesApproximate)
                         {!! $approxBadge('Summed across '.$servers->count().' servers; visitors seen on multiple servers may be double-counted.') !!}
                     @endif

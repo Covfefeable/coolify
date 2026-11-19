@@ -25,7 +25,7 @@ $appListboxOptions = array_merge(
 <div class="flex w-full min-w-0 flex-col gap-6">
     @if ($scopedServerUuid === null)
         <x-slot:title>
-            Analytics | Coolify
+            {{ __('Analytics') }} | Coolify
         </x-slot>
     @endif
 
@@ -35,7 +35,7 @@ $appListboxOptions = array_merge(
             <div class="min-w-0">
                 <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Analytics') }}</h1>
                 <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                    Request traffic across every application and server, reported by Sentinel.
+                    {{ __('Request traffic across every application and server, reported by Sentinel.') }}
                 </p>
             </div>
         @endif
@@ -84,21 +84,21 @@ $appListboxOptions = array_merge(
             class="flex items-start gap-3 rounded-xl border border-neutral-200 bg-white px-4 py-3 shadow-sm dark:border-white/[0.08] dark:bg-white/[0.025]">
             <div class="min-w-0 flex-1">
                 <p class="text-[12px] font-semibold text-black dark:text-fg">
-                    {{ count($eligibleDisabledServers) === 1 ? '1 server can start collecting traffic analytics' : count($eligibleDisabledServers).' servers can start collecting traffic analytics' }}
+                    {{ count($eligibleDisabledServers) === 1 ? __('1 server can start collecting traffic analytics') : __(':count servers can start collecting traffic analytics', ['count' => count($eligibleDisabledServers)]) }}
                 </p>
                 <p class="mt-0.5 text-[11px] text-neutral-500 dark:text-fg-dim">
-                    Enabling regenerates the proxy config and restarts the proxy + Sentinel (a brief blip).
-                    Works with Traefik &amp; Caddy.
+                    {{ __('Enabling regenerates the proxy config and restarts the proxy + Sentinel (a brief blip).') }}
+                    {{ __('Works with Traefik & Caddy.') }}
                 </p>
             </div>
             <div class="flex shrink-0 items-center gap-2">
                 @if (count($eligibleDisabledServers) === 1)
                     <a class="button" href="{{ route('server.analytics', ['server_uuid' => $eligibleDisabledServers[0]['uuid']]) }}" {{ wireNavigate() }}>
-                        Set up on {{ \Illuminate\Support\Str::limit($eligibleDisabledServers[0]['name'], 16) }}
+                        {{ __('Set up on :server', ['server' => \Illuminate\Support\Str::limit($eligibleDisabledServers[0]['name'], 16)]) }}
                     </a>
                 @else
                     <a class="button" href="{{ route('server.index') }}" {{ wireNavigate() }}>
-                        View servers
+                        {{ __('View servers') }}
                     </a>
                 @endif
                 <button type="button" title="{{ __('Dismiss') }}"
@@ -114,19 +114,19 @@ $appListboxOptions = array_merge(
 
     @if ($servers->isEmpty())
         @if ($scopedServerUuid === null)
-            <x-empty size="sm" title="Traffic analytics is not enabled"
-                description="Enable traffic analytics on a server to see request analytics here."
+            <x-empty size="sm" title="{{ __('Traffic analytics is not enabled') }}"
+                description="{{ __('Enable traffic analytics on a server to see request analytics here.') }}"
                 icon-name="analytics">
                 <x-slot:contents>
                     <a class="button" href="{{ route('server.index') }}" {{ wireNavigate() }}>
-                        View servers
+                        {{ __('View servers') }}
                     </a>
                 </x-slot:contents>
             </x-empty>
         @endif
     @elseif (! $overview)
-        <x-empty size="sm" title="No analytics data yet"
-            description="We could not load traffic analytics for the selected filters and range. Try a different range or check back shortly."
+        <x-empty size="sm" title="{{ __('No analytics data yet') }}"
+            description="{{ __('We could not load traffic analytics for the selected filters and range. Try a different range or check back shortly.') }}"
             icon-name="analytics" />
     @else
         @if ($live)
@@ -152,7 +152,7 @@ $appListboxOptions = array_merge(
                 </div>
                 <div class="flex flex-col bg-[var(--coollabs-base)] px-4 py-3">
                     <span class="flex items-center text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">
-                        Unique visitors
+                        {{ __('Unique visitors') }}
                         @if ($uniquesApproximate)
                             {!! $approxBadge('Summed across servers or services; visitors seen on more than one may be double-counted.') !!}
                         @endif
@@ -231,16 +231,16 @@ $appListboxOptions = array_merge(
              When filtered to one app, only Top paths applies. --}}
         <div @class(['grid grid-cols-1 gap-6', 'lg:grid-cols-2' => $appUuid === ''])>
             @if ($appUuid === '')
-                <x-application.settings-section id="analytics-hosts-section" title="Top hosts"
+                <x-application.settings-section id="analytics-hosts-section" title="{{ __('Top hosts') }}"
                     helper="Served hostnames ranked by request volume." flush>
                     @include('livewire.traffic._hosts-list', ['hosts' => $topHosts])
                 </x-application.settings-section>
 
-                <x-application.settings-section id="analytics-apps-section" title="Top applications"
+                <x-application.settings-section id="analytics-apps-section" title="{{ __('Top applications') }}"
                     helper="Applications and services ranked by request volume. Open one for its analytics." flush>
                     @if (empty($topApps))
-                        <x-empty size="sm" title="No application data"
-                            description="No per-application requests were recorded for the selected range."
+                        <x-empty size="sm" title="{{ __('No application data') }}"
+                            description="{{ __('No per-application requests were recorded for the selected range.') }}"
                             icon-name="unordered-list" />
                     @else
                         @php $maxAppRequests = max(1, (int) collect($topApps)->max('requests')); @endphp

@@ -50,6 +50,23 @@ it('shows the analytics-page nudge when an eligible server has analytics disable
         ->assertSee('can start collecting traffic analytics');
 });
 
+it('renders the analytics setup guidance and empty state in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+    $server = disabledServer();
+    $server->update(['name' => 'localhost']);
+
+    loadLazy(Livewire::test(Analytics::class))
+        ->assertOk()
+        ->assertSee('由 Sentinel 上报的所有应用和服务器的请求流量。')
+        ->assertSee('1 台服务器可以开始收集流量分析数据')
+        ->assertSee('启用后会重新生成代理配置')
+        ->assertSee('支持 Traefik 和 Caddy。')
+        ->assertSee('在 localhost 上设置')
+        ->assertSee('尚未启用流量分析')
+        ->assertSee('在服务器上启用流量分析后，即可在此查看请求数据。')
+        ->assertSee('查看服务器');
+});
+
 it('does not count swarm or build servers in the analytics-page nudge', function () {
     $swarm = disabledServer();
     $swarm->settings->is_swarm_manager = true;

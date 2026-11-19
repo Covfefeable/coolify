@@ -4,7 +4,7 @@
         <div class="min-w-0">
             <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Metrics') }}</h1>
             <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                Resource usage across every server, reported by Sentinel.
+                {{ __('Resource usage across every server, reported by Sentinel.') }}
             </p>
         </div>
 
@@ -32,7 +32,7 @@
         <x-skeleton.table :rows="4" flush />
     </x-application.settings-section>
 
-    <x-application.settings-section title="Hottest containers" flush>
+    <x-application.settings-section title="{{ __('Hottest containers') }}" flush>
         <x-skeleton.table :rows="6" flush />
     </x-application.settings-section>
 </div>

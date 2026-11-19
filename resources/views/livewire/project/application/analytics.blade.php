@@ -27,14 +27,14 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
                     </a>
                 </x-slot:actions>
             @endif
-            <x-empty size="sm" title="Traffic analytics is not enabled"
+            <x-empty size="sm" title="{{ __('Traffic analytics is not enabled') }}"
                 description="Enable Sentinel traffic analytics for this server to start collecting request analytics."
                 icon-name="network" />
         </x-application.settings-section>
     @elseif (! $overview)
         <x-application.settings-section id="analytics-section" title="{{ __('Analytics') }}"
             helper="Inspect traffic statistics reported by Sentinel.">
-            <x-empty size="sm" title="No analytics data yet"
+            <x-empty size="sm" title="{{ __('No analytics data yet') }}"
                 description="We could not load traffic analytics for the selected range. Try a different range or check back shortly."
                 icon-name="network" />
         </x-application.settings-section>
@@ -79,7 +79,7 @@ $approxBadge = fn (string $tooltip) => '<span title="'.e($tooltip).'" class="ml-
                     </div>
                     <div class="flex flex-col bg-[var(--coollabs-base)] px-4 py-3">
                         <span class="flex items-center text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">
-                            Unique visitors
+                            {{ __('Unique visitors') }}
                             @if ($uniquesApproximate)
                                 {!! $approxBadge('Summed across services; visitors of more than one service may be double-counted.') !!}
                             @endif

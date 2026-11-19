@@ -6,7 +6,7 @@
             <div class="min-w-0">
                 <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Analytics') }}</h1>
                 <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                    Request traffic across every application and server, reported by Sentinel.
+                    {{ __('Request traffic across every application and server, reported by Sentinel.') }}
                 </p>
             </div>
         @endif
@@ -40,10 +40,10 @@
     </x-application.settings-section>
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <x-application.settings-section id="analytics-hosts-section" title="Top hosts" flush>
+        <x-application.settings-section id="analytics-hosts-section" title="{{ __('Top hosts') }}" flush>
             <x-skeleton.table :rows="6" flush />
         </x-application.settings-section>
-        <x-application.settings-section id="analytics-apps-section" title="Top applications" flush>
+        <x-application.settings-section id="analytics-apps-section" title="{{ __('Top applications') }}" flush>
             <x-skeleton.table :rows="6" flush />
         </x-application.settings-section>
     </div>

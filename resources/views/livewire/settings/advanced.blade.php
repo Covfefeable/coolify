@@ -11,64 +11,64 @@
             <x-unsaved-bar action="submit"
                 targets="custom_dns_servers,allowed_ips,webhook_allowed_internal_hosts,webhook_allow_localhost,domain_connect_private_key,image_cdn_url" />
 
-            <x-application.settings-section id="access-section" title="Access and API">
+            <x-application.settings-section id="access-section" title="{{ __('Access and API') }}">
                 <div class="grid gap-4 lg:grid-cols-2">
-                     <x-forms.listbox id="is_registration_enabled" label="Registration"
-                        helper="Allow users to create their own account. When disabled, only administrators can create accounts."
+                     <x-forms.listbox id="is_registration_enabled" label="{{ __('Registration') }}"
+                        helper="{{ __('Allow users to create their own account. When disabled, only administrators can create accounts.') }}"
                         onChange="instantSave" :options="[
                             ['value' => true, 'label' => 'Anyone can register'],
                             ['value' => false, 'label' => 'Registration disabled'],
                          ]" />
                      <x-forms.listbox canGate="update" :canResource="$settings"
-                         id="disable_registration_when_oauth_enabled" label="Password registration with OAuth"
-                         helper="Hide password registration whenever at least one OAuth provider is enabled."
+                         id="disable_registration_when_oauth_enabled" label="{{ __('Password registration with OAuth') }}"
+                         helper="{{ __('Hide password registration whenever at least one OAuth provider is enabled.') }}"
                          onChange="instantSave" :options="[
                              ['value' => false, 'label' => 'Allow password registration'],
                              ['value' => true, 'label' => 'Disable when OAuth is enabled'],
                          ]" />
-                    <x-forms.listbox id="disable_two_step_confirmation" label="Destructive action confirmation"
-                        helper="Choose whether destructive actions require password and text confirmation."
+                    <x-forms.listbox id="disable_two_step_confirmation" label="{{ __('Destructive action confirmation') }}"
+                        helper="{{ __('Choose whether destructive actions require password and text confirmation.') }}"
                         onChange="instantSave" :options="[
                             ['value' => false, 'label' => 'Require two-step confirmation'],
                             ['value' => true, 'label' => 'Skip two-step confirmation'],
                         ]" />
-                    <x-forms.listbox canGate="update" :canResource="$settings" id="is_passkey_enabled" label="Passkeys"
-                        helper="Let users sign in with a passkey. Passkeys need an HTTPS instance URL. Stored passkeys are kept when this is disabled."
+                    <x-forms.listbox canGate="update" :canResource="$settings" id="is_passkey_enabled" label="{{ __('Passkeys') }}"
+                        helper="{{ __('Let users sign in with a passkey. Passkeys need an HTTPS instance URL. Stored passkeys are kept when this is disabled.') }}"
                         onChange="instantSave" :options="[
-                            ['value' => true, 'label' => 'Enabled'],
-                            ['value' => false, 'label' => 'Disabled'],
+                            ['value' => true, 'label' => __('Enabled')],
+                            ['value' => false, 'label' => __('Disabled')],
                         ]" />
                 </div>
-                <x-application.settings-subsection id="api-section" title="API and MCP">
+                <x-application.settings-subsection id="api-section" title="{{ __('API and MCP') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
-                        <x-forms.listbox id="is_api_enabled" label="API access"
-                            helper="Allow authenticated requests to the Coolify REST API." onChange="instantSave"
+                        <x-forms.listbox id="is_api_enabled" label="{{ __('API access') }}"
+                            helper="{{ __('Allow authenticated requests to the Coolify REST API.') }}" onChange="instantSave"
                             :options="[
-                                ['value' => true, 'label' => 'Enabled'],
-                                ['value' => false, 'label' => 'Disabled'],
+                                ['value' => true, 'label' => __('Enabled')],
+                                ['value' => false, 'label' => __('Disabled')],
                             ]" />
-                        <x-forms.listbox id="is_mcp_server_enabled" label="MCP server"
-                            helper="Expose the authenticated Streamable HTTP endpoint at /mcp." onChange="instantSave"
+                        <x-forms.listbox id="is_mcp_server_enabled" label="{{ __('MCP server') }}"
+                            helper="{{ __('Expose the authenticated Streamable HTTP endpoint at /mcp.') }}" onChange="instantSave"
                             :options="[
-                                ['value' => true, 'label' => 'Enabled'],
-                                ['value' => false, 'label' => 'Disabled'],
+                                ['value' => true, 'label' => __('Enabled')],
+                                ['value' => false, 'label' => __('Disabled')],
                             ]" />
                         <div class="lg:col-span-2">
-                            <x-forms.input id="allowed_ips" label="Allowed IPs"
+                            <x-forms.input id="allowed_ips" label="{{ __('Allowed IPs') }}"
                                 helper="Applies to the REST API and the MCP endpoint. Comma-separated IPs or CIDR ranges. Empty or 0.0.0.0 allows all sources."
                                 placeholder="192.168.1.100, 10.0.0.0/8" />
                         </div>
                     </div>
                     @if ($is_api_enabled && (empty($allowed_ips) || in_array('0.0.0.0', array_map('trim', explode(',', $allowed_ips ?? '')))))
-                        <x-callout type="warning" title="API access is open to every source" class="mt-4">
+                        <x-callout type="warning" title="{{ __('API access is open to every source') }}" class="mt-4">
                             Restrict the allowlist before using API access on a public production instance.
                         </x-callout>
                     @endif
                     @if ($is_mcp_server_enabled)
-                        <x-callout type="info" title="MCP endpoint" class="mt-4">
+                        <x-callout type="info" title="{{ __('MCP endpoint') }}" class="mt-4">
                             <div class="flex items-center gap-1">
                                 <code>{{ url('/mcp') }}</code>
-                                <x-copy-button :value="url('/mcp')" label="Copy MCP endpoint" />
+                                <x-copy-button :value="url('/mcp')" label="{{ __('Copy MCP endpoint') }}" />
                             </div>
                             Authenticate with a bearer token from
                             <a href="{{ route('security.api-tokens') }}" class="font-medium underline" {{ wireNavigate() }}>Keys & Tokens → API Tokens</a>.
@@ -78,16 +78,16 @@
             </x-application.settings-section>
 
             <x-application.settings-section id="network-section" title="{{ __('Network') }}"
-                helper="Domain validation and the internal targets that outbound requests may reach.">
-                <x-application.settings-subsection first id="dns-section" title="DNS validation">
+                helper="{{ __('Domain validation and the internal targets that outbound requests may reach.') }}">
+                <x-application.settings-subsection first id="dns-section" title="{{ __('DNS validation') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
-                        <x-forms.listbox id="is_dns_validation_enabled" label="DNS validation"
-                            helper="Validate custom domains before deployment." onChange="instantSave" :options="[
-                                ['value' => true, 'label' => 'Enabled'],
-                                ['value' => false, 'label' => 'Disabled'],
+                        <x-forms.listbox id="is_dns_validation_enabled" label="{{ __('DNS validation') }}"
+                            helper="{{ __('Validate custom domains before deployment.') }}" onChange="instantSave" :options="[
+                                ['value' => true, 'label' => __('Enabled')],
+                                ['value' => false, 'label' => __('Disabled')],
                             ]" />
-                        <x-forms.input id="custom_dns_servers" label="Custom DNS servers"
-                            helper="Comma-separated resolvers. Leave empty to use system defaults."
+                        <x-forms.input id="custom_dns_servers" label="{{ __('Custom DNS servers') }}"
+                            helper="{{ __('Comma-separated resolvers. Leave empty to use system defaults.') }}"
                             placeholder="1.1.1.1, 8.8.8.8" />
                     </div>
                 </x-application.settings-subsection>
@@ -115,30 +115,30 @@
                             @endif
                         </div>
                     </x-application.settings-subsection>
-                    <x-application.settings-subsection id="server-validation-section" title="Server validation"
+                    <x-application.settings-subsection id="server-validation-section" title="{{ __('Server validation') }}"
                         helper="Limits failed SSH validations, so users cannot make Coolify Cloud try logins on hosts that they do not own. Successful connections do not count.">
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input id="server_validation_rate_limit_seconds" type="number" min="60" max="86400"
-                                label="Rate limit window (seconds)"
+                                label="{{ __('Rate limit window (seconds)') }}"
                                 helper="The period in which Coolify counts failed validations. From 60 to 86400 seconds." />
                             <x-forms.input id="server_validation_max_failures_per_ip" type="number" min="1" max="1000"
-                                label="Max failed validations per IP"
+                                label="{{ __('Max failed validations per IP') }}"
                                 helper="For one target IP, from all teams together, in the window. From 1 to 1000." />
                             <x-forms.input id="server_validation_max_failures_per_team" type="number" min="1" max="10000"
-                                label="Max failed validations per team"
+                                label="{{ __('Max failed validations per team') }}"
                                 helper="For one team, to all IPs together, in the window. From 1 to 10000." />
                         </div>
                     </x-application.settings-subsection>
                 @endif
-                <x-application.settings-subsection id="endpoint-section" title="Outbound endpoints">
+                <x-application.settings-subsection id="endpoint-section" title="{{ __('Outbound endpoints') }}">
                     <div class="flex flex-col gap-4">
                         <x-forms.textarea id="webhook_allowed_internal_hosts" rows="4"
-                            label="Allowed internal targets"
-                            helper="Hostnames, IPs, or CIDR ranges separated by commas or new lines."
+                            label="{{ __('Allowed internal targets') }}"
+                            helper="{{ __('Hostnames, IPs, or CIDR ranges separated by commas or new lines.') }}"
                             placeholder="hooks.company.local, 10.50.0.0/16" />
                         <div class="max-w-md">
-                            <x-forms.listbox id="webhook_allow_localhost" label="Localhost targets"
-                                helper="Loopback targets must also be present in the allowlist." :options="[
+                            <x-forms.listbox id="webhook_allow_localhost" label="{{ __('Localhost targets') }}"
+                                helper="{{ __('Loopback targets must also be present in the allowlist.') }}" :options="[
                                     ['value' => true, 'label' => 'Allowed'],
                                     ['value' => false, 'label' => 'Blocked'],
                                 ]" />
@@ -147,23 +147,23 @@
                 </x-application.settings-subsection>
             </x-application.settings-section>
 
-            <x-application.settings-section id="interface-section" title="Interface and telemetry">
+            <x-application.settings-section id="interface-section" title="{{ __('Interface and telemetry') }}">
                 <div class="grid gap-4 lg:grid-cols-2">
-                    <x-forms.listbox id="is_wire_navigate_enabled" label="Navigation"
+                    <x-forms.listbox id="is_wire_navigate_enabled" label="{{ __('Navigation') }}"
                         helper="Prefetch pages and navigate without full reloads." onChange="instantSave" :options="[
                             ['value' => true, 'label' => 'SPA navigation'],
                             ['value' => false, 'label' => 'Full page navigation'],
                         ]" />
                     <x-forms.listbox id="do_not_track" label="Anonymous telemetry"
                         helper="Control installation counting and error reports." onChange="instantSave" :options="[
-                            ['value' => false, 'label' => 'Enabled'],
-                            ['value' => true, 'label' => 'Disabled'],
+                            ['value' => false, 'label' => __('Enabled')],
+                            ['value' => true, 'label' => __('Disabled')],
                         ]" />
                     <div class="flex flex-col gap-2">
                         <x-forms.listbox id="is_sponsorship_popup_enabled" label="Sponsorship reminders"
                             helper="Show the monthly project sponsorship reminder." onChange="instantSave" :options="[
-                                ['value' => true, 'label' => 'Enabled'],
-                                ['value' => false, 'label' => 'Disabled'],
+                                ['value' => true, 'label' => __('Enabled')],
+                                ['value' => false, 'label' => __('Disabled')],
                             ]" />
                         @if (isDev())
                             <x-forms.button type="button" @click="$dispatch('show-sponsorship-reminder')">
