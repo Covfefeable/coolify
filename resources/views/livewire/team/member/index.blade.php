@@ -71,7 +71,7 @@
                     <x-reicon name="search"
                         class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
                     <input x-model.debounce.150ms="search" x-on:input="page = 1" type="search"
-                        placeholder="Search members" aria-label="Search members"
+                        placeholder="{{ __('Search members') }}" aria-label="Search members"
                         class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                     <button x-cloak x-show="search" x-on:click="search = ''; page = 1" type="button"
                         class="absolute top-1/2 right-2 flex size-5 -translate-y-1/2 items-center justify-center rounded text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
@@ -85,7 +85,7 @@
                             x-effect="page = 1" :value="'all'" :options="[
                                 ['value' => 'all', 'label' => 'All roles'],
                                 ['value' => 'owner', 'label' => 'Owner'],
-                                ['value' => 'admin', 'label' => 'Admin'],
+                                ['value' => 'admin', 'label' => __('Admin')],
                                 ['value' => 'member', 'label' => 'Member'],
                             ]" />
                     </div>
@@ -96,7 +96,7 @@
                                 ['value' => 'name-desc', 'label' => 'Name Z–A'],
                                 ['value' => 'email-asc', 'label' => 'Email A–Z'],
                                 ['value' => 'email-desc', 'label' => 'Email Z–A'],
-                                ['value' => 'role-desc', 'label' => 'Role'],
+                                ['value' => 'role-desc', 'label' => __('Role')],
                             ]" />
                     </div>
                 </div>

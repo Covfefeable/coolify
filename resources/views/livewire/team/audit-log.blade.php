@@ -13,7 +13,7 @@
                         <x-reicon name="search"
                             class="pointer-events-none absolute top-1/2 left-2.5 z-10 size-3.5 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
                         <input wire:model.live.debounce.300ms="search" type="search"
-                            placeholder="Search activity" aria-label="Search activity"
+                            placeholder="{{ __('Search activity') }}" aria-label="{{ __('Search activity') }}"
                             class="h-8! w-full rounded-lg! border-neutral-200! bg-white! py-0! pr-8! pl-8! text-[12px]! shadow-none! placeholder:text-neutral-400 focus:border-accent! focus:ring-0! dark:border-white/[0.08]! dark:bg-white/[0.035]! dark:text-fg! dark:placeholder:text-fg-faint">
                     </div>
                     <div class="grid grid-cols-2 gap-2 sm:flex">

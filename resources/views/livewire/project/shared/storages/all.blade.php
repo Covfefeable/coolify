@@ -258,7 +258,7 @@
                                         <x-helper helper="{{ __('Adds -pr-N to the storage name or path so each preview uses isolated data. Disabling it shares production data with previews.') }}" />
                                     </div>
                                     <x-forms.listbox id="forms.{{ $id }}.isPreviewSuffixEnabled" portal :options="[
-                                        ['value' => true, 'label' => 'Add suffix'],
+                                        ['value' => true, 'label' => __('Add suffix')],
                                         ['value' => false, 'label' => 'Share volume'],
                                     ]" canGate="update" :canResource="$resource" />
                                 </div>

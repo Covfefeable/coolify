@@ -34,7 +34,7 @@
                             canGate="update" :canResource="$database" />
                     @endif
                     <x-forms.input label="{{ __('Initial database') }}" id="postgresDb"
-                        placeholder="If empty, it will match the username."
+                        placeholder="{{ __('If empty, it will match the username.') }}"
                         :readonly="(bool) $database->started_at" canGate="update" :canResource="$database"
                         helper="{{ $database->started_at ? 'You can only change this in the database.' : null }}" />
                 </div>
@@ -42,9 +42,9 @@
             <x-application.settings-subsection id="initialization-section" title="Initialization" helper="Configure the options used when PostgreSQL creates its initial data directory.">
                 <div class="grid gap-4 lg:grid-cols-2">
                     <x-forms.input label="Initial database arguments" id="postgresInitdbArgs"
-                        placeholder="Leave empty to use the image default." canGate="update" :canResource="$database" />
+                        placeholder="{{ __('Leave empty to use the image default.') }}" canGate="update" :canResource="$database" />
                     <x-forms.input label="Host authentication method" id="postgresHostAuthMethod"
-                        placeholder="Leave empty to use the image default." canGate="update" :canResource="$database" />
+                        placeholder="{{ __('Leave empty to use the image default.') }}" canGate="update" :canResource="$database" />
                 </div>
             </x-application.settings-subsection>
         </x-application.settings-section>

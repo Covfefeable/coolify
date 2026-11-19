@@ -140,7 +140,7 @@
                             <x-forms.listbox id="webhook_allow_localhost" label="{{ __('Localhost targets') }}"
                                 helper="{{ __('Loopback targets must also be present in the allowlist.') }}" :options="[
                                     ['value' => true, 'label' => 'Allowed'],
-                                    ['value' => false, 'label' => 'Blocked'],
+                                    ['value' => false, 'label' => __('Blocked')],
                                 ]" />
                         </div>
                     </div>

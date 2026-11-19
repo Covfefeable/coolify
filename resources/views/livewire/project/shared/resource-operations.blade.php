@@ -162,22 +162,22 @@
             <div class="mt-4 grid gap-4 md:grid-cols-2">
                 <x-forms.listbox id="clone-resource-server" label="{{ __('Server') }}" :wire="false"
                     x-model="selectedCloneServer" x-effect="options = cloneServerOptions"
-                    placeholder="Choose a server…" />
+                    placeholder="{{ __('Choose a server…') }}" />
 
                 <x-forms.listbox id="clone-resource-destination" label="Network destination" :wire="false"
                     x-model="selectedCloneDestination" x-effect="options = cloneDestinationOptions"
                     x-bind:disabled="selectedCloneServer === null || selectedCloneServer === ''"
-                    placeholder="Choose a destination…"
-                    emptyText="No network destinations are available on this server." />
+                    placeholder="{{ __('Choose a destination…') }}"
+                    emptyText="{{ __('No network destinations are available on this server.') }}" />
 
                 <x-forms.listbox id="clone-resource-project" label="{{ __('Project') }}" :wire="false"
                     x-model="selectedCloneProject" x-effect="options = cloneProjectOptions"
-                    placeholder="Choose a project…" />
+                    placeholder="{{ __('Choose a project…') }}" />
 
                 <x-forms.listbox id="clone-resource-environment" label="{{ __('Environment') }}" :wire="false"
                     x-model="selectedCloneEnvironment" x-effect="options = cloneEnvironmentOptions"
                     x-bind:disabled="!selectedCloneProject || availableCloneEnvironments.length === 0"
-                    placeholder="Choose an environment…" />
+                    placeholder="{{ __('Choose an environment…') }}" />
             </div>
 
             <div class="mt-4 flex">
@@ -233,14 +233,14 @@
                 <div class="mt-4 grid gap-4 md:grid-cols-2">
                     <x-forms.listbox id="migrate-resource-server" label="Target server" :wire="false"
                         x-model="selectedMigrateServer" x-effect="options = migrateServerOptions"
-                        placeholder="Choose a server…"
-                        emptyText="No other validated and reachable servers are available." />
+                        placeholder="{{ __('Choose a server…') }}"
+                        emptyText="{{ __('No other validated and reachable servers are available.') }}" />
 
                     <x-forms.listbox id="migrate-resource-destination" label="Network destination" :wire="false"
                         x-model="selectedMigrateDestination" x-effect="options = migrateDestinationOptions"
                         x-bind:disabled="selectedMigrateServer === null || selectedMigrateServer === ''"
-                        placeholder="Choose a destination…"
-                        emptyText="No network destinations are available on this server." />
+                        placeholder="{{ __('Choose a destination…') }}"
+                        emptyText="{{ __('No network destinations are available on this server.') }}" />
                 </div>
 
                 <div x-show="selectedMigrateDestination" x-cloak class="mt-4 flex">
@@ -275,13 +275,13 @@
                 <div class="grid gap-4 md:grid-cols-2">
                     <x-forms.listbox id="move-resource-project" label="{{ __('Project') }}" :wire="false"
                         x-model="selectedMoveProject" x-effect="options = moveProjectOptions"
-                        placeholder="Choose a project…" />
+                        placeholder="{{ __('Choose a project…') }}" />
 
                     <x-forms.listbox id="move-resource-environment" label="{{ __('Environment') }}"
                         helper="The current environment is excluded." :wire="false"
                         x-model="selectedMoveEnvironment" x-effect="options = moveEnvironmentOptions"
                         x-bind:disabled="!selectedMoveProject || availableEnvironments.length === 0"
-                        placeholder="Choose an environment…" />
+                        placeholder="{{ __('Choose an environment…') }}" />
                 </div>
 
                 <div x-show="selectedMoveEnvironment" x-cloak

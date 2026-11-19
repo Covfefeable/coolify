@@ -78,7 +78,7 @@
                         <x-forms.listbox id="isGitLfsEnabled" label="Git LFS" onChange="instantSave"
                             helper="Allow Git LFS during the build process."
                             :options="[
-                                ['value' => true, 'label' => 'Enabled'],
+                                ['value' => true, 'label' => __('Enabled')],
                                 ['value' => false, 'label' => 'Disabled'],
                             ]" :disabled="! $canUpdate" />
                         <x-forms.listbox id="isGitShallowCloneEnabled" label="Clone depth" onChange="instantSave"
@@ -133,7 +133,7 @@
                         <x-unsaved-bar action="saveCustomNamePrefix" targets="customContainerNamePrefix" />
                         <x-forms.input
                             helper="Optional prefix for generated container names. Containers are named <span class='font-bold'>prefix-timestamp</span>, for example <span class='font-bold'>shop-api-20260908T141530</span>, instead of starting with <span class='font-bold'>{{ $application->uuid }}</span>.<br><br>The prefix is converted to slug format when saved, can be up to {{ \App\Models\ApplicationSetting::MAX_CONTAINER_NAME_PREFIX_LENGTH }} characters and must be unique on this server. Rolling updates keep working."
-                            id="customContainerNamePrefix" label="Container name prefix" placeholder="e.g. my-api"
+                            id="customContainerNamePrefix" label="Container name prefix" placeholder="{{ __('e.g. my-api') }}"
                             canGate="update" :canResource="$application" />
                     </form>
                 @endif
@@ -201,7 +201,7 @@
                         <x-forms.listbox id="isGpuEnabled" label="GPU access" onChange="instantSave"
                             :options="[
                                 ['value' => false, 'label' => 'Disabled'],
-                                ['value' => true, 'label' => 'Enabled'],
+                                ['value' => true, 'label' => __('Enabled')],
                             ]" :disabled="! $canUpdate" />
                     </div>
                     @if ($isGpuEnabled)
@@ -212,7 +212,7 @@
                                 targets="gpuDriver,gpuCount,gpuDeviceIds,gpuOptions" />
                             <div class="grid gap-4 sm:grid-cols-2">
                                 <x-forms.input label="GPU driver" id="gpuDriver" canGate="update" :canResource="$application" />
-                                <x-forms.input label="GPU count" placeholder="Empty means use all GPUs" helper="A number, or all." id="gpuCount"
+                                <x-forms.input label="GPU count" placeholder="{{ __('Empty means use all GPUs') }}" helper="A number, or all." id="gpuCount"
                                     canGate="update" :canResource="$application" />
                             </div>
                             <x-forms.input label="GPU device ids" placeholder="0,2"
@@ -234,7 +234,7 @@
                     <x-forms.listbox id="isGzipEnabled" label="{{ __('Gzip compression') }}" onChange="instantSave"
                         helper="Some services compress data by default. In that case you do not need this."
                         :options="[
-                            ['value' => true, 'label' => 'Enabled'],
+                            ['value' => true, 'label' => __('Enabled')],
                             ['value' => false, 'label' => 'Disabled'],
                         ]" :disabled="! $canUpdate" />
                     <x-forms.listbox id="isStripprefixEnabled" label="Path prefixes" onChange="instantSave"

@@ -180,8 +180,8 @@
                     <div class="grid gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="buildPack" label="{{ __('Build strategy') }}" live :options="[
                             ['value' => 'railpack', 'label' => 'Railpack'],
-                            ['value' => 'nixpacks', 'label' => 'Nixpacks (deprecated)'],
-                            ['value' => 'static', 'label' => 'Static'],
+                            ['value' => 'nixpacks', 'label' => __('Nixpacks (deprecated)')],
+                            ['value' => 'static', 'label' => __('Static')],
                             ['value' => 'dockerfile', 'label' => 'Dockerfile'],
                             ['value' => 'dockercompose', 'label' => 'Compose'],
                         ]" x-bind:disabled="shouldDisable()" />
@@ -199,7 +199,7 @@
                     <div class="grid gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="siteType" label="{{ __('Site type') }}" onChange="setSiteType" :options="[
                             ['value' => 'dynamic', 'label' => 'Dynamic'],
-                            ['value' => 'static', 'label' => 'Static'],
+                            ['value' => 'static', 'label' => __('Static')],
                             ['value' => 'spa', 'label' => 'SPA (single-page application)'],
                         ]"
                             helper="{{ __('Static: the final build assets are served as a static site. SPA: a static site with single-page-app routing.') }}"

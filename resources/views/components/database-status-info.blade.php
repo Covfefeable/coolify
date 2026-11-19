@@ -73,7 +73,7 @@
                     onChange="instantSaveSSL"
                     :disabled="! $isExited || ! auth()->user()?->can('update', $database)"
                     :options="[
-                        ['value' => true, 'label' => 'Enabled'],
+                        ['value' => true, 'label' => __('Enabled')],
                         ['value' => false, 'label' => 'Disabled'],
                     ]" />
                 @if ($sslModeOptions)

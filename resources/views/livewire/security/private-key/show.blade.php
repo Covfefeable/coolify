@@ -23,7 +23,7 @@
                     <p class="text-xs text-neutral-500 dark:text-fg-dim">Nothing uses this key.</p>
                 @else
                     @if (array_sum($counts) > 5)
-                        <input type="search" class="input mb-2" placeholder="Search by name"
+                        <input type="search" class="input mb-2" placeholder="{{ __('Search by name') }}"
                             aria-label="Search where this key is used" wire:model.live.debounce.300ms="usageSearch"
                             x-on:keydown.enter.prevent />
                     @endif

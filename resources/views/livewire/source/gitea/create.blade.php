@@ -16,7 +16,7 @@
             <x-forms.input id="name" label="{{ __('Name') }}" required />
             <x-forms.input id="organization" label="{{ __('Organization') }}"
                 helper="Optional. Comma-separated organization or user names to filter repositories (e.g. myorg,myuser)."
-                placeholder="All accessible repositories when empty" />
+                placeholder="{{ __('All accessible repositories when empty') }}" />
         </div>
 
         @if (! isCloud())

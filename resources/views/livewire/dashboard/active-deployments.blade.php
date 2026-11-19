@@ -41,7 +41,7 @@
                         class="overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]">
                         <div class="border-b border-neutral-200 px-4 py-2.5 dark:border-white/[0.08]">
                             <h3 class="text-[11px]! leading-4! font-medium! text-neutral-500! dark:text-fg-faint!">
-                                Active
+                                {{ __('Active') }}
                             </h3>
                             <p class="mt-0.5 text-[11px] text-neutral-500 dark:text-fg-faint">
                                 Running or queued right now

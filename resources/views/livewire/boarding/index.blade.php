@@ -237,10 +237,10 @@
                                     incorrect.</p>
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                    <x-forms.input placeholder="Default is 22" label="{{ __('Port') }}" id="remoteServerPort"
+                                    <x-forms.input placeholder="{{ __('Default is 22') }}" label="{{ __('Port') }}" id="remoteServerPort"
                                         wire:model="remoteServerPort" :value="$remoteServerPort" />
                                     <div>
-                                        <x-forms.input placeholder="Default is root" label="{{ __('User') }}" id="remoteServerUser"
+                                        <x-forms.input placeholder="{{ __('Default is root') }}" label="{{ __('User') }}" id="remoteServerUser"
                                             wire:model="remoteServerUser" :value="$remoteServerUser" />
                                         <p class="text-xs mt-1">
                                             Non-root user is experimental:
@@ -375,9 +375,9 @@
                     </x-slot:question>
                     <x-slot:actions>
                         <form wire:submit='savePrivateKey' class="flex flex-col w-full gap-4">
-                            <x-forms.input required placeholder="e.g., production-server-key" label="Key Name"
+                            <x-forms.input required placeholder="{{ __('e.g., production-server-key') }}" label="Key Name"
                                 id="privateKeyName" />
-                            <x-forms.input placeholder="Optional: Note what this key is used for" label="{{ __('Description') }}"
+                            <x-forms.input placeholder="{{ __('Optional: Note what this key is used for') }}" label="{{ __('Description') }}"
                                 id="privateKeyDescription" />
                             @if ($privateKeyType === 'create')
                                 <x-forms.textarea required readonly label="{{ __('Private Key') }}" id="privateKey" rows="8" />
@@ -435,20 +435,20 @@
                     <x-slot:actions>
                         <form wire:submit='saveServer' class="flex flex-col w-full gap-4">
                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                                <x-forms.input required placeholder="e.g., production-app-server" label="Server Name"
+                                <x-forms.input required placeholder="{{ __('e.g., production-app-server') }}" label="Server Name"
                                     id="remoteServerName" wire:model="remoteServerName" />
-                                <x-forms.input required placeholder="IP address or hostname" label="IP Address/Hostname"
+                                <x-forms.input required placeholder="{{ __('IP address or hostname') }}" label="IP Address/Hostname"
                                     id="remoteServerHost" wire:model="remoteServerHost" />
                             </div>
-                            <x-forms.input placeholder="Optional: Note what this server hosts" label="{{ __('Description') }}"
+                            <x-forms.input placeholder="{{ __('Optional: Note what this server hosts') }}" label="{{ __('Description') }}"
                                 id="remoteServerDescription" wire:model="remoteServerDescription" />
 
                             <x-forms.collapsible title="Advanced Settings"
                                 content-class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-                                <x-forms.input placeholder="Default: 22" label="SSH Port" type="number"
+                                <x-forms.input placeholder="{{ __('Default: 22') }}" label="SSH Port" type="number"
                                     id="remoteServerPort" wire:model="remoteServerPort" />
                                 <div>
-                                    <x-forms.input placeholder="Default: root" label="SSH User" id="remoteServerUser"
+                                    <x-forms.input placeholder="{{ __('Default: root') }}" label="SSH User" id="remoteServerUser"
                                         wire:model="remoteServerUser" />
                                 </div>
                             </x-forms.collapsible>

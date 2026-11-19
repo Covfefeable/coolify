@@ -87,12 +87,12 @@
                                     helper="{{ __('A friendly name shown in Coolify.') }}" />
                             </div>
                             <x-forms.listbox id="selected_location" label="Location" required live
-                                placeholder="Select a location" :options="$locationOptions" />
+                                placeholder="{{ __('Select a location') }}" :options="$locationOptions" />
                             <x-forms.listbox id="selected_server_type" label="Server type" required live
-                                :disabled="!$selected_location" placeholder="Select a server type"
+                                :disabled="!$selected_location" placeholder="{{ __('Select a server type') }}"
                                 :options="$serverTypeOptions" />
                             <x-forms.listbox id="selected_image" label="{{ __('Image') }}" required
-                                :disabled="!$selected_server_type" placeholder="Select an image"
+                                :disabled="!$selected_server_type" placeholder="{{ __('Select an image') }}"
                                 :options="$imageOptions" />
                             @if ($private_keys->isEmpty())
                                 <div>
@@ -134,19 +134,19 @@
                         <div class="flex flex-col gap-4">
                             <x-forms.listbox label="{{ __('Extra SSH keys') }}" id="selectedHetznerSshKeyIds"
                                 helper="Existing keys from the Hetzner account." multiple searchable
-                                :disabled="count($hetznerSshKeys) === 0" searchPlaceholder="Search SSH keys…"
+                                :disabled="count($hetznerSshKeys) === 0" searchPlaceholder="{{ __('Search SSH keys…') }}"
                                 :placeholder="count($hetznerSshKeys) ? 'Select SSH keys' : 'No account keys found'"
                                 :options="collect($hetznerSshKeys)->map(fn ($sshKey) => ['value' => $sshKey['id'], 'label' => $sshKey['name']])->values()->all()" />
 
                             <div class="grid gap-4 lg:grid-cols-2">
                                 <x-forms.listbox label="Firewalls" id="selectedHetznerFirewallIds"
                                     multiple searchable :disabled="count($hetznerFirewalls) === 0"
-                                    searchPlaceholder="Search firewalls…"
+                                    searchPlaceholder="{{ __('Search firewalls…') }}"
                                     :placeholder="count($hetznerFirewalls) ? 'Select firewalls' : 'No firewalls found'"
                                     :options="collect($hetznerFirewalls)->map(fn ($firewall) => ['value' => $firewall['id'], 'label' => $firewall['name']])->values()->all()" />
                                 <x-forms.listbox label="Private networks" id="selectedHetznerNetworkIds"
                                     multiple searchable :disabled="count($this->availableNetworks) === 0"
-                                    searchPlaceholder="Search networks…"
+                                    searchPlaceholder="{{ __('Search networks…') }}"
                                     :placeholder="count($this->availableNetworks) ? 'Select networks' : 'No compatible networks'"
                                     :options="collect($this->availableNetworks)->map(fn ($network) => [
                                         'value' => $network['id'],

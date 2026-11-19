@@ -40,7 +40,7 @@
                             canGate="update" :canResource="$database" />
                     @endif
                     <x-forms.input label="{{ __('Initial database') }}" id="mysqlDatabase"
-                        placeholder="If empty, it will match the normal user."
+                        placeholder="{{ __('If empty, it will match the normal user.') }}"
                         :readonly="(bool) $database->started_at" canGate="update" :canResource="$database"
                         helper="{{ $database->started_at ? 'You can only change this in the database.' : null }}" />
                 </div>

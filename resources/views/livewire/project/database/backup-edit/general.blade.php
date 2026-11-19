@@ -69,7 +69,7 @@
                                 <input x-model="draft" @keydown.enter.prevent="addDatabase()"
                                     @keydown="if ($event.key === ',') { $event.preventDefault(); addDatabase(); }"
                                     @blur="addDatabase()" type="text"
-                                    placeholder="Type a database and press Enter" />
+                                    placeholder="{{ __('Type a database and press Enter') }}" />
                             </div>
                             <p class="mt-1.5 text-xs text-neutral-500 dark:text-fg-dim">
                                 @if ($isServiceSqlDatabase)

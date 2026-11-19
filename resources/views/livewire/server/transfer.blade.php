@@ -56,7 +56,7 @@
                                     placeholder="https://coolify.example.com"
                                     helper="The Coolify instance that this server was transferred to." />
                                 <x-forms.input id="managerToken" type="password" label="API token of that instance" required
-                                    placeholder="Paste token from that instance" autocomplete="off"
+                                    placeholder="{{ __('Paste token from that instance') }}" autocomplete="off"
                                     helper="A token with root, or with read:sensitive and write, from an admin or owner of that instance." />
                                 <x-forms.input id="thisInstanceUrl" label="URL of this instance" required
                                     helper="The URL at which the other instance reaches this instance. This instance gives it a token that expires in 1 hour." />
@@ -108,7 +108,7 @@
                                 placeholder="https://coolify.example.com"
                                 helper="Base URL of the other Coolify instance (no trailing path). It must use https." />
                             <x-forms.input id="targetToken" type="password" label="Target API token" required
-                                placeholder="Paste token from target instance" autocomplete="off"
+                                placeholder="{{ __('Paste token from target instance') }}" autocomplete="off"
                                 helper="Create a token on the target with root (or write + deploy). It is only used for this request." />
                         </div>
                         <div>

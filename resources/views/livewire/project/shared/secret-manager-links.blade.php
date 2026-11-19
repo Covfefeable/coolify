@@ -25,7 +25,7 @@
                 <div class="application-settings-form flex w-full flex-col gap-4">
                     <div class="flex items-end gap-2">
                         <x-forms.listbox id="integration_token_uuid" label="Integration token" :live="true"
-                            placeholder="Select a secret manager token" :options="$availableTokens
+                            placeholder="{{ __('Select a secret manager token') }}" :options="$availableTokens
                                 ->map(fn ($token) => [
                                     'value' => $token->uuid,
                                     'label' => $token->name.' ('.$token->providerName().')',
@@ -90,7 +90,7 @@
                                         No secrets found at this source.
                                     </div>
                                 @else
-                                    <x-forms.input label="Search keys" placeholder="Filter key names"
+                                    <x-forms.input label="Search keys" placeholder="{{ __('Filter key names') }}"
                                         wire:model.live.debounce.300ms="search" />
                                     <div class="divide-y divide-neutral-200 rounded-lg border border-neutral-200 dark:divide-white/[0.07] dark:border-white/[0.08]">
                                         @forelse ($filteredKeys as $key)

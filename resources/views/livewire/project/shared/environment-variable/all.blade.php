@@ -36,8 +36,8 @@
                                 onChange="instantSave"
                                 helper="Controls how environment variables are ordered in the list and written to the generated .env file on deploy."
                                 :options="[
-                                    ['value' => false, 'label' => 'Creation order'],
-                                    ['value' => true, 'label' => 'Alphabetical'],
+                                    ['value' => false, 'label' => __('Creation order')],
+                                    ['value' => true, 'label' => __('Alphabetical')],
                                 ]" :disabled="! auth()->user()->can('manageEnvironment', $resource)" />
                         @endif
                         <x-forms.listbox id="use_build_secrets" label="{{ __('Build secrets') }}" onChange="instantSave"

@@ -136,8 +136,8 @@
         <div class="min-w-0">
             <x-forms.listbox id="{{ $form }}.selectedScopes" label="Selected" multiple searchable :portal="! $inModal" countLabel="resource"
                 x-bind:disabled="!isSelectedMode"
-                placeholder="Choose projects, environments, or resources"
-                emptyText="No projects or resources available."
+                placeholder="{{ __('Choose projects, environments, or resources') }}"
+                emptyText="{{ __('No projects or resources available.') }}"
                 :options="$this->scopeOptions" x-effect="coverScopes($data)" />
         </div>
     </div>

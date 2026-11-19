@@ -73,7 +73,7 @@
                 @if ($repositories->isNotEmpty())
                     <div class="flex items-end gap-2">
                         <x-forms.listbox searchable id="selected_repository_id" label="{{ __('Repository') }}" required live
-                            searchPlaceholder="Search repositories…"
+                            searchPlaceholder="{{ __('Search repositories…') }}"
                             :options="$repositories->map(fn ($repository) => [
                                 'value' => data_get($repository, 'id'),
                                 'label' => data_get($repository, 'full_name', data_get($repository, 'name')),
@@ -108,7 +108,7 @@
 
                         <div class="grid gap-4 sm:grid-cols-2">
                             <x-forms.listbox searchable id="selected_branch_name" label="{{ __('Branch') }}" required
-                                searchPlaceholder="Search branches…"
+                                searchPlaceholder="{{ __('Search branches…') }}"
                                 :options="$branches->map(fn ($branch) => [
                                     'value' => data_get($branch, 'name'),
                                     'label' => data_get($branch, 'name'),

@@ -39,7 +39,7 @@
                          sibling x-forms.input fields (Name). onChange auto-saves like before. --}}
                     <x-forms.listbox searchable id="instance_timezone" label="{{ __('Instance timezone') }}"
                         helper="{{ __('Timezone used for update checks and the automatic update schedule.') }}"
-                        searchPlaceholder="Search timezones" searchEmptyText="No matching timezone"
+                        searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="No matching timezone"
                         onChange="submit" :options="collect($this->timezones)->map(fn ($timezone) => [
                             'value' => $timezone,
                             'label' => $timezone,

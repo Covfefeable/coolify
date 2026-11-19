@@ -27,7 +27,7 @@
                             host-placeholder="minio.internal or 192.168.1.50" />
                     </div>
                 @else
-                    <x-forms.input label="Endpoint" :value="$endpoint" disabled />
+                    <x-forms.input label="{{ __('Endpoint') }}" :value="$endpoint" disabled />
                 @endcan
             </div>
             <x-forms.input canGate="update" :canResource="$storage" required label="Bucket" id="bucket" />

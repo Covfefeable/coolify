@@ -78,7 +78,7 @@
                             <div class="lg:col-span-2">
                                 <x-forms.input canGate="update" :canResource="$settings"
                                     id="oauth_settings_map.{{ $provider }}.custom_label" label="Login button label"
-                                    placeholder="Login with SSO" />
+                                    placeholder="{{ __('Login with SSO') }}" />
                             </div>
                         @else
                             <x-forms.input canGate="update" :canResource="$settings"

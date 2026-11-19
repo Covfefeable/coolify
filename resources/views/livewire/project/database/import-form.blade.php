@@ -257,7 +257,7 @@
                         class="mt-4">
                         <div class="grid gap-4 sm:grid-cols-2">
                             <x-forms.listbox id="s3StorageId" label="{{ __('Storage') }}" :options="$s3StorageOptions"
-                                placeholder="Select storage" live />
+                                placeholder="{{ __('Select storage') }}" live />
 
                             <x-forms.input label="File path"
                                 helper="Path to the backup file in the storage, e.g., /backups/database-2025-01-15.gz"

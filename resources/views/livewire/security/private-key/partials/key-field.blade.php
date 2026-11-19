@@ -73,7 +73,7 @@
         </div>
         <div x-cloak x-show="replacing" class="mt-2">
             <x-forms.textarea rows="10" id="newPrivateKey" monospace
-                placeholder="Paste the new private key. Leave empty to keep the stored key." />
+                placeholder="{{ __('Paste the new private key. Leave empty to keep the stored key.') }}" />
         </div>
     @endcan
 </div>

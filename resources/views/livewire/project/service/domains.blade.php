@@ -177,7 +177,7 @@
                                     onChange="updateForceHttps"
                                     :onChangeArgs="[(int) $appId]"
                                     :options="[
-                                        ['value' => true, 'label' => 'Enabled'],
+                                        ['value' => true, 'label' => __('Enabled')],
                                         ['value' => false, 'label' => 'Disabled'],
                                     ]" :disabled="! auth()->user()->can('update', $service)" />
                             </div>

@@ -1,6 +1,6 @@
 @props([
     'action' => 'submit',
-    'label' => "You have changes that haven't been saved yet.",
+    'label' => __('You have changes that haven\'t been saved yet.'),
     // Optional comma-separated Livewire properties. When set, the bar only
     // appears when those fields differ from the last server snapshot — not on
     // incidental component state (e.g. $wire.set from x-init, display-only props).

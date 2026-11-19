@@ -8,7 +8,7 @@
             <x-forms.input id="name" label="{{ __('Name') }}" required />
             <x-forms.input id="group_name" label="{{ __('Group name') }}"
                 helper="Optional. Comma-separated group names to filter repositories (e.g. myorg,myteam)."
-                placeholder="All accessible repositories when empty" />
+                placeholder="{{ __('All accessible repositories when empty') }}" />
         </div>
 
         @if (! isCloud() && auth()->user()->can('makeSystemWide', \App\Models\GitlabApp::class))

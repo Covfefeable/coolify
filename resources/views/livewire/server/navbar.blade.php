@@ -140,7 +140,7 @@
                         <div class="relative">
                             <x-reicon name="search"
                                 class="pointer-events-none absolute top-1/2 left-2 size-3 -translate-y-1/2 text-neutral-400 dark:text-fg-faint" />
-                            <input type="search" x-model.debounce.100ms="search" placeholder="Filter servers…"
+                            <input type="search" x-model.debounce.100ms="search" placeholder="{{ __('Filter servers…') }}"
                                 class="input h-7! w-full rounded-md! border-neutral-200! bg-white! py-0! pr-2! pl-7! text-[11px]! text-black! placeholder:text-neutral-400! dark:border-white/[0.1]! dark:bg-coolgray-100! dark:text-white! dark:placeholder:text-fg-faint!">
                         </div>
                     </div>

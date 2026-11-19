@@ -78,12 +78,12 @@
                                     helper="A friendly name shown in Coolify and used as the VPS hostname." />
                             </div>
                             <x-forms.listbox id="selected_data_center_id" label="Data center" required live
-                                placeholder="Select a data center" :options="$dataCenterOptions" />
+                                placeholder="{{ __('Select a data center') }}" :options="$dataCenterOptions" />
                             <x-forms.listbox id="selected_price_id" label="Plan and billing period" required live
-                                :disabled="!$selected_data_center_id" placeholder="Select a plan"
+                                :disabled="!$selected_data_center_id" placeholder="{{ __('Select a plan') }}"
                                 :options="$priceOptions" />
                             <x-forms.listbox id="selected_os_template_id" label="Operating system" required live
-                                :disabled="!$selected_price_id" placeholder="Select an operating system"
+                                :disabled="!$selected_price_id" placeholder="{{ __('Select an operating system') }}"
                                 :options="$osTemplateOptions" />
                             <x-forms.listbox id="selected_app_template_id" label="Operating system with application"
                                 live :disabled="!$selected_price_id" placeholder="Or select an operating system with an application"
@@ -122,13 +122,13 @@
                             </div>
                             <x-forms.listbox label="{{ __('Extra SSH keys') }}" id="selected_public_key_ids"
                                 helper="Existing keys from the Hostinger account." multiple searchable
-                                :disabled="count($hostinger_public_keys) === 0" searchPlaceholder="Search SSH keys…"
+                                :disabled="count($hostinger_public_keys) === 0" searchPlaceholder="{{ __('Search SSH keys…') }}"
                                 :placeholder="count($hostinger_public_keys) ? 'Select SSH keys' : 'No account keys found'"
                                 :options="collect($hostinger_public_keys)->map(fn ($publicKey) => ['value' => $publicKey['id'], 'label' => $publicKey['name']])->values()->all()" />
                             @if ($post_install_scripts)
                                 <x-forms.listbox id="selected_post_install_script_id"
                                     label="Hostinger post-install script"
-                                    placeholder="No post-install script" :options="$postInstallScriptOptions"
+                                    placeholder="{{ __('No post-install script') }}" :options="$postInstallScriptOptions"
                                     helper="Hostinger runs this as /post_install after setup and writes output to /post_install.log." />
                             @endif
                             <x-callout type="warning" title="This purchase is billed by Hostinger">

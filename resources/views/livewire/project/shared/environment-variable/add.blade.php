@@ -2,7 +2,7 @@
     x-data="{ isMultiline: $wire.entangle('is_multiline') }">
     <div class="grid gap-4 sm:grid-cols-2">
         <x-forms.input placeholder="NODE_ENV" id="key" label="{{ __('Name') }}" required />
-        <x-forms.input id="comment" label="{{ __('Comment') }}" placeholder="Optional note"
+        <x-forms.input id="comment" label="{{ __('Comment') }}" placeholder="{{ __('Optional note') }}"
             helper="{{ __('Add a note to document what this environment variable is used for.') }}" maxlength="256" />
     </div>
     <div>
@@ -34,7 +34,7 @@
     <div class="grid gap-4 border-t border-neutral-200 pt-4 dark:border-white/[0.07] sm:grid-cols-2">
         <x-forms.listbox id="is_multiline" label="Value type" :live="true" :options="[
             ['value' => false, 'label' => 'Single line'],
-            ['value' => true, 'label' => 'Multiline'],
+            ['value' => true, 'label' => __('Multiline')],
         ]" />
         @if (!$shared)
             <x-forms.listbox id="is_literal" label="Interpolation" :options="[

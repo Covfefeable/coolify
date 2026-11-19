@@ -9,11 +9,11 @@
 
         @if ($provider === 'infisical')
             <div class="grid gap-4 lg:grid-cols-2">
-                <x-forms.input required id="name" label="{{ __('Token name') }}" placeholder="Production secrets" />
+                <x-forms.input required id="name" label="{{ __('Token name') }}" placeholder="{{ __('Production secrets') }}" />
                 <x-forms.input required id="metadata.client_id" label="{{ __('Client ID') }}"
-                    placeholder="Machine identity client ID" />
+                    placeholder="{{ __('Machine identity client ID') }}" />
                 <x-forms.input required type="password" id="token" label="{{ __('Client secret') }}"
-                    placeholder="Paste the machine identity client secret" />
+                    placeholder="{{ __('Paste the machine identity client secret') }}" />
                 <x-forms.input required id="metadata.base_url" label="{{ __('Base URL') }}"
                     placeholder="https://app.infisical.com"
                     helper="Use the URL of your self-hosted Infisical instance, or the Infisical cloud URL." />
@@ -26,7 +26,7 @@
                     placeholder="{{ $provider === 'cloudflare' ? 'Production DNS' : 'Production secrets' }}" />
                 <x-forms.input required type="password" id="token"
                     label="{{ $provider === 'vault' ? 'Vault token' : 'API token' }}"
-                    placeholder="Paste the provider token" />
+                    placeholder="{{ __('Paste the provider token') }}" />
             </div>
         @endif
 

@@ -4,13 +4,13 @@
             <x-forms.listbox id="isGzipEnabled" label="{{ __('Gzip compression') }}"
                 helper="PocketBase keeps compression disabled so server-sent events continue to work."
                 :disabled="true" :options="[
-                    ['value' => true, 'label' => 'Enabled'],
+                    ['value' => true, 'label' => __('Enabled')],
                     ['value' => false, 'label' => 'Disabled'],
                 ]" />
         @else
             <x-forms.listbox id="isGzipEnabled" label="{{ __('Gzip compression') }}"
                 :options="[
-                    ['value' => true, 'label' => 'Enabled'],
+                    ['value' => true, 'label' => __('Enabled')],
                     ['value' => false, 'label' => 'Disabled'],
                 ]" />
         @endif

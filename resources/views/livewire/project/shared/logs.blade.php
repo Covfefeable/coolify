@@ -94,7 +94,7 @@
                             @if (count($logTargets['services']) > 1)
                                 <div class="w-full sm:w-60" wire:key="runtime-logs-services">
                                     <x-forms.listbox id="service" label="{{ __('Service') }}" live searchable portal
-                                        searchPlaceholder="Search services" :options="$logTargets['services']" />
+                                        searchPlaceholder="{{ __('Search services') }}" :options="$logTargets['services']" />
                                 </div>
                             @endif
                         </div>

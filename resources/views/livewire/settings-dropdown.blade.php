@@ -165,7 +165,7 @@
                         <div class="relative w-full max-w-sm">
                             <x-reicon name="search"
                                 class="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-neutral-400" />
-                            <input x-model="search" @input="page = 1" type="search" placeholder="Search updates"
+                            <input x-model="search" @input="page = 1" type="search" placeholder="{{ __('Search updates') }}"
                                 class="input !pl-9" />
                         </div>
                         <span class="ml-auto hidden text-xs text-neutral-500 sm:block dark:text-fg-faint"

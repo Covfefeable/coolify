@@ -32,7 +32,7 @@
     @if (empty($visibleRows))
         @unless ($error)
             <div class="px-4 py-3 text-[12px] text-neutral-500 dark:text-fg-faint">
-                Not logged in to any registry, and no resource on this server uses a private registry host.
+                {{ __('Not logged in to any registry, and no resource on this server uses a private registry host.') }}
             </div>
         @endunless
     @else
@@ -150,7 +150,7 @@
     @if ($dockerHubRow && ! $error)
         <div class="border-t border-neutral-200 px-4 py-2.5 text-[12px] text-neutral-500 dark:border-white/[0.07] dark:text-fg-faint">
             {{ trans_choice(':count resource on this server uses|:count resources on this server use', count($dockerHubRow['used_by'])) }}
-            Docker Hub images. Public images need no login. Log in to Docker Hub for private images or higher pull limits.
+            {{ __('Docker Hub images. Public images need no login. Log in to Docker Hub for private images or higher pull limits.') }}
         </div>
     @endif
 </div>

@@ -43,7 +43,7 @@
     <div class="min-w-0 overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm dark:border-white/[0.08] dark:bg-white/[0.05]">
         <x-table.toolbar class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
             <x-slot:search>
-                <x-table.search placeholder="Search by CVE, GHSA, or package" loading-target="search"
+                <x-table.search placeholder="{{ __('Search by CVE, GHSA, or package') }}" loading-target="search"
                     wire:model.live.debounce.300ms="search" />
             </x-slot:search>
 

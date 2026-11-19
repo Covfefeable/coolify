@@ -31,7 +31,7 @@
                     <div class="max-w-md">
                         <x-forms.listbox id="is_backup_before_update_enabled" label="Database backup"
                             onChange="instantSave" :options="[
-                                ['value' => true, 'label' => 'Enabled'],
+                                ['value' => true, 'label' => __('Enabled')],
                                 ['value' => false, 'label' => 'Disabled'],
                             ]"
                             helper="Runs this backup once before every manual or automatic update, in addition to the schedule. It does not run when the backup schedule is disabled." />

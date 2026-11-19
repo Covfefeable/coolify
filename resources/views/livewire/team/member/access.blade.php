@@ -145,7 +145,7 @@
                         <div class="flex items-end gap-2">
                             <div class="min-w-0 flex-1">
                                 <x-forms.listbox htmlId="member-access-targets" label="Applies to" :wire="false" :value="[]"
-                                    x-model="row.targets" :options="$this->scopeOptions" placeholder="Choose scopes"
+                                    x-model="row.targets" :options="$this->scopeOptions" placeholder="{{ __('Choose scopes') }}"
                                     multiple searchable portal countLabel="resource" />
                             </div>
                             <button type="button" class="icon-button mb-1 shrink-0" title="Remove scope"

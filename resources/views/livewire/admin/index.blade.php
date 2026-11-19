@@ -46,7 +46,7 @@
                     class="flex items-end gap-2 border-b border-neutral-200 p-4 dark:border-white/[0.06]">
                     <div class="max-w-md flex-1">
                         <x-forms.input wire:model="search" label="Name or email"
-                            placeholder="Search for a user…" />
+                            placeholder="{{ __('Search for a user…') }}" />
                     </div>
                     <x-forms.button type="submit">
                         <x-reicon name="search" class="size-4" />

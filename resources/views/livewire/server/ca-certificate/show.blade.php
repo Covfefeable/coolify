@@ -72,7 +72,7 @@
                 @if ($showCertificate)
                     <x-forms.textarea canGate="update" :canResource="$server" id="certificateContent"
                         rows="15" label="PEM certificate"
-                        placeholder="Paste or edit CA certificate content here…" />
+                        placeholder="{{ __('Paste or edit CA certificate content here…') }}" />
                 @else
                     <div
                         class="flex min-h-72 flex-col items-center justify-center rounded-lg bg-neutral-100/70 px-6 text-center ring-1 ring-neutral-200 dark:bg-black/20 dark:ring-white/[0.08]">

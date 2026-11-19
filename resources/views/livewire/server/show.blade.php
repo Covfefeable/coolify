@@ -248,7 +248,7 @@
                                 required :disabled="$isValidating" />
                             <x-forms.listbox searchable id="serverTimezone" label="Server timezone"
                                 helper="Used for backups, cron jobs, and displayed timestamps."
-                                searchPlaceholder="Search timezones" searchEmptyText="No matching timezone"
+                                searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="No matching timezone"
                                 :options="collect($this->timezones)->map(fn ($timezone) => [
                                     'value' => $timezone,
                                     'label' => $timezone,

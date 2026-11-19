@@ -38,10 +38,10 @@
             <x-forms.input required id="name" label="{{ __('Token name') }}"
                 x-bind:placeholder="`Production ${providerName} token`" />
             <x-forms.input required type="password" id="token" label="{{ __('API token') }}"
-                placeholder="Paste the provider token" />
+                placeholder="{{ __('Paste the provider token') }}" />
             <div class="lg:col-span-2">
                 <x-forms.textarea id="description" label="{{ __('Description') }}" rows="3"
-                    placeholder="Optional notes about where this token is used" />
+                    placeholder="{{ __('Optional notes about where this token is used') }}" />
             </div>
         </div>
 

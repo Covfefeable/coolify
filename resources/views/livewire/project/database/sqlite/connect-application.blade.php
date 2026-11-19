@@ -39,8 +39,8 @@
             <div class="flex flex-col gap-4">
                 <div class="grid gap-4 lg:grid-cols-2">
                     <x-forms.listbox searchable id="applicationUuid" label="Application" required
-                        :options="$applicationOptions" placeholder="Select an application"
-                        searchPlaceholder="Search applications…" searchEmptyText="No matching applications"
+                        :options="$applicationOptions" placeholder="{{ __('Select an application') }}"
+                        searchPlaceholder="{{ __('Search applications…') }}" searchEmptyText="No matching applications"
                         helper="Docker Compose applications mount the volume from their compose file. Coolify shows the lines to add." />
                     <x-forms.input id="mountPath" label="Mount path" required placeholder="/var/lib/sqlite"
                         canGate="update" :canResource="$database" x-on:keydown.enter.prevent="$wire.connect()"

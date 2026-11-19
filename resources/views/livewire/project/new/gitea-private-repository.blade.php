@@ -71,7 +71,7 @@
                 @if ($repositories->isNotEmpty())
                     <div class="flex items-end gap-2">
                         <x-forms.listbox id="selected_project_id" label="{{ __('Repository') }}" searchable live
-                            placeholder="Select a repository" searchPlaceholder="Search repositories…"
+                            placeholder="{{ __('Select a repository') }}" searchPlaceholder="{{ __('Search repositories…') }}"
                             :options="$repositories->map(fn ($repository) => [
                                 'value' => data_get($repository, 'id'),
                                 'label' => data_get($repository, 'full_name'),

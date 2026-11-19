@@ -90,7 +90,7 @@
                         <div class="mt-4 flex flex-col gap-2">
                             <x-forms.textarea canGate="update" :canResource="$server" id="customErrorPage" rows="10"
                                 monospace label="Custom error page (HTML)"
-                                placeholder="Leave empty to use the Coolify default error page."
+                                placeholder="{{ __('Leave empty to use the Coolify default error page.') }}"
                                 helper="One self-contained HTML file (max {{ \App\Models\Server::PROXY_ERROR_PAGE_MAX_BYTES / 1024 }} KB) with inline CSS and images. Visitors see it with a 503 status for unknown domains and for stopped, deploying or unhealthy resources. A Redirect URL takes priority over this page." />
                             @can('update', $server)
                                 <div class="flex gap-2">

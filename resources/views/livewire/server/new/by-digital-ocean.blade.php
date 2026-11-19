@@ -86,12 +86,12 @@
                                     helper="{{ __('A friendly name shown in Coolify.') }}" />
                             </div>
                             <x-forms.listbox id="selected_region" label="{{ __('Region') }}" required live
-                                placeholder="Select a region" :options="$regionOptions" />
+                                placeholder="{{ __('Select a region') }}" :options="$regionOptions" />
                             <x-forms.listbox id="selected_size" label="{{ __('Size') }}" required live
-                                :disabled="!$selected_region" placeholder="Select a size"
+                                :disabled="!$selected_region" placeholder="{{ __('Select a size') }}"
                                 :options="$sizeOptions" />
                             <x-forms.listbox id="selected_image" label="{{ __('Image') }}" required
-                                :disabled="!$selected_size" placeholder="Select an image"
+                                :disabled="!$selected_size" placeholder="{{ __('Select an image') }}"
                                 :options="$imageOptions" />
                             @if ($private_keys->isEmpty())
                                 <div>
@@ -133,7 +133,7 @@
                         <div class="flex flex-col gap-4">
                             <x-forms.listbox label="{{ __('Extra SSH keys') }}" id="selectedDigitalOceanSshKeyIds"
                                 helper="Existing keys from the DigitalOcean account." multiple searchable
-                                :disabled="count($digitalOceanSshKeys) === 0" searchPlaceholder="Search SSH keys…"
+                                :disabled="count($digitalOceanSshKeys) === 0" searchPlaceholder="{{ __('Search SSH keys…') }}"
                                 :placeholder="count($digitalOceanSshKeys) ? 'Select SSH keys' : 'No account keys found'"
                                 :options="collect($digitalOceanSshKeys)->map(fn ($sshKey) => ['value' => $sshKey['id'], 'label' => $sshKey['name'] ?? $sshKey['fingerprint']])->values()->all()" />
 

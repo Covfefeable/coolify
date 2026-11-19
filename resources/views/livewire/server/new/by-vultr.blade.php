@@ -85,12 +85,12 @@
                                     helper="{{ __('A friendly name shown in Coolify.') }}" />
                             </div>
                             <x-forms.listbox id="selected_region" label="{{ __('Region') }}" required live
-                                placeholder="Select a region" :options="$regionOptions" />
+                                placeholder="{{ __('Select a region') }}" :options="$regionOptions" />
                             <x-forms.listbox id="selected_plan" label="Plan" required live
-                                :disabled="!$selected_region" placeholder="Select a plan"
+                                :disabled="!$selected_region" placeholder="{{ __('Select a plan') }}"
                                 :options="$planOptions" />
                             <x-forms.listbox id="selected_os_id" label="Operating system" required
-                                placeholder="Select an operating system" :options="$osOptions" />
+                                placeholder="{{ __('Select an operating system') }}" :options="$osOptions" />
                             @if ($private_keys->isEmpty())
                                 <div>
                                     <label class="mb-1.5 flex w-fit items-center gap-1.5">Private key
@@ -131,7 +131,7 @@
                         <div class="flex flex-col gap-4">
                             <x-forms.listbox label="{{ __('Extra SSH keys') }}" id="selectedVultrSshKeyIds"
                                 helper="Existing keys from the Vultr account." multiple searchable
-                                :disabled="count($vultrSshKeys) === 0" searchPlaceholder="Search SSH keys…"
+                                :disabled="count($vultrSshKeys) === 0" searchPlaceholder="{{ __('Search SSH keys…') }}"
                                 :placeholder="count($vultrSshKeys) ? 'Select SSH keys' : 'No account keys found'"
                                 :options="collect($vultrSshKeys)->map(fn ($sshKey) => ['value' => $sshKey['id'], 'label' => $sshKey['name']])->values()->all()" />
 

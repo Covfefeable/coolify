@@ -48,7 +48,7 @@
                         @if (currentTeam()->subscription->stripe_cancel_at_period_end)
                             <x-status-badge type="warning" label="Cancelling at end of period" />
                         @else
-                            <x-status-badge type="success" label="Active" />
+                            <x-status-badge type="success" label="{{ __('Active') }}" />
                         @endif
                     </div>
                     <div class="text-sm flex items-center gap-2 flex-wrap">

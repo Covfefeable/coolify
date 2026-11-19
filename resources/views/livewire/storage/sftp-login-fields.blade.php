@@ -1,13 +1,13 @@
 {{-- Login of an SFTP storage: a password, or a private key of the storage team. Uses sftpAuth, privateKeyId, hasSavedSecret, $privateKeys, and $publicKey. --}}
 <div class="grid gap-4 lg:grid-cols-2">
     <x-forms.listbox required live id="sftpAuth" label="{{ __('Authentication') }}" :disabled="$disabled ?? false" :options="[
-        ['value' => 'key', 'label' => 'Private key'],
-        ['value' => 'password', 'label' => 'Password'],
+        ['value' => 'key', 'label' => __('Private key')],
+        ['value' => 'password', 'label' => __('Password')],
     ]" />
     @if ($sftpAuth === 'key')
         <x-forms.listbox required live id="privateKeyId" label="{{ __('Private key') }}" :disabled="$disabled ?? false"
             :options="$privateKeys" placeholder="{{ __('Select a private key') }}"
-            emptyText="No private keys yet. Add one under Keys & Tokens." />
+            emptyText="{{ __('No private keys yet. Add one under Keys & Tokens.') }}" />
         @if ($publicKey)
             <div class="lg:col-span-2">
                 <x-forms.copy-input label="{{ __('Public key') }}" :text="$publicKey" />

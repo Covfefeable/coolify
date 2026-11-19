@@ -113,7 +113,7 @@
                     <div class="grid items-end gap-4 sm:grid-cols-2">
                         <x-forms.input id="key" label="{{ __('Name') }}" :required="$is_redis_credential"
                             :disabled="!$canEditValue || $is_redis_credential || $composeInfo !== null" />
-                        <x-forms.input id="comment" label="{{ __('Comment') }}" placeholder="Optional note"
+                        <x-forms.input id="comment" label="{{ __('Comment') }}" placeholder="{{ __('Optional note') }}"
                             helper="{{ __('Add a note to document what this environment variable is used for.') }}" maxlength="256"
                             :disabled="!$canUpdate" />
                     </div>
@@ -224,7 +224,7 @@
                             @if ($showValueType)
                                 <x-forms.listbox id="is_multiline" label="Value type" :live="true" :options="[
                                     ['value' => false, 'label' => 'Single line'],
-                                    ['value' => true, 'label' => 'Multiline'],
+                                    ['value' => true, 'label' => __('Multiline')],
                                 ]"
                                     :disabled="! $canUpdate" />
                             @endif

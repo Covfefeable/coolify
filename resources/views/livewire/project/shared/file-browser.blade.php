@@ -58,7 +58,7 @@
                     x-data="{ selected: @js($container) }"
                     x-init="$watch('selected', (name) => run('Loading files...', () => $wire.selectContainer(name)))">
                     <x-forms.listbox id="file-browser-container" :wire="false" x-model="selected" searchable portal
-                        searchPlaceholder="Search containers"
+                        searchPlaceholder="{{ __('Search containers') }}"
                         :options="collect($availableContainers)->map(fn ($name) => ['value' => $name, 'label' => $name])->all()" />
                 </div>
             @endif

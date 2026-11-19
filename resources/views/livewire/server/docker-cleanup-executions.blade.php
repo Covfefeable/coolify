@@ -96,8 +96,8 @@
             @endif
         </div>
     @empty
-        <x-empty size="sm" title="No cleanup executions"
-            description="Run a manual cleanup or wait for the next scheduled execution."
+        <x-empty size="sm" title="{{ __('No cleanup executions') }}"
+            description="{{ __('Run a manual cleanup or wait for the next scheduled execution.') }}"
             icon-name="storages" />
     @endforelse
 </div>

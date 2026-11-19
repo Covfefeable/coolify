@@ -3,6 +3,7 @@
 use App\Actions\Server\StartLogDrain;
 use App\Actions\Server\StopLogDrain;
 use App\Livewire\Server\LogDrains;
+use App\Models\InstanceSettings;
 use App\Models\PrivateKey;
 use App\Models\Server;
 use App\Models\User;
@@ -19,6 +20,21 @@ beforeEach(function () {
 
     $this->actingAs($this->user);
     session(['currentTeam' => $this->team]);
+});
+
+it('renders log drain settings and preserves technical examples in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+    InstanceSettings::forceCreate(['id' => 0]);
+    $this->server->settings()->update(['is_reachable' => true, 'is_usable' => true]);
+
+    Livewire::test(LogDrains::class, ['server_uuid' => $this->server->uuid])
+        ->assertSee('日志转发')
+        ->assertSee('同一时间只能启用一个日志转发目标。')
+        ->assertSee('尚未配置')
+        ->assertSee('许可证密钥')
+        ->assertSee('日志流前缀')
+        ->assertSeeHtml('placeholder="us-east-1"')
+        ->assertSeeHtml('placeholder="https://log-api.eu.newrelic.com/log/v1"');
 });
 
 it('enables the CloudWatch drain and persists its options', function () {

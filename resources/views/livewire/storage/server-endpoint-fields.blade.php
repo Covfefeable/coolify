@@ -7,7 +7,7 @@
             </label>
         </div>
         <input id="serverParts-host" type="text" class="input" wire:model="serverParts.host"
-            placeholder="backup.example.com or 192.168.1.50" autocomplete="off" required
+            placeholder="{{ __('backup.example.com or 192.168.1.50') }}" autocomplete="off" required
             @disabled($disabled ?? false) />
         @error('endpoint')
             <p class="mt-1 text-[12px] text-red-500">{{ $message }}</p>

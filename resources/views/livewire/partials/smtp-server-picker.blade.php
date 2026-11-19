@@ -63,7 +63,7 @@
                     <form wire:submit.prevent="addSmtpServer" class="application-settings-form flex flex-col gap-4">
                         <x-forms.input id="newSmtpServerName" label="{{ __('Name') }}" placeholder="PostShiba production"
                             helper="{{ __('Name to find this server in the SMTP server list.') }}" required />
-                        <x-forms.listbox id="newSmtpServerTemplate" label="Template" placeholder="None (enter the settings yourself)"
+                        <x-forms.listbox id="newSmtpServerTemplate" label="Template" placeholder="{{ __('None (enter the settings yourself)') }}"
                             helper="Fills in the host, port, and encryption of the provider. You then enter the username and password from the provider."
                             :options="\App\Support\SmtpPresets::options()" />
                         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">

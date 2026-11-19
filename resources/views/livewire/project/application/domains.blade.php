@@ -264,7 +264,7 @@
                         label="{{ __('Redirect HTTP to HTTPS') }}" onChange="updateForceHttps"
                         helper="{{ __('Disable only when Cloudflare Tunnel or another proxy connects to Coolify over HTTP. Keep enabled when Cloudflare uses Full or Full (Strict) SSL.') }}"
                         :options="[
-                            ['value' => true, 'label' => 'Enabled'],
+                            ['value' => true, 'label' => __('Enabled')],
                             ['value' => false, 'label' => 'Disabled'],
                         ]" :disabled="! auth()->user()->can('update', $application)" />
                 @endif

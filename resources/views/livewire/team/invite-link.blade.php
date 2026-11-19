@@ -30,7 +30,7 @@
                         <div class="min-w-0 flex-1">
                             <x-forms.listbox id="role" label="{{ __('Role') }}" :options="array_values(array_filter([
                                 auth()->user()->role() === 'owner' ? ['value' => 'owner', 'label' => 'Owner'] : null,
-                                ['value' => 'admin', 'label' => 'Admin'],
+                                ['value' => 'admin', 'label' => __('Admin')],
                                 ['value' => 'member', 'label' => 'Member'],
                             ]))" />
                         </div>

@@ -36,7 +36,7 @@
                             :canResource="$database" />
                     @endif
                     <x-forms.input label="{{ $database->started_at ? 'Initial database' : 'Database' }}"
-                        id="mongoInitdbDatabase" placeholder="If empty, it will match the username."
+                        id="mongoInitdbDatabase" placeholder="{{ __('If empty, it will match the username.') }}"
                         :readonly="(bool) $database->started_at" :required="!$database->started_at"
                         canGate="update" :canResource="$database"
                         helper="{{ $database->started_at ? 'You can only change this in the database.' : null }}" />
