@@ -289,7 +289,7 @@
                         @endif
                     </div>
                 @else
-                    <x-empty size="sm" title="Two-factor authentication is off"
+                    <x-empty size="sm" title="{{ __('Two-factor authentication is off') }}"
                         description="Configure an authenticator app to add another sign-in check."
                         icon-name="keys" />
                 @endif

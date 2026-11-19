@@ -17,7 +17,7 @@
     $muted = 'text-neutral-300 dark:text-fg-faint';
 @endphp
 @if (collect($paths)->isEmpty())
-    <x-empty size="sm" title="No path data" description="No requests were recorded for the selected range."
+    <x-empty size="sm" title="{{ __('No path data') }}" description="{{ __('No requests were recorded for the selected range.') }}"
         icon-name="unordered-list" />
 @else
     {{-- Keyed so the lazy-load morph inserts fresh nodes instead of reusing the

@@ -126,7 +126,7 @@
                         </x-slot:pageSize>
                     </x-table-pagination>
                 @else
-                    <x-empty title="No activity found"
+                    <x-empty title="{{ __('No activity found') }}"
                         description="Team actions will appear here as they happen." icon-name="time-back" size="sm" />
                 @endif
             </x-application.settings-section>

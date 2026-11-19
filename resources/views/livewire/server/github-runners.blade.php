@@ -12,7 +12,7 @@
         <div class="application-settings-form flex w-full flex-col gap-6">
             @if (! $server->canBuildApplications())
                 <x-application.settings-section id="github-runners-section" title="{{ __('GitHub Actions runners') }}"
-                    helper="Each workflow job runs in a new container that is deleted after the job.">
+                    helper="{{ __('Each workflow job runs in a new container that is deleted after the job.') }}">
                     <x-slot:actions>
                         <x-beta-badge />
                         <a class="button" href="{{ route('server.show', ['server_uuid' => $server->uuid]) }}"
@@ -32,7 +32,7 @@
                 </x-callout>
             @elseif (! $this->config?->is_enabled)
                 <x-application.settings-section id="github-runners-section" title="{{ __('GitHub Actions runners') }}"
-                    helper="Each workflow job runs in a new container that is deleted after the job.">
+                    helper="{{ __('Each workflow job runs in a new container that is deleted after the job.') }}">
                     <x-slot:actions>
                         <x-beta-badge />
                     </x-slot:actions>

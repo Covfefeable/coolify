@@ -318,11 +318,11 @@
                         <div class="mt-4 flex flex-wrap justify-end gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                             @if (!empty($checkboxes))
                                 <x-forms.button @click="step--">
-                                    Back
+                                    {{ __('Back') }}
                                 </x-forms.button>
                             @else
                                 <x-forms.button @click="modalOpen = false; resetModal()">
-                                    Cancel
+                                    {{ __('Cancel') }}
                                 </x-forms.button>
                             @endif
                             <x-forms.button
@@ -391,7 +391,7 @@
 
                             <div class="mt-4 flex flex-wrap justify-end gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                                 <x-forms.button @click="step--">
-                                    Back
+                                    {{ __('Back') }}
                                 </x-forms.button>
                                 <x-forms.button :showLoadingIndicator="false"
                                     x-bind:disabled="!password || submitting" class="w-auto" isError

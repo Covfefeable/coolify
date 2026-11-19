@@ -13,3 +13,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Clipboard feedback, request errors, and canvas zoom controls support Simplified Chinese
 - Shared variable pages show Simplified Chinese headings, editor controls, and empty states
 - Traffic analytics, fleet metrics, and update settings include Simplified Chinese guidance and controls
+- Server navigation and breadcrumbs use Simplified Chinese, with broader coverage of tooltips, buttons, and empty states

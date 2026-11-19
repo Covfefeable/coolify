@@ -9,7 +9,7 @@
                 description="Credentials used by third-party integrations such as DNS providers and secret managers." flush>
                 <x-slot:actions>
                     @can('create', App\Models\IntegrationToken::class)
-                        <x-modal-input title="New Integration Token">
+                        <x-modal-input title="{{ __('New Integration Token') }}">
                             <x-slot:content>
                                 <button type="button" class="button button-highlighted">
                                     <x-reicon name="plus" class="size-3.5" />

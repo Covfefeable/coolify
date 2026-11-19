@@ -122,11 +122,11 @@
                     <x-empty size="sm" title="No scanned image has this vulnerability or package."
                         description="Check the ID, or search for the package name." />
                 @elseif ($hasFilters)
-                    <x-empty size="sm" title="No matching resources" description="Try other filters, or reset them." />
+                    <x-empty size="sm" title="{{ __('No matching resources') }}" description="{{ __('Try other filters, or reset them.') }}" />
                 @elseif (! $hasResources)
                     <x-empty size="sm" title="{{ __('No resources yet') }}" description="The resources of your team show here." />
                 @elseif ($hidesNotChecked)
-                    <x-empty size="sm" title="No resource was scanned yet"
+                    <x-empty size="sm" title="{{ __('No resource was scanned yet') }}"
                         description="Resources that were not scanned are hidden. Coolify scans an image when it deploys or starts it on a server that scans images." />
                 @endif
             @else

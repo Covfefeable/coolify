@@ -56,7 +56,7 @@
 
                 @if ($search)
                     @if ($foundUsers->isEmpty())
-                        <x-empty size="sm" title="No users found"
+                        <x-empty size="sm" title="{{ __('No users found') }}"
                             description="No account matches {{ $search }}." icon-name="profile" />
                     @else
                         <div class="data-table">
@@ -99,7 +99,7 @@
                         </div>
                     @endif
                 @else
-                    <x-empty size="sm" title="Search for an account"
+                    <x-empty size="sm" title="{{ __('Search for an account') }}"
                         description="Enter a name or email address to begin." icon-name="profile" />
                 @endif
             </div>

@@ -60,7 +60,7 @@
         </header>
 
         @if ($sources->isEmpty())
-            <x-empty title="No sources yet"
+            <x-empty title="{{ __('No sources yet') }}"
                 description="Connect a Git provider to deploy applications directly from your repositories."
                 icon-name="sources" />
         @else

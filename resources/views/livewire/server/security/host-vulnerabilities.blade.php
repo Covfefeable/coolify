@@ -12,7 +12,7 @@
             $rebootRequired = data_get($result, 'reboot_required') === true;
             $hostScanError = $hostScan?->error_code?->message([...($hostScan->error_context ?? []), 'server' => $server->name]);
         @endphp
-        <x-application.settings-section id="server-host-vulnerabilities-section" title="Vulnerabilities"
+        <x-application.settings-section id="server-host-vulnerabilities-section" title="{{ __('Vulnerabilities') }}"
             helper="Known vulnerabilities in the operating system packages of this server. Coolify scans them with the image scanner every day and after a package update. Problems that the distribution does not fix are not shown."
             flush>
             <x-slot:badges>
@@ -118,7 +118,7 @@
                                     @endif
                                 </span>
                                 @can('update', $server)
-                                    <x-modal-confirmation title="Reboot server?" buttonTitle="Reboot server" isErrorButton
+                                    <x-modal-confirmation title="{{ __('Reboot server?') }}" buttonTitle="{{ __('Reboot server') }}" isErrorButton
                                         submitAction="rebootServer"
                                     warningMessage="The containers on this server stop until the server is back." :actions="[
                                             'The server reboots in a few seconds.',
@@ -128,7 +128,7 @@
                                         confirmationText="{{ $server->name }}"
                                         confirmationLabel="Enter the server name to confirm"
                                         shortConfirmationLabel="Server name" :confirmWithPassword="false"
-                                        step2ButtonText="Reboot server" />
+                                        step2ButtonText="{{ __('Reboot server') }}" />
                                 @endcan
                             </div>
                         </x-callout>

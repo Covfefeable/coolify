@@ -51,7 +51,7 @@
                 <x-slot:actions>
                     <x-forms.button canGate="update" :canResource="$settings" type="button"
                         wire:click="detectPublicIps">
-                        Detect
+                        {{ __('Detect') }}
                     </x-forms.button>
                 </x-slot:actions>
                 <div class="grid gap-4 lg:grid-cols-2">

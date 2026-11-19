@@ -97,7 +97,7 @@
                                                     step2ButtonText="Permanently Delete" />
                                             @else
                                                 <x-forms.button isError disabled tooltip="You do not have permission to delete this storage.">
-                                                    Delete
+                                                    {{ __('Delete') }}
                                                 </x-forms.button>
                                             @endcan
                                         </x-slot:action>

@@ -18,7 +18,7 @@
                             Reload
                         </x-forms.button>
                         @can('update', $server)
-                            <x-modal-input buttonTitle="+ Add" title="New Dynamic Configuration">
+                            <x-modal-input buttonTitle="{{ __('+ Add') }}" title="New Dynamic Configuration">
                                 <livewire:server.proxy.new-dynamic-configuration :server_id="$server->id" />
                             </x-modal-input>
                         @endcan
@@ -64,7 +64,7 @@
                             </x-application.settings-section>
                         @endforeach
                     @else
-                        <x-application.settings-section wire:loading.remove title="Dynamic configurations">
+                        <x-application.settings-section wire:loading.remove title="{{ __('Dynamic configurations') }}">
                             <x-empty size="sm" title="No dynamic configurations"
                                 description="Add a configuration file to extend the proxy at runtime."
                                 icon-name="file-content" />
@@ -72,7 +72,7 @@
                     @endif
                 </div>
             @else
-                <x-application.settings-section title="Dynamic configurations"
+                <x-application.settings-section title="{{ __('Dynamic configurations') }}"
                     helper="Manage additional runtime proxy configuration.">
                     <x-empty size="sm" title="{{ __('Server validation required') }}"
                         description="Validate this server before loading proxy configuration."

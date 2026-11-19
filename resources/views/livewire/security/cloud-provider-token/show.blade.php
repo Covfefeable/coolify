@@ -15,7 +15,7 @@
                             confirmationText="{{ $cloudProviderToken->name }}" :confirmWithPassword="false"
                             step2ButtonText="Delete token" />
                     @endcan
-                    <x-forms.button type="button" wire:click="validateToken">Validate</x-forms.button>
+                    <x-forms.button type="button" wire:click="validateToken">{{ __('Validate') }}</x-forms.button>
                 </div>
                 <x-forms.button type="submit" isHighlighted>{{ __('Save changes') }}</x-forms.button>
             </div>

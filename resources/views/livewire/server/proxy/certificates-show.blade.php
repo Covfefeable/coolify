@@ -12,7 +12,7 @@
             </div>
         @else
             <div class="application-settings-form w-full">
-                <x-application.settings-section title="TLS certificates"
+                <x-application.settings-section title="{{ __('TLS certificates') }}"
                     helper="Review certificates stored by Traefik for this server.">
                     <x-empty size="sm" :title="$server->isFunctional() ? 'Traefik required' : 'Server validation required'"
                         :description="$server->isFunctional() ? 'TLS certificate management is available for the Traefik proxy.' : 'Validate this server before viewing its TLS certificates.'"

@@ -2,12 +2,12 @@
 
 <div class="application-settings-form flex w-full flex-col gap-6">
     @if ($server->hasPendingProxyConfiguration())
-        <x-callout type="warning" title="Restart required">
+        <x-callout type="warning" title="{{ __('Restart required') }}">
             Restart the proxy to apply TLS certificate changes.
         </x-callout>
     @endif
     @if ($server->proxyType() === ProxyTypes::TRAEFIK->value)
-        <x-application.settings-section id="server-proxy-certificates-section" title="TLS certificates"
+        <x-application.settings-section id="server-proxy-certificates-section" title="{{ __('TLS certificates') }}"
             x-init="$wire.loadTraefikCertificates()"
             helper="Review certificates stored in Traefik's acme.json file. Traefik renews every certificate in this file, also when no route uses its domain any more. Deleting an entry removes it from local ACME storage. It does not revoke the certificate at the certificate authority. If a route still uses the domain, Traefik requests a new certificate after the restart.">
             <x-slot:actions>
@@ -29,7 +29,7 @@
                 @endif
                 <x-forms.button type="button" wire:click="loadTraefikCertificates"
                     wire:loading.attr="disabled" wire:target="loadTraefikCertificates">
-                    Refresh
+                    {{ __('Refresh') }}
                 </x-forms.button>
             </x-slot:actions>
 

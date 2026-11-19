@@ -137,7 +137,7 @@
                                             <div
                                                 class="flex flex-wrap justify-end gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                                                 <x-forms.button @click="closeErrorModal()" type="button">
-                                                    Close
+                                                    {{ __('Close') }}
                                                 </x-forms.button>
                                             </div>
                                         </div>

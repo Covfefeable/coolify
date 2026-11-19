@@ -98,7 +98,7 @@
                             <x-server.remove-unused-packages-button :packageManager="$packageManager"
                                 triggerId="server-patching-remove-unused-trigger" />
                             @if ($rebootRequired)
-                                <x-modal-confirmation title="Reboot server?" buttonTitle="Reboot server"
+                                <x-modal-confirmation title="{{ __('Reboot server?') }}" buttonTitle="{{ __('Reboot server') }}"
                                     submitAction="rebootServer"
                                     warningMessage="The containers on this server stop until the server is back." :actions="[
                                         'The server reboots in a few seconds.',
@@ -108,9 +108,9 @@
                                     confirmationText="{{ $server->name }}"
                                     confirmationLabel="Enter the server name to confirm"
                                     shortConfirmationLabel="Server name" :confirmWithPassword="false"
-                                    step2ButtonText="Reboot server">
+                                    step2ButtonText="{{ __('Reboot server') }}">
                                     <x-slot:trigger>
-                                        <button id="server-patching-reboot-trigger" type="button">Reboot server</button>
+                                        <button id="server-patching-reboot-trigger" type="button">{{ __('Reboot server') }}</button>
                                     </x-slot:trigger>
                                 </x-modal-confirmation>
                             @endif
@@ -220,15 +220,15 @@
                 </x-application.settings-section>
             </div>
         @elseif ($error)
-            <x-application.settings-section id="server-package-updates-section" title="Package updates"
-                helper="Available operating system updates for this server.">
+            <x-application.settings-section id="server-package-updates-section" title="{{ __('Package updates') }}"
+                helper="{{ __('Available operating system updates for this server.') }}">
                 <x-callout type="danger" title="Could not check for updates">
                     {{ $error }}
                 </x-callout>
             </x-application.settings-section>
         @elseif ($checkedAt && $totalUpdates === 0)
-            <x-application.settings-section id="server-package-updates-section" title="Package updates"
-                helper="Available operating system updates for this server.">
+            <x-application.settings-section id="server-package-updates-section" title="{{ __('Package updates') }}"
+                helper="{{ __('Available operating system updates for this server.') }}">
                 <x-slot:badges>
                     <x-status-badge status="Up to date" type="success" />
                 </x-slot:badges>
@@ -236,7 +236,7 @@
                     description="No package updates are currently available." icon-name="check-circle" />
             </x-application.settings-section>
         @elseif ($totalUpdates > 0)
-            <x-application.settings-section id="server-package-updates-section" title="Package updates"
+            <x-application.settings-section id="server-package-updates-section" title="{{ __('Package updates') }}"
                 helper="{{ $totalUpdates }} {{ Str::plural('update', $totalUpdates) }} available{{ $securityUpdates !== null ? ', ' . $securityUpdates . ' of them security ' . Str::plural('update', $securityUpdates) : '' }}."
                 flush>
                 <x-slot:badges>

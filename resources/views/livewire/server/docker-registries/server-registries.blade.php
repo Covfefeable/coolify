@@ -87,7 +87,7 @@
                             @if ($row['logged_in'] && $row['source'] === 'auths')
                                 <x-table.row-actions label="Registry actions">
                                     <x-table.row-action wire:click="testLogin({{ \Illuminate\Support\Js::from($row['registry']) }})" wire:loading.attr="disabled"
-                                        wire:target="testLogin" title="Run docker login with the saved credentials">Test</x-table.row-action>
+                                        wire:target="testLogin" title="{{ __('Run docker login with the saved credentials') }}">Test</x-table.row-action>
                                     <x-modal-input title="Edit login for {{ $row['registry'] }}"
                                         subtitle="Runs docker login on {{ $server->name }} again. The new values replace the old login.">
                                         <x-slot:content>
@@ -113,7 +113,7 @@
                             @elseif ($row['logged_in'])
                                 <button type="button" wire:click="testLogin(@js($row['registry']))" wire:loading.attr="disabled"
                                     wire:target="testLogin" class="button w-fit"
-                                    title="Run docker login with the saved credentials">Test</button>
+                                    title="{{ __('Run docker login with the saved credentials') }}">Test</button>
                             @elseif (! $error && $server->isFunctional())
                                 <x-modal-input buttonTitle="{{ __('Log in') }}" title="Log in to {{ $row['registry'] }}"
                                     subtitle="Runs docker login on {{ $server->name }}.">

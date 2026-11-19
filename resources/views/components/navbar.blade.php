@@ -328,11 +328,11 @@
         @if (auth()->id() === 0 && (isCloud() || isDev()))
             {{-- Part of the main menu: hidden while a submenu or a resource menu shows. --}}
             <li x-show="navLevel === -1 && !submenu" @if (($activeSubmenu ?? null) || ($navContext ?? [])) x-cloak @endif>
-                <a title="Admin" {{ wireNavigate() }}
+                <a title="{{ __('Admin') }}" {{ wireNavigate() }}
                     class="nav-admin {{ request()->is('admin') ? 'menu-item-active menu-item' : 'menu-item' }}"
                     :class="collapsed && 'lg:justify-center lg:px-0'" href="{{ route('admin.index') }}">
                     <x-reicon name="fire" class="menu-item-icon" />
-                    <span class="menu-item-label" :class="collapsed && 'lg:hidden'">Admin</span>
+                    <span class="menu-item-label" :class="collapsed && 'lg:hidden'">{{ __('Admin') }}</span>
                 </a>
             </li>
         @endif

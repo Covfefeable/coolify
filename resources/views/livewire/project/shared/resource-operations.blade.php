@@ -201,7 +201,7 @@
                         ]">
                         <x-slot:trigger>
                             <x-forms.button x-bind:disabled="!selectedCloneDestination || !selectedCloneEnvironment">
-                                Clone resource
+                                {{ __('Clone resource') }}
                             </x-forms.button>
                         </x-slot:trigger>
                     </x-modal-confirmation>
@@ -212,7 +212,7 @@
                     <x-forms.button wire:key="clone-resource-without-volume-data"
                         x-bind:disabled="!selectedCloneDestination || !selectedCloneEnvironment"
                         @click="$wire.cloneTo(selectedCloneDestination, selectedCloneEnvironment)">
-                        Clone resource
+                        {{ __('Clone resource') }}
                     </x-forms.button>
                 @endif
             </div>
@@ -290,7 +290,7 @@
                         All configuration will move with the resource.
                     </p>
                     <x-forms.button @click="$wire.moveTo(selectedMoveEnvironment)">
-                        Move resource
+                        {{ __('Move resource') }}
                     </x-forms.button>
                 </div>
             @else

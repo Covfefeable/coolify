@@ -124,12 +124,12 @@
                                     @if ($addDomainDnsFailed)
                                         <x-forms.button canGate="update" :canResource="$service" type="button"
                                             wire:click="confirmAddDomainDespiteDns" isError>
-                                            Continue
+                                            {{ __('Continue') }}
                                         </x-forms.button>
                                     @else
                                         <x-forms.button canGate="update" :canResource="$service" type="submit"
                                             isHighlighted>
-                                            Save
+                                            {{ __('Save') }}
                                         </x-forms.button>
                                     @endif
                                 </div>
@@ -171,7 +171,7 @@
                         @if ($hasHttpsDomains)
                             <div class="flex w-full items-center gap-2 sm:w-auto service-domains-https">
                                 <label for="service-force-https-{{ $appId }}-trigger" class="mb-0! whitespace-nowrap text-[12px]!">Redirect HTTP to HTTPS</label>
-                                <x-helper helper="Disable only when Cloudflare Tunnel or another proxy connects to Coolify over HTTP. Keep enabled when Cloudflare uses Full or Full (Strict) SSL." />
+                                <x-helper helper="{{ __('Disable only when Cloudflare Tunnel or another proxy connects to Coolify over HTTP. Keep enabled when Cloudflare uses Full or Full (Strict) SSL.') }}" />
                                 <x-forms.listbox canGate="update" :canResource="$service" id="forceHttpsRedirects.{{ $appId }}"
                                     htmlId="service-force-https-{{ $appId }}" preserveValue portal
                                     onChange="updateForceHttps"
@@ -272,7 +272,7 @@
                                 @if ($editDomainDnsFailed)
                                     <div class="flex justify-end">
                                         <x-forms.button type="button" isError wire:click="confirmUpdateDomainDespiteDns">
-                                            Continue
+                                            {{ __('Continue') }}
                                         </x-forms.button>
                                     </div>
                                 @endif

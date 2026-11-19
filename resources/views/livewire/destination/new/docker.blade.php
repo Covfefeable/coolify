@@ -16,7 +16,7 @@
             <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.07]">
                 <x-forms.button type="submit" wire:target="submit"
                     class="button-highlighted">
-                    Create destination
+                    {{ __('Create destination') }}
                 </x-forms.button>
             </div>
         </form>

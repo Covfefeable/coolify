@@ -95,7 +95,7 @@
 
                             <div class="flex flex-wrap items-center justify-end gap-2 pt-2">
                                 <x-forms.button type="button" wire:click="closeCloudflareAutoconfigureModal">
-                                    Cancel
+                                    {{ __('Cancel') }}
                                 </x-forms.button>
                                 <x-forms.button type="button" wire:click="applyCloudflareAutoconfigure"
                                     isHighlighted>

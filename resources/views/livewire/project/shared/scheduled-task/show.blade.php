@@ -63,7 +63,7 @@
         </x-application.settings-section>
     </form>
 
-    <x-application.settings-section x-show="activeSection === 'executions'" x-cloak id="task-executions-section" title="Recent executions"
+    <x-application.settings-section x-show="activeSection === 'executions'" x-cloak id="task-executions-section" title="{{ __('Recent executions') }}"
         helper="Execution history refreshes automatically while a task is running." flush>
         <livewire:project.shared.scheduled-task.executions :taskId="$task->id" />
     </x-application.settings-section>

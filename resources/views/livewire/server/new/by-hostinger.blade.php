@@ -24,7 +24,7 @@
                 </x-application.settings-section>
             @elseif ($provider_data_error)
                 <x-application.settings-section title="Unable to load Hostinger"
-                    description="The selected token could not access the provider API.">
+                    description="{{ __('The selected token could not access the provider API.') }}">
                     <x-callout type="error" title="{{ __('Provider request failed') }}">
                         <pre class="mt-2 whitespace-pre-wrap break-words text-[11px]">{{ $provider_data_error }}</pre>
                     </x-callout>

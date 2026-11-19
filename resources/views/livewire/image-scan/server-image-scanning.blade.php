@@ -36,7 +36,7 @@
 
         <div class="application-settings-form flex w-full min-w-0 flex-col gap-6">
 
-            <x-application.settings-section id="server-image-scanning-section" title="Image scanning"
+            <x-application.settings-section id="server-image-scanning-section" title="{{ __('Image scanning') }}"
                 :helper="$sectionHelper">
                 @can('update', $server)
                     <x-slot:actions>

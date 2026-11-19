@@ -23,7 +23,7 @@
                                     </span>
                                 @endisset
                                 <x-forms.button wire:click="load_prs">
-                                    Refresh
+                                    {{ __('Refresh') }}
                                 </x-forms.button>
                             </x-slot:headerActions>
 

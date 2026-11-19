@@ -132,7 +132,7 @@
             </div>
 
             <div x-cloak x-show="filteredMembers.length === 0">
-                <x-empty size="sm" title="No matching members"
+                <x-empty size="sm" title="{{ __('No matching members') }}"
                     description="Try a different name, email address, or role." />
             </div>
 

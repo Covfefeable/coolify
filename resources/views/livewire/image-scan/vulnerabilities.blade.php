@@ -82,7 +82,7 @@
                     @endif
 
                     <ul class="flex flex-col divide-y divide-neutral-200 rounded-lg border border-neutral-200 dark:divide-white/[0.06] dark:border-white/[0.08]"
-                        aria-label="Images">
+                        aria-label="{{ __('Images') }}">
                         @foreach ($card['rows'] as $row)
                             @php
                                 $bodyId = 'security-image-'.$row['key'].'-body';
@@ -240,7 +240,7 @@
                                 @endif
                             </x-empty>
                         @elseif ($hasFilters)
-                            <x-empty size="sm" title="No matching findings"
+                            <x-empty size="sm" title="{{ __('No matching findings') }}"
                                 description="Try another search, or reset the filters." />
                         @else
                             <x-empty size="sm" :title="$showIgnored ? 'No ignored findings.' : 'No findings in this group.'" />

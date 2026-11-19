@@ -62,9 +62,9 @@
         </button>
 
         @if ($searchError)
-            <x-callout type="error" title="Provider search failed">{{ $searchError }}</x-callout>
+            <x-callout type="error" title="{{ __('Provider search failed') }}">{{ $searchError }}</x-callout>
         @elseif ($noMatch)
-            <x-callout type="warning" title="No matching resource">
+            <x-callout type="warning" title="{{ __('No matching resource') }}">
                 Try another token, confirm the resource ID, or verify the server IP.
             </x-callout>
         @elseif ($matched)

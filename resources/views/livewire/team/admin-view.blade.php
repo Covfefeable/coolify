@@ -96,7 +96,7 @@
                     </x-slot:pageSize>
                 </x-table-pagination>
             @else
-                <x-empty title="No users found" description="Try a different name or email address."
+                <x-empty title="{{ __('No users found') }}" description="{{ __('Try a different name or email address.') }}"
                     icon-name="teams" size="sm" />
             @endif
         </x-application.settings-section>

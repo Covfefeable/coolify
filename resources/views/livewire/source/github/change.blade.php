@@ -211,7 +211,7 @@
                                                 @else
                                                     <x-forms.button isError disabled canGate="delete" :canResource="$github_app"
                                                         tooltip="You do not have permission to delete this GitHub App.">
-                                                        Delete
+                                                        {{ __('Delete') }}
                                                     </x-forms.button>
                                                 @endcan
                                             </x-slot:action>

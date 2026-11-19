@@ -38,7 +38,7 @@
                             $server->proxy->last_saved_settings !== $server->proxy->last_applied_settings)
                         <x-callout type="warning" title="Your configuration changed, please restart the proxy." />
                     @elseif ($server->hasPendingProxyConfiguration())
-                        <x-callout type="warning" title="Restart required">
+                        <x-callout type="warning" title="{{ __('Restart required') }}">
                             Restart the proxy to apply TLS certificate changes.
                         </x-callout>
                     @else
@@ -205,7 +205,7 @@
             </x-application.settings-section>
         @else
             <x-application.settings-section title="{{ __('Proxy configuration') }}"
-                helper="Choose the reverse proxy implementation for this server.">
+                helper="{{ __('Choose the reverse proxy implementation for this server.') }}">
                 @can('update', $server)
                     <div class="grid gap-3 lg:grid-cols-3">
                         @foreach ([
@@ -233,7 +233,7 @@
         @endif
     @else
         <x-application.settings-section title="{{ __('Proxy configuration') }}"
-            helper="Choose the reverse proxy implementation for this server.">
+            helper="{{ __('Choose the reverse proxy implementation for this server.') }}">
             @can('update', $server)
                 <div class="grid gap-3 lg:grid-cols-3">
                     @foreach ([

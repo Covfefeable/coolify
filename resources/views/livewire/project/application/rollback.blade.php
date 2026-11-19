@@ -68,12 +68,12 @@
                     @can('deploy', $application)
                         @if ($isCurrent)
                             <x-forms.button disabled tooltip="This image is currently running.">
-                                Rollback
+                                {{ __('Rollback') }}
                             </x-forms.button>
                         @elseif (!$isRollbackable)
                             <x-forms.button disabled
                                 tooltip="Only commit and pull-request image tags support rollback.">
-                                Rollback
+                                {{ __('Rollback') }}
                             </x-forms.button>
                         @else
                             <x-forms.button wire:click="rollbackImage('{{ $tag }}')">

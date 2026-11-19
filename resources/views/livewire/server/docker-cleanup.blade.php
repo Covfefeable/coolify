@@ -20,7 +20,7 @@
                     <x-slot:actions>
                         @can('update', $server)
                             <x-modal-confirmation title="Confirm Docker Cleanup?"
-                                buttonTitle="Run cleanup" isHighlightedButton submitAction="manualCleanup"
+                                buttonTitle="{{ __('Run cleanup') }}" isHighlightedButton submitAction="manualCleanup"
                                 :actions="[
                                     'Deletes stopped containers managed by Coolify.',
                                     'Deletes unused images and clears the build cache.',
@@ -61,7 +61,7 @@
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" placeholder="0 0 * * *"
                                 id="dockerCleanupFrequency" label="Cleanup frequency" required
-                                helper="Cron expression or preset such as hourly, daily, weekly, monthly, or yearly." />
+                                helper="{{ __('Cron expression or preset such as hourly, daily, weekly, monthly, or yearly.') }}" />
                             <x-forms.listbox id="forceDockerCleanup" label="Cleanup trigger"
                                 helper="Forced cleanup runs on every schedule without waiting for the threshold."
                                 onChange="instantSave" :options="[
@@ -107,7 +107,7 @@
 
             </form>
 
-            <x-application.settings-section id="docker-cleanup-executions-section" title="Recent executions"
+            <x-application.settings-section id="docker-cleanup-executions-section" title="{{ __('Recent executions') }}"
                 helper="Review cleanup status, duration, and command output." flush>
                 <livewire:server.docker-cleanup-executions :server="$server" />
             </x-application.settings-section>

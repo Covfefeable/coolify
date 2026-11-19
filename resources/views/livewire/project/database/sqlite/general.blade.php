@@ -35,12 +35,12 @@
                 <x-forms.input label="{{ __('Custom Docker options') }}" disabled value="Hidden (only admins can view)" />
             @else
                 <x-forms.input
-                    helper="Add supported docker run options used when the container starts. Unsupported options can interfere with Coolify automation."
+                    helper="{{ __('Add supported docker run options used when the container starts. Unsupported options can interfere with Coolify automation.') }}"
                     placeholder="--cap-add SYS_ADMIN --device=/dev/fuse"
                     id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" canGate="update"
                     :canResource="$database" />
             @endif
-            <x-application.settings-subsection id="log-delivery-section" title="{{ __('Log delivery') }}" helper="Forward container logs to the drain configured on the server.">
+            <x-application.settings-subsection id="log-delivery-section" title="{{ __('Log delivery') }}" helper="{{ __('Forward container logs to the drain configured on the server.') }}">
                 <x-forms.listbox canGate="update" :canResource="$database" id="isLogDrainEnabled" label="{{ __('Log drain') }}" live onChange="instantSaveAdvanced"
                     :disabled="! auth()->user()->can('update', $database)" :options="[
                         ['value' => false, 'label' => 'Do not forward logs'],

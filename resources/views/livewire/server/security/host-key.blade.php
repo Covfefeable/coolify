@@ -1,6 +1,6 @@
 <div class="application-settings-form flex w-full flex-col gap-6">
     @if (count($pendingFingerprints) > 0)
-        <x-callout type="danger" title="The SSH host key of this server changed">
+        <x-callout type="danger" title="{{ __('The SSH host key of this server changed') }}">
             @foreach ($pendingFingerprints as $fingerprint)
                 <code class="block break-all">{{ $fingerprint }}</code>
             @endforeach

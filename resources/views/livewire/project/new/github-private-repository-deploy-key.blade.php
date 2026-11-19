@@ -26,7 +26,7 @@
                         </div>
                     </button>
                 @empty
-                    <x-empty title="No private keys"
+                    <x-empty title="{{ __('No private keys') }}"
                         description="Create an SSH key before connecting a private repository."
                         icon-name="keys">
                         <x-slot:contents>

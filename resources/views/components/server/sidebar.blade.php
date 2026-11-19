@@ -299,9 +299,9 @@
                 @if ($menuItem['disabled'] ?? false)
                     <span wire:key="{{ $placement }}-server-settings-link-{{ str($menuItem['label'])->slug() }}"
                         class="menu-item cursor-not-allowed opacity-40" aria-disabled="true"
-                        title="Validate the server connection first.">
+                        title="{{ __('Validate the server connection first.') }}">
                         <x-reicon :name="$menuItem['icon']" class="menu-item-icon" />
-                        <span class="menu-item-label">{{ $menuItem['label'] }}</span>
+                        <span class="menu-item-label">{{ __($menuItem['label']) }}</span>
                     </span>
                 @else
                     <a wire:key="{{ $placement }}-server-settings-link-{{ str($menuItem['label'])->slug() }}"
@@ -312,7 +312,7 @@
                         @if ($menuItem['navigate'] ?? true) {{ wireNavigate() }} @endif
                         href="{{ route($menuItem['route'], $serverRouteParameters) }}">
                         <x-reicon :name="$menuItem['icon']" class="menu-item-icon" />
-                        <span class="menu-item-label">{{ $menuItem['label'] }}</span>
+                        <span class="menu-item-label">{{ __($menuItem['label']) }}</span>
                         @if ($menuItem['tracks_proxy_configuration'] ?? false)
                             <x-reicon name="alert-triangle" x-cloak
                                 x-show="proxyConfigurationPending || traefikOutdated || proxyNotRunning"
@@ -335,7 +335,7 @@
                                     @if ($child['navigate'] ?? true) {{ wireNavigate() }} @endif
                                     href="{{ route($child['route'], $serverRouteParameters) }}">
                                     <x-reicon :name="$child['icon']" class="menu-item-icon" />
-                                    <span class="menu-item-label">{{ $child['label'] }}</span>
+                                    <span class="menu-item-label">{{ __($child['label']) }}</span>
                                     @if ($child['beta'] ?? false)
                                         <x-beta-badge class="ml-auto shrink-0" />
                                     @endif

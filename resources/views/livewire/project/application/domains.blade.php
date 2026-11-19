@@ -135,11 +135,11 @@
                                         <div class="flex flex-wrap gap-2">
                                             @if ($addDomainDnsFailed)
                                                 <x-forms.button type="button" wire:click="confirmAddDomainDespiteDns" isError>
-                                                    Continue
+                                                    {{ __('Continue') }}
                                                 </x-forms.button>
                                             @else
                                                 <x-forms.button type="submit" isHighlighted>
-                                                    Save
+                                                    {{ __('Save') }}
                                                 </x-forms.button>
                                             @endif
                                         </div>
@@ -262,7 +262,7 @@
                 @if ($hasHttpsDomains)
                     <x-forms.listbox canGate="update" :canResource="$application" id="isForceHttpsEnabled"
                         label="Redirect HTTP to HTTPS" onChange="updateForceHttps"
-                        helper="Disable only when Cloudflare Tunnel or another proxy connects to Coolify over HTTP. Keep enabled when Cloudflare uses Full or Full (Strict) SSL."
+                        helper="{{ __('Disable only when Cloudflare Tunnel or another proxy connects to Coolify over HTTP. Keep enabled when Cloudflare uses Full or Full (Strict) SSL.') }}"
                         :options="[
                             ['value' => true, 'label' => 'Enabled'],
                             ['value' => false, 'label' => 'Disabled'],
@@ -365,11 +365,11 @@
                                     </x-forms.button>
                                     @if ($editDomainDnsFailed)
                                         <x-forms.button type="button" isError wire:click="confirmUpdateDomainDespiteDns">
-                                            Continue
+                                            {{ __('Continue') }}
                                         </x-forms.button>
                                     @else
                                         <x-forms.button type="submit" wire:target="updateDomain" isHighlighted>
-                                            Save
+                                            {{ __('Save') }}
                                         </x-forms.button>
                                     @endif
                                     </div>
@@ -414,7 +414,7 @@
                             <div class="mt-4 flex flex-wrap justify-end gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                                 <x-forms.button type="button" canGate="update" :canResource="$application"
                                     @click="modalOpen = false; $wire.call('cancelUseUnknownPort')">
-                                    Cancel
+                                    {{ __('Cancel') }}
                                 </x-forms.button>
                                 <x-forms.button type="button" wire:click="confirmUseUnknownPort" canGate="update"
                                     :canResource="$application"

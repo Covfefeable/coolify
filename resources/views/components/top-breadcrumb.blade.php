@@ -105,7 +105,7 @@
         default => [null, null],
     };
 @endphp
-<div class="flex min-w-0 items-center gap-0.5 text-[13px]" data-page-context="{{ $dashboardContext }}"
+<div class="flex min-w-0 items-center gap-0.5 text-[13px]" data-page-context="{{ $dashboardContext ? __($dashboardContext) : null }}"
     x-data="{
         titleRepeats: false,
         renamed: {},
@@ -131,7 +131,7 @@
     @if (!$currentProject && $dashboardContext)
         <span x-show="!titleRepeats" x-cloak class="shrink-0 px-0.5 text-neutral-300 dark:text-fg-faint">/</span>
         <a href="{{ route($dashboardContextRoute) }}" {{ wireNavigate() }} x-show="!titleRepeats" x-cloak
-            class="flex h-8 min-w-0 items-center truncate rounded-md px-2 font-semibold text-black opacity-70 transition-[background-color,opacity] hover:bg-neutral-100 hover:opacity-100 dark:text-fg dark:hover:bg-white/[0.05]">{{ $dashboardContext }}</a>
+            class="flex h-8 min-w-0 items-center truncate rounded-md px-2 font-semibold text-black opacity-70 transition-[background-color,opacity] hover:bg-neutral-100 hover:opacity-100 dark:text-fg dark:hover:bg-white/[0.05]">{{ $dashboardContext ? __($dashboardContext) : null }}</a>
     @endif
 
     @if ($currentStorage)
@@ -203,7 +203,7 @@
 
     @if ($currentTag)
         <x-breadcrumb-switcher title="{{ __('Tags') }}" :label="$currentTag->name" :items="collect([[
-            'label' => 'All tags',
+            'label' => __('All tags'),
             'href' => route('tags.show'),
             'active' => false,
         ]])->concat($tags->map(fn ($tag) => [
@@ -233,7 +233,7 @@
             <div x-show="open" x-cloak x-transition.opacity.duration.120ms
                 class="listbox-panel scrollbar left-0! z-[90]! max-h-80! min-w-56 max-w-72">
                 <div class="px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-neutral-400 dark:text-fg-faint">
-                    Projects
+                    {{ __('Projects') }}
                 </div>
                 @foreach ($projects as $p)
                     <a href="{{ route($projectDestinationRoute, ['project_uuid' => $p->uuid]) }}" {{ wireNavigate() }} @click="open = false"
@@ -264,7 +264,7 @@
             <div x-show="open" x-cloak x-transition.opacity.duration.120ms
                 class="listbox-panel scrollbar left-0! z-[90]! max-h-80! min-w-52 max-w-72">
                 <div class="px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-neutral-400 dark:text-fg-faint">
-                    Environments
+                    {{ __('Environments') }}
                 </div>
                 @foreach ($environments as $env)
                     <a href="{{ route('project.resource.index', ['project_uuid' => $currentProject->uuid, 'environment_uuid' => $env->uuid]) }}" {{ wireNavigate() }} @click="open = false"

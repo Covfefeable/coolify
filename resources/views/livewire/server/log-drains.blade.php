@@ -11,7 +11,7 @@
 
         <div class="application-settings-form flex w-full flex-col gap-6">
             @if ($server->isFunctional())
-                <x-application.settings-section id="server-log-drains-overview-section" title="Log drains"
+                <x-application.settings-section id="server-log-drains-overview-section" title="{{ __('Log drains') }}"
                     helper="Forward container logs from this server to one external destination.">
                     <x-slot:actions>
                         <x-status-badge :status="$server->isLogDrainEnabled() ? 'Active' : 'Not configured'"
@@ -113,7 +113,7 @@
                     </x-application.settings-section>
                 </form>
             @else
-                <x-application.settings-section title="Log drains"
+                <x-application.settings-section title="{{ __('Log drains') }}"
                     helper="Forward container logs from this server to an external destination.">
                     <x-empty size="sm" title="{{ __('Server validation required') }}"
                         description="Validate this server before configuring log drains."

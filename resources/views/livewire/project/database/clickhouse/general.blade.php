@@ -64,7 +64,7 @@
         </x-application.settings-section>
 
         <x-application.settings-section id="access-section" title="{{ __('Access') }}"
-            description="How applications and clients connect to this database, and whether it is reachable from the internet.">
+            description="{{ __('How applications and clients connect to this database, and whether it is reachable from the internet.') }}">
             <x-slot:actions>
                 @if ($isPublic)
                     <x-process-dialog closeWithX size="xl">
@@ -77,10 +77,10 @@
                     </x-process-dialog>
                 @endif
             </x-slot:actions>
-            <x-application.settings-subsection id="connection-section" title="{{ __('Connection') }}" helper="Use these URLs to connect to the database." first>
+            <x-application.settings-subsection id="connection-section" title="{{ __('Connection') }}" helper="{{ __('Use these URLs to connect to the database.') }}" first>
                 <livewire:project.database.clickhouse.status-info :database="$database" />
             </x-application.settings-subsection>
-            <x-application.settings-subsection id="public-access-section" title="{{ __('Public access') }}" helper="Expose this database through the managed TCP proxy." class="relative">
+            <x-application.settings-subsection id="public-access-section" title="{{ __('Public access') }}" helper="{{ __('Expose this database through the managed TCP proxy.') }}" class="relative">
                 <x-table.loading target="instantSave" text="Updating public access..." />
                 <div class="grid gap-4 lg:grid-cols-2">
                     <div wire:key="public-access-{{ $publicPort ?: 'unset' }}">
@@ -93,7 +93,7 @@
                     <x-forms.input type="number" placeholder="8123" disabled="{{ $isPublic }}" id="publicPort"
                         label="{{ __('Public port') }}" canGate="update" :canResource="$database" />
                     <x-forms.input type="number" placeholder="3600" disabled="{{ $isPublic }}" id="publicPortTimeout"
-                        label="{{ __('Proxy timeout') }}" helper="Timeout in seconds. The default is 3600."
+                        label="{{ __('Proxy timeout') }}" helper="{{ __('Timeout in seconds. The default is 3600.') }}"
                         canGate="update" :canResource="$database" />
                     <x-forms.input placeholder="3000:8123" id="portsMappings" label="{{ __('Port mappings') }}"
                         helper="Comma-separated host-to-container mappings, for example 3000:8123."
@@ -108,12 +108,12 @@
                 <x-forms.input label="{{ __('Custom Docker options') }}" disabled value="Hidden (only admins can view)" />
             @else
                 <x-forms.input
-                    helper="Add supported docker run options used when the container starts. Unsupported options can interfere with Coolify automation."
+                    helper="{{ __('Add supported docker run options used when the container starts. Unsupported options can interfere with Coolify automation.') }}"
                     placeholder="--cap-add SYS_ADMIN --device=/dev/fuse"
                     id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" canGate="update"
                     :canResource="$database" />
             @endif
-            <x-application.settings-subsection id="log-delivery-section" title="{{ __('Log delivery') }}" helper="Forward container logs to the drain configured on the server.">
+            <x-application.settings-subsection id="log-delivery-section" title="{{ __('Log delivery') }}" helper="{{ __('Forward container logs to the drain configured on the server.') }}">
                 <x-forms.listbox canGate="update" :canResource="$database" id="isLogDrainEnabled" label="{{ __('Log drain') }}" live onChange="instantSaveAdvanced"
                     :disabled="! auth()->user()->can('update', $database)" :options="[
                         ['value' => false, 'label' => 'Do not forward logs'],

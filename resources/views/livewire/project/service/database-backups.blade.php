@@ -57,7 +57,7 @@
                                             wire:key="service-database-import-{{ $serviceDatabase->uuid }}" />
                                     </x-modal-input>
                                     @if (filled($serviceDatabase->custom_type) || ! $serviceDatabase->is_migrated)
-                                        <x-modal-input buttonTitle="+ Add" title="{{ __('New Scheduled Backup') }}">
+                                        <x-modal-input buttonTitle="{{ __('+ Add') }}" title="{{ __('New Scheduled Backup') }}">
                                             <livewire:project.database.create-scheduled-backup
                                                 :database="$serviceDatabase" />
                                         </x-modal-input>

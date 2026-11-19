@@ -141,11 +141,11 @@
                     @if ($isSuggested && ! $labelsAreWritable)
                         @if ($row['needs_force_add'] ?? false)
                             <x-forms.button wire:click="addSuggestedDomain({{ $index }})" isError class="h-7! px-2! text-[12px]!">
-                                Continue
+                                {{ __('Continue') }}
                             </x-forms.button>
                         @else
                             <x-forms.button wire:click="addSuggestedDomain({{ $index }})" isHighlighted class="h-7! shrink-0 px-2.5! text-[12px]!">
-                                Add domain
+                                {{ __('Add domain') }}
                             </x-forms.button>
                         @endif
                     @endif

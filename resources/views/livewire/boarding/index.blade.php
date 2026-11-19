@@ -37,7 +37,7 @@
                     <div class="mt-5 flex flex-col items-center gap-4">
                         <x-forms.button class="w-full justify-center sm:w-auto sm:min-w-36" wire:click="explanation"
                             isHighlighted>
-                            Continue
+                            {{ __('Continue') }}
                         </x-forms.button>
                         <div
                             class="inline-flex flex-wrap items-center justify-center gap-0.5 rounded-lg border border-neutral-200 bg-neutral-50 p-0.5 dark:border-white/[0.08] dark:bg-white/[0.05]">
@@ -84,7 +84,7 @@
                     <x-slot:actions>
                         <x-forms.button class="w-full justify-center lg:w-auto" wire:click="explanation"
                             isHighlighted>
-                            Continue
+                            {{ __('Continue') }}
                         </x-forms.button>
                     </x-slot:actions>
                 </x-boarding-step>

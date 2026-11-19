@@ -21,7 +21,7 @@
                 </x-application.settings-section>
             @elseif ($provider_data_error)
                 <x-application.settings-section title="Unable to load Hetzner"
-                    description="The selected token could not access the provider API.">
+                    description="{{ __('The selected token could not access the provider API.') }}">
                     <x-callout type="error" title="{{ __('Provider request failed') }}">
                         <pre class="mt-2 whitespace-pre-wrap break-words text-[11px]">{{ $provider_data_error }}</pre>
                     </x-callout>
@@ -84,7 +84,7 @@
                         <div class="grid gap-4 lg:grid-cols-2">
                             <div class="lg:col-span-2">
                                 <x-forms.input id="server_name" label="{{ __('Server name') }}"
-                                    helper="A friendly name shown in Coolify." />
+                                    helper="{{ __('A friendly name shown in Coolify.') }}" />
                             </div>
                             <x-forms.listbox id="selected_location" label="Location" required live
                                 placeholder="Select a location" :options="$locationOptions" />

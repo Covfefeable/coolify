@@ -13,7 +13,7 @@
         @if ($servers->count() > 0)
             @can('createAnyResource')
                 <div class="w-fit shrink-0">
-                    <x-modal-input title="New Destination">
+                    <x-modal-input title="{{ __('New Destination') }}">
                         <x-slot:content>
                             <button type="button"
                                 class="button button-highlighted">
@@ -29,7 +29,7 @@
     </header>
 
     @if ($destinations->isEmpty())
-        <x-empty title="No destinations yet"
+        <x-empty title="{{ __('No destinations yet') }}"
             description="Add a Docker network endpoint to choose where your resources are deployed."
             icon-name="destinations" />
     @else

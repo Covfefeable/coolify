@@ -23,7 +23,7 @@
         </header>
 
         @if ($projects->isEmpty())
-            <x-empty title="No projects yet"
+            <x-empty title="{{ __('No projects yet') }}"
                 description="Create a project to organize your environments and resources."
                 icon-name="projects">
                 <x-slot:contents>

@@ -80,7 +80,7 @@
             configuration. Docker Engine will restart, so running containers may be briefly unreachable.
         </div>
         <x-forms.button isHighlighted wire:click="startValidatingAfterAsking">
-            Continue
+            {{ __('Continue') }}
         </x-forms.button>
     @else
         <div data-validation-checkpoints
@@ -103,7 +103,7 @@
                     Validation complete
                 </div>
                 <x-forms.button type="button" @click="processDialogOpen = false">
-                    Close
+                    {{ __('Close') }}
                 </x-forms.button>
             </div>
         @elseif ($isInstalling)

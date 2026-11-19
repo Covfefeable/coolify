@@ -60,6 +60,15 @@ test('server destinations page renders when selected server has no destinations'
         ->assertSee('No destinations')
         ->assertSee('Add a destination or scan the server for existing Docker networks.')
         ->assertDontSee('Server not found.');
+
+    app()->setLocale('zh-cn');
+
+    $this->get(route('server.destinations', ['server_uuid' => $server->uuid]))
+        ->assertSuccessful()
+        ->assertSeeHtml('data-page-context="服务器"')
+        ->assertSee('部署目标')
+        ->assertSee('没有部署目标')
+        ->assertSee('添加部署目标，或扫描服务器以查找已有 Docker 网络。');
 });
 
 test('global destinations page does not render per-server empty states beside existing destinations', function () {

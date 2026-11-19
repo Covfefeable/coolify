@@ -1,6 +1,6 @@
                 <form wire:submit.prevent="submit" class="application-settings-form flex flex-col gap-6">
                     <x-unsaved-bar action="submit" />
-                    <x-application.settings-section id="server-overview-section" title="Server overview"
+                    <x-application.settings-section id="server-overview-section" title="{{ __('Server overview') }}"
                         helper="Operating system and hardware details for the server running this Coolify instance.">
                         <x-slot:actions>
                             <x-forms.button type="button" wire:click="refreshServerMetadata"
@@ -19,7 +19,7 @@
                         @include('livewire.server.partials.force-disabled-callout')
 
                         @if ($this->limaStartCommand)
-                            <x-callout type="info" title="Start this Lima VM locally" class="mb-4">
+                            <x-callout type="info" title="{{ __('Start this Lima VM locally') }}" class="mb-4">
                                 <code
                                     class="mt-2 block overflow-x-auto rounded-lg bg-neutral-950 px-3 py-2 font-mono text-[11px] text-neutral-200">{{ $this->limaStartCommand }}</code>
                             </x-callout>
@@ -48,8 +48,8 @@
                     </x-application.settings-section>
 
                     @if ($server->validation_logs)
-                        <x-application.settings-section title="Previous validation output"
-                            helper="The latest output produced while checking this server.">
+                        <x-application.settings-section title="{{ __('Previous validation output') }}"
+                            helper="{{ __('The latest output produced while checking this server.') }}">
                             <div
                                 class="max-h-72 overflow-auto rounded-lg bg-neutral-950 p-4 font-mono text-xs leading-5 text-neutral-300">
                                 {!! $server->validation_logs !!}
@@ -69,7 +69,7 @@
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" type="password" id="ip"
                                 label="{{ __('IP address or domain') }}"
-                                helper="Enter a hostname or IP address without http:// or https://."
+                                helper="{{ __('Enter a hostname or IP address without http:// or https://.') }}"
                                 required :disabled="$isValidating" />
                             <x-forms.input canGate="update" :canResource="$server" id="user" label="{{ __('SSH user') }}"
                                 required :disabled="$isValidating" />
@@ -80,7 +80,7 @@
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" type="number"
                                 id="connectionTimeout" label="Connection timeout"
-                                helper="Seconds to wait before an SSH connection fails." min="1" max="300"
+                                helper="{{ __('Seconds to wait before an SSH connection fails.') }}" min="1" max="300"
                                 required :disabled="$isValidating" />
                             <x-forms.listbox searchable id="serverTimezone" label="Server timezone"
                                 helper="Used for backup schedules, cron jobs, and displayed timestamps."
@@ -91,7 +91,7 @@
                                 ])->all()" :disabled="$isValidating" canGate="update" :canResource="$server" />
                             <x-forms.input canGate="update" :canResource="$server"
                                 placeholder="https://example.com" id="wildcardDomain" label="Wildcard domain"
-                                helper="New resources can receive generated subdomains from this domain."
+                                helper="{{ __('New resources can receive generated subdomains from this domain.') }}"
                                 :disabled="$isValidating" />
                         </div>
                     </x-application.settings-section>

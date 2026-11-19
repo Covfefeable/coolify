@@ -63,7 +63,7 @@
                 </div>
                 @if ($gitlab_app_id)
                     <x-forms.button wire:click.prevent="loadRepositories({{ $gitlab_app_id }})">
-                        Refresh
+                        {{ __('Refresh') }}
                     </x-forms.button>
                 @endif
             </div>

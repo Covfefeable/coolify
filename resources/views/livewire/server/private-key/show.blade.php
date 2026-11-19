@@ -43,7 +43,7 @@
                                         <x-reicon name="keys" class="size-3.5 shrink-0 opacity-70" />
                                         Generate RSA
                                     </button>
-                                    <x-modal-input title="Add Private Key Manually">
+                                    <x-modal-input title="{{ __('Add Private Key Manually') }}">
                                         <x-slot:content>
                                             <button type="button"
                                                 class="listbox-option justify-start! gap-2.5! w-full"
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                 @empty
-                    <x-empty size="sm" title="No private keys"
+                    <x-empty size="sm" title="{{ __('No private keys') }}"
                         description="Add or generate a private key to connect to this server."
                         icon-name="keys" />
                 @endforelse

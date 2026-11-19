@@ -11,15 +11,15 @@
 
         <div class="application-settings-form flex w-full flex-col gap-6">
             @if ($this->isLocalhost)
-                <x-application.settings-section id="server-transfer-section" title="Transfer server"
-                    helper="Move this server’s control-plane config to another Coolify instance (same physical host).">
+                <x-application.settings-section id="server-transfer-section" title="{{ __('Transfer server') }}"
+                    helper="{{ __('Move this server’s control-plane config to another Coolify instance (same physical host).') }}">
                     <x-callout type="warning" title="Localhost cannot be transferred">
                         The Coolify host (localhost) cannot be transferred between instances.
                     </x-callout>
                 </x-application.settings-section>
             @else
-                <x-application.settings-section id="server-transfer-section" title="Transfer server"
-                    helper="Move this server’s control-plane config to another Coolify instance (same physical host).">
+                <x-application.settings-section id="server-transfer-section" title="{{ __('Transfer server') }}"
+                    helper="{{ __('Move this server’s control-plane config to another Coolify instance (same physical host).') }}">
                     <x-slot:actions>
                         @php
                             $exportTooltip = $exportId ? "Export ID: {$exportId}" : null;
@@ -113,7 +113,7 @@
                         </div>
                         <div>
                             <x-modal-confirmation title="Transfer this server?" submitAction="migrateServer"
-                                :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="Transfer server"
+                                :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Transfer server') }}"
                                 warningMessage="All secrets of this server and its resources are sent to the target instance: private keys, credentials, and every environment variable value, also locked ones. Continue only if you trust that instance."
                                 :actions="[
                                     'Coolify first checks this server, the target instance, and the token. If a check fails, nothing is changed.',
@@ -123,7 +123,7 @@
                                 <x-slot:trigger>
                                     <x-forms.button canGate="transfer" :canResource="$server" wire:loading.attr="disabled"
                                         wire:target="migrateServer">
-                                        <span wire:loading.remove wire:target="migrateServer">Transfer server</span>
+                                        <span wire:loading.remove wire:target="migrateServer">{{ __('Transfer server') }}</span>
                                         <span wire:loading wire:target="migrateServer">Running checks…</span>
                                     </x-forms.button>
                                 </x-slot:trigger>

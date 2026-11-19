@@ -53,7 +53,7 @@
             <span>System status</span>
             @if ($server->proxySet() && auth()->user()?->can('manageProxy', $server))
                 <button type="button" wire:click="checkProxyStatus" wire:loading.attr="disabled"
-                    wire:target="checkProxyStatus" aria-label="Refresh status" title="Refresh status"
+                    wire:target="checkProxyStatus" aria-label="{{ __('Refresh status') }}" title="{{ __('Refresh status') }}"
                     class="inline-flex size-5 items-center justify-center rounded text-neutral-400 hover:bg-neutral-200 hover:text-neutral-700 disabled:cursor-wait dark:text-fg-faint dark:hover:bg-white/10 dark:hover:text-fg">
                     <x-reicon name="refresh" class="size-3" wire:loading.class="animate-spin" wire:target="checkProxyStatus" />
                 </button>

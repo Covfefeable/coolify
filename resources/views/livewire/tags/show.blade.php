@@ -37,7 +37,7 @@
     </header>
 
     @if ($tags->isEmpty())
-        <x-empty title="No tags yet"
+        <x-empty title="{{ __('No tags yet') }}"
             description="Create a tag, then connect it to resources to group related deployments."
             icon-name="tags" />
     @elseif (! isset($tag))
@@ -356,7 +356,7 @@
             <x-application.settings-section title="{{ __('Resources') }}"
                 description="{{ $resourceCount }} {{ Str::plural('resource', $resourceCount) }} use this tag.">
                 @if ($resourceCount === 0)
-                    <x-empty title="No resources use this tag"
+                    <x-empty title="{{ __('No resources use this tag') }}"
                         description="Connect this tag to resources to see them here."
                         icon-name="tags" size="sm" />
                 @else
@@ -424,7 +424,7 @@
                     wire:target="setDeploymentSort">
                     @if (count($deploymentsPerTagPerServer ?? []) === 0)
                         <div class="p-3">
-                            <x-empty title="No active deployments"
+                            <x-empty title="{{ __('No active deployments') }}"
                                 description="Deployments will appear here while they are queued or running."
                                 icon-name="play-circle" size="sm" />
                         </div>

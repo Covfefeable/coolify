@@ -27,7 +27,7 @@
     </header>
 
     @if ($s3->isEmpty())
-        <x-empty title="No storage yet"
+        <x-empty title="{{ __('No storage yet') }}"
             description="Add an S3-compatible, SFTP, FTPS, or WebDAV destination to store backups outside your servers."
             icon-name="storages" />
     @else

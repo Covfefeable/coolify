@@ -13,7 +13,7 @@
     $maxRequests = max(1, (int) collect($hosts)->max('requests'));
 @endphp
 @if (empty($hosts))
-    <x-empty size="sm" title="No host data" description="No hostnames were recorded for the selected range."
+    <x-empty size="sm" title="{{ __('No host data') }}" description="{{ __('No hostnames were recorded for the selected range.') }}"
         icon-name="unordered-list" />
 @else
     {{-- Keyed so the lazy-load morph does not reuse the placeholder skeleton nodes. --}}

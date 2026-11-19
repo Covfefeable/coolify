@@ -8,7 +8,7 @@
     @if ($resource->getMorphClass() === 'App\Models\Application' && $resource->build_pack === 'dockercompose')
         <x-application.settings-section id="metrics-overview-section" title="{{ __('Metrics') }}"
             helper="Inspect CPU and memory usage for this application.">
-            <x-empty size="sm" title="Metrics unavailable"
+            <x-empty size="sm" title="{{ __('Metrics unavailable') }}"
                 description="Container metrics are not currently available for Docker Compose applications."
                 icon-name="dashboard" />
         </x-application.settings-section>
@@ -42,7 +42,7 @@
             <div wire:key="metrics-poll-{{ $this->pollSeconds() }}" wire:poll.{{ $this->pollSeconds() }}s="pollData" class="hidden"></div>
         @endif
         <x-application.settings-section id="metrics-overview-section" title="{{ __('Metrics') }}"
-            helper="Inspect recent CPU and memory usage reported by Sentinel.">
+            helper="{{ __('Inspect recent CPU and memory usage reported by Sentinel.') }}">
             <x-slot:actions>
                 <x-live-toggle :active="$live" storageKey="resource-metrics-live" />
             </x-slot:actions>
@@ -62,7 +62,7 @@
             </p>
         </x-application.settings-section>
 
-        <x-application.settings-section id="cpu-metrics-section" title="CPU usage"
+        <x-application.settings-section id="cpu-metrics-section" title="{{ __('CPU usage') }}"
             helper="CPU usage of the container, as in docker stats. 100% means one CPU core is fully busy, so a container that uses more than one core can go above 100%. The maximum is the number of cores × 100%.">
             <x-slot:actions>
                 <div wire:ignore id="{!! $chartId !!}-cpu-legend" class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs"></div>
@@ -223,7 +223,7 @@
             @endscript
         </x-application.settings-section>
 
-        <x-application.settings-section id="memory-metrics-section" title="Memory usage"
+        <x-application.settings-section id="memory-metrics-section" title="{{ __('Memory usage') }}"
             helper="Memory consumed by the application container, measured in megabytes.">
             <x-slot:actions>
                 <div wire:ignore id="{!! $chartId !!}-memory-legend" class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs"></div>

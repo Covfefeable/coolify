@@ -3,7 +3,7 @@
         <livewire:star-toggle :resource="$server" :wire:key="'star-mobile-'.$server->getMorphClass().'-'.$server->uuid" />
     @endteleport
     <x-process-dialog @startproxy.window="processDialogOpen = true" closeWithX>
-        <x-slot:title>Proxy Startup Logs</x-slot:title>
+        <x-slot:title>{{ __('Proxy Startup Logs') }}</x-slot:title>
         <x-slot:content>
             <div class="flex h-full min-h-0 flex-col gap-3">
                 @if ($server->id === 0)
@@ -179,7 +179,7 @@
                         <x-server.status-summary :server="$server" :proxy-status="$proxyStatus"
                             :show-sentinel-status="$showSentinelStatus" />
                         @if ($showProxyActions && $traefikDashboardAvailable)
-                            <a target="_blank" href="http://{{ formatHostForUrl((string) $serverIp) }}:8080" title="Open Traefik dashboard"
+                            <a target="_blank" href="http://{{ formatHostForUrl((string) $serverIp) }}:8080" title="{{ __('Open Traefik dashboard') }}"
                                 class="inline-flex h-6 shrink-0 items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-100 px-2 text-xs font-medium leading-none text-neutral-700 dark:border-white/[0.12] dark:bg-white/[0.07] dark:text-white">
                                 <x-reicon name="external-link" class="size-3" />
                                 Traefik
@@ -262,7 +262,7 @@
                                 @if ($menuItem['active']) aria-current="page" @endif
                                 @if ($menuItem['navigate'] ?? true) {{ wireNavigate() }} @endif
                                 href="{{ route($menuItem['route'], $serverRouteParameters) }}">
-                                {{ $menuItem['label'] }}
+                                {{ __($menuItem['label']) }}
                             </a>
                         @endforeach
                     </x-resource-heading-tabs>
@@ -281,7 +281,7 @@
                 class="resource-heading-navbar application-heading-actions flex w-auto min-w-0 items-center justify-end gap-1 overflow-visible">
                 @if ($traefikDashboardAvailable)
                     <div class="resource-heading-menus shrink-0">
-                        <a class="app-tab shrink-0 gap-1" target="_blank" title="Open Traefik dashboard"
+                        <a class="app-tab shrink-0 gap-1" target="_blank" title="{{ __('Open Traefik dashboard') }}"
                             href="http://{{ formatHostForUrl((string) $serverIp) }}:8080">
                             <x-reicon name="external-link" class="size-3.5 shrink-0 opacity-70" />
                             Traefik Dashboard

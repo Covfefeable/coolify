@@ -10,7 +10,7 @@
         <x-server.sidebar :server="$server" activeMenu="docker-images" />
 
         <div class="application-settings-form w-full min-w-0">
-            <x-application.settings-section id="server-docker-images-section" title="Images"
+            <x-application.settings-section id="server-docker-images-section" title="{{ __('Images') }}"
                 helper="Docker images stored on this server. Images that no container uses can be deleted here."
                 flush>
                 @if ($usage)

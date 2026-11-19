@@ -2,7 +2,7 @@
     <x-application.settings-section title="Backup schedules"
         description="Schedules currently writing backup data to this storage." flush>
         @if ($groupedBackups->count() === 0 && $volumeBackups->count() === 0)
-            <x-empty title="No backup schedules use this storage"
+            <x-empty title="{{ __('No backup schedules use this storage') }}"
                 description="Select this storage from a database or volume backup schedule to see it here."
                 icon-name="storages" size="sm" />
         @else

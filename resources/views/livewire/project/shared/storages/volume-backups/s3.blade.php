@@ -16,12 +16,12 @@
             @if (! $saveToS3)
                 <x-forms.button type="button" wire:click="toggleS3" wire:loading.attr="disabled"
                     wire:target="toggleS3" isHighlighted canGate="update" :canResource="$resource">
-                    Enable S3
+                    {{ __('Enable S3') }}
                 </x-forms.button>
             @else
                 <x-forms.button type="button" wire:click="toggleS3" wire:loading.attr="disabled"
                     wire:target="toggleS3" canGate="update" :canResource="$resource">
-                    Disable S3
+                    {{ __('Disable S3') }}
                 </x-forms.button>
             @endif
         </x-slot:actions>

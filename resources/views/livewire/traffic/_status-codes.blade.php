@@ -65,7 +65,7 @@
             </div>
         </div>
     @else
-        <x-empty size="sm" title="No status data" description="No responses were recorded for the selected range."
+        <x-empty size="sm" title="{{ __('No status data') }}" description="{{ __('No responses were recorded for the selected range.') }}"
             icon-name="network" />
     @endif
 </div>

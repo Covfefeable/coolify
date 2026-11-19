@@ -16,7 +16,7 @@
                 @endif
                 <x-forms.button type="button" wire:click="backupNow" :disabled="! $databaseRunning"
                     :tooltip="! $databaseRunning ? 'The database must be running to start a backup.' : null">
-                    Back up now
+                    {{ __('Back up now') }}
                 </x-forms.button>
             </div>
         @endteleport

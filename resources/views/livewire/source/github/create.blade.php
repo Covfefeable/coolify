@@ -65,7 +65,7 @@
         </div>
 
         <x-forms.button class="mt-1 w-full justify-center" type="submit">
-            Continue
+            {{ __('Continue') }}
         </x-forms.button>
     </form>
 @else

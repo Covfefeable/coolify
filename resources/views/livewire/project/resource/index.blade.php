@@ -261,7 +261,7 @@
                 <div x-show="filteredResources.length === 0"
                     class="flex min-h-52 flex-col items-center justify-center px-6 text-center">
                     <x-reicon name="search" class="mb-3 size-6 text-neutral-300 dark:text-fg-faint" />
-                    <p class="text-[13px] font-medium">No matching resources</p>
+                    <p class="text-[13px] font-medium">{{ __('No matching resources') }}</p>
                     <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">
                         Try a different search or filter.
                     </p>
@@ -319,7 +319,7 @@
                 <div x-show="filteredResources.length === 0"
                     class="flex min-h-52 flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 text-center dark:border-white/[0.08] dark:bg-white/[0.05]">
                     <x-reicon name="search" class="mb-3 size-6 text-neutral-300 dark:text-fg-faint" />
-                    <p class="text-[13px] font-medium">No matching resources</p>
+                    <p class="text-[13px] font-medium">{{ __('No matching resources') }}</p>
                     <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">
                         Try a different search or filter.
                     </p>

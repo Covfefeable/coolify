@@ -89,7 +89,7 @@
                     </div>
                 @empty
                     @if ($available && ! $show_form)
-                        <x-empty size="sm" title="No passkeys"
+                        <x-empty size="sm" title="{{ __('No passkeys') }}"
                             description="Add a passkey to sign in without your password."
                             icon-name="keys" />
                     @endif

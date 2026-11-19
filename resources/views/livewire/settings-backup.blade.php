@@ -41,7 +41,7 @@
                 <livewire:project.database.backup-executions :backup="$backup" />
             @else
                 <x-application.settings-section title="Instance backup">
-                    <x-empty title="Backup is not configured"
+                    <x-empty title="{{ __('Backup is not configured') }}"
                         description="Coolify needs an internal database resource to create automatic backups."
                         icon-name="database" size="sm">
                         <x-slot:actions>

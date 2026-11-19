@@ -84,7 +84,7 @@
 
     <div class="flex flex-col">
         @if (! $hasData)
-            <x-empty size="sm" title="No data" description="No country data for the selected range."
+            <x-empty size="sm" title="{{ __('No data') }}" description="{{ __('No country data for the selected range.') }}"
                 icon-name="network" />
         @else
             {{-- Keyed so the lazy-load morph inserts fresh nodes instead of reusing the
@@ -198,7 +198,7 @@
                                 <span class="hidden w-16 shrink-0 text-right text-[11px] tabular-nums text-neutral-400 sm:inline dark:text-fg-faint">{{ formatBytes($row['bytesOut']) }}</span>
                             </div>
                         @empty
-                            <x-empty size="sm" title="No city data" description="No city data for the selected range."
+                            <x-empty size="sm" title="{{ __('No city data') }}" description="{{ __('No city data for the selected range.') }}"
                                 icon-name="network" />
                         @endforelse
                     </div>

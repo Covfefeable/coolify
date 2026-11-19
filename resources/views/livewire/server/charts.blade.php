@@ -20,7 +20,7 @@
                         targets="sentinelMetricsRefreshRateSeconds,sentinelMetricsHistoryDays,sentinelPushIntervalSeconds" />
 
                     <x-application.settings-section id="server-metrics-overview-section" title="{{ __('Metrics') }}"
-                        helper="Inspect recent CPU and memory usage reported by Sentinel.">
+                        helper="{{ __('Inspect recent CPU and memory usage reported by Sentinel.') }}">
                         <x-slot:actions>
                             <div class="flex items-center gap-2">
                                 <x-live-toggle :active="$live" storageKey="server-metrics-live" />
@@ -33,13 +33,13 @@
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" type="number" min="1"
                                 id="sentinelMetricsRefreshRateSeconds" label="Collection rate" required
-                                helper="Seconds between metric samples." />
+                                helper="{{ __('Seconds between metric samples.') }}" />
                             <x-forms.input canGate="update" :canResource="$server" type="number" min="1"
                                 id="sentinelMetricsHistoryDays" label="History retention" required
-                                helper="Days of CPU and memory history to retain." />
+                                helper="{{ __('Days of CPU and memory history to retain.') }}" />
                             <x-forms.input canGate="update" :canResource="$server" type="number" min="10"
                                 id="sentinelPushIntervalSeconds" label="Push interval" required
-                                helper="Seconds between health reports sent to Coolify." />
+                                helper="{{ __('Seconds between health reports sent to Coolify.') }}" />
                         </div>
 
                         <div class="mt-4 max-w-xs">
@@ -62,7 +62,7 @@
                 {{-- CPU is the primary signal, so it spans full width; the other four
                      charts fall into a 2x2 below (mirrors the fleet /metrics layout). --}}
                 <div class="grid gap-6 lg:grid-cols-2">
-                    <x-application.settings-section id="server-cpu-metrics-section" title="CPU usage" class="lg:col-span-2"
+                    <x-application.settings-section id="server-cpu-metrics-section" title="{{ __('CPU usage') }}" class="lg:col-span-2"
                         helper="Average usage of all CPU cores on this server. 100% means that all cores are fully busy. For example, on a server with 8 cores, one fully busy core shows as 12.5%.">
                         <x-slot:actions>
                             <div wire:ignore id="{!! $chartId !!}-cpu-legend" class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs"></div>
@@ -70,7 +70,7 @@
                         <div wire:ignore id="{!! $chartId !!}-cpu" class="min-h-[240px] w-full"></div>
                     </x-application.settings-section>
 
-                    <x-application.settings-section id="server-memory-metrics-section" title="Memory usage"
+                    <x-application.settings-section id="server-memory-metrics-section" title="{{ __('Memory usage') }}"
                         helper="Percentage of physical memory currently used by this server.">
                         <x-slot:actions>
                             <div wire:ignore id="{!! $chartId !!}-memory-legend" class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs"></div>
@@ -94,7 +94,7 @@
                         <div wire:ignore id="{!! $chartId !!}-load" class="min-h-[240px] w-full"></div>
                     </x-application.settings-section>
 
-                    <x-application.settings-section id="server-disk-metrics-section" title="Disk usage"
+                    <x-application.settings-section id="server-disk-metrics-section" title="{{ __('Disk usage') }}"
                         helper="Percentage of the root filesystem used by this server.">
                         <x-slot:actions>
                             <div wire:ignore id="{!! $chartId !!}-disk-legend" class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs"></div>
@@ -364,9 +364,9 @@
                 @endscript
             @elseif ($server->isSentinelEnabled())
                 <x-application.settings-section id="server-metrics-overview-section" title="{{ __('Metrics') }}"
-                    helper="Inspect recent CPU and memory usage reported by Sentinel.">
-                    <x-empty size="sm" title="Metrics are disabled"
-                        description="Enable metrics to begin collecting CPU and memory history for this server."
+                    helper="{{ __('Inspect recent CPU and memory usage reported by Sentinel.') }}">
+                    <x-empty size="sm" title="{{ __('Metrics are disabled') }}"
+                        description="{{ __('Enable metrics to begin collecting CPU and memory history for this server.') }}"
                         icon-name="dashboard">
                         <x-slot:contents>
                             <x-forms.button canGate="update" :canResource="$server" isHighlighted
@@ -378,9 +378,9 @@
                 </x-application.settings-section>
             @else
                 <x-application.settings-section id="server-metrics-overview-section" title="{{ __('Metrics') }}"
-                    helper="Inspect recent CPU and memory usage reported by Sentinel.">
-                    <x-empty size="sm" title="Metrics unavailable"
-                        description="Sentinel metrics are unavailable on build and Swarm servers."
+                    helper="{{ __('Inspect recent CPU and memory usage reported by Sentinel.') }}">
+                    <x-empty size="sm" title="{{ __('Metrics unavailable') }}"
+                        description="{{ __('Sentinel metrics are unavailable on build and Swarm servers.') }}"
                         icon-name="dashboard">
                         <x-slot:contents>
                             <a class="button"

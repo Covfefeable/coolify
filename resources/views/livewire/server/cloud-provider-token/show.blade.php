@@ -22,7 +22,7 @@
                                 Validate token
                             </x-forms.button>
                             @can('create', App\Models\CloudProviderToken::class)
-                                <x-modal-input buttonTitle="+ Add" title="Add {{ $providerName }} Token">
+                                <x-modal-input buttonTitle="{{ __('+ Add') }}" title="Add {{ $providerName }} Token">
                                     <livewire:security.cloud-provider-token-form :modal_mode="true"
                                         :provider="$provider" />
                                 </x-modal-input>

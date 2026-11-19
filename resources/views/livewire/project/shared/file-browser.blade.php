@@ -70,7 +70,7 @@
                     @change="if ($event.target.files.length) { uploadFile($event.target.files[0]); $event.target.value = '' }" />
                 <x-forms.button type="button" title="Upload a file to this folder" canGate="canAccessTerminal" :canResource="$resource"
                     wire:target="uploadFile" @click="$refs.uploadInput.click()">
-                    Upload
+                    {{ __('Upload') }}
                 </x-forms.button>
 
                 <div x-data="{ creationMenuOpen: false }" @keydown.escape.window="creationMenuOpen = false">

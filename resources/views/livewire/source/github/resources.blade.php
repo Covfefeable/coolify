@@ -2,7 +2,7 @@
                 <x-application.settings-section title="{{ __('Resources') }}"
                     description="Applications currently using this GitHub App." flush>
                     @if ($applications->isEmpty())
-                        <x-empty title="No resources use this source"
+                        <x-empty title="{{ __('No resources use this source') }}"
                             description="Applications will appear here after this GitHub App is selected as their source."
                             icon-name="sources" size="sm" />
                     @else

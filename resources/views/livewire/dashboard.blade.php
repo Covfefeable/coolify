@@ -187,7 +187,7 @@
             </x-section-heading>
 
             @if ($dashboardProjects->isEmpty())
-                <x-empty title="No projects yet"
+                <x-empty title="{{ __('No projects yet') }}"
                     description="Create your first deployment workspace."
                     icon-name="projects" size="sm" />
             @else
@@ -372,7 +372,7 @@
 
             @if ($dashboardServers->isEmpty())
                 @if ($privateKeys->isEmpty())
-                    <x-empty title="A private key is required"
+                    <x-empty title="{{ __('A private key is required') }}"
                         description="Add an SSH private key before connecting your first server."
                         icon-name="keys" size="sm">
                         @can('create', App\Models\PrivateKey::class)

@@ -55,7 +55,7 @@
                                         <x-reicon name="keys" class="size-3.5 shrink-0 opacity-70" />
                                         Generate RSA
                                     </button>
-                                    <x-modal-input title="Add Private Key Manually">
+                                    <x-modal-input title="{{ __('Add Private Key Manually') }}">
                                         <x-slot:content>
                                             <button type="button" @click="dropdownOpen = false"
                                                 class="listbox-option justify-start! gap-2.5!" role="menuitem">

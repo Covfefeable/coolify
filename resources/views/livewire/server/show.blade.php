@@ -12,7 +12,7 @@
         <div class="w-full min-w-0">
             {{-- Outside the layout switch, so that the localhost server shows it too. --}}
             @if (filled($server->settings->ssh_host_key_pending))
-                <x-callout type="danger" title="The SSH host key of this server changed" class="mb-4">
+                <x-callout type="danger" title="{{ __('The SSH host key of this server changed') }}" class="mb-4">
                     The server sent a host key that does not match the key that Coolify trusts. Check it on the
                     <a href="{{ route('server.security', ['server_uuid' => $server->uuid]).'#server-host-key-section' }}" {{ wireNavigate() }}
                         class="underline">{{ __('Security') }}</a> page.
@@ -209,14 +209,14 @@
                         <livewire:server.transfer-finish :server="$server" :key="'transfer-finish-'.$server->uuid" />
 
                         @if ($this->limaStartCommand)
-                            <x-callout type="info" title="Start this Lima VM locally" class="mb-4">
+                            <x-callout type="info" title="{{ __('Start this Lima VM locally') }}" class="mb-4">
                                 <code
                                     class="mt-2 block overflow-x-auto rounded-lg bg-neutral-950 px-3 py-2 font-mono text-[11px] text-neutral-200">{{ $this->limaStartCommand }}</code>
                             </x-callout>
                         @endif
 
                         @if ($server->isForceDisabled() && isCloud())
-                            <x-callout type="danger" title="Server disabled" class="mb-4">
+                            <x-callout type="danger" title="{{ __('Server disabled') }}" class="mb-4">
                                 This server is disabled because the current plan server limit was exceeded.
                             </x-callout>
                         @endif
@@ -233,7 +233,7 @@
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" type="password" id="ip"
                                 label="{{ __('IP address or domain') }}"
-                                helper="Enter a hostname or IP address without http:// or https://."
+                                helper="{{ __('Enter a hostname or IP address without http:// or https://.') }}"
                                 required :disabled="$isValidating || $server->isTransferredAway()" />
                             <x-forms.input canGate="update" :canResource="$server" id="user" label="{{ __('SSH user') }}"
                                 required :disabled="$isValidating || $server->isTransferredAway()" />
@@ -244,7 +244,7 @@
                         <div class="mt-4 grid gap-4 lg:grid-cols-3">
                             <x-forms.input canGate="update" :canResource="$server" type="number"
                                 id="connectionTimeout" label="Connection timeout"
-                                helper="Seconds to wait before an SSH connection fails." min="1" max="300"
+                                helper="{{ __('Seconds to wait before an SSH connection fails.') }}" min="1" max="300"
                                 required :disabled="$isValidating" />
                             <x-forms.listbox searchable id="serverTimezone" label="Server timezone"
                                 helper="Used for backups, cron jobs, and displayed timestamps."
@@ -256,7 +256,7 @@
                             @if (!$isSwarmWorker && $serverRole !== 'build')
                                 <x-forms.input canGate="update" :canResource="$server"
                                     placeholder="https://example.com" id="wildcardDomain" label="Wildcard domain"
-                                    helper="New resources can receive generated subdomains from this domain."
+                                    helper="{{ __('New resources can receive generated subdomains from this domain.') }}"
                                     :disabled="$isValidating" />
                             @endif
                         </div>
@@ -275,7 +275,7 @@
                         @endif
                     </x-application.settings-section>
 
-                    <x-application.settings-section id="server-overview-section" title="Server overview"
+                    <x-application.settings-section id="server-overview-section" title="{{ __('Server overview') }}"
                         helper="Provider state, operating system, and hardware details.">
                         @if ($provider)
                             <x-slot:badges>
@@ -339,8 +339,8 @@
                     </x-application.settings-section>
 
                     @if ($server->validation_logs)
-                        <x-application.settings-section title="Previous validation output"
-                            helper="The latest output produced while checking this server.">
+                        <x-application.settings-section title="{{ __('Previous validation output') }}"
+                            helper="{{ __('The latest output produced while checking this server.') }}">
                             <div
                                 class="max-h-72 overflow-auto rounded-lg bg-neutral-950 p-4 font-mono text-xs leading-5 text-neutral-300">
                                 {!! $server->validation_logs !!}

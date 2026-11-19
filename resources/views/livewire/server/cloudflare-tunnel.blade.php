@@ -111,7 +111,7 @@
                             </x-callout>
                             @can('create', App\Models\IntegrationToken::class)
                                 <div class="mt-4">
-                                    <x-modal-input title="New Integration Token">
+                                    <x-modal-input title="{{ __('New Integration Token') }}">
                                         <x-slot:content>
                                             <button type="button" class="button button-highlighted">
                                                 <x-reicon name="plus" class="size-3.5" />
