@@ -2,7 +2,7 @@
     <form wire:submit="login" class="flex flex-col gap-3">
         @if ($server === null)
             <x-forms.listbox id="selectedServers" label="{{ __('Servers') }}" required multiple searchable portal
-                :placeholder="$serverOptions->isEmpty() ? 'No reachable server to log in to' : 'Select servers'"
+                :placeholder="$serverOptions->isEmpty() ? __('No reachable server to log in to') : __('Select servers')"
                 searchPlaceholder="{{ __('Search servers…') }}" :disabled="$serverOptions->isEmpty()"
                 :options="$serverOptions->map(fn ($option) => ['value' => $option->uuid, 'label' => $option->name])->values()->all()" />
         @endif
@@ -25,12 +25,12 @@
                 wire:key="registry-password-token" />
         @endif
         <p class="text-[12px] text-neutral-500 dark:text-fg-dim">
-            Coolify does not save the token. Docker saves the login on the server in
-            <code>~/.docker/config.json</code>, encoded but not encrypted.
+            {{ __('Docker stores the login on the server in') }}
+            <code>~/.docker/config.json</code>, {{ __('The credentials are encoded without encryption. Coolify does not store the token.') }}
         </p>
         <div class="flex justify-end">
             <x-forms.button type="submit" defaultClass="button button-highlighted">
-                {{ $editRegistry ? 'Update login' : 'Log in' }}
+                {{ $editRegistry ? __('Update login') : __('Log in') }}
             </x-forms.button>
         </div>
     </form>

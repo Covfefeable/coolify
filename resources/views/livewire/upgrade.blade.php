@@ -1,30 +1,15 @@
-<div @if ($isUpgradeAvailable) title="{{ __('New version available') }}" @else title="No upgrade available" @endif
+<div
     x-init="$wire.checkUpdate" x-data="upgradeModal({
-        currentVersion: @js($currentVersion),
-        latestVersion: @js($latestVersion),
         devMode: @js($devMode)
     })">
-    @if ($isUpgradeAvailable)
+    @if ($fullButton && $isUpgradeAvailable)
         <div :class="{ 'z-40': modalOpen }" class="relative w-auto h-auto">
-            @if ($fullButton)
-                <x-forms.button type="button" @click="modalOpen=true" x-show="!showProgress" x-cloak isHighlighted>
-                    {{ __('Upgrade now') }}
-                </x-forms.button>
-                <x-forms.button type="button" @click="modalOpen=true" x-show="showProgress" x-cloak isHighlighted>
-                    {{ __('Updating…') }}
-                </x-forms.button>
-            @else
-            <button type="button" title="{{ __('Upgrade in progress') }}" aria-label="{{ __('Upgrade in progress') }}"
-                @click="modalOpen=true" x-show="showProgress" x-cloak
-                class="inline-flex h-[18px] cursor-pointer items-center rounded-full bg-coollabs/10 px-1.5 text-[9.5px] font-semibold leading-none text-coollabs ring-1 ring-inset ring-coollabs/25 transition-colors hover:bg-coollabs/15 dark:bg-warning/15 dark:text-warning dark:ring-warning/25 dark:hover:bg-warning/20">
-                {{ __('Updating') }}
-            </button>
-            <button type="button" title="{{ __('Update available') }}" aria-label="{{ __('Update available') }}"
-                @click="modalOpen=true" x-show="!showProgress" x-cloak
-                class="inline-flex h-[18px] cursor-pointer items-center rounded-full bg-coollabs/10 px-1.5 text-[9.5px] font-semibold leading-none text-coollabs ring-1 ring-inset ring-coollabs/25 transition-colors hover:bg-coollabs/15 dark:bg-warning/15 dark:text-warning dark:ring-warning/25 dark:hover:bg-warning/20">
-                {{ __('Update available') }}
-            </button>
-            @endif
+            <x-forms.button type="button" @click="modalOpen=true" x-show="!showProgress" x-cloak isHighlighted>
+                {{ __('Upgrade now') }}
+            </x-forms.button>
+            <x-forms.button type="button" @click="modalOpen=true" x-show="showProgress" x-cloak isHighlighted>
+                {{ __('Updating…') }}
+            </x-forms.button>
             <template x-teleport="body">
                 <div x-show="modalOpen"
                     class="fixed inset-0 z-99 flex min-h-full items-center justify-center overflow-y-auto p-4"
@@ -47,21 +32,15 @@
                         <header class="flex-nowrap!">
                             <div class="min-w-0 flex-1">
                                 <h3 class="truncate"
-                                    x-text="upgradeComplete ? 'Upgrade complete' : (showProgress ? 'Upgrading…' : 'Upgrade available')">
+                                    x-text="upgradeComplete ? @js(__('Upgrade complete')) : (showProgress ? @js(__('Upgrading…')) : @js(__('Upgrade Coolify')))">
                                 </h3>
                                 <p class="mt-0.5 text-[12px] leading-4"
                                     style="color: var(--coollabs-subtle)">
-                                    {{ $currentVersion }} <span class="mx-0.5">&rarr;</span>
-                                    {{ $latestVersion }}
-                                </p>
-                                <p class="mt-0.5 text-[12px] leading-4"
-                                    style="color: var(--coollabs-subtle)">
-                                    {{ $updateChannel === 'custom' ? 'Custom image' : ucfirst($updateChannel) . ' channel' }}
+                                    {{ $updateChannel === 'custom' ? __('Custom image') : __(':channel channel', ['channel' => __(ucfirst($updateChannel))]) }}
                                     <span class="mx-0.5">&middot;</span>
                                     <a href="{{ route('settings.updates') }}" {{ wireNavigate() }}
                                         @click="modalOpen=false"
-                                        class="font-medium text-coollabs underline decoration-coollabs/30 underline-offset-2 hover:decoration-coollabs dark:text-brand-light dark:decoration-brand-light/30 dark:hover:decoration-brand-light">Change
-                                        channel</a>
+                                        class="font-medium text-coollabs underline decoration-coollabs/30 underline-offset-2 hover:decoration-coollabs dark:text-brand-light dark:decoration-brand-light/30 dark:hover:decoration-brand-light">{{ __('Change channel') }}</a>
                                 </p>
                             </div>
                             <button type="button" x-show="!showProgress || upgradeError"
@@ -120,7 +99,7 @@
                                             </p>
                                             <p class="text-center text-[11px] leading-4"
                                                 style="color: var(--coollabs-subtle)">
-                                                If the page does not reload automatically, reload it manually.
+                                                {{ __('If the page does not reload automatically, reload it manually.') }}
                                             </p>
                                             <x-forms.button @click="reloadNow()" type="button" isHighlighted>
                                                 {{ __('Reload now') }}
@@ -131,7 +110,7 @@
                                     <template x-if="upgradeError">
                                         <div class="flex flex-col gap-3">
                                             <p class="text-[12px] leading-5" style="color: var(--coollabs-subtle)">
-                                                Check the logs on the server at
+                                                {{ __('Check the logs on the server at') }}
                                                 <span class="font-mono text-neutral-700 dark:text-fg">/data/coolify/source/upgrade*</span>.
                                             </p>
                                             <div
@@ -204,8 +183,6 @@
             upgradeComplete: false,
             upgradeError: false,
             successCountdown: 3,
-            currentVersion: config.currentVersion || '',
-            latestVersion: config.latestVersion || '',
             serviceDown: false,
             instanceWentDown: false,
             devMode: config.devMode || false,
@@ -216,7 +193,7 @@
 
                 this.showProgress = true;
                 this.currentStep = 1;
-                this.currentStatus = '[DEV] Starting simulated upgrade...';
+                this.currentStatus = @js(__('[DEV] Starting simulated upgrade...'));
                 this.startTimer();
                 this.upgradeComplete = false;
                 this.upgradeError = false;
@@ -245,7 +222,7 @@
             confirmed() {
                 this.showProgress = true;
                 this.currentStep = 1;
-                this.currentStatus = 'Starting upgrade...';
+                this.currentStatus = @js(__('Starting upgrade...'));
                 this.startTimer();
                 // Coolify restarts during the upgrade, so do not show failed Livewire requests as error pages.
                 window.coolifyUpgradeInProgress = true;
@@ -428,7 +405,7 @@
 
                 this.upgradeComplete = true;
                 this.currentStep = 5;
-                this.currentStatus = `Successfully upgraded to ${this.latestVersion}`;
+                this.currentStatus = @js(__('Upgrade complete'));
                 this.successCountdown = 3;
 
                 const countdownInterval = setInterval(() => {
@@ -480,7 +457,7 @@
             upgrade() {
                 if (this.checkUpgradeStatusInterval) return true;
                 this.currentStep = 1;
-                this.currentStatus = 'Starting upgrade...';
+                this.currentStatus = @js(__('Starting upgrade...'));
                 this.serviceDown = false;
                 this.instanceWentDown = false;
                 this.livewireFailures = 0;
@@ -513,7 +490,7 @@
                         }
                         this.livewireFailures++;
                         if (this.livewireFailures < 3) {
-                            this.currentStatus = 'Reconnecting. This is expected during an upgrade...';
+                            this.currentStatus = @js(__('Reconnecting. This is expected during an upgrade...'));
                             return;
                         }
                         // Repeated Livewire failures usually mean the instance is restarting
@@ -522,7 +499,7 @@
                             this.serviceDown = true;
                             this.instanceWentDown = true;
                             this.currentStep = 4;
-                            this.currentStatus = 'Coolify is restarting with the new version...';
+                            this.currentStatus = @js(__('Coolify is restarting with the new version...'));
                             if (this.checkUpgradeStatusInterval) {
                                 clearInterval(this.checkUpgradeStatusInterval);
                                 this.checkUpgradeStatusInterval = null;

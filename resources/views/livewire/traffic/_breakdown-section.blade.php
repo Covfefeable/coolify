@@ -13,13 +13,13 @@
 --}}
 @php
     $rows = $rows ?? [];
-    $helper = $helper ?? 'Top '.strtolower($label).' by request count for the selected range.';
+    $helper = $helper ?? __('Ranked by request count in the selected time range.');
     $maxRequests = max(1, (int) collect($rows)->max('requests'));
 @endphp
 <x-application.settings-section id="analytics-{{ $dimension }}-section" :title="$label" :helper="$helper" flush>
     @if (collect($rows)->isEmpty())
         <x-empty size="sm" title="{{ __('No data') }}"
-            :description="'No '.strtolower($label).' data for the selected range.'" icon-name="network" />
+            :description="__('No data for the selected time range.')" icon-name="network" />
     @else
         {{-- Keyed so the lazy-load morph does not reuse the placeholder skeleton nodes. --}}
         <div wire:key="analytics-{{ $dimension }}-table" x-data="trafficTable()">
@@ -27,7 +27,7 @@
                 @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => __('Name'), 'text' => true, 'class' => 'min-w-0 flex-1'])
                 <span class="hidden w-16 shrink-0 sm:inline" aria-hidden="true"></span>
                 @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => __('Requests'), 'class' => 'w-16 shrink-0'])
-                @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
+                @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => __('Total response data sent')])
             </div>
             <div class="flex flex-col">
             @foreach ($rows as $row)
@@ -37,7 +37,7 @@
                     $isHidable = $dimension === 'useragent' && isContainerToolingUserAgent($value);
                     $host = ! $isOther && $dimension === 'referer' ? refererHost($value) : null;
                     $display = $isOther
-                        ? 'Other'
+                        ? __('Other')
                         : match ($dimension) {
                             'device' => deviceLabel($value),
                             'referer' => $host ?? 'Direct / none',

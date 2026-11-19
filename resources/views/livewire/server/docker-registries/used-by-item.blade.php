@@ -5,6 +5,6 @@
         <span class="truncate">{{ $user['name'] }}</span>
     @endif
     @if ($withType ?? true)
-        <span class="shrink-0 text-[11px] text-neutral-400 dark:text-fg-faint">{{ $user['type'] }}</span>
+        <span class="shrink-0 text-[11px] text-neutral-400 dark:text-fg-faint">{{ __($user['type']) }}</span>
     @endif
 </span>

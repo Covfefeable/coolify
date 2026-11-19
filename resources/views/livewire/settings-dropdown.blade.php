@@ -125,13 +125,9 @@
                         <div class="min-w-0">
                             <div class="flex flex-wrap items-center gap-2">
                                 <h3>{{ __('What\'s new') }}</h3>
-                                <span
-                                    class="rounded-md bg-neutral-100 px-1.5 py-0.5 text-[11px] font-medium text-neutral-500 dark:bg-white/[0.05] dark:text-fg-faint">
-                                    {{ $currentVersion }}
-                                </span>
                             </div>
                             <p class="mt-0.5 text-xs font-normal text-neutral-500 dark:text-fg-faint">
-                                Product updates, fixes, and improvements.
+                                {{ __('Product updates, fixes, and improvements.') }}
                             </p>
                         </div>
                         </div>
@@ -186,10 +182,6 @@
                                                     <span class="truncate" x-text="entry.title"></span>
                                                     <x-external-link />
                                                 </a>
-                                                <span x-show="entry.tag_name === '{{ $currentVersion }}'"
-                                                    class="rounded-md bg-success/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-success">
-                                                    Current
-                                                </span>
                                                 <span class="text-xs text-neutral-500 dark:text-fg-faint"
                                                     x-text="new Date(entry.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })">
                                                 </span>

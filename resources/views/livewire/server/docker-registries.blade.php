@@ -7,8 +7,9 @@
         <div class="flex min-w-0 flex-col gap-1">
             <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Docker Registries') }}</h1>
             <p class="text-[12px] text-neutral-500 dark:text-fg-dim">
-                Registry logins on each server, read from the Docker config that deployments use. Use <b>{{ __('Multi-server login') }}</b>,
-                or run <code>docker login &lt;registry&gt;</code> on a server.
+                {{ __('Registry logins are read from the Docker configuration used for deployments on each server.') }}
+                {{ __('To sign in, use the :action button or run the following command on the server.', ['action' => __('Multi-server login')]) }}
+                <code>docker login &lt;registry&gt;</code>
             </p>
         </div>
         @if ($servers->isNotEmpty())

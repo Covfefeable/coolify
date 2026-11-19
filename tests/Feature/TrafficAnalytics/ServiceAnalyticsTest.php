@@ -19,6 +19,20 @@ use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
 
+it('renders traffic breakdown empty states in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+
+    $html = view('livewire.traffic._breakdown-section', [
+        'dimension' => 'protocol',
+        'label' => __('Top HTTP versions'),
+        'rows' => [],
+    ])->render();
+
+    expect($html)
+        ->toContain('常用 HTTP 版本', '所选时间范围内暂无数据。')
+        ->not->toContain('data for the selected range');
+});
+
 class FakeServiceAnalyticsTrafficClient extends SentinelTrafficClient
 {
     public array $responses = [];

@@ -13,7 +13,7 @@ use Livewire\Livewire;
 
 uses(RefreshDatabase::class);
 
-it('initializes latest version during mount from cached versions data', function () {
+it('initializes the upgrade without displaying version numbers or an availability badge', function () {
     config(['constants.coolify.version' => '4.0.0-beta.998']);
     InstanceSettings::forceCreate([
         'id' => 0,
@@ -29,12 +29,14 @@ it('initializes latest version during mount from cached versions data', function
             ],
         ]);
 
-    Livewire::test(Upgrade::class)
+    Livewire::test(Upgrade::class, ['fullButton' => true])
         ->assertSet('currentVersion', '4.0.0-beta.998')
         ->assertSet('latestVersion', '4.0.0-beta.999')
         ->assertSet('isUpgradeAvailable', true)
-        ->assertSee('4.0.0-beta.998')
-        ->assertSee('4.0.0-beta.999');
+        ->assertSee('Upgrade now')
+        ->assertDontSee('Update available')
+        ->assertDontSee('4.0.0-beta.998')
+        ->assertDontSee('4.0.0-beta.999');
 });
 
 it('falls back to 0.0.0 during mount when cached versions data is unavailable', function () {

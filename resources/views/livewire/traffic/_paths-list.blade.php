@@ -56,7 +56,7 @@
                     class="flex min-h-11 items-center gap-3 border-t border-neutral-200 px-4 py-2 transition-colors hover:bg-neutral-50 dark:border-white/[0.07] dark:hover:bg-white/[0.03]">
                     @if ($isOther)
                         <span class="min-w-0 flex-1 truncate text-[12px] text-neutral-500 dark:text-fg-dim"
-                            title="All paths outside the top paths that Sentinel tracks">{{ __('Other paths') }}</span>
+                            title="{{ __('All paths outside the top paths that Sentinel tracks') }}">{{ __('Other paths') }}</span>
                     @else
                         <span class="flex min-w-0 flex-1 items-baseline gap-1.5">
                             @if ($href)
@@ -75,16 +75,16 @@
                         <div class="h-full rounded-full bg-[var(--chart-status-3xx)]" style="width: {{ $width }}%;"></div>
                     </div>
                     <span class="w-16 shrink-0 text-right text-[12px] font-medium tabular-nums text-black dark:text-fg"
-                        title="{{ number_format($requests) }} requests">{{ compactNumber($requests) }}</span>
+                        title="{{ __(':count requests', ['count' => number_format($requests)]) }}">{{ compactNumber($requests) }}</span>
                     <span @class(['hidden w-12 shrink-0 text-right text-[12px] tabular-nums sm:inline', $s4xx > 0 ? 'font-medium text-pink-600 dark:text-pink-400' : $muted])
-                        title="{{ number_format($s4xx) }} client-error responses">{{ compactNumber($s4xx) }}</span>
+                        title="{{ __(':count client-error responses', ['count' => number_format($s4xx)]) }}">{{ compactNumber($s4xx) }}</span>
                     <span @class(['w-12 shrink-0 text-right text-[12px] tabular-nums', $s5xx > 0 ? 'font-medium text-purple-600 dark:text-purple-400' : $muted])
-                        title="{{ number_format($s5xx) }} server-error responses">{{ compactNumber($s5xx) }}</span>
+                        title="{{ __(':count server-error responses', ['count' => number_format($s5xx)]) }}">{{ compactNumber($s5xx) }}</span>
                     <span @class(['hidden w-14 shrink-0 text-right text-[11px] tabular-nums lg:inline', $errorRate > 0 ? 'text-neutral-500 dark:text-fg-dim' : $muted])
                         title="{{ __('Combined 4xx and 5xx response rate') }}">{{ $errorRate }}%</span>
                     <span class="hidden w-16 shrink-0 text-right text-[11px] tabular-nums text-neutral-400 sm:inline dark:text-fg-faint">{{ formatBytes($bytesOut) }}</span>
                     <span class="hidden w-16 shrink-0 text-right text-[11px] tabular-nums text-neutral-400 md:inline dark:text-fg-faint"
-                        title="p95 latency: {{ number_format($p95, 1) }} ms">{{ formatLatency($p95) }}</span>
+                        title="{{ __('p95 latency: :count ms', ['count' => number_format($p95, 1)]) }}">{{ formatLatency($p95) }}</span>
                 </div>
             @endforeach
         </div>

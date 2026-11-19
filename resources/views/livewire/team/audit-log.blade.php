@@ -105,8 +105,8 @@
                                     @foreach ($event->changes as $field => $change)
                                         <div class="grid grid-cols-[12rem_minmax(0,1fr)_minmax(0,1fr)] gap-4 border-t border-neutral-200 py-2 text-[12px] dark:border-white/[0.07]">
                                             <span class="font-medium text-black dark:text-fg">{{ Str::headline($field) }}</span>
-                                            <span class="break-words whitespace-pre-wrap text-neutral-600 dark:text-fg-dim">{{ is_array($change['old']) ? json_encode($change['old'], JSON_UNESCAPED_SLASHES) : (is_bool($change['old']) ? ($change['old'] ? 'True' : 'False') : ($change['old'] ?? 'None')) }}</span>
-                                            <span class="break-words whitespace-pre-wrap text-neutral-600 dark:text-fg-dim">{{ is_array($change['new']) ? json_encode($change['new'], JSON_UNESCAPED_SLASHES) : (is_bool($change['new']) ? ($change['new'] ? 'True' : 'False') : ($change['new'] ?? 'None')) }}</span>
+                                            <span class="break-words whitespace-pre-wrap text-neutral-600 dark:text-fg-dim">{{ is_array($change['old']) ? json_encode($change['old'], JSON_UNESCAPED_SLASHES) : (is_bool($change['old']) ? ($change['old'] ? __('True') : __('False')) : ($change['old'] ?? __('None'))) }}</span>
+                                            <span class="break-words whitespace-pre-wrap text-neutral-600 dark:text-fg-dim">{{ is_array($change['new']) ? json_encode($change['new'], JSON_UNESCAPED_SLASHES) : (is_bool($change['new']) ? ($change['new'] ? __('True') : __('False')) : ($change['new'] ?? __('None'))) }}</span>
                                         </div>
                                     @endforeach
                                 </div>

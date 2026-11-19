@@ -54,16 +54,7 @@
                                 class="size-5" />
                             <span x-show="!collapsed" class="text-[15px] font-semibold tracking-tight text-black dark:text-white">Coolify</span>
                         </a>
-                        <x-version x-show="!collapsed" title="v{{ config('constants.coolify.version') }}"
-                            class="min-w-0 truncate !text-[10.5px] font-medium text-neutral-400 dark:text-fg-faint !opacity-100 hover:!opacity-100 dark:hover:text-fg hover:text-black" />
                     </div>
-                    @if (isInstanceAdmin() && !isCloud())
-                        <div x-show="!collapsed" class="ml-auto shrink-0">
-                            @persist('upgrade')
-                                <livewire:upgrade />
-                            @endpersist
-                        </div>
-                    @endif
                 </div>
                 {{-- Collapse toggle + team switcher --}}
                 <div
@@ -109,7 +100,6 @@
                                     class="text-[15px] font-semibold tracking-tight text-black transition-opacity hover:opacity-80 dark:text-white">
                                     Coolify
                                 </a>
-                                <x-version class="!text-[10.5px] font-medium text-neutral-400 dark:text-fg-faint !opacity-100 hover:!opacity-100 hover:text-black dark:hover:text-fg" />
                             </div>
                             <button type="button" x-on:click="open = false" aria-label="{{ __('Close menu') }}"
                                 class="-mr-1.5 flex size-8 shrink-0 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-black active:scale-95 dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-fg">
@@ -154,9 +144,6 @@
                     {{-- Resource and server pages put their star button here. --}}
                     <div id="resource-star-slot-mobile" class="flex shrink-0 items-center empty:hidden"></div>
                     <livewire:deployments-indicator variant="mobile" />
-                    @if (isInstanceAdmin() && !isCloud())
-                        <livewire:upgrade key="mobile-upgrade" />
-                    @endif
                     <x-top-user-menu />
                     <button type="button" x-on:click="open = !open"
                         class="-mr-1 flex size-9 items-center justify-center rounded-md text-neutral-500 transition-transform duration-100 ease-out hover:bg-neutral-100 hover:text-black active:scale-90 dark:text-fg-dim dark:hover:bg-white/[0.06] dark:hover:text-fg">

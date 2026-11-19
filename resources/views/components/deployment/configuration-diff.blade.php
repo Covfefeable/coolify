@@ -29,9 +29,9 @@
                                 'gap-3 px-3 py-2' => ! $compact,
                             ])>
                             <div>{{ __('Field') }}</div>
-                            <div>{{ __('Current') }}</div>
+                            <div>{{ __('Previous value') }}</div>
                             <div></div>
-                            <div>{{ __('New') }}</div>
+                            <div>{{ __('New value') }}</div>
                             <div></div>
                         </div>
 

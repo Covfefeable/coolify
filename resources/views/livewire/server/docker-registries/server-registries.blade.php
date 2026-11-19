@@ -16,8 +16,8 @@
                 {{ __('Refresh') }}
             </button>
             @if ($server->isFunctional())
-                <x-modal-input buttonTitle="{{ __('New') }}" title="{{ __('Log in to a registry') }}"
-                    subtitle="Runs docker login on {{ $server->name }}.">
+                <x-modal-input buttonTitle="{{ __('Log in') }}" title="{{ __('Log in to a registry') }}"
+                    subtitle="{{ __('Runs docker login on :server.', ['server' => $server->name]) }}">
                     <livewire:server.docker-registries.login :server="$server"
                         :key="'registry-login-'.$server->uuid" />
                 </x-modal-input>
@@ -41,14 +41,14 @@
                 class="grid min-w-[760px] grid-cols-[minmax(0,1fr)_9rem_minmax(0,1fr)_4.5rem] border-b border-neutral-200 px-4 py-2 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:text-fg-faint">
                 <div>{{ __('Registry') }}</div>
                 <div>{{ __('Status') }}</div>
-                <div>Used by</div>
+                <div>{{ __('Used by') }}</div>
                 <div class="text-right">{{ __('Actions') }}</div>
             </div>
             @foreach ($visibleRows as $row)
                 @php
                     $usedByCount = count($row['used_by']);
                     $usedBySummary = collect($row['used_by'])->countBy('type')
-                        ->map(fn (int $count, string $type) => $count.' '.Str::plural(strtolower($type), $count))
+                        ->map(fn (int $count, string $type) => __(':count :type', ['count' => $count, 'type' => __(Str::plural(strtolower($type), $count))]))
                         ->implode(' · ');
                 @endphp
                 <div wire:key="{{ $server->uuid }}-{{ $row['registry'] }}" x-data="{ showUsers: false }"
@@ -61,12 +61,12 @@
                                     :title="$loginChecks[$row['registry']]['message']" />
                             @elseif ($row['logged_in'])
                                 <x-status-badge type="success"
-                                    :label="$row['source'] === 'credHelpers' ? 'Credential helper' : 'Logged in'" />
+                                    :label="$row['source'] === 'credHelpers' ? __('Credential helper') : __('Logged in')" />
                             @elseif ($error)
                                 <x-status-badge label="{{ __('Unknown') }}" />
                             @else
                                 <x-status-badge :type="$row['registry'] === 'docker.io' ? 'neutral' : 'warning'" label="{{ __('Not logged in') }}"
-                                    :title="$row['registry'] === 'docker.io' ? 'Public Docker Hub images do not need a login.' : null" />
+                                    :title="$row['registry'] === 'docker.io' ? __('Public Docker Hub images do not need a login.') : null" />
                             @endif
                         </div>
                         <div class="min-w-0 text-neutral-600 dark:text-fg-dim">
@@ -88,8 +88,8 @@
                                 <x-table.row-actions label="{{ __('Registry actions') }}">
                                     <x-table.row-action wire:click="testLogin({{ \Illuminate\Support\Js::from($row['registry']) }})" wire:loading.attr="disabled"
                                         wire:target="testLogin" title="{{ __('Run docker login with the saved credentials') }}">{{ __('Test') }}</x-table.row-action>
-                                    <x-modal-input title="Edit login for {{ $row['registry'] }}"
-                                        subtitle="Runs docker login on {{ $server->name }} again. The new values replace the old login.">
+                                    <x-modal-input title="{{ __('Edit login for :registry', ['registry' => $row['registry']]) }}"
+                                        subtitle="{{ __('Runs docker login again on :server and replaces the saved credentials.', ['server' => $server->name]) }}">
                                         <x-slot:content>
                                             <x-table.row-action>{{ __('Edit') }}</x-table.row-action>
                                         </x-slot:content>
@@ -98,11 +98,11 @@
                                             :key="'registry-edit-'.$server->uuid.'-'.$row['registry']" />
                                     </x-modal-input>
                                     <x-slot:danger>
-                                        <x-modal-confirmation title="Delete the login for {{ $row['registry'] }}?" buttonFullWidth
+                                        <x-modal-confirmation title="{{ __('Delete the login for :registry?', ['registry' => $row['registry']]) }}" buttonFullWidth
                                             submitAction="logout({{ $row['registry'] }})" :actions="[
-                                                'Runs docker logout on '.$server->name.' and removes the saved credentials.',
-                                                'The server can no longer pull private images from this registry.',
-                                                'Deployments that need this registry fail until you log in again.',
+                                                __('Runs docker logout on :server and removes the saved credentials.', ['server' => $server->name]),
+                                                __('The server can no longer pull private images from this registry.'),
+                                                __('Deployments that need this registry fail until you log in again.'),
                                             ]" :confirmWithText="false" :confirmWithPassword="false">
                                             <x-slot:trigger>
                                                 <x-table.row-action>{{ __('Delete') }}</x-table.row-action>
@@ -115,8 +115,8 @@
                                     wire:target="testLogin" class="button w-fit"
                                     title="{{ __('Run docker login with the saved credentials') }}">{{ __('Test') }}</button>
                             @elseif (! $error && $server->isFunctional())
-                                <x-modal-input buttonTitle="{{ __('Log in') }}" title="Log in to {{ $row['registry'] }}"
-                                    subtitle="Runs docker login on {{ $server->name }}.">
+                                <x-modal-input buttonTitle="{{ __('Log in') }}" title="{{ __('Log in to :registry', ['registry' => $row['registry']]) }}"
+                                    subtitle="{{ __('Runs docker login on :server.', ['server' => $server->name]) }}">
                                     <livewire:server.docker-registries.login :server="$server" :presetRegistry="$row['registry']"
                                         :key="'registry-login-'.$server->uuid.'-'.$row['registry']" />
                                 </x-modal-input>
@@ -129,7 +129,7 @@
                             @foreach (collect($row['used_by'])->groupBy('type') as $type => $users)
                                 <div class="min-w-0">
                                     <p class="mb-1 text-[11px] font-medium text-neutral-500 dark:text-fg-faint">
-                                        {{ Str::plural($type) }} ({{ $users->count() }})
+                                        {{ __(Str::plural($type)) }} ({{ $users->count() }})
                                     </p>
                                     <ul class="flex flex-col gap-0.5 text-neutral-600 dark:text-fg-dim">
                                         @foreach ($users as $user)

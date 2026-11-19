@@ -132,6 +132,17 @@ it('lists the team servers for admins on the registries page', function () {
         ->assertSee('href="'.route('server.registries', ['server_uuid' => $this->server->uuid]).'"', false);
 });
 
+it('renders registry guidance in Simplified Chinese while preserving the Docker command', function () {
+    actingAsDockerRegistriesRole($this->team, 'admin');
+    app()->setLocale('zh-cn');
+
+    Livewire::test(DockerRegistries::class)
+        ->assertSee('批量登录')
+        ->assertSee('此处显示各服务器的镜像仓库登录状态')
+        ->assertSee('docker login <registry>')
+        ->assertDontSee('Registry logins on each server');
+});
+
 it('does not show registry logins to members', function () {
     actingAsDockerRegistriesRole($this->team, 'member');
 

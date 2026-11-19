@@ -18,8 +18,8 @@
     $display = str_contains($class, 'hidden') ? '' : 'inline-flex';
 @endphp
 <button type="button" @click="sortBy('{{ $column }}', '{{ $firstDir }}')"
-    title="{{ $title ?? 'Sort by '.strtolower($label) }}"
-    :aria-label="'Sort by {{ strtolower($label) }}' + (sorted('{{ $column }}') ? ', sorted ' + (sorted('{{ $column }}') === 'asc' ? 'ascending' : 'descending') : '')"
+    title="{{ $title ?? __('Sort by :label', ['label' => $label]) }}"
+    :aria-label="@js(__('Sort by :label', ['label' => $label])) + (sorted('{{ $column }}') ? (sorted('{{ $column }}') === 'asc' ? @js(__(', sorted ascending')) : @js(__(', sorted descending'))) : '')"
     class="group {{ $display }} items-center gap-1 whitespace-nowrap rounded-sm transition-colors hover:text-black focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent dark:hover:text-fg {{ $text ? 'justify-start text-left' : 'flex-row-reverse justify-start text-right' }} {{ $class }}"
     :class="sorted('{{ $column }}') ? 'text-black dark:text-fg' : ''">
     <span>{{ $label }}</span>

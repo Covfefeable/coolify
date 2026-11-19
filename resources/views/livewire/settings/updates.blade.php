@@ -45,18 +45,13 @@
                     <div x-show="$wire.update_channel === 'nightly'" @if ($update_channel !== 'nightly') x-cloak @endif
                         class="lg:col-span-2">
                         <x-callout type="danger" title="{{ __('Nightly builds can break this instance') }}">
-                            Nightly builds are untested builds of the next version. Things can break at any time and
-                            breaking changes are possible, including database changes a stable release does not expect.
-                            Back up first and use nightly only on an instance you can rebuild. After switching back to stable,
-                            the instance keeps getting the nightlies of its version until that version is released as stable.
+                            {{ __('Nightly builds are untested builds of the next version. Things can break at any time and breaking changes are possible, including database changes a stable release does not expect. Back up first and use nightly only on an instance you can rebuild. After switching back to stable, the instance keeps getting the nightlies of its version until that version is released as stable.') }}
                         </x-callout>
                     </div>
                     <div x-show="$wire.update_channel === 'custom'" @if ($update_channel !== 'custom') x-cloak @endif
                         class="lg:col-span-2">
                         <x-callout type="danger" title="{{ __('A custom image can break this instance') }}">
-                            The image installs only when you upgrade to it here, and automatic updates pause until you
-                            switch back to a channel. Pull request builds are untested and can include database changes
-                            a later release does not expect.
+                            {{ __('The image installs only when you upgrade to it here, and automatic updates pause until you switch back to a channel. Pull request builds are untested and can include database changes a later release does not expect.') }}
                         </x-callout>
                     </div>
 
