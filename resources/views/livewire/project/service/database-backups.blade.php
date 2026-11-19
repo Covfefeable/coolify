@@ -47,7 +47,7 @@
                     <section class="application-settings-section">
                         <div class="application-settings-section-header">
                             <div>
-                                <h2>Scheduled backups</h2>
+                                <h2>{{ __('Scheduled backups') }}</h2>
                                 <p>Automate backups for {{ $serviceDatabase->human_name ?: $serviceDatabase->name }}.</p>
                             </div>
                             @can('update', $serviceDatabase)

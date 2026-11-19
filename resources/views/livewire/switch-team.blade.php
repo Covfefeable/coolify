@@ -6,7 +6,7 @@
     <div class="relative min-w-0" :class="collapsed && 'lg:hidden'"
         x-data="{ open: false }" @keydown.escape.window="open = false">
         <button type="button" @click="open = !open" @click.outside="open = false"
-            title="Switch team"
+            title="{{ __('Switch team') }}"
             class="group/team flex h-8 items-center gap-1.5 rounded-lg px-2 -ml-1 text-left opacity-70 transition-[background-color,opacity] hover:bg-neutral-100 hover:opacity-100 dark:hover:bg-white/[0.05]">
             <x-team.avatar :team="$currentTeam" class="size-5 text-[11px]" />
             <span class="whitespace-nowrap text-[13px] font-semibold text-black dark:text-fg">{{ $currentTeam->name }}</span>

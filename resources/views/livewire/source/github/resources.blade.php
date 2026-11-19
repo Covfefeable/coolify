@@ -1,9 +1,9 @@
             <div x-data="{ search: '' }" class="application-settings-form">
                 <x-application.settings-section title="{{ __('Resources') }}"
-                    description="Applications currently using this GitHub App." flush>
+                    description="{{ __('Applications currently using this GitHub App.') }}" flush>
                     @if ($applications->isEmpty())
                         <x-empty title="{{ __('No resources use this source') }}"
-                            description="Applications will appear here after this GitHub App is selected as their source."
+                            description="{{ __('Applications will appear here after this GitHub App is selected as their source.') }}"
                             icon-name="sources" size="sm" />
                     @else
                         <div class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">

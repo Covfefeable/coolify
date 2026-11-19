@@ -24,7 +24,7 @@
                     {{-- Sends the endpoint right away, so the URL style below follows the provider. --}}
                     <div x-on:change="$wire.$commit()">
                         <x-forms.domain-input id="endpointParts" errorId="endpoint" host-label="{{ __('Host') }}"
-                            host-placeholder="minio.internal or 192.168.1.50" />
+                            host-placeholder="{{ __('minio.internal or 192.168.1.50') }}" />
                     </div>
                 @else
                     <x-forms.input label="{{ __('Endpoint') }}" :value="$endpoint" disabled />
@@ -33,12 +33,12 @@
             <x-forms.input canGate="update" :canResource="$storage" required label="{{ __('Bucket') }}" id="bucket" />
             <x-forms.input canGate="update" :canResource="$storage" required label="{{ __('Region') }}" id="region" />
             @if ($isPasswordHiddenForMember)
-                <x-forms.input label="Access key" disabled value="Hidden (only admins can view)" />
-                <x-forms.input label="Secret key" disabled value="Hidden (only admins can view)" />
+                <x-forms.input label="{{ __('Access key') }}" disabled value="Hidden (only admins can view)" />
+                <x-forms.input label="{{ __('Secret key') }}" disabled value="Hidden (only admins can view)" />
             @else
                 <x-forms.input canGate="update" :canResource="$storage" required type="password"
-                    label="Access key" id="key" />
-                <x-forms.input canGate="update" :canResource="$storage" type="password" label="Secret key"
+                    label="{{ __('Access key') }}" id="key" />
+                <x-forms.input canGate="update" :canResource="$storage" type="password" label="{{ __('Secret key') }}"
                     id="secret" :required="! $hasSavedSecret"
                     :placeholder="$hasSavedSecret ? 'Saved. Leave empty to keep it.' : ''" />
             @endif
@@ -86,7 +86,7 @@
                 @endif
                 @if ($storage->type === App\Enums\BackupStorageType::Sftp)
                     <div class="flex items-end gap-2 lg:col-span-2">
-                        <x-forms.input label="Host key fingerprint" disabled
+                        <x-forms.input label="{{ __('Host key fingerprint') }}" disabled
                             :value="$storage->sftpHostKeyFingerprint() ?? 'Not saved yet. Validate the connection to save it.'"
                             helper="Coolify saves the host key of the server when you validate the connection, and refuses the server when the key changes. Backups do not save a new key. Reset it only when you know why the key changed." />
                         @can('update', $storage)

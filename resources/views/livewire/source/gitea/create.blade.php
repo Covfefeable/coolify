@@ -8,7 +8,7 @@
             :options="[
                 ['value' => 'gitea.com', 'label' => 'Gitea.com'],
                 ['value' => 'codeberg.org', 'label' => 'Codeberg (Forgejo)'],
-                ['value' => 'self-hosted', 'label' => 'Self-hosted Gitea or Forgejo'],
+                ['value' => 'self-hosted', 'label' => __('Self-hosted Gitea or Forgejo')],
             ]"
             helper="Codeberg runs Forgejo. For your own Gitea or Forgejo instance, select Self-hosted and enter its URL below." />
 
@@ -38,7 +38,7 @@
         }" x-effect="if ($wire.provider === 'self-hosted') open = true" class="rounded-lg border border-neutral-200 dark:border-white/[0.08]">
             <button type="button" @click="open = !open"
                 class="flex w-full items-center justify-between px-3 py-2.5 text-left text-[12px] font-medium text-neutral-700 transition-colors hover:bg-neutral-50 dark:text-fg-dim dark:hover:bg-white/[0.03]">
-                Self-hosted Gitea or Forgejo
+                {{ __('Self-hosted Gitea or Forgejo') }}
                 <svg class="size-3.5 transition-transform" :class="{ 'rotate-180': open }" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="6 9 12 15 18 9"></polyline>

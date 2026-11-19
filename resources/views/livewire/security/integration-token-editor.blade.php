@@ -93,7 +93,7 @@
             <div class="rounded-lg border border-neutral-200 dark:border-white/[0.08]">
                 <div class="flex items-center justify-between gap-3 p-3">
                     <div class="text-xs text-neutral-600 dark:text-fg-dim">
-                        <div class="font-medium text-black dark:text-fg">Domains this token can manage</div>
+                        <div class="font-medium text-black dark:text-fg">{{ __('Domains this token can manage') }}</div>
                         <div>{{ $zoneCount }} accessible {{ Str::plural('zone', $zoneCount) }}</div>
                     @if (data_get($integrationToken->metadata, 'zones_synced_at'))
                         <div>Last refreshed {{ \Carbon\Carbon::parse(data_get($integrationToken->metadata, 'zones_synced_at'))->diffForHumans() }}</div>
@@ -126,7 +126,7 @@
         @endif
 
         <div class="flex items-center justify-between gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
-            <x-modal-confirmation title="Delete integration token?" isErrorButton buttonTitle="{{ __('Delete') }}"
+            <x-modal-confirmation title="{{ __('Delete integration token?') }}" isErrorButton buttonTitle="{{ __('Delete') }}"
                 submitAction="delete" :actions="['This integration token will be permanently deleted.']"
                 confirmationText="{{ $integrationToken->name }}" :confirmWithPassword="false"
                 step2ButtonText="{{ __('Delete token') }}" />

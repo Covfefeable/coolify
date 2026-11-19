@@ -94,7 +94,7 @@
                     <x-slot:customActions>
                         <div
                             class="relative mx-auto flex w-full max-w-2xl flex-col gap-5 overflow-hidden rounded-2xl border border-red-200 bg-white p-5 shadow-modal sm:p-6 dark:border-red-500/20 dark:bg-surface">
-                            <button type="button" aria-label="Dismiss real-time connection warning"
+                            <button type="button" aria-label="{{ __('Dismiss real-time connection warning') }}"
                                 class="absolute top-3 right-3 flex size-7 items-center justify-center rounded-full text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
                                 @click="bannerVisible=false;disableRealtime()">
                                 <x-reicon name="x" class="size-3.5" />
@@ -113,7 +113,7 @@
                                         This will cause unusual problems on the UI. Open the
                                         <a class="font-medium text-coollabs underline decoration-coollabs/30 underline-offset-2 transition-colors hover:text-coollabs-100 dark:text-brand-light dark:decoration-brand-light/30 dark:hover:text-brand-light/90"
                                             href="https://coolify.io/docs/knowledge-base/server/firewall"
-                                            target="_blank" rel="noopener noreferrer">required ports</a>
+                                            target="_blank" rel="noopener noreferrer">{{ __('required ports') }}</a>
                                         or get help on
                                         <a class="font-medium text-coollabs underline decoration-coollabs/30 underline-offset-2 transition-colors hover:text-coollabs-100 dark:text-brand-light dark:decoration-brand-light/30 dark:hover:text-brand-light/90"
                                             href="https://coollabs.io/discord" target="_blank"
@@ -147,7 +147,7 @@
                     <div class="relative mx-auto flex w-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-modal transition-all duration-300 dark:border-white/[0.1] dark:bg-surface"
                         x-on:show-sponsorship-reminder.window="bannerVisible = true"
                         :class="reminders.sponsorship.compact ? 'max-w-sm gap-3 p-4' : 'max-w-2xl gap-5 p-5 sm:p-6'">
-                        <button type="button" aria-label="Dismiss sponsorship reminder"
+                        <button type="button" aria-label="{{ __('Dismiss sponsorship reminder') }}"
                             class="absolute top-3 right-3 flex size-7 items-center justify-center rounded-full text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
                             @click="bannerVisible=false;disableSponsorship()">
                             <x-reicon name="x" class="size-3.5" />
@@ -205,9 +205,9 @@
                         d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
                         clip-rule="evenodd" />
                 </svg>
-                <span><span class="font-bold text-red-600 dark:text-red-500">Subscription Error.</span> Something went wrong. Please try
+                <span><span class="font-bold text-red-600 dark:text-red-500">{{ __('Subscription Error.') }}</span> Something went wrong. Please try
                     again or <a class="underline font-medium text-black dark:text-white"
-                        href="{{ config('constants.urls.contact') }}" target="_blank">contact support</a>.</span>
+                        href="{{ config('constants.urls.contact') }}" target="_blank">{{ __('contact support') }}</a>.</span>
             </div>
         </x-banner>
     @endif
@@ -246,7 +246,7 @@
                 <x-slot:customActions>
                     <div class="relative mx-auto flex w-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-modal transition-all duration-300 dark:border-white/[0.1] dark:bg-surface"
                         :class="reminders.notification.compact ? 'max-w-sm gap-3 p-4' : 'max-w-2xl gap-5 p-5 sm:p-6'">
-                        <button type="button" aria-label="Dismiss notifications reminder"
+                        <button type="button" aria-label="{{ __('Dismiss notifications reminder') }}"
                             class="absolute top-3 right-3 flex size-7 items-center justify-center rounded-full text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg"
                             @click="bannerVisible=false;disableNotification()">
                             <x-reicon name="x" class="size-3.5" />

@@ -1,6 +1,6 @@
 <div x-data="{ selected: 'monthly' }" class="w-full">
-    <x-application.settings-section title="Pay as you go"
-        description="Dynamic pricing based on the number of servers connected to your team.">
+    <x-application.settings-section title="{{ __('Pay as you go') }}"
+        description="{{ __('Dynamic pricing based on the number of servers connected to your team.') }}">
         <x-slot:actions>
             <div
                 class="flex h-8 items-center rounded-lg border border-neutral-200 bg-neutral-100 p-0.5 dark:border-white/[0.08] dark:bg-white/[0.035]">
@@ -24,13 +24,13 @@
         <div class="grid gap-6 lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)]">
             <div
                 class="rounded-[10px] border border-neutral-200 bg-neutral-50 p-4 dark:border-white/[0.08] dark:bg-white/[0.05]">
-                <p class="text-[11px] font-medium text-neutral-500 dark:text-fg-faint">Base price</p>
+                <p class="text-[11px] font-medium text-neutral-500 dark:text-fg-faint">{{ __('Base price') }}</p>
                 <div class="mt-2 flex items-end gap-1.5">
                     <span x-show="selected === 'monthly'" x-cloak
                         class="text-2xl font-semibold tracking-tight">$5</span>
                     <span x-show="selected === 'yearly'" x-cloak
                         class="text-2xl font-semibold tracking-tight">$4</span>
-                    <span class="pb-0.5 text-[12px] text-neutral-500 dark:text-fg-dim">per month</span>
+                    <span class="pb-0.5 text-[12px] text-neutral-500 dark:text-fg-dim">{{ __('per month') }}</span>
                 </div>
                 <p class="mt-2 text-[12px] leading-5 text-neutral-500 dark:text-fg-dim">
                     <span x-show="selected === 'monthly'" x-cloak>$3 per additional server, billed monthly.</span>

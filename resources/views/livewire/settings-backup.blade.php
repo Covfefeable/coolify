@@ -11,7 +11,7 @@
                     {{-- Exclude is_backup_before_update_enabled (instantSave) so the bar does not flash. --}}
                     <x-unsaved-bar action="submit" targets="description" />
 
-                    <x-application.settings-section title="Instance database">
+                    <x-application.settings-section title="{{ __('Instance database') }}">
                         <div class="grid gap-4 lg:grid-cols-2">
                             <x-forms.input label="{{ __('Name') }}" readonly :value="$database->name" />
                             <x-forms.input label="{{ __('Description') }}" id="description" />
@@ -26,10 +26,10 @@
                 <livewire:project.database.backup-edit :backup="$backup" :available-s3-storages="$s3s"
                     :status="data_get($database, 'status')" />
 
-                <x-application.settings-section title="Backup before update"
-                    description="Back up the Coolify database before an update is installed. If the backup fails, the update is not installed.">
+                <x-application.settings-section title="{{ __('Backup before update') }}"
+                    description="{{ __('Back up the Coolify database before an update is installed. If the backup fails, the update is not installed.') }}">
                     <div class="max-w-md">
-                        <x-forms.listbox id="is_backup_before_update_enabled" label="Database backup"
+                        <x-forms.listbox id="is_backup_before_update_enabled" label="{{ __('Database backup') }}"
                             onChange="instantSave" :options="[
                                 ['value' => true, 'label' => __('Enabled')],
                                 ['value' => false, 'label' => __('Disabled')],
@@ -42,7 +42,7 @@
             @else
                 <x-application.settings-section title="{{ __('Instance backup') }}">
                     <x-empty title="{{ __('Backup is not configured') }}"
-                        description="Coolify needs an internal database resource to create automatic backups."
+                        description="{{ __('Coolify needs an internal database resource to create automatic backups.') }}"
                         icon-name="database" size="sm">
                         <x-slot:actions>
                             <x-forms.button wire:click="addCoolifyDatabase" isHighlighted>
@@ -54,10 +54,10 @@
             @endif
         @else
             <x-application.settings-section title="{{ __('Instance backup') }}">
-                <x-callout type="danger" title="Localhost is not ready">
+                <x-callout type="danger" title="{{ __('Localhost is not ready') }}">
                     Validate the localhost connection before configuring instance backups.
                     <a href="{{ route('server.show', [$server->uuid]) }}" class="font-medium underline"
-                        {{ wireNavigate() }}>Open server settings</a>
+                        {{ wireNavigate() }}>{{ __('Open server settings') }}</a>
                 </x-callout>
             </x-application.settings-section>
         @endif

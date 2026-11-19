@@ -3,7 +3,7 @@
         <x-unsaved-bar action="submit" />
 
         @if ($anonymousDataVolume)
-            <x-callout type="danger" title="Current data is not in the data volume">
+            <x-callout type="danger" title="{{ __('Current data is not in the data volume') }}">
                 <p>Because of a bug in older Coolify versions, a file mount removed the data volume. This database
                     keeps its current data in the unnamed Docker volume <code>{{ $anonymousDataVolume }}</code>.
                     Starting or restarting it is blocked, because it would use the data volume and the current data
@@ -13,7 +13,7 @@
                     mount was added.</p>
                 @can('update', $database)
                     <div class="mt-3">
-                        <x-modal-confirmation title="Keep current data?" buttonTitle="{{ __('Keep current data') }}"
+                        <x-modal-confirmation title="{{ __('Keep current data?') }}" buttonTitle="{{ __('Keep current data') }}"
                             submitAction="keepCurrentDataVolume" :actions="[
                                 'Use the unnamed volume ' . $anonymousDataVolume . ' as the data volume of this database.',
                                 'Starts and restarts are allowed again and keep the current data.',
@@ -26,7 +26,7 @@
         @endif
 
         <x-application.settings-section id="database-details-section" title="{{ __('Database details') }}"
-            description="Manage the identity, container image, and credentials of this ClickHouse database.">
+            description="{{ __('Manage the identity, container image, and credentials of this ClickHouse database.') }}">
             <x-slot:actions>
                 <x-modal-input title="{{ __('Resource details') }}" buttonTitle="{{ __('Details') }}">
                     <livewire:project.shared.resource-details :resource="$database" />
@@ -49,7 +49,7 @@
                 @endif
                 <div class="{{ !$database->started_at ? 'mt-4 ' : '' }}grid gap-4 lg:grid-cols-2">
                     <x-forms.input label="{{ $database->started_at ? 'Initial username' : 'Username' }}"
-                        id="clickhouseAdminUser" placeholder="If empty: clickhouse"
+                        id="clickhouseAdminUser" placeholder="{{ __('If empty: clickhouse') }}"
                         :readonly="(bool) $database->started_at" required canGate="update" :canResource="$database" />
                     @if ($isPasswordHiddenForMember)
                         <x-forms.input label="{{ __('Password') }}" disabled value="Hidden (only admins can view)" />

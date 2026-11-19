@@ -432,7 +432,7 @@
                         x-init="$watch('modalOpen', value => { if (value) setTimeout(() => $refs.searchInput.focus(), 100) })"
                         class="command-palette-input" autocomplete="off" spellcheck="false" />
                     <div x-show="pageItems.length > 0" x-cloak class="command-palette-scope" role="group"
-                        aria-label="Search scope" title="Press Tab to switch between global search and this page">
+                        aria-label="{{ __('Search scope') }}" title="Press Tab to switch between global search and this page">
                         <button type="button" @click="setScope('global')" :aria-pressed="scope === 'global'"
                             class="command-palette-scope-option">{{ __('Global') }}</button>
                         <button type="button" @click="setScope('page')" :aria-pressed="scope === 'page'"
@@ -445,12 +445,12 @@
                     @if (app()->environment('local'))
                         <div x-show="showServerTimingCommand && !$wire.isSelectingResource"
                             class="command-palette-section">
-                            <div class="command-palette-group-label">Developer tools</div>
+                            <div class="command-palette-group-label">{{ __('Developer tools') }}</div>
                             <button type="button" @click="toggleServerTimingHud()"
                                 class="search-result-item command-palette-item">
                                 <div class="command-palette-item-main">
                                     <div class="command-palette-item-title">
-                                        <span class="command-palette-item-name">Toggle Server Timing HUD</span>
+                                        <span class="command-palette-item-name">{{ __('Toggle Server Timing HUD') }}</span>
                                         <span class="command-palette-type-badge" x-text="serverTimingHudEnabled ? 'Enabled' : 'Disabled'"></span>
                                     </div>
                                     <div class="command-palette-item-meta"
@@ -478,7 +478,7 @@
                                             <x-reicon name="arrow-right" class="size-3.5 rotate-180" />
                                         </button>
                                         <div class="min-w-0">
-                                            <div class="command-palette-step-title">Select server</div>
+                                            <div class="command-palette-step-title">{{ __('Select server') }}</div>
                                             @if ($this->selectedResourceName)
                                                 <div class="command-palette-step-subtitle">
                                                     for {{ $this->selectedResourceName }}
@@ -496,7 +496,7 @@
                                                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                                                 </path>
                                             </svg>
-                                            <span>Loading servers…</span>
+                                            <span>{{ __('Loading servers…') }}</span>
                                         </div>
                                     @elseif (count($availableServers) > 0)
                                         @foreach ($availableServers as $server)
@@ -525,7 +525,7 @@
                                             <x-reicon name="arrow-right" class="size-3.5 rotate-180" />
                                         </button>
                                         <div class="min-w-0">
-                                            <div class="command-palette-step-title">Select destination</div>
+                                            <div class="command-palette-step-title">{{ __('Select destination') }}</div>
                                             @if ($this->selectedResourceName)
                                                 <div class="command-palette-step-subtitle">
                                                     for {{ $this->selectedResourceName }}
@@ -543,7 +543,7 @@
                                                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                                                 </path>
                                             </svg>
-                                            <span>Loading destinations…</span>
+                                            <span>{{ __('Loading destinations…') }}</span>
                                         </div>
                                     @elseif (count($availableDestinations) > 0)
                                         @foreach ($availableDestinations as $destination)
@@ -560,7 +560,7 @@
                                             </button>
                                         @endforeach
                                     @else
-                                        <div class="command-palette-status is-error">No destinations available</div>
+                                        <div class="command-palette-status is-error">{{ __('No destinations available') }}</div>
                                     @endif
                                 </div>
                             @endif
@@ -573,7 +573,7 @@
                                             <x-reicon name="arrow-right" class="size-3.5 rotate-180" />
                                         </button>
                                         <div class="min-w-0">
-                                            <div class="command-palette-step-title">Select project</div>
+                                            <div class="command-palette-step-title">{{ __('Select project') }}</div>
                                             @if ($this->selectedResourceName)
                                                 <div class="command-palette-step-subtitle">
                                                     for {{ $this->selectedResourceName }}
@@ -591,7 +591,7 @@
                                                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                                                 </path>
                                             </svg>
-                                            <span>Loading projects…</span>
+                                            <span>{{ __('Loading projects…') }}</span>
                                         </div>
                                     @elseif (count($availableProjects) > 0)
                                         @foreach ($availableProjects as $project)
@@ -608,7 +608,7 @@
                                             </button>
                                         @endforeach
                                     @else
-                                        <div class="command-palette-status is-error">No projects available</div>
+                                        <div class="command-palette-status is-error">{{ __('No projects available') }}</div>
                                     @endif
                                 </div>
                             @endif
@@ -621,7 +621,7 @@
                                             <x-reicon name="arrow-right" class="size-3.5 rotate-180" />
                                         </button>
                                         <div class="min-w-0">
-                                            <div class="command-palette-step-title">Select environment</div>
+                                            <div class="command-palette-step-title">{{ __('Select environment') }}</div>
                                             @if ($this->selectedResourceName)
                                                 <div class="command-palette-step-subtitle">
                                                     for {{ $this->selectedResourceName }}
@@ -639,7 +639,7 @@
                                                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                                                 </path>
                                             </svg>
-                                            <span>Loading environments…</span>
+                                            <span>{{ __('Loading environments…') }}</span>
                                         </div>
                                     @elseif (count($availableEnvironments) > 0)
                                         @foreach ($availableEnvironments as $environment)
@@ -658,7 +658,7 @@
                                             </button>
                                         @endforeach
                                     @else
-                                        <div class="command-palette-status is-error">No environments available</div>
+                                        <div class="command-palette-status is-error">{{ __('No environments available') }}</div>
                                     @endif
                                 </div>
                             @endif
@@ -697,7 +697,7 @@
                         <template x-if="searchQuery.length >= 1 && searchResults.length > 0 && !$wire.isSelectingResource">
                         <div class="command-palette-section">
                             <template x-if="filteredCreatableItems.length > 0 || pageResults.length > 0">
-                                <div class="command-palette-group-label">Existing resources</div>
+                                <div class="command-palette-group-label">{{ __('Existing resources') }}</div>
                             </template>
                             <template x-for="(result, index) in searchResults" :key="index">
                                 <a :href="result.link || '#'" class="search-result-item command-palette-item">
@@ -706,7 +706,7 @@
                                             <span class="command-palette-item-name" x-text="result.name"></span>
                                             <span class="command-palette-type-badge">
                                                 <span x-show="result.type === 'navigation'">{{ __('Navigation') }}</span>
-                                                <span x-show="result.type === 'application'">Application</span>
+                                                <span x-show="result.type === 'application'">{{ __('Application') }}</span>
                                                 <span x-show="result.type === 'service'">{{ __('Service') }}</span>
                                                 <span x-show="result.type === 'database'"
                                                     x-text="result.subtype ? result.subtype.charAt(0).toUpperCase() + result.subtype.slice(1) : 'Database'"></span>
@@ -773,7 +773,7 @@
                                                     </template>
                                                     <template x-if="item.arm_only">
                                                         <span class="command-palette-arch-badge"
-                                                            title="This service only supports ARM64/aarch64 architecture">
+                                                            title="{{ __('This service only supports ARM64/aarch64 architecture') }}">
                                                             {{ __('ARM only') }}
                                                         </span>
                                                     </template>
@@ -807,7 +807,7 @@
 
                         <template x-if="scope === 'page' && pageResults.length === 0">
                             <div class="command-palette-empty">
-                                <p class="command-palette-empty-title">Nothing on this page</p>
+                                <p class="command-palette-empty-title">{{ __('Nothing on this page') }}</p>
                                 <p class="command-palette-empty-desc">
                                     Press <span class="font-medium">Tab</span> to search everything.
                                 </p>
@@ -938,7 +938,7 @@
                         class="{{ $createModalShell }}"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-dropdown)">
                         <header class="flex-nowrap!">
-                            <h3 class="min-w-0 flex-1 truncate">New S3 storage</h3>
+                            <h3 class="min-w-0 flex-1 truncate">{{ __('New S3 storage') }}</h3>
                             <button type="button" @click="modalOpen=false" class="{{ $createModalClose }}">
                                 <x-reicon name="x" class="size-4" />
                             </button>
@@ -980,7 +980,7 @@
                         class="{{ $createModalShell }}"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-dropdown)">
                         <header class="flex-nowrap!">
-                            <h3 class="min-w-0 flex-1 truncate">New private key</h3>
+                            <h3 class="min-w-0 flex-1 truncate">{{ __('New private key') }}</h3>
                             <button type="button" @click="modalOpen=false" class="{{ $createModalClose }}">
                                 <x-reicon name="x" class="size-4" />
                             </button>
@@ -1022,7 +1022,7 @@
                         class="{{ $createModalShell }}"
                         style="box-shadow: 0 0 0 1px var(--coollabs-hairline), var(--shadow-dropdown)">
                         <header class="flex-nowrap!">
-                            <h3 class="min-w-0 flex-1 truncate">New GitHub app</h3>
+                            <h3 class="min-w-0 flex-1 truncate">{{ __('New GitHub app') }}</h3>
                             <button type="button" @click="modalOpen=false" class="{{ $createModalClose }}">
                                 <x-reicon name="x" class="size-4" />
                             </button>

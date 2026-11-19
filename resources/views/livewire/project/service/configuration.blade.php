@@ -31,7 +31,7 @@
                         }
                     }">
                         <x-application.settings-section id="compose-resources-section" title="Compose resources"
-                            description="Applications and databases defined in this service." flush>
+                            description="{{ __('Applications and databases defined in this service.') }}" flush>
                             <x-slot:actions>
                                 @if ($applications->isNotEmpty() || $databases->isNotEmpty())
                                     <x-canvas-view-toggle />
@@ -57,8 +57,8 @@
 
                                 @if ($applications->isEmpty() && $databases->isEmpty())
                                     <div class="p-4 sm:col-span-2">
-                                        <x-empty title="No compose resources"
-                                            description="No applications or databases are defined in this Docker Compose file."
+                                        <x-empty title="{{ __('No compose resources') }}"
+                                            description="{{ __('No applications or databases are defined in this Docker Compose file.') }}"
                                             icon-name="grid" />
                                     </div>
                                 @endif

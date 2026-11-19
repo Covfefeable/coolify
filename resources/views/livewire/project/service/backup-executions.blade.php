@@ -9,7 +9,7 @@
         $server = $service->server;
     @endphp
     @if ($selectedExecution)
-        <x-modal-input title="Backup execution" wireOpen="executionModalOpen" :wireIgnore="false" isLarge>
+        <x-modal-input title="{{ __('Backup execution') }}" wireOpen="executionModalOpen" :wireIgnore="false" isLarge>
             <x-slot:content><span></span></x-slot:content>
             <div class="flex flex-col gap-5">
                 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -20,15 +20,15 @@
                 </div>
                 @if ($selectedExecution['filename'])
                     <div>
-                        <p class="text-xs text-neutral-500 dark:text-fg-dim">Backup path</p>
+                        <p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('Backup path') }}</p>
                         <div class="mt-1 flex items-center gap-2 rounded-md bg-neutral-100 p-3 dark:bg-black/20">
                             <code class="min-w-0 flex-1 overflow-x-auto text-xs">{{ $selectedExecution['filename'] }}</code>
-                            <x-copy-button :value="$selectedExecution['filename']" label="Copy backup path" />
+                            <x-copy-button :value="$selectedExecution['filename']" label="{{ __('Copy backup path') }}" />
                         </div>
                     </div>
                 @endif
                 @if ($selectedExecution['message'])
-                    <div><p class="text-xs text-neutral-500 dark:text-fg-dim">Output</p><pre class="mt-1 max-h-80 overflow-auto rounded-md bg-neutral-100 p-3 font-mono text-xs whitespace-pre-wrap dark:bg-black/20">{{ $selectedExecution['message'] }}</pre></div>
+                    <div><p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('Output') }}</p><pre class="mt-1 max-h-80 overflow-auto rounded-md bg-neutral-100 p-3 font-mono text-xs whitespace-pre-wrap dark:bg-black/20">{{ $selectedExecution['message'] }}</pre></div>
                 @endif
             </div>
         </x-modal-input>
@@ -43,7 +43,7 @@
         @endif
         @if ($executions->isEmpty())
             <x-empty size="sm" title="{{ __('No backup executions') }}"
-                description="Execution history appears here after a backup schedule runs." icon-name="browser-terminal" />
+                description="{{ __('Execution history appears here after a backup schedule runs.') }}" icon-name="browser-terminal" />
         @else
             <div class="data-table relative w-full overflow-x-auto">
                 <x-table.loading target="previousPage,nextPage,setPage,perPage,sortExecutions" text="Loading executions..." />

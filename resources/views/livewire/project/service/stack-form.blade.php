@@ -1,8 +1,8 @@
 <form wire:submit.prevent="submit" class="application-settings-form flex flex-col gap-6">
     <x-unsaved-bar action="submit" />
 
-    <x-application.settings-section title="Service details"
-        description="Manage the identity, Compose configuration, and network of this service.">
+    <x-application.settings-section title="{{ __('Service details') }}"
+        description="{{ __('Manage the identity, Compose configuration, and network of this service.') }}">
         <x-slot:actions>
             <div class="flex items-center gap-2">
                 @if (isDev())
@@ -46,21 +46,21 @@
 
         <div class="grid gap-4 lg:grid-cols-2">
             <x-forms.input canGate="update" :canResource="$service" id="name" required label="{{ __('Service name') }}"
-                placeholder="My WordPress site" />
+                placeholder="{{ __('My WordPress site') }}" />
             <x-forms.input canGate="update" :canResource="$service" id="description" label="{{ __('Description') }}" />
         </div>
         <x-application.settings-subsection id="service-network-section" title="{{ __('Network') }}" helper="Control whether this Compose stack joins Coolify's predefined network.">
-            <x-forms.listbox canGate="update" :canResource="$service" id="connectToDockerNetwork" label="Network attachment" live onChange="instantSave"
+            <x-forms.listbox canGate="update" :canResource="$service" id="connectToDockerNetwork" label="{{ __('Network attachment') }}" live onChange="instantSave"
                 :disabled="! auth()->user()->can('update', $service)" :options="[
                     ['value' => false, 'label' => 'Use the stack network only'],
-                    ['value' => true, 'label' => 'Connect to the predefined Coolify network'],
+                    ['value' => true, 'label' => __('Connect to the predefined Coolify network')],
                 ]" />
         </x-application.settings-subsection>
     </x-application.settings-section>
 
     @if ($fields->count() > 0)
-        <x-application.settings-section title="Service configuration"
-            description="Template-specific values exposed by this service.">
+        <x-application.settings-section title="{{ __('Service configuration') }}"
+            description="{{ __('Template-specific values exposed by this service.') }}">
             <div class="grid gap-4 lg:grid-cols-2">
                 @foreach ($fields as $serviceName => $field)
                     <div>

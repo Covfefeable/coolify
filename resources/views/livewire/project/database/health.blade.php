@@ -2,7 +2,7 @@
     <x-unsaved-bar action="submit" />
 
     <x-application.settings-section title="{{ __('Healthcheck') }}"
-        description="Define how Docker checks this database and reports its health.">
+        description="{{ __('Define how Docker checks this database and reports its health.') }}">
         <x-slot:actions>
             @if (!$healthCheckEnabled)
                 <x-modal-confirmation title="{{ __('Enable healthcheck?') }}" buttonTitle="{{ __('Enable healthcheck') }}"
@@ -17,7 +17,7 @@
         </x-slot:actions>
 
         @if (!$healthCheckEnabled)
-            <x-callout type="warning" title="Healthcheck disabled">
+            <x-callout type="warning" title="{{ __('Healthcheck disabled') }}">
                 Docker is not running a healthcheck probe, so Coolify cannot report a healthy or unhealthy state.
             </x-callout>
         @endif

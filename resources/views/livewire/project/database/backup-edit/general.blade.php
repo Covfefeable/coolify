@@ -33,9 +33,9 @@
                     || $backup->database_type === 'App\Models\StandaloneMariadb'
                     || $isServiceSqlDatabase)
                 <div class="grid w-full gap-4">
-                    <x-forms.listbox id="dumpAll" label="Database selection" onChange="instantSave" :options="[
+                    <x-forms.listbox id="dumpAll" label="{{ __('Database selection') }}" onChange="instantSave" :options="[
                         ['value' => true, 'label' => 'All databases'],
-                        ['value' => false, 'label' => 'Specific databases'],
+                        ['value' => false, 'label' => __('Specific databases')],
                     ]" />
                     @if (! $backup->dump_all)
                         <div class="w-full" x-data="{
@@ -54,7 +54,7 @@
                                 this.value = this.databases.filter((_, itemIndex) => itemIndex !== index).join(',');
                             },
                         }">
-                            <label class="mb-1.5 block text-sm font-medium">Databases to back up</label>
+                            <label class="mb-1.5 block text-sm font-medium">{{ __('Databases to back up') }}</label>
                             <div class="chip-input">
                                 <template x-for="(database, index) in databases" :key="database">
                                     <span class="chip font-mono">
@@ -82,15 +82,15 @@
                     @endif
                 </div>
             @elseif ($backup->database_type === 'App\Models\StandaloneMongodb')
-                <x-forms.input label="Databases to include"
+                <x-forms.input label="{{ __('Databases to include') }}"
                     helper="Use database:collection1,collection2|database2 to exclude selected collections. Leave empty to include all databases and collections."
                     id="databasesToBackup" />
             @elseif ($backup->database_type === 'App\Models\StandaloneClickhouse')
-                <x-forms.input label="Databases to back up"
+                <x-forms.input label="{{ __('Databases to back up') }}"
                     helper="Comma-separated database names. Leave empty to include the default database."
                     id="databasesToBackup" />
             @elseif ($backup->database_type === 'App\Models\StandaloneSqlite')
-                <x-forms.input label="Database files to back up"
+                <x-forms.input label="{{ __('Database files to back up') }}"
                     helper="Comma-separated file names inside the data volume. Leave empty to back up every configured file."
                     id="databasesToBackup" />
             @endif

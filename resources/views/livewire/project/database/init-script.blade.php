@@ -2,7 +2,7 @@
     <x-unsaved-bar action="submit" />
     <div class="flex items-end gap-2">
         <x-forms.input id="filename" label="{{ __('Filename') }}" />
-        <x-modal-confirmation title="Delete initialization script?" buttonTitle="{{ __('Delete') }}" isErrorButton
+        <x-modal-confirmation title="{{ __('Delete initialization script?') }}" buttonTitle="{{ __('Delete') }}" isErrorButton
             submitAction="delete" :actions="[
                 'Permanently delete this initialization script from the database and server.',
                 'Redeployments that depend on this script may fail.',

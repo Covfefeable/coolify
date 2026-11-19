@@ -111,8 +111,8 @@
         </div>
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-2">
             @foreach ([
-                ['value' => 'full', 'label' => __('Full width'), 'description' => 'Use all available space for page content.'],
-                ['value' => 'centered', 'label' => __('Centered'), 'description' => 'Keep content centered at a comfortable maximum width.'],
+                ['value' => 'full', 'label' => __('Full width'), 'description' => __('Use all available space for page content.')],
+                ['value' => 'centered', 'label' => __('Centered'), 'description' => __('Keep content centered at a comfortable maximum width.')],
             ] as $option)
                 <button type="button" @click="setWidth('{{ $option['value'] }}')"
                     class="group overflow-hidden rounded-[10px] border border-neutral-200 bg-white text-left transition-[border-color,box-shadow] hover:border-neutral-300 hover:shadow-sm dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:border-white/[0.12]"
@@ -151,8 +151,8 @@
         </div>
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-2">
             @foreach ([
-                ['value' => 'default', 'label' => __('Default'), 'description' => 'Top bar and sidebars run edge to edge.'],
-                ['value' => 'floating', 'label' => __('Floating'), 'description' => 'Framed panels float on a dotted backdrop, like the canvas.'],
+                ['value' => 'default', 'label' => __('Default'), 'description' => __('Top bar and sidebars run edge to edge.')],
+                ['value' => 'floating', 'label' => __('Floating'), 'description' => __('Framed panels float on a dotted backdrop, like the canvas.')],
             ] as $option)
                 <button type="button" @click="setNavStyle('{{ $option['value'] }}')"
                     class="group overflow-hidden rounded-[10px] border border-neutral-200 bg-white text-left transition-[border-color,box-shadow] hover:border-neutral-300 hover:shadow-sm dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:border-white/[0.12]"
@@ -204,7 +204,7 @@
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-2">
             @foreach ([
                 ['value' => '3d', 'label' => '3D', 'description' => __('Buttons and sidebar icons sit on a raised edge that lifts on hover.')],
-                ['value' => 'flat', 'label' => __('Flat'), 'description' => 'No raised edges. Sidebar items are plain rows with a highlight for the current page.'],
+                ['value' => 'flat', 'label' => __('Flat'), 'description' => __('No raised edges. Sidebar items are plain rows with a highlight for the current page.')],
             ] as $option)
                 <button type="button" @click="setNavItems('{{ $option['value'] }}')"
                     class="group overflow-hidden rounded-[10px] border border-neutral-200 bg-white text-left transition-[border-color,box-shadow] hover:border-neutral-300 hover:shadow-sm dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:border-white/[0.12]"
@@ -251,8 +251,8 @@
         </div>
         <div class="application-settings-section-body grid gap-3 sm:grid-cols-2">
             @foreach ([
-                ['value' => 'local', 'label' => __('Your time'), 'description' => 'Show the time in the time zone of this browser.', 'lines' => ['Oct 24, 12:30:33']],
-                ['value' => 'utc', 'label' => __('Your time and UTC'), 'description' => 'Also show the UTC time. Use it to compare with server logs.', 'lines' => ['Your time: Oct 24, 12:30:33 GMT+2', 'UTC: Oct 24, 10:30:33 UTC']],
+                ['value' => 'local', 'label' => __('Your time'), 'description' => __('Show the time in the time zone of this browser.'), 'lines' => ['Oct 24, 12:30:33']],
+                ['value' => 'utc', 'label' => __('Your time and UTC'), 'description' => __('Also show the UTC time. Use it to compare with server logs.'), 'lines' => ['Your time: Oct 24, 12:30:33 GMT+2', 'UTC: Oct 24, 10:30:33 UTC']],
             ] as $option)
                 <button type="button" @click="setChartTimes('{{ $option['value'] }}')"
                     class="group overflow-hidden rounded-[10px] border border-neutral-200 bg-white text-left transition-[border-color,box-shadow] hover:border-neutral-300 hover:shadow-sm dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:border-white/[0.12]"
@@ -335,14 +335,14 @@
                                         :style="`background: ${draftColors.sidebar}; color: ${textOn(draftColors.sidebar)}`">
                                         <div class="mb-2 px-2 text-sm font-semibold">Coolify</div>
                                         <div class="flex items-center gap-2 rounded-md px-2 py-1.5 opacity-75">
-                                            <x-reicon name="dashboard" class="size-3.5" /> Dashboard
+                                            <x-reicon name="dashboard" class="size-3.5" /> {{ __('Dashboard') }}
                                         </div>
                                         <div class="flex items-center gap-2 rounded-md px-2 py-1.5 font-medium"
                                             :style="`background: ${draftColors.selected}; color: ${textOn(draftColors.selected)}`">
-                                            <x-reicon name="projects" class="size-3.5" /> Projects
+                                            <x-reicon name="projects" class="size-3.5" /> {{ __('Projects') }}
                                         </div>
                                         <div class="flex items-center gap-2 rounded-md px-2 py-1.5 opacity-75">
-                                            <x-reicon name="servers" class="size-3.5" /> Servers
+                                            <x-reicon name="servers" class="size-3.5" /> {{ __('Servers') }}
                                             <span class="ml-auto rounded-full px-1.5 text-[10px] font-semibold"
                                                 :style="`background: ${accentFill(draftColors.accent)}; color: ${accentTextOn(draftColors.accent)}`">3</span>
                                         </div>
@@ -352,7 +352,7 @@
                                         <div class="flex items-center justify-between gap-2">
                                             <span class="text-sm font-semibold">{{ __('Projects') }}</span>
                                             <span class="rounded-md px-2 py-1 text-[11px] font-medium"
-                                                :style="`background: ${accentFill(draftColors.accent)}; color: ${accentTextOn(draftColors.accent)}`">+ New</span>
+                                                :style="`background: ${accentFill(draftColors.accent)}; color: ${accentTextOn(draftColors.accent)}`">{{ __('+ New') }}</span>
                                         </div>
                                         <div class="rounded-md border p-2.5"
                                             :style="`background: color-mix(in oklab, ${textOn(draftColors.background)} 4%, ${draftColors.background}); border-color: color-mix(in oklab, ${textOn(draftColors.background)} 14%, ${draftColors.background})`">

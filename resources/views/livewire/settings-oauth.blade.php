@@ -8,7 +8,7 @@
             <div
                 x-data="{ activeProvider: location.hash.slice(1).replace('-oauth-section', '') || @js($selectedProvider ?? array_key_first($oauth_settings_map)) }"
                 @hashchange.window="activeProvider = location.hash.slice(1).replace('-oauth-section', '')">
-                <nav aria-label="OAuth providers" class="grid gap-0.5 py-1">
+                <nav aria-label="{{ __('OAuth providers') }}" class="grid gap-0.5 py-1">
                     @foreach ($oauth_settings_map as $provider => $oauth_setting)
                         <a href="#{{ $provider }}-oauth-section" class="menu-item min-h-8! py-1! text-[12px]!"
                             :class="{ 'menu-item-active': activeProvider === '{{ $provider }}' }"
@@ -28,10 +28,10 @@
             <x-unsaved-bar action="submit" />
 
             <x-application.settings-section title="{{ __('Registration') }}"
-                description="Control password registration when an OAuth provider is available.">
+                description="{{ __('Control password registration when an OAuth provider is available.') }}">
                 <x-forms.checkbox canGate="update" :canResource="$settings"
                     id="disable_registration_when_oauth_enabled"
-                    label="Disable password registration when OAuth is enabled"
+                    label="{{ __('Disable password registration when OAuth is enabled') }}"
                     helper="OAuth providers can still create users when registration is enabled for that provider."
                     instantSave="saveRegistrationPolicy" />
             </x-application.settings-section>
@@ -62,7 +62,7 @@
                                 id="oauth_settings_map.{{ $provider }}.redirect_uri"
                                 placeholder="{{ oauth_default_redirect_uri($provider) }}" label="{{ __('Redirect URI') }}" />
                             <x-forms.input canGate="update" :canResource="$settings"
-                                id="oauth_settings_map.{{ $provider }}.base_url" label="Issuer URL" required
+                                id="oauth_settings_map.{{ $provider }}.base_url" label="{{ __('Issuer URL') }}" required
                                 helper="OpenID Provider issuer URL, for example https://example.okta.com. Coolify uses it to discover the authorization, token, userinfo, and JWKS endpoints. For Microsoft Entra ID, use https://login.microsoftonline.com/&lt;tenant ID&gt;/v2.0 and add the optional ID token claims email and xms_edov to the app registration." />
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.client_id" label="{{ __('Client ID') }}" required />
@@ -77,7 +77,7 @@
                                 label="Clock skew (seconds)" />
                             <div class="lg:col-span-2">
                                 <x-forms.input canGate="update" :canResource="$settings"
-                                    id="oauth_settings_map.{{ $provider }}.custom_label" label="Login button label"
+                                    id="oauth_settings_map.{{ $provider }}.custom_label" label="{{ __('Login button label') }}"
                                     placeholder="{{ __('Login with SSO') }}" />
                             </div>
                         @else
@@ -93,14 +93,14 @@
 
                         @if ($provider === 'azure')
                             <x-forms.input canGate="update" :canResource="$settings"
-                                id="oauth_settings_map.{{ $provider }}.tenant" label="Tenant" required />
+                                id="oauth_settings_map.{{ $provider }}.tenant" label="{{ __('Tenant') }}" required />
                         @endif
 
                         @if ($provider === 'google')
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.tenant"
                                 helper="Optional Google Workspace domain, for example example.com. Only accounts from this domain can sign in. Use * to allow any Workspace account but no personal Google accounts."
-                                label="Hosted domain" />
+                                label="{{ __('Hosted domain') }}" />
                         @endif
 
                         @if (in_array($provider, ['authentik', 'clerk', 'zitadel', 'gitlab'], true))
@@ -115,17 +115,17 @@
                         @if ($provider === 'oidc')
                             <x-forms.checkbox canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.allow_registration"
-                                label="Allow OIDC user creation"
+                                label="{{ __('Allow OIDC user creation') }}"
                                 helper="Allow a successful OIDC login to create a user when password registration is disabled." />
                             <x-forms.checkbox canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.require_email_verified"
-                                label="Require verified email" />
+                                label="{{ __('Require verified email') }}" />
                             <x-forms.checkbox canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.use_pkce" label="Use PKCE" />
                         @endif
                         <x-forms.checkbox canGate="update" :canResource="$settings"
                             id="oauth_settings_map.{{ $provider }}.auto_join_root_team"
-                            label="Auto-join new users to Root team"
+                            label="{{ __('Auto-join new users to Root team') }}"
                             helper="Add newly-created OAuth users to the Root team as members without creating a personal team." />
                     </div>
                 </x-application.settings-section>

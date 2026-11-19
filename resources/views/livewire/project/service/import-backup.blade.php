@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-6">
     @if ($this->databases->isEmpty())
-        <x-empty title="No compatible databases"
-            description="This service does not contain a database that supports backup imports."
+        <x-empty title="{{ __('No compatible databases') }}"
+            description="{{ __('This service does not contain a database that supports backup imports.') }}"
             icon-name="database" size="sm" />
     @else
         @if ($this->databases->count() > 1)

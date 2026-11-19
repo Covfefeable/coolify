@@ -1,4 +1,4 @@
-<x-auth.shell title="Select a team"
+<x-auth.shell title="{{ __('Select a team') }}"
     description="{{ __('Choose the team you want to work in. Your choice is remembered for next time.') }}">
     <div class="flex flex-col gap-2">
         @foreach ($teams as $team)

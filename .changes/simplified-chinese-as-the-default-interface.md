@@ -22,3 +22,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - File browsing, runtime logs, database restores, Git settings, and connection guides include additional Simplified Chinese translations
 - Server setup, Sentinel status, reverse proxy guidance, and application health checks include additional Simplified Chinese translations
 - Cloud server forms, proxy certificates, server security settings, scheduled tasks, storage, and team access include additional Simplified Chinese translations
+- Database and Compose service settings, Git sources, user profiles, global search, and backup destinations include additional Simplified Chinese translations

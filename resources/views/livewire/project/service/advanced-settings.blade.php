@@ -14,20 +14,20 @@
                     ['value' => false, 'label' => __('Disabled')],
                 ]" />
         @endif
-        <x-forms.listbox id="isStripprefixEnabled" label="Path prefixes"
+        <x-forms.listbox id="isStripprefixEnabled" label="{{ __('Path prefixes') }}"
             :options="[
                 ['value' => true, 'label' => 'Strip prefixes'],
-                ['value' => false, 'label' => 'Keep prefixes'],
+                ['value' => false, 'label' => __('Keep prefixes')],
             ]" />
-        <x-forms.listbox id="excludeFromStatus" label="Service status"
+        <x-forms.listbox id="excludeFromStatus" label="{{ __('Service status') }}"
             :options="[
                 ['value' => false, 'label' => 'Include in status'],
-                ['value' => true, 'label' => 'Exclude from status'],
+                ['value' => true, 'label' => __('Exclude from status')],
             ]" />
         <x-forms.listbox id="isLogDrainEnabled" label="{{ __('Log drain') }}"
             :options="[
                 ['value' => true, 'label' => 'Send logs to drain'],
-                ['value' => false, 'label' => 'Do not drain logs'],
+                ['value' => false, 'label' => __('Do not drain logs')],
             ]" />
         <x-forms.input type="number" min="0" id="maxRestartCount" label="Max restart count"
             helper="Maximum number of Docker restarts before Coolify stops this container. Set to 0 to disable the limit. Docker counts expected and unexpected restarts."
@@ -38,24 +38,24 @@
                 canGate="update" :canResource="$serviceApplication" :options="[
                     ['value' => 'server', 'label' => 'Server setting ('.$serverCertificateResolver.')'],
                     ['value' => 'none', 'label' => 'None (use your own certificates)'],
-                    ['value' => 'custom', 'label' => 'Custom resolver'],
+                    ['value' => 'custom', 'label' => __('Custom resolver')],
                 ]" />
             @if ($certificateResolverMode === 'custom')
-                <x-forms.input id="certificateResolverName" label="Certificate resolver name" placeholder="cloudflare"
+                <x-forms.input id="certificateResolverName" label="{{ __('Certificate resolver name') }}" placeholder="cloudflare"
                     required helper="Name of a certificate resolver defined in the Traefik configuration of this server."
                     canGate="update" :canResource="$serviceApplication" />
             @endif
         @endif
     @else
-        <x-forms.listbox id="excludeFromStatus" label="Service status"
+        <x-forms.listbox id="excludeFromStatus" label="{{ __('Service status') }}"
             :options="[
                 ['value' => false, 'label' => 'Include in status'],
-                ['value' => true, 'label' => 'Exclude from status'],
+                ['value' => true, 'label' => __('Exclude from status')],
             ]" />
         <x-forms.listbox id="isLogDrainEnabled" label="{{ __('Log drain') }}"
             :options="[
                 ['value' => true, 'label' => 'Send logs to drain'],
-                ['value' => false, 'label' => 'Do not drain logs'],
+                ['value' => false, 'label' => __('Do not drain logs')],
             ]" />
     @endif
 </div>

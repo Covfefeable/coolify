@@ -38,7 +38,7 @@
     <form wire:submit="save" class="application-settings-form">
         <x-unsaved-bar action="save" />
         <x-application.settings-section title="{{ __('General') }}"
-            description="Edit the reusable initialization script used during cloud server creation.">
+            description="{{ __('Edit the reusable initialization script used during cloud server creation.') }}">
             <div class="flex flex-col gap-4">
                 <x-forms.input canGate="update" :canResource="$cloudInitScript" id="name"
                     label="{{ __('Script name') }}" required />

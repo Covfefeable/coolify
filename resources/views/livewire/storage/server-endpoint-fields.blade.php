@@ -23,7 +23,7 @@
     </div>
     <div class="min-w-0 sm:col-span-2">
         <div class="mb-1.5 flex h-4 w-full items-center gap-1.5">
-            <label for="serverParts-path" class="mb-0! flex items-center gap-1.5 leading-4">Directory</label>
+            <label for="serverParts-path" class="mb-0! flex items-center gap-1.5 leading-4">{{ __('Directory') }}</label>
         </div>
         <input id="serverParts-path" type="text" class="input" wire:model="serverParts.path"
             placeholder="backups/coolify" autocomplete="off" @disabled($disabled ?? false) />

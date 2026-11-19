@@ -9,13 +9,13 @@
     @if (auth()->user()->isAdminFromSession())
         @if ($loading)
             <div wire:init="getStripeStatus">
-                <x-skeleton.settings-sections :count="2" label="Loading your subscription status" />
+                <x-skeleton.settings-sections :count="2" label="{{ __('Loading your subscription status') }}" />
             </div>
         @else
             @if ($isUnpaid)
-                <x-application.settings-section title="Payment failed"
-                    description="Your latest Coolify Cloud payment could not be processed.">
-                    <x-callout type="danger" title="Subscription payment is past due">
+                <x-application.settings-section title="{{ __('Payment failed') }}"
+                    description="{{ __('Your latest Coolify Cloud payment could not be processed.') }}">
+                    <x-callout type="danger" title="{{ __('Subscription payment is past due') }}">
                         Update the payment method or settle the outstanding invoice in the billing portal.
                     </x-callout>
                     <div class="mt-4">
@@ -24,7 +24,7 @@
                 </x-application.settings-section>
             @else
                 @if ($isCancelled || ! data_get(currentTeam(), 'subscription'))
-                    <x-callout type="warning" title="No active subscription" class="mb-6">
+                    <x-callout type="warning" title="{{ __('No active subscription') }}" class="mb-6">
                         Choose a plan to continue using Coolify Cloud.
                     </x-callout>
                 @endif
@@ -34,10 +34,10 @@
         @endif
     @else
         <x-application.settings-section title="{{ __('Subscription') }}"
-            description="Only team administrators can manage billing and plan limits.">
+            description="{{ __('Only team administrators can manage billing and plan limits.') }}">
             <x-callout type="danger" title="{{ __('Insufficient Permissions') }}">
                 You are not an admin so you cannot manage your Team's subscription. If this does not make sense, please
-                <span class="underline cursor-pointer dark:text-white" wire:click="help">contact us</span>.
+                <span class="underline cursor-pointer dark:text-white" wire:click="help">{{ __('contact us') }}</span>.
             </x-callout>
         </x-application.settings-section>
     @endif

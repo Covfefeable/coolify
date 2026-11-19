@@ -37,7 +37,7 @@
 <section class="w-full max-w-none">
     <header class="settings-mobile-header xl:hidden">
         <h1 class="settings-mobile-title">{{ __('Keys & Tokens') }}</h1>
-        <p class="settings-mobile-description">Manage SSH keys, cloud credentials, and API access tokens.</p>
+        <p class="settings-mobile-description">{{ __('Manage SSH keys, cloud credentials, and API access tokens.') }}</p>
     </header>
     {{-- Feeds the page search with the Keys & Tokens pages. --}}
     <div hidden data-settings-search-items="{{ json_encode(settingsSearchItems(['Keys & Tokens' => $securityMenuItems], [])) }}"></div>

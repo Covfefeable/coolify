@@ -1,6 +1,6 @@
 @props([
     'status',
-    'title' => 'Application status',
+    'title' => __('Application status'),
     'containerName' => 'Container',
     'align' => 'left',
     'healthcheckUrl' => null,

@@ -1,4 +1,4 @@
-<x-modal-input title="Import environment variables" :wireIgnore="false"
+<x-modal-input title="{{ __('Import environment variables') }}" :wireIgnore="false"
     subtitle="The variables are added to the application when you continue.">
     <x-slot:content>
         <x-forms.button type="button">{{ $envImported ? 'Edit' : 'Review' }}</x-forms.button>

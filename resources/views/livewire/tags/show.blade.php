@@ -38,7 +38,7 @@
 
     @if ($tags->isEmpty())
         <x-empty title="{{ __('No tags yet') }}"
-            description="Create a tag, then connect it to resources to group related deployments."
+            description="{{ __('Create a tag, then connect it to resources to group related deployments.') }}"
             icon-name="tags" />
     @elseif (! isset($tag))
         <div x-data="tagsIndex()" class="w-full">
@@ -163,7 +163,7 @@
             <div x-show="filteredTags.length === 0"
                 class="flex min-h-52 flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white px-6 text-center dark:border-white/[0.08] dark:bg-white/[0.05]">
                 <x-reicon name="search" class="mb-3 size-6 text-neutral-300 dark:text-fg-faint" />
-                <p class="text-[13px] font-medium">No matching tags</p>
+                <p class="text-[13px] font-medium">{{ __('No matching tags') }}</p>
                 <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">
                     Try a different search.
                 </p>
@@ -287,7 +287,7 @@
             </div>
 
             <x-application.settings-section :title="$tag->name"
-                description="Use this webhook to deploy every resource with this tag.">
+                description="{{ __('Use this webhook to deploy every resource with this tag.') }}">
                 <x-slot:actions>
                     {{-- Two ways to connect: a list in a modal, or the canvas (wide screens only). --}}
                     <x-modal-input title="{{ __('Connect to resources') }}" subtitle="Add this tag to resources, or remove it."
@@ -318,18 +318,18 @@
                             </div>
                         @empty
                             <div wire:loading.remove wire:target="openConnectResources">
-                                <x-empty title="{{ __('No resources yet') }}" description="Create a resource in a project first." icon-name="tags" size="sm" />
+                                <x-empty title="{{ __('No resources yet') }}" description="{{ __('Create a resource in a project first.') }}" icon-name="tags" size="sm" />
                             </div>
                         @endforelse
                     </x-modal-input>
                     <a href="{{ app(App\Services\TagCanvas::class)->connectLink($tag) }}"
                         class="button hidden whitespace-nowrap md:inline-flex"
-                        title="Add this tag to resources on the canvas, and see which resources have it">
+                        title="{{ __('Add this tag to resources on the canvas, and see which resources have it') }}">
                         <x-reicon name="deploy-canvas" class="size-3.5" />
                         Connect in canvas
                     </a>
                     @can('delete', $tag)
-                        <x-modal-confirmation title="Delete this tag?" isErrorButton buttonTitle="{{ __('Delete') }}"
+                        <x-modal-confirmation title="{{ __('Delete this tag?') }}" isErrorButton buttonTitle="{{ __('Delete') }}"
                             submitAction="deleteTag" :actions="[
                                 'The tag will be removed from every resource.',
                                 'The deploy webhook of this tag will stop working.',
@@ -339,7 +339,7 @@
                             shortConfirmationLabel="Tag Name" :confirmWithPassword="false"
                             step2ButtonText="{{ __('Delete tag') }}" />
                     @endcan
-                    <x-modal-confirmation title="Redeploy all resources with this tag?"
+                    <x-modal-confirmation title="{{ __('Redeploy all resources with this tag?') }}"
                         buttonTitle="{{ __('Redeploy all') }}" submitAction="redeployAll" :actions="[
                             'All resources with this tag will be redeployed.',
                             'During redeploy resources will be temporarily unavailable.',
@@ -357,7 +357,7 @@
                 description="{{ $resourceCount }} {{ Str::plural('resource', $resourceCount) }} use this tag.">
                 @if ($resourceCount === 0)
                     <x-empty title="{{ __('No resources use this tag') }}"
-                        description="Connect this tag to resources to see them here."
+                        description="{{ __('Connect this tag to resources to see them here.') }}"
                         icon-name="tags" size="sm" />
                 @else
                     <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -413,7 +413,7 @@
             </x-application.settings-section>
 
             <x-application.settings-section title="{{ __('Active deployments') }}"
-                description="Queued and running deployments for applications using this tag." flush>
+                description="{{ __('Queued and running deployments for applications using this tag.') }}" flush>
                 <x-slot:actions>
                     @if (count($deploymentsPerTagPerServer ?? []) > 0)
                         <x-loading />
@@ -425,7 +425,7 @@
                     @if (count($deploymentsPerTagPerServer ?? []) === 0)
                         <div class="p-3">
                             <x-empty title="{{ __('No active deployments') }}"
-                                description="Deployments will appear here while they are queued or running."
+                                description="{{ __('Deployments will appear here while they are queued or running.') }}"
                                 icon-name="play-circle" size="sm" />
                         </div>
                     @else

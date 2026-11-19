@@ -62,6 +62,15 @@ function errorPageScriptLines(): array
     return $lines;
 }
 
+it('renders proxy error and maintenance pages in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+
+    expect(view('proxy.error-page')->render())
+        ->toContain('lang="zh-cn"', '此网站暂时无法访问', '查看故障排除指南')
+        ->and(view('proxy.maintenance-page')->render())
+        ->toContain('网站正在维护', '503 服务不可用');
+});
+
 it('routes the Traefik catch-all through the errors middleware and keeps the 503', function () {
     $server = useErrorPageProxy($this->server, ProxyTypes::TRAEFIK->value);
 

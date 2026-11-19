@@ -52,4 +52,11 @@ it('sets the danger active tab from the danger route', function () {
     Livewire::withQueryParams(['github_app_uuid' => $githubApp->uuid])
         ->test(Change::class)
         ->assertSet('activeTab', 'general');
+
+    app()->setLocale('zh-cn');
+
+    $this->get(route('source.github.danger', ['github_app_uuid' => $githubApp->uuid]))
+        ->assertOk()
+        ->assertSee('删除 GitHub 应用')
+        ->assertSee('Layout Test App');
 });

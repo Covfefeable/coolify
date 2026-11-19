@@ -4,11 +4,11 @@
     </x-slot>
 
     <x-security.settings-layout>
-        <x-application.settings-section title="Cloud-init scripts"
-            description="Reusable initialization scripts for cloud servers." flush>
+        <x-application.settings-section title="{{ __('Cloud-init scripts') }}"
+            description="{{ __('Reusable initialization scripts for cloud servers.') }}" flush>
         <x-slot:actions>
             @can('create', App\Models\CloudInitScript::class)
-                <x-modal-input title="New Cloud-Init Script">
+                <x-modal-input title="{{ __('New Cloud-Init Script') }}">
                     <x-slot:content>
                         <button type="button"
                             class="button button-highlighted">
@@ -23,14 +23,14 @@
 
 
             @if ($scripts->isEmpty())
-                <x-empty title="No cloud-init scripts"
-                    description="Create a script to reuse it during server provisioning."
+                <x-empty title="{{ __('No cloud-init scripts') }}"
+                    description="{{ __('Create a script to reuse it during server provisioning.') }}"
                     icon-name="file-content" size="sm" />
             @else
                 <div>
                     <div class="grid grid-cols-[minmax(0,1fr)_12rem_4.5rem] items-center gap-3 border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[13px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                        <div class="pl-11">Script</div>
-                        <div>Last updated</div>
+                        <div class="pl-11">{{ __('Script') }}</div>
+                        <div>{{ __('Last updated') }}</div>
                         <div class="text-right">{{ __('Actions') }}</div>
                     </div>
                     @foreach ($scripts as $script)
@@ -60,7 +60,7 @@
                                     </span>
                                 </div>
                                 <div class="flex justify-end">
-                                    <button type="button" class="icon-button" title="Edit cloud-init script"
+                                    <button type="button" class="icon-button" title="{{ __('Edit cloud-init script') }}"
                                         aria-label="Edit {{ $script->name }}" @click="modalOpen=true">
                                         <x-reicon name="settings" class="size-3.5" />
                                     </button>

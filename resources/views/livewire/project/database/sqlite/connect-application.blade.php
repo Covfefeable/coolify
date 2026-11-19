@@ -1,7 +1,7 @@
 {{-- Rendered inside the General form, so no <form> here: the button is type=button and Enter is handled explicitly. --}}
 <div>
-    <x-application.settings-section title="Connect application"
-        description="Mount the data volume of this database into an application on the same server. Keep the data in a Docker volume as the database files are writable by every user, so with a bind mount every user on the host can read and change them.">
+    <x-application.settings-section title="{{ __('Connect application') }}"
+        description="{{ __('Mount the data volume of this database into an application on the same server. Keep the data in a Docker volume as the database files are writable by every user, so with a bind mount every user on the host can read and change them.') }}">
         @if ($this->connections->isNotEmpty() || $this->composeConnections->isNotEmpty())
             <div class="mb-4 divide-y divide-neutral-200 rounded-lg border border-neutral-200 dark:divide-white/[0.08] dark:border-white/[0.08]">
                 @foreach ($this->connections as $connection)
@@ -38,7 +38,7 @@
         @else
             <div class="flex flex-col gap-4">
                 <div class="grid gap-4 lg:grid-cols-2">
-                    <x-forms.listbox searchable id="applicationUuid" label="Application" required
+                    <x-forms.listbox searchable id="applicationUuid" label="{{ __('Application') }}" required
                         :options="$applicationOptions" placeholder="{{ __('Select an application') }}"
                         searchPlaceholder="{{ __('Search applications…') }}" searchEmptyText="No matching applications"
                         helper="Docker Compose applications mount the volume from their compose file. Coolify shows the lines to add." />
@@ -60,7 +60,7 @@
                         <div class="relative mt-2">
                             <pre
                                 class="overflow-auto rounded-md bg-white p-3 pr-10 font-mono text-xs leading-5 text-neutral-700 ring-1 ring-neutral-200 dark:bg-black/20 dark:text-neutral-300 dark:ring-white/[0.08]">{{ $composeSnippet }}</pre>
-                            <x-copy-button :value="$composeSnippet" label="Copy compose lines"
+                            <x-copy-button :value="$composeSnippet" label="{{ __('Copy compose lines') }}"
                                 class="absolute top-2 right-2" />
                         </div>
                     </x-callout>

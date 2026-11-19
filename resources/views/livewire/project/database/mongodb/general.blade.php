@@ -3,7 +3,7 @@
         <x-unsaved-bar action="submit" />
 
         <x-application.settings-section id="database-details-section" title="{{ __('Database details') }}"
-            description="Manage the identity, container image, and credentials of this MongoDB database.">
+            description="{{ __('Manage the identity, container image, and credentials of this MongoDB database.') }}">
             <x-slot:actions>
                 <x-modal-input title="{{ __('Resource details') }}" buttonTitle="{{ __('Details') }}">
                     <livewire:project.shared.resource-details :resource="$database" />
@@ -26,7 +26,7 @@
                 @endif
                 <div class="{{ $database->started_at ? 'mt-4 ' : '' }}grid gap-4 lg:grid-cols-2">
                     <x-forms.input label="{{ $database->started_at ? 'Initial username' : 'Username' }}"
-                        id="mongoInitdbRootUsername" placeholder="If empty: root"
+                        id="mongoInitdbRootUsername" placeholder="{{ __('If empty: root') }}"
                         :required="!$database->started_at" canGate="update" :canResource="$database" />
                     @if ($isPasswordHiddenForMember)
                         <x-forms.input label="{{ __('Password') }}" disabled value="Hidden (only admins can view)" />

@@ -33,7 +33,7 @@
     @keydown.escape.window="if (showModal) { closeAdjust(); }">
     @if (subscriptionProvider() === 'stripe')
         {{-- Plan Overview --}}
-        <x-application.settings-section title="Plan and billing">
+        <x-application.settings-section title="{{ __('Plan and billing') }}">
             <div class="flex flex-col gap-4">
                 <div class="space-y-3">
                     <div class="flex flex-wrap items-center gap-3">
@@ -46,14 +46,14 @@
                         </h2>
                         <span class="text-sm text-neutral-500">{{ $billingInterval === 'yearly' ? 'Yearly' : 'Monthly' }} billing</span>
                         @if (currentTeam()->subscription->stripe_cancel_at_period_end)
-                            <x-status-badge type="warning" label="Cancelling at end of period" />
+                            <x-status-badge type="warning" label="{{ __('Cancelling at end of period') }}" />
                         @else
                             <x-status-badge type="success" label="{{ __('Active') }}" />
                         @endif
                     </div>
                     <div class="text-sm flex items-center gap-2 flex-wrap">
                         <span>
-                            <span class="text-neutral-500">Active servers:</span>
+                            <span class="text-neutral-500">{{ __('Active servers:') }}</span>
                             <span class="font-medium {{ currentTeam()->serverOverflow() ? 'text-red-500' : 'dark:text-white' }}">{{ currentTeam()->servers->count() }}</span>
                             <span class="text-neutral-500">/</span>
                             <span class="font-medium dark:text-white" x-text="current"></span>
@@ -76,7 +76,7 @@
                 </div>
 
                 @if (currentTeam()->serverOverflow())
-                    <x-callout type="danger" title="Server limit exceeded" class="mt-4">
+                    <x-callout type="danger" title="{{ __('Server limit exceeded') }}" class="mt-4">
                         You must delete {{ currentTeam()->servers->count() - $server_limits }} servers or upgrade your
                         subscription. Excess servers will be deactivated.
                     </x-callout>
@@ -115,7 +115,7 @@
                             <div class="application-settings-section-body relative w-auto space-y-4 overflow-y-auto p-4">
                                 {{-- Server count input --}}
                                 <div>
-                                    <label class="mb-1.5 block">Paid servers</label>
+                                    <label class="mb-1.5 block">{{ __('Paid servers') }}</label>
                                     <div class="flex items-center gap-3">
                                         <input type="number" min="{{ $minServerLimit }}" max="{{ $maxServerLimit }}" step="1"
                                             x-model.number="qty"
@@ -141,10 +141,10 @@
                                     <div>
                                         <div class="text-xs font-bold text-neutral-500 uppercase tracking-wide pb-1.5">Due now</div>
                                         <div class="flex justify-between gap-6 text-sm font-bold">
-                                            <span class="dark:text-white">Prorated charge</span>
+                                            <span class="dark:text-white">{{ __('Prorated charge') }}</span>
                                             <span class="dark:text-warning" x-text="fmt(preview?.due_now)"></span>
                                         </div>
-                                        <p class="text-xs text-neutral-500 pt-1">Charged immediately to your payment method.</p>
+                                        <p class="text-xs text-neutral-500 pt-1">{{ __('Charged immediately to your payment method.') }}</p>
                                     </div>
                                     <div>
                                         <div class="text-xs font-bold text-neutral-500 uppercase tracking-wide pb-1.5">
@@ -171,7 +171,7 @@
 
                                     {{-- Update Button with Confirmation --}}
                                     <x-modal-confirmation
-                                        title="Confirm Server Limit Update"
+                                        title="{{ __('Confirm Server Limit Update') }}"
                                         buttonTitle="{{ __('Update Server Limit') }}"
                                         submitAction="updateQuantity"
                                         :confirmWithText="false"
@@ -203,18 +203,18 @@
             </div>
         </x-application.settings-section>
 
-        <x-application.settings-section title="Manage subscription">
+        <x-application.settings-section title="{{ __('Manage subscription') }}">
             {{-- Cancel Subscription --}}
             <section aria-labelledby="subscription-cancellation" class="flex flex-col gap-3">
                 <div class="space-y-1">
-                    <h3 id="subscription-cancellation" class="text-sm! font-medium!">Cancel subscription</h3>
-                    <p class="text-sm text-neutral-500">Keep access until the end of your billing period, or cancel immediately.</p>
+                    <h3 id="subscription-cancellation" class="text-sm! font-medium!">{{ __('Cancel subscription') }}</h3>
+                    <p class="text-sm text-neutral-500">{{ __('Keep access until the end of your billing period, or cancel immediately.') }}</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-2">
                     @if (currentTeam()->subscription->stripe_cancel_at_period_end)
                         <x-forms.button wire:click="resumeSubscription">{{ __('Resume Subscription') }}</x-forms.button>
                     @else
-                        <x-modal-confirmation title="Cancel at End of Billing Period?"
+                        <x-modal-confirmation title="{{ __('Cancel at End of Billing Period?') }}"
                             buttonTitle="{{ __('Cancel at Period End') }}" submitAction="cancelAtPeriodEnd"
                             :actions="[
                                 'Your subscription will remain active until the end of the current billing period.',
@@ -265,16 +265,16 @@
                     @endif
                 </div>
                 @if (currentTeam()->subscription->stripe_cancel_at_period_end)
-                    <p class="text-sm text-neutral-500">Your subscription is set to cancel at the end of the billing period.</p>
+                    <p class="text-sm text-neutral-500">{{ __('Your subscription is set to cancel at the end of the billing period.') }}</p>
                 @endif
             </section>
 
             {{-- Refund --}}
             <section aria-labelledby="subscription-refund" class="mt-5 flex flex-col gap-3 border-t border-neutral-200 pt-5 dark:border-white/[0.08]">
-                <h3 id="subscription-refund" class="text-sm! font-medium!">Refund</h3>
+                <h3 id="subscription-refund" class="text-sm! font-medium!">{{ __('Refund') }}</h3>
                 @if (! $refundCheckLoading && $isRefundEligible)
                     <div class="flex flex-wrap items-center gap-2">
-                        <x-modal-confirmation title="Request Full Refund?" buttonTitle="{{ __('Request Full Refund') }}"
+                        <x-modal-confirmation title="{{ __('Request Full Refund?') }}" buttonTitle="{{ __('Request Full Refund') }}"
                             isErrorButton submitAction="refundSubscription"
                             :actions="[
                                 'Your latest payment will be fully refunded.',
@@ -302,7 +302,7 @@
 
         <div class="text-sm text-neutral-500">
             Need help? <a class="underline dark:text-white" href="{{ config('constants.urls.contact') }}"
-                target="_blank">Contact us.</a>
+                target="_blank">{{ __('Contact us.') }}</a>
         </div>
     @endif
 </div>

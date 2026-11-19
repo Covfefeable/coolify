@@ -1,4 +1,4 @@
-<x-auth.shell title="Two-factor authentication required"
+<x-auth.shell title="{{ __('Two-factor authentication required') }}"
     description="{{ $teamName ?? 'Your team' }} requires two-factor authentication. Configure it to continue.">
     <div class="flex flex-col gap-4">
         @if (request()->user()->two_factor_confirmed_at)
@@ -48,7 +48,7 @@
         @endif
         @if (!request()->user()->two_factor_confirmed_at && $teamsWithoutTwoFactor->isNotEmpty())
             <div class="flex flex-col gap-2 border-t border-neutral-200 pt-4 dark:border-white/[0.07]">
-                <p class="text-sm text-neutral-500 dark:text-fg-dim">Or switch to a team that does not require 2FA:</p>
+                <p class="text-sm text-neutral-500 dark:text-fg-dim">{{ __('Or switch to a team that does not require 2FA:') }}</p>
                 @foreach ($teamsWithoutTwoFactor as $teamWithoutTwoFactor)
                     <form action="{{ route('two-factor.required.switch-team') }}" method="POST">
                         @csrf

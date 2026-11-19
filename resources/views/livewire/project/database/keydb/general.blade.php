@@ -3,7 +3,7 @@
         <x-unsaved-bar action="submit" />
 
         <x-application.settings-section id="database-details-section" title="{{ __('Database details') }}"
-            description="Manage the identity, container image, and credentials of this KeyDB database.">
+            description="{{ __('Manage the identity, container image, and credentials of this KeyDB database.') }}">
             <x-slot:actions>
                 <x-modal-input title="{{ __('Resource details') }}" buttonTitle="{{ __('Details') }}">
                     <livewire:project.shared.resource-details :resource="$database" />
@@ -97,7 +97,7 @@
                     <x-forms.input label="{{ __('Custom KeyDB configuration') }}" disabled value="Hidden (only admins can view)" />
                 @else
                     <x-forms.textarea
-                        helper="<a target='_blank' class='underline' href='https://raw.githubusercontent.com/Snapchat/KeyDB/unstable/keydb.conf'>View the default KeyDB configuration</a>"
+                        helper="<a target='_blank' class='underline' href='https://raw.githubusercontent.com/Snapchat/KeyDB/unstable/keydb.conf'>{{ __('View the default KeyDB configuration') }}</a>"
                         label="{{ __('Custom KeyDB configuration') }}" rows="10" id="keydbConf" canGate="update"
                         :canResource="$database" />
                 @endif

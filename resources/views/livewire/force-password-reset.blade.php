@@ -1,4 +1,4 @@
-<x-auth.shell title="Set a new password"
+<x-auth.shell title="{{ __('Set a new password') }}"
     description="{{ __('Your password must be updated before you can continue to the dashboard.') }}">
     <form class="flex flex-col gap-4" wire:submit="submit">
         <x-forms.input id="email" type="email" readonly label="{{ __('Email') }}" />

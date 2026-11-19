@@ -22,7 +22,7 @@
         @if ($pendingInvitations->isNotEmpty())
             <div class="flex min-w-0 flex-col gap-2">
                 @foreach ($pendingInvitations as $invitation)
-                    <x-callout type="info" title="Pending team invitation"
+                    <x-callout type="info" title="{{ __('Pending team invitation') }}"
                         wire:key="dashboard-invitation-{{ $invitation->uuid }}">
                         <div class="flex min-w-0 flex-wrap items-center justify-between gap-2">
                             <span class="min-w-0">{{ __('Team') }} <span class="font-semibold">{{ $invitation->team->name }}</span>
@@ -65,7 +65,7 @@
         {{-- First on every screen size, so starred resources are one tap away on phones too. --}}
         @if ($starredResources->isNotEmpty())
             <section class="@container mb-0! min-w-0">
-                <x-section-heading title="Starred" />
+                <x-section-heading title="{{ __('Starred') }}" />
                 {{-- Pointer events, so the same code works for mouse, touch, and pen. The handle has touch-none, so a drag on a phone does not scroll the page. --}}
                 <div class="grid min-w-0 grid-cols-1 gap-3 @lg:grid-cols-2 @5xl:grid-cols-3 @7xl:grid-cols-4"
                     x-data="{
@@ -274,7 +274,7 @@
                         <x-table.sort-header label="{{ __('Project') }}" asc="name-asc" desc="name-desc"
                             action="setProjectSort" :current="$projectSort" />
                         <x-table.sort-header label="{{ __('Contents') }}" asc="resources-asc" desc="resources-desc" first="desc"
-                            action="setProjectSort" :current="$projectSort" title="Sort by resource count" />
+                            action="setProjectSort" :current="$projectSort" title="{{ __('Sort by resource count') }}" />
                         <div class="hidden @2xl:block">
                             <x-table.sort-header label="{{ __('Description') }}" asc="description-asc" desc="description-desc"
                                 action="setProjectSort" :current="$projectSort" />

@@ -49,7 +49,7 @@
                     Reason <x-highlighted text="*" />
                 </label>
                 <textarea id="image-scan-ignore-reason" x-model="reason" rows="3" maxlength="500" required
-                    class="input scrollbar" placeholder="Why this does not affect the app"></textarea>
+                    class="input scrollbar" placeholder="{{ __('Why this does not affect the app') }}"></textarea>
             </div>
             <div class="grid gap-4 sm:grid-cols-2">
                 <x-forms.listbox id="image-scan-ignore-scope" label="{{ __('Scope') }}" :wire="false" x-model="scope" value="resource"

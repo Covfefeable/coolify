@@ -31,7 +31,7 @@
         's3' => $backup->save_s3 ? ($backup->s3Storages->isNotEmpty() ? $backup->s3Storages : collect([$backup->s3])->filter())->where('team_id', $serviceTeamId)->count() : -1,
         'lastRunAt' => $backup->latest_log?->finished_at?->timestamp ?? ($backup->latest_log?->status === 'running' ? now()->timestamp : 0),
     ]))->values()),
-    filterOptions: @js(collect([['value' => 'all', 'label' => 'All targets']])->merge(
+    filterOptions: @js(collect([['value' => 'all', 'label' => __('All targets')]])->merge(
         $backups->map(fn ($backup) => [
             'value' => strtolower($backup->targetType()),
             'label' => $backup->targetType(),

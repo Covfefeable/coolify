@@ -60,7 +60,7 @@
     @can('update', $private_key)
         <div x-cloak x-show="askPassword && !revealed" class="flex items-end gap-2">
             <div class="flex-1">
-                <label class="text-[13px] font-medium">Enter your password to reveal the private key</label>
+                <label class="text-[13px] font-medium">{{ __('Enter your password to reveal the private key') }}</label>
                 <input type="password" class="w-full input" x-model="password" autocomplete="current-password"
                     x-on:keydown.enter.prevent="reveal()" placeholder="{{ __('Enter your password') }}">
             </div>

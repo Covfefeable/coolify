@@ -19,7 +19,7 @@
          Out of the page flow: its empty trigger line under the full-height canvas
          made the page scroll, which moved the canvas panels up. --}}
     <div class="absolute">
-        <x-modal-confirmation title="Reset the canvas?" submitAction="deploy-canvas-reset" dispatchAction
+        <x-modal-confirmation title="{{ __('Reset the canvas?') }}" submitAction="deploy-canvas-reset" dispatchAction
             :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Reset') }}"
             warningMessage="Your steps and their settings are removed from the canvas. Resources that you already deployed stay in Coolify."
             :actions="['Remove every step from the canvas.']">

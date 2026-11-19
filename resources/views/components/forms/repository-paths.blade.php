@@ -48,7 +48,7 @@
             Resolved file:
             <code class="font-mono text-coollabs dark:text-brand-light" x-text="directory + location"></code>
         </p>
-        <x-callout class="col-span-full" x-cloak x-show="repeatsBase" title="Base directory is repeated">
+        <x-callout class="col-span-full" x-cloak x-show="repeatsBase" title="{{ __('Base directory is repeated') }}">
             {{ $fileLabel }} is relative to the base directory, so it should not start with
             <code class="rounded bg-black/10 px-1 dark:bg-white/10" x-text="directory"></code> again.
             <button type="button" class="font-medium underline" x-show="!({{ $disabled }})"
@@ -56,7 +56,7 @@
         </x-callout>
         @if ($compose)
             <x-callout class="col-span-full" x-cloak x-show="composeInSubdirectory"
-                title="Relative paths resolve from the base directory">
+                title="{{ __('Relative paths resolve from the base directory') }}">
                 Docker Compose runs in the base directory
                 <code class="rounded bg-black/10 px-1 dark:bg-white/10" x-text="directory || '/'"></code>,
                 not in the directory of the Compose file. Relative paths in the file, such as a build context of

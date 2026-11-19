@@ -1,9 +1,9 @@
 <div x-data="{ search: '' }" class="application-settings-form">
-    <x-application.settings-section title="Backup schedules"
-        description="Schedules currently writing backup data to this storage." flush>
+    <x-application.settings-section title="{{ __('Backup schedules') }}"
+        description="{{ __('Schedules currently writing backup data to this storage.') }}" flush>
         @if ($groupedBackups->count() === 0 && $volumeBackups->count() === 0)
             <x-empty title="{{ __('No backup schedules use this storage') }}"
-                description="Select this storage from a database or volume backup schedule to see it here."
+                description="{{ __('Select this storage from a database or volume backup schedule to see it here.') }}"
                 icon-name="storages" size="sm" />
         @else
             <div class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
@@ -18,7 +18,7 @@
             <div class="overflow-x-auto">
                 <div
                     class="grid min-w-[780px] grid-cols-[minmax(12rem,1fr)_9rem_7rem_minmax(12rem,1.2fr)_4.5rem] border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 text-[11px] font-medium text-neutral-500 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-faint">
-                    <div>Backup target</div>
+                    <div>{{ __('Backup target') }}</div>
                     <div>{{ __('Frequency') }}</div>
                     <div>{{ __('Status') }}</div>
                     <div>{{ __('Storage') }}</div>

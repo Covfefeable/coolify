@@ -14,8 +14,8 @@
             <section class="application-settings-section">
                 <div class="application-settings-section-header">
                     <div>
-                        <h2>Profile details</h2>
-                        <p>Your avatar, display name, and verified sign-in address.</p>
+                        <h2>{{ __('Profile details') }}</h2>
+                        <p>{{ __('Your avatar, display name, and verified sign-in address.') }}</p>
                     </div>
                 </div>
                 <div class="application-settings-section-body grid gap-4 sm:grid-cols-2">
@@ -118,7 +118,7 @@
                                             isError>{{ __('Remove') }}</x-forms.button>
                                     @endif
                                 </div>
-                                <p class="text-xs text-neutral-500 dark:text-fg-dim">JPG, PNG, or WebP. Shown in the user menu and team member lists.</p>
+                                <p class="text-xs text-neutral-500 dark:text-fg-dim">{{ __('JPG, PNG, or WebP. Shown in the user menu and team member lists.') }}</p>
                                 <p x-cloak x-show="uploadError" x-text="uploadError" class="text-xs text-red-500"></p>
                                 @error('avatar')
                                     <p class="text-xs text-red-500">{{ $message }}</p>
@@ -139,7 +139,7 @@
          </form>
 
          @if ($uses_sso)
-             <x-callout type="info" title="Email managed by SSO">
+             <x-callout type="info" title="{{ __('Email managed by SSO') }}">
                  Signed in with SSO @if ($sso_provider_label) ({{ $sso_provider_label }}) @endif. Email is managed by your SSO provider.
              </x-callout>
          @endif
@@ -172,7 +172,7 @@
 
                     @if ($show_verification)
                         <form wire:submit="verifyEmailChange" class="application-settings-section-body space-y-4">
-                            <x-forms.input id="email_verification_code" label="Verification code" required
+                            <x-forms.input id="email_verification_code" label="{{ __('Verification code') }}" required
                                 inputmode="numeric" maxlength="6" />
                             <p class="text-xs text-neutral-500 dark:text-fg-dim">
                                 The code expires after
@@ -185,7 +185,7 @@
                         </form>
                     @else
                         <form wire:submit="requestEmailChange" class="application-settings-section-body space-y-4">
-                            <x-forms.input id="new_email" label="New email address" required type="email"
+                            <x-forms.input id="new_email" label="{{ __('New email address') }}" required type="email"
                                 x-ref="newEmailInput" />
                             <div class="flex justify-end">
                                 <x-forms.button type="submit" isHighlighted>{{ __('Send code') }}</x-forms.button>
@@ -202,12 +202,12 @@
                 <div class="application-settings-section-header">
                     <div>
                         <h2>{{ __('Password') }}</h2>
-                        <p>Changing your password signs out every active session.</p>
+                        <p>{{ __('Changing your password signs out every active session.') }}</p>
                     </div>
                     <x-forms.button type="submit">{{ __('Change password') }}</x-forms.button>
                 </div>
                 <div class="application-settings-section-body grid gap-4 sm:grid-cols-2">
-                    <x-forms.input class="sm:col-span-2" id="current_password" label="Current password"
+                    <x-forms.input class="sm:col-span-2" id="current_password" label="{{ __('Current password') }}"
                         required type="password" :copyable="false" />
                     <x-forms.input id="new_password" label="{{ __('New password') }}" required type="password" :copyable="false" />
                     <x-forms.input id="new_password_confirmation" label="{{ __('Confirm new password') }}" required
@@ -220,7 +220,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Two-factor authentication') }}</h2>
-                    <p>Add a time-based one-time password to protect your account.</p>
+                    <p>{{ __('Add a time-based one-time password to protect your account.') }}</p>
                 </div>
                 @if (request()->user()->two_factor_confirmed_at)
                     <x-status-badge status="Enabled" type="success" />
@@ -240,7 +240,7 @@
                         </div>
                         <div class="space-y-4">
                             <div>
-                                <h3 class="text-sm font-semibold text-black dark:text-fg">Finish setup</h3>
+                                <h3 class="text-sm font-semibold text-black dark:text-fg">{{ __('Finish setup') }}</h3>
                                 <p class="mt-1 text-sm text-neutral-500 dark:text-fg-dim">
                                     Scan the QR code, then enter the current code from your authenticator.
                                 </p>
@@ -290,7 +290,7 @@
                     </div>
                 @else
                     <x-empty size="sm" title="{{ __('Two-factor authentication is off') }}"
-                        description="Configure an authenticator app to add another sign-in check."
+                        description="{{ __('Configure an authenticator app to add another sign-in check.') }}"
                         icon-name="keys" />
                 @endif
             </div>
@@ -302,7 +302,7 @@
             <div class="application-settings-section-header">
                 <div>
                     <h2>{{ __('Danger zone') }}</h2>
-                    <p>Destructive actions for your account cannot be undone.</p>
+                    <p>{{ __('Destructive actions for your account cannot be undone.') }}</p>
                 </div>
             </div>
             <div class="application-settings-section-body">
@@ -312,12 +312,12 @@
                             Permanently delete your account from Coolify. This action cannot be undone.
                         </p>
                         <ul class="space-y-1 text-xs">
-                            <li>• Teams where you are the only member are deleted.</li>
-                            <li>• You are removed from all other teams.</li>
-                            <li>• Your API tokens and sessions are revoked.</li>
+                            <li>{{ __('• Teams where you are the only member are deleted.') }}</li>
+                            <li>{{ __('• You are removed from all other teams.') }}</li>
+                            <li>{{ __('• Your API tokens and sessions are revoked.') }}</li>
                         </ul>
                     @else
-                        <p>Before you can delete your account:</p>
+                        <p>{{ __('Before you can delete your account:') }}</p>
                         <ul class="space-y-1">
                             @foreach ($accountDeletionBlockers as $blocker)
                                 <li>• {{ $blocker }}</li>
@@ -326,7 +326,7 @@
                     @endif
                     <x-slot:action>
                         @if ($accountDeletionBlockers === [])
-                            <x-modal-confirmation title="Confirm Account Deletion?" buttonTitle="{{ __('Delete account') }}"
+                            <x-modal-confirmation title="{{ __('Confirm Account Deletion?') }}" buttonTitle="{{ __('Delete account') }}"
                                 isErrorButton submitAction="deleteAccount"
                                 :actions="$accountDeletionActions"
                                 confirmationText="{{ $email }}"
@@ -334,7 +334,7 @@
                                 shortConfirmationLabel="Email" step3ButtonText="Permanently Delete" />
                         @else
                             <x-forms.button isError disabled
-                                tooltip="Resolve the requirements shown before deleting your account.">
+                                tooltip="{{ __('Resolve the requirements shown before deleting your account.') }}">
                                 {{ __('Delete account') }}
                             </x-forms.button>
                         @endif
@@ -344,7 +344,7 @@
         </section>
 
         @if (session()->has('errors'))
-            <x-callout type="danger" title="Profile update failed">
+            <x-callout type="danger" title="{{ __('Profile update failed') }}">
                 Something went wrong. Please review the fields and try again.
             </x-callout>
         @endif

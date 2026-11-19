@@ -36,9 +36,9 @@
     @if ($showSettingsSidebar)
         <section class="application-settings-workspace mt-4 w-full max-w-none lg:mt-0">
             <div class="grid min-w-0 gap-8 xl:grid-cols-[210px_minmax(0,1fr)] xl:gap-8">
-                <x-main-nav-menu back-label="Storage" back-title="Back to Integrations" :name="$storage->name"
+                <x-main-nav-menu back-label="{{ __('Storage') }}" back-title="Back to Integrations" :name="$storage->name"
                     data-settings-search-items="{{ json_encode(settingsSearchItems(['S3 storage' => $settingsMenuItems], $storageRouteParameters)) }}">
-                    <nav aria-label="S3 storage settings"
+                    <nav aria-label="{{ __('S3 storage settings') }}"
                         class="grid grid-cols-1 gap-0.5">
                         @foreach ($settingsMenuItems as $menuItem)
                             @if ($menuItem['label'] === 'Danger Zone')
@@ -67,23 +67,23 @@
                         <div class="application-settings-form">
                             <x-application.settings-section id="storage-danger-section" title="{{ __('Danger zone') }}"
                                 helper="Destructive actions for this S3 storage destination cannot be undone.">
-                                <x-danger-zone title="Delete storage">
+                                <x-danger-zone title="{{ __('Delete storage') }}">
                                             <p>
                                                 Permanently delete
                                                 <strong class="font-semibold text-black dark:text-fg">{{ $storage->name }}</strong>
                                                 from Coolify. Existing objects in the bucket are not deleted.
                                             </p>
                                             <ul class="space-y-1 text-xs">
-                                                <li>• Backup schedules pointing at this storage will stop writing to S3.</li>
+                                                <li>{{ __('• Backup schedules pointing at this storage will stop writing to S3.') }}</li>
                                                 @if ($backupCount > 0)
                                                     <li>• {{ $backupCount }} backup schedule(s) currently use this destination.</li>
                                                 @endif
-                                                <li>• Bucket contents on the provider are left untouched.</li>
-                                                <li>• This storage destination cannot be restored from Coolify after deletion.</li>
+                                                <li>{{ __('• Bucket contents on the provider are left untouched.') }}</li>
+                                                <li>{{ __('• This storage destination cannot be restored from Coolify after deletion.') }}</li>
                                             </ul>
                                         <x-slot:action>
                                             @can('delete', $storage)
-                                                <x-modal-confirmation title="Confirm Storage Deletion?" isErrorButton
+                                                <x-modal-confirmation title="{{ __('Confirm Storage Deletion?') }}" isErrorButton
                                                     buttonTitle="{{ __('Delete') }}" submitAction="delete"
                                                     :actions="array_filter([
                                                         'The selected storage location will be permanently deleted from Coolify.',
@@ -96,7 +96,7 @@
                                                     shortConfirmationLabel="Storage Name" :confirmWithPassword="false"
                                                     step2ButtonText="{{ __('Permanently Delete') }}" />
                                             @else
-                                                <x-forms.button isError disabled tooltip="You do not have permission to delete this storage.">
+                                                <x-forms.button isError disabled tooltip="{{ __('You do not have permission to delete this storage.') }}">
                                                     {{ __('Delete') }}
                                                 </x-forms.button>
                                             @endcan

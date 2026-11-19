@@ -1,6 +1,6 @@
 @props([
     'action' => 'reopenDeployment',
-    'label' => 'Deploying',
+    'label' => __('Deploying'),
     'href' => null,
 ])
 

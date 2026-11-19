@@ -9,7 +9,7 @@
     'active' => false,
     'storageKey' => null,
     'restoreLive' => true,
-    'title' => 'Turn live refresh on or off',
+    'title' => __('Turn live refresh on or off'),
 ])
 
 <div x-data="{ live: $wire.entangle('live').live }"

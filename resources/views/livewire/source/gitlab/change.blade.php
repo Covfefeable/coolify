@@ -66,7 +66,7 @@
                                 value="{{ rtrim($this->resolvePublicBaseUrl(), '/') }}/webhooks/source/gitlab/events" />
                         </div>
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="webhookToken"
-                            label="Webhook secret token" type="password"
+                            label="{{ __('Webhook secret token') }}" type="password"
                             helper="Set this same token in your GitLab webhook's Secret token field. Stored encrypted." />
                     </div>
                 </x-application.settings-subsection>
@@ -80,7 +80,7 @@
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="clientId"
                             label="{{ __('Application ID') }}" />
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="clientSecretInput"
-                            label="Application secret" type="password"
+                            label="{{ __('Application secret') }}" type="password"
                             helper="{{ __('Stored encrypted. Leave empty to keep the existing secret.') }}" />
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="groupName" label="{{ __('Group name') }}"
                             helper="Comma-separated group names to filter visible repositories." />
@@ -112,10 +112,10 @@
 
         <div x-data="{ search: '' }" class="application-settings-form mt-6">
             <x-application.settings-section title="{{ __('Resources') }}"
-                description="Applications currently using this GitLab App." flush>
+                description="{{ __('Applications currently using this GitLab App.') }}" flush>
                 @if ($applications->isEmpty())
                     <x-empty title="{{ __('No resources use this source') }}"
-                        description="Applications will appear here after this GitLab App is selected as their source."
+                        description="{{ __('Applications will appear here after this GitLab App is selected as their source.') }}"
                         icon-name="sources" size="sm" />
                 @else
                     <div class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
@@ -196,7 +196,7 @@
                 }
             }">
             <x-application.settings-section title="Step 1 · Create an OAuth application"
-                description="Register a new OAuth application in your GitLab instance with the redirect URI below.">
+                description="{{ __('Register a new OAuth application in your GitLab instance with the redirect URI below.') }}">
                 <div class="flex flex-col gap-3 text-[12px] leading-5 text-neutral-600 dark:text-fg-dim">
                     <a href="{{ rtrim($htmlUrl, '/') }}/-/profile/applications" target="_blank"
                         class="inline-flex w-fit items-center gap-1 font-medium text-black underline-offset-2 hover:underline dark:text-fg">
@@ -221,7 +221,7 @@
 
             <form wire:submit="submit" class="contents">
                 <x-application.settings-section title="{{ __('Step 2 · Enter credentials') }}"
-                    description="Paste the Application ID and secret from GitLab, then save.">
+                    description="{{ __('Paste the Application ID and secret from GitLab, then save.') }}">
                     <x-slot:actions>
                         <x-forms.button type="submit">{{ __('Save') }}</x-forms.button>
                     </x-slot:actions>
@@ -230,7 +230,7 @@
                         <x-forms.input id="name" label="{{ __('Name') }}" />
                         <x-forms.input id="clientId" label="{{ __('Application ID') }}" required
                             helper="The Application ID from your GitLab OAuth Application." />
-                        <x-forms.input id="clientSecretInput" label="Application secret" type="password"
+                        <x-forms.input id="clientSecretInput" label="{{ __('Application secret') }}" type="password"
                             :required="blank($clientSecretInput) && blank(data_get($gitlab_app, 'client_secret'))"
                             helper="The Secret from your GitLab OAuth Application. Saved encrypted." />
                         <x-forms.input id="groupName" label="{{ __('Group name') }}"
@@ -299,8 +299,8 @@
             </form>
 
             @if ($clientId)
-                <x-application.settings-section title="Step 3 · Authorize with GitLab"
-                    description="Authorize Coolify with your GitLab instance. The redirect URI must match the Callback URL configured in GitLab.">
+                <x-application.settings-section title="{{ __('Step 3 · Authorize with GitLab') }}"
+                    description="{{ __('Authorize Coolify with your GitLab instance. The redirect URI must match the Callback URL configured in GitLab.') }}">
                     <a href="{{ $this->getOAuthUrl() }}" wire:key="oauth-url-{{ md5((string) $redirectUri) }}"
                         class="button button-highlighted">
                         Connect to GitLab

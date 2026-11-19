@@ -94,7 +94,7 @@
                         </x-slot:content>
                         <form wire:submit="addDomain" class="application-settings-form flex flex-col gap-4">
                             {{-- Always show which service receives the domain --}}
-                            <x-forms.listbox canGate="update" :canResource="$service" label="Service application" id="newServiceApplicationId" required portal
+                            <x-forms.listbox canGate="update" :canResource="$service" label="{{ __('Service application') }}" id="newServiceApplicationId" required portal
                                 helper="Domain will be assigned to this compose service application."
                                 :options="collect($serviceApps)->map(fn ($app) => [
                                     'value' => $app['id'],
@@ -143,14 +143,14 @@
 
     @if ($serviceAppCount === 0)
         <div class="application-settings-section-body mt-1 w-full scroll-mt-28">
-            <x-empty size="sm" title="No application services"
-                description="Only database services are available. Domains can only be assigned to application services."
+            <x-empty size="sm" title="{{ __('No application services') }}"
+                description="{{ __('Only database services are available. Domains can only be assigned to application services.') }}"
                 icon-name="globe" />
         </div>
     @elseif (! $hasRows)
         <div class="application-settings-section-body mt-1 w-full scroll-mt-28">
             <x-empty size="sm" title="{{ __('No domains configured') }}"
-                description="Add your first domain with the Add domain button above. Choose which service application receives it."
+                description="{{ __('Add your first domain with the Add domain button above. Choose which service application receives it.') }}"
                 icon-name="globe" />
         </div>
     @else
@@ -248,7 +248,7 @@
                             <form wire:submit="updateDomain" class="flex flex-col gap-4">
                                 <div x-show="editingServiceLabel" x-cloak class="w-full">
                                     <div class="mb-1.5 flex h-4 w-full items-center gap-1.5">
-                                        <label class="mb-0! flex items-center gap-1 text-sm font-medium leading-4">Service application</label>
+                                        <label class="mb-0! flex items-center gap-1 text-sm font-medium leading-4">{{ __('Service application') }}</label>
                                     </div>
                                     <input type="text" class="input" readonly x-bind:value="editingServiceLabel" />
                                     <p class="mt-1 text-[12px] text-neutral-500 dark:text-fg-dim">

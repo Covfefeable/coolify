@@ -1,4 +1,4 @@
-@props(['message' => 'This feature uses the Coolify API.'])
+@props(['message' => __('This feature uses the Coolify API.')])
 
 @unless (instanceSettings()->is_api_enabled)
     <x-callout type="warning" title="{{ __('API access is turned off') }}" {{ $attributes }}>

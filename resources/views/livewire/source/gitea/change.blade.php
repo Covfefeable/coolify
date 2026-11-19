@@ -110,10 +110,10 @@
 
         <div x-data="{ search: '' }" class="application-settings-form mt-6">
             <x-application.settings-section title="{{ __('Resources') }}"
-                description="Applications currently using this Gitea / Forgejo App." flush>
+                description="{{ __('Applications currently using this Gitea / Forgejo App.') }}" flush>
                 @if ($applications->isEmpty())
                     <x-empty title="{{ __('No resources use this source') }}"
-                        description="Applications will appear here after this Gitea / Forgejo App is selected as their source."
+                        description="{{ __('Applications will appear here after this Gitea / Forgejo App is selected as their source.') }}"
                         icon-name="sources" size="sm" />
                 @else
                     <div class="border-b border-neutral-200 p-3 dark:border-white/[0.08]">
@@ -194,7 +194,7 @@
                 }
             }">
             <x-application.settings-section title="Step 1 · Create an OAuth application"
-                description="In Gitea or Forgejo, open Settings → Applications → Manage OAuth2 Applications and create a new application with the redirect URI below.">
+                description="{{ __('In Gitea or Forgejo, open Settings → Applications → Manage OAuth2 Applications and create a new application with the redirect URI below.') }}">
                 <div class="flex flex-col gap-3 text-[12px] leading-5 text-neutral-600 dark:text-fg-dim">
                     <a href="{{ rtrim($htmlUrl, '/') }}/user/settings/applications" target="_blank"
                         class="inline-flex w-fit items-center gap-1 font-medium text-black underline-offset-2 hover:underline dark:text-fg">
@@ -208,7 +208,7 @@
                                 x-text="redirectUri || @js($redirectUri)">{{ $redirectUri }}</code>
                         </li>
                         <li>
-                            Keep <strong class="text-black dark:text-fg">Confidential client</strong> checked
+                            Keep <strong class="text-black dark:text-fg">{{ __('Confidential client') }}</strong> checked
                         </li>
                     </ul>
                 </div>
@@ -216,7 +216,7 @@
 
             <form wire:submit="submit" class="contents">
                 <x-application.settings-section title="{{ __('Step 2 · Enter credentials') }}"
-                    description="Paste the Client ID and Client secret from Gitea or Forgejo, then save.">
+                    description="{{ __('Paste the Client ID and Client secret from Gitea or Forgejo, then save.') }}">
                     <x-slot:actions>
                         <x-forms.button type="submit">{{ __('Save') }}</x-forms.button>
                     </x-slot:actions>
@@ -294,8 +294,8 @@
             </form>
 
             @if ($clientId)
-                <x-application.settings-section title="Step 3 · Authorize with Gitea or Forgejo"
-                    description="Authorize Coolify with your Gitea or Forgejo instance. The redirect URI must match the one configured there.">
+                <x-application.settings-section title="{{ __('Step 3 · Authorize with Gitea or Forgejo') }}"
+                    description="{{ __('Authorize Coolify with your Gitea or Forgejo instance. The redirect URI must match the one configured there.') }}">
                     <a href="{{ $this->getOAuthUrl() }}" wire:key="oauth-url-{{ md5((string) $redirectUri) }}"
                         class="button button-highlighted">
                         Connect to Gitea / Forgejo

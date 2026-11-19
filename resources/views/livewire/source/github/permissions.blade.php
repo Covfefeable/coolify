@@ -1,6 +1,6 @@
             <div class="application-settings-form flex flex-col gap-6">
                 <x-application.settings-section title="{{ __('Permissions') }}"
-                    description="GitHub permissions currently granted to this App.">
+                    description="{{ __('GitHub permissions currently granted to this App.') }}">
                     <x-slot:actions>
                         @can('view', $github_app)
                             @can('update', $github_app)
@@ -20,7 +20,7 @@
                         <x-forms.input canGate="view" :canResource="$github_app" id="contents"
                             helper="{{ __('Read access is mandatory.') }}" label="{{ __('Contents') }}" readonly placeholder="{{ __('N/A') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app" id="metadata"
-                            helper="{{ __('Read access is mandatory.') }}" label="Metadata" readonly placeholder="{{ __('N/A') }}" />
+                            helper="{{ __('Read access is mandatory.') }}" label="{{ __('Metadata') }}" readonly placeholder="{{ __('N/A') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app" id="pullRequests"
                             helper="Write access is needed for preview deployment status updates."
                             label="{{ __('Pull requests') }}" readonly placeholder="{{ __('N/A') }}" />

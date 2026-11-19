@@ -13,15 +13,15 @@
     @else
         <div class="flex flex-wrap items-end gap-2">
             <div class="w-full sm:w-72">
-                <x-forms.listbox canGate="update" :canResource="$settings" id="selectedSmtpServer" label="SMTP server"
+                <x-forms.listbox canGate="update" :canResource="$settings" id="selectedSmtpServer" label="{{ __('SMTP server') }}"
                     onChange="switchSmtpServer" :onChangeArgs="[]"
                     :disabled="!auth()->user()->can('update', $settings)" :options="$this->smtpServerOptions()" />
             </div>
             @can('update', $settings)
-                <x-modal-input title="Rename SMTP server">
+                <x-modal-input title="{{ __('Rename SMTP server') }}">
                     <x-slot:content>
                         {{-- Set the name in the browser: a request would redraw the input and take its focus. --}}
-                        <button type="button" class="icon-button mb-0.5" title="Rename server"
+                        <button type="button" class="icon-button mb-0.5" title="{{ __('Rename server') }}"
                             aria-label="Rename SMTP server {{ $settings->smtpServerName() }}"
                             x-on:click="$wire.renamedSmtpServerName = @js($settings->smtpServerName())">
                             <x-reicon name="edit" class="size-3.5" />
@@ -40,7 +40,7 @@
                 @if (count($settings->savedSmtpServers()) > 0)
                     {{-- Keyed by the server name, so that the ignored modal shows the server in use after a switch. --}}
                     <x-modal-confirmation wire:key="delete-smtp-server-{{ md5($settings->smtpServerName()) }}"
-                        title="Delete SMTP server?" submitAction="deleteSmtpServer"
+                        title="{{ __('Delete SMTP server?') }}" submitAction="deleteSmtpServer"
                         :actions="['The SMTP server ' . $settings->smtpServerName() . ' is deleted. Coolify then uses the next server in the list.']"
                         :confirmWithText="false" :confirmWithPassword="false"
                         step2ButtonText="{{ __('Delete server') }}">
@@ -53,7 +53,7 @@
                         </x-slot:trigger>
                     </x-modal-confirmation>
                 @endif
-                <x-modal-input title="Add SMTP server">
+                <x-modal-input title="{{ __('Add SMTP server') }}">
                     <x-slot:content>
                         <button type="button" class="button ml-2">
                             <x-reicon name="plus" class="size-3.5" />
@@ -61,9 +61,9 @@
                         </button>
                     </x-slot:content>
                     <form wire:submit.prevent="addSmtpServer" class="application-settings-form flex flex-col gap-4">
-                        <x-forms.input id="newSmtpServerName" label="{{ __('Name') }}" placeholder="PostShiba production"
+                        <x-forms.input id="newSmtpServerName" label="{{ __('Name') }}" placeholder="{{ __('PostShiba production') }}"
                             helper="{{ __('Name to find this server in the SMTP server list.') }}" required />
-                        <x-forms.listbox id="newSmtpServerTemplate" label="Template" placeholder="{{ __('None (enter the settings yourself)') }}"
+                        <x-forms.listbox id="newSmtpServerTemplate" label="{{ __('Template') }}" placeholder="{{ __('None (enter the settings yourself)') }}"
                             helper="Fills in the host, port, and encryption of the provider. You then enter the username and password from the provider."
                             :options="\App\Support\SmtpPresets::options()" />
                         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">

@@ -6,7 +6,7 @@
     <x-security.settings-layout>
         <div class="application-settings-form">
             <x-application.settings-section title="{{ __('Integration tokens') }}"
-                description="Credentials used by third-party integrations such as DNS providers and secret managers." flush>
+                description="{{ __('Credentials used by third-party integrations such as DNS providers and secret managers.') }}" flush>
                 <x-slot:actions>
                     @can('create', App\Models\IntegrationToken::class)
                         <x-modal-input title="{{ __('New Integration Token') }}">
@@ -23,8 +23,8 @@
                 </x-slot:actions>
 
                 @if ($tokens->isEmpty())
-                    <x-empty title="No integration tokens"
-                        description="Add a provider token to connect a third-party integration."
+                    <x-empty title="{{ __('No integration tokens') }}"
+                        description="{{ __('Add a provider token to connect a third-party integration.') }}"
                         icon-name="keys" size="sm" />
                 @else
                     <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
@@ -75,7 +75,7 @@
                                             @endif
                                         </div>
                                         <div class="flex justify-end">
-                                            <button type="button" class="icon-button" title="Edit integration token"
+                                            <button type="button" class="icon-button" title="{{ __('Edit integration token') }}"
                                                 :aria-label="`Edit ${tokenName}`" @click="modalOpen=true">
                                                 <x-reicon name="settings" class="size-3.5" />
                                             </button>

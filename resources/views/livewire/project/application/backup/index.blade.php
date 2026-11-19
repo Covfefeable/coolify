@@ -19,7 +19,7 @@
         'lastRunAt' => $backup->latestExecution?->finished_at?->timestamp ?? ($backup->latestExecution?->status === 'running' ? now()->timestamp : 0),
         'executions' => $backup->executions_count,
     ])->values()),
-    filterOptions: @js(collect([['value' => 'all', 'label' => 'All targets']])->merge(
+    filterOptions: @js(collect([['value' => 'all', 'label' => __('All targets')]])->merge(
         $backups->map(fn ($backup) => [
             'value' => strtolower($backup->targetType()),
             'label' => $backup->targetType(),

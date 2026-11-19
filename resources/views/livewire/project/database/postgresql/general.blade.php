@@ -3,7 +3,7 @@
         <x-unsaved-bar action="submit" />
 
         <x-application.settings-section id="database-details-section" title="{{ __('Database details') }}"
-            description="Manage the identity, container image, and credentials of this PostgreSQL database.">
+            description="{{ __('Manage the identity, container image, and credentials of this PostgreSQL database.') }}">
             <x-slot:actions>
                 <x-modal-input title="{{ __('Resource details') }}" buttonTitle="{{ __('Details') }}">
                     <livewire:project.shared.resource-details :resource="$database" />
@@ -25,7 +25,7 @@
                     </x-callout>
                 @endif
                 <div class="{{ $database->started_at ? 'mt-4 ' : '' }}grid gap-4 lg:grid-cols-2">
-                    <x-forms.input label="{{ __('Username') }}" id="postgresUser" placeholder="If empty: postgres"
+                    <x-forms.input label="{{ __('Username') }}" id="postgresUser" placeholder="{{ __('If empty: postgres') }}"
                         canGate="update" :canResource="$database" />
                     @if ($isPasswordHiddenForMember)
                         <x-forms.input label="{{ __('Password') }}" disabled value="Hidden (only admins can view)" />
@@ -39,11 +39,11 @@
                         helper="{{ $database->started_at ? 'You can only change this in the database.' : null }}" />
                 </div>
             </x-application.settings-subsection>
-            <x-application.settings-subsection id="initialization-section" title="Initialization" helper="Configure the options used when PostgreSQL creates its initial data directory.">
+            <x-application.settings-subsection id="initialization-section" title="{{ __('Initialization') }}" helper="Configure the options used when PostgreSQL creates its initial data directory.">
                 <div class="grid gap-4 lg:grid-cols-2">
-                    <x-forms.input label="Initial database arguments" id="postgresInitdbArgs"
+                    <x-forms.input label="{{ __('Initial database arguments') }}" id="postgresInitdbArgs"
                         placeholder="{{ __('Leave empty to use the image default.') }}" canGate="update" :canResource="$database" />
-                    <x-forms.input label="Host authentication method" id="postgresHostAuthMethod"
+                    <x-forms.input label="{{ __('Host authentication method') }}" id="postgresHostAuthMethod"
                         placeholder="{{ __('Leave empty to use the image default.') }}" canGate="update" :canResource="$database" />
                 </div>
             </x-application.settings-subsection>
@@ -118,10 +118,10 @@
     </form>
 
     <x-application.settings-section id="initialization-scripts-section" title="{{ __('Initialization scripts') }}"
-        description="Run SQL files in order when PostgreSQL initializes for the first time." flush>
+        description="{{ __('Run SQL files in order when PostgreSQL initializes for the first time.') }}" flush>
         <x-slot:actions>
             @can('update', $database)
-                <x-modal-input buttonTitle="{{ __('+ Add') }}" title="New initialization script">
+                <x-modal-input buttonTitle="{{ __('+ Add') }}" title="{{ __('New initialization script') }}">
                     <form class="flex w-full flex-col gap-4" wire:submit="save_new_init_script">
                         <x-forms.input placeholder="create_test_db.sql" id="new_filename" label="{{ __('Filename') }}" required />
                         <x-forms.textarea rows="16" placeholder="CREATE DATABASE test;" id="new_content"
@@ -136,14 +136,14 @@
         <div class="divide-y divide-neutral-200 dark:divide-border-subtle">
             @if ($isPasswordHiddenForMember)
                 <x-empty title="{{ __('Hidden (only admins can view)') }}"
-                    description="Initialization scripts can contain credentials." />
+                    description="{{ __('Initialization scripts can contain credentials.') }}" />
             @else
                 @forelse($initScripts ?? [] as $script)
                     <livewire:project.database.init-script :database="$database" :script="$script"
                         :wire:key="'init-script-'.md5($script['filename'])" />
                 @empty
-                    <x-empty title="No initialization scripts"
-                        description="Add a SQL file to run during the first PostgreSQL initialization." />
+                    <x-empty title="{{ __('No initialization scripts') }}"
+                        description="{{ __('Add a SQL file to run during the first PostgreSQL initialization.') }}" />
                 @endforelse
             @endif
         </div>

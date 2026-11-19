@@ -124,7 +124,7 @@
                         </div>
                         <div class="min-w-0">
                             <div class="flex flex-wrap items-center gap-2">
-                                <h3>What's new</h3>
+                                <h3>{{ __('What\'s new') }}</h3>
                                 <span
                                     class="rounded-md bg-neutral-100 px-1.5 py-0.5 text-[11px] font-medium text-neutral-500 dark:bg-white/[0.05] dark:text-fg-faint">
                                     {{ $currentVersion }}
@@ -154,7 +154,7 @@
                         </div>
                         <button wire:click="closeWhatsNewModal"
                             class="absolute right-2 top-2 flex size-7 cursor-pointer items-center justify-center rounded-md text-neutral-500 outline-0 hover:bg-neutral-100 hover:text-black focus-visible:ring-1 focus-visible:ring-accent dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                            aria-label="Close What's new">
+                            aria-label="{{ __('Close What\'s new') }}">
                             <x-reicon name="x" class="size-4" />
                         </button>
                     </header>
@@ -197,7 +197,7 @@
                                         </div>
                                         <button x-show="!entry.is_read" @click="markEntryAsRead(entry.tag_name)"
                                             class="shrink-0 cursor-pointer rounded-md px-2 py-1 text-xs font-medium text-neutral-500 hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
-                                            title="Mark as read">
+                                            title="{{ __('Mark as read') }}">
                                             {{ __('Mark read') }}
                                         </button>
                                     </div>
@@ -214,10 +214,10 @@
                                 class="mb-3 flex size-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-400 dark:bg-white/[0.05] dark:text-fg-faint">
                                 <x-reicon name="documentation" class="size-5" />
                             </div>
-                            <h3 class="text-sm font-medium text-black dark:text-fg">No updates found</h3>
+                            <h3 class="text-sm font-medium text-black dark:text-fg">{{ __('No updates found') }}</h3>
                             <p class="mt-1 max-w-sm text-sm text-neutral-500 dark:text-fg-faint">
-                                <span x-show="search.trim() !== ''">No releases match your search.</span>
-                                <span x-show="search.trim() === ''">There are no product updates available yet.</span>
+                                <span x-show="search.trim() !== ''">{{ __('No releases match your search.') }}</span>
+                                <span x-show="search.trim() === ''">{{ __('There are no product updates available yet.') }}</span>
                             </p>
                         </div>
                     </div>

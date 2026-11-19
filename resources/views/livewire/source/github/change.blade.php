@@ -49,7 +49,7 @@
                 <div class="grid min-w-0 gap-8 xl:grid-cols-[210px_minmax(0,1fr)] xl:gap-8">
                     <x-main-nav-menu back-label="Sources" back-title="Back to Integrations" :name="$github_app->name ?: 'GitHub App'"
                         data-settings-search-items="{{ json_encode(settingsSearchItems(['GitHub App' => $settingsMenuItems], $githubAppRouteParameters)) }}">
-                        <nav aria-label="GitHub App settings"
+                        <nav aria-label="{{ __('GitHub App settings') }}"
                             class="grid grid-cols-1 gap-0.5">
                             @foreach ($settingsMenuItems as $menuItem)
                                 @if ($menuItem['label'] === 'Danger Zone')
@@ -72,8 +72,8 @@
                     <div class="min-w-0">
                         @if (!data_get($github_app, 'installation_id') && $activeTab === 'general')
                             <div class="application-settings-form">
-                                <x-application.settings-section title="Complete GitHub installation"
-                                    description="Choose which repositories this GitHub App can access before using it as a source.">
+                                <x-application.settings-section title="{{ __('Complete GitHub installation') }}"
+                                    description="{{ __('Choose which repositories this GitHub App can access before using it as a source.') }}">
                                     <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
                                         <div class="flex items-start gap-3">
                                             <div
@@ -111,7 +111,7 @@
                             <form wire:submit="submit" class="application-settings-form">
                                 <x-unsaved-bar action="submit" />
                                 <x-application.settings-section title="{{ __('General') }}"
-                                    description="Connection and authentication settings for this private GitHub source.">
+                                    description="{{ __('Connection and authentication settings for this private GitHub source.') }}">
                                     <x-slot:actions>
                                         @if ($isConnected)
                                             <x-forms.button type="button" canGate="update" :canResource="$github_app"
@@ -139,14 +139,14 @@
                                     <div class="grid gap-4 lg:grid-cols-2">
                                         <x-forms.input canGate="update" :canResource="$github_app" id="name" label="App name" />
                                         <x-forms.input canGate="update" :canResource="$github_app" id="organization"
-                                            label="{{ __('Organization') }}" placeholder="Personal account when empty" />
+                                            label="{{ __('Organization') }}" placeholder="{{ __('Personal account when empty') }}" />
 
                                         @if (!isCloud())
                                             @can('makeSystemWide', \App\Models\GithubApp::class)
                                             <div class="lg:col-span-2">
                                                 <x-forms.listbox canGate="update" :canResource="$github_app" id="isSystemWide" label="{{ __('Availability') }}" :options="[
                                                     ['value' => false, 'label' => 'Only this team'],
-                                                    ['value' => true, 'label' => 'Every team on this instance'],
+                                                    ['value' => true, 'label' => __('Every team on this instance')],
                                                 ]"
                                                     helper="System-wide GitHub Apps can be used by every team on this Coolify instance."
                                                     :disabled="!auth()->user()->can('update', $github_app)" />
@@ -172,7 +172,7 @@
                                         <x-forms.input canGate="update" :canResource="$github_app" type="number" id="appId"
                                             label="App ID" required />
                                         <x-forms.input canGate="update" :canResource="$github_app" type="number"
-                                            id="installationId" label="Installation ID" required />
+                                            id="installationId" label="{{ __('Installation ID') }}" required />
                                         <x-forms.input canGate="update" :canResource="$github_app" id="clientId"
                                             label="{{ __('Client ID') }}" type="password" required />
                                         <x-forms.input canGate="update" :canResource="$github_app" id="clientSecret"
@@ -188,16 +188,16 @@
                             <div class="application-settings-form">
                                 <x-application.settings-section id="github-app-danger-section" title="{{ __('Danger zone') }}"
                                     helper="Destructive actions for this GitHub App source cannot be undone.">
-                                    <x-danger-zone title="Delete GitHub App">
+                                    <x-danger-zone title="{{ __('Delete GitHub App') }}">
                                                 <p>
                                                     Permanently delete
                                                     <strong class="font-semibold text-black dark:text-fg">{{ $name ?: 'this GitHub App' }}</strong>
                                                     from Coolify. Applications using this source will need another Git provider configured.
                                                 </p>
                                                 <ul class="space-y-1 text-xs">
-                                                    <li>• The App registration on GitHub is not removed automatically.</li>
-                                                    <li>• Linked applications keep their Git settings until you change them.</li>
-                                                    <li>• This source cannot be restored from Coolify after deletion.</li>
+                                                    <li>{{ __('• The App registration on GitHub is not removed automatically.') }}</li>
+                                                    <li>{{ __('• Linked applications keep their Git settings until you change them.') }}</li>
+                                                    <li>{{ __('• This source cannot be restored from Coolify after deletion.') }}</li>
                                                 </ul>
                                             <x-slot:action>
                                                 @can('delete', $github_app)
@@ -210,7 +210,7 @@
                                                         step2ButtonText="{{ __('Permanently Delete') }}" />
                                                 @else
                                                     <x-forms.button isError disabled canGate="delete" :canResource="$github_app"
-                                                        tooltip="You do not have permission to delete this GitHub App.">
+                                                        tooltip="{{ __('You do not have permission to delete this GitHub App.') }}">
                                                         {{ __('Delete') }}
                                                     </x-forms.button>
                                                 @endcan
@@ -278,9 +278,9 @@
                         customWebhookEndpoint: $wire.entangle('custom_webhook_endpoint').live,
                     }">
                     <x-application.settings-section title="Automated installation" class="[&>.application-settings-section-body]:flex [&>.application-settings-section-body]:flex-1 [&>.application-settings-section-body]:flex-col"
-                        description="Register through GitHub's manifest flow with permissions and webhooks preconfigured.">
+                        description="{{ __('Register through GitHub\'s manifest flow with permissions and webhooks preconfigured.') }}">
                         <x-slot:actions>
-                            <x-status-badge label="Recommended" type="success" />
+                            <x-status-badge label="{{ __('Recommended') }}" type="success" />
                         </x-slot:actions>
 
                         <div class="flex min-h-[24rem] flex-1 flex-col gap-4">
@@ -293,7 +293,7 @@
                                     x-model="useCustomWebhookEndpoint"
                                     helper="{{ __('Use a custom public URL when Coolify is behind a tunnel or reverse proxy.') }}" />
                                 <div x-show="!useCustomWebhookEndpoint">
-                                    <x-forms.listbox id="webhook_endpoint" label="Instance endpoint"
+                                    <x-forms.listbox id="webhook_endpoint" label="{{ __('Instance endpoint') }}"
                                         :options="$endpointOptions" x-model="webhookEndpoint" />
                                 </div>
                                 <div x-cloak x-show="useCustomWebhookEndpoint">
@@ -310,21 +310,21 @@
 
                             <div
                                 class="rounded-lg border border-neutral-200 bg-neutral-50 p-3 text-[12px] leading-5 text-neutral-600 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-fg-dim">
-                                <p class="font-medium text-black dark:text-fg">Mandatory permissions</p>
-                                <p class="mt-1">Contents: read · Metadata: read · Email: read</p>
+                                <p class="font-medium text-black dark:text-fg">{{ __('Mandatory permissions') }}</p>
+                                <p class="mt-1">{{ __('Contents: read · Metadata: read · Email: read') }}</p>
                             </div>
 
                             <x-forms.listbox id="preview_deployment_permissions"
                                 label="Preview deployment access" :options="[
                                     ['value' => false, 'label' => 'Do not update pull requests'],
-                                    ['value' => true, 'label' => 'Read and update pull requests'],
+                                    ['value' => true, 'label' => __('Read and update pull requests')],
                                 ]"
                                 helper="Write access lets Coolify post deployment status and links on pull requests." />
 
                             <x-forms.listbox id="deployment_status_permissions"
-                                label="GitHub deployments" :options="[
+                                label="{{ __('GitHub deployments') }}" :options="[
                                     ['value' => false, 'label' => 'Do not create GitHub deployments'],
-                                    ['value' => true, 'label' => 'Create GitHub deployments'],
+                                    ['value' => true, 'label' => __('Create GitHub deployments')],
                                 ]"
                                 helper="Deployments (write) access lets Coolify show each deployment and its status on GitHub, so pull requests show the preview as deployed." />
 
@@ -332,7 +332,7 @@
                                 :disabled="blank($github_app->organization)"
                                 :options="[
                                     ['value' => false, 'label' => 'Do not run workflow jobs'],
-                                    ['value' => true, 'label' => 'Run workflow jobs on your servers'],
+                                    ['value' => true, 'label' => __('Run workflow jobs on your servers')],
                                 ]"
                                 :helper="filled($github_app->organization)
                                     ? 'Adds the organization Self-hosted runners (write) and Actions (read) permissions and the Workflow job webhook event.'
@@ -348,8 +348,8 @@
                 </div>
 
                 <div class="application-settings-form flex">
-                    <x-application.settings-section title="Manual installation" class="[&>.application-settings-section-body]:flex [&>.application-settings-section-body]:flex-1 [&>.application-settings-section-body]:flex-col"
-                        description="Enter GitHub App credentials manually for GitHub Enterprise or custom permission sets.">
+                    <x-application.settings-section title="{{ __('Manual installation') }}" class="[&>.application-settings-section-body]:flex [&>.application-settings-section-body]:flex-1 [&>.application-settings-section-body]:flex-col"
+                        description="{{ __('Enter GitHub App credentials manually for GitHub Enterprise or custom permission sets.') }}">
                         <x-slot:actions>
                             <x-status-badge label="{{ __('Advanced') }}" type="neutral" />
                         </x-slot:actions>

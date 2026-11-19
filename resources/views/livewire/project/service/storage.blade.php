@@ -19,7 +19,7 @@
             $resource->getMorphClass() == 'App\Models\StandaloneMongodb' ||
             $resource->getMorphClass() == 'App\Models\StandaloneMysql' ||
             $resource->getMorphClass() == 'App\Models\StandaloneSqlite')
-        <x-application.settings-section id="storage-mounts-section" title="Persistent storage" :flush="true"
+        <x-application.settings-section id="storage-mounts-section" title="{{ __('Persistent storage') }}" :flush="true"
             :helper="$resource instanceof \App\Models\Application && $resource->git_based()
                 ? 'Preview deployment volumes can use a -pr-#PRNumber suffix so each pull request receives isolated storage.'
                 : 'Mount volumes, files, or directories to preserve data between deployments.'">
@@ -93,7 +93,7 @@
                                         x-transition:leave-end="opacity-0 -translate-y-2 sm:scale-95"
                                         class="application-settings-form application-settings-section relative w-full min-w-full lg:min-w-[36rem] lg:max-w-2xl">
                                         <header>
-                                            <h3>Add volume mount</h3>
+                                            <h3>{{ __('Add volume mount') }}</h3>
                                             <button @click="volumeModalOpen=false"
                                                 class="flex size-7 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg">
                                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -113,7 +113,7 @@
                                                 }
                                             })">
                                             @if ($this->volumeUnavailableReason)
-                                                <x-callout type="warning" title="Volume mounts are unavailable" class="w-full">
+                                                <x-callout type="warning" title="{{ __('Volume mounts are unavailable') }}" class="w-full">
                                                     {{ $this->volumeUnavailableReason }}
                                                 </x-callout>
                                             @else
@@ -161,7 +161,7 @@
                                         x-transition:leave-end="opacity-0 -translate-y-2 sm:scale-95"
                                         class="application-settings-form application-settings-section relative w-full min-w-full lg:min-w-[36rem] lg:max-w-2xl">
                                         <header>
-                                            <h3>Add file mount</h3>
+                                            <h3>{{ __('Add file mount') }}</h3>
                                             <button @click="fileModalOpen=false"
                                                 class="flex size-7 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg">
                                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -201,7 +201,7 @@
                                                 </p>
                                                 <div class="flex flex-col gap-4">
                                                     <div class="rounded-lg bg-neutral-100 p-3 text-xs ring-1 ring-neutral-200 dark:bg-white/[0.04] dark:ring-white/[0.07]">
-                                                        <div class="mb-1 font-medium">Host file path</div>
+                                                        <div class="mb-1 font-medium">{{ __('Host file path') }}</div>
                                                         <code class="break-all" x-text="previewPath()">{{ $this->fileStoragePreviewPath() }}</code>
                                                     </div>
                                                     <x-forms.input canGate="update" :canResource="$resource"
@@ -246,7 +246,7 @@
                                         x-transition:leave-end="opacity-0 -translate-y-2 sm:scale-95"
                                         class="application-settings-form application-settings-section relative w-full min-w-full lg:min-w-[36rem] lg:max-w-2xl">
                                         <header>
-                                            <h3>Add host file mount</h3>
+                                            <h3>{{ __('Add host file mount') }}</h3>
                                             <button @click="hostFileModalOpen=false"
                                                 class="flex size-7 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg">
                                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -274,7 +274,7 @@
                                                 <div class="flex flex-col gap-4">
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/etc/nginx/nginx.conf"
-                                                        id="host_file_storage_source" label="Host File Path" required
+                                                        id="host_file_storage_source" label="{{ __('Host File Path') }}" required
                                                         helper="Existing file on the host system." />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/etc/nginx/nginx.conf"
@@ -310,7 +310,7 @@
                                         x-transition:leave-end="opacity-0 -translate-y-2 sm:scale-95"
                                         class="application-settings-form application-settings-section relative w-full min-w-full lg:min-w-[36rem] lg:max-w-2xl">
                                         <header>
-                                            <h3>Add directory mount</h3>
+                                            <h3>{{ __('Add directory mount') }}</h3>
                                             <button @click="directoryModalOpen=false"
                                                 class="flex size-7 items-center justify-center rounded-md text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.07] dark:hover:text-fg">
                                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -337,11 +337,11 @@
                                                 <div class="flex flex-col gap-4">
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="{{ application_configuration_dir() }}/{{ $resource->uuid }}/etc/nginx"
-                                                        id="file_storage_directory_source" label="Source Directory"
+                                                        id="file_storage_directory_source" label="{{ __('Source Directory') }}"
                                                         required helper="Directory on the host: an absolute path anywhere on the host, or a path relative to the resource directory. Coolify creates it when it is missing, and never deletes a directory outside the resource directory." />
                                                     <x-forms.input canGate="update" :canResource="$resource"
                                                         placeholder="/etc/nginx" id="file_storage_directory_destination"
-                                                        label="Destination Directory" required
+                                                        label="{{ __('Destination Directory') }}" required
                                                         helper="{{ __('Directory inside the container.') }}" />
                                                     <div class="flex justify-end pt-2">
                                                         <x-forms.button canGate="update" :canResource="$resource" type="submit">
@@ -380,8 +380,8 @@
             </x-slot:actions>
 
         @if (!$hasVolumes && !$hasFiles && !$hasDirectories)
-            <x-empty size="sm" title="No persistent storage"
-                description="Add a volume, file, or directory mount to preserve data between deployments."
+            <x-empty size="sm" title="{{ __('No persistent storage') }}"
+                description="{{ __('Add a volume, file, or directory mount to preserve data between deployments.') }}"
                 icon-name="storages" />
         @elseif ($activeTab === 'volumes')
             @if ($hasVolumes)
@@ -389,7 +389,7 @@
                     :resource="$resource" />
             @else
                 <x-empty size="sm" title="{{ __('No volumes configured') }}"
-                    description="Switch tabs or add a volume mount." icon-name="storages" />
+                    description="{{ __('Switch tabs or add a volume mount.') }}" icon-name="storages" />
             @endif
         @elseif ($activeTab === 'files')
             <div class="flex flex-col gap-4 p-4">
@@ -400,7 +400,7 @@
                     @endforeach
                 @else
                     <x-empty size="sm" title="{{ __('No file mounts configured') }}"
-                        description="Switch tabs or add a file mount." icon-name="file" />
+                        description="{{ __('Switch tabs or add a file mount.') }}" icon-name="file" />
                 @endif
             </div>
         @else
@@ -412,7 +412,7 @@
                     @endforeach
                 @else
                     <x-empty size="sm" title="{{ __('No directory mounts configured') }}"
-                        description="Switch tabs or add a directory mount." icon-name="folder" />
+                        description="{{ __('Switch tabs or add a directory mount.') }}" icon-name="folder" />
                 @endif
             </div>
         @endif
@@ -446,8 +446,8 @@
             </x-slot:actions>
 
             @if (!$hasVolumes && !$hasFiles && !$hasDirectories)
-                <x-empty size="sm" title="No storage found"
-                    description="No volumes, files, or directories are defined for this service."
+                <x-empty size="sm" title="{{ __('No storage found') }}"
+                    description="{{ __('No volumes, files, or directories are defined for this service.') }}"
                     icon-name="storages" />
             @elseif ($activeTab === 'volumes')
                 @if ($hasVolumes)
@@ -456,7 +456,7 @@
                         :resource="$resource" />
                 @else
                     <x-empty size="sm" title="{{ __('No volumes configured') }}"
-                        description="This service has no volume mounts." icon-name="storages" />
+                        description="{{ __('This service has no volume mounts.') }}" icon-name="storages" />
                 @endif
             @elseif ($activeTab === 'files')
                 <div class="flex flex-col gap-4 p-4">
@@ -467,7 +467,7 @@
                         @endforeach
                     @else
                         <x-empty size="sm" title="{{ __('No file mounts configured') }}"
-                            description="This service has no file mounts." icon-name="file" />
+                            description="{{ __('This service has no file mounts.') }}" icon-name="file" />
                     @endif
                 </div>
             @else
@@ -479,7 +479,7 @@
                         @endforeach
                     @else
                         <x-empty size="sm" title="{{ __('No directory mounts configured') }}"
-                            description="This service has no directory mounts." icon-name="folder" />
+                            description="{{ __('This service has no directory mounts.') }}" icon-name="folder" />
                     @endif
                 </div>
             @endif
@@ -488,7 +488,7 @@
 
     @if (count($externalVolumes) > 0)
         {{-- External Compose volumes: read-only, no storage entry, never removed by Coolify --}}
-        <x-application.settings-section :id="'external-volumes-'.$resource->uuid" title="External volumes"
+        <x-application.settings-section :id="'external-volumes-'.$resource->uuid" title="{{ __('External volumes') }}"
             :flush="true"
             helper="Docker volumes that the Docker Compose file declares with external: true. Coolify mounts them as written.">
             <div class="flex w-full flex-col">
@@ -498,8 +498,8 @@
                 </div>
                 <div class="data-table w-full">
                     <div class="data-table-header external-volumes-table-grid">
-                        <span>Volume</span>
-                        <span>Docker volume</span>
+                        <span>{{ __('Volume') }}</span>
+                        <span>{{ __('Docker volume') }}</span>
                         <span>{{ __('Mount path') }}</span>
                         <span>{{ __('Service') }}</span>
                     </div>
@@ -509,13 +509,13 @@
                             <div
                                 class="data-table-row external-volumes-table-grid text-[13px] text-neutral-700 dark:text-fg-dim">
                                 <div class="min-w-0">
-                                    <span class="volumes-mobile-label volumes-field-label">Volume</span>
+                                    <span class="volumes-mobile-label volumes-field-label">{{ __('Volume') }}</span>
                                     <span class="block min-w-0 truncate font-medium text-neutral-950 dark:text-fg"
                                         title="{{ $externalVolume['key'] }}">{{ $externalVolume['key'] }}</span>
-                                    <span class="block text-xs text-neutral-500 dark:text-fg-dim">External volume</span>
+                                    <span class="block text-xs text-neutral-500 dark:text-fg-dim">{{ __('External volume') }}</span>
                                 </div>
                                 <div class="min-w-0">
-                                    <span class="volumes-mobile-label volumes-field-label">Docker volume</span>
+                                    <span class="volumes-mobile-label volumes-field-label">{{ __('Docker volume') }}</span>
                                     <span class="block min-w-0 truncate text-neutral-950 dark:text-fg"
                                         title="{{ $externalVolume['dockerName'] }}">{{ $externalVolume['dockerName'] }}</span>
                                 </div>

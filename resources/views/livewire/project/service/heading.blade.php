@@ -21,7 +21,7 @@
     <livewire:project.shared.configuration-checker :resource="$service" />
 
     <x-process-dialog @startservice.window="processDialogOpen = true" closeWithX>
-        <x-slot:title>Service Startup Logs</x-slot:title>
+        <x-slot:title>{{ __('Service Startup Logs') }}</x-slot:title>
         <x-slot:content>
             <livewire:activity-monitor fullHeight />
         </x-slot:content>
@@ -66,7 +66,7 @@
                                     @click="document.getElementById('service-restart-trigger')?.click()">
                                     <x-loading-on-button x-show="deploying" x-cloak />
                                     <x-reicon name="restart" class="size-3.5" x-show="!deploying" />
-                                    <span x-text="deploying ? 'Restarting…' : 'Restart'">{{ __('Restart') }}</span>
+                                    <span x-text="deploying ? @js(__('Restarting')) : @js(__('Restart'))">{{ __('Restart') }}</span>
                                 </x-slot:main>
                                 @if ($serviceStatus->contains('running'))
                                     <button type="button" class="listbox-option justify-start! gap-2.5!"
@@ -161,7 +161,7 @@
                                         @click="document.getElementById('service-restart-trigger')?.click()">
                                         <x-loading-on-button x-show="deploying" x-cloak />
                                         <x-reicon name="restart" class="size-3.5" x-show="!deploying" />
-                                        <span x-text="deploying ? 'Restarting…' : 'Restart current version'">Restart current version</span>
+                                        <span x-text="deploying ? @js(__('Restarting')) : @js(__('Restart current version'))">{{ __('Restart current version') }}</span>
                                     </x-slot:main>
                                     @if ($serviceStatus->contains('running'))
                                         <button type="button" class="listbox-option justify-start! gap-2.5!"
@@ -234,14 +234,14 @@
 
     @if ($service->isDeployable)
         <div class="hidden" aria-hidden="true">
-            <x-modal-confirmation title="Confirm Service Restart?" buttonTitle="{{ __('Restart') }}"
+            <x-modal-confirmation title="{{ __('Confirm Service Restart?') }}" buttonTitle="{{ __('Restart') }}"
                 submitAction="restartEvent" :dispatchAction="true" :actions="['This service will be restarted.']"
                 :confirmWithText="false" :confirmWithPassword="false" step2ButtonText="{{ __('Confirm') }}">
                 <x-slot:trigger>
                     <button id="service-restart-trigger" type="button">{{ __('Restart') }}</button>
                 </x-slot:trigger>
             </x-modal-confirmation>
-            <x-modal-confirmation title="Confirm Service Stopping?" buttonTitle="{{ __('Stop') }}"
+            <x-modal-confirmation title="{{ __('Confirm Service Stopping?') }}" buttonTitle="{{ __('Stop') }}"
                 submitAction="stop" :checkboxes="$checkboxes" :actions="[__('service.stop'), __('resource.non_persistent')]"
                 :confirmWithText="false" :confirmWithPassword="false" step1ButtonText="Continue"
                 step2ButtonText="{{ __('Confirm') }}">

@@ -47,7 +47,7 @@
     <form wire:submit="save" class="application-settings-form">
         <x-unsaved-bar action="save" />
         <x-application.settings-section title="{{ __('General') }}"
-            description="Identity and provider details for this cloud API credential.">
+            description="{{ __('Identity and provider details for this cloud API credential.') }}">
             <div class="grid gap-4 lg:grid-cols-2">
                 <x-forms.input canGate="update" :canResource="$cloudProviderToken" id="name"
                     label="{{ __('Name') }}" required />

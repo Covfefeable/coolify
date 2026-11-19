@@ -1,4 +1,4 @@
-<div @if ($isUpgradeAvailable) title="New version available" @else title="No upgrade available" @endif
+<div @if ($isUpgradeAvailable) title="{{ __('New version available') }}" @else title="No upgrade available" @endif
     x-init="$wire.checkUpdate" x-data="upgradeModal({
         currentVersion: @js($currentVersion),
         latestVersion: @js($latestVersion),
@@ -80,7 +80,7 @@
 
                                     <div class="flex items-center justify-center gap-1.5 text-[12px]"
                                         style="color: var(--coollabs-subtle)">
-                                        <span>Elapsed time</span>
+                                        <span>{{ __('Elapsed time') }}</span>
                                         <span class="font-mono text-neutral-700 dark:text-fg"
                                             x-text="formatElapsedTime()"></span>
                                     </div>
@@ -149,14 +149,14 @@
                             <template x-if="!showProgress">
                                 <div class="flex flex-col gap-4">
                                     <x-callout type="warning" title="{{ __('Caution') }}">
-                                        <p>Any deployments running during the update process will fail.</p>
+                                        <p>{{ __('Any deployments running during the update process will fail.') }}</p>
                                     </x-callout>
 
                                     <p class="text-[12px] leading-5" style="color: var(--coollabs-subtle)">
                                         If something goes wrong, check the
                                         <a class="font-medium text-coollabs underline decoration-coollabs/30 underline-offset-2 hover:decoration-coollabs dark:text-brand-light dark:decoration-brand-light/30 dark:hover:decoration-brand-light"
                                             href="https://coolify.io/docs/upgrade" target="_blank"
-                                            rel="noopener noreferrer">upgrade guide</a>
+                                            rel="noopener noreferrer">{{ __('upgrade guide') }}</a>
                                         or the logs on the server at
                                         <span class="font-mono text-neutral-700 dark:text-fg">/data/coolify/source/upgrade*</span>.
                                     </p>
@@ -180,7 +180,7 @@
             </template>
         </div>
     @elseif ($fullButton)
-        <p class="text-sm text-neutral-600 dark:text-fg-dim">Coolify is up to date.</p>
+        <p class="text-sm text-neutral-600 dark:text-fg-dim">{{ __('Coolify is up to date.') }}</p>
     @endif
 </div>
 

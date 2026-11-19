@@ -4,8 +4,8 @@
 --}}
 <div class="grid gap-4 lg:grid-cols-2">
     <x-forms.input required id="{{ $form }}.description" label="{{ __('Description') }}"
-        placeholder="CI deployment token" />
-    <x-forms.listbox id="{{ $form }}.expiresInDays" label="Expires in" :options="$expiryOptions"
+        placeholder="{{ __('CI deployment token') }}" />
+    <x-forms.listbox id="{{ $form }}.expiresInDays" label="{{ __('Expires in') }}" :options="$expiryOptions"
         :x-effect="$form === 'editForm' ? 'options[0].label = editingToken?.keepLabel ?? options[0].label' : null" />
 </div>
 
@@ -52,13 +52,13 @@
             x-effect="if (permissionsOpen) $nextTick(() => positionPanel())"
             class="listbox-panel" style="position: fixed; z-index: 9999" :style="panelPosition" role="listbox">
             <div class="listbox-option p-0!">
-                <x-forms.checkbox id="permission-root" label="Root" fullWidth
+                <x-forms.checkbox id="permission-root" label="{{ __('Root') }}" fullWidth
                     wire:model.live="{{ $form }}.permissions" domValue="root"
                     helper="Full access to every API operation."
                     :disabled="!$canUseRootPermissions" />
             </div>
             <div class="listbox-option p-0!">
-                <x-forms.checkbox id="permission-write" label="Write" fullWidth
+                <x-forms.checkbox id="permission-write" label="{{ __('Write') }}" fullWidth
                     wire:model.live="{{ $form }}.permissions" domValue="write"
                     helper="Create and update resources."
                     :disabled="!$canUseWritePermissions"
@@ -79,13 +79,13 @@
                     x-bind:disabled="isRoot || {{ $canUseDeployPermissions ? 'false' : 'true' }}" />
             </div>
             <div class="listbox-option p-0!">
-                <x-forms.checkbox id="permission-read" label="Read" fullWidth
+                <x-forms.checkbox id="permission-read" label="{{ __('Read') }}" fullWidth
                     wire:model.live="{{ $form }}.permissions" domValue="read"
                     helper="Read non-sensitive resource data."
                     x-bind:disabled="isRoot" />
             </div>
             <div class="listbox-option p-0!">
-                <x-forms.checkbox id="permission-read-sensitive" label="Read sensitive data"
+                <x-forms.checkbox id="permission-read-sensitive" label="{{ __('Read sensitive data') }}"
                     fullWidth wire:model.live="{{ $form }}.permissions" domValue="read:sensitive"
                     helper="Include secrets, logs, passwords, and Compose content."
                     :disabled="!$canUseSensitivePermissions"
@@ -131,7 +131,7 @@
     <div class="grid gap-4 lg:grid-cols-2">
         <x-forms.listbox id="{{ $form }}.scopeMode" label="{{ __('Resources') }}" :options="[
             ['value' => 'team', 'label' => 'All resources in the team', 'disabled' => !$canUseTeamScope],
-            ['value' => 'selected', 'label' => 'Selected projects, environments, or resources'],
+            ['value' => 'selected', 'label' => __('Selected projects, environments, or resources')],
         ]" />
         <div class="min-w-0">
             <x-forms.listbox id="{{ $form }}.selectedScopes" label="{{ __('Selected') }}" multiple searchable :portal="! $inModal" countLabel="resource"

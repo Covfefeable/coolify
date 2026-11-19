@@ -3,7 +3,7 @@
         <x-unsaved-bar action="submit" />
 
         <x-application.settings-section id="database-details-section" title="{{ __('Database details') }}"
-            description="Manage the identity, container image, and credentials of this Dragonfly database.">
+            description="{{ __('Manage the identity, container image, and credentials of this Dragonfly database.') }}">
             <x-slot:actions>
                 <x-modal-input title="{{ __('Resource details') }}" buttonTitle="{{ __('Details') }}">
                     <livewire:project.shared.resource-details :resource="$database" />

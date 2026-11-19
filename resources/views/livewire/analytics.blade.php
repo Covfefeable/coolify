@@ -247,10 +247,10 @@ $appListboxOptions = array_merge(
                         {{-- Keyed so the lazy-load morph does not reuse the placeholder skeleton nodes. --}}
                         <div wire:key="analytics-apps-table" x-data="trafficTable()">
                             <div class="flex items-center gap-3 px-4 py-2 text-[11px] font-medium text-neutral-500 dark:text-fg-dim">
-                                @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => 'Application / service', 'text' => true, 'class' => 'min-w-0 flex-1'])
+                                @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => __('Application / service'), 'text' => true, 'class' => 'min-w-0 flex-1'])
                                 <span class="hidden w-16 shrink-0 sm:inline" aria-hidden="true"></span>
                                 @include('livewire.traffic._sort-header', ['column' => 'requests', 'label' => __('Requests'), 'class' => 'w-16 shrink-0'])
-                                @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => 'Total response data sent'])
+                                @include('livewire.traffic._sort-header', ['column' => 'bytesOut', 'label' => __('Bandwidth'), 'class' => 'hidden w-16 shrink-0 sm:inline-flex', 'title' => __('Total response data sent')])
                                 <span class="size-3.5 shrink-0" aria-hidden="true"></span>
                             </div>
                             <div class="flex flex-col">
@@ -325,7 +325,7 @@ $appListboxOptions = array_merge(
                 'dimension' => 'protocol',
                 'label' => __('Top HTTP versions'),
                 'rows' => data_get($breakdowns, 'protocol', []),
-                'helper' => 'Request volume by negotiated HTTP protocol version.',
+                'helper' => __('Request volume by negotiated HTTP protocol version.'),
             ])
         </div>
 
@@ -340,7 +340,7 @@ $appListboxOptions = array_merge(
                 'dimension' => 'status',
                 'label' => __('Top status codes'),
                 'rows' => data_get($breakdowns, 'status', []),
-                'helper' => 'Most frequent HTTP response status codes for the selected range.',
+                'helper' => __('Most frequent HTTP response status codes for the selected range.'),
             ])
         </div>
 

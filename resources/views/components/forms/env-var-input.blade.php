@@ -267,8 +267,8 @@
 
             <template x-if="suggestions.length === 0 && currentScope === 'vault'">
                 <div class="px-2 py-2 text-sm text-neutral-500 dark:text-fg-dim">
-                    <span x-show="vaultKeysLoading">Loading keys from the secret manager…</span>
-                    <span x-show="!vaultKeysLoading">No matching keys in the secret manager.</span>
+                    <span x-show="vaultKeysLoading">{{ __('Loading keys from the secret manager…') }}</span>
+                    <span x-show="!vaultKeysLoading">{{ __('No matching keys in the secret manager.') }}</span>
                 </div>
             </template>
 

@@ -1,7 +1,7 @@
 @can('create', App\Models\S3Storage::class)
     <div class="w-full">
         <div class="mb-4">For more details, please visit the <a class="underline dark:text-brand-light"
-                href="https://coolify.io/docs/knowledge-base/s3/introduction" target="_blank">Coolify Docs</a>.</div>
+                href="https://coolify.io/docs/knowledge-base/s3/introduction" target="_blank">{{ __('Coolify Docs') }}</a>.</div>
         <form class="flex flex-col gap-2" wire:submit='submit'>
             <div class="w-64">
                 <x-forms.listbox required live id="type" label="{{ __('Type') }}" :options="App\Enums\BackupStorageType::options()" />
@@ -14,7 +14,7 @@
                 {{-- Sends the endpoint right away, so the URL style below follows the provider. --}}
                 <div x-on:change="$wire.$commit()">
                     <x-forms.domain-input id="endpointParts" errorId="endpoint" host-label="{{ __('Host') }}"
-                        host-placeholder="minio.internal or 192.168.1.50" />
+                        host-placeholder="{{ __('minio.internal or 192.168.1.50') }}" />
                 </div>
                 <div class="flex gap-2">
                     <x-forms.input required label="{{ __('Bucket') }}" id="bucket" />
