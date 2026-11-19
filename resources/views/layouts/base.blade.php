@@ -414,6 +414,20 @@
     <link rel="manifest" href="{{ asset('site.webmanifest') }}" />
     <meta name="apple-mobile-web-app-title" content="Coolify" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>
+        window.coolifyTranslations = @js(collect([
+            'Action could not be completed',
+            'Coolify did not receive a response. Please try again.',
+            'Could not copy to clipboard.',
+            'Fit to screen',
+            'Load the latest status',
+            'Refresh',
+            'Reset zoom to 100%',
+            'Value is not available.',
+            'Zoom in',
+            'Zoom out',
+        ])->mapWithKeys(fn (string $message) => [$message => __($message)])->all());
+    </script>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
     <script>
         // Update theme-color meta tag (non-critical, can run async)

@@ -1,10 +1,12 @@
+import { translate } from './translate.js';
+
 // Alpine data provider for the <x-copy-button> component (x-data="copyButton").
 export function initializeCopyButtonComponent() {
     window.Alpine.data('copyButton', () => ({
         copied: false,
         async copy(value) {
             if (value === null || value === undefined) {
-                window.toast('Value is not available.', { type: 'warning' });
+                window.toast(translate('Value is not available.'), { type: 'warning' });
                 return;
             }
             try {
@@ -35,7 +37,7 @@ export function initializeCopyButtonComponent() {
                 this.copied = true;
                 setTimeout(() => (this.copied = false), 1200);
             } catch (e) {
-                window.toast('Could not copy to clipboard.', { type: 'warning' });
+                window.toast(translate('Could not copy to clipboard.'), { type: 'warning' });
             }
         },
     }));

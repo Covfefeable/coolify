@@ -4,6 +4,7 @@
   // `children`: more actions after the zoom buttons (deploy canvas header).
   import Icon from './environment/Icon.svelte';
   import { zoomShortcut } from '../canvas-core.js';
+  import { translate } from '../translate.js';
 
   let { zoom, onzoom, onfit, onrefresh = null, loading = false, inline = false, children = null } = $props();
 
@@ -21,13 +22,13 @@
 <svelte:window onkeydown={onKeydown} />
 
 <div class="{inline ? 'shrink-0' : 'absolute bottom-3 left-3 z-20'} flex items-center gap-0.5 rounded-lg border border-neutral-200 bg-white/85 p-0.5 shadow-sm backdrop-blur-sm dark:border-white/[0.08] dark:bg-panel/85" data-canvas-controls>
-  <button type="button" class={button} title="Zoom out" aria-label="Zoom out" onclick={() => onzoom(zoom / 1.2)}><Icon name="minus" /></button>
-  <button type="button" class="{button} w-12 text-[12px] font-medium tabular-nums" title="Reset zoom to 100%" onclick={() => onzoom(1)}>{Math.round(zoom * 100)}%</button>
-  <button type="button" class={button} title="Zoom in" aria-label="Zoom in" onclick={() => onzoom(zoom * 1.2)}><Icon name="plus" /></button>
+  <button type="button" class={button} title={translate('Zoom out')} aria-label={translate('Zoom out')} onclick={() => onzoom(zoom / 1.2)}><Icon name="minus" /></button>
+  <button type="button" class="{button} w-12 text-[12px] font-medium tabular-nums" title={translate('Reset zoom to 100%')} onclick={() => onzoom(1)}>{Math.round(zoom * 100)}%</button>
+  <button type="button" class={button} title={translate('Zoom in')} aria-label={translate('Zoom in')} onclick={() => onzoom(zoom * 1.2)}><Icon name="plus" /></button>
   <span class="mx-0.5 h-4 w-px bg-neutral-200 dark:bg-white/[0.08]"></span>
-  <button type="button" class={button} title="Fit to screen" aria-label="Fit to screen" onclick={onfit}><Icon name="fit" /></button>
+  <button type="button" class={button} title={translate('Fit to screen')} aria-label={translate('Fit to screen')} onclick={onfit}><Icon name="fit" /></button>
   {#if onrefresh}
-    <button type="button" class={button} title="Load the latest status" aria-label="Refresh" disabled={loading} onclick={onrefresh}><Icon name="refresh" class="size-3.5 {loading ? 'animate-spin' : ''}" /></button>
+    <button type="button" class={button} title={translate('Load the latest status')} aria-label={translate('Refresh')} disabled={loading} onclick={onrefresh}><Icon name="refresh" class="size-3.5 {loading ? 'animate-spin' : ''}" /></button>
   {/if}
   {#if children}
     <div class="ml-0.5 flex items-center gap-2 border-l border-neutral-200 pr-0.5 pl-2 dark:border-white/[0.08]">{@render children()}</div>

@@ -10,3 +10,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Operation notifications, service backup schedules, and deployment destination resource lists support Simplified Chinese
 - Environment variable management, terminal controls, and common form validation messages support Simplified Chinese
 - Account, deployment, backup, and server alert emails include Simplified Chinese translations
+- Clipboard feedback, request errors, and canvas zoom controls support Simplified Chinese

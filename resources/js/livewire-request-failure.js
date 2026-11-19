@@ -1,3 +1,5 @@
+import { translate } from './translate.js';
+
 export const INFRASTRUCTURE_FAILURE_STATUSES = new Set([502, 503, 504, 520, 521, 522, 523, 524, 525, 526, 527, 530]);
 
 const USER_GESTURE_EVENTS = ['click', 'submit', 'keydown', 'input', 'change'];
@@ -42,9 +44,9 @@ export function createLivewireRequestFailureHandler({ now = Date.now } = {}) {
         // always toasts again. Background requests carry no gesture.
         if (gestureAt > lastToastGestureAt) {
             lastToastGestureAt = gestureAt;
-            window.toast?.('Action could not be completed', {
+            window.toast?.(translate('Action could not be completed'), {
                 type: 'danger',
-                description: 'Coolify did not receive a response. Please try again.',
+                description: translate('Coolify did not receive a response. Please try again.'),
             });
         }
     };

@@ -760,5 +760,14 @@
     "Coolify: New version is deployed of :name": "Coolify：:name 的新版本已部署",
     "Coolify: Pull request #:id of :name deployed successfully": "Coolify：:name 的拉取请求 #:id 已部署成功",
     "Coolify: Deployment failed of :name.": "Coolify：:name 部署失败。",
-    "Coolify: Deployment failed of pull request #:id of :name.": "Coolify：:name 的拉取请求 #:id 部署失败。"
+    "Coolify: Deployment failed of pull request #:id of :name.": "Coolify：:name 的拉取请求 #:id 部署失败。",
+    "Action could not be completed": "操作未能完成",
+    "Coolify did not receive a response. Please try again.": "Coolify 未收到响应，请重试。",
+    "Could not copy to clipboard.": "无法复制到剪贴板。",
+    "Fit to screen": "适应屏幕",
+    "Load the latest status": "加载最新状态",
+    "Reset zoom to 100%": "将缩放重置为 100%",
+    "Value is not available.": "没有可复制的值。",
+    "Zoom in": "放大",
+    "Zoom out": "缩小"
 }

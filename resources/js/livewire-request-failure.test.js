@@ -7,6 +7,30 @@ import {
     registerLivewireRequestFailureHandler,
 } from './livewire-request-failure.js';
 
+test('uses localized request failure text when the page provides translations', () => {
+    const originalWindow = global.window;
+    const toasts = [];
+
+    try {
+        global.window = {
+            coolifyTranslations: {
+                'Action could not be completed': '操作未能完成',
+                'Coolify did not receive a response. Please try again.': 'Coolify 未收到响应，请重试。',
+            },
+            toast: (title, options) => toasts.push({ title, ...options }),
+        };
+        const handle = createLivewireRequestFailureHandler();
+        handle({ status: 503, preventDefault() {}, gestureAt: 1 });
+        assert.deepEqual(toasts, [{
+            title: '操作未能完成',
+            type: 'danger',
+            description: 'Coolify 未收到响应，请重试。',
+        }]);
+    } finally {
+        global.window = originalWindow;
+    }
+});
+
 function createHarness({ start = 100_000 } = {}) {
     let currentTime = start;
     let requestHook = null;
