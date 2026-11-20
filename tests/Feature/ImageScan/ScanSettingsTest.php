@@ -690,7 +690,9 @@ it('localizes inherited scan defaults in Simplified Chinese', function () {
     app()->setLocale('zh-cn');
 
     scanSettingsAs($this->admin, $this->team, 'server', $this->server->uuid)
-        ->assertSee('使用 Coolify 默认值（关闭）')
-        ->assertSee('使用 Coolify 默认值（仍要部署）')
-        ->assertSee('使用 Coolify 默认值（否）');
+        ->assertViewHas('inheritLabels', [
+            'gate_mode' => '使用 Coolify 默认值（关闭）',
+            'on_scan_error' => '使用 Coolify 默认值（仍要部署）',
+            'count_medium' => '使用 Coolify 默认值（否）',
+        ]);
 });
