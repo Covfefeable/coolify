@@ -32,7 +32,7 @@
                         <x-status-badge status="No relevant problems" type="success" />
                     @endif
                 @elseif (! $hostScanAvailable)
-                    <x-status-badge status="Off" type="neutral" />
+                    <x-status-badge status="{{ __('Off') }}" type="neutral" />
                 @elseif (! $hostScanRunning)
                     <x-status-badge status="Not scanned yet" type="neutral" />
                 @endif

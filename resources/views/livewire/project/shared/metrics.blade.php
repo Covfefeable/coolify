@@ -58,7 +58,7 @@
                 ]" />
             </div>
             <p class="mt-3 text-xs leading-5 text-neutral-500 dark:text-fg-dim">
-                Ranges up to one hour refresh live every five seconds. Longer ranges load once; turn on live refresh to update them every minute.
+                {{ __('Ranges up to one hour refresh live every five seconds. Longer ranges load once; turn on live refresh to update them every minute.') }}
             </p>
         </x-application.settings-section>
 

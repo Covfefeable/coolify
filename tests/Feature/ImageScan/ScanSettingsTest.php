@@ -686,3 +686,11 @@ describe('count medium problems', function () {
         scanSettingsAs($stranger, $stranger->teams->first(), 'server', $this->server->uuid)->assertNotFound();
     });
 });
+it('localizes inherited scan defaults in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+
+    scanSettingsAs($this->admin, $this->team, 'server', $this->server->uuid)
+        ->assertSee('使用 Coolify 默认值（关闭）')
+        ->assertSee('使用 Coolify 默认值（仍要部署）')
+        ->assertSee('使用 Coolify 默认值（否）');
+});

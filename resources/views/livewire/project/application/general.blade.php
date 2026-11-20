@@ -85,7 +85,7 @@
                             @elseif ($domainCount === 0)
                                 Make this application available from a URL
                             @else
-                                Manage DNS checks and redirect settings
+                                {{ __('Manage DNS checks and redirect settings') }}
                             @endif
                         </p>
                     </div>

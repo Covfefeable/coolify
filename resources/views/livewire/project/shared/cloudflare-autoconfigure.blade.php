@@ -8,7 +8,7 @@
     <button type="button" class="button" @click="dnsEntriesOpen = !dnsEntriesOpen" aria-haspopup="menu"
         x-bind:aria-expanded="dnsEntriesOpen" title="{{ __('DNS checks and records for this server') }}">
         <x-reicon name="globe" class="size-3.5" />
-        DNS
+        {{ __('Manage DNS') }}
         <span class="inline-flex transition-transform" :class="dnsEntriesOpen && 'rotate-180'">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                 stroke="currentColor" class="size-3.5 shrink-0 opacity-60">
@@ -23,7 +23,7 @@
                 wire:click="checkAllDns" wire:loading.attr="disabled" wire:target="checkAllDns,checkDomainDns"
                 @click="dnsEntriesOpen = false">
                 <x-reicon name="refresh" class="size-3.5 shrink-0 opacity-70" />
-                Check all DNS
+                {{ __('Check all DNS') }}
             </button>
         @endif
         @if ($domainConnectAvailable)
@@ -36,7 +36,7 @@
         <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
             wire:click="openManualDnsRecords" @click="dnsEntriesOpen = false">
             <x-reicon name="documentation" class="size-3.5 shrink-0 opacity-70" />
-            Manual records
+            {{ __('Manual records') }}
         </button>
     </div>
 </div>

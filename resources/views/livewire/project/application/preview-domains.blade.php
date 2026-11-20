@@ -43,7 +43,7 @@
             @if (count($domainRows) > 0)
                 <x-forms.button wire:click="checkAllDns" :showLoadingIndicator="false" wire:loading.attr="disabled" wire:target="checkAllDns,checkDomainDns">
                     <x-reicon name="refresh" class="size-3.5" />
-                    Check all DNS
+                    {{ __('Check all DNS') }}
                 </x-forms.button>
             @endif
             <x-modal-input title="{{ __('Add domain') }}" :closeOutside="false" :wireIgnore="false"

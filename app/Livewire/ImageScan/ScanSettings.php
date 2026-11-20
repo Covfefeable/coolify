@@ -38,7 +38,11 @@ class ScanSettings extends Component
     /** Scopes that only list their ignores. */
     private const IGNORE_ONLY_SCOPES = ['database', 'service'];
 
-    private const LEVEL_NAMES = ['instance' => 'Coolify', 'team' => 'team', 'server' => 'server'];
+    private const INHERIT_LABELS = [
+        'instance' => 'Use Coolify default (:value)',
+        'team' => 'Use team default (:value)',
+        'server' => 'Use server default (:value)',
+    ];
 
     #[Locked]
     public string $scopeType;
@@ -353,7 +357,7 @@ class ScanSettings extends Component
         }
 
         $inherited = ImageScanPolicyResolver::inheritedFor($scope);
-        $label = fn (string $field, string $valueLabel) => 'Use '.self::LEVEL_NAMES[$inherited[$field]['source']].' default ('.$valueLabel.')';
+        $label = fn (string $field, string $valueLabel) => __(self::INHERIT_LABELS[$inherited[$field]['source']], ['value' => __($valueLabel)]);
 
         return [
             'gate_mode' => $label('gate_mode', $inherited['gate_mode']['value']->label()),
@@ -429,10 +433,10 @@ class ScanSettings extends Component
             'canEdit' => $this->canEdit($scope),
             'inheritLabels' => $this->inheritLabels($scope),
             'gateModeOptions' => collect(ImageScanGateMode::cases())
-                ->map(fn (ImageScanGateMode $mode) => array_filter(['value' => $mode->value, 'label' => $mode->label(), 'description' => $mode->description()], fn ($value) => $value !== null))
+                ->map(fn (ImageScanGateMode $mode) => array_filter(['value' => $mode->value, 'label' => __($mode->label()), 'description' => $mode->description()], fn ($value) => $value !== null))
                 ->all(),
             'onScanErrorOptions' => collect(ImageScanOnError::cases())
-                ->map(fn (ImageScanOnError $option) => ['value' => $option->value, 'label' => $option->label()])
+                ->map(fn (ImageScanOnError $option) => ['value' => $option->value, 'label' => __($option->label())])
                 ->all(),
             'countMediumOptions' => [['value' => '1', 'label' => __('Yes')], ['value' => '0', 'label' => __('No')]],
             'appScanOn' => $scope instanceof Application ? (bool) $scope->settings?->is_image_scan_enabled : true,

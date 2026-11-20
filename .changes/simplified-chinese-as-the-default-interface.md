@@ -33,3 +33,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Tooltips and form help across server, application, database, integration, and team settings include additional Simplified Chinese translations
 - The shared table filter and canvas add buttons use Simplified Chinese
 - The dashboard and canvas show the recent deployments heading in Simplified Chinese
+- Clone and delete confirmations, chart refresh guidance, scan defaults, DNS actions, and destination navigation show Simplified Chinese text

@@ -155,8 +155,7 @@
         <x-application.settings-section id="clone-resource-section" title="{{ __('Clone resource') }}"
             helper="{{ __('Create a copy of this resource. Choose where it runs and where it belongs. The current values are selected by default.') }}">
             <x-callout type="info" title="{{ __('What is copied') }}">
-                Cloning copies settings, environment variables, and resource configuration. Stored files,
-                database records, and other persistent data are copied only when you select Clone volume data.
+                {{ __('Cloning copies settings, environment variables, and resource configuration. Stored files, database records, and other persistent data are copied only when you select Clone volume data.') }}
             </x-callout>
 
             <div class="mt-4 grid gap-4 md:grid-cols-2">

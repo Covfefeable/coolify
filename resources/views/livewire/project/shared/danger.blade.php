@@ -1,11 +1,11 @@
 <div>
     @php
         $resourceLabel = match ($resource?->type()) {
-            'application' => 'application',
-            'service' => 'service',
-            'service-application' => 'service application',
-            'service-database' => 'service database',
-            default => 'resource',
+            'application' => __('application'),
+            'service' => __('service'),
+            'service-application' => __('service application'),
+            'service-database' => __('service database'),
+            default => __('resource'),
         };
     @endphp
     @if ($resource && !data_get($resource, 'destination.server')?->isFunctional())
@@ -36,9 +36,10 @@
         @endif
         <x-danger-zone title="{{ __('Delete :value', ['value' => $resourceLabel]) }}">
                     <p>
-                        Permanently delete
-                        <strong class="font-semibold text-black dark:text-fg">{{ $resourceName }}</strong>,
-                        stop its containers, and remove the selected Docker resources and configuration.
+                        @php
+                            $resourceNameHtml = '<strong class="font-semibold text-black dark:text-fg">'.e($resourceName).'</strong>';
+                        @endphp
+                        {!! __('Permanently delete :name, stop its containers, and remove the selected Docker resources and configuration.', ['name' => $resourceNameHtml]) !!}
                     </p>
                     <ul class="space-y-1 text-xs">
                         <li>{{ __('• Active deployments will be stopped.') }}</li>
@@ -50,13 +51,13 @@
                         <x-modal-confirmation title="{{ __('Delete :value?', ['value' => $resourceLabel]) }}"
                             buttonTitle="{{ __('Delete :value', ['value' => $resourceLabel]) }}"
                             isErrorButton submitAction="delete" :checkboxes="$checkboxes"
-                            :actions="['Permanently delete this resource and its selected Docker resources.']"
+                            :actions="[__('Permanently delete this resource and its selected Docker resources.')]"
                             confirmationText="{{ $resourceName }}"
-                            confirmationLabel="Enter the resource name to confirm permanent deletion"
-                            shortConfirmationLabel="Resource name" />
+                            confirmationLabel="{{ __('Enter the resource name to confirm permanent deletion') }}"
+                            shortConfirmationLabel="{{ __('Resource name') }}" />
                     @else
                         <x-forms.button isError disabled tooltip="{{ __('You do not have permission to delete this resource.') }}">
-                            {{ __('Delete') }} {{ $resourceLabel }}
+                            {{ __('Delete :value', ['value' => $resourceLabel]) }}
                         </x-forms.button>
                     @endif
                 </x-slot:action>
@@ -65,7 +66,7 @@
         @if (!$canDelete)
             <div class="mt-4">
                 <x-callout type="danger" title="{{ __('Insufficient permissions') }}">
-                    Contact a team administrator if this resource must be deleted.
+                    {{ __('Contact a team administrator if this resource must be deleted.') }}
                 </x-callout>
             </div>
         @endif

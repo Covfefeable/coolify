@@ -1,6 +1,6 @@
 <div>
     <x-slot:title>
-        {{ data_get_str($server, 'name')->limit(10) }} > Vulnerabilities | Coolify
+        {{ data_get_str($server, 'name')->limit(10) }} > {{ __('Vulnerabilities') }} | Coolify
     </x-slot>
 
     <livewire:server.navbar :server="$server" />
@@ -50,8 +50,8 @@
                             <x-modal-confirmation title="{{ __('Delete scanner data?') }}" buttonTitle="{{ __('Delete scanner data') }}"
                                 isErrorButton submitAction="deleteScannerData" temporaryDisableTwoStepConfirmation
                                 :confirmWithText="false" :confirmWithPassword="false" :actions="[
-                                    'Coolify removes the stored SBOMs, the vulnerability database, and the scanner images from this server.',
-                                    'Scan results in Coolify stay. The next scan gets the scanner again.',
+                                    __('Coolify removes the stored SBOMs, the vulnerability database, and the scanner images from this server.'),
+                                    __('Scan results in Coolify stay. The next scan gets the scanner again.'),
                                 ]"
                                 step2ButtonText="{{ __('Delete scanner data') }}" />
                         @endif

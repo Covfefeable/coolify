@@ -189,7 +189,7 @@
                             <button type="button"
                                 class="button button-highlighted">
                                 <x-reicon name="plus" class="size-3.5" />
-                                Add
+                                {{ __('Add') }}
                             </button>
                         </x-slot:content>
                         <livewire:project.shared.environment-variable.add :resource="$resource" />
