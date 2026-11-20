@@ -33,7 +33,7 @@
     @if ($hasAnyDeployments)
         {{-- Container breakpoints: the table needs room, which the dashboard column may not have. --}}
         <section class="@container mb-0! min-w-0">
-            <x-section-heading :title="$hasRecentDeployments ? 'Recent deployments' : 'Deployments'" class="py-1.5" />
+            <x-section-heading :title="$hasRecentDeployments ? __('Recent deployments') : __('Deployments')" class="py-1.5" />
 
             <div class="flex min-w-0 flex-col gap-4">
                 @if ($hasActiveDeployments)

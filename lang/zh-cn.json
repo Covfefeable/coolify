@@ -2310,6 +2310,7 @@
     "Deploy servers directly from your Hostinger account.": "直接通过你的 Hostinger 账户创建服务器。",
     "Deploy servers directly from your Vultr account.": "直接通过你的 Vultr 账户创建服务器。",
     "Deployments": "部署记录",
+    "Recent deployments": "最近部署",
     "Development overrides": "开发环境覆盖设置",
     "Disabled": "已禁用",
     "Dockerfile HEALTHCHECK in use": "正在使用 Dockerfile HEALTHCHECK",

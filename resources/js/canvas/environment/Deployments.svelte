@@ -2,6 +2,7 @@
   // Dashboard canvas: running, queued, and recent deployments. A row shows its application card;
   // the status opens the deployment. Folded or open is remembered in localStorage.
   import { TONE_DOT } from '../../environment-canvas.js';
+  import { translate } from '../../translate.js';
   import Icon from './Icon.svelte';
 
   let { deployments, nodeById, onshow } = $props();
@@ -46,7 +47,7 @@
 
 <section class="flex max-h-80 w-72 min-w-0 flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-lg dark:border-white/[0.08] dark:bg-panel" data-ec-deployments>
   <button type="button" class="flex w-full shrink-0 items-center gap-2 px-3 py-2.5 text-left" aria-expanded={open} onclick={toggle}>
-    <span class="min-w-0 flex-1 text-[12px] font-semibold text-black dark:text-fg">Recent deployments</span>
+    <span class="min-w-0 flex-1 text-[12px] font-semibold text-black dark:text-fg">{translate('Recent deployments')}</span>
     <span class="text-[11px] text-neutral-400 dark:text-fg-faint">{deployments.length}</span>
     <Icon name="chevron" class="size-3.5 text-neutral-400 transition-transform dark:text-fg-faint {open ? '' : 'rotate-180'}" />
   </button>

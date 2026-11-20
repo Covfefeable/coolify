@@ -438,6 +438,7 @@
             'On a phone, use the',
             'Open :name',
             'Open in Coolify',
+            'Recent deployments',
             'Reset',
             'Show the step names',
             'Start again with an empty canvas',

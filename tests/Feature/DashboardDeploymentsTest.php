@@ -319,3 +319,13 @@ it('looks up the team applications once per request without loading full applica
             ->not->toContain('additional_networks_count');
     }
 });
+
+
+it('localizes the recent deployments heading in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+    createDashboardDeployment();
+
+    Livewire::test(ActiveDeployments::class)
+        ->assertSee('最近部署')
+        ->assertDontSee('Recent deployments');
+});
