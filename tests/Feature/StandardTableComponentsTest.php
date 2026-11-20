@@ -35,7 +35,6 @@ it('renders the standard table toolbar controls', function () {
         ->toContain('Sort');
 });
 
-
 it('localizes the filter trigger and canvas add label in Simplified Chinese', function () {
     app()->setLocale('zh-cn');
 

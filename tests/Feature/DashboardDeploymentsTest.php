@@ -320,7 +320,6 @@ it('looks up the team applications once per request without loading full applica
     }
 });
 
-
 it('localizes the recent deployments heading in Simplified Chinese', function () {
     app()->setLocale('zh-cn');
     createDashboardDeployment();
