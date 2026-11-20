@@ -91,7 +91,7 @@
                             <x-forms.textarea canGate="update" :canResource="$server" id="customErrorPage" rows="10"
                                 monospace label="Custom error page (HTML)"
                                 placeholder="{{ __('Leave empty to use the Coolify default error page.') }}"
-                                helper="One self-contained HTML file (max {{ \App\Models\Server::PROXY_ERROR_PAGE_MAX_BYTES / 1024 }} KB) with inline CSS and images. Visitors see it with a 503 status for unknown domains and for stopped, deploying or unhealthy resources. A Redirect URL takes priority over this page." />
+                                :helper="__('One self-contained HTML file (max :max KB) with inline CSS and images. Visitors see it with a 503 status for unknown domains and for stopped, deploying or unhealthy resources. A Redirect URL takes priority over this page.', ['max' => e(\App\Models\Server::PROXY_ERROR_PAGE_MAX_BYTES / 1024)])" />
                             @can('update', $server)
                                 <div class="flex gap-2">
                                     <x-forms.button type="button" wire:click="resetCustomErrorPage">{{ __('Reset to default') }}</x-forms.button>

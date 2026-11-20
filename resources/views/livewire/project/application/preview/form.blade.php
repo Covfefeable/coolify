@@ -1,7 +1,7 @@
 <form wire:submit="submit" class="application-settings-form flex flex-col">
     <x-unsaved-bar action="submit" />
     <x-application.settings-section id="preview-template-section" title="{{ __('Preview URL template') }}"
-        helper="Define how Coolify generates domains for pull request deployments.">
+        helper="{{ __('Define how Coolify generates domains for pull request deployments.') }}">
         <x-slot:actions>
             @can('update', $application)
                 <x-forms.button type="button" wire:click="resetToDefault">
@@ -11,7 +11,7 @@
         </x-slot:actions>
 
         <x-forms.input id="previewUrlTemplate" label="{{ __('URL template') }}"
-            helper="Use @@{{ random }} for a random subdomain, @@{{ pr_id }} for the pull request number, or @@{{ domain }} for the application domain."
+            helper="{{ __('Use :random for a random subdomain, :pr for the pull request number, or :domain for the application domain.', ['random' => '{'.'{ random }'.'}', 'pr' => '{'.'{ pr_id }'.'}', 'domain' => '{'.'{ domain }'.'}']) }}"
             canGate="update" :canResource="$application" />
 
         @if ($previewUrlTemplate)

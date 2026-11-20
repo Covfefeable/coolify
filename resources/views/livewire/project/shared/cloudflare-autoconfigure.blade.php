@@ -91,7 +91,7 @@
 
                             <x-forms.input label="Server IP (A record target)"
                                 value="{{ $this->publicServerIpForDomainConnect() ?: 'Unavailable' }}" readonly
-                                helper="This IP is taken from the destination server." />
+                                helper="{{ __('This IP is taken from the destination server.') }}" />
 
                             <div class="flex flex-wrap items-center justify-end gap-2 pt-2">
                                 <x-forms.button type="button" wire:click="closeCloudflareAutoconfigureModal">
@@ -235,7 +235,7 @@
                                         {{ __(':count records · BIND zone format', ['count' => count($dnsHints)]) }}
                                     </p>
                                     <button type="button" class="button shrink-0"
-                                        title="Copy as BIND-compatible zone file" x-data="copyButton"
+                                        title="{{ __('Copy as BIND-compatible zone file') }}" x-data="copyButton"
                                         @click.prevent="copy(@js($dnsCopyText))">
                                         <span x-text="copied ? @js(__('Copied')) : @js(__('Copy all'))"></span>
                                     </button>

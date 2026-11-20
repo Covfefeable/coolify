@@ -8,8 +8,8 @@
             <x-forms.input id="name" label="{{ __('Name') }}" required />
             <x-forms.input id="organization" label="{{ __('Organization') }}" :required="$use_for_github_runners"
                 :helper="$use_for_github_runners
-                    ? 'GitHub Actions runners are registered at organization level.'
-                    : 'If empty, your GitHub user will be used. GitHub Actions runners need an organization.'"
+                    ? __('GitHub Actions runners are registered at organization level.')
+                    : __('If empty, your GitHub user will be used. GitHub Actions runners need an organization.')"
                 :placeholder="$use_for_github_runners ? 'GitHub organization, for example coollabsio' : 'Personal account when empty'" />
         </div>
 
@@ -17,7 +17,7 @@
             <div x-data="{ showWarning: @entangle('is_system_wide') }">
                 <div class="max-w-xs">
                     <x-forms.checkbox id="is_system_wide" label="{{ __('System wide') }}"
-                        helper="If checked, this GitHub App will be available for everyone in this Coolify instance." />
+                        helper="{{ __('If checked, this GitHub App will be available for everyone in this Coolify instance.') }}" />
                 </div>
                 <div x-cloak x-show="showWarning" x-transition class="mt-3">
                     <x-callout type="warning" title="{{ __('Shared with every team') }}">
@@ -35,9 +35,9 @@
             </p>
             <div class="mt-2 flex max-w-xs flex-col gap-1">
                 <x-forms.checkbox id="use_for_pull_request_previews" label="{{ __('Pull request previews') }}"
-                    helper="Deploys pull requests and posts deployment status on them." />
+                    helper="{{ __('Deploys pull requests and posts deployment status on them.') }}" />
                 <x-forms.checkbox id="use_for_github_runners" live label="{{ __('GitHub Actions runners') }}"
-                    helper="Runs workflow jobs on your servers. Needs an organization." />
+                    helper="{{ __('Runs workflow jobs on your servers. Needs an organization.') }}" />
             </div>
         </div>
 
@@ -55,9 +55,9 @@
             <div x-cloak x-show="open" x-collapse.duration.200ms class="border-t border-neutral-200 px-3 py-3 dark:border-white/[0.08]">
                 <div class="grid gap-4 sm:grid-cols-2">
                     <x-forms.input id="html_url" label="HTML URL" required
-                        helper="For GitHub Enterprise, enter your instance URL (e.g. https://github.example.com)." />
+                        helper="{{ __('For GitHub Enterprise, enter your instance URL (e.g. https://github.example.com).') }}" />
                     <x-forms.input id="api_url" label="API URL" required
-                        helper="Usually https://api.github.com or your Enterprise API base URL." />
+                        helper="{{ __('Usually https://api.github.com or your Enterprise API base URL.') }}" />
                     <x-forms.input id="custom_user" label="{{ __('Custom Git user') }}" required />
                     <x-forms.input id="custom_port" type="number" label="{{ __('Custom Git port') }}" required />
                 </div>

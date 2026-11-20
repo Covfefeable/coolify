@@ -32,7 +32,7 @@
                 <x-forms.checkbox canGate="update" :canResource="$settings"
                     id="disable_registration_when_oauth_enabled"
                     label="{{ __('Disable password registration when OAuth is enabled') }}"
-                    helper="OAuth providers can still create users when registration is enabled for that provider."
+                    helper="{{ __('OAuth providers can still create users when registration is enabled for that provider.') }}"
                     instantSave="saveRegistrationPolicy" />
             </x-application.settings-section>
 
@@ -63,7 +63,7 @@
                                 placeholder="{{ oauth_default_redirect_uri($provider) }}" label="{{ __('Redirect URI') }}" />
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.base_url" label="{{ __('Issuer URL') }}" required
-                                helper="OpenID Provider issuer URL, for example https://example.okta.com. Coolify uses it to discover the authorization, token, userinfo, and JWKS endpoints. For Microsoft Entra ID, use https://login.microsoftonline.com/&lt;tenant ID&gt;/v2.0 and add the optional ID token claims email and xms_edov to the app registration." />
+                                :helper="__('OpenID Provider issuer URL, for example https://example.okta.com. Coolify uses it to discover the authorization, token, userinfo, and JWKS endpoints. For Microsoft Entra ID, use https://login.microsoftonline.com/&lt;tenant ID&gt;/v2.0 and add the optional ID token claims email and xms_edov to the app registration.')" />
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.client_id" label="{{ __('Client ID') }}" required />
                             <x-forms.input canGate="update" :canResource="$settings"
@@ -71,7 +71,7 @@
                                 label="{{ __('Client secret') }}" autocomplete="new-password" required />
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.scopes" label="{{ __('Scopes') }}"
-                                helper="Must include openid. Common scopes are openid email profile groups." />
+                                helper="{{ __('Must include openid. Common scopes are openid email profile groups.') }}" />
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.clock_skew_seconds" type="number"
                                 label="Clock skew (seconds)" />
@@ -99,7 +99,7 @@
                         @if ($provider === 'google')
                             <x-forms.input canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.tenant"
-                                helper="Optional Google Workspace domain, for example example.com. Only accounts from this domain can sign in. Use * to allow any Workspace account but no personal Google accounts."
+                                helper="{{ __('Optional Google Workspace domain, for example example.com. Only accounts from this domain can sign in. Use * to allow any Workspace account but no personal Google accounts.') }}"
                                 label="{{ __('Hosted domain') }}" />
                         @endif
 
@@ -116,7 +116,7 @@
                             <x-forms.checkbox canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.allow_registration"
                                 label="{{ __('Allow OIDC user creation') }}"
-                                helper="Allow a successful OIDC login to create a user when password registration is disabled." />
+                                helper="{{ __('Allow a successful OIDC login to create a user when password registration is disabled.') }}" />
                             <x-forms.checkbox canGate="update" :canResource="$settings"
                                 id="oauth_settings_map.{{ $provider }}.require_email_verified"
                                 label="{{ __('Require verified email') }}" />
@@ -126,7 +126,7 @@
                         <x-forms.checkbox canGate="update" :canResource="$settings"
                             id="oauth_settings_map.{{ $provider }}.auto_join_root_team"
                             label="{{ __('Auto-join new users to Root team') }}"
-                            helper="Add newly-created OAuth users to the Root team as members without creating a personal team." />
+                            helper="{{ __('Add newly-created OAuth users to the Root team as members without creating a personal team.') }}" />
                     </div>
                 </x-application.settings-section>
             @endforeach

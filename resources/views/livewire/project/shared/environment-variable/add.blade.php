@@ -40,7 +40,7 @@
                 ['value' => false, 'label' => __('Interpolate $VARIABLES')],
                 ['value' => true, 'label' => __('Literal (keep $ characters as-is)')],
             ]"
-                helper="Literal means $VARIABLES in the value is kept as the actual characters '$VARIABLES' instead of being resolved from another variable. Useful when your value contains a $ sign." />
+                helper="{{ __('Literal means $VARIABLES in the value is kept as the actual characters \'$VARIABLES\' instead of being resolved from another variable. Useful when your value contains a $ sign.') }}" />
             <x-forms.listbox id="is_buildtime" label="{{ __('Build time') }}" :options="[
                 ['value' => true, 'label' => __('Available during build')],
                 ['value' => false, 'label' => __('Not available during build')],

@@ -17,7 +17,7 @@
 
                 <div class="grid gap-4 lg:grid-cols-2">
                     <x-forms.listbox canGate="update" :canResource="$settings" id="discordPingEnabled" label="{{ __('Critical event mention') }}"
-                        helper="Mention @here when a critical event occurs."
+                        helper="{{ __('Mention @here when a critical event occurs.') }}"
                         onChange="instantSaveDiscordPingEnabled"
                         :disabled="!auth()->user()->can('update', $settings)" :options="[
                             ['value' => true, 'label' => __('Mention @here')],
@@ -26,7 +26,7 @@
                     <div class="lg:col-span-2">
                         @can('update', $settings)
                             <x-forms.input type="password" :required="$discordEnabled" id="discordWebhookUrl" label="Webhook URL"
-                                helper="Create an incoming webhook in your Discord server settings." />
+                                helper="{{ __('Create an incoming webhook in your Discord server settings.') }}" />
                         @else
                             <x-forms.input disabled label="Webhook URL" value="Hidden (only admins can view)" />
                         @endcan

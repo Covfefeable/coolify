@@ -14,10 +14,10 @@
                 <x-forms.input label="{{ __('Description') }}" id="description" canGate="update" :canResource="$database" />
                 <div class="lg:col-span-2">
                     <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database"
-                        helper="Use a published MySQL image from Docker Hub." />
+                        helper="{{ __('Use a published MySQL image from Docker Hub.') }}" />
                 </div>
             </div>
-            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="Keep these values aligned with the credentials configured inside MySQL.">
+            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="{{ __('Keep these values aligned with the credentials configured inside MySQL.') }}">
                 @if ($database->started_at)
                     <x-callout type="warning" title="{{ __('Keep credentials synchronized') }}">
                         Changing values here does not update MySQL. Update MySQL first, then synchronize the values here so
@@ -97,7 +97,7 @@
                     id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" canGate="update"
                     :canResource="$database" />
             @endif
-            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="Override the MySQL configuration used by this container.">
+            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="{{ __('Override the MySQL configuration used by this container.') }}">
                 @if ($isPasswordHiddenForMember)
                     <x-forms.input label="{{ __('Custom MySQL configuration') }}" disabled value="Hidden (only admins can view)" />
                 @else

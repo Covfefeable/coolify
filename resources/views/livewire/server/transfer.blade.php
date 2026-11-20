@@ -57,7 +57,7 @@
                                     helper="{{ __('The Coolify instance that this server was transferred to.') }}" />
                                 <x-forms.input id="managerToken" type="password" label="{{ __('API token of that instance') }}" required
                                     placeholder="{{ __('Paste token from that instance') }}" autocomplete="off"
-                                    helper="A token with root, or with read:sensitive and write, from an admin or owner of that instance." />
+                                    helper="{{ __('A token with root, or with read:sensitive and write, from an admin or owner of that instance.') }}" />
                                 <x-forms.input id="thisInstanceUrl" label="{{ __('URL of this instance') }}" required
                                     helper="{{ __('The URL at which the other instance reaches this instance. This instance gives it a token that expires in 1 hour.') }}" />
                             </div>

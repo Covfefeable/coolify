@@ -59,10 +59,10 @@
 
                     @if ($emailProvider !== 'none')
                         <x-forms.input id="notificationFromName" placeholder="{{ __('Uses the from name when empty') }}"
-                            helper="Name shown in notification emails (deployments, backups, server alerts) to teams that use the instance email settings."
+                            helper="{{ __('Name shown in notification emails (deployments, backups, server alerts) to teams that use the instance email settings.') }}"
                             label="{{ __('Notification from name') }}" />
                         <x-forms.input id="notificationFromAddress" placeholder="{{ __('Uses the from address when empty') }}"
-                            helper="Address used for notification emails. Password resets and invitations still use the from address. Use a separate subdomain (for example alerts@notifications.example.com) to keep the reputation of the two senders apart. Your SMTP provider or Resend must allow this address."
+                            helper="{{ __('Address used for notification emails. Password resets and invitations still use the from address. Use a separate subdomain (for example alerts@notifications.example.com) to keep the reputation of the two senders apart. Your SMTP provider or Resend must allow this address.') }}"
                             label="{{ __('Notification from address') }}" />
                     @endif
                 </div>

@@ -14,10 +14,10 @@
                 <x-forms.input label="{{ __('Description') }}" id="description" canGate="update" :canResource="$database" />
                 <div class="lg:col-span-2">
                     <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database"
-                        helper="Use a published Redis or Valkey image from Docker Hub, for example valkey/valkey:9-alpine or redis:8." />
+                        helper="{{ __('Use a published Redis or Valkey image from Docker Hub, for example valkey/valkey:9-alpine or redis:8.') }}" />
                 </div>
             </div>
-            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="Keep these values aligned with the credentials configured inside Redis / Valkey.">
+            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="{{ __('Keep these values aligned with the credentials configured inside Redis / Valkey.') }}">
                 <x-callout type="warning" title="{{ $database->started_at ? 'Keep credentials synchronized' : 'Verify the initial credentials' }}">
                     @if ($database->started_at)
                         Changing values here does not update Redis. Update Redis first, then synchronize the values here so
@@ -37,7 +37,7 @@
                         <x-forms.input label="{{ __('Password') }}" disabled value="Hidden (only admins can view)" />
                     @elseif ($isPasswordLocked)
                         <x-forms.input label="{{ __('Password') }}" disabled value="Locked (shown once)"
-                            helper="REDIS_PASSWORD is locked. Its value is never shown again." />
+                            helper="{{ __('REDIS_PASSWORD is locked. Its value is never shown again.') }}" />
                     @else
                         <x-forms.input label="{{ __('Password') }}" id="redisPassword" type="password"
                             :required="!$database->started_at"
@@ -99,14 +99,14 @@
                     id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" canGate="update"
                     :canResource="$database" />
             @endif
-            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="Override only the Redis / Valkey directives you need. All other defaults remain active.">
+            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="{{ __('Override only the Redis / Valkey directives you need. All other defaults remain active.') }}">
                 @if ($isPasswordHiddenForMember)
                     <x-forms.input label="{{ __('Custom Redis / Valkey configuration') }}" disabled value="Hidden (only admins can view)" />
                 @else
                     <x-forms.textarea placeholder="# maxmemory 256mb
     # maxmemory-policy allkeys-lru
     # timeout 300"
-                        helper="Coolify automatically applies requirepass using the password above. If you override requirepass here, keep both values identical."
+                        helper="{{ __('Coolify automatically applies requirepass using the password above. If you override requirepass here, keep both values identical.') }}"
                         label="{{ __('Custom Redis / Valkey configuration') }}" rows="10" id="redisConf" canGate="update"
                         :canResource="$database" />
                 @endif

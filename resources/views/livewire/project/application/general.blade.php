@@ -113,7 +113,7 @@
                     </x-empty>
                     @else
                     <x-forms.listbox id="isHttpBasicAuthEnabled" label="{{ __('Method') }}" onChange="instantSave"
-                        helper="HTTP Basic Authentication adds the required authentication labels to the proxy. Coolify currently supports a single username and password."
+                        helper="{{ __('HTTP Basic Authentication adds the required authentication labels to the proxy. Coolify currently supports a single username and password.') }}"
                         :options="[
                             ['value' => false, 'label' => __('None')],
                             ['value' => true, 'label' => __('HTTP Basic Authentication')],
@@ -146,18 +146,18 @@
                                 @if ($usesArgon2id)
                                     <div wire:key="http-basic-auth-argon2id-memory-cost" class="min-w-0">
                                         <x-forms.listbox id="httpBasicAuthArgon2idMemoryCost" label="{{ __('Memory') }}" onChange="instantSave"
-                                            helper="Memory that the proxy needs to check a password. More memory makes the hash harder to crack, but every login attempt that the proxy has not seen before uses this much memory on the server."
+                                            helper="{{ __('Memory that the proxy needs to check a password. More memory makes the hash harder to crack, but every login attempt that the proxy has not seen before uses this much memory on the server.') }}"
                                             :options="collect([8, 16, 32, 64, 128, 256])->map(fn (int $mebibytes) => ['value' => $mebibytes * 1024, 'label' => $mebibytes.' MiB'])->all()" x-bind:disabled="!canUpdate" />
                                     </div>
                                     <div wire:key="http-basic-auth-argon2id-time-cost" class="min-w-0">
                                         <x-forms.listbox id="httpBasicAuthArgon2idTimeCost" label="{{ __('Iterations') }}" onChange="instantSave"
-                                            helper="Number of passes over the memory. More iterations make the hash harder to crack and a password check slower."
+                                            helper="{{ __('Number of passes over the memory. More iterations make the hash harder to crack and a password check slower.') }}"
                                             :options="collect(range(1, 12))->map(fn (int $iterations) => ['value' => $iterations, 'label' => (string) $iterations])->all()" x-bind:disabled="!canUpdate" />
                                     </div>
                                 @else
                                     <div wire:key="http-basic-auth-bcrypt-cost" class="min-w-0">
                                         <x-forms.listbox id="httpBasicAuthBcryptCost" label="{{ __('Cost factor') }}" onChange="instantSave"
-                                            helper="Each step doubles the work to check or crack the password. Traefik checks the password on every request, so a higher cost makes every request slower."
+                                            helper="{{ __('Each step doubles the work to check or crack the password. Traefik checks the password on every request, so a higher cost makes every request slower.') }}"
                                             :options="collect(range(4, 14))->map(fn (int $cost) => ['value' => $cost, 'label' => (string) $cost])->all()" x-bind:disabled="!canUpdate" />
                                     </div>
                                 @endif
@@ -220,7 +220,7 @@
                                 <div class="w-full sm:w-96">
                                     <x-forms.checkbox instantSave id="isPreserveRepositoryEnabled"
                                         label="{{ __('Preserve repository during deployment') }}"
-                                        helper="Git repository (based on the base directory settings) will be copied to the deployment directory."
+                                        helper="{{ __('Git repository (based on the base directory settings) will be copied to the deployment directory.') }}"
                                         x-bind:disabled="shouldDisable()" />
                                 </div>
                                 <div class="grid gap-4 pt-4">
@@ -252,7 +252,7 @@
                                 @if ($this->application->supportsWatchPaths())
                                     <div class="pt-4">
                                         <x-forms.textarea
-                                            helper="Order-based pattern matching to filter Git webhook deployments. Enter one pattern per line. Commas do not separate patterns. Supports wildcards (*, **, ?) and negation (!). Last matching pattern wins."
+                                            helper="{{ __('Order-based pattern matching to filter Git webhook deployments. Enter one pattern per line. Commas do not separate patterns. Supports wildcards (*, **, ?) and negation (!). Last matching pattern wins.') }}"
                                             placeholder="services/api/**" id="watchPaths" label="{{ __('Watch paths') }}"
                                             x-bind:disabled="shouldDisable()" />
                                     </div>
@@ -275,18 +275,18 @@
                             @if ($this->application->supportsWatchPaths())
                                 <div class="pb-4">
                                     <x-forms.textarea
-                                        helper="Order-based pattern matching to filter Git webhook deployments. Enter one pattern per line. Commas do not separate patterns. Supports wildcards (*, **, ?) and negation (!). Last matching pattern wins."
+                                        helper="{{ __('Order-based pattern matching to filter Git webhook deployments. Enter one pattern per line. Commas do not separate patterns. Supports wildcards (*, **, ?) and negation (!). Last matching pattern wins.') }}"
                                         placeholder="src/pages/**" id="watchPaths" label="{{ __('Watch paths') }}"
                                         x-bind:disabled="!canUpdate" />
                                 </div>
                             @endif
                             @if ($application->could_set_build_commands() && ($buildPack === 'nixpacks' || $buildPack === 'railpack'))
                                 <div class="grid gap-4 lg:grid-cols-3">
-                                    <x-forms.input helper="If you modify this, you probably need to have a {{ $buildPack === 'railpack' ? 'railpack.json' : 'nixpacks.toml' }}"
+                                    <x-forms.input :helper="__('If you modify this, you probably need to have a :file', ['file' => e($buildPack === 'railpack' ? 'railpack.json' : 'nixpacks.toml')])"
                                         id="installCommand" label="{{ __('Install command') }}" x-bind:disabled="!canUpdate" />
-                                    <x-forms.input helper="If you modify this, you probably need to have a {{ $buildPack === 'railpack' ? 'railpack.json' : 'nixpacks.toml' }}"
+                                    <x-forms.input :helper="__('If you modify this, you probably need to have a :file', ['file' => e($buildPack === 'railpack' ? 'railpack.json' : 'nixpacks.toml')])"
                                         id="buildCommand" label="{{ __('Build command') }}" x-bind:disabled="!canUpdate" />
-                                    <x-forms.input helper="If you modify this, you probably need to have a {{ $buildPack === 'railpack' ? 'railpack.json' : 'nixpacks.toml' }}"
+                                    <x-forms.input :helper="__('If you modify this, you probably need to have a :file', ['file' => e($buildPack === 'railpack' ? 'railpack.json' : 'nixpacks.toml')])"
                                         id="startCommand" label="{{ __('Start command') }}" x-bind:disabled="!canUpdate" />
                                 </div>
                             @endif
@@ -300,8 +300,8 @@
                                             : ['value' => true, 'label' => __('No build servers connected'), 'disabled' => true],
                                     ];
                                     $buildServerFallbackPolicy = $application->environment->project->team->is_build_server_fallback_enabled
-                                        ? 'If no usable build server is available, Coolify builds on the deployment server.'
-                                        : 'If no usable build server is available, the deployment fails.';
+                                        ? __('If no usable build server is available, Coolify builds on the deployment server.')
+                                        : __('If no usable build server is available, the deployment fails.');
                                 @endphp
                                 <div class="grid gap-4 pt-2 sm:grid-cols-2">
                                     @if ($buildPack === 'dockerfile')
@@ -311,7 +311,7 @@
                                     @endif
                                     <x-forms.listbox id="isBuildServerEnabled" label="{{ __('Builder selection') }}"
                                         onChange="instantSave" :options="$buildServerOptions"
-                                        helper="Build your application on a dedicated build server. If several build servers are connected, Coolify picks an available one automatically. {{ $buildServerFallbackPolicy }} More info in the <a href='https://coolify.io/docs/knowledge-base/server/build-server' class='underline' target='_blank'>documentation</a>."
+                                        :helper="__('Build your application on a dedicated build server. If several build servers are connected, Coolify picks an available one automatically. :fallback More info in the <a href=\'https://coolify.io/docs/knowledge-base/server/build-server\' class=\'underline\' target=\'_blank\'>documentation</a>.', ['fallback' => e($buildServerFallbackPolicy)])"
                                         x-bind:disabled="!canUpdate" />
                                 </div>
                             @endif
@@ -385,7 +385,7 @@
                             id="isContainerLabelEscapeEnabled" instantSave
                             x-bind:disabled="!canUpdate"></x-forms.checkbox>
                         {{-- <x-forms.checkbox label="Readonly labels"
-                            helper="Labels are readonly by default. Readonly means that edits you do to the labels could be lost and Coolify will autogenerate the labels for you. If you want to edit the labels directly, disable this option. <br><br>Be careful, it could break the proxy configuration after you restart the container as Coolify will now NOT autogenerate the labels for you (ofc you can always reset the labels to the coolify defaults manually)."
+                            :helper="__('Labels are readonly by default. Readonly means that edits you do to the labels could be lost and Coolify will autogenerate the labels for you. If you want to edit the labels directly, disable this option. <br><br>Be careful, it could break the proxy configuration after you restart the container as Coolify will now NOT autogenerate the labels for you (ofc you can always reset the labels to the coolify defaults manually).')"
                             id="isContainerLabelReadonlyEnabled" instantSave></x-forms.checkbox> --}}
                     </div>
                 </div>
@@ -411,13 +411,13 @@
                                 <x-forms.input required id="dockerRegistryImageName" label="{{ __('Image') }}" placeholder="nginx"
                                     x-bind:disabled="!canUpdate" />
                                 <x-forms.input id="dockerRegistryImageTag" label="{{ __('Tag') }}" placeholder="alpine"
-                                    helper="Enter a tag (e.g., 'latest', 'v1.2.3') or SHA256 hash (e.g., 'sha256-59e02939b1bf39f16c93138a28727aec520bb916da021180ae502c61626b3cf0')"
+                                    helper="{{ __('Enter a tag (e.g., \'latest\', \'v1.2.3\') or SHA256 hash (e.g., \'sha256-59e02939b1bf39f16c93138a28727aec520bb916da021180ae502c61626b3cf0\')') }}"
                                     x-bind:disabled="!canUpdate" />
                             @else
                                 <x-forms.input id="dockerRegistryImageName" label="{{ __('Image') }}" placeholder="nginx"
                                     x-bind:disabled="!canUpdate" />
                                 <x-forms.input id="dockerRegistryImageTag" label="{{ __('Tag') }}" placeholder="alpine"
-                                    helper="Enter a tag (e.g., 'latest', 'v1.2.3') or SHA256 hash (e.g., 'sha256-59e02939b1bf39f16c93138a28727aec520bb916da021180ae502c61626b3cf0')"
+                                    helper="{{ __('Enter a tag (e.g., \'latest\', \'v1.2.3\') or SHA256 hash (e.g., \'sha256-59e02939b1bf39f16c93138a28727aec520bb916da021180ae502c61626b3cf0\')') }}"
                                     x-bind:disabled="!canUpdate" />
                             @endif
                         @else
@@ -479,7 +479,7 @@
                         'environment_uuid' => $application->environment->uuid,
                         'application_uuid' => $application->uuid,
                     ]);
-                    $portsExposesDomainHint = "You can also set a different internal port for each domain on the <a class='underline dark:text-white' href='{$applicationDomainsUrl}'>{{ __('Domains') }}</a> page.";
+                    $portsExposesDomainHint = __('You can also set a different internal port for each domain on the :domains page.', ['domains' => "<a class='underline dark:text-white' href='".e($applicationDomainsUrl)."'>".e(__('Domains')).'</a>']);
                 @endphp
                 <x-modal-input title="{{ __('Networking') }}" class="hidden" :wireIgnore="false"
                     wireOpen="networkingModalOpen" subtitle="{{ __('Ports the container exposes, host port mappings and internal network aliases.') }}"
@@ -546,12 +546,12 @@
                     @else
                         @if ($application->settings->is_container_label_readonly_enabled === false)
                             <x-forms.input placeholder="3000,3001" id="portsExposes" label="{{ __('Ports exposes') }}" readonly
-                                :helper="'Readonly labels are disabled. You can set the ports manually in the labels section.<br><br>'.$portsExposesDomainHint"
+                                :helper="__('Readonly labels are disabled. You can set the ports manually in the labels section.<br><br>').$portsExposesDomainHint"
                                 canGate="update" :canResource="$application"
                                 x-bind:disabled="!canUpdate" />
                         @else
                             <x-forms.input placeholder="3000,3001" id="portsExposes" label="{{ __('Ports exposes') }}"
-                                :helper="'A comma separated list of ports your application uses. The first port will be used as default healthcheck port if nothing defined in the Healthcheck menu. Be sure to set this correctly.<br><br>'.$portsExposesDomainHint"
+                                :helper="__('A comma separated list of ports your application uses. The first port will be used as default healthcheck port if nothing defined in the Healthcheck menu. Be sure to set this correctly.<br><br>').$portsExposesDomainHint"
                                 canGate="update" :canResource="$application"
                                 x-bind:disabled="!canUpdate" />
                         @endif
@@ -563,12 +563,12 @@
                     </div>
                     @if (!$application->destination->server->isSwarm())
                         <x-forms.input placeholder="3000:3000" id="portsMappings" label="{{ __('Port mappings') }}"
-                            helper="A comma separated list of ports you would like to map to the host system. Useful when you do not want to use domains.<br><br><span class='inline-block font-bold dark:text-brand-light'>{{ __('Format:') }}</span> host:container<br><br><span class='inline-block font-bold dark:text-brand-light'>{{ __('Example:') }}</span> 3000:3000,3002:3002<br><br>Rolling update is not supported if you have a port mapped to the host."
+                            :helper="__('A comma separated list of ports you would like to map to the host system. Useful when you do not want to use domains.<br><br><span class=\'inline-block font-bold dark:text-brand-light\'>:format</span> host:container<br><br><span class=\'inline-block font-bold dark:text-brand-light\'>:example</span> 3000:3000,3002:3002<br><br>Rolling update is not supported if you have a port mapped to the host.', ['format' => e(__('Format:')), 'example' => e(__('Example:'))])"
                             x-bind:disabled="!canUpdate" />
                     @endif
                     @if (!$application->destination->server->isSwarm())
                         <x-forms.input id="customNetworkAliases" label="{{ __('Network aliases') }}"
-                            helper="A comma separated list of custom network aliases you would like to add for container in Docker network.<br><br><span class='inline-block font-bold dark:text-brand-light'>{{ __('Example:') }}</span><br>api.internal,api.local"
+                            :helper="__('A comma separated list of custom network aliases you would like to add for container in Docker network.<br><br><span class=\'inline-block font-bold dark:text-brand-light\'>:example</span><br>api.internal,api.local', ['example' => e(__('Example:'))])"
                             wire:model="customNetworkAliases" x-bind:disabled="!canUpdate" />
                     @endif
                 </div>
@@ -579,7 +579,7 @@
                 </form>
                 </x-modal-input>
 
-                <x-application.settings-section id="container-section" title="{{ __('Container') }}" helper="Options and labels applied to the container when it starts.">
+                <x-application.settings-section id="container-section" title="{{ __('Container') }}" helper="{{ __('Options and labels applied to the container when it starts.') }}">
                     <x-forms.input
                         helper="{{ __('Additional docker run options for container startup. Some flags can interfere with Coolify automation and are unsupported.') }}"
                         placeholder="--cap-add SYS_ADMIN --device=/dev/fuse --security-opt apparmor:unconfined --ulimit nofile=1024:1024 --tmpfs /run:rw,noexec,nosuid,size=65536k --hostname=myapp"

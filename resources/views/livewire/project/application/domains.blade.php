@@ -257,7 +257,7 @@
 
     @if ($hasRows && ! $labelsAreWritable)
         <x-application.settings-section id="domain-redirects-section" title="{{ __('Redirects') }}"
-            helper="Applies to all domains of this application.">
+            helper="{{ __('Applies to all domains of this application.') }}">
             <div class="grid gap-4 lg:grid-cols-2">
                 @if ($hasHttpsDomains)
                     <x-forms.listbox canGate="update" :canResource="$application" id="isForceHttpsEnabled"
@@ -270,7 +270,7 @@
                 @endif
                 <x-forms.listbox canGate="update" :canResource="$application" id="isPermanentRedirectEnabled"
                     label="{{ __('Redirect type') }}" onChange="updatePermanentRedirect"
-                    helper="Applies to the HTTP to HTTPS and www redirects. Permanent (301/308) is better for SEO, but browsers cache it. Use Temporary (302/307) while you test a redirect."
+                    helper="{{ __('Applies to the HTTP to HTTPS and www redirects. Permanent (301/308) is better for SEO, but browsers cache it. Use Temporary (302/307) while you test a redirect.') }}"
                     :options="[
                         ['value' => false, 'label' => __('Temporary')],
                         ['value' => true, 'label' => __('Permanent')],
@@ -344,7 +344,7 @@
                                             ]" />
                                         <x-forms.listbox id="editingRedirect"
                                             htmlId="application-domain-direction" label="{{ __('www redirect') }}"
-                                            :helper="$isCompose ? 'Applies to all domains for this Compose service.' : 'Applies to all domains for this application.'"
+                                            :helper="$isCompose ? __('Applies to all domains for this Compose service.') : __('Applies to all domains for this application.')"
                                             portal
                                             :options="[
                                                 ['value' => 'both', 'label' => __('No redirect')],

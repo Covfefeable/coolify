@@ -92,16 +92,16 @@
             @endif
             @if ($application->build_pack === 'dockercompose')
                 <x-application.settings-subsection id="advanced-compose-section" title="Docker compose"
-                    helper="Advanced behavior for compose-based deployments.">
+                    helper="{{ __('Advanced behavior for compose-based deployments.') }}">
                     <div class="grid w-full gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="isRawComposeDeploymentEnabled" label="{{ __('Compose deployment') }}" onChange="instantSave"
-                            helper="WARNING: Advanced use cases only. In raw mode your compose file is deployed as-is. Nothing is modified by Coolify and you need to configure the proxy parts. More info in the <a class='underline dark:text-white' href='https://coolify.io/docs/knowledge-base/docker/compose#raw-docker-compose-deployment'>documentation</a>."
+                            :helper="__('WARNING: Advanced use cases only. In raw mode your compose file is deployed as-is. Nothing is modified by Coolify and you need to configure the proxy parts. More info in the <a class=\'underline dark:text-white\' href=\'https://coolify.io/docs/knowledge-base/docker/compose#raw-docker-compose-deployment\'>documentation</a>.')"
                             :options="[
                                 ['value' => false, 'label' => __('Managed by Coolify')],
                                 ['value' => true, 'label' => __('Raw (deploy file as-is)')],
                             ]" :disabled="! $canUpdate" />
                         <x-forms.listbox id="isConnectToDockerNetworkEnabled" label="{{ __('Predefined network') }}" onChange="instantSave"
-                            helper="By default a compose resource only gets its own internal network. Connecting to a Coolify predefined network may require different internal DNS names. More info <a class='underline dark:text-white' target='_blank' href='https://coolify.io/docs/knowledge-base/docker/compose#connect-to-predefined-networks'>here</a>."
+                            :helper="__('By default a compose resource only gets its own internal network. Connecting to a Coolify predefined network may require different internal DNS names. More info <a class=\'underline dark:text-white\' target=\'_blank\' href=\'https://coolify.io/docs/knowledge-base/docker/compose#connect-to-predefined-networks\'>here</a>.')"
                             :options="[
                                 ['value' => false, 'label' => __('Isolated network only')],
                                 ['value' => true, 'label' => __('Connect to predefined network')],
@@ -112,10 +112,10 @@
         </x-application.settings-section>
 
         <x-application.settings-section id="advanced-container-section" title="{{ __('Container') }}"
-            helper="Naming, shutdown, logs, and GPU access for the deployed container.">
+            helper="{{ __('Naming, shutdown, logs, and GPU access for the deployed container.') }}">
             <div class="grid w-full gap-4 sm:grid-cols-2">
                 <x-forms.listbox id="isConsistentContainerNameEnabled" label="{{ __('Container naming') }}" onChange="instantSave"
-                    helper="With a consistent name the container is always called {{ $application->uuid }}. <span class='font-bold dark:text-warning'>{{ __('You will lose the rolling update feature!') }}</span>"
+                    :helper="__('With a consistent name the container is always called :uuid. <span class=\'font-bold dark:text-warning\'>:warning</span>', ['uuid' => e($application->uuid), 'warning' => e(__('You will lose the rolling update feature!'))])"
                     :options="[
                         ['value' => false, 'label' => __('Generated name (rolling updates)')],
                         ['value' => true, 'label' => __('Consistent name (no rolling updates)')],
@@ -124,7 +124,7 @@
                     <form wire:submit="saveCustomName" class="w-full">
                         <x-unsaved-bar action="saveCustomName" targets="customInternalName" />
                         <x-forms.input
-                            helper="You can add a custom name for your container.<br><br>{{ __('The name is converted to slug format when saved.') }} <span class='font-bold dark:text-warning'>{{ __('You will lose the rolling update feature!') }}</span>"
+                            :helper="__('You can add a custom name for your container.<br><br>:slug_hint <span class=\'font-bold dark:text-warning\'>:warning</span>', ['slug_hint' => e(__('The name is converted to slug format when saved.')), 'warning' => e(__('You will lose the rolling update feature!'))])"
                             id="customInternalName" label="{{ __('Custom container name') }}" canGate="update"
                             :canResource="$application" />
                     </form>
@@ -132,38 +132,38 @@
                     <form wire:submit="saveCustomNamePrefix" class="w-full">
                         <x-unsaved-bar action="saveCustomNamePrefix" targets="customContainerNamePrefix" />
                         <x-forms.input
-                            helper="Optional prefix for generated container names. Containers are named <span class='font-bold'>prefix-timestamp</span>{{ __(', for example') }} <span class='font-bold'>shop-api-20260908T141530</span>, instead of starting with <span class='font-bold'>{{ $application->uuid }}</span>.<br><br>The prefix is converted to slug format when saved, can be up to {{ \App\Models\ApplicationSetting::MAX_CONTAINER_NAME_PREFIX_LENGTH }} characters and must be unique on this server. Rolling updates keep working."
+                            :helper="__('Optional prefix for generated container names. Containers are named <span class=\'font-bold\'>prefix-timestamp</span>:example <span class=\'font-bold\'>shop-api-20260908T141530</span>, instead of starting with <span class=\'font-bold\'>:uuid</span>.<br><br>The prefix is converted to slug format when saved, can be up to :max characters and must be unique on this server. Rolling updates keep working.', ['example' => e(__(', for example')), 'uuid' => e($application->uuid), 'max' => e(\App\Models\ApplicationSetting::MAX_CONTAINER_NAME_PREFIX_LENGTH)])"
                             id="customContainerNamePrefix" label="{{ __('Container name prefix') }}" placeholder="{{ __('e.g. my-api') }}"
                             canGate="update" :canResource="$application" />
                     </form>
                 @endif
             </div>
             <x-application.settings-subsection id="advanced-operations-section" title="{{ __('Operations') }}"
-                helper="Shutdown and restart behavior for this application's containers.">
+                helper="{{ __('Shutdown and restart behavior for this application\'s containers.') }}">
                 <div class="grid w-full gap-4 lg:grid-cols-2">
                     <x-forms.input type="number" id="stopGracePeriod" label="Stop grace period (seconds)"
                         placeholder="{{ DEFAULT_STOP_GRACE_PERIOD_SECONDS }}" wire:change="saveStopGracePeriod"
-                        helper="How long to wait for graceful shutdown during rolling updates, manual stops, and restarts. Applies to all containers for this application. Saved automatically. Default: {{ DEFAULT_STOP_GRACE_PERIOD_SECONDS }} seconds. Range: {{ MIN_STOP_GRACE_PERIOD_SECONDS }}-{{ MAX_STOP_GRACE_PERIOD_SECONDS }} seconds (1 hour)."
+                        :helper="__('How long to wait for graceful shutdown during rolling updates, manual stops, and restarts. Applies to all containers for this application. Saved automatically. Default: :default seconds. Range: :min-:max seconds (1 hour).', ['default' => e(DEFAULT_STOP_GRACE_PERIOD_SECONDS), 'min' => e(MIN_STOP_GRACE_PERIOD_SECONDS), 'max' => e(MAX_STOP_GRACE_PERIOD_SECONDS)])"
                         min="{{ MIN_STOP_GRACE_PERIOD_SECONDS }}" max="{{ MAX_STOP_GRACE_PERIOD_SECONDS }}"
                         canGate="update" :canResource="$application" />
                     @if ($application->build_pack !== 'dockercompose')
                         <x-forms.input type="number" min="0" max="{{ MAX_ROLLING_UPDATE_DRAIN_SECONDS }}"
                             id="rollingUpdateDrainSeconds" label="Rolling update drain time (seconds)"
                             wire:change="saveRollingUpdateDrainSeconds"
-                            helper="How long to wait after the new container is healthy before the old containers stop during a rolling update. The proxy needs this time to send traffic to the new container. Saved automatically. Default: {{ DEFAULT_ROLLING_UPDATE_DRAIN_SECONDS }} seconds. Range: 0-{{ MAX_ROLLING_UPDATE_DRAIN_SECONDS }} seconds. Set to 0 to turn off the wait."
+                            :helper="__('How long to wait after the new container is healthy before the old containers stop during a rolling update. The proxy needs this time to send traffic to the new container. Saved automatically. Default: :default seconds. Range: 0-:max seconds. Set to 0 to turn off the wait.', ['default' => e(DEFAULT_ROLLING_UPDATE_DRAIN_SECONDS), 'max' => e(MAX_ROLLING_UPDATE_DRAIN_SECONDS)])"
                             canGate="update" :canResource="$application" />
                     @endif
                     <x-forms.input type="number" min="0" id="maxRestartCount" label="{{ __('Max restart count') }}"
                         wire:change="saveMaxRestartCount"
-                        helper="Maximum number of restarts before Coolify automatically stops the application and sends a notification. Saved automatically. Set to 0 to disable the limit."
+                        helper="{{ __('Maximum number of restarts before Coolify automatically stops the application and sends a notification. Saved automatically. Set to 0 to disable the limit.') }}"
                         canGate="update" :canResource="$application" />
                 </div>
             </x-application.settings-subsection>
             <x-application.settings-subsection id="advanced-logs-section" title="{{ __('Logs') }}"
-                helper="Forward container logs to an external endpoint.">
+                helper="{{ __('Forward container logs to an external endpoint.') }}">
                 <div class="grid w-full gap-4 sm:grid-cols-2">
                     <x-forms.listbox id="isLogDrainEnabled" label="{{ __('Log drain') }}" onChange="instantSave"
-                        helper="Drain logs to the log drain endpoint configured in your Server settings."
+                        helper="{{ __('Drain logs to the log drain endpoint configured in your Server settings.') }}"
                         :options="[
                             ['value' => false, 'label' => __('Disabled')],
                             ['value' => true, 'label' => __('Send logs to the log drain endpoint')],
@@ -172,7 +172,7 @@
             </x-application.settings-subsection>
             @if ($application->build_pack !== 'dockercompose')
                 <x-application.settings-subsection id="advanced-gpu-section" title="GPU"
-                    helper="Give this application access to the host's GPUs. More info <a href='https://docs.docker.com/compose/gpu-support/' class='underline dark:text-white' target='_blank'>here</a>.">
+                    :helper="__('Give this application access to the host\'s GPUs. More info <a href=\'https://docs.docker.com/compose/gpu-support/\' class=\'underline dark:text-white\' target=\'_blank\'>here</a>.')">
                     <x-slot:actions>
                         @php($canRefreshGpus = $gpuServers->contains(fn ($gpuServer) => $gpuServer->isFunctional()))
                         <x-forms.button type="button" wire:click="refreshGpus" canGate="update"
@@ -211,14 +211,14 @@
                                 targets="gpuDriver,gpuCount,gpuDeviceIds,gpuOptions" />
                             <div class="grid gap-4 sm:grid-cols-2">
                                 <x-forms.input label="{{ __('GPU driver') }}" id="gpuDriver" canGate="update" :canResource="$application" />
-                                <x-forms.input label="{{ __('GPU count') }}" placeholder="{{ __('Empty means use all GPUs') }}" helper="A number, or all." id="gpuCount"
+                                <x-forms.input label="{{ __('GPU count') }}" placeholder="{{ __('Empty means use all GPUs') }}" helper="{{ __('A number, or all.') }}" id="gpuCount"
                                     canGate="update" :canResource="$application" />
                             </div>
                             <x-forms.input label="{{ __('GPU device ids') }}" placeholder="0,2"
-                                helper="Comma separated list of device ids. More info <a href='https://docs.docker.com/compose/gpu-support/#access-specific-devices' class='underline dark:text-white' target='_blank'>here</a>."
+                                :helper="__('Comma separated list of device ids. More info <a href=\'https://docs.docker.com/compose/gpu-support/#access-specific-devices\' class=\'underline dark:text-white\' target=\'_blank\'>here</a>.')"
                                 id="gpuDeviceIds" canGate="update" :canResource="$application" />
                             <x-forms.textarea rows="6" label="{{ __('GPU options') }}" id="gpuOptions" placeholder="key=value"
-                                helper="Driver options. Use one key=value pair per line, or a YAML mapping." canGate="update"
+                                helper="{{ __('Driver options. Use one key=value pair per line, or a YAML mapping.') }}" canGate="update"
                                 :canResource="$application" />
                         </form>
                     @endif
@@ -227,17 +227,17 @@
         </x-application.settings-section>
 
         <x-application.settings-section id="advanced-proxy-section" title="{{ __('Proxy') }}"
-            helper="How the proxy serves traffic for this application.">
+            helper="{{ __('How the proxy serves traffic for this application.') }}">
             @if ($labelsManagedByCoolify)
                 <div class="grid w-full gap-4 sm:grid-cols-2">
                     <x-forms.listbox id="isGzipEnabled" label="{{ __('Gzip compression') }}" onChange="instantSave"
-                        helper="Some services compress data by default. In that case you do not need this."
+                        helper="{{ __('Some services compress data by default. In that case you do not need this.') }}"
                         :options="[
                             ['value' => true, 'label' => __('Enabled')],
                             ['value' => false, 'label' => __('Disabled')],
                         ]" :disabled="! $canUpdate" />
                     <x-forms.listbox id="isStripprefixEnabled" label="{{ __('Path prefixes') }}" onChange="instantSave"
-                        helper="Strip Prefix removes prefixes from paths, like /api/ to /."
+                        helper="{{ __('Strip Prefix removes prefixes from paths, like /api/ to /.') }}"
                         :options="[
                             ['value' => true, 'label' => __('Strip prefixes')],
                             ['value' => false, 'label' => __('Keep paths as-is')],
@@ -245,7 +245,7 @@
                     @if ($isTraefikProxy)
                         <x-forms.listbox id="certificateResolverMode" label="{{ __('Certificate resolver') }}"
                             onChange="saveCertificateResolverMode"
-                            helper="Traefik certificate resolver for this application's HTTPS routes. Choose <span class='font-bold'>None</span> for domains that use certificates from Traefik's dynamic configuration (for example Cloudflare Origin CA certificates). Redeploy the application to apply the change."
+                            :helper="__('Traefik certificate resolver for this application\'s HTTPS routes. Choose <span class=\'font-bold\'>None</span> for domains that use certificates from Traefik\'s dynamic configuration (for example Cloudflare Origin CA certificates). Redeploy the application to apply the change.')"
                             :options="[
                                 ['value' => 'server', 'label' => __('Server setting (:resolver)', ['resolver' => $serverCertificateResolver])],
                                 ['value' => 'none', 'label' => __('None (use your own certificates)')],
@@ -256,14 +256,14 @@
                                 <x-unsaved-bar action="saveCertificateResolver" targets="certificateResolverName" />
                                 <x-forms.input id="certificateResolverName" label="Resolver name" placeholder="cloudflare"
                                     required
-                                    helper="Name of a certificate resolver defined in your Traefik configuration. Letters, numbers, hyphens, and underscores only."
+                                    helper="{{ __('Name of a certificate resolver defined in your Traefik configuration. Letters, numbers, hyphens, and underscores only.') }}"
                                     canGate="update" :canResource="$application" />
                             </form>
                         @endif
                     @endif
                 </div>
             @else
-                <x-empty size="sm" title="Proxy behavior is managed through labels"
+                <x-empty size="sm" title="{{ __('Proxy behavior is managed through labels') }}"
                     description="Container labels are managed manually for this application. Switch label management back to Coolify to configure the proxy here."
                     icon-name="globe">
                     <x-slot:contents>

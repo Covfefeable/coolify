@@ -238,8 +238,8 @@
                         <div class="resource-server min-w-0">
                             <button type="button"
                                 class="table-filter-value truncate text-[12px] text-neutral-600 dark:text-fg-dim"
-                                x-on:click="toggleFilter('serverFilters', item.destination?.server?.name || 'Unknown')"
-                                x-bind:title="@js(__('Filter by :value')).replace(':value', () => item.destination?.server?.name || 'Unknown')"
+                                x-on:click="toggleFilter('serverFilters', item.destination?.server?.name || @js(__('Unknown')))"
+                                x-bind:title="@js(__('Filter by :value')).replace(':value', () => item.destination?.server?.name || @js(__('Unknown')))"
                                 x-text="item.destination?.server?.name || 'Unknown'"></button>
                         </div>
 

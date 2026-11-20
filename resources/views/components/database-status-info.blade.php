@@ -16,7 +16,7 @@
 
 @php
     $isCredentialLocked = ! $isPasswordHiddenForMember && method_exists($database, 'isCredentialLocked') && $database->isCredentialLocked();
-    $urlHelper = 'If you change the user/password/port, this could be different. This is with the default values.';
+    $urlHelper = __('If you change the user/password/port, this could be different. This is with the default values.');
 @endphp
 
 <div class="space-y-5">

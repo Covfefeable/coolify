@@ -7,8 +7,8 @@ $tabButtonInactive = 'text-neutral-500 hover:text-black dark:text-fg-faint dark:
 $scoped = $serverUuid !== '';
 
 $cpuHelper = $scoped
-    ? 'Average usage of all CPU cores on this server. 100% means that all cores are fully busy.'
-    : 'Average CPU usage of the servers. The value of each server is the average of all its CPU cores, so 100% means that all cores are fully busy. Servers are not weighted by their number of cores.';
+    ? __('Average usage of all CPU cores on this server. 100% means that all cores are fully busy.')
+    : __('Average CPU usage of the servers. The value of each server is the average of all its CPU cores, so 100% means that all cores are fully busy. Servers are not weighted by their number of cores.');
 
 $rangeListboxOptions = [
     ['value' => '24h', 'label' => __('Last 24 hours')],
@@ -230,7 +230,7 @@ $serverListboxOptions = array_merge(
 
         {{-- Servers table --}}
         <x-application.settings-section id="metrics-servers-section" title="{{ __('Servers') }}" flush
-            helper="Per-server resource pressure. Select a column header to sort.">
+            helper="{{ __('Per-server resource pressure. Select a column header to sort.') }}">
             <div class="data-table" x-data="trafficTable({ per: Number.MAX_SAFE_INTEGER, key: 'cpu' })">
                 <div class="data-table-header fleet-servers-table-grid border-b-0!">
                     @include('livewire.traffic._sort-header', ['column' => 'name', 'label' => __('Server'), 'text' => true, 'class' => 'justify-self-start'])

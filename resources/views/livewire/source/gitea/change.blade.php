@@ -57,7 +57,7 @@
                     @endif
                 </div>
                 <x-application.settings-subsection title="Webhook"
-                    helper="Configure this webhook URL in Gitea or Forgejo (user, organization, or repository settings → Webhooks → Add webhook → Gitea or Forgejo).">
+                    helper="{{ __('Configure this webhook URL in Gitea or Forgejo (user, organization, or repository settings → Webhooks → Add webhook → Gitea or Forgejo).') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <div class="lg:col-span-2">
                             <x-forms.input readonly label="Webhook URL"
@@ -65,7 +65,7 @@
                         </div>
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="webhookSecret"
                             label="{{ __('Webhook secret') }}" type="password"
-                            helper="Set this as the Secret in a Gitea webhook (user, organization, or repository settings → Webhooks → Add webhook → Gitea or Forgejo), content type application/json, trigger on Push and Pull Request events. Stored encrypted." />
+                            helper="{{ __('Set this as the Secret in a Gitea webhook (user, organization, or repository settings → Webhooks → Add webhook → Gitea or Forgejo), content type application/json, trigger on Push and Pull Request events. Stored encrypted.') }}" />
                     </div>
                 </x-application.settings-subsection>
             </x-application.settings-section>
@@ -73,7 +73,7 @@
             <x-application.settings-section id="connection-section" title="{{ __('Connection') }}"
                 helper="{{ __('OAuth credentials and the endpoints Coolify uses to reach this source.') }}">
                 <x-application.settings-subsection first title="{{ __('OAuth credentials') }}"
-                    helper="Client credentials from your Gitea or Forgejo OAuth2 application.">
+                    helper="{{ __('Client credentials from your Gitea or Forgejo OAuth2 application.') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="clientId"
                             label="{{ __('Client ID') }}" />
@@ -81,11 +81,11 @@
                             label="{{ __('Client secret') }}" type="password"
                             helper="{{ __('Stored encrypted. Leave empty to keep the existing secret.') }}" />
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="organization" label="{{ __('Organization') }}"
-                            helper="Comma-separated organization or user names to filter visible repositories." />
+                            helper="{{ __('Comma-separated organization or user names to filter visible repositories.') }}" />
                     </div>
                 </x-application.settings-subsection>
                 <x-application.settings-subsection title="{{ __('Self-hosted / advanced') }}"
-                    helper="Override endpoints and SSH settings for self-hosted Gitea or Forgejo.">
+                    helper="{{ __('Override endpoints and SSH settings for self-hosted Gitea or Forgejo.') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitea_app" id="htmlUrl"
                             label="{{ __('Instance URL') }}" />
@@ -224,12 +224,12 @@
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input id="name" label="{{ __('Name') }}" />
                         <x-forms.input id="clientId" label="{{ __('Client ID') }}" required
-                            helper="The Client ID from your Gitea or Forgejo OAuth2 application." />
+                            helper="{{ __('The Client ID from your Gitea or Forgejo OAuth2 application.') }}" />
                         <x-forms.input id="clientSecretInput" label="{{ __('Client secret') }}" type="password"
                             :required="blank($clientSecretInput) && blank(data_get($gitea_app, 'client_secret'))"
-                            helper="The Client secret from your Gitea or Forgejo OAuth2 application. Saved encrypted." />
+                            helper="{{ __('The Client secret from your Gitea or Forgejo OAuth2 application. Saved encrypted.') }}" />
                         <x-forms.input id="organization" label="{{ __('Organization') }}"
-                            helper="Optional. Comma-separated organization or user names to filter repositories." />
+                            helper="{{ __('Optional. Comma-separated organization or user names to filter repositories.') }}" />
                     </div>
 
                     @if (! isCloud() || isDev())
@@ -249,7 +249,7 @@
                             <div class="lg:col-span-2" x-show="!useCustomWebhookEndpoint">
                                 <x-forms.listbox id="webhook_endpoint" x-model="webhookEndpoint"
                                     label="{{ __('Selected endpoint') }}"
-                                    helper="Gitea or Forgejo will use this endpoint unless custom mode is enabled."
+                                    helper="{{ __('Gitea or Forgejo will use this endpoint unless custom mode is enabled.') }}"
                                     :options="collect([$fqdn, $ipv4, $ipv6, config('app.url')])
                                         ->filter()->unique()->map(fn ($endpoint) => [
                                             'value' => $endpoint,
@@ -260,7 +260,7 @@
                                 <x-forms.input x-model="customWebhookEndpoint" id="custom_webhook_endpoint"
                                     type="url" label="{{ __('Custom endpoint') }}"
                                     placeholder="https://coolify.example.com"
-                                    helper="Gitea or Forgejo will use this custom public URL. Do not include /webhooks." />
+                                    helper="{{ __('Gitea or Forgejo will use this custom public URL. Do not include /webhooks.') }}" />
                             </div>
                         </div>
                     @endif
@@ -277,7 +277,7 @@
                         <div x-cloak x-show="open" x-collapse.duration.200ms
                             class="mt-3 grid gap-4 rounded-lg border border-neutral-200 p-3 lg:grid-cols-2 dark:border-white/[0.08]">
                             <x-forms.input id="htmlUrl" label="{{ __('Instance URL') }}"
-                                helper="Only change this for self-hosted Gitea or Forgejo (e.g. https://git.example.com)." />
+                                helper="{{ __('Only change this for self-hosted Gitea or Forgejo (e.g. https://git.example.com).') }}" />
                             <x-forms.input id="apiUrl" label="API URL"
                                 helper="{{ __('Usually your instance URL with /api/v1 appended.') }}" />
                             <x-forms.input id="customUser" label="{{ __('SSH user') }}" />

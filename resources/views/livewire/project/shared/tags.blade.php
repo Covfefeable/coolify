@@ -1,11 +1,11 @@
 <div class="flex flex-col gap-6">
     <x-application.settings-section id="tag-assignment-section" title="{{ __('Tags') }}"
-        helper="Organize this resource with reusable team tags. Separate multiple tag names with spaces.">
+        helper="{{ __('Organize this resource with reusable team tags. Separate multiple tag names with spaces.') }}">
         @can('update', $resource)
             <form wire:submit="submit"
                 class="grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
                 <x-forms.input id="newTags" label="{{ __('Tag names') }}"
-                    helper="Existing tags are assigned automatically. New names create team tags."
+                    helper="{{ __('Existing tags are assigned automatically. New names create team tags.') }}"
                     placeholder="production api customer-a" />
                 <x-forms.button type="submit"
                     class="button-highlighted">
@@ -21,7 +21,7 @@
     </x-application.settings-section>
 
     <x-application.settings-section id="assigned-tags-section" title="{{ __('Assigned tags') }}"
-        helper="Tags currently attached to this resource." flush>
+        helper="{{ __('Tags currently attached to this resource.') }}" flush>
         @forelse (data_get($this->resource, 'tags', []) as $tag)
             <div wire:key="assigned-tag-{{ $tag->id }}"
                 class="flex min-h-12 items-center gap-3 border-b border-neutral-200 px-4 py-2.5 last:border-b-0 dark:border-white/[0.07]">
@@ -48,7 +48,7 @@
     @can('update', $resource)
         @if (count($filteredTags) > 0)
             <x-application.settings-section id="available-tags-section" title="{{ __('Available tags') }}"
-                helper="Assign an existing team tag with one click.">
+                helper="{{ __('Assign an existing team tag with one click.') }}">
                 <div class="flex flex-wrap gap-2">
                     @foreach ($filteredTags as $tag)
                         <x-forms.button wire:key="available-tag-{{ $tag->id }}"

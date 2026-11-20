@@ -131,7 +131,7 @@
                                         :options="$tunnelTokens->map(fn ($token) => ['value' => $token->id, 'label' => $token->name])->all()" />
                                     <x-forms.input id="api_ssh_domain" label="{{ __('SSH hostname') }}" required
                                         placeholder="ssh.example.com"
-                                        helper="A hostname in a zone of the selected token. Cloudflare routes it to SSH port {{ $server->port }} of this server." />
+                                        :helper="__('A hostname in a zone of the selected token. Cloudflare routes it to SSH port :port of this server.', ['port' => e($server->port)])" />
                                 </div>
                                 <div class="mt-4 flex justify-end">
                                     <x-forms.button type="submit" isHighlighted>{{ __('Set up tunnel') }}</x-forms.button>

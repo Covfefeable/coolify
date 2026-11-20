@@ -8,7 +8,7 @@
         <x-server.sidebar :server="$server" activeMenu="proxy" activeSubMenu="logs" />
         <div class="application-settings-form w-full">
             <x-application.settings-section title="{{ __('Proxy logs') }}"
-                helper="Search, filter, follow, copy, or download recent output from the Coolify proxy container."
+                helper="{{ __('Search, filter, follow, copy, or download recent output from the Coolify proxy container.') }}"
                 flush class="logs-settings-section">
                 <x-slot:actions>
                     <x-status-badge :status="str($server->proxy->status)->headline()"

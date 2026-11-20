@@ -21,7 +21,7 @@
     <form x-show="activeSection === 'general'" wire:submit="submit" class="application-settings-form flex flex-col">
         <x-unsaved-bar action="submit" />
         <x-application.settings-section id="task-configuration-section" title="{{ __('Task configuration') }}"
-            helper="Configure when this task runs and which command Coolify executes.">
+            helper="{{ __('Configure when this task runs and which command Coolify executes.') }}">
             <x-slot:actions>
                 @if ($resource->isRunning())
                     @can('update', $resource)
@@ -42,7 +42,7 @@
                     label="{{ __('Name') }}" required />
                 <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)"
                     placeholder="{{ __('0 0 * * * or daily') }}" id="frequency" label="{{ __('Schedule') }}"
-                    helper="Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression. Runs in the server timezone ({{ $serverTimezone }}). Change it in the server settings."
+                    :helper="__('Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression. Runs in the server timezone (:timezone). Change it in the server settings.', ['timezone' => e($serverTimezone)])"
                     required />
                 <x-forms.input canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)" type="number"
                     placeholder="300" id="timeout" helper="{{ __('Maximum execution time from 60 to 36,000 seconds.') }}"
@@ -64,7 +64,7 @@
     </form>
 
     <x-application.settings-section x-show="activeSection === 'executions'" x-cloak id="task-executions-section" title="{{ __('Recent executions') }}"
-        helper="Execution history refreshes automatically while a task is running." flush>
+        helper="{{ __('Execution history refreshes automatically while a task is running.') }}" flush>
         <livewire:project.shared.scheduled-task.executions :taskId="$task->id" />
     </x-application.settings-section>
 

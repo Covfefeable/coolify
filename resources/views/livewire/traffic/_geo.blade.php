@@ -53,7 +53,7 @@
 @endphp
 
 <x-application.settings-section id="analytics-country-section" title="{{ __('Locations') }}"
-    helper="Request volume by visitor country and city for the selected range." flush
+    helper="{{ __('Request volume by visitor country and city for the selected range.') }}" flush
     x-data="{
         // Storage can be blocked (sandboxed iframe, privacy mode, full quota); the switch then works without saving.
         view: (() => { try { return localStorage.getItem('traffic-geo-view') === 'cities' ? 'cities' : 'countries'; } catch (e) { return 'countries'; } })(),

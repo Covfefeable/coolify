@@ -16,7 +16,7 @@
                     <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database" />
                 </div>
             </div>
-            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="Keep these values aligned with the credentials configured inside Dragonfly.">
+            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="{{ __('Keep these values aligned with the credentials configured inside Dragonfly.') }}">
                 @if ($database->started_at)
                     @if ($isPasswordHiddenForMember)
                         <x-forms.input label="{{ __('Password') }}" disabled value="Hidden (only admins can view)" />

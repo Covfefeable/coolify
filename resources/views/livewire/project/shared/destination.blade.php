@@ -7,7 +7,7 @@
 
         <div class="flex flex-col gap-6">
             <x-application.settings-section id="primary-server-section" title="{{ __('Primary server') }}"
-                helper="The default server and network used for this application's deployments.">
+                helper="{{ __('The default server and network used for this application\'s deployments.') }}">
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div class="flex min-w-0 items-center gap-3">
                         <div
@@ -73,7 +73,7 @@
 
             @if ($hasAdditionalDestinations && data_get($resource, 'build_pack') !== 'dockercompose')
                 <x-application.settings-section id="additional-servers-section" title="{{ __('Additional servers') }}"
-                    helper="Deploy this application to more servers and choose which destination is primary." flush>
+                    helper="{{ __('Deploy this application to more servers and choose which destination is primary.') }}" flush>
                     <div class="divide-y divide-neutral-200 dark:divide-white/[0.07]">
                         @foreach ($additionalDestinations as $destination)
                             @php
@@ -173,7 +173,7 @@
 
             @if (data_get($resource, 'build_pack') !== 'dockercompose')
                 <x-application.settings-section id="available-servers-section" title="{{ __('Add another server') }}"
-                    helper="Attach another available server and network as a deployment destination." :flush="$resource->persistentStorages()->count() === 0">
+                    helper="{{ __('Attach another available server and network as a deployment destination.') }}" :flush="$resource->persistentStorages()->count() === 0">
                     @if ($resource->persistentStorages()->count() > 0)
                         <x-callout type="warning" title="{{ __('Additional servers are unavailable') }}">
                             This application has persistent storage volumes. Applications with persistent storage

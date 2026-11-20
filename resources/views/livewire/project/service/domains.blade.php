@@ -95,7 +95,7 @@
                         <form wire:submit="addDomain" class="application-settings-form flex flex-col gap-4">
                             {{-- Always show which service receives the domain --}}
                             <x-forms.listbox canGate="update" :canResource="$service" label="{{ __('Service application') }}" id="newServiceApplicationId" required portal
-                                helper="Domain will be assigned to this compose service application."
+                                helper="{{ __('Domain will be assigned to this compose service application.') }}"
                                 :options="collect($serviceApps)->map(fn ($app) => [
                                     'value' => $app['id'],
                                     'label' => $app['name'].(filled($app['image'] ?? null) ? ' ('.$app['image'].')' : ''),
@@ -184,7 +184,7 @@
                         @endif
                         <div class="flex w-full items-center gap-2 sm:w-auto service-domains-https">
                             <label for="service-permanent-redirect-{{ $appId }}-trigger" class="mb-0! whitespace-nowrap text-[12px]!">{{ __('Redirect type') }}</label>
-                            <x-helper helper="Applies to the HTTP to HTTPS and www redirects. Permanent (301/308) is better for SEO, but browsers cache it. Use Temporary (302/307) while you test a redirect." />
+                            <x-helper helper="{{ __('Applies to the HTTP to HTTPS and www redirects. Permanent (301/308) is better for SEO, but browsers cache it. Use Temporary (302/307) while you test a redirect.') }}" />
                             <x-forms.listbox canGate="update" :canResource="$service" id="permanentRedirects.{{ $appId }}"
                                 htmlId="service-permanent-redirect-{{ $appId }}" preserveValue portal
                                 onChange="updatePermanentRedirect"
@@ -288,7 +288,7 @@
                                             ]" />
                                         <x-forms.listbox id="editingRedirect" htmlId="service-domain-direction"
                                             label="{{ __('www redirect') }}"
-                                            helper="Applies to all domains for this service application."
+                                            helper="{{ __('Applies to all domains for this service application.') }}"
                                             portal
                                             :options="[
                                                 ['value' => 'both', 'label' => __('No redirect')],

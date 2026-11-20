@@ -18,7 +18,7 @@
 <div class="flex flex-col gap-4" wire:init="loadEnvironmentVariables"
     x-on:focus-compose-environment-variable.window="const key = $event.detail.key; const focus = () => { const row = document.querySelector(`[data-env-key='${CSS.escape(key)}']`); if (!row) return false; row.scrollIntoView({ behavior: 'smooth', block: 'center' }); row.querySelector('[data-env-settings-trigger]')?.click(); return true; }; if (!focus()) { $wire.focusComposeEnvironmentVariable(key).then(() => requestAnimationFrame(focus)); }">
     <x-application.settings-section id="environment-variables-section" title="{{ __('Environment variables') }}"
-        helper="Environment variables (secrets) for this resource.">
+        helper="{{ __('Environment variables (secrets) for this resource.') }}">
         @can('manageEnvironment', $resource)
             <x-slot:actions>
                 <x-forms.button wire:click='switch' wire:loading.attr="disabled"
@@ -34,14 +34,14 @@
                         @if (data_get($resource, 'build_pack') !== 'dockercompose')
                             <x-forms.listbox id="is_env_sorting_enabled" label="{{ __('Environment variable order') }}"
                                 onChange="instantSave"
-                                helper="Controls how environment variables are ordered in the list and written to the generated .env file on deploy."
+                                helper="{{ __('Controls how environment variables are ordered in the list and written to the generated .env file on deploy.') }}"
                                 :options="[
                                     ['value' => false, 'label' => __('Creation order')],
                                     ['value' => true, 'label' => __('Alphabetical')],
                                 ]" :disabled="! auth()->user()->can('manageEnvironment', $resource)" />
                         @endif
                         <x-forms.listbox id="use_build_secrets" label="{{ __('Build secrets') }}" onChange="instantSave"
-                            helper="Docker BuildKit secrets keep values out of the final image for enhanced security during builds. Requires Docker 18.09+ with BuildKit support."
+                            helper="{{ __('Docker BuildKit secrets keep values out of the final image for enhanced security during builds. Requires Docker 18.09+ with BuildKit support.') }}"
                             :options="[
                                 ['value' => false, 'label' => __('Standard build arguments')],
                                 ['value' => true, 'label' => __('Docker BuildKit secrets')],
@@ -50,13 +50,13 @@
                 @endif
                 <x-forms.checkbox instantSave="saveCoolifyDefaultVariables" id="include_coolify_default_variables"
                     label="{{ __('Include Coolify default variables') }}"
-                    helper="Adds COOLIFY_APP_NAME, COOLIFY_PROJECT_NAME, COOLIFY_ENVIRONMENT_NAME and COOLIFY_SERVER_IP to the container at runtime. A variable that you define with the same name wins. Takes effect after the next deploy or restart."
+                    helper="{{ __('Adds COOLIFY_APP_NAME, COOLIFY_PROJECT_NAME, COOLIFY_ENVIRONMENT_NAME and COOLIFY_SERVER_IP to the container at runtime. A variable that you define with the same name wins. Takes effect after the next deploy or restart.') }}"
                     :disabled="! auth()->user()->can('manageEnvironment', $resource)" />
                 @if ($this->hasLogRedactionSetting())
                     <div class="grid w-full items-end gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="redact_all_env_values_in_logs" label="{{ __('Environment values in logs') }}"
                             onChange="saveLogRedactionSetting"
-                            helper="Hide every environment variable value in deployment logs, scheduled task output, copied or downloaded logs, and logs from the API and MCP. Live log streaming is not changed. Locked variables and known secret formats are always hidden."
+                            helper="{{ __('Hide every environment variable value in deployment logs, scheduled task output, copied or downloaded logs, and logs from the API and MCP. Live log streaming is not changed. Locked variables and known secret formats are always hidden.') }}"
                             :options="[
                                 ['value' => true, 'label' => __('Hide all values')],
                                 ['value' => false, 'label' => __('Hide locked values only')],

@@ -80,7 +80,7 @@
                     content-class="flex flex-col gap-4">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input id="user" label="{{ __('User') }}" required
-                            helper="Non-root SSH users are experimental." />
+                            helper="{{ __('Non-root SSH users are experimental.') }}" />
                         <x-forms.input type="number" id="port" label="{{ __('Port') }}" required />
                     </div>
                     <x-forms.listbox id="server_role"

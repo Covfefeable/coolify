@@ -35,7 +35,7 @@
     @endif
 
     <x-application.settings-section title="{{ __('Executions') }}"
-        helper="Review backup runs across every database and storage target in this service." flush>
+        helper="{{ __('Review backup runs across every database and storage target in this service.') }}" flush>
         @if ($executions->total() > 10)
             <x-slot:actions>
                 <x-page-size-select model="perPage" livewire />

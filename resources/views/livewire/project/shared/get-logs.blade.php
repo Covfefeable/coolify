@@ -98,7 +98,7 @@
                                             class="absolute inset-0 text-inherit!" />
                                     </span>
                                     <input type="number" wire:model="numberOfLines" x-on:input="allLines = Number($event.target.value) === -1" placeholder="100" min="-1" max="50000"
-                                        title="Number of lines (max 50,000; use -1 for all)" {{ $streamLogs ? 'readonly' : '' }}
+                                        title="{{ __('Number of lines (max 50,000; use -1 for all)') }}" {{ $streamLogs ? 'readonly' : '' }}
                                         class="input logs-viewer-lines-input" />
                                     <button type="button" x-on:click="showAllLogs()" title="{{ __('Show all logs') }}"
                                         :class="allLines ? 'runtime-log-lines-all-active' : ''"

@@ -10,7 +10,7 @@
     @endif
 
     <x-application.settings-section id="server-host-key-section" title="{{ __('SSH host key') }}"
-        helper="Coolify trusts the first host key of the server. Later, a different key is reported (warn mode, the default) or refused (enforce mode). The setting below sets enforce mode for this server only.<br><br>{{ __('An instance admin sets the mode for all servers with') }} <code>SSH_HOST_KEY_CHECKING=enforce</code> (or <code>warn</code>, <code>off</code>) in <code>/data/coolify/source/.env</code>, then restarts Coolify.">
+        :helper="__('Coolify trusts the first host key of the server. Later, a different key is reported (warn mode, the default) or refused (enforce mode). The setting below sets enforce mode for this server only.<br><br>An instance admin sets the mode for all servers with <code>SSH_HOST_KEY_CHECKING=enforce</code> (or <code>warn</code>, <code>off</code>) in <code>/data/coolify/source/.env</code>, then restarts Coolify.')">
         <x-slot:badges>
             @if (count($pendingFingerprints) > 0)
                 <x-status-badge status="Key changed" type="error" />
@@ -104,7 +104,7 @@
                 <div class="max-w-sm">
                     <x-forms.listbox id="checkMode" label="{{ __('When the host key changes') }}" onChange="setHostKeyCheckMode"
                         :onChangeArgs="[]" canGate="update" :canResource="$server"
-                        helper="Warn: Coolify connects and reports the new key. Enforce: Coolify refuses to connect until you trust or reset the new key, so deployments, backups, and checks on this server stop. A reinstall of the server also changes the key."
+                        helper="{{ __('Warn: Coolify connects and reports the new key. Enforce: Coolify refuses to connect until you trust or reset the new key, so deployments, backups, and checks on this server stop. A reinstall of the server also changes the key.') }}"
                         :options="[
                             ['value' => 'warn', 'label' => __('Warn and connect')],
                             ['value' => 'enforce', 'label' => __('Refuse to connect (enforce)')],

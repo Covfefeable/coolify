@@ -72,7 +72,7 @@
 
             <div class="application-settings-form flex min-w-0 flex-col gap-6">
             <x-application.settings-section title="{{ __('Storage backups') }}"
-                helper="Schedule backups for persistent volumes and directory mounts attached to this application.">
+                helper="{{ __('Schedule backups for persistent volumes and directory mounts attached to this application.') }}">
                 @can('update', $application)
                     <x-slot:actions>
                         <x-modal-input title="{{ __('New scheduled backup') }}" :wireIgnore="false">
@@ -150,7 +150,7 @@
             </div>
 
             <x-application.settings-section title="{{ __('Schedules') }}"
-                helper="Persistent volume and directory backup schedules for this application."
+                helper="{{ __('Persistent volume and directory backup schedules for this application.') }}"
                 :flush="$backups->isNotEmpty()">
                 <div x-cloak x-show="backups.length > 0 && filteredBackups.length === 0">
                     <x-empty size="sm" title="{{ __('No backups found') }}"

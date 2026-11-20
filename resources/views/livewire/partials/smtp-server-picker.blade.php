@@ -64,7 +64,7 @@
                         <x-forms.input id="newSmtpServerName" label="{{ __('Name') }}" placeholder="{{ __('PostShiba production') }}"
                             helper="{{ __('Name to find this server in the SMTP server list.') }}" required />
                         <x-forms.listbox id="newSmtpServerTemplate" label="{{ __('Template') }}" placeholder="{{ __('None (enter the settings yourself)') }}"
-                            helper="Fills in the host, port, and encryption of the provider. You then enter the username and password from the provider."
+                            helper="{{ __('Fills in the host, port, and encryption of the provider. You then enter the username and password from the provider.') }}"
                             :options="\App\Support\SmtpPresets::options()" />
                         <div class="flex justify-end border-t border-neutral-200 pt-4 dark:border-white/[0.08]">
                             <button type="submit" class="button button-highlighted" @click="modalOpen=false">
@@ -85,9 +85,9 @@
     <h4 class="{{ $smtpGroupTitleClass }}">Sender</h4>
     <div class="grid gap-4 lg:grid-cols-2">
         <x-forms.input canGate="update" :canResource="$settings" required id="smtpFromName"
-            helper="Name shown in email from this server." label="{{ __('From name') }}" />
+            helper="{{ __('Name shown in email from this server.') }}" label="{{ __('From name') }}" />
         <x-forms.input canGate="update" :canResource="$settings" required id="smtpFromAddress"
-            helper="Address used in email from this server. It must be on a domain that this server can send from."
+            helper="{{ __('Address used in email from this server. It must be on a domain that this server can send from.') }}"
             label="{{ __('From address') }}" />
     </div>
 </div>
@@ -116,12 +116,12 @@
             isProviderHost(host) { return this.providerHosts.includes(String(host ?? '').trim().toLowerCase()) } }">
         <x-forms.input canGate="update" :canResource="$settings" id="smtpUsername" label="{{ __('Username') }}"
             :requiredWhen="'isProviderHost($wire.smtpHost)'"
-            helper="The SMTP username from your provider. Leave it empty only for a relay that does not need a login, for example a local mail server." />
+            helper="{{ __('The SMTP username from your provider. Leave it empty only for a relay that does not need a login, for example a local mail server.') }}" />
         @can('update', $settings)
             <x-forms.input canGate="update" :canResource="$settings" id="smtpPassword" type="password"
                 label="{{ __('Password') }}" autocomplete="new-password"
                 :requiredWhen="'isProviderHost($wire.smtpHost) || !! $wire.smtpUsername'"
-                helper="The SMTP password from your provider. It is required when you enter a username." />
+                helper="{{ __('The SMTP password from your provider. It is required when you enter a username.') }}" />
         @else
             <x-forms.input disabled label="{{ __('Password') }}" value="Hidden (only admins can view)" />
         @endcan
@@ -132,9 +132,9 @@
     <h4 class="{{ $smtpGroupTitleClass }}">{{ __('Advanced') }}</h4>
     <div class="grid gap-4 lg:grid-cols-2">
         <x-forms.input canGate="update" :canResource="$settings" id="smtpTimeout" type="number"
-            helper="Maximum delivery time in seconds." label="{{ __('Timeout') }}" />
+            helper="{{ __('Maximum delivery time in seconds.') }}" label="{{ __('Timeout') }}" />
         <x-forms.input canGate="update" :canResource="$settings" id="smtpEhloDomain" placeholder="coolify.example.com"
-            helper="Fully qualified domain sent in the SMTP EHLO command. Uses the system default when empty."
+            helper="{{ __('Fully qualified domain sent in the SMTP EHLO command. Uses the system default when empty.') }}"
             label="EHLO domain" />
     </div>
 </div>

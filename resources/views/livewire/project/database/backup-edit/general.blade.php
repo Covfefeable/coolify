@@ -83,25 +83,25 @@
                 </div>
             @elseif ($backup->database_type === 'App\Models\StandaloneMongodb')
                 <x-forms.input label="{{ __('Databases to include') }}"
-                    helper="Use database:collection1,collection2|database2 to exclude selected collections. Leave empty to include all databases and collections."
+                    helper="{{ __('Use database:collection1,collection2|database2 to exclude selected collections. Leave empty to include all databases and collections.') }}"
                     id="databasesToBackup" />
             @elseif ($backup->database_type === 'App\Models\StandaloneClickhouse')
                 <x-forms.input label="{{ __('Databases to back up') }}"
-                    helper="Comma-separated database names. Leave empty to include the default database."
+                    helper="{{ __('Comma-separated database names. Leave empty to include the default database.') }}"
                     id="databasesToBackup" />
             @elseif ($backup->database_type === 'App\Models\StandaloneSqlite')
                 <x-forms.input label="{{ __('Database files to back up') }}"
-                    helper="Comma-separated file names inside the data volume. Leave empty to back up every configured file."
+                    helper="{{ __('Comma-separated file names inside the data volume. Leave empty to back up every configured file.') }}"
                     id="databasesToBackup" />
             @endif
 
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 <x-forms.input label="{{ __('Frequency') }}" id="frequency" required />
                 <x-forms.input label="{{ __('Timezone') }}" id="timezone" disabled
-                    helper="Uses the deployment server timezone, or the instance timezone when none is configured."
+                    helper="{{ __('Uses the deployment server timezone, or the instance timezone when none is configured.') }}"
                     required />
                 <x-forms.input label="{{ __('Timeout') }}" id="timeout" type="number" min="60"
-                    helper="Maximum runtime in seconds of the complete backup run: the dumps and S3 uploads of all databases." required />
+                    helper="{{ __('Maximum runtime in seconds of the complete backup run: the dumps and S3 uploads of all databases.') }}" required />
                 <x-forms.input label="{{ __('Missing backup alert after') }}" id="missingBackupNotificationDays" type="number"
                     min="0" max="365" suffix="days" canGate="manageBackups" :canResource="$backup->database"
                     helper="{{ __('Notify through backup failure channels after this many days without an execution. Use 0 to disable.') }}" required />

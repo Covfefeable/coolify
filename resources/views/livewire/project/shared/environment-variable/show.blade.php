@@ -128,7 +128,7 @@
                         @elseif ($isLocked)
                             <x-forms.input id="newLockedValue" type="password" label="{{ __('Value') }}" :copyable="false"
                                 placeholder="{{ __('Hidden after locking. Enter a new value to replace it.') }}"
-                                helper="The locked value cannot be shown. Leave this empty to keep it."
+                                helper="{{ __('The locked value cannot be shown. Leave this empty to keep it.') }}"
                                 :disabled="!$canUpdate || $isDisabled" />
                         @else
                             {{-- Multiline: same shell while loading/loaded to avoid layout jump. --}}
@@ -232,7 +232,7 @@
                                     ['value' => false, 'label' => __('Interpolate $VARIABLES')],
                                     ['value' => true, 'label' => __('Literal (keep $ characters as-is)')],
                                 ]"
-                                    helper="Literal means $VARIABLES in the value is kept as the actual characters '$VARIABLES' instead of being resolved from another variable. Useful when your value contains a $ sign."
+                                    helper="{{ __('Literal means $VARIABLES in the value is kept as the actual characters \'$VARIABLES\' instead of being resolved from another variable. Useful when your value contains a $ sign.') }}"
                                     :disabled="! $canUpdate" />
                             @endif
                             @if ($showBuildtime)

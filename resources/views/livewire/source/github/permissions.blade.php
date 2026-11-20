@@ -22,7 +22,7 @@
                         <x-forms.input canGate="view" :canResource="$github_app" id="metadata"
                             helper="{{ __('Read access is mandatory.') }}" label="{{ __('Metadata') }}" readonly placeholder="{{ __('N/A') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app" id="pullRequests"
-                            helper="Write access is needed for preview deployment status updates."
+                            helper="{{ __('Write access is needed for preview deployment status updates.') }}"
                             label="{{ __('Pull requests') }}" readonly placeholder="{{ __('N/A') }}" />
                     </div>
                 </x-application.settings-section>
@@ -33,10 +33,10 @@
                     <div class="grid gap-4 lg:grid-cols-3">
                         <x-forms.input canGate="view" :canResource="$github_app"
                             label="Deployments" readonly placeholder="{{ __('N/A') }}" :value="$github_app->deployments"
-                            helper="Repository permission. Write access is needed to create deployments and their statuses." />
+                            helper="{{ __('Repository permission. Write access is needed to create deployments and their statuses.') }}" />
                     </div>
                     @if ($missingDeploymentRequirements !== [])
-                        <x-callout type="info" title="Not ready for GitHub deployments" class="mt-4">
+                        <x-callout type="info" title="{{ __('Not ready for GitHub deployments') }}" class="mt-4">
                             Update the App on GitHub, then click Refetch. Missing:
                             <ul class="mt-1 list-disc pl-4">
                                 @foreach ($missingDeploymentRequirements as $requirement)
@@ -63,17 +63,17 @@
                         <x-forms.input canGate="view" :canResource="$github_app"
                             label="Self-hosted runners" readonly placeholder="{{ __('N/A') }}"
                             :value="$github_app->organization_self_hosted_runners"
-                            helper="Organization permission. Write access is needed to register runners." />
+                            helper="{{ __('Organization permission. Write access is needed to register runners.') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app"
                             label="{{ __('Actions') }}" readonly placeholder="{{ __('N/A') }}" :value="$github_app->actions"
-                            helper="Repository permission. Read access is needed for the Workflow job webhook event." />
+                            helper="{{ __('Repository permission. Read access is needed for the Workflow job webhook event.') }}" />
                         <x-forms.input canGate="view" :canResource="$github_app"
                             label="Webhook events" readonly placeholder="{{ __('N/A') }}"
                             :value="implode(', ', $github_app->webhook_events ?? [])"
-                            helper="Refetch to update this list after you change the App on GitHub." />
+                            helper="{{ __('Refetch to update this list after you change the App on GitHub.') }}" />
                     </div>
                     @if ($missingRunnerRequirements !== [])
-                        <x-callout type="info" title="Not ready for runners" class="mt-4">
+                        <x-callout type="info" title="{{ __('Not ready for runners') }}" class="mt-4">
                             Update the App on GitHub, then click Refetch. Missing:
                             <ul class="mt-1 list-disc pl-4">
                                 @foreach ($missingRunnerRequirements as $requirement)

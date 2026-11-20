@@ -16,7 +16,7 @@
             <x-forms.input canGate="update" :canResource="$storage" label="{{ __('Name') }}" id="name" />
             <x-forms.input canGate="update" :canResource="$storage" label="{{ __('Description') }}" id="description" />
             <x-forms.input label="{{ __('Type') }}" :value="$storage->type->label()" disabled
-                helper="The type cannot change after creation. Create a new storage for another type." />
+                helper="{{ __('The type cannot change after creation. Create a new storage for another type.') }}" />
             <div></div>
             @if ($storage->isS3())
             <div class="lg:col-span-2">
@@ -44,10 +44,10 @@
             @endif
             <x-forms.checkbox canGate="update" :canResource="$storage" id="usePathStyleEndpoint"
                 label="{{ __('Use path-style URLs') }}"
-                helper="Turn this off for providers that only accept virtual-hosted-style URLs (bucket.endpoint). Coolify turns it off for Alibaba Cloud OSS, Tencent Cloud COS, and Volcengine TOS, and when the provider rejects path-style URLs." />
+                helper="{{ __('Turn this off for providers that only accept virtual-hosted-style URLs (bucket.endpoint). Coolify turns it off for Alibaba Cloud OSS, Tencent Cloud COS, and Volcengine TOS, and when the provider rejects path-style URLs.') }}" />
             <x-forms.checkbox canGate="update" :canResource="$storage" id="skipTlsVerification"
                 label="{{ __('Skip TLS certificate verification') }}"
-                helper="Turn this on only for an endpoint with a self-signed or private CA certificate. Coolify and the backup helper then accept any certificate, so an attacker on the network path can read or change your backups. Browsers that download files from this storage must still trust the certificate." />
+                helper="{{ __('Turn this on only for an endpoint with a self-signed or private CA certificate. Coolify and the backup helper then accept any certificate, so an attacker on the network path can read or change your backups. Browsers that download files from this storage must still trust the certificate.') }}" />
             @else
                 <div class="lg:col-span-2">
                     @if ($storage->type === App\Enums\BackupStorageType::Webdav)
@@ -88,7 +88,7 @@
                     <div class="flex items-end gap-2 lg:col-span-2">
                         <x-forms.input label="{{ __('Host key fingerprint') }}" disabled
                             :value="$storage->sftpHostKeyFingerprint() ?? 'Not saved yet. Validate the connection to save it.'"
-                            helper="Coolify saves the host key of the server when you validate the connection, and refuses the server when the key changes. Backups do not save a new key. Reset it only when you know why the key changed." />
+                            helper="{{ __('Coolify saves the host key of the server when you validate the connection, and refuses the server when the key changes. Backups do not save a new key. Reset it only when you know why the key changed.') }}" />
                         @can('update', $storage)
                             @if ($storage->sftp_host_key)
                                 <x-forms.button type="button" wire:click="resetHostKey">{{ __('Reset host key') }}</x-forms.button>

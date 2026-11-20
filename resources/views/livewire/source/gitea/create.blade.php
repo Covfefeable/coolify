@@ -10,12 +10,12 @@
                 ['value' => 'codeberg.org', 'label' => 'Codeberg (Forgejo)'],
                 ['value' => 'self-hosted', 'label' => __('Self-hosted Gitea or Forgejo')],
             ]"
-            helper="Codeberg runs Forgejo. For your own Gitea or Forgejo instance, select Self-hosted and enter its URL below." />
+            helper="{{ __('Codeberg runs Forgejo. For your own Gitea or Forgejo instance, select Self-hosted and enter its URL below.') }}" />
 
         <div class="grid gap-4 sm:grid-cols-2">
             <x-forms.input id="name" label="{{ __('Name') }}" required />
             <x-forms.input id="organization" label="{{ __('Organization') }}"
-                helper="Optional. Comma-separated organization or user names to filter repositories (e.g. myorg,myuser)."
+                helper="{{ __('Optional. Comma-separated organization or user names to filter repositories (e.g. myorg,myuser).') }}"
                 placeholder="{{ __('All accessible repositories when empty') }}" />
         </div>
 
@@ -47,7 +47,7 @@
             <div x-cloak x-show="open" x-collapse.duration.200ms class="border-t border-neutral-200 px-3 py-3 dark:border-white/[0.08]">
                 <div class="grid gap-4 sm:grid-cols-2">
                     <x-forms.input id="html_url" label="{{ __('Instance URL') }}" required
-                        helper="For self-hosted Gitea or Forgejo, enter your instance URL (e.g. https://git.example.com)." />
+                        helper="{{ __('For self-hosted Gitea or Forgejo, enter your instance URL (e.g. https://git.example.com).') }}" />
                     <x-forms.input id="api_url" label="API URL" required
                         helper="{{ __('Usually your instance URL with /api/v1 appended.') }}" />
                     <x-forms.input id="custom_user" label="{{ __('Custom Git user') }}" required />

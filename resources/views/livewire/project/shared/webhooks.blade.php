@@ -35,7 +35,7 @@
 
         <div class="flex flex-col gap-6">
             <x-application.settings-section id="deploy-webhook-section" title="{{ __('Deploy webhook') }}"
-                helper="Trigger a deployment from an external service. Requests must include a valid Coolify API authorization token.">
+                helper="{{ __('Trigger a deployment from an external service. Requests must include a valid Coolify API authorization token.') }}">
                 <x-slot:actions>
                     <a class="button" href="https://coolify.io/docs/api-reference/authorization" target="_blank"
                         rel="noopener noreferrer">
@@ -53,7 +53,7 @@
                     <x-unsaved-bar action="submit"
                         dirty="Object.entries($wire.savedSecrets).some(([property, saved]) => ($wire[property] ?? '') !== (saved ?? ''))" />
                     <x-application.settings-section id="manual-git-webhooks-section" title="{{ __('Manual Git webhooks') }}"
-                        helper="Configure these endpoints when the repository is not connected through an official Git App." flush>
+                        helper="{{ __('Configure these endpoints when the repository is not connected through an official Git App.') }}" flush>
                         <x-slot:actions>
                             @if (filled($resource?->gitWebhook))
                                 <a class="button" href="{{ $resource->gitWebhook }}" target="_blank"
@@ -82,7 +82,7 @@
                                             <div class="flex items-end gap-2">
                                                 <x-forms.input type="password" :id="$provider['secret']"
                                                     label="{{ __('Webhook secret') }}"
-                                                    helper="Must exactly match the secret configured in {{ $provider['name'] }}. New secrets need at least 16 characters. Leave empty to disable this webhook."
+                                                    :helper="__('Must exactly match the secret configured in :provider. New secrets need at least 16 characters. Leave empty to disable this webhook.', ['provider' => e($provider['name'])])"
                                                     autocomplete="new-password" copyable />
                                                 <x-forms.button type="button"
                                                     wire:click="generateSecret('{{ $provider['key'] }}')"
@@ -102,7 +102,7 @@
                 </form>
             @elseif ($gitlabAppWebhook)
                 <x-application.settings-section id="manual-git-webhooks-section" title="{{ __('Manual Git webhooks') }}"
-                    helper="GitLab Apps cannot register repository webhooks, so add this webhook to the GitLab project yourself." flush>
+                    helper="{{ __('GitLab Apps cannot register repository webhooks, so add this webhook to the GitLab project yourself.') }}" flush>
                     <x-slot:actions>
                         @can('view', $resource->source)
                             <a class="button" href="{{ route('source.gitlab.show', ['gitlab_app_uuid' => $resource->source->uuid]) }}"
@@ -131,7 +131,7 @@
                 </x-application.settings-section>
             @else
                 <x-application.settings-section id="manual-git-webhooks-section" title="{{ __('Manual Git webhooks') }}"
-                    helper="Manual repository webhooks are only required when a repository is not connected through an official Git App.">
+                    helper="{{ __('Manual repository webhooks are only required when a repository is not connected through an official Git App.') }}">
                     <x-empty size="sm" title="{{ __('Managed by your Git App') }}"
                         description="{{ __('This application uses an official Git App, so Coolify configures repository webhooks automatically.') }}"
                         icon-name="notifications" />
@@ -141,7 +141,7 @@
     @else
         <div class="application-settings-form">
             <x-application.settings-section title="{{ __('Deploy webhook') }}"
-                helper="Trigger an external deployment with a valid Coolify API authorization token.">
+                helper="{{ __('Trigger an external deployment with a valid Coolify API authorization token.') }}">
                 <x-slot:actions>
                     <a class="button" href="https://coolify.io/docs/api-reference/authorization" target="_blank"
                         rel="noopener noreferrer">

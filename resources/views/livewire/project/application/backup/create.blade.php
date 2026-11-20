@@ -10,7 +10,7 @@
                 'label' => $target['type'] . ': ' . $target['name'],
             ])->all()" x-bind:disabled="{{ $targetLocked ? 'true' : 'false' }}" />
             <x-forms.input id="frequency" placeholder="daily or 0 0 * * *"
-                helper="Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression."
+                helper="{{ __('Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression.') }}"
                 label="{{ __('Frequency') }}" required />
         </div>
 

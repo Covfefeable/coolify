@@ -75,7 +75,7 @@
                     <x-forms.input id="description" label="{{ __('Description') }}" canGate="update" :canResource="$team" />
                     <div class="lg:col-span-2">
                         <x-forms.listbox canGate="update" :canResource="$team" id="is_mcp_server_enabled" label="{{ __('MCP server') }}"
-                            helper="Controls whether this team's API tokens can use the instance MCP endpoint."
+                            helper="{{ __('Controls whether this team\'s API tokens can use the instance MCP endpoint.') }}"
                             :disabled="! auth()->user()->can('update', $team)" :options="[
                                 ['value' => false, 'label' => __('Disabled for this team')],
                                 ['value' => true, 'label' => __('Enabled for this team')],
@@ -84,7 +84,7 @@
                     <div class="lg:col-span-2">
                         <x-forms.listbox canGate="update" :canResource="$team"
                             id="is_build_server_fallback_enabled" label="{{ __('Build server fallback') }}"
-                            helper="Controls what happens when an application is configured to use a dedicated build server, but no usable build server is available."
+                            helper="{{ __('Controls what happens when an application is configured to use a dedicated build server, but no usable build server is available.') }}"
                             :disabled="! auth()->user()->can('update', $team)" :options="[
                                 ['value' => true, 'label' => __('Build on the deployment server')],
                                 ['value' => false, 'label' => __('Fail the deployment')],
@@ -93,7 +93,7 @@
                     <div class="lg:col-span-2">
                         <x-forms.listbox canGate="update" :canResource="$team" id="is_two_factor_required"
                             label="{{ __('Two-factor authentication') }}"
-                            helper="When required, members without two-factor authentication must configure it before they can use this team."
+                            helper="{{ __('When required, members without two-factor authentication must configure it before they can use this team.') }}"
                             :disabled="! auth()->user()->can('update', $team)" :options="[
                                 ['value' => false, 'label' => __('Optional for members')],
                                 ['value' => true, 'label' => __('Required for all members')],

@@ -14,7 +14,7 @@
     <x-team.settings-layout>
         <div class="application-settings-form">
             <x-application.settings-section id="team-danger-zone" title="{{ __('Danger zone') }}"
-                helper="Destructive actions for this team cannot be undone.">
+                helper="{{ __('Destructive actions for this team cannot be undone.') }}">
                 <x-danger-zone title="{{ __('Delete team') }}">
                             @if (auth()->user()->roleInTeam(currentTeam()->id) !== 'owner')
                                 <p>

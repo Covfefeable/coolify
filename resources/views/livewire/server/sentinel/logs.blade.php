@@ -8,7 +8,7 @@
         <x-server.sidebar :server="$server" activeMenu="sentinel" activeSubMenu="logs" />
         <div class="application-settings-form w-full">
             <x-application.settings-section title="{{ __('Sentinel logs') }}"
-                helper="Search, filter, follow, copy, or download recent output from the Sentinel container."
+                helper="{{ __('Search, filter, follow, copy, or download recent output from the Sentinel container.') }}"
                 flush class="logs-settings-section">
                 @if ($server->isSentinelEnabled())
                     @php

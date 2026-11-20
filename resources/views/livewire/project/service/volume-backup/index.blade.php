@@ -115,7 +115,7 @@
 
             <div class="application-settings-form min-w-0 flex flex-col gap-6">
         <x-application.settings-section title="{{ __('Backups') }}"
-            helper="Manage database, persistent volume, and directory backup schedules for this service.">
+            helper="{{ __('Manage database, persistent volume, and directory backup schedules for this service.') }}">
             @can('update', $service)
                 <x-slot:actions>
                     <x-modal-input title="{{ __('Import backup') }}" buttonTitle="{{ __('Import backup') }}">
@@ -224,7 +224,7 @@
         </div>
 
         <x-application.settings-section title="{{ __('Schedules') }}"
-            helper="Database, persistent volume, and directory backup schedules for this service."
+            helper="{{ __('Database, persistent volume, and directory backup schedules for this service.') }}"
             :flush="$backups->isNotEmpty() || $databaseBackups->isNotEmpty()">
             <x-table.loading target="openSchedule" text="Loading schedule..." />
 

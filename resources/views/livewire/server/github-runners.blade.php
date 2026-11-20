@@ -132,7 +132,7 @@
                                 helper="{{ __('Organization GitHub App that receives the Workflow job webhook events.') }}" />
                             <x-forms.input id="labels" label="{{ __('Labels') }}" required canGate="update" :canResource="$server"
                                 placeholder="coolify"
-                                helper="Comma-separated custom labels. Coolify also registers self-hosted and linux. Jobs must ask for at least one custom label." />
+                                helper="{{ __('Comma-separated custom labels. Coolify also registers self-hosted and linux. Jobs must ask for at least one custom label.') }}" />
                             @if ($server->isBuildServer())
                                 <x-forms.listbox id="isDedicated" label="{{ __('Application builds') }}" canGate="update"
                                     :canResource="$server" :options="[
@@ -166,7 +166,7 @@
                                     ['value' => 'sysbox', 'label' => __('Isolated Docker (Sysbox)')],
                                     ['value' => 'none', 'label' => __('No Docker (isolated, no container actions)')],
                                 ]"
-                                helper="Docker: each job gets a private Docker daemon. The daemon runs privileged, so a job can get root access to this server. Use it only for trusted repositories.<br><br>Isolated Docker: each job gets a private Docker daemon in an unprivileged Sysbox container. Everything that needs Docker works, and root in the job has no rights on this server. Needs Sysbox on the server.<br><br>No Docker: jobs run in an unprivileged container. JavaScript actions, composite actions, and shell steps work. Docker container actions, services, container jobs, and docker commands fail.<br><br>The host Docker socket is never shared." />
+                                :helper="__('Docker: each job gets a private Docker daemon. The daemon runs privileged, so a job can get root access to this server. Use it only for trusted repositories.<br><br>Isolated Docker: each job gets a private Docker daemon in an unprivileged Sysbox container. Everything that needs Docker works, and root in the job has no rights on this server. Needs Sysbox on the server.<br><br>No Docker: jobs run in an unprivileged container. JavaScript actions, composite actions, and shell steps work. Docker container actions, services, container jobs, and docker commands fail.<br><br>The host Docker socket is never shared.')" />
                             <x-forms.input id="runnerImage" label="{{ __('Runner image') }}" canGate="update" :canResource="$server"
                                 :placeholder="config('constants.github_runner.image')"
                                 helper="{{ __('Empty uses the latest official runner image, which Coolify pulls for every runner. Set a tag, for example ghcr.io/actions/actions-runner:2.337.0, to pin a version, or use a custom image based on the official one to add tools. GitHub stops sending jobs to runners that are more than 30 days old.') }}" />
@@ -181,13 +181,13 @@
                         <div class="grid gap-4 lg:grid-cols-3">
                             <x-forms.input id="capacityWaitTimeout" type="number" min="1" max="1440"
                                 label="{{ __('Queue wait') }}" required canGate="update" :canResource="$server"
-                                helper="A job that waits longer for a free runner is dropped." />
+                                helper="{{ __('A job that waits longer for a free runner is dropped.') }}" />
                             <x-forms.input id="idleTimeout" type="number" min="1" max="1440" label="{{ __('Idle runner') }}"
                                 required canGate="update" :canResource="$server"
-                                helper="A runner that gets no job in this time is removed." />
+                                helper="{{ __('A runner that gets no job in this time is removed.') }}" />
                             <x-forms.input id="jobTimeout" type="number" min="1" max="7200" label="{{ __('Job') }}" required
                                 canGate="update" :canResource="$server"
-                                helper="A job that runs longer is stopped." />
+                                helper="{{ __('A job that runs longer is stopped.') }}" />
                         </div>
                     </x-application.settings-section>
                 </form>

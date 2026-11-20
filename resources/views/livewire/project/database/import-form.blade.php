@@ -91,19 +91,19 @@
                     @if (in_array($resourceDbType, ['standalone-postgresql', 'postgresql'], true) && ! $dumpAll)
                         <div class="max-w-sm">
                             <x-forms.checkbox id="replaceExisting" live label="{{ __('Replace objects that already exist') }}"
-                                helper="Archive backups: drops matching tables, functions, types, and other PostgreSQL objects before restoring them. SQL backups: recreates the database before the restore."
+                                helper="{{ __('Archive backups: drops matching tables, functions, types, and other PostgreSQL objects before restoring them. SQL backups: recreates the database before the restore.') }}"
                                 canGate="update" :canResource="$this->resource" />
                         </div>
                         <div class="max-w-sm">
                             <x-forms.checkbox id="keepOwners" live label="{{ __('Keep owners and privileges') }}"
-                                helper="Archive backups: restores object owners and GRANTs from the backup. Leave this off for backups from another server (for example Amazon RDS): its roles usually do not exist here, and the whole restore would be rolled back."
+                                helper="{{ __('Archive backups: restores object owners and GRANTs from the backup. Leave this off for backups from another server (for example Amazon RDS): its roles usually do not exist here, and the whole restore would be rolled back.') }}"
                                 canGate="update" :canResource="$this->resource" />
                         </div>
                     @endif
                     @if (in_array($resourceDbType, ['standalone-mysql', 'standalone-mariadb', 'mysql', 'mariadb'], true) && $dumpAll)
                         <div class="max-w-sm">
                             <x-forms.checkbox id="restoreMysqlUsers" live label="Restore users and privileges (mysql system database)"
-                                helper="Off: the system databases (mysql, sys) of the backup are skipped, so this database keeps its own users and passwords. On: the users, passwords, and privileges of the backup replace the current ones."
+                                helper="{{ __('Off: the system databases (mysql, sys) of the backup are skipped, so this database keeps its own users and passwords. On: the users, passwords, and privileges of the backup replace the current ones.') }}"
                                 canGate="update" :canResource="$this->resource" />
                         </div>
                         @if ($restoreMysqlUsers)
@@ -116,7 +116,7 @@
                     @if ($resourceDbType === 'standalone-sqlite' && count($this->sqliteDatabaseFiles) > 0)
                         <div class="max-w-sm">
                             <x-forms.listbox id="sqliteDatabase" label="{{ __('Restore into') }}" live
-                                helper="The database file the backup replaces. Coolify preselects the file named in the backup file name."
+                                helper="{{ __('The database file the backup replaces. Coolify preselects the file named in the backup file name.') }}"
                                 :options="collect($this->sqliteDatabaseFiles)->map(fn ($file) => ['value' => $file, 'label' => $file])->all()"
                                 canGate="update" :canResource="$this->resource" />
                         </div>
@@ -124,7 +124,7 @@
                     @if ($resourceDbType === 'standalone-mongodb')
                         <div class="max-w-sm">
                             <x-forms.checkbox id="replaceExisting" live label="{{ __('Replace collections that already exist') }}"
-                                helper="Drops each collection from the backup before restoring it. Without this option, documents that already exist are skipped."
+                                helper="{{ __('Drops each collection from the backup before restoring it. Without this option, documents that already exist are skipped.') }}"
                                 canGate="update" :canResource="$this->resource" />
                         </div>
                     @endif
@@ -137,7 +137,7 @@
                         </button>
                         <div x-cloak x-show="showCommand" class="mt-3">
                             <x-forms.textarea rows="10" readonly label="{{ __('Import command') }}"
-                                helper="Coolify detects the backup format (SQL, archive, gzip, bz2, xz, zip, or tar) before it changes the database."
+                                helper="{{ __('Coolify detects the backup format (SQL, archive, gzip, bz2, xz, zip, or tar) before it changes the database.') }}"
                                 wire:model="restoreCommandText" canGate="update"
                                 :canResource="$this->resource" />
                         </div>
@@ -259,7 +259,7 @@
                                 placeholder="{{ __('Select storage') }}" live />
 
                             <x-forms.input label="{{ __('File path') }}"
-                                helper="Path to the backup file in the storage, e.g., /backups/database-2025-01-15.gz"
+                                helper="{{ __('Path to the backup file in the storage, e.g., /backups/database-2025-01-15.gz') }}"
                                 placeholder="/backups/database-backup.gz" wire:model.blur="s3Path"
                                 wire:keydown.enter="checkS3File" canGate="update"
                                 :canResource="$this->resource" />

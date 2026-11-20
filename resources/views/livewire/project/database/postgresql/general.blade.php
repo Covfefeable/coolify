@@ -14,10 +14,10 @@
                 <x-forms.input label="{{ __('Description') }}" id="description" canGate="update" :canResource="$database" />
                 <div class="lg:col-span-2">
                     <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database"
-                        helper="Use a published PostgreSQL image from Docker Hub." />
+                        helper="{{ __('Use a published PostgreSQL image from Docker Hub.') }}" />
                 </div>
             </div>
-            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="Keep these values aligned with the credentials configured inside PostgreSQL.">
+            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="{{ __('Keep these values aligned with the credentials configured inside PostgreSQL.') }}">
                 @if ($database->started_at)
                     <x-callout type="warning" title="{{ __('Keep credentials synchronized') }}">
                         Changing values here does not update PostgreSQL. Update PostgreSQL first, then synchronize the
@@ -39,7 +39,7 @@
                         helper="{{ $database->started_at ? 'You can only change this in the database.' : null }}" />
                 </div>
             </x-application.settings-subsection>
-            <x-application.settings-subsection id="initialization-section" title="{{ __('Initialization') }}" helper="Configure the options used when PostgreSQL creates its initial data directory.">
+            <x-application.settings-subsection id="initialization-section" title="{{ __('Initialization') }}" helper="{{ __('Configure the options used when PostgreSQL creates its initial data directory.') }}">
                 <div class="grid gap-4 lg:grid-cols-2">
                     <x-forms.input label="{{ __('Initial database arguments') }}" id="postgresInitdbArgs"
                         placeholder="{{ __('Leave empty to use the image default.') }}" canGate="update" :canResource="$database" />
@@ -82,7 +82,7 @@
                         label="{{ __('Proxy timeout') }}" helper="{{ __('Timeout in seconds. The default is 3600.') }}"
                         canGate="update" :canResource="$database" />
                     <x-forms.input placeholder="3000:5432" id="portsMappings" label="{{ __('Port mappings') }}"
-                        helper="Comma-separated host-to-container mappings, for example 3000:5432."
+                        helper="{{ __('Comma-separated host-to-container mappings, for example 3000:5432.') }}"
                         canGate="update" :canResource="$database" />
                 </div>
             </x-application.settings-subsection>
@@ -99,7 +99,7 @@
                     id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" canGate="update"
                     :canResource="$database" />
             @endif
-            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="Override the PostgreSQL configuration used by this container.">
+            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="{{ __('Override the PostgreSQL configuration used by this container.') }}">
                 @if ($isPasswordHiddenForMember)
                     <x-forms.input label="{{ __('Custom PostgreSQL configuration') }}" disabled value="Hidden (only admins can view)" />
                 @else

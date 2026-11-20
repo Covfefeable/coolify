@@ -15,14 +15,14 @@
                 <x-forms.input label="{{ __('Description') }}" id="description" canGate="update" :canResource="$database" />
                 <div class="lg:col-span-2">
                     <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database"
-                        helper="Use a published peakimages/sqlite image from Docker Hub." />
+                        helper="{{ __('Use a published peakimages/sqlite image from Docker Hub.') }}" />
                 </div>
             </div>
-            <x-application.settings-subsection id="database-files-section" title="{{ __('Database files') }}" helper="Applications use these databases by mounting the data volume.">
+            <x-application.settings-subsection id="database-files-section" title="{{ __('Database files') }}" helper="{{ __('Applications use these databases by mounting the data volume.') }}">
                 <div class="grid gap-4 lg:grid-cols-2">
                     <x-forms.input label="{{ __('File names') }}" id="sqliteDatabases" placeholder="database.sqlite" required
                         canGate="update" :canResource="$database"
-                        helper="Comma-separated file names. Missing files are created in the data volume on the next start. Removing a name does not delete its file. Backups restore into the first file." />
+                        helper="{{ __('Comma-separated file names. Missing files are created in the data volume on the next start. Removing a name does not delete its file. Backups restore into the first file.') }}" />
                 </div>
             </x-application.settings-subsection>
         </x-application.settings-section>

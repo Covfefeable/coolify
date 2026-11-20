@@ -135,7 +135,7 @@ $appListboxOptions = array_merge(
 
         {{-- KPIs --}}
         <x-application.settings-section id="analytics-overview-section" title="{{ __('Overview') }}"
-            helper="Aggregate request volume for the selected filters and range.">
+            helper="{{ __('Aggregate request volume for the selected filters and range.') }}">
             <div class="grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-neutral-200 sm:grid-cols-3 lg:grid-cols-5 dark:bg-white/[0.07]">
                 <div class="flex flex-col bg-[var(--coollabs-base)] px-4 py-3">
                     <span class="text-[11px] font-medium tracking-wide text-neutral-500 uppercase dark:text-fg-dim">{{ __('Requests') }}</span>
@@ -232,12 +232,12 @@ $appListboxOptions = array_merge(
         <div @class(['grid grid-cols-1 gap-6', 'lg:grid-cols-2' => $appUuid === ''])>
             @if ($appUuid === '')
                 <x-application.settings-section id="analytics-hosts-section" title="{{ __('Top hosts') }}"
-                    helper="Served hostnames ranked by request volume." flush>
+                    helper="{{ __('Served hostnames ranked by request volume.') }}" flush>
                     @include('livewire.traffic._hosts-list', ['hosts' => $topHosts])
                 </x-application.settings-section>
 
                 <x-application.settings-section id="analytics-apps-section" title="{{ __('Top applications') }}"
-                    helper="Applications and services ranked by request volume. Open one for its analytics." flush>
+                    helper="{{ __('Applications and services ranked by request volume. Open one for its analytics.') }}" flush>
                     @if (empty($topApps))
                         <x-empty size="sm" title="{{ __('No application data') }}"
                             description="{{ __('No per-application requests were recorded for the selected range.') }}"

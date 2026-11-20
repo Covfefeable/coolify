@@ -223,7 +223,7 @@
                             </span>
                         </div>
                         <div class="hidden text-[12px] font-medium text-neutral-600 md:block dark:text-fg-dim">
-                            <span class="inline-flex items-center gap-1" :title="`${server.resourceCount} ${server.resourceCount === 1 ? 'resource' : 'resources'}`">
+                            <span class="inline-flex items-center gap-1" :title="(server.resourceCount === 1 ? @js(__(':count resource')) : @js(__(':count resources'))).replace(':count', server.resourceCount)">
                                 <x-reicon name="grid" class="size-3.5 text-neutral-400 dark:text-fg-faint" />
                                 <span x-text="server.resourceCount"></span>
                             </span>

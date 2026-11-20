@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-6" x-init="$wire.loadImages">
     <x-application.settings-section title="{{ __('Rollback images') }}"
-        helper="Keep previously built Docker images available for fast rollbacks. Rollback uses an existing image without rebuilding the application. Images in the Docker registry are pulled to the server first." flush>
+        helper="{{ __('Keep previously built Docker images available for fast rollbacks. Rollback uses an existing image without rebuilding the application. Images in the Docker registry are pulled to the server first.') }}" flush>
         <x-slot:actions>
             @can('view', $application)
                 <x-forms.button wire:click="loadImages(true)">
@@ -22,7 +22,7 @@
             <div class="max-w-sm">
                 <x-forms.input id="dockerImagesToKeep" type="number" min="0" max="100"
                     label="{{ __('Images to keep') }}"
-                    helper="Set to 0 to keep only the running image. Pull request images are always removed during cleanup."
+                    helper="{{ __('Set to 0 to keep only the running image. Pull request images are always removed during cleanup.') }}"
                     canGate="update" :canResource="$application" :disabled="$serverRetentionDisabled" />
             </div>
         </form>

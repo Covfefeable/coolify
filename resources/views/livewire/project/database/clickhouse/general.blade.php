@@ -32,10 +32,10 @@
                 <x-forms.input label="{{ __('Description') }}" id="description" canGate="update" :canResource="$database" />
                 <div class="lg:col-span-2">
                     <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database"
-                        helper="Use a published clickhouse/clickhouse-server image from Docker Hub." />
+                        helper="{{ __('Use a published clickhouse/clickhouse-server image from Docker Hub.') }}" />
                 </div>
             </div>
-            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="Keep these values aligned with the credentials configured inside ClickHouse.">
+            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="{{ __('Keep these values aligned with the credentials configured inside ClickHouse.') }}">
                 @if (!$database->started_at)
                     <x-callout type="warning" title="{{ __('Verify the initial credentials') }}">
                         You can only change these credentials here before the first start. Later changes must be made inside
@@ -91,7 +91,7 @@
                         label="{{ __('Proxy timeout') }}" helper="{{ __('Timeout in seconds. The default is 3600.') }}"
                         canGate="update" :canResource="$database" />
                     <x-forms.input placeholder="3000:8123" id="portsMappings" label="{{ __('Port mappings') }}"
-                        helper="Comma-separated host-to-container mappings, for example 3000:8123."
+                        helper="{{ __('Comma-separated host-to-container mappings, for example 3000:8123.') }}"
                         canGate="update" :canResource="$database" />
                 </div>
             </x-application.settings-subsection>

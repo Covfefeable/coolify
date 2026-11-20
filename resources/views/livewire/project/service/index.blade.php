@@ -68,7 +68,7 @@
                                     </div>
                                 @endif
                                 <x-forms.input canGate="update" :canResource="$serviceApplication"
-                                    helper="You can change the image you would like to deploy.<br><br><span class='dark:text-warning'>WARNING. You could corrupt your data. Only do it if you know what you are doing.</span>"
+                                    :helper="__('You can change the image you would like to deploy.<br><br><span class=\'dark:text-warning\'>WARNING. You could corrupt your data. Only do it if you know what you are doing.</span>')"
                                     label="{{ __('Image') }}" id="image"></x-forms.input>
                             </div>
                         </div>
@@ -184,7 +184,7 @@
                             <x-forms.input canGate="update" :canResource="$serviceDatabase" label="{{ __('Description') }}"
                                 id="description"></x-forms.input>
                             <x-forms.input class="sm:col-span-2" canGate="update" :canResource="$serviceDatabase" required
-                                helper="You can change the image you would like to deploy.<br><br><span class='dark:text-warning'>WARNING. You could corrupt your data. Only do it if you know what you are doing.</span>"
+                                :helper="__('You can change the image you would like to deploy.<br><br><span class=\'dark:text-warning\'>WARNING. You could corrupt your data. Only do it if you know what you are doing.</span>')"
                                 label="{{ __('Image') }}" id="image"></x-forms.input>
                         </div>
                         <div class="border-t border-neutral-200 pt-5 dark:border-white/[0.06]">
@@ -233,7 +233,7 @@
                                 </div>
                                 @if ($db_url_public)
                                     <x-forms.input label="Database IP:PORT (public)"
-                                        helper="Your credentials are available in your environment variables." type="password"
+                                        helper="{{ __('Your credentials are available in your environment variables.') }}" type="password"
                                         readonly wire:model="db_url_public" />
                                 @endif
                             </div>

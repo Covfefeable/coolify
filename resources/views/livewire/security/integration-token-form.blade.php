@@ -16,7 +16,7 @@
                     placeholder="{{ __('Paste the machine identity client secret') }}" />
                 <x-forms.input required id="metadata.base_url" label="{{ __('Base URL') }}"
                     placeholder="https://app.infisical.com"
-                    helper="Use the URL of your self-hosted Infisical instance, or the Infisical cloud URL." />
+                    helper="{{ __('Use the URL of your self-hosted Infisical instance, or the Infisical cloud URL.') }}" />
                 <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="{{ __('Request timeout (optional)') }}"
                     placeholder="10" helper="{{ __('Seconds to wait for each request. Increase it if your instance responds slowly.') }}" />
             </div>
@@ -35,7 +35,7 @@
                 <x-forms.input required id="metadata.base_url" label="{{ __('Base URL') }}"
                     placeholder="https://vault.example.com:8200" />
                 <x-forms.input id="metadata.namespace" label="Namespace (optional)"
-                    placeholder="admin/team-a" helper="Only for Vault Enterprise / HCP Vault." />
+                    placeholder="admin/team-a" helper="{{ __('Only for Vault Enterprise / HCP Vault.') }}" />
                 <x-forms.input type="number" min="1" max="300" id="metadata.timeout" label="{{ __('Request timeout (optional)') }}"
                     placeholder="10" helper="{{ __('Seconds to wait for each request. Increase it if your instance responds slowly.') }}" />
             </div>

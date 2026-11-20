@@ -18,9 +18,9 @@
                 <div class="grid gap-4 lg:grid-cols-2">
                     @can('update', $settings)
                         <x-forms.input type="password" autocomplete="new-password" :required="$telegramEnabled" id="telegramToken"
-                            label="{{ __('Bot API token') }}" helper="Create a bot with BotFather to obtain this token." />
+                            label="{{ __('Bot API token') }}" helper="{{ __('Create a bot with BotFather to obtain this token.') }}" />
                         <x-forms.input type="password" autocomplete="new-password" :required="$telegramEnabled" id="telegramChatId"
-                            label="Chat ID" helper="Add the bot to your chat, then enter that chat ID." />
+                            label="Chat ID" helper="{{ __('Add the bot to your chat, then enter that chat ID.') }}" />
                     @else
                         <x-forms.input disabled label="{{ __('Bot API token') }}" value="Hidden (only admins can view)" />
                         <x-forms.input disabled label="Chat ID" value="Hidden (only admins can view)" />

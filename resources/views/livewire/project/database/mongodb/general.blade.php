@@ -14,10 +14,10 @@
                 <x-forms.input label="{{ __('Description') }}" id="description" canGate="update" :canResource="$database" />
                 <div class="lg:col-span-2">
                     <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database"
-                        helper="Use a published MongoDB image from Docker Hub." />
+                        helper="{{ __('Use a published MongoDB image from Docker Hub.') }}" />
                 </div>
             </div>
-            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="Keep these values aligned with the credentials configured inside MongoDB.">
+            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="{{ __('Keep these values aligned with the credentials configured inside MongoDB.') }}">
                 @if ($database->started_at)
                     <x-callout type="warning" title="{{ __('Keep credentials synchronized') }}">
                         Changing values here does not update MongoDB. Update MongoDB first, then synchronize the values here
@@ -77,7 +77,7 @@
                         label="{{ __('Proxy timeout') }}" helper="{{ __('Timeout in seconds. The default is 3600.') }}"
                         canGate="update" :canResource="$database" />
                     <x-forms.input placeholder="3000:27017" id="portsMappings" label="{{ __('Port mappings') }}"
-                        helper="Comma-separated host-to-container mappings, for example 3000:27017."
+                        helper="{{ __('Comma-separated host-to-container mappings, for example 3000:27017.') }}"
                         canGate="update" :canResource="$database" />
                 </div>
             </x-application.settings-subsection>
@@ -94,7 +94,7 @@
                     id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" canGate="update"
                     :canResource="$database" />
             @endif
-            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="Override the MongoDB configuration used by this container.">
+            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="{{ __('Override the MongoDB configuration used by this container.') }}">
                 @if ($isPasswordHiddenForMember)
                     <x-forms.input label="{{ __('Custom MongoDB configuration') }}" disabled value="Hidden (only admins can view)" />
                 @else

@@ -159,7 +159,7 @@
                                 <x-forms.checkbox id="enable_ipv4" label="{{ __('Enable IPv4') }}" fullWidth />
                                 <x-forms.checkbox id="enable_ipv6" label="{{ __('Enable IPv6') }}" fullWidth />
                                 <x-forms.checkbox id="enable_backups" label="{{ __('Enable Hetzner backups') }}" fullWidth
-                                    helper="Adds 20% to the provider server price." />
+                                    helper="{{ __('Adds 20% to the provider server price.') }}" />
                             </div>
 
                             <div class="border-t border-neutral-200 pt-4 dark:border-white/[0.08]">

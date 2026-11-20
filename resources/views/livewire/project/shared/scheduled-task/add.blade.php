@@ -2,7 +2,7 @@
     <div class="grid gap-4 sm:grid-cols-2">
         <x-forms.input placeholder="{{ __('Database cleanup') }}" id="name" label="{{ __('Name') }}" />
         <x-forms.input placeholder="{{ __('0 0 * * * or daily') }}"
-            helper="Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression. Runs in the server timezone ({{ $serverTimezone }}). Change it in the server settings."
+            :helper="__('Use every_minute, hourly, daily, weekly, monthly, yearly, or a cron expression. Runs in the server timezone (:timezone). Change it in the server settings.', ['timezone' => e($serverTimezone)])"
             id="frequency" label="{{ __('Schedule') }}" />
     </div>
 

@@ -75,7 +75,7 @@
                         <div class="grid gap-4 lg:grid-cols-2">
                             <div class="lg:col-span-2">
                                 <x-forms.input id="server_name" label="{{ __('Server name') }}"
-                                    helper="A friendly name shown in Coolify and used as the VPS hostname." />
+                                    helper="{{ __('A friendly name shown in Coolify and used as the VPS hostname.') }}" />
                             </div>
                             <x-forms.listbox id="selected_data_center_id" label="{{ __('Data center') }}" required live
                                 placeholder="{{ __('Select a data center') }}" :options="$dataCenterOptions" />

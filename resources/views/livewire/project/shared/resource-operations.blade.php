@@ -153,7 +153,7 @@
 " class="flex flex-col gap-6">
     @can('update', $resource)
         <x-application.settings-section id="clone-resource-section" title="{{ __('Clone resource') }}"
-            helper="Create a copy of this resource. Choose where it runs and where it belongs. The current values are selected by default.">
+            helper="{{ __('Create a copy of this resource. Choose where it runs and where it belongs. The current values are selected by default.') }}">
             <x-callout type="info" title="{{ __('What is copied') }}">
                 Cloning copies settings, environment variables, and resource configuration. Stored files,
                 database records, and other persistent data are copied only when you select Clone volume data.
@@ -182,7 +182,7 @@
 
             <div class="mt-4 flex">
                 <x-forms.checkbox id="cloneVolumeData" live label="{{ __('Clone volume data') }}"
-                    helper="Copies the data of the persistent volumes to the clone. A running source resource is stopped while the data is copied and started again afterwards." />
+                    helper="{{ __('Copies the data of the persistent volumes to the clone. A running source resource is stopped while the data is copied and started again afterwards.') }}" />
             </div>
 
             <div
@@ -220,7 +220,7 @@
 
         @if (isDev())
             <x-application.settings-section id="migrate-destination-section" title="{{ __('Migrate to another server') }}"
-                helper="Move this resource to a different validated and reachable server. The resource is stopped and persistent volumes can be transferred.">
+                helper="{{ __('Move this resource to a different validated and reachable server. The resource is stopped and persistent volumes can be transferred.') }}">
                 <x-slot:actions>
                     <x-status-badge status="Dev" type="warning" />
                 </x-slot:actions>
@@ -245,7 +245,7 @@
 
                 <div x-show="selectedMigrateDestination" x-cloak class="mt-4 flex">
                     <x-forms.checkbox id="migrateVolumeData" live label="{{ __('Migrate persistent volume data') }}"
-                        helper="Named Docker volumes and bind-mount host paths are transferred when both servers are managed by Coolify." />
+                        helper="{{ __('Named Docker volumes and bind-mount host paths are transferred when both servers are managed by Coolify.') }}" />
                 </div>
 
                 <div x-show="selectedMigrateDestination" x-cloak
@@ -270,7 +270,7 @@
         @endif
 
         <x-application.settings-section id="move-resource-section" title="{{ __('Move resource') }}"
-            helper="Transfer this resource to another project environment without changing the running deployment.">
+            helper="{{ __('Transfer this resource to another project environment without changing the running deployment.') }}">
             @if ($projects->count() > 0)
                 <div class="grid gap-4 md:grid-cols-2">
                     <x-forms.listbox id="move-resource-project" label="{{ __('Project') }}" :wire="false"
@@ -278,7 +278,7 @@
                         placeholder="{{ __('Choose a project…') }}" />
 
                     <x-forms.listbox id="move-resource-environment" label="{{ __('Environment') }}"
-                        helper="The current environment is excluded." :wire="false"
+                        helper="{{ __('The current environment is excluded.') }}" :wire="false"
                         x-model="selectedMoveEnvironment" x-effect="options = moveEnvironmentOptions"
                         x-bind:disabled="!selectedMoveProject || availableEnvironments.length === 0"
                         placeholder="{{ __('Choose an environment…') }}" />

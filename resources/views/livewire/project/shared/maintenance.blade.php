@@ -1,7 +1,7 @@
 <form wire:submit="submit">
     <x-unsaved-bar action="submit" targets="maintenancePage" />
     <x-application.settings-section id="maintenance-section" title="{{ __('Maintenance mode') }}"
-        helper="Show a maintenance page with a 503 status on all domains of this resource. The containers keep running, and the change applies without a redeploy.">
+        helper="{{ __('Show a maintenance page with a 503 status on all domains of this resource. The containers keep running, and the change applies without a redeploy.') }}">
         @if ($this->isSupported)
             <x-slot:badges>
                 {{-- The inline wrapper puts the badge text on the same line as the title text. --}}
@@ -33,7 +33,7 @@
                 <x-forms.textarea canGate="update" :canResource="$resource" id="maintenancePage" rows="10" monospace
                     label="Custom maintenance page (HTML)"
                     placeholder="{{ __('Leave empty to use the Coolify default maintenance page.') }}"
-                    helper="One self-contained HTML file (max {{ \App\Models\Server::PROXY_ERROR_PAGE_MAX_BYTES / 1024 }} KB) with inline CSS and images." />
+                    :helper="__('One self-contained HTML file (max :max KB) with inline CSS and images.', ['max' => e(\App\Models\Server::PROXY_ERROR_PAGE_MAX_BYTES / 1024)])" />
                 @can('update', $resource)
                     <div class="flex gap-2">
                         <x-forms.button type="button" wire:click="resetMaintenancePage">{{ __('Reset to default') }}</x-forms.button>

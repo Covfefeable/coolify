@@ -14,10 +14,10 @@
                 <x-forms.input label="{{ __('Description') }}" id="description" canGate="update" :canResource="$database" />
                 <div class="lg:col-span-2">
                     <x-forms.input label="{{ __('Image') }}" id="image" required canGate="update" :canResource="$database"
-                        helper="Use a published eqalpha/keydb image from Docker Hub." />
+                        helper="{{ __('Use a published eqalpha/keydb image from Docker Hub.') }}" />
                 </div>
             </div>
-            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="Keep this value aligned with the password configured inside KeyDB.">
+            <x-application.settings-subsection id="credentials-section" title="{{ __('Credentials') }}" helper="{{ __('Keep this value aligned with the password configured inside KeyDB.') }}">
                 @if ($database->started_at)
                     @if ($isPasswordHiddenForMember)
                         <x-forms.input label="{{ __('Password') }}" disabled value="Hidden (only admins can view)" />
@@ -92,7 +92,7 @@
                     id="customDockerRunOptions" label="{{ __('Custom Docker options') }}" canGate="update"
                     :canResource="$database" />
             @endif
-            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="Override only the KeyDB directives you need. All other defaults remain active.">
+            <x-application.settings-subsection id="configuration-section" title="{{ __('Configuration') }}" helper="{{ __('Override only the KeyDB directives you need. All other defaults remain active.') }}">
                 @if ($isPasswordHiddenForMember)
                     <x-forms.input label="{{ __('Custom KeyDB configuration') }}" disabled value="Hidden (only admins can view)" />
                 @else

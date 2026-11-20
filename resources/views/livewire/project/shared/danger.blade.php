@@ -16,7 +16,7 @@
         </x-callout>
     @endif
     <x-application.settings-section id="danger-zone-section" title="{{ __('Danger zone') }}"
-        helper="Destructive resource actions cannot be undone.">
+        helper="{{ __('Destructive resource actions cannot be undone.') }}">
         @if (in_array($resource?->type(), ['standalone-redis', 'standalone-keydb', 'standalone-dragonfly']))
             <x-danger-zone title="{{ __('Flush all data') }}" class="mb-4">
                 <p>

@@ -240,11 +240,11 @@
                             <div class="grid grid-cols-1 gap-4 border-t border-neutral-200 pt-4 sm:grid-cols-2 dark:border-white/10">
                                 <x-forms.listbox id="preview-domain-indexing-{{ $preview->id }}" label="{{ __('Search engine indexing') }}"
                                     :wire="false" value="noindex" disabled
-                                    helper="Preview deployments are always excluded from search indexing."
+                                    helper="{{ __('Preview deployments are always excluded from search indexing.') }}"
                                     :options="[['value' => 'noindex', 'label' => __('Noindex')]]" />
                                 <x-forms.listbox id="preview-domain-direction-{{ $preview->id }}" label="{{ __('www redirect') }}"
                                     :wire="false" :value="$editingIndex !== null ? ($domainRows[$editingIndex]['redirect'] ?? 'both') : 'both'" disabled
-                                    helper="Read-only preview routing configuration."
+                                    helper="{{ __('Read-only preview routing configuration.') }}"
                                     :options="[
                                         ['value' => 'both', 'label' => __('No redirect')],
                                         ['value' => 'www', 'label' => __('Redirect to www')],

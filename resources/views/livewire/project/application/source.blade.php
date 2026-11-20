@@ -125,7 +125,7 @@
                 <div id="manual-host-keys" x-show="editManually" x-cloak class="p-4">
                     <div>
                         <x-forms.textarea id="gitSshKnownHosts" rows="4" label="{{ __('Known hosts') }}"
-                            helper="One line for each key: host key-type key. Use [host]:port for a custom SSH port. GitHub and Bitbucket Cloud use their published keys and cannot be added here. Click Save to apply."
+                            helper="{{ __('One line for each key: host key-type key. Use [host]:port for a custom SSH port. GitHub and Bitbucket Cloud use their published keys and cannot be added here. Click Save to apply.') }}"
                             placeholder="[git.example.com]:2222 ssh-ed25519 AAAA..." canGate="update"
                             :canResource="$application" />
                     </div>
@@ -147,7 +147,7 @@
                 @endif
                 <div class="grid gap-4 lg:grid-cols-2">
                     <x-forms.input id="gitHttpsUsername" label="{{ __('Username') }}" autocomplete="off"
-                        helper="Some hosts accept any username with an access token (for example Azure DevOps)."
+                        helper="{{ __('Some hosts accept any username with an access token (for example Azure DevOps).') }}"
                         canGate="update" :canResource="$application" />
                     <x-forms.input id="gitHttpsPassword" type="password" label="{{ __('Password or token') }}"
                         autocomplete="new-password"

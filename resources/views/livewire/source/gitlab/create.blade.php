@@ -7,7 +7,7 @@
         <div class="grid gap-4 sm:grid-cols-2">
             <x-forms.input id="name" label="{{ __('Name') }}" required />
             <x-forms.input id="group_name" label="{{ __('Group name') }}"
-                helper="Optional. Comma-separated group names to filter repositories (e.g. myorg,myteam)."
+                helper="{{ __('Optional. Comma-separated group names to filter repositories (e.g. myorg,myteam).') }}"
                 placeholder="{{ __('All accessible repositories when empty') }}" />
         </div>
 
@@ -39,7 +39,7 @@
             <div x-cloak x-show="open" x-collapse.duration.200ms class="border-t border-neutral-200 px-3 py-3 dark:border-white/[0.08]">
                 <div class="grid gap-4 sm:grid-cols-2">
                     <x-forms.input id="html_url" label="{{ __('GitLab URL') }}" required
-                        helper="For self-hosted GitLab, enter your instance URL (e.g. https://gitlab.example.com)." />
+                        helper="{{ __('For self-hosted GitLab, enter your instance URL (e.g. https://gitlab.example.com).') }}" />
                     <x-forms.input id="api_url" label="API URL" required
                         helper="{{ __('Usually your GitLab URL with /api/v4 appended.') }}" />
                     <x-forms.input id="custom_user" label="{{ __('Custom Git user') }}" required />

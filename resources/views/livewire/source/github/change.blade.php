@@ -148,7 +148,7 @@
                                                     ['value' => false, 'label' => __('Only this team')],
                                                     ['value' => true, 'label' => __('Every team on this instance')],
                                                 ]"
-                                                    helper="System-wide GitHub Apps can be used by every team on this Coolify instance."
+                                                    helper="{{ __('System-wide GitHub Apps can be used by every team on this Coolify instance.') }}"
                                                     :disabled="!auth()->user()->can('update', $github_app)" />
                                             </div>
                                             @endcan
@@ -187,7 +187,7 @@
                         @elseif ($activeTab === 'danger')
                             <div class="application-settings-form">
                                 <x-application.settings-section id="github-app-danger-section" title="{{ __('Danger zone') }}"
-                                    helper="Destructive actions for this GitHub App source cannot be undone.">
+                                    helper="{{ __('Destructive actions for this GitHub App source cannot be undone.') }}">
                                     <x-danger-zone title="{{ __('Delete GitHub App') }}">
                                                 <p>
                                                     Permanently delete
@@ -300,7 +300,7 @@
                                     <x-forms.input canGate="create" :canResource="$github_app"
                                         x-model="customWebhookEndpoint" id="custom_webhook_endpoint" type="url"
                                         label="{{ __('Custom endpoint') }}" placeholder="https://coolify.example.com"
-                                        helper="Do not include /webhooks." />
+                                        helper="{{ __('Do not include /webhooks.') }}" />
                                 </div>
                             @else
                                 <p class="text-[12px] leading-5 text-neutral-500 dark:text-fg-dim">
@@ -319,14 +319,14 @@
                                     ['value' => false, 'label' => __('Do not update pull requests')],
                                     ['value' => true, 'label' => __('Read and update pull requests')],
                                 ]"
-                                helper="Write access lets Coolify post deployment status and links on pull requests." />
+                                helper="{{ __('Write access lets Coolify post deployment status and links on pull requests.') }}" />
 
                             <x-forms.listbox id="deployment_status_permissions"
                                 label="{{ __('GitHub deployments') }}" :options="[
                                     ['value' => false, 'label' => __('Do not create GitHub deployments')],
                                     ['value' => true, 'label' => __('Create GitHub deployments')],
                                 ]"
-                                helper="Deployments (write) access lets Coolify show each deployment and its status on GitHub, so pull requests show the preview as deployed." />
+                                helper="{{ __('Deployments (write) access lets Coolify show each deployment and its status on GitHub, so pull requests show the preview as deployed.') }}" />
 
                             <x-forms.listbox id="github_runners" label="{{ __('GitHub Actions runners') }}"
                                 :disabled="blank($github_app->organization)"
@@ -335,8 +335,8 @@
                                     ['value' => true, 'label' => __('Run workflow jobs on your servers')],
                                 ]"
                                 :helper="filled($github_app->organization)
-                                    ? 'Adds the organization Self-hosted runners (write) and Actions (read) permissions and the Workflow job webhook event.'
-                                    : 'Only GitHub Apps that belong to an organization can run workflow jobs. Delete this source and create a new one with an organization.'" />
+                                    ? __('Adds the organization Self-hosted runners (write) and Actions (read) permissions and the Workflow job webhook event.')
+                                    : __('Only GitHub Apps that belong to an organization can run workflow jobs. Delete this source and create a new one with an organization.')" />
 
                             <button type="button"
                                 class="button mt-auto w-full justify-center button-highlighted"

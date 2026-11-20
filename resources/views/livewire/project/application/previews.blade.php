@@ -4,7 +4,7 @@
             $canUpdate = auth()->user()->can('update', $application);
         @endphp
         <x-application.settings-section id="preview-settings-section" title="{{ __('Preview settings') }}"
-            helper="Automatic pull request deployments and who can trigger them.">
+            helper="{{ __('Automatic pull request deployments and who can trigger them.') }}">
             <x-slot:actions>
                 @can('update', $application)
                     @if ($application->isGithubAppSource())
@@ -105,13 +105,13 @@
 
     @if ($application->build_pack === 'dockerimage')
         <x-application.settings-section id="manual-preview-section" title="{{ __('Manual preview') }}"
-            helper="Deploy a preview directly from a Docker image tag.">
+            helper="{{ __('Deploy a preview directly from a Docker image tag.') }}">
             <form wire:submit.prevent="addDockerImagePreview"
                 class="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_auto] md:items-end">
                 <x-forms.input id="manualPullRequestId" label="{{ __('Preview ID') }}"
-                    helper="Used for domains, logs, container names, and cleanup." />
+                    helper="{{ __('Used for domains, logs, container names, and cleanup.') }}" />
                 <x-forms.input id="manualDockerTag" label="{{ __('Docker tag') }}"
-                    helper="For example, pr_1234." />
+                    helper="{{ __('For example, pr_1234.') }}" />
                 @can('deploy', $application)
                     <x-forms.button type="submit">{{ __('Deploy preview') }}</x-forms.button>
                 @endcan
@@ -120,7 +120,7 @@
     @endif
 
     <x-application.settings-section id="preview-deployments-section" title="{{ __('Preview deployments') }}"
-        helper="Manage domains, deployments, logs, and lifecycle actions for configured previews." flush>
+        helper="{{ __('Manage domains, deployments, logs, and lifecycle actions for configured previews.') }}" flush>
         @forelse (data_get($application, 'previews') as $preview)
             @php
                 $previewStatus = str(data_get($preview, 'status'));

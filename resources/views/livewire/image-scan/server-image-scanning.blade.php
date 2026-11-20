@@ -21,11 +21,11 @@
             default => 'idle',
         };
         $sectionHelper = collect([
-            'Scan the images on this server for known vulnerabilities before and after deployments. Coolify also scans the operating system packages of the server every day.',
-            "Scanner tools: {$toolVersions}.",
-            'Coolify downloads the latest vulnerability database every day, between 02:00 and 05:00 server time.'
-                .($builtAt ? ' Database built ' . $builtAt->diffForHumans() . '.' : ''),
-            $diskUsed ? "Disk used by scanner data: {$diskUsed}." : null,
+            __('Scan the images on this server for known vulnerabilities before and after deployments. Coolify also scans the operating system packages of the server every day.'),
+            __('Scanner tools: :versions.', ['versions' => e($toolVersions)]),
+            __('Coolify downloads the latest vulnerability database every day, between 02:00 and 05:00 server time.')
+                .($builtAt ? ' '.__('Database built :time.', ['time' => e($builtAt->diffForHumans())]) : ''),
+            $diskUsed ? __('Disk used by scanner data: :size.', ['size' => e($diskUsed)]) : null,
             $costText,
         ])->filter()->map(fn (string $line) => e($line))->implode('<br><br>');
     @endphp
@@ -108,24 +108,24 @@
                         $cannotUpdate = auth()->user()->cannot('update', $server);
                     @endphp
                     <x-application.settings-subsection id="image-scan-limits-section" title="{{ __('Scanner limits') }}"
-                        helper="Limits of each scanner step on this server. Raise one when a scan stops because it took too long or ran out of memory. A new limit applies to the next scan."
+                        helper="{{ __('Limits of each scanner step on this server. Raise one when a scan stops because it took too long or ran out of memory. A new limit applies to the next scan.') }}"
                         first>
                         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                             <x-forms.listbox id="scannerSyftTimeout" label="{{ __('Syft time limit') }}" onChange="$commit"
                                 :disabled="$cannotUpdate"
-                                helper="Time to list the packages of one image. Large images need more time."
+                                helper="{{ __('Time to list the packages of one image. Large images need more time.') }}"
                                 :options="$timeoutOptions" />
                             <x-forms.listbox id="scannerGrypeTimeout" label="{{ __('Grype time limit') }}" onChange="$commit"
                                 :disabled="$cannotUpdate"
-                                helper="Time to match the packages of one image with the vulnerability database."
+                                helper="{{ __('Time to match the packages of one image with the vulnerability database.') }}"
                                 :options="$timeoutOptions" />
                             <x-forms.listbox id="scannerCpus" label="{{ __('Scanner CPU limit') }}" onChange="$commit"
                                 :disabled="$cannotUpdate"
-                                helper="CPUs that each scanner step can use. Values above the CPU count of this server are not listed."
+                                helper="{{ __('CPUs that each scanner step can use. Values above the CPU count of this server are not listed.') }}"
                                 :options="$cpuOptions" />
                             <x-forms.listbox id="scannerMemoryMb" label="{{ __('Scanner memory limit') }}" onChange="$commit"
                                 :disabled="$cannotUpdate"
-                                helper="Memory that each scanner step can use. Values above the memory of this server are not listed. The server must also have this much free memory when a scan runs."
+                                helper="{{ __('Memory that each scanner step can use. Values above the memory of this server are not listed. The server must also have this much free memory when a scan runs.') }}"
                                 :options="$memoryOptions" />
                         </div>
                     </x-application.settings-subsection>

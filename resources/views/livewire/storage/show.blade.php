@@ -66,7 +66,7 @@
                     @elseif ($currentRoute === 'storage.danger')
                         <div class="application-settings-form">
                             <x-application.settings-section id="storage-danger-section" title="{{ __('Danger zone') }}"
-                                helper="Destructive actions for this S3 storage destination cannot be undone.">
+                                helper="{{ __('Destructive actions for this S3 storage destination cannot be undone.') }}">
                                 <x-danger-zone title="{{ __('Delete storage') }}">
                                             <p>
                                                 Permanently delete

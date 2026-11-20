@@ -59,7 +59,7 @@
                     @endif
                 </div>
                 <x-application.settings-subsection title="Webhook"
-                    helper="Configure this webhook URL in your GitLab project settings (Settings → Webhooks). On self-managed GitLab, an admin can instead add the same URL and token once as a system hook (Admin Area → System hooks) with Push events and Merge request events enabled.">
+                    helper="{{ __('Configure this webhook URL in your GitLab project settings (Settings → Webhooks). On self-managed GitLab, an admin can instead add the same URL and token once as a system hook (Admin Area → System hooks) with Push events and Merge request events enabled.') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <div class="lg:col-span-2">
                             <x-forms.input readonly label="Webhook URL"
@@ -67,7 +67,7 @@
                         </div>
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="webhookToken"
                             label="{{ __('Webhook secret token') }}" type="password"
-                            helper="Set this same token in your GitLab webhook's Secret token field. Stored encrypted." />
+                            helper="{{ __('Set this same token in your GitLab webhook\'s Secret token field. Stored encrypted.') }}" />
                     </div>
                 </x-application.settings-subsection>
             </x-application.settings-section>
@@ -75,7 +75,7 @@
             <x-application.settings-section id="connection-section" title="{{ __('Connection') }}"
                 helper="{{ __('OAuth credentials and the endpoints Coolify uses to reach this source.') }}">
                 <x-application.settings-subsection first title="{{ __('OAuth credentials') }}"
-                    helper="Application credentials from your GitLab OAuth application.">
+                    helper="{{ __('Application credentials from your GitLab OAuth application.') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="clientId"
                             label="{{ __('Application ID') }}" />
@@ -83,11 +83,11 @@
                             label="{{ __('Application secret') }}" type="password"
                             helper="{{ __('Stored encrypted. Leave empty to keep the existing secret.') }}" />
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="groupName" label="{{ __('Group name') }}"
-                            helper="Comma-separated group names to filter visible repositories." />
+                            helper="{{ __('Comma-separated group names to filter visible repositories.') }}" />
                     </div>
                 </x-application.settings-subsection>
                 <x-application.settings-subsection title="{{ __('Self-hosted / advanced') }}"
-                    helper="Override endpoints and SSH settings for self-hosted GitLab.">
+                    helper="{{ __('Override endpoints and SSH settings for self-hosted GitLab.') }}">
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input canGate="update" :canResource="$gitlab_app" id="htmlUrl"
                             label="{{ __('GitLab URL') }}" />
@@ -229,12 +229,12 @@
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.input id="name" label="{{ __('Name') }}" />
                         <x-forms.input id="clientId" label="{{ __('Application ID') }}" required
-                            helper="The Application ID from your GitLab OAuth Application." />
+                            helper="{{ __('The Application ID from your GitLab OAuth Application.') }}" />
                         <x-forms.input id="clientSecretInput" label="{{ __('Application secret') }}" type="password"
                             :required="blank($clientSecretInput) && blank(data_get($gitlab_app, 'client_secret'))"
-                            helper="The Secret from your GitLab OAuth Application. Saved encrypted." />
+                            helper="{{ __('The Secret from your GitLab OAuth Application. Saved encrypted.') }}" />
                         <x-forms.input id="groupName" label="{{ __('Group name') }}"
-                            helper="Optional. Comma-separated group names to filter repositories." />
+                            helper="{{ __('Optional. Comma-separated group names to filter repositories.') }}" />
                     </div>
 
                     @if (! isCloud() || isDev())
@@ -254,7 +254,7 @@
                             <div class="lg:col-span-2" x-show="!useCustomWebhookEndpoint">
                                 <x-forms.listbox id="webhook_endpoint" x-model="webhookEndpoint"
                                     label="{{ __('Selected endpoint') }}"
-                                    helper="GitLab will use this endpoint unless custom mode is enabled."
+                                    helper="{{ __('GitLab will use this endpoint unless custom mode is enabled.') }}"
                                     :options="collect([$fqdn, $ipv4, $ipv6, config('app.url')])
                                         ->filter()->unique()->map(fn ($endpoint) => [
                                             'value' => $endpoint,
@@ -265,7 +265,7 @@
                                 <x-forms.input x-model="customWebhookEndpoint" id="custom_webhook_endpoint"
                                     type="url" label="{{ __('Custom endpoint') }}"
                                     placeholder="https://coolify.example.com"
-                                    helper="GitLab will use this custom public URL. Do not include /webhooks." />
+                                    helper="{{ __('GitLab will use this custom public URL. Do not include /webhooks.') }}" />
                             </div>
                         </div>
                     @endif
@@ -282,7 +282,7 @@
                         <div x-cloak x-show="open" x-collapse.duration.200ms
                             class="mt-3 grid gap-4 rounded-lg border border-neutral-200 p-3 lg:grid-cols-2 dark:border-white/[0.08]">
                             <x-forms.input id="htmlUrl" label="{{ __('GitLab URL') }}"
-                                helper="Only change this for self-hosted GitLab (e.g. https://gitlab.example.com)." />
+                                helper="{{ __('Only change this for self-hosted GitLab (e.g. https://gitlab.example.com).') }}" />
                             <x-forms.input id="apiUrl" label="API URL"
                                 helper="{{ __('Usually your GitLab URL with /api/v4 appended.') }}" />
                             <x-forms.input id="customUser" label="{{ __('SSH user') }}" />

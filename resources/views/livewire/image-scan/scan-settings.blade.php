@@ -10,9 +10,9 @@
         default => 'Rules for this app.',
     };
     $gateHelper = $isApplication
-        ? 'Stop a deploy when the new image has security problems.'
-        : 'Default for apps. Stop a deploy when the new image has security problems.';
-    $ignoresHelper = 'Ignored findings do not count for the status, alerts, or Block deploys. Ignore a finding from All findings on the Security page of a resource.';
+        ? __('Stop a deploy when the new image has security problems.')
+        : __('Default for apps. Stop a deploy when the new image has security problems.');
+    $ignoresHelper = __('Ignored findings do not count for the status, alerts, or Block deploys. Ignore a finding from All findings on the Security page of a resource.');
 @endphp
 
 <div class="flex flex-col gap-6">

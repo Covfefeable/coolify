@@ -49,7 +49,7 @@
 
             <div class="min-w-0">
     <x-application.settings-section title="{{ __('Files') }}"
-        helper="Browse and manage files inside the running container." :flush="true">
+        helper="{{ __('Browse and manage files inside the running container.') }}" :flush="true">
 
         <x-slot:badges>
             <x-beta-badge />

@@ -86,7 +86,7 @@
                                 </button>
                             </div>
                             <x-helper label="{{ __('Search help') }}"
-                                helper="Search by token name, ability, or the name of a project, environment, or resource that the token can use." />
+                                helper="{{ __('Search by token name, ability, or the name of a project, environment, or resource that the token can use.') }}" />
                         </div>
                     @endif
 

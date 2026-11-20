@@ -9,7 +9,7 @@
     @endif
 
     <x-application.settings-section id="scheduled-tasks-section" title="{{ __('Scheduled tasks') }}"
-        helper="Run commands inside this resource automatically using a cron schedule." flush>
+        helper="{{ __('Run commands inside this resource automatically using a cron schedule.') }}" flush>
         <x-slot:actions>
             @can('update', $resource)
                 <x-modal-input title="{{ __('New scheduled task') }}" :closeOutside="false">

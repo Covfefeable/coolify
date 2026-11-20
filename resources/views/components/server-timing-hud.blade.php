@@ -690,7 +690,7 @@
             const card = document.createElement('button');
             card.type = 'button';
             card.setAttribute('data-sth-entry-id', String(entry.id));
-            card.title = 'Click to copy AI-ready debug details';
+            card.title = @js(__('Click to copy AI-ready debug details'));
             card.style.display = 'block';
             card.style.width = '100%';
             card.style.textAlign = 'left';

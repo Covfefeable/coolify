@@ -168,7 +168,7 @@
                     <x-forms.checkbox canGate="update" :canResource="$settings" instantSave="instantSaveDeploymentCommitDetails"
                         id="deploymentCommitDetailsEmailNotifications"
                         label="{{ __('Include commit details in deployment emails') }}"
-                        helper="Adds the commit SHA, branch, and commit message to deployment success and failure emails." />
+                        helper="{{ __('Adds the commit SHA, branch, and commit message to deployment success and failure emails.') }}" />
                 </div>
             </x-application.settings-section>
         </div>

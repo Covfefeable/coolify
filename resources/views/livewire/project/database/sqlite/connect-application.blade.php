@@ -41,10 +41,10 @@
                     <x-forms.listbox searchable id="applicationUuid" label="{{ __('Application') }}" required
                         :options="$applicationOptions" placeholder="{{ __('Select an application') }}"
                         searchPlaceholder="{{ __('Search applications…') }}" searchEmptyText="{{ __('No matching applications') }}"
-                        helper="Docker Compose applications mount the volume from their compose file. Coolify shows the lines to add." />
+                        helper="{{ __('Docker Compose applications mount the volume from their compose file. Coolify shows the lines to add.') }}" />
                     <x-forms.input id="mountPath" label="{{ __('Mount path') }}" required placeholder="/var/lib/sqlite"
                         canGate="update" :canResource="$database" x-on:keydown.enter.prevent="$wire.connect()"
-                        helper="Any directory inside the application container. The database files ({{ str($database->sqlite_databases)->replace(',', ', ') }}) will be available there." />
+                        :helper="__('Any directory inside the application container. The database files (:files) will be available there.', ['files' => e(str($database->sqlite_databases)->replace(',', ', '))])" />
                 </div>
 
                 <div class="flex justify-end">

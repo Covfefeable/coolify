@@ -767,7 +767,7 @@
                                                     <span class="command-palette-item-name" x-text="item.name"></span>
                                                     <template x-if="item.amd_only">
                                                         <span class="command-palette-arch-badge"
-                                                            title="This service only supports AMD64/x86_64 architecture">
+                                                            title="{{ __('This service only supports AMD64/x86_64 architecture') }}">
                                                             {{ __('AMD only') }}
                                                         </span>
                                                     </template>

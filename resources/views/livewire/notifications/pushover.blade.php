@@ -18,9 +18,9 @@
                 <div class="grid gap-4 lg:grid-cols-2">
                     @can('update', $settings)
                         <x-forms.input type="password" :required="$pushoverEnabled" id="pushoverUserKey" label="User key"
-                            helper="Find this in the Pushover dashboard." />
+                            helper="{{ __('Find this in the Pushover dashboard.') }}" />
                         <x-forms.input type="password" :required="$pushoverEnabled" id="pushoverApiToken" label="{{ __('API token') }}"
-                            helper="Create an application in Pushover to generate this token." />
+                            helper="{{ __('Create an application in Pushover to generate this token.') }}" />
                     @else
                         <x-forms.input disabled label="User key" value="Hidden (only admins can view)" />
                         <x-forms.input disabled label="{{ __('API token') }}" value="Hidden (only admins can view)" />

@@ -34,7 +34,7 @@
                                 ['value' => true, 'label' => __('Enabled')],
                                 ['value' => false, 'label' => __('Disabled')],
                             ]"
-                            helper="Runs this backup once before every manual or automatic update, in addition to the schedule. It does not run when the backup schedule is disabled." />
+                            helper="{{ __('Runs this backup once before every manual or automatic update, in addition to the schedule. It does not run when the backup schedule is disabled.') }}" />
                     </div>
                 </x-application.settings-section>
 

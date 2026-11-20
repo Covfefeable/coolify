@@ -11,7 +11,7 @@
                 helper="{{ __('Remove local backups older than this many days.') }}" required />
             <x-forms.input label="{{ __('Maximum storage (GB)') }}" id="retentionMaxStorageLocally" type="number"
                 min="0" step="any" canGate="update" :canResource="$resource"
-                helper="Remove the oldest local backups after this total size is reached." required />
+                helper="{{ __('Remove the oldest local backups after this total size is reached.') }}" required />
         </div>
     </div>
 
@@ -25,7 +25,7 @@
                 helper="{{ __('Remove S3 backups older than this many days.') }}" required />
             <x-forms.input label="{{ __('Maximum storage (GB)') }}" id="retentionMaxStorageS3" type="number"
                 min="0" step="any" canGate="update" :canResource="$resource"
-                helper="Remove the oldest S3 backups after this total size is reached." required />
+                helper="{{ __('Remove the oldest S3 backups after this total size is reached.') }}" required />
         </div>
     </div>
 </x-application.settings-section>
