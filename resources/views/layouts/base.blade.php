@@ -426,6 +426,7 @@
             'Value is not available.',
             'Zoom in',
             'Zoom out',
+            'Add',
             'Add the next step',
             'Back to the environment',
             'Close',

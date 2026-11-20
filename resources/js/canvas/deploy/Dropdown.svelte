@@ -1,4 +1,5 @@
 <script>
+  import { translate } from '../../translate.js';
   import { onMount } from 'svelte';
   import { ICONS } from '../../deploy-canvas.js';
   import Icon from './Icon.svelte';
@@ -126,7 +127,7 @@
             bind:value={name}
             onkeydown={e => { if (e.key !== 'Escape') e.stopPropagation(); }}
           />
-          <button type="submit" class="button button-highlighted" disabled={busy}>Add</button>
+          <button type="submit" class="button button-highlighted" disabled={busy}>{translate('Add')}</button>
         </form>
         <p class="cv-note bad">{problem}</p>
       {:else}

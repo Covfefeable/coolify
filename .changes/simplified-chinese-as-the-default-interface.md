@@ -31,3 +31,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Security scan summaries, server management, and shared variable scopes include additional Simplified Chinese translations
 - Dropdown choices, search feedback, and selection counts use Simplified Chinese across project, server, and team settings
 - Tooltips and form help across server, application, database, integration, and team settings include additional Simplified Chinese translations
+- The shared table filter and canvas add buttons use Simplified Chinese

@@ -280,6 +280,7 @@
     "Deploy canvas": "部署画布",
     "Reload": "重新加载",
     "Filter": "筛选",
+    "Add": "添加",
     "Resource type": "资源类型",
     "Connect a server, a source, and its settings step by step, then deploy every resource at once.": "逐步连接服务器和代码源并完成配置，然后一次部署所有资源。",
     "All resources": "全部资源",

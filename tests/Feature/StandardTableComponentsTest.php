@@ -34,3 +34,13 @@ it('renders the standard table toolbar controls', function () {
         ->toContain('wire:click="clearFilters"')
         ->toContain('Sort');
 });
+
+
+it('localizes the filter trigger and canvas add label in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+
+    expect(Blade::render('<x-table.filter reset-action="clearFilters" />'))
+        ->toContain('>筛选</span>')
+        ->toContain('>重置筛选</span>');
+    expect(__('Add'))->toBe('添加');
+});

@@ -1,4 +1,5 @@
 <script>
+  import { translate } from '../../translate.js';
   // Searchable list of cards, each with an Add button (connect view side panels).
   import Icon from './Icon.svelte';
 
@@ -32,7 +33,7 @@
               {#if sub}<div class="truncate text-[11px] text-neutral-400 dark:text-fg-faint">{sub}</div>{/if}
             </div>
           </div>
-          <button type="button" class="button h-6! shrink-0 px-2! text-[11px]!" title={addTitle} disabled={busy[candidate.id]} onclick={() => add(candidate)}>Add</button>
+          <button type="button" class="button h-6! shrink-0 px-2! text-[11px]!" title={addTitle} disabled={busy[candidate.id]} onclick={() => add(candidate)}>{translate('Add')}</button>
         </li>
       {/each}
     </ul>
