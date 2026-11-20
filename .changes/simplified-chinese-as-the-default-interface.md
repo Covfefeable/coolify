@@ -29,3 +29,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Resource forms, storage warnings, team settings, and server actions include additional Simplified Chinese translations
 - Environment filters, deployment settings, DNS instructions, GPU controls, and scheduled task dialogs use Simplified Chinese
 - Security scan summaries, server management, and shared variable scopes include additional Simplified Chinese translations
+- Dropdown choices, search feedback, and selection counts use Simplified Chinese across project, server, and team settings

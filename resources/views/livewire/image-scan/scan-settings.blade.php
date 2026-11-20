@@ -1,5 +1,5 @@
 @php
-    $onOff = [['value' => '0', 'label' => 'Off'], ['value' => '1', 'label' => 'On']];
+    $onOff = [['value' => '0', 'label' => __('Off')], ['value' => '1', 'label' => __('On')]];
     $isApplication = $scopeType === 'application';
     $ignoresOnly = in_array($scopeType, ['database', 'service'], true);
     $isResource = $isApplication || $ignoresOnly;

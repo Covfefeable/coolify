@@ -43,7 +43,7 @@
             <x-application.settings-subsection id="log-delivery-section" title="{{ __('Log delivery') }}" helper="{{ __('Forward container logs to the drain configured on the server.') }}">
                 <x-forms.listbox canGate="update" :canResource="$database" id="isLogDrainEnabled" label="{{ __('Log drain') }}" live onChange="instantSaveAdvanced"
                     :disabled="! auth()->user()->can('update', $database)" :options="[
-                        ['value' => false, 'label' => 'Do not forward logs'],
+                        ['value' => false, 'label' => __('Do not forward logs')],
                         ['value' => true, 'label' => __('Forward logs to the server drain')],
                     ]" />
             </x-application.settings-subsection>

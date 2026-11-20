@@ -99,7 +99,7 @@
                             @php
                                 $privateKeyOptions = collect([
                                     blank($github_app->private_key_id)
-                                        ? ['value' => 0, 'label' => 'Select a private key']
+                                        ? ['value' => 0, 'label' => __('Select a private key')]
                                         : null,
                                     ...$privateKeys->map(fn ($privateKey) => [
                                         'value' => $privateKey->id,
@@ -145,7 +145,7 @@
                                             @can('makeSystemWide', \App\Models\GithubApp::class)
                                             <div class="lg:col-span-2">
                                                 <x-forms.listbox canGate="update" :canResource="$github_app" id="isSystemWide" label="{{ __('Availability') }}" :options="[
-                                                    ['value' => false, 'label' => 'Only this team'],
+                                                    ['value' => false, 'label' => __('Only this team')],
                                                     ['value' => true, 'label' => __('Every team on this instance')],
                                                 ]"
                                                     helper="System-wide GitHub Apps can be used by every team on this Coolify instance."
@@ -261,11 +261,11 @@
         @can('create', $github_app)
             @php
                 $endpointOptions = collect([
-                    $fqdn ? ['value' => $fqdn, 'label' => 'Use '.$fqdn] : null,
-                    $ipv4 ? ['value' => $ipv4, 'label' => 'Use '.$ipv4] : null,
-                    $ipv6 ? ['value' => $ipv6, 'label' => 'Use '.$ipv6] : null,
+                    $fqdn ? ['value' => $fqdn, 'label' => __('Use :endpoint', ['endpoint' => $fqdn])] : null,
+                    $ipv4 ? ['value' => $ipv4, 'label' => __('Use :endpoint', ['endpoint' => $ipv4])] : null,
+                    $ipv6 ? ['value' => $ipv6, 'label' => __('Use :endpoint', ['endpoint' => $ipv6])] : null,
                     config('app.url')
-                        ? ['value' => config('app.url'), 'label' => 'Use '.config('app.url')]
+                        ? ['value' => config('app.url'), 'label' => __('Use :endpoint', ['endpoint' => config('app.url')])]
                         : null,
                 ])->filter()->values()->all();
             @endphp
@@ -287,7 +287,7 @@
                             @if (!isCloud() || isDev())
                                 <x-forms.listbox id="use_custom_webhook_endpoint" label="{{ __('Webhook endpoint') }}"
                                     :live="true" :options="[
-                                        ['value' => false, 'label' => 'Use an instance endpoint'],
+                                        ['value' => false, 'label' => __('Use an instance endpoint')],
                                         ['value' => true, 'label' => __('Use a custom endpoint')],
                                     ]"
                                     x-model="useCustomWebhookEndpoint"
@@ -316,14 +316,14 @@
 
                             <x-forms.listbox id="preview_deployment_permissions"
                                 label="{{ __('Preview deployment access') }}" :options="[
-                                    ['value' => false, 'label' => 'Do not update pull requests'],
+                                    ['value' => false, 'label' => __('Do not update pull requests')],
                                     ['value' => true, 'label' => __('Read and update pull requests')],
                                 ]"
                                 helper="Write access lets Coolify post deployment status and links on pull requests." />
 
                             <x-forms.listbox id="deployment_status_permissions"
                                 label="{{ __('GitHub deployments') }}" :options="[
-                                    ['value' => false, 'label' => 'Do not create GitHub deployments'],
+                                    ['value' => false, 'label' => __('Do not create GitHub deployments')],
                                     ['value' => true, 'label' => __('Create GitHub deployments')],
                                 ]"
                                 helper="Deployments (write) access lets Coolify show each deployment and its status on GitHub, so pull requests show the preview as deployed." />
@@ -331,7 +331,7 @@
                             <x-forms.listbox id="github_runners" label="{{ __('GitHub Actions runners') }}"
                                 :disabled="blank($github_app->organization)"
                                 :options="[
-                                    ['value' => false, 'label' => 'Do not run workflow jobs'],
+                                    ['value' => false, 'label' => __('Do not run workflow jobs')],
                                     ['value' => true, 'label' => __('Run workflow jobs on your servers')],
                                 ]"
                                 :helper="filled($github_app->organization)

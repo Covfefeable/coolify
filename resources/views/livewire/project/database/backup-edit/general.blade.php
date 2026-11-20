@@ -34,7 +34,7 @@
                     || $isServiceSqlDatabase)
                 <div class="grid w-full gap-4">
                     <x-forms.listbox id="dumpAll" label="{{ __('Database selection') }}" onChange="instantSave" :options="[
-                        ['value' => true, 'label' => 'All databases'],
+                        ['value' => true, 'label' => __('All databases')],
                         ['value' => false, 'label' => __('Specific databases')],
                     ]" />
                     @if (! $backup->dump_all)

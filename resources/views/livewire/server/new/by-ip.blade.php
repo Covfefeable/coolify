@@ -86,7 +86,7 @@
                     <x-forms.listbox id="server_role"
                         helper="{{ __('Choose whether this server runs deployments, application builds, or both. GitHub Actions runners need the Builds only or the Deployments and builds role.') }}"
                         label="{{ __('Server role') }}" :options="[
-                            ['value' => 'deployment', 'label' => 'Deployments only', 'description' => 'Runs your resources. Images are built on a build server.'],
+                            ['value' => 'deployment', 'label' => __('Deployments only'), 'description' => __('Runs your resources. Images are built on a build server.')],
                             ['value' => 'build', 'label' => __('Builds only'), 'description' => __('Builds images for other servers and runs GitHub Actions runners.')],
                             ['value' => 'both', 'label' => __('Deployments and builds'), 'description' => __('Builds and runs your resources on this server. Can also run GitHub Actions runners.')],
                         ]" />

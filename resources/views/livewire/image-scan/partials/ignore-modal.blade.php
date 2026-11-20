@@ -54,15 +54,15 @@
             <div class="grid gap-4 sm:grid-cols-2">
                 <x-forms.listbox id="image-scan-ignore-scope" label="{{ __('Scope') }}" :wire="false" x-model="scope" value="resource"
                     :options="array_values(array_filter([
-                        ['value' => 'resource', 'label' => 'This resource'],
+                        ['value' => 'resource', 'label' => __('This resource')],
                         $canIgnoreForTeam ? ['value' => 'team', 'label' => __('All team resources')] : null,
                     ]))" />
                 {{-- Ignores of problems that attackers are using or are likely to use always expire (spec 15.2). --}}
                 <template x-if="neverAllowed">
                     <x-forms.listbox id="image-scan-ignore-expires" label="{{ __('Expires') }}" :wire="false" x-model="expires" value="90"
                         :options="[
-                            ['value' => '30', 'label' => '30 days'],
-                            ['value' => '90', 'label' => '90 days'],
+                            ['value' => '30', 'label' => __('30 days')],
+                            ['value' => '90', 'label' => __('90 days')],
                             ['value' => 'never', 'label' => __('Never')],
                         ]" />
                 </template>
@@ -70,8 +70,8 @@
                     <x-forms.listbox id="image-scan-ignore-expires" label="{{ __('Expires') }}" :wire="false" x-model="expires" value="90"
                         helper="Attackers are using or are likely to use this problem, so its ignore expires."
                         :options="[
-                            ['value' => '30', 'label' => '30 days'],
-                            ['value' => '90', 'label' => '90 days'],
+                            ['value' => '30', 'label' => __('30 days')],
+                            ['value' => '90', 'label' => __('90 days')],
                         ]" />
                 </template>
             </div>

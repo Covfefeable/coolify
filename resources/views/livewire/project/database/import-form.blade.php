@@ -83,7 +83,7 @@
                     @if ($resourceDbType !== 'standalone-sqlite')
                     <div class="max-w-sm">
                         <x-forms.listbox id="dumpAll" label="{{ __('Backup contents') }}" live :options="[
-                            ['value' => true, 'label' => 'Backup contains all databases'],
+                            ['value' => true, 'label' => __('Backup contains all databases')],
                             ['value' => false, 'label' => __('Backup contains one database')],
                         ]" />
                     </div>

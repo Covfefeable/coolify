@@ -52,7 +52,7 @@
         <x-application.settings-subsection id="service-network-section" title="{{ __('Network') }}" helper="Control whether this Compose stack joins Coolify's predefined network.">
             <x-forms.listbox canGate="update" :canResource="$service" id="connectToDockerNetwork" label="{{ __('Network attachment') }}" live onChange="instantSave"
                 :disabled="! auth()->user()->can('update', $service)" :options="[
-                    ['value' => false, 'label' => 'Use the stack network only'],
+                    ['value' => false, 'label' => __('Use the stack network only')],
                     ['value' => true, 'label' => __('Connect to the predefined Coolify network')],
                 ]" />
         </x-application.settings-subsection>

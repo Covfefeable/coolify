@@ -115,7 +115,7 @@
                     <x-forms.listbox id="isHttpBasicAuthEnabled" label="{{ __('Method') }}" onChange="instantSave"
                         helper="HTTP Basic Authentication adds the required authentication labels to the proxy. Coolify currently supports a single username and password."
                         :options="[
-                            ['value' => false, 'label' => 'None'],
+                            ['value' => false, 'label' => __('None')],
                             ['value' => true, 'label' => __('HTTP Basic Authentication')],
                         ]" x-bind:disabled="!canUpdate" />
                     @if ($isHttpBasicAuthEnabled)
@@ -136,7 +136,7 @@
                                 <x-forms.listbox id="httpBasicAuthHashAlgorithm" label="{{ __('Algorithm') }}" onChange="instantSave"
                                     helper="{{ __('Select the password hashing algorithm used by the proxy. Traefik supports only bcrypt. Argon2id requires Caddy 2.11 or newer. Traefik labels still use bcrypt when Argon2id is selected.') }}"
                                     :options="[
-                                        ['value' => HttpBasicAuthHashAlgorithm::BCRYPT->value, 'label' => 'bcrypt', 'description' => 'Works with every proxy'],
+                                        ['value' => HttpBasicAuthHashAlgorithm::BCRYPT->value, 'label' => 'bcrypt', 'description' => __('Works with every proxy')],
                                         ['value' => HttpBasicAuthHashAlgorithm::ARGON2ID->value, 'label' => 'Argon2id', 'disabled' => ! $supportsArgon2id, 'description' => match (true) {
                                             $supportsArgon2id => 'Memory-hard, more resistant to cracking',
                                             $server->proxyType() === ProxyTypes::CADDY->value => 'Needs Caddy 2.11 or newer on this server',
@@ -198,9 +198,9 @@
                 <div class="mb-5 w-full border-b border-neutral-200 pb-5 dark:border-white/[0.07]">
                     <div class="grid gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="siteType" label="{{ __('Site type') }}" onChange="setSiteType" :options="[
-                            ['value' => 'dynamic', 'label' => 'Dynamic'],
+                            ['value' => 'dynamic', 'label' => __('Dynamic')],
                             ['value' => 'static', 'label' => __('Static')],
-                            ['value' => 'spa', 'label' => 'SPA (single-page application)'],
+                            ['value' => 'spa', 'label' => __('SPA (single-page application)')],
                         ]"
                             helper="{{ __('Static: the final build assets are served as a static site. SPA: a static site with single-page-app routing.') }}"
                             x-bind:disabled="!canUpdate" />
@@ -294,10 +294,10 @@
                                 @php
                                     $hasBuildServers = \App\Models\Server::buildServers($application->team()?->id)->exists();
                                     $buildServerOptions = [
-                                        ['value' => false, 'label' => 'Deployment server'],
+                                        ['value' => false, 'label' => __('Deployment server')],
                                         $hasBuildServers
-                                            ? ['value' => true, 'label' => 'Available build server (auto-select)']
-                                            : ['value' => true, 'label' => 'No build servers connected', 'disabled' => true],
+                                            ? ['value' => true, 'label' => __('Available build server (auto-select)')]
+                                            : ['value' => true, 'label' => __('No build servers connected'), 'disabled' => true],
                                     ];
                                     $buildServerFallbackPolicy = $application->environment->project->team->is_build_server_fallback_enabled
                                         ? 'If no usable build server is available, Coolify builds on the deployment server.'
@@ -590,15 +590,15 @@
                             onChange="instantSave"
                             helper="{{ __('Coolify regenerates managed labels automatically and may overwrite manual edits. Incorrect labels can break proxy configuration after a restart. You can restore the Coolify defaults.') }}"
                             :options="[
-                                ['value' => true, 'label' => 'Managed by Coolify (auto-generated)'],
-                                ['value' => false, 'label' => 'Managed manually (edit labels yourself)'],
+                                ['value' => true, 'label' => __('Managed by Coolify (auto-generated)')],
+                                ['value' => false, 'label' => __('Managed manually (edit labels yourself)')],
                             ]" x-bind:disabled="!canUpdate" />
                         <x-forms.listbox id="isContainerLabelEscapeEnabled" label="{{ __('Special characters') }}"
                             onChange="instantSave"
                             helper="{{ __('Special characters are escaped by default. For example, $ becomes $$. Leave them unescaped to use environment variables in labels.') }}"
                             :options="[
-                                ['value' => true, 'label' => 'Escape special characters ($ becomes $$)'],
-                                ['value' => false, 'label' => 'Keep unescaped (allow env variables)'],
+                                ['value' => true, 'label' => __('Escape special characters ($ becomes $$)')],
+                                ['value' => false, 'label' => __('Keep unescaped (allow env variables)')],
                             ]" x-bind:disabled="!canUpdate" />
                     </div>
                     <div class="mt-5 border-t border-neutral-200 pt-5 dark:border-white/[0.07]">

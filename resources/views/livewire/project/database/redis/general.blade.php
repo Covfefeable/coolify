@@ -72,7 +72,7 @@
                     <div wire:key="public-access-{{ $publicPort ?: 'unset' }}">
                         <x-forms.listbox id="isPublic" label="{{ __('Access') }}" live onChange="instantSave"
                             :disabled="! auth()->user()->can('update', $database)" canGate="update" :canResource="$database" :options="[
-                                ['value' => false, 'label' => 'Private'],
+                                ['value' => false, 'label' => __('Private')],
                                 ['value' => true, 'label' => blank($publicPort) ? 'Public through TCP proxy (set public port first)' : 'Public through TCP proxy', 'disabled' => blank($publicPort)],
                             ]" />
                     </div>
@@ -114,7 +114,7 @@
             <x-application.settings-subsection id="log-delivery-section" title="{{ __('Log delivery') }}" helper="{{ __('Forward container logs to the drain configured on the server.') }}">
                 <x-forms.listbox canGate="update" :canResource="$database" id="isLogDrainEnabled" label="{{ __('Log drain') }}" live onChange="instantSaveAdvanced"
                     :disabled="! auth()->user()->can('update', $database)" :options="[
-                        ['value' => false, 'label' => 'Do not forward logs'],
+                        ['value' => false, 'label' => __('Do not forward logs')],
                         ['value' => true, 'label' => __('Forward logs to the server drain')],
                     ]" />
             </x-application.settings-subsection>

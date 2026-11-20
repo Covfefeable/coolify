@@ -129,7 +129,7 @@
                     <div class="grid gap-4 lg:grid-cols-2">
                         <x-forms.listbox id="isSentinelDebugEnabled" label="{{ __('Debug logging') }}"
                             onChange="instantSave" :options="[
-                                ['value' => false, 'label' => 'Standard logging'],
+                                ['value' => false, 'label' => __('Standard logging')],
                                 ['value' => true, 'label' => __('Enable debug logging')],
                             ]" />
                         <div x-data="{

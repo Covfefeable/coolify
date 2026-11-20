@@ -124,7 +124,7 @@
                         @endif
 
                         <div class="mt-4 grid gap-4 lg:grid-cols-2">
-                            <x-forms.listbox id="githubAppId" label="GitHub App" required canGate="update"
+                            <x-forms.listbox id="githubAppId" label="{{ __('GitHub App') }}" required canGate="update"
                                 :canResource="$server" :options="$this->githubApps
                                     ->map(fn($app) => ['value' => $app->id, 'label' => $app->name . ' (' . $app->organization . ')'])
                                     ->values()
@@ -136,14 +136,14 @@
                             @if ($server->isBuildServer())
                                 <x-forms.listbox id="isDedicated" label="{{ __('Application builds') }}" canGate="update"
                                     :canResource="$server" :options="[
-                                        ['value' => false, 'label' => 'Also build applications'],
+                                        ['value' => false, 'label' => __('Also build applications')],
                                         ['value' => true, 'label' => __('Dedicated to runners')],
                                     ]"
                                     helper="{{ __('Dedicated servers are not used for application builds while runners are enabled.') }}" />
                             @endif
                             <x-forms.listbox id="allowPullRequests" label="{{ __('Pull request jobs') }}" canGate="update"
                                 :canResource="$server" :options="[
-                                    ['value' => false, 'label' => 'Refuse pull request jobs'],
+                                    ['value' => false, 'label' => __('Refuse pull request jobs')],
                                     ['value' => true, 'label' => __('Run pull request jobs')],
                                 ]"
                                 helper="{{ __('Runners fail jobs that a pull request started (pull_request, pull_request_target, and review events) before any step runs. Push, schedule, and manual jobs always run. Applies to runners that start after you save.') }}" />
@@ -162,9 +162,9 @@
                                 :canResource="$server" helper="{{ __('Memory for each runner, for example 4g. Empty means no limit.') }}" />
                             <x-forms.listbox id="dockerMode" label="{{ __('Docker in jobs') }}" canGate="update"
                                 :canResource="$server" :options="[
-                                    ['value' => 'dind', 'label' => 'Docker (privileged, full host access)'],
-                                    ['value' => 'sysbox', 'label' => 'Isolated Docker (Sysbox)'],
-                                    ['value' => 'none', 'label' => 'No Docker (isolated, no container actions)'],
+                                    ['value' => 'dind', 'label' => __('Docker (privileged, full host access)')],
+                                    ['value' => 'sysbox', 'label' => __('Isolated Docker (Sysbox)')],
+                                    ['value' => 'none', 'label' => __('No Docker (isolated, no container actions)')],
                                 ]"
                                 helper="Docker: each job gets a private Docker daemon. The daemon runs privileged, so a job can get root access to this server. Use it only for trusted repositories.<br><br>Isolated Docker: each job gets a private Docker daemon in an unprivileged Sysbox container. Everything that needs Docker works, and root in the job has no rights on this server. Needs Sysbox on the server.<br><br>No Docker: jobs run in an unprivileged container. JavaScript actions, composite actions, and shell steps work. Docker container actions, services, container jobs, and docker commands fail.<br><br>The host Docker socket is never shared." />
                             <x-forms.input id="runnerImage" label="{{ __('Runner image') }}" canGate="update" :canResource="$server"

@@ -30,7 +30,7 @@
                 ])->all()" />
             <x-forms.listbox id="disableLocalBackup" label="{{ __('Local copy') }}" portal :disabled="! $saveS3"
                 :options="[
-                    ['value' => false, 'label' => 'Keep local backup'],
+                    ['value' => false, 'label' => __('Keep local backup')],
                     ['value' => true, 'label' => __('Delete after S3 upload')],
                 ]" />
         </div>

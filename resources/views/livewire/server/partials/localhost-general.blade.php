@@ -84,7 +84,7 @@
                                 required :disabled="$isValidating" />
                             <x-forms.listbox searchable id="serverTimezone" label="{{ __('Server timezone') }}"
                                 helper="{{ __('Used for backup schedules, cron jobs, and displayed timestamps.') }}"
-                                searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="No matching timezone"
+                                searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="{{ __('No matching timezone') }}"
                                 :options="collect($this->timezones)->map(fn ($timezone) => [
                                     'value' => $timezone,
                                     'label' => $timezone,

@@ -32,22 +32,22 @@
 
     <div class="grid gap-4 border-t border-neutral-200 pt-4 dark:border-white/[0.07] sm:grid-cols-2">
         <x-forms.listbox id="is_multiline" label="{{ __('Value type') }}" :live="true" :options="[
-            ['value' => false, 'label' => 'Single line'],
+            ['value' => false, 'label' => __('Single line')],
             ['value' => true, 'label' => __('Multiline')],
         ]" />
         @if (!$shared)
             <x-forms.listbox id="is_literal" label="{{ __('Interpolation') }}" :options="[
-                ['value' => false, 'label' => 'Interpolate $VARIABLES'],
-                ['value' => true, 'label' => 'Literal (keep $ characters as-is)'],
+                ['value' => false, 'label' => __('Interpolate $VARIABLES')],
+                ['value' => true, 'label' => __('Literal (keep $ characters as-is)')],
             ]"
                 helper="Literal means $VARIABLES in the value is kept as the actual characters '$VARIABLES' instead of being resolved from another variable. Useful when your value contains a $ sign." />
             <x-forms.listbox id="is_buildtime" label="{{ __('Build time') }}" :options="[
-                ['value' => true, 'label' => 'Available during build'],
+                ['value' => true, 'label' => __('Available during build')],
                 ['value' => false, 'label' => __('Not available during build')],
             ]"
                 helper="{{ __('Make this variable available during the Docker build process. Useful for build secrets and dependencies.') }}" />
             <x-forms.listbox id="is_runtime" label="{{ __('Runtime') }}" :options="[
-                ['value' => true, 'label' => 'Available in the container'],
+                ['value' => true, 'label' => __('Available in the container')],
                 ['value' => false, 'label' => __('Not available in the container')],
             ]" helper="{{ __('Make this variable available in the running container at runtime.') }}" />
         @endif

@@ -32,7 +32,7 @@
             <div class="mt-4">
                 <x-forms.listbox id="stopDuringBackup" label="{{ __('Archive behavior') }}" live onChange="instantSave"
                     :options="[
-                        ['value' => false, 'label' => 'Keep containers running'],
+                        ['value' => false, 'label' => __('Keep containers running')],
                         ['value' => true, 'label' => __('Stop containers during archive')],
                     ]" />
             </div>

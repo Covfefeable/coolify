@@ -32,14 +32,14 @@
                     <x-forms.listbox canGate="update" :canResource="$server" id="isSwarmManager" label="{{ __('Manager role') }}"
                         helper="{{ __('Managers control scheduling and cluster state.') }}" onChange="instantSave"
                         :options="[
-                            ['value' => false, 'label' => 'Not a Swarm manager'],
+                            ['value' => false, 'label' => __('Not a Swarm manager')],
                             ['value' => true, 'label' => __('Swarm manager')],
                         ]"
                         :disabled="!$canUseSwarm || $server->settings->is_swarm_worker || !auth()->user()->can('update', $server)" />
                     <x-forms.listbox canGate="update" :canResource="$server" id="isSwarmWorker" label="{{ __('Worker role') }}"
                         helper="{{ __('Workers run tasks assigned by a Swarm manager.') }}" onChange="instantSave"
                         :options="[
-                            ['value' => false, 'label' => 'Not a Swarm worker'],
+                            ['value' => false, 'label' => __('Not a Swarm worker')],
                             ['value' => true, 'label' => __('Swarm worker')],
                         ]"
                         :disabled="!$canUseSwarm || $server->settings->is_swarm_manager || !auth()->user()->can('update', $server)" />

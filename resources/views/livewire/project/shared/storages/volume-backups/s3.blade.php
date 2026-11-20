@@ -34,7 +34,7 @@
                 ])->all()" />
             <x-forms.listbox canGate="update" :canResource="$resource" id="disableLocalBackup" label="{{ __('Local copy') }}"
                 :disabled="! $saveToS3 || ! auth()->user()?->can('update', $resource)" :options="[
-                    ['value' => false, 'label' => 'Keep local backup'],
+                    ['value' => false, 'label' => __('Keep local backup')],
                     ['value' => true, 'label' => __('Delete after S3 upload')],
                 ]" />
         </div>

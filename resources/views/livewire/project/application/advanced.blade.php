@@ -97,13 +97,13 @@
                         <x-forms.listbox id="isRawComposeDeploymentEnabled" label="{{ __('Compose deployment') }}" onChange="instantSave"
                             helper="WARNING: Advanced use cases only. In raw mode your compose file is deployed as-is. Nothing is modified by Coolify and you need to configure the proxy parts. More info in the <a class='underline dark:text-white' href='https://coolify.io/docs/knowledge-base/docker/compose#raw-docker-compose-deployment'>documentation</a>."
                             :options="[
-                                ['value' => false, 'label' => 'Managed by Coolify'],
-                                ['value' => true, 'label' => 'Raw (deploy file as-is)'],
+                                ['value' => false, 'label' => __('Managed by Coolify')],
+                                ['value' => true, 'label' => __('Raw (deploy file as-is)')],
                             ]" :disabled="! $canUpdate" />
-                        <x-forms.listbox id="isConnectToDockerNetworkEnabled" label="Predefined network" onChange="instantSave"
+                        <x-forms.listbox id="isConnectToDockerNetworkEnabled" label="{{ __('Predefined network') }}" onChange="instantSave"
                             helper="By default a compose resource only gets its own internal network. Connecting to a Coolify predefined network may require different internal DNS names. More info <a class='underline dark:text-white' target='_blank' href='https://coolify.io/docs/knowledge-base/docker/compose#connect-to-predefined-networks'>here</a>."
                             :options="[
-                                ['value' => false, 'label' => 'Isolated network only'],
+                                ['value' => false, 'label' => __('Isolated network only')],
                                 ['value' => true, 'label' => __('Connect to predefined network')],
                             ]" :disabled="! $canUpdate" />
                     </div>
@@ -117,8 +117,8 @@
                 <x-forms.listbox id="isConsistentContainerNameEnabled" label="{{ __('Container naming') }}" onChange="instantSave"
                     helper="With a consistent name the container is always called {{ $application->uuid }}. <span class='font-bold dark:text-warning'>{{ __('You will lose the rolling update feature!') }}</span>"
                     :options="[
-                        ['value' => false, 'label' => 'Generated name (rolling updates)'],
-                        ['value' => true, 'label' => 'Consistent name (no rolling updates)'],
+                        ['value' => false, 'label' => __('Generated name (rolling updates)')],
+                        ['value' => true, 'label' => __('Consistent name (no rolling updates)')],
                     ]" :disabled="! $canUpdate" />
                 @if ($isConsistentContainerNameEnabled === true)
                     <form wire:submit="saveCustomName" class="w-full">
@@ -236,20 +236,20 @@
                             ['value' => true, 'label' => __('Enabled')],
                             ['value' => false, 'label' => __('Disabled')],
                         ]" :disabled="! $canUpdate" />
-                    <x-forms.listbox id="isStripprefixEnabled" label="Path prefixes" onChange="instantSave"
+                    <x-forms.listbox id="isStripprefixEnabled" label="{{ __('Path prefixes') }}" onChange="instantSave"
                         helper="Strip Prefix removes prefixes from paths, like /api/ to /."
                         :options="[
-                            ['value' => true, 'label' => 'Strip prefixes'],
-                            ['value' => false, 'label' => 'Keep paths as-is'],
+                            ['value' => true, 'label' => __('Strip prefixes')],
+                            ['value' => false, 'label' => __('Keep paths as-is')],
                         ]" :disabled="! $canUpdate" />
                     @if ($isTraefikProxy)
                         <x-forms.listbox id="certificateResolverMode" label="{{ __('Certificate resolver') }}"
                             onChange="saveCertificateResolverMode"
                             helper="Traefik certificate resolver for this application's HTTPS routes. Choose <span class='font-bold'>None</span> for domains that use certificates from Traefik's dynamic configuration (for example Cloudflare Origin CA certificates). Redeploy the application to apply the change."
                             :options="[
-                                ['value' => 'server', 'label' => 'Server setting ('.$serverCertificateResolver.')'],
-                                ['value' => 'none', 'label' => 'None (use your own certificates)'],
-                                ['value' => 'custom', 'label' => 'Custom resolver'],
+                                ['value' => 'server', 'label' => __('Server setting (:resolver)', ['resolver' => $serverCertificateResolver])],
+                                ['value' => 'none', 'label' => __('None (use your own certificates)')],
+                                ['value' => 'custom', 'label' => __('Custom resolver')],
                             ]" :disabled="! $canUpdate" />
                         @if ($certificateResolverMode === 'custom')
                             <form wire:submit="saveCertificateResolver" class="w-full">

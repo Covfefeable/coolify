@@ -65,13 +65,13 @@
                         <x-forms.listbox id="generateExactLabels" label="{{ __('Generated labels') }}"
                             helper="<ul class='list-disc space-y-1 pl-4'><li><span class='font-semibold'>{{ __('All supported proxies:') }}</span> {{ __('Traefik and Caddy labels are both generated, so switching the proxy keeps routing working.') }}</li><li><span class='font-semibold'>{{ __('Active proxy only:') }}</span> {{ __('generates fewer labels, but all resources must be redeployed to become accessible again after each proxy switch.') }}</li></ul>"
                             onChange="instantSave" :options="[
-                                ['value' => false, 'label' => 'Labels for all supported proxies'],
+                                ['value' => false, 'label' => __('Labels for all supported proxies')],
                                 ['value' => true, 'label' => __('Labels for the active proxy only')],
                             ]" />
-                        <x-forms.listbox id="redirectEnabled" label="Unknown requests"
+                        <x-forms.listbox id="redirectEnabled" label="{{ __('Unknown requests') }}"
                             helper="{{ __('Control the 503 response for unknown hosts and stopped services. Custom request handling shows an error page or redirects to a URL.') }}"
                             onChange="instantSaveRedirect" :options="[
-                                ['value' => false, 'label' => 'Return the default 503 response'],
+                                ['value' => false, 'label' => __('Return the default 503 response')],
                                 ['value' => true, 'label' => __('Use custom request handling')],
                             ]" />
                         @if ($redirectEnabled)

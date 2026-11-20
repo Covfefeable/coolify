@@ -190,7 +190,7 @@
                                 onChange="updatePermanentRedirect"
                                 :onChangeArgs="[(int) $appId]"
                                 :options="[
-                                    ['value' => false, 'label' => 'Temporary'],
+                                    ['value' => false, 'label' => __('Temporary')],
                                     ['value' => true, 'label' => __('Permanent')],
                                 ]" :disabled="! auth()->user()->can('update', $service)" />
                         </div>
@@ -283,7 +283,7 @@
                                         <x-forms.listbox id="editingIndexing" htmlId="service-domain-indexing"
                                             label="{{ __('Search engine indexing') }}" portal
                                             :options="[
-                                                ['value' => 'index', 'label' => 'Indexable'],
+                                                ['value' => 'index', 'label' => __('Indexable')],
                                                 ['value' => 'noindex', 'label' => __('Noindex')],
                                             ]" />
                                         <x-forms.listbox id="editingRedirect" htmlId="service-domain-direction"
@@ -291,7 +291,7 @@
                                             helper="Applies to all domains for this service application."
                                             portal
                                             :options="[
-                                                ['value' => 'both', 'label' => 'No redirect'],
+                                                ['value' => 'both', 'label' => __('No redirect')],
                                                 ['value' => 'www', 'label' => __('Redirect to www')],
                                                 ['value' => 'non-www', 'label' => __('Redirect to non-www')],
                                             ]" />

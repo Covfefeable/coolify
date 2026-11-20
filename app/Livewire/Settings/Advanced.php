@@ -127,7 +127,7 @@ class Advanced extends Component
         $this->server_validation_max_failures_per_ip = $this->settings->server_validation_max_failures_per_ip;
         $this->server_validation_max_failures_per_team = $this->settings->server_validation_max_failures_per_team;
         $this->avatar_storage_options = [
-            ['value' => 'local', 'label' => 'Local storage'],
+            ['value' => 'local', 'label' => __('Local storage')],
             ...S3Storage::query()
                 ->s3Only()
                 ->whereTeamId(0)

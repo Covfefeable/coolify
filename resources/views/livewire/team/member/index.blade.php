@@ -83,7 +83,7 @@
                     <div class="w-full sm:w-36">
                         <x-forms.listbox id="member-role-filter" :wire="false" x-model="roleFilter"
                             x-effect="page = 1" :value="'all'" :options="[
-                                ['value' => 'all', 'label' => 'All roles'],
+                                ['value' => 'all', 'label' => __('All roles')],
                                 ['value' => 'owner', 'label' => __('Owner')],
                                 ['value' => 'admin', 'label' => __('Admin')],
                                 ['value' => 'member', 'label' => __('Member')],
@@ -92,10 +92,10 @@
                     <div class="w-full sm:w-40 min-[901px]:hidden">
                         <x-forms.listbox id="member-sort" :wire="false" x-model="sortBy"
                             x-effect="page = 1" :value="'name-asc'" :options="[
-                                ['value' => 'name-asc', 'label' => 'Name A–Z'],
-                                ['value' => 'name-desc', 'label' => 'Name Z–A'],
-                                ['value' => 'email-asc', 'label' => 'Email A–Z'],
-                                ['value' => 'email-desc', 'label' => 'Email Z–A'],
+                                ['value' => 'name-asc', 'label' => __('Name A–Z')],
+                                ['value' => 'name-desc', 'label' => __('Name Z–A')],
+                                ['value' => 'email-asc', 'label' => __('Email A–Z')],
+                                ['value' => 'email-desc', 'label' => __('Email Z–A')],
                                 ['value' => 'role-desc', 'label' => __('Role')],
                             ]" />
                     </div>

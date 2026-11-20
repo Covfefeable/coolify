@@ -95,7 +95,7 @@
                         <x-forms.input canGate="update" :canResource="$gitea_app" type="number" id="customPort"
                             label="{{ __('SSH port') }}" />
                         <div class="lg:col-span-2">
-                            <x-forms.listbox canGate="update" :canResource="$gitea_app" id="privateKeyId" label="SSH private key (optional)"
+                            <x-forms.listbox canGate="update" :canResource="$gitea_app" id="privateKeyId" label="{{ __('SSH private key (optional)') }}"
                                 :options="collect($privateKeys)->map(fn ($key) => [
                                     'value' => $key->id,
                                     'label' => $key->name,
@@ -240,7 +240,7 @@
                             <div class="lg:col-span-2 max-w-md">
                                 <x-forms.listbox id="use_custom_webhook_endpoint" label="{{ __('Webhook endpoint') }}"
                                     :live="true" :options="[
-                                        ['value' => false, 'label' => 'Use an instance endpoint'],
+                                        ['value' => false, 'label' => __('Use an instance endpoint')],
                                         ['value' => true, 'label' => __('Use a custom endpoint')],
                                     ]"
                                     x-model="useCustomWebhookEndpoint"

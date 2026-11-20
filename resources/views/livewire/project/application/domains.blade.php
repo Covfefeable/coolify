@@ -272,7 +272,7 @@
                     label="{{ __('Redirect type') }}" onChange="updatePermanentRedirect"
                     helper="Applies to the HTTP to HTTPS and www redirects. Permanent (301/308) is better for SEO, but browsers cache it. Use Temporary (302/307) while you test a redirect."
                     :options="[
-                        ['value' => false, 'label' => 'Temporary'],
+                        ['value' => false, 'label' => __('Temporary')],
                         ['value' => true, 'label' => __('Permanent')],
                     ]" :disabled="! auth()->user()->can('update', $application)" />
             </div>
@@ -339,7 +339,7 @@
                                         <x-forms.listbox id="editingIndexing"
                                             htmlId="application-domain-indexing" label="{{ __('Search engine indexing') }}" portal
                                             :options="[
-                                                ['value' => 'index', 'label' => 'Indexable'],
+                                                ['value' => 'index', 'label' => __('Indexable')],
                                                 ['value' => 'noindex', 'label' => __('Noindex')],
                                             ]" />
                                         <x-forms.listbox id="editingRedirect"
@@ -347,7 +347,7 @@
                                             :helper="$isCompose ? 'Applies to all domains for this Compose service.' : 'Applies to all domains for this application.'"
                                             portal
                                             :options="[
-                                                ['value' => 'both', 'label' => 'No redirect'],
+                                                ['value' => 'both', 'label' => __('No redirect')],
                                                 ['value' => 'www', 'label' => __('Redirect to www')],
                                                 ['value' => 'non-www', 'label' => __('Redirect to non-www')],
                                             ]" />

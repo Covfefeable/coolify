@@ -246,7 +246,7 @@
                                     :wire="false" :value="$editingIndex !== null ? ($domainRows[$editingIndex]['redirect'] ?? 'both') : 'both'" disabled
                                     helper="Read-only preview routing configuration."
                                     :options="[
-                                        ['value' => 'both', 'label' => 'No redirect'],
+                                        ['value' => 'both', 'label' => __('No redirect')],
                                         ['value' => 'www', 'label' => __('Redirect to www')],
                                         ['value' => 'non-www', 'label' => __('Redirect to non-www')],
                                     ]" />

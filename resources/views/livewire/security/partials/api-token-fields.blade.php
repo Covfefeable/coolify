@@ -130,7 +130,7 @@
     </div>
     <div class="grid gap-4 lg:grid-cols-2">
         <x-forms.listbox id="{{ $form }}.scopeMode" label="{{ __('Resources') }}" :options="[
-            ['value' => 'team', 'label' => 'All resources in the team', 'disabled' => !$canUseTeamScope],
+            ['value' => 'team', 'label' => __('All resources in the team'), 'disabled' => !$canUseTeamScope],
             ['value' => 'selected', 'label' => __('Selected projects, environments, or resources')],
         ]" />
         <div class="min-w-0">

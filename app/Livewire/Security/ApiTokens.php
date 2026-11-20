@@ -135,16 +135,16 @@ class ApiTokens extends Component
             ->values();
 
         return [
-            ...($selectableProjects->isEmpty() ? [] : [['value' => '__projects', 'label' => 'Projects', 'header' => true]]),
+            ...($selectableProjects->isEmpty() ? [] : [['value' => '__projects', 'label' => __('Projects'), 'header' => true]]),
             ...$selectableProjects->map(fn (Project $project) => ['value' => "project:{$project->uuid}", 'label' => $project->name])->values()->all(),
-            ...($selectableEnvironments->isEmpty() ? [] : [['value' => '__environments', 'label' => 'Environments', 'header' => true]]),
+            ...($selectableEnvironments->isEmpty() ? [] : [['value' => '__environments', 'label' => __('Environments'), 'header' => true]]),
             ...$selectableEnvironments->map(fn (Environment $environment) => [
                 'value' => "environment:{$environment->uuid}",
                 'label' => $environmentPaths[$environment->id],
                 'parents' => ["project:{$projectUuids[$environment->project_id]}"],
             ])
                 ->sortBy('label', SORT_NATURAL | SORT_FLAG_CASE)->values()->all(),
-            ...($resources->isEmpty() ? [] : [['value' => '__resources', 'label' => 'Resources', 'header' => true]]),
+            ...($resources->isEmpty() ? [] : [['value' => '__resources', 'label' => __('Resources'), 'header' => true]]),
             ...$resources->all(),
         ];
     }

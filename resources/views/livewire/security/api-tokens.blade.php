@@ -20,7 +20,7 @@
             $expirationList = collect($expirationOptions)
                 ->map(fn ($label, $days) => ['value' => (string) $days, 'label' => $label])
                 ->values()
-                ->push(['value' => '', 'label' => 'Never'])
+                ->push(['value' => '', 'label' => __('Never')])
                 ->all();
         @endphp
 

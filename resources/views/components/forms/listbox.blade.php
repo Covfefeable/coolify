@@ -6,7 +6,7 @@
     'required' => false,
     'options' => [], // list of ['value' => ..., 'label' => ..., 'description' => ?string, 'disabled' => bool, 'dot' => ?string, 'state' => ?string]
     'placeholder' => __('Select…'),
-    'emptyText' => 'No options available.',
+    'emptyText' => __('No options available.'),
     'live' => false,
     'onChange' => null, // optional $wire method to call after a selection
     'onChangeArgs' => null, // optional arguments followed by the selected value
@@ -21,8 +21,8 @@
     'autoDisable' => true,
     'multiple' => false, // true = the bound value is an array of option values
     'searchable' => false, // true = a search field filters the options
-    'searchPlaceholder' => 'Search…',
-    'searchEmptyText' => 'No matching options',
+    'searchPlaceholder' => __('Search…'),
+    'searchEmptyText' => __('No matching options'),
     'allowCustom' => false, // true (with searchable) = the search text can be chosen as a custom value
     'countLabel' => null, // with multiple: always show a count such as "3 resources" instead of the selected labels
 ])
@@ -50,12 +50,12 @@
         $selectedLabels = collect($options)
             ->filter(fn ($option) => empty($option['header']) && in_array((string) $option['value'], $selectedValues, true))
             ->pluck('label');
-        $countLabels = $countLabel ? [$countLabel, Illuminate\Support\Str::plural($countLabel)] : null;
+        $countLabels = $countLabel ? [__($countLabel), __(Illuminate\Support\Str::plural($countLabel))] : null;
         $multipleLabel = match (true) {
             $selectedLabels->isEmpty() => $placeholder,
-            $countLabels !== null => $selectedLabels->count().' '.$countLabels[$selectedLabels->count() === 1 ? 0 : 1],
+            $countLabels !== null => __(':count :label', ['count' => $selectedLabels->count(), 'label' => $countLabels[$selectedLabels->count() === 1 ? 0 : 1]]),
             $selectedLabels->count() <= 2 => $selectedLabels->implode(', '),
-            default => $selectedLabels->count().' selected',
+            default => __(':count selected', ['count' => $selectedLabels->count()]),
         };
     }
 @endphp
@@ -142,9 +142,9 @@
             const labels = this.selectedLabels;
             if (labels.length === 0) return @js($placeholder);
             @if ($countLabels)
-            return `${labels.length} ${labels.length === 1 ? @js($countLabels[0]) : @js($countLabels[1])}`;
+            return @js(__(':count :label')).replace(':count', labels.length).replace(':label', () => labels.length === 1 ? @js($countLabels[0]) : @js($countLabels[1]));
             @endif
-            return labels.length <= 2 ? labels.join(', ') : `${labels.length} selected`;
+            return labels.length <= 2 ? labels.join(', ') : @js(__(':count selected')).replace(':count', labels.length);
         },
         get title() {
             return this.selectedLabels.join(', ') || @js($placeholder);

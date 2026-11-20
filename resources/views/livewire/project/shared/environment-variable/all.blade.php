@@ -43,7 +43,7 @@
                         <x-forms.listbox id="use_build_secrets" label="{{ __('Build secrets') }}" onChange="instantSave"
                             helper="Docker BuildKit secrets keep values out of the final image for enhanced security during builds. Requires Docker 18.09+ with BuildKit support."
                             :options="[
-                                ['value' => false, 'label' => 'Standard build arguments'],
+                                ['value' => false, 'label' => __('Standard build arguments')],
                                 ['value' => true, 'label' => __('Docker BuildKit secrets')],
                             ]" :disabled="! auth()->user()->can('manageEnvironment', $resource)" />
                     </div>
@@ -58,7 +58,7 @@
                             onChange="saveLogRedactionSetting"
                             helper="Hide every environment variable value in deployment logs, scheduled task output, copied or downloaded logs, and logs from the API and MCP. Live log streaming is not changed. Locked variables and known secret formats are always hidden."
                             :options="[
-                                ['value' => true, 'label' => 'Hide all values'],
+                                ['value' => true, 'label' => __('Hide all values')],
                                 ['value' => false, 'label' => __('Hide locked values only')],
                             ]" :disabled="! auth()->user()->can('manageEnvironment', $resource)" />
                     </div>

@@ -16,20 +16,20 @@
                      <x-forms.listbox id="is_registration_enabled" label="{{ __('Registration') }}"
                         helper="{{ __('Allow users to create their own account. When disabled, only administrators can create accounts.') }}"
                         onChange="instantSave" :options="[
-                            ['value' => true, 'label' => 'Anyone can register'],
+                            ['value' => true, 'label' => __('Anyone can register')],
                             ['value' => false, 'label' => __('Registration disabled')],
                          ]" />
                      <x-forms.listbox canGate="update" :canResource="$settings"
                          id="disable_registration_when_oauth_enabled" label="{{ __('Password registration with OAuth') }}"
                          helper="{{ __('Hide password registration whenever at least one OAuth provider is enabled.') }}"
                          onChange="instantSave" :options="[
-                             ['value' => false, 'label' => 'Allow password registration'],
+                             ['value' => false, 'label' => __('Allow password registration')],
                              ['value' => true, 'label' => __('Disable when OAuth is enabled')],
                          ]" />
                     <x-forms.listbox id="disable_two_step_confirmation" label="{{ __('Destructive action confirmation') }}"
                         helper="{{ __('Choose whether destructive actions require password and text confirmation.') }}"
                         onChange="instantSave" :options="[
-                            ['value' => false, 'label' => 'Require two-step confirmation'],
+                            ['value' => false, 'label' => __('Require two-step confirmation')],
                             ['value' => true, 'label' => __('Skip two-step confirmation')],
                         ]" />
                     <x-forms.listbox canGate="update" :canResource="$settings" id="is_passkey_enabled" label="{{ __('Passkeys') }}"
@@ -139,7 +139,7 @@
                         <div class="max-w-md">
                             <x-forms.listbox id="webhook_allow_localhost" label="{{ __('Localhost targets') }}"
                                 helper="{{ __('Loopback targets must also be present in the allowlist.') }}" :options="[
-                                    ['value' => true, 'label' => 'Allowed'],
+                                    ['value' => true, 'label' => __('Allowed')],
                                     ['value' => false, 'label' => __('Blocked')],
                                 ]" />
                         </div>
@@ -151,10 +151,10 @@
                 <div class="grid gap-4 lg:grid-cols-2">
                     <x-forms.listbox id="is_wire_navigate_enabled" label="{{ __('Navigation') }}"
                         helper="Prefetch pages and navigate without full reloads." onChange="instantSave" :options="[
-                            ['value' => true, 'label' => 'SPA navigation'],
+                            ['value' => true, 'label' => __('SPA navigation')],
                             ['value' => false, 'label' => __('Full page navigation')],
                         ]" />
-                    <x-forms.listbox id="do_not_track" label="Anonymous telemetry"
+                    <x-forms.listbox id="do_not_track" label="{{ __('Anonymous telemetry') }}"
                         helper="Control installation counting and error reports." onChange="instantSave" :options="[
                             ['value' => false, 'label' => __('Enabled')],
                             ['value' => true, 'label' => __('Disabled')],
@@ -183,7 +183,7 @@
                     <div class="flex max-w-md flex-col gap-4">
                         <x-forms.listbox id="file_download_storage" label="{{ __('Download method') }}" onChange="instantSave"
                             :options="[
-                                ['value' => 'stream', 'label' => 'Stream through Coolify'],
+                                ['value' => 'stream', 'label' => __('Stream through Coolify')],
                                 ...array_values(array_filter($avatar_storage_options, fn ($option) => $option['value'] !== 'local')),
                             ]" />
                     </div>

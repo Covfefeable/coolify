@@ -248,7 +248,7 @@
                                 required :disabled="$isValidating" />
                             <x-forms.listbox searchable id="serverTimezone" label="{{ __('Server timezone') }}"
                                 helper="{{ __('Used for backups, cron jobs, and displayed timestamps.') }}"
-                                searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="No matching timezone"
+                                searchPlaceholder="{{ __('Search timezones') }}" searchEmptyText="{{ __('No matching timezone') }}"
                                 :options="collect($this->timezones)->map(fn ($timezone) => [
                                     'value' => $timezone,
                                     'label' => $timezone,
@@ -267,7 +267,7 @@
                                     label="{{ __('Server role') }}" onChange="requestServerRoleChange"
                                     helper="{{ __('Builds can use large amounts of CPU and memory. Deployments on the same server can become slow or unreachable during a build. GitHub Actions runners need the Builds only or the Deployments and builds role.') }}"
                                     :disabled="$isValidating" :options="[
-                                        ['value' => 'deployment', 'label' => 'Deployments only', 'description' => 'Runs your resources. Images are built on a build server.'],
+                                        ['value' => 'deployment', 'label' => __('Deployments only'), 'description' => __('Runs your resources. Images are built on a build server.')],
                                         ['value' => 'build', 'label' => __('Builds only'), 'description' => __('Builds images for other servers and runs GitHub Actions runners.')],
                                         ['value' => 'both', 'label' => __('Deployments and builds'), 'description' => __('Builds and runs your resources on this server. Can also run GitHub Actions runners.')],
                                     ]" />

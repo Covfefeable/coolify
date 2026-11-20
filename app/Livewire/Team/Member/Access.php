@@ -212,14 +212,14 @@ class Access extends Component
             ->values();
 
         return [
-            ['value' => '__team', 'label' => 'Team', 'header' => true],
-            ['value' => 'team', 'label' => 'Whole team'],
-            ...($projects->isEmpty() ? [] : [['value' => '__projects', 'label' => 'Projects', 'header' => true]]),
+            ['value' => '__team', 'label' => __('Team'), 'header' => true],
+            ['value' => 'team', 'label' => __('Whole team')],
+            ...($projects->isEmpty() ? [] : [['value' => '__projects', 'label' => __('Projects'), 'header' => true]]),
             ...$projects->map(fn (Project $project) => ['value' => "project:{$project->uuid}", 'label' => $project->name])->all(),
-            ...($environments->isEmpty() ? [] : [['value' => '__environments', 'label' => 'Environments', 'header' => true]]),
+            ...($environments->isEmpty() ? [] : [['value' => '__environments', 'label' => __('Environments'), 'header' => true]]),
             ...$environments->map(fn (Environment $environment) => ['value' => "environment:{$environment->uuid}", 'label' => $environmentPaths[$environment->id]])
                 ->sortBy('label', SORT_NATURAL | SORT_FLAG_CASE)->values()->all(),
-            ...($resources->isEmpty() ? [] : [['value' => '__resources', 'label' => 'Resources', 'header' => true]]),
+            ...($resources->isEmpty() ? [] : [['value' => '__resources', 'label' => __('Resources'), 'header' => true]]),
             ...$resources->all(),
         ];
     }

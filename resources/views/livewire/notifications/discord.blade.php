@@ -20,7 +20,7 @@
                         helper="Mention @here when a critical event occurs."
                         onChange="instantSaveDiscordPingEnabled"
                         :disabled="!auth()->user()->can('update', $settings)" :options="[
-                            ['value' => true, 'label' => 'Mention @here'],
+                            ['value' => true, 'label' => __('Mention @here')],
                             ['value' => false, 'label' => __('Do not mention')],
                         ]" />
                     <div class="lg:col-span-2">

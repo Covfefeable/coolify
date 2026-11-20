@@ -51,7 +51,7 @@
                                 <x-forms.listbox canGate="update" :canResource="$settings" id="useInstanceEmailSettings" label="{{ __('Email service') }}"
                                     onChange="instantSave"
                                     :disabled="!auth()->user()->can('update', $settings)" :options="[
-                                        ['value' => true, 'label' => 'Use hosted email service'],
+                                        ['value' => true, 'label' => __('Use hosted email service')],
                                         ['value' => false, 'label' => __('Use team email settings')],
                                     ]" />
                             </div>
@@ -60,7 +60,7 @@
                                 <x-forms.listbox canGate="update" :canResource="$settings" id="useInstanceEmailSettings" label="{{ __('Email service') }}"
                                     onChange="instantSave"
                                     :disabled="!auth()->user()->can('update', $settings)" :options="[
-                                        ['value' => true, 'label' => 'Use system-wide settings'],
+                                        ['value' => true, 'label' => __('Use system-wide settings')],
                                         ['value' => false, 'label' => __('Use team email settings')],
                                     ]" />
                             </div>

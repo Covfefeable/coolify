@@ -55,7 +55,7 @@
                 @endif
                 @if ($hasServers && ! $isRunning && ! $newKey)
                     <x-forms.listbox id="keyType" label="{{ __('New key type') }}" :options="[
-                        ['value' => 'ed25519', 'label' => 'Ed25519', 'description' => 'Recommended.'],
+                        ['value' => 'ed25519', 'label' => 'Ed25519', 'description' => __('Recommended.')],
                         ['value' => 'rsa', 'label' => 'RSA 4096', 'description' => __('For hosts that do not accept Ed25519, for example FIPS hosts.')],
                     ]" />
                 @endif

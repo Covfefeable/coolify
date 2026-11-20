@@ -99,11 +99,11 @@
             placeholder="smtp.mailgun.org" label="Host" />
         <x-forms.input canGate="update" :canResource="$settings" required id="smtpPort" type="number"
             placeholder="587" label="{{ __('Port') }}" />
-        <x-forms.listbox canGate="update" :canResource="$settings" required id="smtpEncryption" label="Encryption"
+        <x-forms.listbox canGate="update" :canResource="$settings" required id="smtpEncryption" label="{{ __('Encryption') }}"
             :disabled="!auth()->user()->can('update', $settings)" :options="[
                 ['value' => 'starttls', 'label' => 'StartTLS'],
                 ['value' => 'tls', 'label' => 'TLS / SSL'],
-                ['value' => 'none', 'label' => 'None'],
+                ['value' => 'none', 'label' => __('None')],
             ]" />
     </div>
 </div>

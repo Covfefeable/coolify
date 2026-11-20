@@ -4,14 +4,14 @@
             @if ($isApplication)
                 <x-forms.listbox id="appScanEnabled" label="{{ __('Scan this app') }}" onChange="$commit"
                     :disabled="! $canEdit" helper="Off stops the scans of this app's image."
-                    :options="[['value' => '1', 'label' => 'On'], ['value' => '0', 'label' => __('Off')]]" />
+                    :options="[['value' => '1', 'label' => __('On')], ['value' => '0', 'label' => __('Off')]]" />
                 @if ($isDockerImage)
                     <x-forms.listbox id="buildsByTeam" label="{{ __('Who builds this image') }}" onChange="$commit"
                         :disabled="! $canEdit"
                         helper="Coolify detects whether your team builds this image. Set it when the detection is wrong."
                         :options="[
-                            ['value' => '', 'label' => 'Detect automatically'],
-                            ['value' => '1', 'label' => 'My team'],
+                            ['value' => '', 'label' => __('Detect automatically')],
+                            ['value' => '1', 'label' => __('My team')],
                             ['value' => '0', 'label' => __('Someone else')],
                         ]" />
                 @endif

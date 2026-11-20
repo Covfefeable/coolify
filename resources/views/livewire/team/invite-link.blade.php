@@ -29,7 +29,7 @@
                     <div class="flex items-end gap-2">
                         <div class="min-w-0 flex-1">
                             <x-forms.listbox id="role" label="{{ __('Role') }}" :options="array_values(array_filter([
-                                auth()->user()->role() === 'owner' ? ['value' => 'owner', 'label' => 'Owner'] : null,
+                                auth()->user()->role() === 'owner' ? ['value' => 'owner', 'label' => __('Owner')] : null,
                                 ['value' => 'admin', 'label' => __('Admin')],
                                 ['value' => 'member', 'label' => __('Member')],
                             ]))" />

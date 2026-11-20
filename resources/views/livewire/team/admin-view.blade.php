@@ -24,17 +24,17 @@
                 <div class="flex w-full gap-2 sm:w-auto">
                     <div class="w-full sm:w-40">
                         <x-forms.listbox id="teamFilter" live :options="[
-                            ['value' => 'all', 'label' => 'All users'],
+                            ['value' => 'all', 'label' => __('All users')],
                             ['value' => 'current', 'label' => __('Current team')],
                             ['value' => 'outside', 'label' => __('Outside team')],
                         ]" />
                     </div>
                     <div class="w-full sm:w-40">
                         <x-forms.listbox id="sort" live :options="[
-                            ['value' => 'name_asc', 'label' => 'Name A–Z'],
-                            ['value' => 'name_desc', 'label' => 'Name Z–A'],
-                            ['value' => 'email_asc', 'label' => 'Email A–Z'],
-                            ['value' => 'email_desc', 'label' => 'Email Z–A'],
+                            ['value' => 'name_asc', 'label' => __('Name A–Z')],
+                            ['value' => 'name_desc', 'label' => __('Name Z–A')],
+                            ['value' => 'email_asc', 'label' => __('Email A–Z')],
+                            ['value' => 'email_desc', 'label' => __('Email Z–A')],
                         ]" />
                     </div>
                 </div>

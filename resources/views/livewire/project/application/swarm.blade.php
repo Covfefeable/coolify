@@ -16,7 +16,7 @@
                 :canResource="$application" />
             <x-forms.listbox canGate="update" :canResource="$application" id="isSwarmOnlyWorkerNodes" label="{{ __('Node placement') }}" live onChange="instantSave"
                 :disabled="! auth()->user()->can('update', $application)" :options="[
-                    ['value' => true, 'label' => 'Worker nodes only'],
+                    ['value' => true, 'label' => __('Worker nodes only')],
                     ['value' => false, 'label' => __('Manager and worker nodes')],
                 ]" />
             <div class="lg:col-span-2">

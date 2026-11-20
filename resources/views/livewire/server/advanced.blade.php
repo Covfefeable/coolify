@@ -34,10 +34,10 @@
                 <x-forms.listbox canGate="update" :canResource="$server" id="backupCompressionCpuPercentage"
                     label="{{ __('Backup compression CPU') }}" onChange="instantSave"
                     helper="{{ __('Sets how many CPU threads can be used to compress volume backups, based on this server\'s available CPUs.') }}" :options="[
-                        ['value' => 25, 'label' => 'Low (25%)'],
-                        ['value' => 50, 'label' => 'Balanced (50%)'],
-                        ['value' => 75, 'label' => 'High (75%)'],
-                        ['value' => 100, 'label' => 'Maximum (100%)'],
+                        ['value' => 25, 'label' => __('Low (25%)')],
+                        ['value' => 50, 'label' => __('Balanced (50%)')],
+                        ['value' => 75, 'label' => __('High (75%)')],
+                        ['value' => 100, 'label' => __('Maximum (100%)')],
                     ]" />
             </x-application.settings-section>
 

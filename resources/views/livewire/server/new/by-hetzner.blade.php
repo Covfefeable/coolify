@@ -59,7 +59,7 @@
                         'label' => $key->name,
                     ])->values()->all();
                     $scriptOptions = collect([
-                        ['value' => '', 'label' => 'Start with an empty script'],
+                        ['value' => '', 'label' => __('Start with an empty script')],
                         ...$saved_cloud_init_scripts->map(fn ($script) => [
                             'value' => $script->id,
                             'label' => $script->name,

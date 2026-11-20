@@ -23,8 +23,8 @@
                         </div>
                         <div class="sm:w-36">
                             <x-forms.listbox id="source" live canGate="viewAdmin" :canResource="currentTeam()" :options="[
-                                ['value' => 'all', 'label' => 'All sources'],
-                                ['value' => 'ui', 'label' => 'Web UI'],
+                                ['value' => 'all', 'label' => __('All sources')],
+                                ['value' => 'ui', 'label' => __('Web UI')],
                                 ['value' => 'api', 'label' => 'API'],
                                 ['value' => 'mcp', 'label' => 'MCP'],
                                 ['value' => 'webhook', 'label' => 'Webhook'],

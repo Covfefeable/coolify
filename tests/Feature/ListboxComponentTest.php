@@ -59,6 +59,23 @@ test('multiple listbox shows a count when more than two options are selected', f
         ->assertSeeHtml('x-text="current">3 selected</span>');
 });
 
+test('listbox defaults and selected count render in Simplified Chinese', function () {
+    app()->setLocale('zh-cn');
+
+    $html = Blade::render('<x-forms.listbox id="servers" :wire="false" searchable />');
+    expect($html)->toContain('placeholder="搜索…"');
+
+    $html = Blade::render(<<<'BLADE'
+        <x-forms.listbox id="resources" :wire="false" multiple countLabel="resource" :value="['app']"
+            :options="[['value' => 'app', 'label' => 'My application']]" />
+    BLADE);
+    expect($html)->toContain('x-text="current">1 个资源</span>');
+
+    Livewire::test(multipleListboxTestComponent(), ['ids' => [1, 2, 3]])
+        ->assertSeeHtml('x-text="current">已选 3 项</span>')
+        ->assertSet('ids', [1, 2, 3]);
+});
+
 test('client-side multiple listbox treats a non-array value as empty', function () {
     $html = Blade::render(<<<'BLADE'
         <x-forms.listbox id="tags" :wire="false" :multiple="true" value="1" placeholder="No tags"

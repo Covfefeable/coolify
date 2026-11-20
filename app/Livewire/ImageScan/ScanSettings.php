@@ -434,7 +434,7 @@ class ScanSettings extends Component
             'onScanErrorOptions' => collect(ImageScanOnError::cases())
                 ->map(fn (ImageScanOnError $option) => ['value' => $option->value, 'label' => $option->label()])
                 ->all(),
-            'countMediumOptions' => [['value' => '1', 'label' => 'Yes'], ['value' => '0', 'label' => 'No']],
+            'countMediumOptions' => [['value' => '1', 'label' => __('Yes')], ['value' => '0', 'label' => __('No')]],
             'appScanOn' => $scope instanceof Application ? (bool) $scope->settings?->is_image_scan_enabled : true,
             'isDockerImage' => $scope instanceof Application && $scope->build_pack === 'dockerimage',
             'showsIgnores' => $scope instanceof Team || $this->isResourceScope($scope),

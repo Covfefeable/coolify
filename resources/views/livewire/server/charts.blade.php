@@ -44,7 +44,7 @@
 
                         <div class="mt-4 max-w-xs">
                             <x-forms.listbox id="interval" label="{{ __('Time range') }}" onChange="setInterval" :options="[
-                                ['value' => 5, 'label' => 'Last 5 minutes'],
+                                ['value' => 5, 'label' => __('Last 5 minutes')],
                                 ['value' => 10, 'label' => __('Last 10 minutes')],
                                 ['value' => 30, 'label' => __('Last 30 minutes')],
                                 ['value' => 60, 'label' => __('Last hour')],

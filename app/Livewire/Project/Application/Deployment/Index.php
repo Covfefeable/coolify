@@ -258,7 +258,7 @@ class Index extends Component
         }
 
         $this->pullRequestOptions = collect([
-            ['value' => '', 'label' => 'All deployments'],
+            ['value' => '', 'label' => __('All deployments')],
         ])
             ->concat($pullRequestIds->map(fn ($pullRequestId) => [
                 'value' => $pullRequestId,

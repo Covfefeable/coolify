@@ -6,7 +6,7 @@
 
     <div class="flex flex-col gap-4">
         @if (count($detectedEnvFiles) > 1)
-            <x-forms.listbox id="selectedEnvFile" label="Env file" live
+            <x-forms.listbox id="selectedEnvFile" label="{{ __('Env file') }}" live
                 :options="collect($detectedEnvFiles)->map(fn ($file) => ['value' => $file, 'label' => $file])->all()" />
         @endif
         <div class="flex flex-col gap-2">
