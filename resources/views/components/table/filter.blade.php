@@ -1,4 +1,4 @@
-@props(['activeCount' => 0, 'activeText' => null, 'resetAction', 'resetLabel' => 'Reset filters'])
+@props(['activeCount' => 0, 'activeText' => null, 'resetAction', 'resetLabel' => __('Reset filters')])
 
 <div class="table-filter">
     <x-table.dropdown panel-class="w-44! overflow-hidden! p-0!" :multiselectable="true">

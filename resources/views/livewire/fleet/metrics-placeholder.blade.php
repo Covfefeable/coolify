@@ -17,7 +17,7 @@
 
     <x-application.settings-section id="metrics-overview-section" title="{{ __('Overview') }}">
         <x-skeleton.tiles :count="6" grid="grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
-            :labels="['Servers online', 'Fleet CPU', 'Fleet memory', 'Fleet disk', 'Fleet network', 'Containers']" />
+            :labels="[__('Servers online'), __('Fleet CPU'), __('Fleet memory'), __('Fleet disk'), __('Fleet network'), __('Containers')]" />
     </x-application.settings-section>
 
     <div class="grid gap-6 lg:grid-cols-2">

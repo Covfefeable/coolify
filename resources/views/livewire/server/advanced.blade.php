@@ -24,7 +24,7 @@
                         helper="{{ __('Notify the team when root filesystem usage exceeds this percentage.') }}" />
                     <x-forms.input canGate="update" :canResource="$server"
                         id="serverDiskUsageNotificationIntervalHours" type="number" min="1" max="720"
-                        label="Notification interval (hours)" required
+                        label="{{ __('Notification interval (hours)') }}" required
                         helper="{{ __('Minimum time between high disk usage notifications for this server.') }}" />
                 </div>
             </x-application.settings-section>

@@ -51,10 +51,10 @@
                         @elseif ($securityUpdates > 0)
                             <x-status-badge :status="$securityUpdates . ' ' . Str::plural('security update', $securityUpdates)" type="error" />
                         @else
-                            <x-status-badge :status="$totalUpdates . ' ' . Str::plural('update', $totalUpdates)" type="warning" />
+                            <x-status-badge :status="trans_choice(':count update|:count updates', $totalUpdates)" type="warning" />
                         @endif
                         @if ($rebootRequired)
-                            <x-status-badge status="Reboot required" type="warning" />
+                            <x-status-badge status="{{ __('Reboot required') }}" type="warning" />
                         @endif
                     @else
                         <x-status-badge status="Not checked yet" type="neutral" />
@@ -65,7 +65,7 @@
                     @can('update', $server)
                         <x-split-action id="server-patching-actions">
                             <x-slot:main @click="open = ! open" aria-haspopup="menu">
-                                Actions
+                                {{ __('Actions') }}
                             </x-slot:main>
                             <button type="button" class="listbox-option justify-start! gap-2.5!" role="menuitem"
                                 @click="open = false" wire:click="checkForUpdates" @disabled($checking)>
@@ -122,7 +122,7 @@
 
                     <div class="flex flex-wrap items-center gap-2 text-sm text-neutral-600 dark:text-fg-dim">
                         <span>
-                            Last checked:
+                        {{ __('Last checked:') }}
                             @if ($checkedAt)
                                 <span title="{{ $checkedAt->toDateTimeString() }}">{{ $checkedAt->diffForHumans() }}</span>
                             @else
@@ -147,7 +147,7 @@
                             <div class="input flex items-center justify-between gap-2 pr-1!">
                                 <span class="flex min-w-0 items-center gap-2 truncate text-neutral-700 dark:text-fg-dim">
                                     <span @class(['size-1.5 shrink-0 rounded-full', 'bg-emerald-500' => $autoSecurityUpdates, 'bg-neutral-400 dark:bg-neutral-500' => ! $autoSecurityUpdates])></span>
-                                    {{ $autoSecurityUpdates ? 'On, every day' : 'Off' }}
+                                    {{ $autoSecurityUpdates ? __('On, every day') : __('Off') }}
                                 </span>
                                 @can('update', $server)
                                     <div class="flex shrink-0" wire:key="auto-security-updates-{{ $autoSecurityUpdates ? 'on' : 'off' }}">
@@ -199,9 +199,8 @@
                     </div>
 
                     <x-callout type="info" title="{{ __('Supported package managers') }}">
-                        Automated package discovery currently supports apk, apt, dnf, pacman, and zypper. Automatic
-                        security updates are available for apt and dnf (Debian, Ubuntu, and RHEL family)@if ($packageManager && ! $autoUpdatesSupported); this server uses {{ $packageManager }}@endif.
-                        Status notifications can be managed from
+                        {{ __('Automated package discovery currently supports apk, apt, dnf, pacman, and zypper. Automatic security updates are available for apt and dnf (Debian, Ubuntu, and RHEL family)') }}@if ($packageManager && ! $autoUpdatesSupported){{ __('; this server uses :manager', ['manager' => $packageManager]) }}@endif.
+                        {{ __('Status notifications can be managed from') }}
                         <a class="font-medium underline" href="{{ route('notifications.email') }}"
                             {{ wireNavigate() }}>{{ __('notification settings') }}</a>.
                     </x-callout>
@@ -237,10 +236,10 @@
             </x-application.settings-section>
         @elseif ($totalUpdates > 0)
             <x-application.settings-section id="server-package-updates-section" title="{{ __('Package updates') }}"
-                helper="{{ $totalUpdates }} {{ Str::plural('update', $totalUpdates) }} available{{ $securityUpdates !== null ? ', ' . $securityUpdates . ' of them security ' . Str::plural('update', $securityUpdates) : '' }}."
+                helper="{{ trans_choice(':count update available|:count updates available', $totalUpdates) }}{{ $securityUpdates !== null ? trans_choice(', :count of them security update|, :count of them security updates', $securityUpdates) : '' }}."
                 flush>
                 <x-slot:badges>
-                    <x-status-badge :status="$totalUpdates . ' ' . Str::plural('update', $totalUpdates)" :type="$securityUpdates > 0 ? 'error' : 'warning'" />
+                    <x-status-badge :status="trans_choice(':count update|:count updates', $totalUpdates)" :type="$securityUpdates > 0 ? 'error' : 'warning'" />
                 </x-slot:badges>
                 <x-slot:actions>
                     <div class="w-56">

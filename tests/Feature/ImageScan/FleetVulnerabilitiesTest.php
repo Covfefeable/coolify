@@ -530,6 +530,14 @@ describe('page', function () {
             ->and(FleetVulnerabilities::notScannedSentence(1, 0))->toBe('1 resource was not scanned, so Coolify cannot tell.')
             ->and(FleetVulnerabilities::notScannedSentence(3, 2))->toBe('3 resources on 2 servers were not scanned, so Coolify cannot tell.');
     });
+
+    it('localizes unscanned resource and server counts', function () {
+        app()->setLocale('zh-cn');
+
+        expect(FleetVulnerabilities::notScannedSentence(1, 1))->toBe('1 台服务器上的 1 个资源尚未扫描，无法判断是否需要处理。')
+            ->and(FleetVulnerabilities::notScannedSentence(1, 0))->toBe('1 个资源尚未扫描，无法判断是否需要处理。')
+            ->and(FleetVulnerabilities::notScannedSentence(3, 2))->toBe('2 台服务器上的 3 个资源尚未扫描，无法判断是否需要处理。');
+    });
 });
 
 describe('markers', function () {

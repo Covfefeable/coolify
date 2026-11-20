@@ -199,7 +199,7 @@
                                 <x-slot:main wire:loading.attr="disabled" wire:target="checkProxy,startProxy"
                                     @click="document.getElementById('server-mobile-restart-proxy-trigger')?.click()">
                                     <x-reicon name="restart" class="size-3.5" />
-                                    Restart Proxy
+                        {{ __('Restart Proxy') }}
                                 </x-slot:main>
                                 <button type="button" class="listbox-option justify-start! gap-2.5!"
                                     @click="open = false; document.getElementById('server-mobile-stop-proxy-trigger')?.click()"
@@ -294,7 +294,7 @@
                             <x-slot:main wire:loading.attr="disabled" wire:target="checkProxy,startProxy"
                                 @click="document.getElementById('server-mobile-restart-proxy-trigger')?.click()">
                                 <x-reicon name="restart" class="size-3.5" />
-                                Restart Proxy
+                        {{ __('Restart Proxy') }}
                             </x-slot:main>
                             <button type="button" class="listbox-option justify-start! gap-2.5!"
                                 @click="open = false; document.getElementById('server-mobile-stop-proxy-trigger')?.click()"

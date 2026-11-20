@@ -17,7 +17,7 @@
             @elseif ($mode === 'off')
                 <x-status-badge status="Check off" type="warning" />
             @elseif (count($fingerprints) > 0)
-                <x-status-badge :status="'Trusted, ' . $mode . ' mode'" type="success" />
+                <x-status-badge :status="__('Trusted, :mode mode', ['mode' => __($mode)])" type="success" />
             @else
                 <x-status-badge status="No key yet" type="neutral" />
             @endif
@@ -46,7 +46,7 @@
                     <x-modal-confirmation
                         title="{{ $server->settings->is_ssh_host_key_check_disabled ? 'Enable the host key check?' : 'Disable the host key check?' }}"
                         temporaryDisableTwoStepConfirmation
-                        buttonTitle="{{ $server->settings->is_ssh_host_key_check_disabled ? 'Enable check' : 'Disable check' }}"
+                        buttonTitle="{{ $server->settings->is_ssh_host_key_check_disabled ? __('Enable check') : __('Disable check') }}"
                         submitAction="setHostKeyCheckDisabled({{ $server->settings->is_ssh_host_key_check_disabled ? 0 : 1 }})"
                         :actions="$server->settings->is_ssh_host_key_check_disabled
                             ? ['Coolify checks the host key of this server again.']
@@ -81,20 +81,20 @@
                     <p class="mt-1 text-xs text-neutral-500 dark:text-fg-dim">
                         @if (count($fingerprints) > 0)
                             {{ match ($server->settings->ssh_host_key_source) {
-                                'tofu' => 'Saved on the first connection',
-                                'upgrade' => 'Saved on the first connection after the Coolify upgrade',
+                                'tofu' => __('Saved on the first connection'),
+                                'upgrade' => __('Saved on the first connection after the Coolify upgrade'),
                                 'transfer' => 'Moved with the server transfer',
                                 'manual' => 'Saved by a user',
                                 default => 'Saved',
                             } }}
                             @if ($server->settings->ssh_host_key_trusted_at)
-                                &middot; Trusted {{ $server->settings->ssh_host_key_trusted_at->toDateTimeString() }} UTC
+                                &middot; {{ __('Trusted :time UTC', ['time' => $server->settings->ssh_host_key_trusted_at->toDateTimeString()]) }}
                             @endif
                             &middot;
                         @else
                             Saved on the next connection &middot;
                         @endif
-                        Mode: {{ $mode }}{{ $mode === 'enforce' && $instanceMode !== 'enforce' ? ' (set for this server)' : '' }}
+                        {{ __('Mode: :mode', ['mode' => __($mode)]) }}{{ $mode === 'enforce' && $instanceMode !== 'enforce' ? __(' (set for this server)') : '' }}
                     </p>
                 </div>
             </div>
@@ -106,8 +106,8 @@
                         :onChangeArgs="[]" canGate="update" :canResource="$server"
                         helper="Warn: Coolify connects and reports the new key. Enforce: Coolify refuses to connect until you trust or reset the new key, so deployments, backups, and checks on this server stop. A reinstall of the server also changes the key."
                         :options="[
-                            ['value' => 'warn', 'label' => 'Warn and connect'],
-                            ['value' => 'enforce', 'label' => 'Refuse to connect (enforce)'],
+                            ['value' => 'warn', 'label' => __('Warn and connect')],
+                            ['value' => 'enforce', 'label' => __('Refuse to connect (enforce)')],
                         ]" />
                 </div>
             @endif

@@ -21,7 +21,7 @@
     <div class="min-w-0">
         <h1 class="min-w-0 text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Security') }}</h1>
         <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-            What each resource of your team needs, from its last image scan.
+                        {{ __('What each resource of your team needs, from its last image scan.') }}
         </p>
     </div>
 
@@ -32,7 +32,7 @@
         <div x-data="{ hidden: localStorage.getItem(@js($serversKey)) === '1' }" x-show="!hidden" x-cloak
             wire:key="servers-not-scanning-{{ $serversNotScanning }}">
             <x-callout type="info" dismissible
-                :title="$serversNotScanning === 1 ? '1 server does not scan images.' : $serversNotScanning.' servers do not scan images.'"
+                :title="trans_choice(':count server does not scan images.|:count servers do not scan images.', $serversNotScanning)"
                 on-dismiss="localStorage.setItem({{ \Illuminate\Support\Js::from($serversKey) }}, '1'); hidden = true">
                 <a href="{{ route('server.index') }}" {{ wireNavigate() }}
                     class="font-medium text-coollabs hover:underline dark:text-brand-light">{{ __('Go to servers') }}</a>
@@ -145,7 +145,7 @@
                             $status = $security->status;
                             $checkedAt = $security->checkedAt ?? $entry['scans']->max('scanned_at');
                             $action = $searching ? null : \App\Services\ImageScan\TeamVulnerabilities::action($security);
-                            $statusLabel = \App\Services\ImageScan\TeamVulnerabilities::statusLabel($status);
+                            $statusLabel = __(\App\Services\ImageScan\TeamVulnerabilities::statusLabel($status));
                             $badgeType = match ($status) {
                                 \App\Enums\SecurityStatusType::UpdateNow => 'error',
                                 \App\Enums\SecurityStatusType::UpdateAvailable => 'warning',

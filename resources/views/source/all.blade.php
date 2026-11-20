@@ -8,7 +8,7 @@
             <div class="min-w-0">
                 <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Sources') }}</h1>
                 <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                    {{ $sources->count() }} {{ Str::plural('Git source', $sources->count()) }} connected to your team
+                    {{ trans_choice(':count Git source connected to your team|:count Git sources connected to your team', $sources->count()) }}
                 </p>
             </div>
             @can('createAnyResource')

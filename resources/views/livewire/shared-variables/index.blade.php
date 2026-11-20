@@ -32,12 +32,12 @@
                             <span class="text-[22px] leading-7 font-semibold tabular-nums text-black dark:text-fg">{{ $counts['variables'] }}</span>
                         </div>
                         <div class="mt-auto pt-5">
-                            <h2 class="text-[13px]! leading-4! font-semibold! text-black dark:text-fg">{{ $label }}</h2>
+                            <h2 class="text-[13px]! leading-4! font-semibold! text-black dark:text-fg">{{ __($label) }}</h2>
                             <p class="mt-1 text-[11px] leading-4 text-neutral-500 dark:text-fg-faint">
                                 @if ($ownerNoun && $counts['variables'] > 0)
                                     {{ str('variable')->plural($counts['variables']) }} on {{ $counts['owners'] }} {{ str($ownerNoun)->plural($counts['owners']) }}.
                                 @else
-                                    {{ $description }}
+                                    {{ __($description) }}
                                 @endif
                             </p>
                         </div>

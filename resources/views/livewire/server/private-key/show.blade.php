@@ -17,7 +17,7 @@
                         <x-forms.button canGate="update" :canResource="$server"
                             wire:click.prevent="checkConnection">
                             <x-reicon name="refresh" class="size-3.5" />
-                            Check connection
+                        {{ __('Check connection') }}
                         </x-forms.button>
 
                         @can('createAnyResource')
@@ -26,7 +26,7 @@
                                 <x-forms.button isHighlighted type="button" @click="open = !open"
                                     aria-haspopup="menu" x-bind:aria-expanded="open">
                                     <x-reicon name="plus" class="size-3.5" />
-                                    Add
+                        {{ __('Add') }}
                                     <x-reicon name="chevron-down" class="size-3 opacity-55" />
                                 </x-forms.button>
                                 <div x-show="open" x-cloak x-transition.origin.top.right role="menu"
@@ -71,15 +71,15 @@
                             <div class="min-w-0 self-center">
                                 <div class="flex flex-wrap items-center gap-2">
                                     <p class="truncate text-sm font-medium text-neutral-950 dark:text-fg">
-                                        {{ $privateKey->name }}
+                                        {{ $privateKey->name === "localhost's key" ? __("localhost's key") : $privateKey->name }}
                                     </p>
                                     @if (data_get($server, 'privateKey.uuid') === $privateKey->uuid)
-                                        <x-status-badge status="Active" type="success" />
+                                        <x-status-badge status="{{ __('Active') }}" type="success" />
                                     @endif
                                 </div>
                                 @if (filled($privateKey->description))
                                     <p class="mt-1 text-xs text-neutral-500 dark:text-fg-dim">
-                                        {{ $privateKey->description }}
+                                        {{ $privateKey->description === 'The private key for the Coolify host machine (localhost).' ? __('The private key for the Coolify host machine (localhost).') : $privateKey->description }}
                                     </p>
                                 @endif
                             </div>
@@ -87,12 +87,12 @@
                         <div class="flex shrink-0 items-center gap-2">
                             <x-forms.button
                                 @click.prevent="copyPublicKeyToClipboard({{ Js::from($privateKey->public_key) }})">
-                                Copy public key
+                        {{ __('Copy public key') }}
                             </x-forms.button>
                             @if (data_get($server, 'privateKey.uuid') !== $privateKey->uuid && ! $server->isTransferredAway())
                                 <x-forms.button canGate="update" :canResource="$server"
                                     wire:click="setPrivateKey({{ $privateKey->id }})">
-                                    Use this key
+                        {{ __('Use this key') }}
                                 </x-forms.button>
                             @endif
                         </div>

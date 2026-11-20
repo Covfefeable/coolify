@@ -25,10 +25,9 @@
                 </x-slot:actions>
 
                 <x-callout type="info" title="{{ __('Using this certificate') }}">
-                    Mount the CA certificate into containers that connect to databases over SSL. Re-deploy affected
-                    databases and resources after replacing or regenerating it.
+                    {{ __('Mount the CA certificate into containers that connect to databases over SSL. Re-deploy affected databases and resources after replacing or regenerating it.') }}
                     <a class="font-medium underline" href="https://coolify.io/docs/databases/ssl" target="_blank">
-                        Read the SSL guide.
+                        {{ __('Read the SSL guide.') }}
                     </a>
                 </x-callout>
 
@@ -45,7 +44,7 @@
                     <div class="flex items-center gap-2">
                         @can('view', $server)
                             <x-forms.button wire:click="toggleCertificate" type="button">
-                                {{ $showCertificate ? 'Hide certificate' : 'Show certificate' }}
+                                {{ $showCertificate ? __('Hide certificate') : __('Show certificate') }}
                             </x-forms.button>
                         @endcan
                         @can('update', $server)

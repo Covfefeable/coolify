@@ -7,7 +7,7 @@
         <div class="min-w-0">
             <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Destinations') }}</h1>
             <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                {{ $destinations->count() }} {{ Str::plural('network endpoint', $destinations->count()) }}
+                {{ trans_choice(':count network endpoint|:count network endpoints', $destinations->count()) }}
             </p>
         </div>
         @if ($servers->count() > 0)

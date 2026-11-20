@@ -269,7 +269,7 @@ class FleetVulnerabilities extends Component
 
         $statusCounts = $inScope->countBy(fn (array $entry): string => $entry['security']->status->value);
         $statusOptions = collect(TeamVulnerabilities::STATUS_ORDER)
-            ->mapWithKeys(fn (string $status): array => [$status => TeamVulnerabilities::statusLabel(SecurityStatusType::from($status)).' ('.number_format($statusCounts[$status] ?? 0).')'])
+            ->mapWithKeys(fn (string $status): array => [$status => __(TeamVulnerabilities::statusLabel(SecurityStatusType::from($status))).' ('.number_format($statusCounts[$status] ?? 0).')'])
             ->all();
 
         $notScannedServers = $notScanned->pluck('server')->filter()->unique('id')->count();
@@ -280,7 +280,7 @@ class FleetVulnerabilities extends Component
             'searching' => $searching,
             'notScannedLine' => $notScanned->isEmpty() ? null : self::notScannedSentence($notScanned->count(), $notScannedServers),
             // The toggle only matters while no status filter is set.
-            'notCheckedToggle' => $notScanned->isEmpty() || $this->statuses !== [] || $searching ? null : ($this->showNotChecked ? 'Hide them' : 'Show them'),
+            'notCheckedToggle' => $notScanned->isEmpty() || $this->statuses !== [] || $searching ? null : ($this->showNotChecked ? __('Hide them') : __('Show them')),
             'hidesNotChecked' => $this->statuses === [] && ! $this->showNotChecked && $notScanned->isNotEmpty(),
             'searchCapped' => $searching && $fleet->searchWasCapped(),
             'serversNotScanning' => $user->isAdminOfTeam($team->id) ? TeamVulnerabilities::serversNotScanning($team->id) : 0,
@@ -299,12 +299,15 @@ class FleetVulnerabilities extends Component
      */
     public static function notScannedSentence(int $resources, int $servers): string
     {
-        $subject = $resources.' '.str('resource')->plural($resources);
-        if ($servers > 0) {
-            $subject .= ' on '.$servers.' '.str('server')->plural($servers);
+        if ($servers === 0) {
+            return trans_choice(':count resource was not scanned, so Coolify cannot tell.|:count resources were not scanned, so Coolify cannot tell.', $resources);
         }
 
-        return $subject.($resources === 1 ? ' was' : ' were').' not scanned, so Coolify cannot tell.';
+        return trans_choice(
+            ':count resource on :servers was not scanned, so Coolify cannot tell.|:count resources on :servers were not scanned, so Coolify cannot tell.',
+            $resources,
+            ['servers' => trans_choice(':count server|:count servers', $servers)],
+        );
     }
 
     /**

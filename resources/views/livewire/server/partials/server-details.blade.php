@@ -13,7 +13,7 @@
     ] as $detailLabel => $detailValue)
         <div>
             <dt class="text-xs font-medium text-neutral-500 dark:text-fg-dim">
-                {{ $detailLabel }}
+                {{ __($detailLabel) }}
             </dt>
             <dd class="mt-1 text-sm font-medium text-neutral-950 dark:text-fg">
                 {{ $detailValue }}
@@ -23,7 +23,7 @@
 </dl>
 @if ($server->detectedGpus() !== [])
     <div class="mt-5">
-        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">GPUs</p>
+        <p class="text-xs font-medium text-neutral-500 dark:text-fg-dim">{{ __('GPUs') }}</p>
         <x-server.gpu-list :server="$server" class="mt-2" />
     </div>
 @endif

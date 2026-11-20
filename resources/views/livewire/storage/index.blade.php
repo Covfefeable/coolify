@@ -7,7 +7,7 @@
         <div class="min-w-0">
             <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ __('Storage') }}</h1>
             <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                {{ $s3->count() }} {{ Str::plural('storage destination', $s3->count()) }} for backups
+                {{ trans_choice(':count storage destination for backups|:count storage destinations for backups', $s3->count()) }}
             </p>
         </div>
         @can('create', App\Models\S3Storage::class)

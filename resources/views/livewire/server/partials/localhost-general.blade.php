@@ -7,12 +7,12 @@
                                 :disabled="! $server->isFunctional()"
                                 :tooltip="$server->isFunctional() ? null : 'Validate the connection first.'">
                                 <x-reicon name="refresh" class="size-3.5" />
-                                {{ $server->server_metadata ? 'Refresh details' : 'Fetch server details' }}
+                                {{ $server->server_metadata ? __('Refresh details') : __('Fetch server details') }}
                             </x-forms.button>
                             <x-forms.button type="button" wire:click.prevent="checkLocalhostConnection"
                                 :isHighlighted="! $server->isFunctional()" canGate="update" :canResource="$server">
                                 <x-reicon :name="$server->isFunctional() ? 'refresh' : 'alert-circle'" class="size-3.5" />
-                                {{ $server->isFunctional() ? 'Revalidate connection' : 'Validate connection' }}
+                                {{ $server->isFunctional() ? __('Revalidate connection') : __('Validate connection') }}
                             </x-forms.button>
                         </x-slot:actions>
 

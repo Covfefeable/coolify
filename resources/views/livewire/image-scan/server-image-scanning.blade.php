@@ -6,7 +6,7 @@
     <livewire:server.navbar :server="$server" />
 
     @php
-        $costText = "Scans use up to {$cpuLimit} CPU and {$memoryLimit} of memory while they run, and about 1.2 GB of disk, plus temporary space for one image.";
+        $costText = __('Scans use up to :cpu CPU and :memory of memory while they run, and about 1.2 GB of disk, plus temporary space for one image.', ['cpu' => $cpuLimit, 'memory' => $memoryLimit]);
         $pullState = match ($prepareState) {
             'pulling' => 'running',
             'updating_database', 'ready' => 'success',
@@ -57,15 +57,15 @@
                         @endif
                         <div wire:key="image-scanning-change-{{ $enabled ? 'on' : 'off' }}">
                             <x-modal-confirmation
-                                title="{{ $enabled ? 'Disable image scanning?' : 'Enable image scanning?' }}"
-                                buttonTitle="{{ $enabled ? 'Disable' : 'Enable' }}"
+                                title="{{ $enabled ? __('Disable image scanning?') : __('Enable image scanning?') }}"
+                                buttonTitle="{{ $enabled ? __('Disable') : __('Enable') }}"
                                 submitAction="{{ $enabled ? 'disable' : 'enable' }}"
                                 warningMessage="{{ $enabled ? 'New deployments and running images on this server are no longer checked for vulnerabilities. You can enable it again at any time.' : 'Scans run on this server and use its resources. You can disable it again at any time.' }}"
                                 temporaryDisableTwoStepConfirmation :confirmWithText="false"
                                 :confirmWithPassword="false" :actions="$enabled
                                     ? ['Coolify stops scanning the images and the operating system packages of this server.', 'Scan results and scanner data on the server stay.']
                                     : [$costText]"
-                                step2ButtonText="{{ $enabled ? 'Disable image scanning' : 'Enable image scanning' }}"
+                                step2ButtonText="{{ $enabled ? __('Disable image scanning') : __('Enable image scanning') }}"
                                 :isHighlightedButton="! $enabled" />
                         </div>
                     </x-slot:actions>

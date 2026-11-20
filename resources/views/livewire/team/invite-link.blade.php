@@ -19,7 +19,7 @@
 
                 @if (!is_transactional_emails_enabled() && isInstanceAdmin())
                     <x-callout type="warning" title="{{ __('Email delivery is not configured') }}">
-                        Configure transactional email in instance settings to send invitations directly.
+                        {{ __('Configure transactional email in instance settings to send invitations directly.') }}
                     </x-callout>
                 @endif
 
