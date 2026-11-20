@@ -41,6 +41,6 @@ it('localizes the filter trigger and canvas add label in Simplified Chinese', fu
 
     expect(Blade::render('<x-table.filter reset-action="clearFilters" />'))
         ->toContain('>筛选</span>')
-        ->toContain('>重置筛选</span>');
+        ->toContain('>重置筛选条件</span>');
     expect(__('Add'))->toBe('添加');
 });
