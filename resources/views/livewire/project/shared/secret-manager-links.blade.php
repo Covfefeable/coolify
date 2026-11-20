@@ -12,7 +12,7 @@
                     icon-name="keys" size="sm">
                     <x-slot:actions>
                         <a class="button" href="{{ route('security.integration-tokens') }}" {{ wireNavigate() }}>
-                            Integration tokens
+                            {{ __('Integration tokens') }}
                         </a>
                     </x-slot:actions>
                 </x-empty>

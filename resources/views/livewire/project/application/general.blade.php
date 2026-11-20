@@ -66,7 +66,7 @@
             @endphp
             <div class="group relative flex items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50/60 px-4 py-3 transition-colors hover:bg-neutral-100 focus-within:ring-2 focus-within:ring-coollabs/40 dark:border-white/[0.07] dark:bg-white/[0.05] dark:hover:bg-white/[0.08] dark:focus-within:ring-brand-light/40">
                 <a class="flex min-w-0 flex-1 items-center gap-3 after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
-                    aria-label="{{ $domainCount > 0 ? 'Manage application domains' : 'Add an application domain' }}"
+                    aria-label="{{ $domainCount > 0 ? __('Manage application domains') : __('Add an application domain') }}"
                     href="{{ $applicationDomainsUrl }}" {{ wireNavigate() }}>
                     <div class="flex size-9 shrink-0 items-center justify-center rounded-md bg-neutral-200/70 text-neutral-600 dark:bg-white/[0.07] dark:text-fg-dim">
                         <x-reicon name="globe" class="size-4" />
@@ -90,9 +90,9 @@
                         </p>
                     </div>
                 </a>
-                <a class="button relative z-10 ml-auto shrink-0" aria-label="{{ $domainCount > 0 ? 'Manage application domains' : 'Add an application domain' }}"
+                <a class="button relative z-10 ml-auto shrink-0" aria-label="{{ $domainCount > 0 ? __('Manage application domains') : __('Add an application domain') }}"
                     href="{{ $applicationDomainsUrl }}" {{ wireNavigate() }}>
-                    {{ $domainCount > 0 ? 'Manage domains' : 'Add domain' }}
+                    {{ $domainCount > 0 ? __('Manage domains') : __('Add domain') }}
                     <x-reicon name="arrow-right" class="size-4" />
                 </a>
             </div>
@@ -261,7 +261,7 @@
                         @else
                             <x-forms.repository-paths class="lg:grid-cols-2" base="baseDirectory"
                                 :file="$buildPack === 'dockerfile' && !$application->dockerfile ? 'dockerfileLocation' : null"
-                                fileLabel="Dockerfile location" defaultFile="/Dockerfile" disabled="!canUpdate">
+                                fileLabel="{{ __('Dockerfile location') }}" defaultFile="/Dockerfile" disabled="!canUpdate">
                                 @if ($application->could_set_build_commands())
                                     @if ($application->settings->is_static)
                                         <x-forms.input placeholder="/dist" id="publishDirectory"
@@ -451,7 +451,7 @@
                 <div class="flex flex-col gap-4">
                     <x-forms.input x-bind:disabled="shouldDisable()" placeholder="php artisan migrate"
                         id="preDeploymentCommand" label="{{ __('Pre-deployment') }}"
-                        helper="An optional script or command to execute in the existing container before the deployment begins.<br>It is always executed with 'sh -c', so you do not need add it manually." />
+                        helper="{{ __('Optional script or command to run in the existing container before deployment. Coolify runs it with sh -c.') }}" />
                     @if ($buildPack === 'dockercompose')
                         <x-forms.input x-bind:disabled="shouldDisable()" id="preDeploymentCommandContainer"
                             label="{{ __('Container name') }}"
@@ -461,7 +461,7 @@
                 <div class="flex flex-col gap-4">
                     <x-forms.input x-bind:disabled="shouldDisable()" placeholder="php artisan migrate"
                         id="postDeploymentCommand" label="{{ __('Post-deployment') }}"
-                        helper="An optional script or command to execute in the newly built container after the deployment completes.<br>It is always executed with 'sh -c', so you do not need add it manually." />
+                        helper="{{ __('Optional script or command to run in the new container after deployment completes. Coolify runs it with sh -c.') }}" />
                     @if ($buildPack === 'dockercompose')
                         <x-forms.input x-bind:disabled="shouldDisable()" id="postDeploymentCommandContainer"
                             label="{{ __('Container name') }}"
@@ -588,12 +588,12 @@
                     <div class="grid w-full gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="isContainerLabelReadonlyEnabled" label="{{ __('Label management') }}"
                             onChange="instantSave"
-                            helper="When Coolify manages the labels, they are regenerated automatically and manual edits can be lost.<br><br>If you edit them yourself, be careful: a wrong label set can break the proxy configuration after a restart (you can always reset to the Coolify defaults)."
+                            helper="{{ __('Coolify regenerates managed labels automatically and may overwrite manual edits. Incorrect labels can break proxy configuration after a restart. You can restore the Coolify defaults.') }}"
                             :options="[
                                 ['value' => true, 'label' => 'Managed by Coolify (auto-generated)'],
                                 ['value' => false, 'label' => 'Managed manually (edit labels yourself)'],
                             ]" x-bind:disabled="!canUpdate" />
-                        <x-forms.listbox id="isContainerLabelEscapeEnabled" label="Special characters"
+                        <x-forms.listbox id="isContainerLabelEscapeEnabled" label="{{ __('Special characters') }}"
                             onChange="instantSave"
                             helper="{{ __('Special characters are escaped by default. For example, $ becomes $$. Leave them unescaped to use environment variables in labels.') }}"
                             :options="[

@@ -8,7 +8,7 @@
 
     <x-forms.input placeholder="php artisan schedule:run" id="command" label="{{ __('Command') }}" />
     <x-forms.checkbox id="useShell" label="{{ __('Run in a shell') }}"
-        helper="Run the command with <span class='font-mono'>sh -c</span>, so you can use variables, pipes, and redirects. Turn it off for containers without a shell (distroless or scratch images): Coolify then splits the command into arguments and runs it directly." />
+        helper="{{ __('Run with sh -c to enable shell variables, pipes, and redirects. Disable this for containers without a shell. Coolify splits the command into arguments and runs it directly.') }}" />
 
     <div class="grid gap-4 sm:grid-cols-2">
         <x-forms.input type="number" placeholder="300" id="timeout"

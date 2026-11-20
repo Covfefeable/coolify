@@ -45,7 +45,7 @@
         <x-forms.input :label="$fileLabel" :placeholder="$defaultFile" helper="{{ __('Path relative to the base directory.') }}"
             x-model="file" x-bind:disabled="{{ $disabled }}" @blur="file = location" />
         <p class="col-span-full text-xs text-neutral-500 dark:text-fg-dim">
-            Resolved file:
+            {{ __('Resolved file:') }}
             <code class="font-mono text-coollabs dark:text-brand-light" x-text="directory + location"></code>
         </p>
         <x-callout class="col-span-full" x-cloak x-show="repeatsBase" title="{{ __('Base directory is repeated') }}">

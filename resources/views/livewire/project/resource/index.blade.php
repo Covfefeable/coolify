@@ -12,14 +12,14 @@
                             {{ wireNavigate() }}
                             class="flex size-7 shrink-0 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
                             title="{{ __('Environment settings') }}"
-                            aria-label="{{ __('Open settings for :name', ['name' => $environment->name]) }}"">
+                            aria-label="{{ __('Open settings for :name', ['name' => $environment->name]) }}">
                             <x-reicon name="settings" class="size-4" />
                         </a>
                     @endcan
                 </div>
                 <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                    <span x-text="`${resources.length} ${resources.length === 1 ? 'resource' : 'resources'}`"></span>
-                    in <a href="{{ route('project.show', ['project_uuid' => $project->uuid]) }}" {{ wireNavigate() }}
+                    <span x-text="(resources.length === 1 ? @js(__(':count resource')) : @js(__(':count resources'))).replace(':count', resources.length)"></span>
+                    {{ __('in project') }} <a href="{{ route('project.show', ['project_uuid' => $project->uuid]) }}" {{ wireNavigate() }}
                         class="font-medium text-neutral-700 underline-offset-2 hover:text-black hover:underline dark:text-fg dark:hover:text-white"
                         title="{{ __('Show all environments in :value', ['value' => $project->name]) }}">{{ $project->name }}</a>
                 </p>
@@ -34,16 +34,16 @@
                     {{ wireNavigate() }}
                     class="button whitespace-nowrap"
                     title="{{ __('Shared variables for this environment') }}"
-                    aria-label="{{ __('Shared variables for :name', ['name' => $environment->name]) }}"">
+                    aria-label="{{ __('Shared variables for :name', ['name' => $environment->name]) }}">
                     <x-reicon name="variables" class="size-3.5" />
-                    Shared variables
+                    {{ __('Shared variables') }}
                 </a>
                 @can('createAnyResource', [$environment])
                     <a href="{{ route('project.resource.create', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid]) }}"
                         {{ wireNavigate() }}
                         class="button whitespace-nowrap button-highlighted">
                         <x-reicon name="plus" class="size-3.5" />
-                        New resource
+                        {{ __('New resource') }}
                     </a>
                 @endcan
             </div>
@@ -87,13 +87,13 @@
                         <x-slot:trigger>
                             <button type="button" class="button max-w-64"
                                 :class="activeFilterCount > 0 && 'button-highlighted'"
-                                :title="activeFilterCount > 0 ? filterButtonText : 'Filter'"
+                                :title="activeFilterCount > 0 ? filterButtonText : @js(__('Filter'))"
                                 aria-haspopup="listbox" :aria-expanded="open">
                             <svg class="size-3.5 opacity-65" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="1.7"
                                     stroke-linecap="round" />
                             </svg>
-                            <span class="truncate" x-text="activeFilterCount > 0 ? filterButtonText : 'Filter'">{{ __('Filter') }}</span>
+                            <span class="truncate" x-text="activeFilterCount > 0 ? filterButtonText : @js(__('Filter'))">{{ __('Filter') }}</span>
                             <span x-show="activeFilterCount > 0" x-cloak
                                 class="shrink-0 rounded-full bg-neutral-100 px-1.5 py-0.5 text-[10px] font-medium text-neutral-500 dark:bg-white/[0.07] dark:text-fg-dim"
                                 x-text="activeFilterCount"></span>
@@ -213,13 +213,13 @@
                             <button type="button"
                                 class="table-filter-value truncate text-[12px] text-neutral-600 dark:text-fg-dim"
                                 x-on:click="toggleFilter('typeFilters', item.type)"
-                                x-bind:title="`Filter by ${item.typeLabel}`" x-text="item.typeLabel"></button>
+                                x-bind:title="@js(__('Filter by :value')).replace(':value', () => item.typeLabel)" x-text="item.typeLabel"></button>
                         </div>
 
                         <div class="min-w-0">
                             <x-status-badge dynamic as="button" class="table-filter-value table-filter-badge"
                                 x-on:click="toggleFilter('statusFilters', statusState(item))"
-                                x-bind:title="`${statusTitle(item)} · Filter by ${statusLabel(item)}`">
+                                x-bind:title="statusTitle(item) + ' · ' + @js(__('Filter by :value')).replace(':value', () => statusLabel(item))">
                                 <span class="size-1.5 shrink-0 rounded-full"
                                     x-bind:class="statusDotClass(item)"></span>
                                 <span class="truncate" x-text="statusLabel(item)"></span>
@@ -239,7 +239,7 @@
                             <button type="button"
                                 class="table-filter-value truncate text-[12px] text-neutral-600 dark:text-fg-dim"
                                 x-on:click="toggleFilter('serverFilters', item.destination?.server?.name || 'Unknown')"
-                                x-bind:title="`Filter by ${item.destination?.server?.name || 'Unknown'}`"
+                                x-bind:title="@js(__('Filter by :value')).replace(':value', () => item.destination?.server?.name || 'Unknown')"
                                 x-text="item.destination?.server?.name || 'Unknown'"></button>
                         </div>
 
@@ -363,7 +363,7 @@
             get filterGroups() {
                 return [{
                         key: 'typeFilters',
-                        label: 'Resource types',
+                        label: @js(__('Resource types')),
                         options: this.uniqueOptions(this.resources.map((item) => ({
                             value: item.type,
                             label: item.typeLabel,
@@ -371,14 +371,14 @@
                     },
                     {
                         key: 'tagFilters',
-                        label: 'Tags',
+                        label: @js(__('Tags')),
                         options: this.uniqueOptions(this.resources.flatMap((item) =>
                             (item.tags || []).map((tag) => ({ value: tag.name, label: tag.name }))
                         )),
                     },
                     {
                         key: 'serverFilters',
-                        label: 'Servers',
+                        label: @js(__('Servers')),
                         options: this.uniqueOptions(this.resources.map((item) => ({
                             value: item.destination?.server?.name || 'Unknown',
                             label: item.destination?.server?.name || 'Unknown',
@@ -386,7 +386,7 @@
                     },
                     {
                         key: 'statusFilters',
-                        label: 'Statuses',
+                        label: @js(__('Statuses')),
                         options: this.uniqueOptions(this.resources.map((item) => ({
                             value: this.statusState(item),
                             label: this.statusLabel(item),
@@ -403,25 +403,25 @@
                     .filter((option) => this[group.key].includes(option.value))
                     .map((option) => option.label));
 
-                if (selectedLabels.length === 0) return 'Filter';
+                if (selectedLabels.length === 0) return @js(__('Filter'));
                 if (selectedLabels.length === 1) return selectedLabels[0];
                 return `${selectedLabels[0]} +${selectedLabels.length - 1}`;
             },
             sortOptions: [{
                     value: 'name-asc',
-                    label: 'Name A–Z'
+                    label: @js(__('Name A–Z'))
                 },
                 {
                     value: 'name-desc',
-                    label: 'Name Z–A'
+                    label: @js(__('Name Z–A'))
                 },
                 {
                     value: 'type-asc',
-                    label: 'Resource type'
+                    label: @js(__('Resource type'))
                 },
                 {
                     value: 'status-asc',
-                    label: 'Status'
+                    label: @js(__('Status'))
                 },
             ],
             get filteredResources() {
@@ -519,13 +519,23 @@
 
                 return String(item.status || 'unknown').split(':')[0].toLowerCase();
             },
+            statusLabels: @js([
+                'running' => __('Running'),
+                'exited' => __('Exited'),
+                'stopped' => __('Stopped'),
+                'starting' => __('Starting'),
+                'restarting' => __('Restarting'),
+                'degraded' => __('Degraded'),
+                'unknown' => __('Unknown'),
+                'paused' => __('Paused'),
+            ]),
             statusLabel(item) {
                 if (item.restartLimitReached) {
-                    return 'Restart limit reached';
+                    return @js(__('Restart limit reached'));
                 }
 
                 const state = this.statusState(item);
-                return state.charAt(0).toUpperCase() + state.slice(1);
+                return this.statusLabels[state] ?? state.charAt(0).toUpperCase() + state.slice(1);
             },
             statusTitle(item) {
                 if (item.restartLimitReached) {

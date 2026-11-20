@@ -103,6 +103,17 @@ test('resource index type labels use category names not engine names for databas
     ]));
 
     $response->assertSuccessful();
+
+    app()->setLocale('zh-cn');
+
+    $this->get(route('project.resource.index', [
+        'project_uuid' => $this->project->uuid,
+        'environment_uuid' => $this->environment->uuid,
+    ]))
+        ->assertSuccessful()
+        ->assertSee('共享变量')
+        ->assertSee('新建资源')
+        ->assertDontSee('>Shared variables<', false);
     $html = $response->getContent();
 
     // Category labels match Application / Service — not engine-specific names.

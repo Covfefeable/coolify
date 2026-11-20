@@ -6,7 +6,7 @@
     'inheritedPortExpression' => null,
     'portPlaceholder' => '3000',
     'pathPlaceholder' => '/api/v3',
-    'pathHelper' => 'Optional path, query, or fragment appended after the domain and port.',
+    'pathHelper' => __('Optional path, query, or fragment appended after the domain and port.'),
 ])
 
 <div class="grid gap-4 sm:grid-cols-[8rem_minmax(0,1fr)_8rem]">

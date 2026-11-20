@@ -165,8 +165,7 @@
                     </header>
                     <div class="application-settings-section-body flex flex-col gap-4">
                         <p class="text-sm leading-6 text-neutral-600 dark:text-fg-dim">
-                            Hosts that still need DNS at your provider (working domains are omitted). Create matching
-                            Type / Name / Value records so traffic reaches this server.
+                            {{ __('This list shows hosts that still need DNS records. At your DNS provider, create records with the matching type, name, and value so traffic reaches this server.') }}
                         </p>
 
                         @if (blank($serverIp) && count($dnsHints) === 0)
@@ -233,14 +232,12 @@
                             @if (filled($dnsCopyText))
                                 <div class="flex flex-wrap items-center justify-between gap-2">
                                     <p class="text-[12px] text-neutral-500 dark:text-fg-dim">
-                                        {{ count($dnsHints) }}
-                                        {{ count($dnsHints) === 1 ? 'entry' : 'entries' }}
-                                        · BIND zone format
+                                        {{ __(':count records · BIND zone format', ['count' => count($dnsHints)]) }}
                                     </p>
                                     <button type="button" class="button shrink-0"
                                         title="Copy as BIND-compatible zone file" x-data="copyButton"
                                         @click.prevent="copy(@js($dnsCopyText))">
-                                        <span x-text="copied ? 'Copied' : 'Copy all'"></span>
+                                        <span x-text="copied ? @js(__('Copied')) : @js(__('Copy all'))"></span>
                                     </button>
                                 </div>
                             @endif
@@ -249,9 +246,9 @@
                         <div class="flex flex-wrap items-center justify-between gap-2 pt-2">
                             <x-forms.button type="button" @click="recheckDns()"
                                 wire:target="recheckDnsRecordsInModal,checkAllDns,checkDomainDns"
-                                title="Recheck DNS">
+                                title="{{ __('Recheck DNS') }}">
                                 <x-reicon name="refresh" class="size-3.5" />
-                                Recheck
+                                {{ __('Recheck') }}
                             </x-forms.button>
                             <x-forms.button type="button" @click="closeDnsRecords()" isHighlighted>
                                 {{ __('Done') }}

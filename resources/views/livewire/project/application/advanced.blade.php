@@ -12,80 +12,80 @@
 
     <div class="flex flex-col gap-6">
         <x-application.settings-section id="advanced-build-section" title="{{ __('Build & deploy') }}"
-            helper="How images are built, how deployments start, and how the repository is cloned.">
+            helper="{{ __('How images are built, how deployments start, and how the repository is cloned.') }}">
             <div class="grid w-full gap-4 sm:grid-cols-2">
                 <x-forms.listbox id="disableBuildCache" label="{{ __('Build cache') }}" onChange="instantSave"
-                    helper="Disabling the cache forces a completely fresh Docker build on every deployment."
+                    helper="{{ __('Disabling the cache forces a completely fresh Docker build on every deployment.') }}"
                     :options="[
-                        ['value' => false, 'label' => 'Use Docker build cache'],
+                        ['value' => false, 'label' => __('Use Docker build cache')],
                         ['value' => true, 'label' => __('Rebuild from scratch every time')],
                     ]" :disabled="! $canUpdate" />
-                <x-forms.listbox id="injectBuildArgsToDockerfile" label="Build arguments" onChange="instantSave"
-                    helper="When injected automatically, Coolify adds ARG statements to your Dockerfile for build-time variables. Manage them manually to preserve Docker build cache."
+                <x-forms.listbox id="injectBuildArgsToDockerfile" label="{{ __('Build arguments') }}" onChange="instantSave"
+                    helper="{{ __('When injected automatically, Coolify adds ARG statements to your Dockerfile for build-time variables. Manage them manually to preserve Docker build cache.') }}"
                     :options="[
-                        ['value' => true, 'label' => 'Inject build args automatically'],
+                        ['value' => true, 'label' => __('Inject build args automatically')],
                         ['value' => false, 'label' => __('Managed manually in Dockerfile')],
                     ]" :disabled="! $canUpdate" />
-                <x-forms.listbox id="includeSourceCommitInBuild" label="Source commit availability" onChange="instantSave"
-                    helper="SOURCE_COMMIT (git commit hash) is always available at runtime. Making it available during build invalidates the cache on every commit."
+                <x-forms.listbox id="includeSourceCommitInBuild" label="{{ __('Source commit availability') }}" onChange="instantSave"
+                    helper="{{ __('SOURCE_COMMIT (git commit hash) is always available at runtime. Making it available during build invalidates the cache on every commit.') }}"
                     :options="[
-                        ['value' => false, 'label' => 'Runtime only (preserves cache)'],
+                        ['value' => false, 'label' => __('Runtime only (preserves cache)')],
                         ['value' => true, 'label' => __('Available during build')],
                     ]" :disabled="! $canUpdate" />
-                <x-forms.listbox id="includeNetworkHostsInBuild" label="Network hosts during build" onChange="instantSave"
-                    helper="When added, the build can reach the containers on the destination network by name. Each time a resource on the network is added or removed, the Docker build cache is invalidated. Preview deployments are never added, and no hosts are added on a build server."
+                <x-forms.listbox id="includeNetworkHostsInBuild" label="{{ __('Network hosts during build') }}" onChange="instantSave"
+                    helper="{{ __('When added, the build can reach the containers on the destination network by name. Each time a resource on the network is added or removed, the Docker build cache is invalidated. Preview deployments are never added, and no hosts are added on a build server.') }}"
                     :options="[
-                        ['value' => true, 'label' => 'Add network containers as hosts'],
-                        ['value' => false, 'label' => 'Do not add (preserves cache)'],
+                        ['value' => true, 'label' => __('Add network containers as hosts')],
+                        ['value' => false, 'label' => __('Do not add (preserves cache)')],
                     ]" :disabled="! $canUpdate" />
             </div>
             @if ($application->git_based())
                 <x-application.settings-subsection id="advanced-deployment-section" title="{{ __('Deployment') }}"
-                    helper="Automatic deployments from Git webhooks.">
+                    helper="{{ __('Automatic deployments from Git webhooks.') }}">
                     <div class="grid w-full gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="isAutoDeployEnabled" label="{{ __('Auto deploy') }}" onChange="instantSave"
-                            helper="Automatically deploy new commits based on Git webhooks."
+                            helper="{{ __('Automatically deploy new commits based on Git webhooks.') }}"
                             :options="[
-                                ['value' => true, 'label' => 'Deploy on push (webhooks)'],
+                                ['value' => true, 'label' => __('Deploy on push (webhooks)')],
                                 ['value' => false, 'label' => __('Manual deployments only')],
                             ]" :disabled="! $canUpdate" />
-                        <x-forms.listbox id="isAutoCancelQueuedDeploymentsEnabled" label="Queued webhook deployments"
+                        <x-forms.listbox id="isAutoCancelQueuedDeploymentsEnabled" label="{{ __('Queued webhook deployments') }}"
                             onChange="instantSave"
-                            helper="When a newer push arrives, cancel the older webhook deployments that still wait in the queue, so only the latest commit is built. Manual, API, restart, and rollback deployments are never cancelled."
+                            helper="{{ __('When a newer push arrives, cancel the older webhook deployments that still wait in the queue, so only the latest commit is built. Manual, API, restart, and rollback deployments are never cancelled.') }}"
                             :options="[
-                                ['value' => true, 'label' => 'Cancel when a newer push arrives'],
+                                ['value' => true, 'label' => __('Cancel when a newer push arrives')],
                                 ['value' => false, 'label' => __('Deploy every push')],
                             ]" :disabled="! $canUpdate || $isAutoCancelBuildingDeploymentsEnabled" />
-                        <x-forms.listbox id="isAutoCancelBuildingDeploymentsEnabled" label="Building webhook deployments"
+                        <x-forms.listbox id="isAutoCancelBuildingDeploymentsEnabled" label="{{ __('Building webhook deployments') }}"
                             onChange="instantSave"
-                            helper="When a newer push arrives, also stop the older webhook deployment that is still building. A deployment that already started to replace containers always finishes. This also cancels queued webhook deployments."
+                            helper="{{ __('When a newer push arrives, also stop the older webhook deployment that is still building. A deployment that already started to replace containers always finishes. This also cancels queued webhook deployments.') }}"
                             :options="[
-                                ['value' => false, 'label' => 'Let the build finish'],
+                                ['value' => false, 'label' => __('Let the build finish')],
                                 ['value' => true, 'label' => __('Stop the build when a newer push arrives')],
                             ]" :disabled="! $canUpdate" />
                     </div>
                 </x-application.settings-subsection>
 
                 <x-application.settings-subsection id="advanced-git-section" title="Git"
-                    helper="Options applied while cloning the repository during builds.">
+                    helper="{{ __('Options applied while cloning the repository during builds.') }}">
                     <div class="grid w-full gap-4 sm:grid-cols-2">
                         <x-forms.listbox id="isGitSubmodulesEnabled" label="{{ __('Submodules') }}" onChange="instantSave"
-                            helper="Allow Git submodules during the build process."
+                            helper="{{ __('Allow Git submodules during the build process.') }}"
                             :options="[
-                                ['value' => true, 'label' => 'Clone submodules'],
+                                ['value' => true, 'label' => __('Clone submodules')],
                                 ['value' => false, 'label' => __('Skip submodules')],
                             ]" :disabled="! $canUpdate" />
                         <x-forms.listbox id="isGitLfsEnabled" label="Git LFS" onChange="instantSave"
-                            helper="Allow Git LFS during the build process."
+                            helper="{{ __('Allow Git LFS during the build process.') }}"
                             :options="[
                                 ['value' => true, 'label' => __('Enabled')],
                                 ['value' => false, 'label' => __('Disabled')],
                             ]" :disabled="! $canUpdate" />
-                        <x-forms.listbox id="isGitShallowCloneEnabled" label="Clone depth" onChange="instantSave"
-                            helper="Shallow cloning (--depth=1) speeds up deployments by only fetching the latest commit, useful for large repositories."
+                        <x-forms.listbox id="isGitShallowCloneEnabled" label="{{ __('Clone depth') }}" onChange="instantSave"
+                            helper="{{ __('Shallow cloning (--depth=1) speeds up deployments by only fetching the latest commit, useful for large repositories.') }}"
                             :options="[
-                                ['value' => false, 'label' => 'Full history'],
-                                ['value' => true, 'label' => 'Shallow clone (latest commit only)'],
+                                ['value' => false, 'label' => __('Full history')],
+                                ['value' => true, 'label' => __('Shallow clone (latest commit only)')],
                             ]" :disabled="! $canUpdate" />
                     </div>
                 </x-application.settings-subsection>
@@ -179,18 +179,17 @@
                             :canResource="$gpuServers->first()" :disabled="! $canRefreshGpus"
                             :tooltip="$canRefreshGpus ? null : 'Validate the server connection first.'">
                             <x-reicon name="refresh" class="size-3.5" />
-                            Refresh GPUs
+                            {{ __('Refresh GPUs') }}
                         </x-forms.button>
                     </x-slot:actions>
-                    <x-callout type="info" title="Detected GPUs" class="mb-5">
+                    <x-callout type="info" title="{{ __('Detected GPUs') }}" class="mb-5">
                         @foreach ($gpuServers as $gpuServer)
                             <div wire:key="gpu-server-{{ $gpuServer->id }}" @class(['mt-2' => ! $loop->first])>
                                 <p class="font-medium text-neutral-700 dark:text-fg">
                                     <a href="{{ route('server.show', ['server_uuid' => $gpuServer->uuid]) }}"
                                         class="underline">{{ $gpuServer->name }}</a>
                                     @if (data_get($gpuServer->server_metadata, 'collected_at'))
-                                        <span class="font-normal text-neutral-500 dark:text-fg-dim">· checked
-                                            {{ \Illuminate\Support\Carbon::parse(data_get($gpuServer->server_metadata, 'collected_at'))->diffForHumans() }}</span>
+                                        <span class="font-normal text-neutral-500 dark:text-fg-dim">· {{ __('Checked :time', ['time' => \Illuminate\Support\Carbon::parse(data_get($gpuServer->server_metadata, 'collected_at'))->diffForHumans()]) }}</span>
                                     @endif
                                 </p>
                                 <x-server.gpu-list :server="$gpuServer" />
@@ -198,7 +197,7 @@
                         @endforeach
                     </x-callout>
                     <div class="grid w-full gap-4 sm:grid-cols-2">
-                        <x-forms.listbox id="isGpuEnabled" label="GPU access" onChange="instantSave"
+                        <x-forms.listbox id="isGpuEnabled" label="{{ __('GPU access') }}" onChange="instantSave"
                             :options="[
                                 ['value' => false, 'label' => __('Disabled')],
                                 ['value' => true, 'label' => __('Enabled')],
@@ -211,14 +210,14 @@
                             <x-unsaved-bar action="submit"
                                 targets="gpuDriver,gpuCount,gpuDeviceIds,gpuOptions" />
                             <div class="grid gap-4 sm:grid-cols-2">
-                                <x-forms.input label="GPU driver" id="gpuDriver" canGate="update" :canResource="$application" />
-                                <x-forms.input label="GPU count" placeholder="{{ __('Empty means use all GPUs') }}" helper="A number, or all." id="gpuCount"
+                                <x-forms.input label="{{ __('GPU driver') }}" id="gpuDriver" canGate="update" :canResource="$application" />
+                                <x-forms.input label="{{ __('GPU count') }}" placeholder="{{ __('Empty means use all GPUs') }}" helper="A number, or all." id="gpuCount"
                                     canGate="update" :canResource="$application" />
                             </div>
-                            <x-forms.input label="GPU device ids" placeholder="0,2"
+                            <x-forms.input label="{{ __('GPU device ids') }}" placeholder="0,2"
                                 helper="Comma separated list of device ids. More info <a href='https://docs.docker.com/compose/gpu-support/#access-specific-devices' class='underline dark:text-white' target='_blank'>here</a>."
                                 id="gpuDeviceIds" canGate="update" :canResource="$application" />
-                            <x-forms.textarea rows="6" label="GPU options" id="gpuOptions" placeholder="key=value"
+                            <x-forms.textarea rows="6" label="{{ __('GPU options') }}" id="gpuOptions" placeholder="key=value"
                                 helper="Driver options. Use one key=value pair per line, or a YAML mapping." canGate="update"
                                 :canResource="$application" />
                         </form>

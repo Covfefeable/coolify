@@ -40,8 +40,7 @@
                 type="number" min="0" max="100" label="{{ __('Swappiness') }}" id="limitsMemorySwappiness" />
         </div>
         <p class="mt-4 text-xs leading-5 text-neutral-500 dark:text-fg-dim">
-            Accepted units are <code class="font-mono">b</code>, <code class="font-mono">k</code>,
-            <code class="font-mono">m</code>, and <code class="font-mono">g</code>.
+            {{ __('Accepted units are b, k, m, and g.') }}
         </p>
     </x-application.settings-section>
 </form>

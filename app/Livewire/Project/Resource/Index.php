@@ -210,7 +210,7 @@ class Index extends Component
             'uuid' => $item->uuid,
             'name' => $item->name,
             'type' => $type,
-            'typeLabel' => $typeLabel,
+            'typeLabel' => __($typeLabel),
             'fqdn' => $item->fqdn ?? null,
             'description' => $item->description ?? null,
             'status' => $item->status ?? '',

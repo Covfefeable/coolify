@@ -207,7 +207,7 @@
                     </x-modal-confirmation>
                 @else
                     <p class="text-[13px] text-neutral-500 dark:text-fg-dim">
-                        The running resource will not be changed.
+                        {{ __('The running resource will not be changed.') }}
                     </p>
                     <x-forms.button wire:key="clone-resource-without-volume-data"
                         x-bind:disabled="!selectedCloneDestination || !selectedCloneEnvironment"

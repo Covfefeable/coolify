@@ -5,7 +5,7 @@
             <div class="min-w-0">
                 <h1 class="truncate text-[24px]! leading-7! font-semibold! tracking-tight!">{{ $environment->name }}</h1>
                 <p class="mt-1 text-[13px] text-neutral-500 dark:text-fg-dim">
-                    Environment settings in {{ $project->name }}
+                    {{ __('Environment settings in :project', ['project' => $project->name]) }}
                 </p>
             </div>
             @can('createAnyResource')
@@ -13,7 +13,7 @@
                     <a class="button whitespace-nowrap" {{ wireNavigate() }}
                         href="{{ route('project.clone-me', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid]) }}">
                         <x-reicon name="layers" class="size-3.5 opacity-70" />
-                        Clone environment
+                        {{ __('Clone environment') }}
                     </a>
                 </div>
             @endcan
@@ -44,7 +44,7 @@
                     <div class="min-w-0">
                         <h2 class="text-sm font-semibold text-red-800 dark:text-red-300">{{ __('Delete environment') }}</h2>
                         <p class="mt-1 max-w-2xl text-sm text-red-700/80 dark:text-red-200/70">
-                            Remove every resource before permanently deleting this environment.
+                            {{ __('Remove every resource before permanently deleting this environment.') }}
                         </p>
                     </div>
                     <div class="shrink-0 sm:pt-0.5">

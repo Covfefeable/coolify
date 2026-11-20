@@ -58,7 +58,7 @@
                             @if (filled($resource?->gitWebhook))
                                 <a class="button" href="{{ $resource->gitWebhook }}" target="_blank"
                                     rel="noopener noreferrer">
-                                    Repository settings
+                                    {{ __('Repository settings') }}
                                     <x-external-link />
                                 </a>
                             @endif
@@ -107,13 +107,13 @@
                         @can('view', $resource->source)
                             <a class="button" href="{{ route('source.gitlab.show', ['gitlab_app_uuid' => $resource->source->uuid]) }}"
                                 {{ wireNavigate() }}>
-                                Source settings
+                                {{ __('Source settings') }}
                             </a>
                         @endcan
                         @if (filled($resource?->gitWebhook))
                             <a class="button" href="{{ $resource->gitWebhook }}" target="_blank"
                                 rel="noopener noreferrer">
-                                Repository settings
+                                {{ __('Repository settings') }}
                                 <x-external-link />
                             </a>
                         @endif
@@ -123,9 +123,7 @@
                         <div class="mb-4">
                             <h4 class="text-sm font-semibold text-black dark:text-fg">GitLab</h4>
                             <p class="mt-1 text-[13px] leading-5 text-neutral-500 dark:text-fg-dim">
-                                Add this URL in the GitLab project under Settings → Webhooks. Set the Secret token to
-                                the Webhook secret token from the source settings, and enable Push events and Merge
-                                request events.
+                                {{ __('In the GitLab project, add this URL under Settings → Webhooks. Set Secret token to the Webhook secret from the source settings, then enable Push events and Merge request events.') }}
                             </p>
                         </div>
                         <x-forms.copy-input label="Webhook URL" :text="$gitlabAppWebhook" />

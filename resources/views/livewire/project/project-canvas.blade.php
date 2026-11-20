@@ -17,7 +17,7 @@
             @can('update', $project)
                 <a href="{{ route('project.edit', ['project_uuid' => $project->uuid]) }}" {{ wireNavigate() }}
                     class="button whitespace-nowrap" title="{{ __('Project settings') }}"
-                    aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}"">
+                    aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}">
                     <x-reicon name="settings" class="size-3.5" />
                     Settings
                 </a>

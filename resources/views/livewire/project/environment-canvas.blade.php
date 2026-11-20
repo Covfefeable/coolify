@@ -13,14 +13,14 @@
                 :canvas-url="route('project.environment.canvas', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid])" />
             <a href="{{ route('shared-variables.environment.show', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid]) }}"
                 {{ wireNavigate() }} class="button whitespace-nowrap" title="{{ __('Shared variables for this environment') }}"
-                aria-label="{{ __('Shared variables for :name', ['name' => $environment->name]) }}"">
+                aria-label="{{ __('Shared variables for :name', ['name' => $environment->name]) }}">
                 <x-reicon name="variables" class="size-3.5" />
                 Shared variables
             </a>
             @can('update', $project)
                 <a href="{{ route('project.environment.edit', ['project_uuid' => $project->uuid, 'environment_uuid' => $environment->uuid]) }}"
                     {{ wireNavigate() }} class="button whitespace-nowrap" title="{{ __('Environment settings') }}"
-                    aria-label="{{ __('Open settings for :name', ['name' => $environment->name]) }}"">
+                    aria-label="{{ __('Open settings for :name', ['name' => $environment->name]) }}">
                     <x-reicon name="settings" class="size-3.5" />
                     Settings
                 </a>

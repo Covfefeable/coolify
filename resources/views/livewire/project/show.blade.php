@@ -12,7 +12,7 @@
                             {{ wireNavigate() }}
                             class="flex size-7 shrink-0 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-black dark:text-fg-faint dark:hover:bg-white/[0.06] dark:hover:text-fg"
                             title="{{ __('Project settings') }}"
-                            aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}"">
+                            aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}">
                             <x-reicon name="settings" class="size-4" />
                         </a>
                     @endcan

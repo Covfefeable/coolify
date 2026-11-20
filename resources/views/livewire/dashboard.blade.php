@@ -248,7 +248,7 @@
                                                 {{ wireNavigate() }}
                                                 class="{{ $iconButton }}"
                                                 title="{{ __('Add resource') }}"
-                                                aria-label="{{ __('Add resource to :name', ['name' => $project->name]) }}"">
+                                                aria-label="{{ __('Add resource to :name', ['name' => $project->name]) }}">
                                                 <x-reicon name="plus" class="size-3" />
                                             </a>
                                         @endcan
@@ -258,7 +258,7 @@
                                             {{ wireNavigate() }}
                                             class="{{ $iconButton }}"
                                             title="{{ __('Project settings') }}"
-                                            aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}"">
+                                            aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}">
                                             <x-reicon name="settings" class="size-3" />
                                         </a>
                                     @endcan
@@ -326,7 +326,7 @@
                                             'environment_uuid' => $firstEnvironment->uuid,
                                         ]) }}"
                                             {{ wireNavigate() }} class="{{ $iconButton }}" title="{{ __('Add resource') }}"
-                                            aria-label="{{ __('Add resource to :name', ['name' => $project->name]) }}"">
+                                            aria-label="{{ __('Add resource to :name', ['name' => $project->name]) }}">
                                             <x-reicon name="plus" class="size-3" />
                                         </a>
                                     @endcan
@@ -334,7 +334,7 @@
                                 @can('update', $project)
                                     <a href="{{ route('project.edit', ['project_uuid' => $project->uuid]) }}"
                                         {{ wireNavigate() }} class="{{ $iconButton }}" title="{{ __('Project settings') }}"
-                                        aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}"">
+                                        aria-label="{{ __('Open settings for :name', ['name' => $project->name]) }}">
                                         <x-reicon name="settings" class="size-3" />
                                     </a>
                                 @endcan

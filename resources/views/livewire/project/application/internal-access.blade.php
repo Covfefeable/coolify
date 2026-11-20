@@ -31,7 +31,7 @@
     </div>
     <div class="mt-4 flex flex-col gap-3 border-t border-neutral-200 pt-4 sm:flex-row sm:items-center sm:justify-between dark:border-white/[0.07]">
         <p class="text-sm text-neutral-500 dark:text-fg-dim">
-            Internal hostnames are only reachable by resources connected to this Docker network.
+            {{ __('Internal hostnames are only reachable by resources connected to this Docker network.') }}
         </p>
         <button type="button" class="button shrink-0"
             @click="$dispatch('open-networking-modal')">

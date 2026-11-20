@@ -17,7 +17,7 @@
                         <button type="button"
                             class="button button-highlighted">
                             <x-reicon name="plus" class="size-3.5" />
-                            Add task
+                            {{ __('Add task') }}
                         </button>
                     </x-slot:content>
                     <livewire:project.shared.scheduled-task.add :type="$resource->type()" :id="$resource->id"

@@ -25,7 +25,7 @@
             @unless ($compact)
                 <x-reicon name="external-link" class="size-3.5 shrink-0 opacity-70" />
             @endunless
-            Links
+            {{ __('Links') }}
         </span>
         <span class="inline-flex transition-transform" :class="open && 'rotate-180'">
             <x-reicon name="chevron-down" class="size-3 opacity-55" />

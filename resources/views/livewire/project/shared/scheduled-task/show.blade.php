@@ -58,7 +58,7 @@
             <div class="mt-2 md:w-1/2">
                 <x-forms.checkbox canGate="update" :canResource="$resource" :disabled="!auth()->user()->can('update', $resource)"
                     id="useShell" label="{{ __('Run in a shell') }}"
-                    helper="Run the command with <span class='font-mono'>sh -c</span>, so you can use variables, pipes, and redirects. Turn it off for containers without a shell (distroless or scratch images): Coolify then splits the command into arguments and runs it directly." />
+                    helper="{{ __('Run with sh -c to enable shell variables, pipes, and redirects. Disable this for containers without a shell. Coolify splits the command into arguments and runs it directly.') }}" />
             </div>
         </x-application.settings-section>
     </form>

@@ -27,3 +27,4 @@ Simplified Chinese as the default interface language, with translations for navi
 - Registry and analytics screens use consistent Chinese wording, and the main interface omits Coolify version badges, update notices, and sponsorship prompts
 - The navigation and global search omit the Coolify update settings shortcut, and setup, integration, and resource controls have broader Simplified Chinese coverage
 - Resource forms, storage warnings, team settings, and server actions include additional Simplified Chinese translations
+- Environment filters, deployment settings, DNS instructions, GPU controls, and scheduled task dialogs use Simplified Chinese

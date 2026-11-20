@@ -19,9 +19,8 @@
         </ul>
         @unless (data_get($server->server_metadata, 'nvidia_container_toolkit'))
             <p class="mt-1 text-warning-900 dark:text-warning">
-                NVIDIA Container Toolkit not found. Containers cannot use these GPUs until you
-                <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html"
-                    class="underline" target="_blank">install it</a> and restart Docker.
+                {{ __('NVIDIA Container Toolkit is missing. To use these GPUs in containers,') }} <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html"
+                    class="underline" target="_blank">{{ __('install the toolkit') }}</a> {{ __('and restart Docker.') }}
             </p>
         @endunless
     @endif
